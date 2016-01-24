@@ -1,0 +1,14 @@
+/* Custom bootstrap configuration (we only need the grid system) */
+@bootstrap_path: "~bootstrap/less";
+
+// Core variables and mixins
+//@import "bootstrap-variables.less";
+@import "@{bootstrap_path}/variables.less";
+@import "@{bootstrap_path}/mixins.less";
+
+// Core CSS
+@import "@{bootstrap_path}/grid.less";
+
+// Utility classes
+@import "@{bootstrap_path}/utilities.less";
+@import "@{bootstrap_path}/responsive-utilities.less";
