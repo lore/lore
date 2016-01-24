@@ -1,0 +1,15 @@
+node_modules
+bower_components
+config/local.js
+lib-cov
+*.seed
+*.log
+*.out
+*.pid
+npm-debug.log
+*~
+*#
+.DS_STORE
+.idea
+.node_history
+

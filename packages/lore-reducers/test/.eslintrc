@@ -1,0 +1,5 @@
+{
+  "env": {           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
+    "mocha": true    // Mocha global variables and mocha-specific rules
+  }
+}
