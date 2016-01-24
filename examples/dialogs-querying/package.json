@@ -1,5 +1,5 @@
 {
-  "name": "tmp",
+  "name": "example",
   "private": true,
   "version": "0.0.0",
   "description": "a Lore application",
@@ -10,8 +10,8 @@
     "invariant": "^2.1.0",
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
-    "lore-actions": "~0.2.0",
-    "lore": "file:../../",
+    "lore-actions": "~0.3.0",
+    "lore": "file:../..",
     "material-ui": "0.13.4",
     "moment": "^2.10.3",
     "react": "~0.14.3",
@@ -52,10 +52,6 @@
     "test": "NODE_ENV=test mocha --recursive"
   },
   "main": "server.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jchansen/tmp.git"
-  },
-  "author": "jchansen",
+  "author": "Storcery",
   "license": ""
 }

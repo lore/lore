@@ -1,0 +1,68 @@
+{
+  "name": "lore-models",
+  "author": "Storcery",
+  "version": "0.3.0",
+  "description": "Convention over configuration for CRUD actions against models and collections.",
+  "keywords": [
+    "lore",
+    "models",
+    "collections",
+    "fetch",
+    "api",
+    "react",
+    "redux",
+    "CRUD"
+  ],
+  "homepage": "http://github.com/storcery/lore",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "clean": "rimraf lib coverage .tmp",
+    "lint": "eslint src test",
+    "test": "mocha --compilers js:babel-core/register --recursive",
+    "test:watch": "npm test -- --watch",
+    "test:cov": "babel-node $(npm bin)/isparta cover $(npm bin)/_mocha -- --recursive",
+    "check": "npm run lint && npm run test",
+    "build": "babel src --out-dir lib",
+    "preversion": "npm run clean && npm run check",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags && npm run clean",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/storcery/lore.git"
+  },
+  "engines": {
+    "node": ">=0.9.0"
+  },
+  "dependencies": {
+    "backbone": "^1.2.3",
+    "jquery": "^2.1.4",
+    "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.4.0",
+    "babel-core": "^6.2.1",
+    "babel-eslint": "^4.1.6",
+    "babel-preset-es2015": "^6.1.18",
+    "backbone-super-sync": "^1.1.1",
+    "chai": "^3.4.1",
+    "eslint": "^1.7.1",
+    "eslint-config-airbnb": "^1.0.2",
+    "eslint-plugin-react": "^3.6.3",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "isparta": "^3.0.3",
+    "mocha": "^2.3.4",
+    "nock": "^3.3.2",
+    "rimraf": "^2.4.4"
+  },
+  "bugs": {
+    "url": "https://github.com/storcery/lore/issues"
+  },
+  "license": "MIT"
+}

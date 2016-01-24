@@ -1,0 +1,31 @@
+{
+  "name": "lore-generate-new",
+  "version": "0.3.0",
+  "author": "Storcery",
+  "license": "MIT",
+  "description": "Generate a new Lore app.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": ["lore"],
+  "dependencies": {
+    "bluebird": "^3.1.1",
+    "history": "^1.17.0",
+    "lodash": ">=3.9.x",
+    "lore": "^0.4.3",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "react-router": "^1.0.3",
+    "redux": "^3.0.5",
+    "win-spawn": "^2.0.0"
+  },
+  "devDependencies": {
+    "lore-generate": "*"
+  },
+  "loreGenerator": {
+    "type": "new",
+    "behavior": "default implementation of `lore new`",
+    "loreVersion": "~0.4.0"
+  }
+}
