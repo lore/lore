@@ -37,7 +37,7 @@ This will create a new lore app at the path you specified, with the same name.
 $ npm start
 ```
 ## Support
-[Official Documentation](https://github.com/storcery/lore/tree/readme_updates/docs)
+[Official Documentation](../master/docs)
 
 [circle-url]: https://circleci.com/gh/storcery/lore
 [circle-image]: https://circleci.com/gh/storcery/lore.svg?style=shield&circle-token=5da870de3f5ba2aab376984f12222436a7ac40af
