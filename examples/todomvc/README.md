@@ -8,12 +8,7 @@ This is a modified version of the [React TodoMVC example](http://todomvc.com/exa
 It has been modified in the following ways:
 
 1. It uses [React Router](https://github.com/rackt/react-router)
-2. Local storage has been replaced (for the moment) with a backend API server running on Heroku
-at [https://todomvc-api.herokuapp.com](https://todomvc-api.herokuapp.com).  The server has been
-configured to destroy the database everytime it restarts (which will be at least once per day).
-3. Lore has been configured to use the Heroku server to retrieve data. Since the Heroku server
-being used is part of the free tier it may take several seconds for the API to wake up if the
-server has fallen asleep.
+2. Calls against the server are intercepted using [faux-server](https://github.com/storcery/faux-server) which replaces the network calls with calls against the localstore.
 
 ## Misc Notes
 Unsure why at the moment, but in `src/components/Master.js` if the line:
