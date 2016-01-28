@@ -13,12 +13,5 @@ npm install
 npm start
 ```
 
-Then start the server:
+Note: calls against the server are intercepted using [faux-server](https://github.com/storcery/faux-server) which replaces the network calls with calls against the localstore.
 
-```sh
-cd sails-api-server
-npm install
-npm start
-```
-
-The API server will start up on http://localhost:1337. The example app is configured to talk to it.
