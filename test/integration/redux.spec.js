@@ -22,7 +22,7 @@ describe('lore#redux', function() {
 
   describe('action-reducer flow: actions.todo.create()', function() {
 
-    beforeEach(function(){
+    beforeEach(function() {
       nock('https://api.example.com')
         .persist()
         .post('/todos')
@@ -32,7 +32,7 @@ describe('lore#redux', function() {
         });
     });
 
-    it("should create a todo and add it to the store", function(done) {
+    it("should create a todo and add it to the store", function( done ) {
       lore.build();
       var optimisticTodo = lore.actions.todo.create({
         title: 'foo'
@@ -43,6 +43,7 @@ describe('lore#redux', function() {
       expect(_.keys(state.todo.all).length).to.equal(0);
       expect(_.keys(state.todo.byId).length).to.equal(0);
       expect(_.keys(state.todo.byCid).length).to.equal(1);
+
 
       // Subscribe to the store so we can be notified once the server response
       // comes back with the real data
@@ -57,15 +58,15 @@ describe('lore#redux', function() {
         // Just for fun, let's verify the id actually exists
         var realTodo = state.todo.byCid[optimisticTodo.cid];
         expect(realTodo.id).to.exist;
-
         done();
+
       });
     });
   });
 
   describe('action-reducer flow: actions.todo.fetchAll()', function() {
 
-    beforeEach(function(){
+    beforeEach(function() {
       nock('https://api.example.com')
         .persist()
         .get('/todos')
@@ -77,7 +78,7 @@ describe('lore#redux', function() {
         ]);
     });
 
-    it("should fetch the todos and add them to the store", function(done) {
+    it("should fetch the todos and add them to the store", function( done ) {
       lore.build();
       var optimisticTodos = lore.actions.todo.fetchAll().payload;
 
@@ -107,7 +108,7 @@ describe('lore#redux', function() {
 
   describe('action-reducer flow: actions.todo.fetch()', function() {
 
-    beforeEach(function(){
+    beforeEach(function() {
       nock('https://api.example.com')
         .persist()
         .get('/todos/1')
@@ -117,7 +118,7 @@ describe('lore#redux', function() {
         });
     });
 
-    it("should create a todo, add it to the store, and update it when the server responds", function(done) {
+    it("should create a todo, add it to the store, and update it when the server responds", function( done ) {
       lore.build();
       var optimisticTodo = lore.actions.todo.fetch('1').payload;
 
@@ -149,7 +150,7 @@ describe('lore#redux', function() {
 
   describe('action-reducer flow: actions.todo.update()', function() {
 
-    beforeEach(function(){
+    beforeEach(function() {
       nock('https://api.example.com')
         .persist()
         .put('/todos/1')
@@ -159,7 +160,7 @@ describe('lore#redux', function() {
         });
     });
 
-    it("should udpate the todo and update it in the store", function(done) {
+    it("should udpate the todo and update it in the store", function( done ) {
       lore.build();
       var store = lore.store;
       var data = populateStore(store, {
@@ -204,14 +205,14 @@ describe('lore#redux', function() {
 
   describe('action-reducer flow: actions.todo.destroy()', function() {
 
-    beforeEach(function(){
+    beforeEach(function() {
       nock('https://api.example.com')
         .persist()
         .delete('/todos/1')
-        .reply(204);
+        .reply(200);
     });
 
-    it("should delete a todo and remove it from the store", function(done) {
+    it("should delete a todo and remove it from the store", function( done ) {
       lore.build();
       var store = lore.store;
       var data = populateStore(store, {
@@ -234,10 +235,10 @@ describe('lore#redux', function() {
       // Subscribe to the store so we can be notified once the server confirms
       // the request
       store.subscribe(function() {
-
         // The second time we check state the delete request will have completed
         // and the model should have been removed from the store
         state = store.getState();
+
         expect(_.keys(state.todo.all).length).to.equal(0);
         expect(_.keys(state.todo.byId).length).to.equal(0);
         expect(_.keys(state.todo.byCid).length).to.equal(0);

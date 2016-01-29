@@ -25,7 +25,7 @@ module.exports = function(opts = {}) {
 
       collection.fetch({
         data: query
-      }).done(function() {
+      }).then(function() {
         if (options.onSuccess) {
           dispatch({
             type: options.onSuccess.actionType,
@@ -33,7 +33,7 @@ module.exports = function(opts = {}) {
             query: query
           });
         }
-      }).fail(function(response) {
+      }).catch(function(response) {
         if (options.onError) {
           const error = response.responseJSON;
 

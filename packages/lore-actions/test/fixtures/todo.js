@@ -1,20 +1,17 @@
-const $ = require('jquery-deferred');
+const Promise = require('bluebird');
 
 /* eslint new-cap: 0 */
 class Todo {
   fetch() {
-    const deferred = $.Deferred();
-    return deferred.promise();
+    return Promise.resolve();
   }
 
   save() {
-    const deferred = $.Deferred();
-    return deferred.promise();
+    return Promise.resolve();
   }
 
   destroy() {
-    const deferred = $.Deferred();
-    return deferred.promise();
+    return Promise.resolve();
   }
 
   set() {}

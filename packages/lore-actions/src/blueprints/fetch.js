@@ -24,14 +24,14 @@ module.exports = function(opts = {}) {
         id: modelId
       });
 
-      model.fetch().done(function() {
+      model.fetch().then(function() {
         if (options.onSuccess) {
           dispatch({
             type: options.onSuccess.actionType,
             payload: payload(model, options.onSuccess.payloadState)
           });
         }
-      }).fail(function(response) {
+      }).catch(function(response) {
         if (options.onError) {
           const error = response.responseJSON;
 

@@ -1,4 +1,4 @@
-var Promise = require('bluebird');
+//var Promise = require('bluebird');
 var sinon = require('sinon');
 
 // ---------------------------------------------------------------------
@@ -30,19 +30,6 @@ afterEach(function(){
 after(function(){
   nock.restore();
 });
-
-// -----------------------------------------------------------------
-// Make sure Backbone can work on the server side
-// This is needed until lore-models drop it's dependency on Backbone
-// -----------------------------------------------------------------
-var Backbone = require('lore-models/node_modules/backbone');
-Backbone.sync = require('backbone-super-sync');
-
-// Need to create a 'fail' method because jQuery deferred calls it that
-// but bluebird (promise implemenation in backbone-super-sync) only has
-// an 'error' method.
-Promise.prototype.fail = Promise.prototype.error;
-Promise.prototype.done = Promise.prototype.then;
 
 // -----------------------------------------------------
 // Make sure the DOM helpers are stubbed out for testing

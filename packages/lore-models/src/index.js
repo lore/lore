@@ -1,6 +1,3 @@
-const Backbone = require('backbone');
-
-module.exports = {
-  Model: Backbone.Model,
-  Collection: Backbone.Collection
-};
+export {default as Model} from "./model";
+export {default as Collection} from "./collection";
+export {type as MethodTypes} from "./constants";

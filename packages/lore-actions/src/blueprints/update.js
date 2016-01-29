@@ -23,7 +23,7 @@ module.exports = function(opts = {}) {
       const proxyModel = new Model(model.data);
       proxyModel.set(params);
 
-      proxyModel.save().done(function() {
+      proxyModel.save().then(function() {
         if (options.onSuccess) {
           dispatch({
             type: options.onSuccess.actionType,
@@ -33,7 +33,7 @@ module.exports = function(opts = {}) {
             })
           });
         }
-      }).fail(function(response) {
+      }).catch(function(response) {
         if (options.onError) {
           const error = response.responseJSON;
 
