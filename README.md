@@ -40,4 +40,4 @@ $ npm start
 [Official Documentation](../master/docs)
 
 [circle-url]: https://circleci.com/gh/storcery/lore
-[circle-image]: https://circleci.com/gh/storcery/lore.svg?style=shield&circle-token=5da870de3f5ba2aab376984f12222436a7ac40af
+[circle-image]: https://circleci.com/gh/storcery/lore.svg?style=shield&circle-token=6ef9571387d0e08d802f6769026fcf91fc30459f
