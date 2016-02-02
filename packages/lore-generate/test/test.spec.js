@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var index = require('../lib/index');
+var index = require('../src/index');
 
 var params;
 

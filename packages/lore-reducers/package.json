@@ -1,6 +1,6 @@
 {
   "name": "lore-reducers",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Storcery",
   "license": "MIT",
   "description": "Library to reduce boilerplate for Redux reducers",
