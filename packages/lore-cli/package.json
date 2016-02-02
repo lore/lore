@@ -2,7 +2,7 @@
   "name": "lore-cli",
   "author": "Storcery",
   "license": "MIT",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Command Line Interface for Lore (A convention driven framework for React + Redux applications)",
   "main": "./lib/index.js",
   "bin": {
@@ -25,9 +25,9 @@
   "dependencies": {
     "commander": "^2.9.0",
     "lodash": "^3.10.1",
-    "lore": "^0.4.3",
-    "lore-generate": "0.2.0",
-    "lore-generate-new": "~0.3.0"
+    "lore": "*",
+    "lore-generate": "*",
+    "lore-generate-new": "*"
   },
   "devDependencies": {
     "bluebird": "^3.1.1",

@@ -1,7 +1,7 @@
 {
   "name": "lore-models",
   "author": "Storcery",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Convention over configuration for CRUD actions against models and collections.",
   "keywords": [
     "lore",
