@@ -11,7 +11,6 @@
     "invariant": "^2.1.0",
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
-    "lore-actions": "~0.3.0",
     "lore": "file:../..",
     "material-ui": "0.13.4",
     "moment": "^2.10.3",

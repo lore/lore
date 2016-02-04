@@ -23,7 +23,6 @@ module.exports = function dataForPackageJSON(scope) {
     'invariant': getDependencyVersion(lorePkg, 'invariant'),
     'jquery': getDependencyVersion(lorePkg, 'jquery'),
     'lodash': getDependencyVersion(lorePkg, 'lodash'),
-    'lore-actions': getDependencyVersion(lorePkg, 'lore-actions'),
     'lore': loreVersionDependency,
     'moment': getDependencyVersion(lorePkg, 'moment'),
     'react': getDependencyVersion(lorePkg, 'react'),
