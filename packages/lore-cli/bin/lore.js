@@ -20,6 +20,14 @@ console.log('*                   ~ BUILD APPS WORTHY OF LEGEND ~                
 console.log('*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*');
 console.log('\n');
 
+var called = false;
+function call(func) {
+  return function() {
+    called = true;
+    func(arguments);
+  }
+}
+
 program
   .version(package.version, '-v, --version');
 
@@ -32,16 +40,23 @@ process.argv = _.map(process.argv, function(arg) {
 program
   .command('version')
   .description('version of the CLI')
-  .action(function() { program.emit('version') });
+  .action(call(function() { program.emit('version') }));
 
-// $ lore new <appname>
-program.command('new [project_name]')
-  .usage('[project_name]')
-  .action(require('./lore-new'));
+// $ lore new [app_name]
+program.command('new <app_name>')
+  .usage('<app_name>')
+  .description('generate a new Lore project.')
+  .action(call(require('./lore-new')));
+
+// $ lore generate-generator [generator_name]
+program.command('generate-generator <generator_name> [generator_description]')
+  .usage('<generator_name> [generator_description]')
+  .description('generate a new Lore generator.')
+  .action(call(require('./lore-generate-generator')));
 
 // $ lore
 program.parse(process.argv);
-if (program.args.length === 0) {
+if(!called) {
   program.commands = _.reject(program.commands, {
     _name: '*'
   });

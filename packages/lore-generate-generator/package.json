@@ -1,0 +1,24 @@
+{
+  "name": "lore-generate-generator",
+  "version": "0.1.0",
+  "author": "Storcery",
+  "license": "MIT",
+  "description": "Generate a new Lore generator.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": ["lore"],
+  "dependencies": {
+    "bluebird": "^3.1.1",
+    "lore": "*"
+  },
+  "devDependencies": {
+    "lore-generate": "*"
+  },
+  "loreGenerator": {
+    "type": "generate-generator",
+    "behavior": "default implementation of `lore generate-generator`",
+    "loreVersion": "*"
+  }
+}
