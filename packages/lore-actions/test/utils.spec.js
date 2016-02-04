@@ -42,7 +42,9 @@ describe('utils', function() {
 
   describe('#payloadCollection', function() {
     it('should convert arguments into the correct object', function() {
-      const collection = [model];
+      const collection = {
+        models: [model]
+      };
       state = 'ERROR_FETCHING';
 
       const result = utils.payloadCollection(collection, state, error);

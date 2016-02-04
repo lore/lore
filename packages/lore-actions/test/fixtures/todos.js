@@ -1,14 +1,13 @@
-const $ = require('jquery-deferred');
+const Promise = require('bluebird');
 
 /* eslint new-cap: 0 */
 class Todos {
-  fetch() {
-    const deferred = $.Deferred();
-    return deferred.promise();
+  constructor() {
+    this.models = [];
   }
 
-  map() {
-    return [];
+  fetch() {
+    return Promise.resolve();
   }
 }
 

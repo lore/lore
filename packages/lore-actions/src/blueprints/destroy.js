@@ -22,7 +22,7 @@ module.exports = function(opts = {}) {
     return function(dispatch) {
       const proxyModel = new Model(model.data);
 
-      proxyModel.destroy().done(function() {
+      proxyModel.destroy().then(function() {
         if (options.onSuccess) {
           dispatch({
             type: options.onSuccess.actionType,
@@ -31,7 +31,7 @@ module.exports = function(opts = {}) {
             })
           });
         }
-      }).fail(function(response) {
+      }).catch(function(response) {
         if (options.onError) {
           const error = response.responseJSON;
 
