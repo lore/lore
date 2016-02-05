@@ -5,4 +5,5 @@ coverage
 .idea
 .tracker
 .tmp
+lib
 npm-debug.log
