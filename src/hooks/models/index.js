@@ -1,4 +1,4 @@
-var LoreModels = require('lore-models');
+var LoreModels = require('../../../packages/lore-models');
 var _ = require('lodash');
 var generateProperties = require('./generateProperties');
 

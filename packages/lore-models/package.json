@@ -20,7 +20,7 @@
     "src"
   ],
   "scripts": {
-    "clean": "rimraf lib coverage .tmp",
+    "clean": "npm prune && rimraf lib coverage .tmp",
     "lint": "eslint src test",
     "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm test -- --watch",
