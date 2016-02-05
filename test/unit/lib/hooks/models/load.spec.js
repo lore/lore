@@ -3,7 +3,7 @@ var _ = require('lodash');
 var definition = require('../../../../../lib/hooks/models/index');
 var loaderHelper = require('../../../../helpers/loaderHelper');
 var loader = require('../../../../../lib/loader');
-var Model = require('lore-models').Model;
+var Model = require('../../../../../packages/lore-models').Model;
 var Hook = require('../../../../../lib/Hook');
 
 describe('hooks#models#load', function() {
