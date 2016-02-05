@@ -7,6 +7,7 @@ describe('hooks#actionBlueprints#load', function() {
 
   var defaultConfig = null;
   var hook = null;
+  var lore = null;
 
   beforeEach(function() {
     hook = new Hook(definition);

@@ -1,6 +1,6 @@
 var ActionTypes = require('../../../utils/ActionTypes');
 var PayloadStates = require('../../../utils/PayloadStates');
-var utils = require('lore-actions').utils;
+var utils = require('../../../../packages/lore-actions').utils;
 
 function hackPayloadCollection(collection, query, payloadState) {
   if (Object.keys(query).length === 0) {
