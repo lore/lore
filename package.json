@@ -9,8 +9,13 @@
     "packages/lore-core/lib"
   ],
   "scripts": {
+    "clean": "npm prune && rimraf lib coverage .tmp",
+    "lint": "echo 'tbd: implement me.'",
     "test": "monorepo -d packages -t",
-    "prepublish": "monorepo -d packages -p -i"
+    "debug": "echo 'tbd: implement me.'",
+    "check": "npm run lint && npm run test",
+    "build": "monorepo -d packages -p -i",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
