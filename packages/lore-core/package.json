@@ -11,6 +11,8 @@
     "src"
   ],
   "scripts": {
+    "build": "babel src --out-dir lib",
+    "prepublish": "npm run build",
     "test": "mocha --compilers js:babel-core/register test/bootstrap.js test/unit test/integration --recursive",
     "debug": "mocha debug test/bootstrap.js test/unit test/integration --recursive"
   },
@@ -24,6 +26,7 @@
   "homepage": "https://github.com/storcery/lore#readme",
   "dependencies": {
     "lodash": "3.10.1",
+    "merge-defaults": "0.2.1",
     "react-redux": "4.0.0",
     "react-tap-event-plugin": "0.2.1",
     "topsort": "0.0.2",

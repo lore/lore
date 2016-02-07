@@ -2,6 +2,7 @@
   "name": "lore-models",
   "author": "Storcery",
   "version": "0.3.1",
+  "private": true,
   "description": "Convention over configuration for CRUD actions against models and collections.",
   "keywords": [
     "lore",
@@ -20,17 +21,10 @@
     "src"
   ],
   "scripts": {
-    "clean": "npm prune && rimraf lib coverage .tmp",
-    "lint": "eslint src test",
-    "test": "mocha --compilers js:babel-core/register --recursive",
-    "test:watch": "npm test -- --watch",
-    "test:cov": "babel-node $(npm bin)/isparta cover $(npm bin)/_mocha -- --recursive",
-    "check": "npm run lint && npm run test",
     "build": "babel src --out-dir lib",
-    "preversion": "npm run clean && npm run check",
-    "version": "npm run build",
-    "postversion": "git push && git push --tags && npm run clean",
-    "prepublish": "npm run clean && npm run build"
+    "prepublish": "npm run build",
+    "test": "mocha --compilers js:babel-core/register --recursive",
+    "debug": "mocha debug --compilers js:babel-core/register --recursive"
   },
   "repository": {
     "type": "git",
@@ -57,9 +51,6 @@
     "eslint": "^1.7.1",
     "eslint-config-airbnb": "^1.0.2",
     "eslint-plugin-react": "^3.6.3",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.1",
-    "isparta": "^3.0.3",
     "mocha": "^2.3.4",
     "nock": "^3.3.2",
     "rimraf": "^2.4.4"
