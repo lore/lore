@@ -1,23 +1,15 @@
 {
   "name": "lore",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "author": "Storcery",
   "description": "Convention driven framework for React + Redux applications",
   "license": "MIT",
-  "main": "./lib/index.js",
+  "main": "./packages/lore-core/lib/index.js",
   "files": [
-    "lib"
+    "./packages/lore-core/lib"
   ],
   "scripts": {
-    "clean": "npm prune && rimraf lib coverage .tmp",
-    "check": "npm run lint && npm run test",
-    "preversion": "npm run clean && npm run check",
-    "lint": "echo 'tbd: implement me.'",
-    "build": "babel src --out-dir lib",
-    "test": "npm run install-models && npm run install-actions && npm run clean && npm run build && mocha --compilers js:babel-core/register test/bootstrap.js test/unit test/integration --recursive",
-    "debug": "mocha debug test/bootstrap.js test/unit test/integration --recursive",
-    "install-models": "cd packages/lore-models && npm install",
-    "install-actions": "cd packages/lore-actions && npm install"
+    "test": "echo 'add me'"
   },
   "repository": {
     "type": "git",
@@ -28,58 +20,9 @@
   },
   "homepage": "https://github.com/storcery/lore#readme",
   "dependencies": {
-    "async": "1.5.0",
-    "bluebird": "3.1.1",
-    "classnames": "2.1.3",
-    "invariant": "2.1.0",
-    "jquery": "2.1.4",
-    "lodash": "3.10.1",
-    "merge-defaults": "0.2.1",
-    "moment": "2.10.3",
-    "pluralize": "1.2.1",
-    "rc": "1.1.5",
-    "react-redux": "4.0.0",
-    "react-tap-event-plugin": "0.2.1",
-    "redux-thunk": "1.0.0",
-    "require-dir": "0.3.0",
-    "topsort": "0.0.2",
-    "webpack-requiredir": "0.1.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.4.5",
-    "babel-core": "^6.2.1",
-    "backbone-super-sync": "1.1.1",
-    "bootstrap": "3.3.5",
-    "chai": "3.4.1",
-    "css-loader": "0.21.0",
-    "file-loader": "0.8.4",
-    "gulp": "3.9.0",
-    "gulp-clean": "^0.3.1",
-    "gulp-rename": "1.2.2",
-    "gulp-sequence": "0.4.1",
-    "gulp-surge": "0.1.0",
-    "gulp-util": "3.0.6",
-    "less": "2.5.1",
-    "less-loader": "2.2.0",
-    "mocha": "2.3.4",
-    "nock": "2.6.0",
-    "normalize.css": "3.0.3",
-    "react-addons-test-utils": "0.14.6",
-    "react-hot-loader": "1.2.8",
-    "redux-devtools": "2.1.5",
-    "rimraf": "2.5.1",
-    "sinon": "1.17.2",
-    "style-loader": "0.13.0",
-    "surge": "0.17.3",
-    "url-loader": "0.5.6",
-    "webpack": "1.10.5",
-    "webpack-dev-server": "1.10.1"
   },
   "peerDependencies": {
-    "history": "^1.17.0",
-    "react": "~0.14.3",
-    "react-dom": "~0.14.2",
-    "react-router": "^1.0.3",
-    "redux": "^3.0.1"
   }
 }
