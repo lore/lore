@@ -9,7 +9,7 @@
     "packages/lore-core/lib"
   ],
   "scripts": {
-    "clean": "npm prune && rimraf lib coverage .tmp",
+    "clean": "echo 'tbd: implement me, something like rimraf lib coverage .tmp'",
     "lint": "echo 'tbd: implement me.'",
     "test": "monorepo -d packages -t",
     "debug": "echo 'tbd: implement me.'",
