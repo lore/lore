@@ -15,10 +15,8 @@
     "preversion": "npm run clean && npm run check",
     "lint": "echo 'tbd: implement me.'",
     "build": "babel src --out-dir lib",
-    "test": "npm run install-models && npm run install-actions && npm run clean && npm run build && mocha --compilers js:babel-core/register test/bootstrap.js test/unit test/integration --recursive",
-    "debug": "mocha debug test/bootstrap.js test/unit test/integration --recursive",
-    "install-models": "cd ../lore-models && npm install",
-    "install-actions": "cd ../lore-actions && npm install"
+    "test": "mocha --compilers js:babel-core/register test/bootstrap.js test/unit test/integration --recursive",
+    "debug": "mocha debug test/bootstrap.js test/unit test/integration --recursive"
   },
   "repository": {
     "type": "git",
