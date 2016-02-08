@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
-    "babel-core": "^6.2.1",
+    "babel-core": "6.5.0",
     "chai": "3.4.1",
     "mocha": "2.3.4",
     "nock": "2.6.0",
