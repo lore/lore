@@ -3,8 +3,8 @@
 var nodepath = require('path');
 var _ = require('lodash');
 
-var loregen = require('lore-generate');
-var loreGenerateNew = require('../../lore-generate-generator');
+var loregen = require('../../lore-generate');
+var loreGenerateNew = require('../../lore-generate-new');
 
 var package = require('lore/package.json');
 

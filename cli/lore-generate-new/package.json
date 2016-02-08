@@ -2,6 +2,7 @@
   "name": "lore-generate-new",
   "version": "0.3.1",
   "author": "Storcery",
+  "private": true,
   "license": "MIT",
   "description": "Generate a new Lore app.",
   "main": "src/index.js",
@@ -21,7 +22,6 @@
     "win-spawn": "^2.0.0"
   },
   "devDependencies": {
-    "lore-generate": "*"
   },
   "loreGenerator": {
     "type": "new",
