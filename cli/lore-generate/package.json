@@ -1,5 +1,6 @@
 {
   "name": "lore-generate",
+  "private": true,
   "version": "0.2.1",
   "author": "Storcery",
   "keywords": [],

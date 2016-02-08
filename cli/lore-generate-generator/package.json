@@ -1,5 +1,6 @@
 {
   "name": "lore-generate-generator",
+  "private": true,
   "version": "0.1.0",
   "author": "Storcery",
   "license": "MIT",
@@ -14,7 +15,6 @@
     "lore": "*"
   },
   "devDependencies": {
-    "lore-generate": "*"
   },
   "loreGenerator": {
     "type": "generate-generator",
