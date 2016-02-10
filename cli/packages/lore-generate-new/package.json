@@ -9,19 +9,23 @@
   "scripts": {
     "test": "mocha"
   },
-  "keywords": ["lore"],
+  "keywords": [
+    "lore"
+  ],
   "dependencies": {
-    "bluebird": "^3.1.1",
-    "history": "^1.17.0",
+    "bluebird": "3.1.1",
+    "history": "1.17.0",
     "lodash": ">=3.9.x",
     "lore": "*",
-    "react": "^0.14.6",
-    "react-dom": "^0.14.6",
-    "react-router": "^1.0.3",
-    "redux": "^3.0.5",
-    "win-spawn": "^2.0.0"
+    "react": "0.14.6",
+    "react-dom": "0.14.6",
+    "react-router": "1.0.3",
+    "redux": "3.0.5",
+    "win-spawn": "2.0.0"
   },
   "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "2.4.5"
   },
   "loreGenerator": {
     "type": "new",

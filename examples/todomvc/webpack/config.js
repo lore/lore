@@ -31,16 +31,16 @@ module.exports = function(settings) {
     module: {
       loaders: [{
         test: /\.js$/,
-        loaders: ['react-hot', 'babel'],
+        loaders: ['react-hot', 'babel-loader'],
         exclude: /node_modules/,
         include: APP_ROOT
       }, {
         test: /\.(js|jsx)$/,
-        loaders: ['react-hot', 'babel'],
+        loaders: ['react-hot', 'babel-loader'],
         include: /node_modules\/material-ui\/src/
       }, {
         test: /\.js$/,
-        loaders: ['babel'],
+        loaders: ['babel-loader'],
         include: path.join(APP_ROOT, '..', '..', 'src')
       }, {
         test: /\.css/,

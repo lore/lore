@@ -4,7 +4,7 @@
   "author": "Storcery",
   "license": "MIT",
   "version": "0.2.1",
-  "description": "The core for lore-cli",
+  "description": "The lore-cli core.",
   "main": "./lib/index.js",
   "bin": {
     "lore": "./bin/lore.js"
@@ -24,13 +24,13 @@
   },
   "homepage": "https://github.com/storcery/lore#readme",
   "dependencies": {
-    "commander": "^2.9.0",
-    "lodash": "^3.10.1",
+    "commander": "2.9.0",
+    "lodash": "3.10.1",
     "lore": "*"
   },
   "devDependencies": {
-    "bluebird": "^3.1.1",
-    "mocha": "^2.3.4",
-    "chai": "^3.4.1"
+    "bluebird": "3.1.1",
+    "chai": "3.4.1",
+    "mocha": "2.4.5"
   }
 }
