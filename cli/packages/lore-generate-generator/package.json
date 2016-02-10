@@ -9,12 +9,16 @@
   "scripts": {
     "test": "mocha"
   },
-  "keywords": ["lore"],
+  "keywords": [
+    "lore"
+  ],
   "dependencies": {
-    "bluebird": "^3.1.1",
+    "bluebird": "3.1.1",
     "lore": "*"
   },
   "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "2.4.5"
   },
   "loreGenerator": {
     "type": "generate-generator",

@@ -4,26 +4,25 @@
   "author": "Storcery",
   "description": "Command Line Interface for Lore (A convention driven framework for React + Redux applications)",
   "license": "MIT",
-  "main": "packages/lore-core/lib/index.js",
-  "main": "lore-cli-core/lib/index.js",
+  "main": "packages/lore-cli-core/lib/index.js",
   "bin": {
-    "lore": "lore-cli-core/bin/lore.js"
+    "lore": "packages/lore-cli-core/bin/lore.js"
   },
   "files": [
-    "lore-cli-core/bin"
+    "packages/lore-cli-core/bin"
   ],
   "scripts": {
-    "clean": "echo 'tbd: implement me, something like rimraf lib coverage .tmp'",
+    "clean": "monorepo -d packages -r lib coverage .tmp -p",
+    "build": "monorepo -d packages -i",
     "lint": "echo 'tbd: implement me.'",
-    "test": "monorepo -d . -t",
-    "debug": "echo 'tbd: implement me.'",
     "check": "npm run lint && npm run test",
-    "build": "monorepo -d . -p -i",
-    "prepublish": "npm run build"
+    "prepublish": "npm run clean && npm run build && npm run check",
+    "test": "monorepo -d packages -t",
+    "debug": "monorepo -d packages -c debug"
   },
   "dependencies": {},
   "devDependencies": {
-    "monorepo": "0.1.5"
+    "monorepo": "0.1.6"
   },
   "repository": {
     "type": "git",

@@ -22,7 +22,7 @@ describe('by default', function() {
     it('when missing a log throws an error', function() {
       expect(function() {
         index(params)
-      }).to.throw('fooobarn');
+      }).to.throw('Sorry, `scope.generator` must be defined.');
     });
   });
 });

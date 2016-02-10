@@ -5,17 +5,29 @@
   "description": "Convention driven framework for React + Redux applications",
   "license": "MIT",
   "main": "packages/lore-core/lib/index.js",
+  "keywords": [
+    "react",
+    "redux",
+    "framework",
+    "flux",
+    "storcery",
+    "lore",
+    "client-side",
+    "browser",
+    "convention over configuration",
+    "opinionated"
+  ],
   "files": [
     "packages/lore-core/lib"
   ],
   "scripts": {
-    "clean": "echo 'tbd: implement me, something like rimraf lib coverage .tmp'",
+    "clean": "monorepo -d packages cli/packages -r lib coverage .tmp -p",
+    "build": "monorepo -d packages cli/packages -i",
     "lint": "echo 'tbd: implement me.'",
-    "test": "monorepo -d packages -t",
-    "debug": "echo 'tbd: implement me.'",
     "check": "npm run lint && npm run test",
-    "build": "monorepo -d packages -p -i",
-    "prepublish": "npm run build"
+    "prepublish": "npm run clean && npm run build && npm run check",
+    "test": "monorepo -d packages cli/packages -t",
+    "debug": "monorepo -d packages cli/packages -c debug"
   },
   "repository": {
     "type": "git",
@@ -27,7 +39,7 @@
   "homepage": "https://github.com/storcery/lore#readme",
   "dependencies": {},
   "devDependencies": {
-    "monorepo": "0.1.5"
+    "monorepo": "0.1.6"
   },
   "peerDependencies": {
     "history": "^1.17.0",
