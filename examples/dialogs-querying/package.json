@@ -28,6 +28,8 @@
     "babel-cli": "6.4.5",
     "babel-core": "6.2.1",
     "babel-loader": "6.2.2",
+    "babel-preset-es2015": "6.5.0",
+    "babel-preset-react": "6.5.0",
     "bootstrap": "^3.3.5",
     "css-loader": "^0.21.0",
     "file-loader": "^0.8.4",

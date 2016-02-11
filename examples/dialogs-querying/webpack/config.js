@@ -29,19 +29,27 @@ module.exports = function(settings) {
       }
     },
     module: {
-      loaders: [{
+      loaders: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: "babel-loader",
+          include: APP_ROOT,
+          query: {
+            presets: ['react', 'es2015']
+          }
+        },
+        {
+          test: /\.(js|jsx)$/,
+          loaders: ['react-hot', 'babel-loader'],
+          include: /node_modules\/material-ui\/src/,
+        }, {
         test: /\.js$/,
-        loaders: ['react-hot', 'babel'],
-        exclude: /node_modules/,
-        include: APP_ROOT
+        loaders: ['babel-loader'],
+        include: path.join(APP_ROOT, '..', '..', 'src'),
       }, {
-        test: /\.(js|jsx)$/,
-        loaders: ['react-hot', 'babel'],
-        include: /node_modules\/material-ui\/src/
-      }, {
-        test: /\.js$/,
-        loaders: ['babel'],
-        include: path.join(APP_ROOT, '..', '..', 'src')
+        test: /\.css/,
+        loader: 'style-loader!css-loader'
       }, {
         test: /\.less$/,
         loader: 'style-loader!css-loader!less-loader'
@@ -51,7 +59,8 @@ module.exports = function(settings) {
       }, {
         test: /\.json/,
         loader: 'json-loader'
-      }]
+      }
+      ]
     }
   }
 };
