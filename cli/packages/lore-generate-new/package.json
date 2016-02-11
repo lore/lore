@@ -16,7 +16,6 @@
     "bluebird": "3.1.1",
     "history": "1.17.0",
     "lodash": ">=3.9.x",
-    "lore": "*",
     "react": "0.14.6",
     "react-dom": "0.14.6",
     "react-router": "1.0.3",
@@ -29,7 +28,9 @@
   },
   "loreGenerator": {
     "type": "new",
-    "behavior": "default implementation of `lore new`",
-    "loreVersion": "~0.5.0"
+    "behavior": "default implementation of `lore new`"
+  },
+  "peerDependencies": {
+    "lore": "*"
   }
 }

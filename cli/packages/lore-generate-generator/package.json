@@ -13,8 +13,7 @@
     "lore"
   ],
   "dependencies": {
-    "bluebird": "3.1.1",
-    "lore": "*"
+    "bluebird": "3.1.1"
   },
   "devDependencies": {
     "chai": "3.5.0",
