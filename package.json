@@ -1,6 +1,6 @@
 {
   "name": "lore",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "author": "Storcery",
   "description": "Convention driven framework for React + Redux applications",
   "license": "MIT",
@@ -18,7 +18,8 @@
     "opinionated"
   ],
   "files": [
-    "packages/lore-core/lib"
+    "packages",
+    "cli"
   ],
   "scripts": {
     "clean": "monorepo -d packages cli/packages -r lib coverage .tmp -p",
