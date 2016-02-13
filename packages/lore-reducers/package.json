@@ -11,7 +11,7 @@
     "src"
   ],
   "scripts": {
-    "build": "babel src --out-dir lib",
+    "build": "babel src --presets es2015 --out-dir lib",
     "prepublish": "npm run build",
     "test": "mocha --compilers js:babel-core/register --recursive",
     "debug": "mocha debug --compilers js:babel-core/register --recursive"
