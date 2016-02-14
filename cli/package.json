@@ -23,7 +23,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "monorepo": "0.1.6"
+    "monorepo": "0.1.7"
   },
   "repository": {
     "type": "git",

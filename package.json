@@ -1,6 +1,6 @@
 {
   "name": "lore",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "author": "Storcery",
   "description": "Convention driven framework for React + Redux applications",
   "license": "MIT",
@@ -41,7 +41,7 @@
   "homepage": "https://github.com/storcery/lore#readme",
   "dependencies": {},
   "devDependencies": {
-    "monorepo": "0.1.6"
+    "monorepo": "0.1.7"
   },
   "peerDependencies": {
     "history": "^1.17.0",
