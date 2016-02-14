@@ -39,6 +39,7 @@ module.exports = {
     './config/reducerBlueprints.js': { copy: 'config/reducerBlueprints.js'},
     './config/reducers.js': { copy: 'config/reducers.js'},
     './config/redux.js': { copy: 'config/redux.js'},
+    './config/router.js': { copy: 'config/router.js'},
     './routes.js': { copy: 'routes.js'},
 
     './config/env/development.js': { copy: 'config/env/development.js'},

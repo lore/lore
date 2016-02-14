@@ -17,6 +17,6 @@ module.exports = {
     './src/index.js': { template: 'src/index.js'},
     './src/after.js': { copy: 'src/after.js'},
 
-    './templates': { folder: {}},
+    './templates': { folder: {}}
 	}
 };
