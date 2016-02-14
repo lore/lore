@@ -1,7 +1,6 @@
 var path = require('path');
 var _ = require('lodash');
 
-var packageJSON = require('../templates/package.json.js');
 var lorerc = require('../templates/lorerc');
 
 module.exports = {
@@ -40,7 +39,7 @@ module.exports = {
     './config/reducerBlueprints.js': { copy: 'config/reducerBlueprints.js'},
     './config/reducers.js': { copy: 'config/reducers.js'},
     './config/redux.js': { copy: 'config/redux.js'},
-    './config/router.js': { copy: 'config/router.js'},
+    './routes.js': { copy: 'routes.js'},
 
     './config/env/development.js': { copy: 'config/env/development.js'},
     './config/env/production.js': { copy: 'config/env/production.js'},
@@ -59,13 +58,12 @@ module.exports = {
     './webpack/env/development.js': { copy: 'webpack/env/development.js'},
     './webpack/env/production.js': { copy: 'webpack/env/production.js'},
 
-    './.babelrc': { copy: '.babelrc' },
     './.editorconfig': { copy: 'editorconfig.template' },
 		'./.gitignore': { copy: 'gitignore' },
     './.lorerc': { jsonfile: lorerc },
     './index.html': { copy: 'index.html' },
     './index.js': { copy: 'index.js' },
-    './package.json': { jsonfile: packageJSON },
+    './package.json': { template: 'package.json' },
     './README.md': { template: './README.md' },
     './server.js': { copy: 'server.js' },
     './webpack.config.js': { copy: 'webpack.config.js' }

@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, IndexRoute, Redirect } from 'react-router';
 import createHashHistory from 'history/lib/createHashHistory'
 
-var Master = require('../src/components/Master');
-var Home = require('../src/components/Home');
+var Master = require('src/components/Master');
+var Home = require('src/components/Home');
 
 module.exports = {
 

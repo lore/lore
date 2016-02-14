@@ -1,13 +1,18 @@
 {
-  "name": "todomvc",
+  "name": "scope.appName",
   "private": true,
   "version": "0.0.0",
   "description": "a Lore application",
+  "main": "server.js",
+  "author": "",
+  "license": "",
   "keywords": [],
+  "scripts": {
+    "test": "NODE_ENV=test mocha --recursive"
+  },
   "dependencies": {
     "lore": "0.6.3",
     "classnames": "2.1.3",
-    "faux-server": "0.2.2",
     "history": "1.17.0",
     "invariant": "2.1.0",
     "jquery": "2.1.4",
@@ -16,13 +21,11 @@
     "react": "0.14.3",
     "react-dom": "0.14.2",
     "react-redux": "4.0.0",
-    "react-router": "1.0.0",
+    "react-router": "1.0.3",
     "react-tap-event-plugin": "0.2.1",
     "redux": "3.0.1",
     "redux-thunk": "1.0.0",
-    "require-dir": "0.3.0",
-    "todomvc-app-css": "2.0.0",
-    "todomvc-common": "1.0.1"
+    "require-dir": "0.3.0"
   },
   "devDependencies": {
     "babel-cli": "6.4.5",
@@ -30,15 +33,8 @@
     "babel-loader": "6.2.2",
     "babel-preset-es2015": "6.5.0",
     "babel-preset-react": "6.5.0",
-    "bootstrap": "3.3.5",
     "css-loader": "0.21.0",
     "file-loader": "0.8.4",
-    "gulp": "3.9.0",
-    "gulp-clean": "0.3.1",
-    "gulp-rename": "1.2.2",
-    "gulp-sequence": "0.4.1",
-    "gulp-surge": "0.1.0",
-    "gulp-util": "3.0.6",
     "json-loader": "0.5.4",
     "less": "2.5.1",
     "less-loader": "2.2.0",
@@ -47,14 +43,8 @@
     "react-hot-loader": "1.2.8",
     "redux-devtools": "2.1.5",
     "style-loader": "0.13.0",
-    "surge": "0.17.3",
     "webpack": "1.10.5",
     "webpack-dev-server": "1.10.1"
-  },
-  "scripts": {
-    "test": "NODE_ENV=test mocha --recursive"
-  },
-  "main": "server.js",
-  "author": "Storcery",
-  "license": ""
+  }
 }
+

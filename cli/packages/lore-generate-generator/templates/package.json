@@ -1,0 +1,26 @@
+{
+    "name": "scope.generatorName || ''",
+    "version": "0.1.0",
+    "private": true,
+    "author": "scope.author || ''",
+    "license": "MIT'",
+    "description": "scope.generatorDescription || ''",
+    "keywords": ["lore"],
+    "dependencies": {
+      "bluebird": "getDependencyVersion(lorePkg, 'bluebird', '^3.1.1')",
+      "lodash": "getDependencyVersion(lorePkg, 'lodash', '>=3.9.x')",
+      "lore-generate": "getDependencyVersion(lorePkg, 'lore-generate')"
+    },
+    "devDependencies": {
+      "mocha": "getDependencyVersion(lorePkg, 'mocha', '^2.3.4')"
+    },
+    "scripts": {
+      "test": "'NODE_ENV=test mocha --recursive'"
+    },
+    "main": "src/index.js",
+    "loreGenerator": {
+      "type": "generatorName",
+      "behavior": "default implementation of `lore + generatorName + `",
+      "loreVersion": "*"
+    }
+}

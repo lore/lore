@@ -10,7 +10,7 @@ module.exports = {
 	targets: {
     './LICENSE': { template: './LICENSE' },
     './README.md': { template: './README.md' },
-    './package.json': { jsonfile: require('../templates/package.json.js') },
+    './package.json': { template: './package.json' },
 
     './src': { folder: {}},
     './src/before.js': { copy: 'src/before.js'},
