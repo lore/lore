@@ -3,7 +3,7 @@
   "private": true,
   "author": "Storcery",
   "license": "MIT",
-  "version": "0.2.1",
+  "version": "0.0.0",
   "description": "The lore-cli core.",
   "main": "./lib/index.js",
   "bin": {

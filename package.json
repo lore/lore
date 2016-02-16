@@ -1,35 +1,23 @@
 {
-  "name": "lore",
-  "version": "0.6.6",
+  "name": "lore-monorepo",
+  "private": true,
+  "version": "0.0.0",
   "author": "Storcery",
-  "description": "Convention driven framework for React + Redux applications",
+  "description": "This is the monorepo for Lore (A Convention driven framework for React + Redux applications)",
   "license": "MIT",
-  "main": "packages/lore-core/lib/index.js",
-  "keywords": [
-    "react",
-    "redux",
-    "framework",
-    "flux",
-    "storcery",
-    "lore",
-    "client-side",
-    "browser",
-    "convention over configuration",
-    "opinionated"
-  ],
-  "files": [
-    "packages",
-    "cli"
-  ],
+  "main": "",
+  "keywords": [],
+  "files": [],
   "scripts": {
-    "clean": "monorepo -d packages cli/packages -r lib coverage .tmp -p",
-    "build": "monorepo -d packages cli/packages -i",
+    "clean": "monorepo --baseDirectories . --removeDirectories node_modules lib coverage .tmp --command clean",
+    "build": "monorepo --baseDirectories . --install",
+    "build:production": "monorepo --baseDirectories . --install --production",
+    "postinstall": "npm run build:production",
     "lint": "echo 'tbd: implement me.'",
     "check": "npm run lint && npm run test",
     "prepublish": "npm run clean && npm run build && npm run check",
-    "test": "monorepo -d packages cli/packages -t",
-    "debug": "monorepo -d packages cli/packages -c debug",
-    "install": "npm run build"
+    "test": "monorepo --baseDirectories . --test",
+    "debug": "monorepo --baseDirectories . --command debug"
   },
   "repository": {
     "type": "git",
@@ -39,15 +27,10 @@
     "url": "https://github.com/storcery/lore/issues"
   },
   "homepage": "https://github.com/storcery/lore#readme",
-  "dependencies": {},
-  "devDependencies": {
-    "monorepo": "0.1.7"
+  "dependencies": {
+    "monorepo": "0.1.8"
   },
+  "devDependencies": {},
   "peerDependencies": {
-    "history": "^1.17.0",
-    "react": "~0.14.3",
-    "react-dom": "~0.14.2",
-    "react-router": "^1.0.3",
-    "redux": "^3.0.1"
   }
 }
