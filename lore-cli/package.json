@@ -1,6 +1,6 @@
 {
   "name": "lore-cli",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "Storcery",
   "description": "Command Line Interface for Lore (A convention driven framework for React + Redux applications)",
   "license": "MIT",
