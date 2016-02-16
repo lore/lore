@@ -18,8 +18,7 @@
     "opinionated"
   ],
   "files": [
-    "packages",
-    "cli"
+    "packages"
   ],
   "scripts": {
     "clean": "monorepo --baseDirectories packages --removeDirectories node_modules lib coverage .tmp",
