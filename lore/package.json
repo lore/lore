@@ -30,7 +30,7 @@
     "prepublish": "npm run clean && npm run build && npm run check",
     "test": "monorepo --baseDirectories packages --test",
     "debug": "monorepo --baseDirectories packages --command debug",
-    "postinstall": "npm run build:production"
+    "install": "npm run build:production"
   },
   "repository": {
     "type": "git",
