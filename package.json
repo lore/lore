@@ -22,14 +22,13 @@
     "cli"
   ],
   "scripts": {
-    "clean": "monorepo -d packages cli/packages -r lib coverage .tmp -p",
+    "clean": "monorepo -d packages cli/packages -r node_modules lib coverage .tmp -p",
     "build": "monorepo -d packages cli/packages -i",
     "lint": "echo 'tbd: implement me.'",
     "check": "npm run lint && npm run test",
-    "prepublish": "npm run clean && npm run build && npm run check",
     "test": "monorepo -d packages cli/packages -t",
     "debug": "monorepo -d packages cli/packages -c debug",
-    "install": "npm run build"
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
