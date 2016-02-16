@@ -1,6 +1,6 @@
 {
   "name": "lore-cli",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "author": "Storcery",
   "description": "Command Line Interface for Lore (A convention driven framework for React + Redux applications)",
   "license": "MIT",
@@ -10,10 +10,7 @@
   },
   "files": [
     "packages/lore-cli-core/bin",
-    "packages/lore-cli-core",
-    "packages/lore-generate-generator",
-    "packages/lore-generate",
-    "packages/lore-generate-new"
+    "packages"
   ],
   "scripts": {
     "clean": "monorepo --baseDirectories packages --removeDirectories node_modules lib coverage .tmp",
