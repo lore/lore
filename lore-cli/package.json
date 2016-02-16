@@ -22,10 +22,10 @@
     "debug": "monorepo --baseDirectories packages --command debug",
     "postinstall": "npm run build:production"
   },
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "monorepo": "0.1.8"
   },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/storcery/lore.git"

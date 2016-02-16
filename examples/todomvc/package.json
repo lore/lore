@@ -1,11 +1,15 @@
 {
-  "name": "todomvc",
+
+  "name": "LoreTodoMVCexample",
+  "main": "server.js",
+  "author": "Storcery",
+  "license": "MIT",
   "private": true,
   "version": "0.0.0",
-  "description": "a Lore application",
+  "description": "An example Lore application.",
   "keywords": [],
   "dependencies": {
-    "lore": "file:../..",
+    "lore": "file:../../lore",
     "classnames": "2.1.3",
     "faux-server": "0.2.2",
     "history": "1.17.0",
@@ -53,8 +57,5 @@
   },
   "scripts": {
     "test": "NODE_ENV=test mocha --recursive"
-  },
-  "main": "server.js",
-  "author": "Storcery",
-  "license": ""
+  }
 }
