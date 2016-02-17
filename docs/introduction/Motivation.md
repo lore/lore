@@ -1,20 +1,18 @@
 # Motivation
 
-In many ways, it's a great time to be a JavaScript developer.  New tooling is being built that simplifies front-end
-development (React, Redux). Universal apps/frameworks are coming out that merge client and server code together to
-create a single experience that helps address concerns like first page load response time, code duplication, and the
-congnative overhead of developing in multiple languages with different ecosystems. Build tools are becoming simpler
-and more powerful (Webpack).  Projects are being more considerate of different environments, and breaking apart their 
-libraries to be more generic and widely applicable (decoupling engines from framework like redux-react and react-dom to
-supprt usage in native mobile apps). And native support for JavaScript in mobile apps is emerging!  All very cool stuff.
- 
-The problem with all of the awesomeness, and all of the consideration and architectural purity, is that you're left to
-develop your own opinions.  So you take all of these amazing libraries, and then decide which ones you want, and then
-you have to learn how to combine then together, and then, eventually, after a lot of learning and copy/pasting from
-various examples, you eventually get something working, and then you have to decide out where to deploy it (Surge, 
-GitHub Pages, setup a server on Heroku?), set of SSL or not, if you're deploying to gh-pages how to do you configure
-gulp/grunt to build a subtree and publish to your repo...it all gets really exhausting.  Just to build and deploy a
-simple app.
+In many ways, it's a great time to be a JavaScript developer.
+New tooling is being built that simplifies front-end development ([React](https://github.com/facebook/react), [Redux](https://github.com/reactjs/redux)).
+The JavaScript standard has evolved [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) and thanks to tools like [Babel](https://github.com/babel/babel) we don't have to wait years for browsers to catch up before we can start using the new language features.
+Universal apps/frameworks are coming out that allow us to use the same libraries for both client-side and the server-side development, together helping to create a single experience that helps address concerns like first page load response time, code duplication, and the congnative overhead of developing in multiple languages with different ecosystems.
+Build tools are becoming simpler and more powerful ([Webpack](https://github.com/webpack/webpack)).
+Projects are being more considerate of different environments, and breaking apart their libraries to be more generic and widely applicable (decoupling engines from framework like [redux-react](https://github.com/reactjs/react-redux) and [react-dom](https://github.com/facebook/react) to supprt usage in native mobile apps).
+And native support for JavaScript in mobile apps is emerging ([React-Native](https://github.com/facebook/react-native))!
+All very cool stuff.
+
+The problem with all of the awesomeness, and all of the consideration and architectural purity, is that you're left to develop your own opinions.
+So you take all of these amazing libraries, and then decide which ones you want, and then you have to learn how to combine then together, and then, eventually, after a lot of learning and copy/pasting from various examples, you eventually get something working.
+But thats not all, then you have to decide out where to deploy it ([Surge](https://surge.sh/), [GitHub Pages](https://pages.github.com/), setup a server on [Heroku](https://www.heroku.com/)?), set of SSL or not, if you're deploying to gh-pages how to do you configure gulp/grunt to build a subtree and publish to your repo.
+It's all really exhausting... just to build and deploy a simple app.
 
 ```
 My favorite React/Redux/Flux problem is the one where the browser enters an infinite loop and crashes.

@@ -33,10 +33,6 @@ cd lore/examples/dialogs-querying
 npm install
 npm start
 
-cd sails-api-server
-npm install
-npm start
-
 open http://localhost:3000/
 ```
 

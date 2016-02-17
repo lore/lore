@@ -1,10 +1,10 @@
 {
-  "name": "scope.appName",
+  "name": "<%= appName %>",
   "private": true,
   "version": "0.0.0",
-  "description": "a Lore application",
+  "description": "A Lore application",
   "main": "server.js",
-  "author": "",
+  "author": "<%= author %>",
   "license": "",
   "keywords": [],
   "scripts": {

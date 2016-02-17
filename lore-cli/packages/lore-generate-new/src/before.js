@@ -8,8 +8,6 @@ module.exports = function(scope) {
   return Promise.resolve().then(function() {
     var appName = scope.args[0];
     var author = process.env.USER || 'anonymous node/lore user';
-    var year = (new Date()).getFullYear();
-    var username = scope.author;
 
     if (!appName) {
       throw new Error('Missing project name.');
@@ -17,10 +15,7 @@ module.exports = function(scope) {
 
     _.defaults(scope, {
       author: author,
-      year: year,
       appName: appName,
-      github: { username: username },
-      website: util.format('http://github.com/%s', username)
     });
 
     // Make changes to the rootPath where the lore project will be created
