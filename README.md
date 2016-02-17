@@ -2,29 +2,16 @@
 
 [![Build Status][circle-image]][circle-url]
 
-```
-*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*
-*                                                            _.-"\        *
-*  ▄█        ▄██████▄     ▄████████    ▄████████         _.-"     \       *
-*  ███       ███    ███   ███    ███   ███    ███     ,-"          \      *
-*  ███       ███    ███   ███    ███   ███    █▀     ( \            \     *
-*  ███       ███    ███  ▄███▄▄▄▄██▀  ▄███▄▄▄         \ \            \    *
-*  ███       ███    ███ ▀▀███▀▀▀▀▀   ▀▀███▀▀▀          \ \            \   *
-*  ███       ███    ███ ▀███████████   ███    █▄        \ \         _.-;  *
-*  ███▌    ▄ ███    ███   ███    ███   ███    ███        \ \    _.-"   :  *
-*  █████▄▄██  ▀██████▀    ███    ███   ██████████         \ \,-"    _.-"  *
-*  ▀                      ███    ███                       \(   _.-"      *
-*                                                           `--"          *
-*                   ~ BUILD APPS WORTHY OF LEGEND ~                       *
-*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*
-```
+![lore](https://cloud.githubusercontent.com/assets/5898306/13093056/654b5c76-d4c0-11e5-8968-643aae655030.png)
 
-Convention driven framework for React + Redux applications. Build apps worthy of legend.
+
+Convention driven framework for React + Redux applications.
 
 >"We called it `lore` because `opinions!` was already taken."
 
 > The Creators
 
+TODO:
 Finish the README!  Talk about how to install, link to docs, thanks people! (React, Redux, React-Router, Sails).
 
 Need to mention the project adhers to semantic versioning...link to examples...
@@ -32,27 +19,8 @@ Need to mention the project adhers to semantic versioning...link to examples...
 Can we add a gist? If one exists, it's probably just pointing out the boilerplate we've consumed in conventions, or
 possibly a very condensed version of the motivation/opinions driving this framework.
 
-## Installation
-**With [node](http://nodejs.org) installed:**
-```sh
-# Get the latest stable release of the lore-cli
-$ npm install lore-cli -g
-```
+Maybe just point straight to the docs?
 
-## Your first lore Project
-**Create a new app:**
-```sh
-# Create a new lore app
-$ lore new [path-to-your-project-name]
-```
-This will create a new lore app at the path you specified, with the same name.
-
-**Run app:**
-```sh
-# cd into [path-to-your-project-name]
-# Run your lore app
-$ npm start
-```
 ## Support
 [Official Documentation](../master/docs)
 
