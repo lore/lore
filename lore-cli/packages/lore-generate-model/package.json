@@ -1,10 +1,10 @@
 {
-    "name": "<%= generatorName %>",
+    "name": "lore-generate-model",
     "version": "0.1.0",
     "private": true,
     "author": "scope.author || ''",
     "license": "MIT'",
-    "description": "<%= generatorDescription %>",
+    "description": "Generates a Lore model.",
     "keywords": ["lore", "generator"],
     "dependencies": {
       "bluebird": "3.1.1",
@@ -18,8 +18,8 @@
     },
     "main": "src/index.js",
     "loreGenerator": {
-      "type": "<%= generatorName %>",
-      "behavior": "default implementation of `lore <%= generatorName %>`",
+      "type": "lore-generate-model",
+      "behavior": "default implementation of `lore lore-generate-model`",
       "loreVersion": "*"
     }
 }
