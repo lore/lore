@@ -8,9 +8,9 @@ module.exports = function(scope) {
     _.defaults(scope, { });
 
     scope.rootPath = path.resolve(process.cwd());
-    scope.modelName = scope.args[0];
+    scope.reducerName = scope.args[0];
 
-    if(scope.modelName === void 0) {
+    if(scope.reducerName === void 0) {
       throw new Error('Missing model name.');
     }
 

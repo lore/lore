@@ -13,7 +13,7 @@
     "bin"
   ],
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha"
+    "test": "NODE_ENV=test mocha --recursive"
   },
   "repository": {
     "type": "git",

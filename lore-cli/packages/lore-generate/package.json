@@ -16,7 +16,7 @@
     "mocha": "2.4.5"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "NODE_ENV=test mocha --recursive"
   },
   "repository": {
     "type": "git",

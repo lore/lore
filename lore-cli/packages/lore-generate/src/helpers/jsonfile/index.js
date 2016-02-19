@@ -13,12 +13,10 @@ module.exports = function(options, handlers) {
 
     var rootPath = path.resolve( process.cwd() , options.rootPath );
 
-    return fs.existsAsync(rootPath).then(function(exists) {
-      if (exists) {
-        throw new Error('Something else already exists at ::' + rootPath);
-      }
-
+    return fs.existsAsync(rootPath).then(function() {
       return fs.outputJSONAsync(rootPath, options.data);
+    }).catch(function() {
+      throw new Error('Something else already exists at ::' + rootPath);
     });
 	});
 };

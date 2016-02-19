@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
+var argv = process.argv;
+
 var _ = require('lodash');
 var package = require('../package.json');
 var program = require('commander');
+var nodepath = require('path');
+var loregen = require('../../lore-generate');
 
 console.log('                                 _       ___   ____     ___    ');
 console.log('                                | |     /   \\ |    \\   /  _] ');
@@ -17,10 +21,31 @@ console.log('                               -------------------------------');
 console.log('\n');
 
 var called = false;
-function call(func) {
+function call(generator) {
   return function() {
     called = true;
-    func(arguments);
+
+    // commander lowercases arguments, for some reason.  this reverts that.
+    for(i = 0; i < arguments.length; i++) { arguments[i] = argv[i + 3]; }
+
+    (function (/* arguments */) {
+      var cliArguments = Array.prototype.slice.call(arguments[0]);
+      cliArguments.pop();
+      var args = cliArguments;
+
+      return loregen({
+        generator: generator,
+        rootPath: process.cwd(),
+        modules: {},
+        loreRoot: nodepath.resolve(__dirname, '..'),
+        args: cliArguments
+      }).then(function() {
+        console.log('Generator finished successfully.')
+      }).catch(function(e) {
+        console.log('Generator failed with errors:')
+        console.log(e)
+      });
+    })(arguments);
   }
 }
 
@@ -38,17 +63,35 @@ program
   .description('version of the CLI')
   .action(call(function() { program.emit('version') }));
 
-// $ lore new [app_name]
 program.command('new <app_name>')
   .usage('<app_name>')
   .description('generate a new Lore project.')
-  .action(call(require('./lore-new')));
+  .action(call(require('../../lore-generate-new')));
 
-// $ lore generate-generator [generator_name]
 program.command('generate-generator <generator_name> [generator_description]')
   .usage('<generator_name> [generator_description]')
   .description('generate a new Lore generator.')
-  .action(call(require('./lore-generate-generator')));
+  .action(call(require('../../lore-generate-generator')));
+
+program.command('generate-model <model_name>')
+  .usage('<model_name>')
+  .description('generate a new Lore model.')
+  .action(call(require('../../lore-generate-model')));
+
+program.command('generate-collection <collection_name>')
+  .usage('<collection_name>')
+  .description('generate a new Lore collection.')
+  .action(call(require('../../lore-generate-collection')));
+
+program.command('generate-component <component_name>')
+  .usage('<component_name>')
+  .description('generate a new Lore component.')
+  .action(call(require('../../lore-generate-component')));
+
+program.command('generate-reducer <reducer_name>')
+  .usage('<reducer_name>')
+  .description('generate a new Lore reducer.')
+  .action(call(require('../../lore-generate-reducer')));
 
 // $ lore
 program.parse(process.argv);

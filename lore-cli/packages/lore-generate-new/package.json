@@ -7,7 +7,7 @@
   "description": "Generate a new Lore app.",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "NODE_ENV=test mocha --recursive"
   },
   "keywords": [
     "lore"

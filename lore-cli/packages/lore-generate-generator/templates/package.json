@@ -2,7 +2,7 @@
     "name": "<%= generatorName %>",
     "version": "0.1.0",
     "private": true,
-    "author": "scope.author || ''",
+    "author": "<%= author %>",
     "license": "MIT'",
     "description": "<%= generatorDescription %>",
     "keywords": ["lore", "generator"],
@@ -11,10 +11,11 @@
       "lodash": "3.10.1"
     },
     "devDependencies": {
+      "chai": "3.4.1",
       "mocha": "2.3.4"
     },
     "scripts": {
-      "test": "'NODE_ENV=test mocha --recursive'"
+      "test": "NODE_ENV=test mocha --recursive"
     },
     "main": "src/index.js",
     "loreGenerator": {
