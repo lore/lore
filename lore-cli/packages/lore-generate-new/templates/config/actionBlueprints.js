@@ -1,5 +1,7 @@
 /**
  * Configuration file for action blueprints
+ *
+ * This file is where you define overrides for the default action blueprints.
  */
 
 module.exports = {

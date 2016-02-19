@@ -1,5 +1,7 @@
 /**
  * Configuration file for reducer blueprints
+ *
+ * This file is where you define overrides for the default reducer blueprints.
  */
 
 module.exports = {

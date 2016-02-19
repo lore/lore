@@ -1,5 +1,7 @@
 /**
  * Configuration file for collections
+ *
+ * This file is where you define overrides for the default collection behaviors.
  */
 
 module.exports = {

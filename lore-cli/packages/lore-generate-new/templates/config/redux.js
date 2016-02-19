@@ -1,5 +1,9 @@
 /**
  * Configuration file for Redux
+ *
+ * This file is where you define overrides for the default redux behavior. Currently it only supports the ability to
+ * swap out the middleware that Lore uses by default, but we may provide a simply true/false toggle in the future for
+ * enabling the redux dev-tools if it makes sense.
  */
 
 // const { applyMiddleware } = require('redux');
