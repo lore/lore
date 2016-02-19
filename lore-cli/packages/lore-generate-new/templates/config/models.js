@@ -1,5 +1,7 @@
 /**
  * Configuration file for models-collections
+ *
+ * This file is where you define overrides for the default model behaviors.
  */
 
 module.exports = {

@@ -1,3 +1,7 @@
+/**
+ * This component is a placeholder for you to start building your app from.
+ **/
+
 var React = require('react');
 
 module.exports = React.createClass({

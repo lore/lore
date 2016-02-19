@@ -1,3 +1,12 @@
+##
+# This file specifies which project files should be kept out of version
+# control if you are using git. It includes things like code coverage reports,
+# npm installation error files, your config/local.js file, IDE specific files
+# and more.
+#
+# Feel free to add and remove things from this file as you see fit.
+##
+
 node_modules
 bower_components
 config/local.js

@@ -1,5 +1,7 @@
 /**
  * Configuration file for dialogs
+ *
+ * This file is where you define overrides for the default dialog behavior.
  */
 
 module.exports = {
