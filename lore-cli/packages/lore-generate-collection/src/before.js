@@ -8,10 +8,10 @@ module.exports = function(scope) {
     _.defaults(scope, { });
 
     scope.rootPath = path.resolve(process.cwd());
-    scope.modelName = scope.args[0];
+    scope.collectionName = scope.args[0];
 
-    if(scope.modelName === void 0) {
-      throw new Error('Missing model name.');
+    if(scope.collectionName === void 0) {
+      throw new Error('Missing collection name.');
     }
 
     if(fs.existsSync(scope.rootPath)) {

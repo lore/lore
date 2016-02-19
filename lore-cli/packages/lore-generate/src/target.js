@@ -12,9 +12,10 @@ var helpers = {
 };
 
 module.exports = function(options) {
-  var target = options.target;
   var scope = options.scope;
+  var target = options.target;
   var parentGenerator = options.parent;
+  var log = options.log;
 
   return Promise.each(Object.keys(target), function(targetName) {
     scope.templatesDirectory = parentGenerator.templatesDirectory;
@@ -35,7 +36,11 @@ module.exports = function(options) {
 
       scope = _.merge(scope, _.isObject(subTarget) ? subTarget : {});
 
-      return helper(scope);
+      return helper(scope).then(function() {
+        console.log("|-> Generated file: " + scope.keyPath);
+      });
     }
+  }).catch(function(err) {
+    console.error(err);
   });
 }

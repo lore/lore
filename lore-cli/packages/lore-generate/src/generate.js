@@ -15,8 +15,9 @@ module.exports = generate = function(Generator, scope) {
 
     console.log('Generating \'' + Generator.name + '\' at ' + scope.rootPath + '...');
 
-    Promise.map(Object.keys(Generator.targets), function(keyPath) {
-      var target = Generator.targets[keyPath];
+    var targets = Generator.targets(scope);
+    Promise.map(Object.keys(targets), function(keyPath) {
+      var target = targets[keyPath];
       var err;
 
       if (!target) throw new Error('Generator error: Invalid target: {"' + keyPath + '": ' + util.inspect(target) + '}');
@@ -30,7 +31,8 @@ module.exports = generate = function(Generator, scope) {
         target: target,
         parent: Generator,
         scope: targetScope,
-        recursiveGenerate: generate
+        recursiveGenerate: generate,
+        log: true
       });
 
     }).then(function() {

@@ -9,10 +9,10 @@ Reducers and Actions and ActionTypes by default (provided you haven't turned off
 **Reducers:**
 todo.all, todo.by, todo.byCid
 
-**Actions:** 
+**Actions:**
 todo.fetchAll, todo.fetch, todo.create, todo.update, todo.destroy
 
-**ActionTypes:** 
+**ActionTypes:**
 FETCH_TODOS, FETCH_TODO, CREATE_TODO, UPDATE_TODO, DESTROY_TODO
 
 
@@ -20,14 +20,10 @@ FETCH_TODOS, FETCH_TODO, CREATE_TODO, UPDATE_TODO, DESTROY_TODO
 
 ```js
 module.exports = {
-
   properties: {
-
     // parse: function(attributes) {
     //   return attributes;
     // }
-
   }
-
 };
 ```

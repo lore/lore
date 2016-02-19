@@ -12,16 +12,14 @@ module.exports = function (options) {
 
     var rootPath = path.resolve(process.cwd() , options.rootPath);
 
-    return fs.existsAsync(rootPath).then(function(exists) {
-      if (exists) {
-        throw new Error('Something else already exists at ::'+rootPath);
-      }
-
+    return fs.existsAsync(rootPath).then(function() {
       return Promise.resolve().then(function() {
         if (exists) {
           return fs.removeAsync(rootPath);
         }
       }).then(fs.mkdirsAsync(rootPath));
+    }).catch(function() {
+      throw new Error('Something else already exists at ::'+rootPath);
     });
   });
 };

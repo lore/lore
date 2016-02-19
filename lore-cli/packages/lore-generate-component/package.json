@@ -1,21 +1,21 @@
 {
-  "name": "lore-generate-model",
+  "name": "lore-generate-component",
   "version": "0.1.0",
   "private": true,
-  "author": "scope.author || ''",
+  "author": "Storcery",
   "license": "MIT'",
-  "description": "Generates a Lore model.",
+  "description": "<!-- generator description goes here -->",
   "keywords": [
     "lore",
     "generator"
   ],
   "dependencies": {
     "bluebird": "3.1.1",
-    "camel-case": "1.2.2",
-    "lodash": "3.10.1"
+    "lodash": "3.10.1",
+    "pascal-case": "1.1.2"
   },
   "devDependencies": {
-    "chai": "3.5.0",
+    "chai": "3.4.1",
     "mocha": "2.3.4"
   },
   "scripts": {
@@ -23,8 +23,8 @@
   },
   "main": "src/index.js",
   "loreGenerator": {
-    "type": "lore-generate-model",
-    "behavior": "default implementation of `lore lore-generate-model`",
+    "type": "lore-generate-component",
+    "behavior": "default implementation of `lore lore-generate-component`",
     "loreVersion": "*"
   }
 }
