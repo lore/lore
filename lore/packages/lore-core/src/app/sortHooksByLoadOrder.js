@@ -22,7 +22,7 @@ function getDependencyGraph(hooks) {
   return dependencyGraph;
 }
 
-module.exports = function sortBooksByLoadOrder(hooks, log) {
+module.exports = function sortHooksByLoadOrder(hooks, log) {
   var dependencyGraph = getDependencyGraph(hooks);
   log.debug('hook dependency graph: ', dependencyGraph);
 

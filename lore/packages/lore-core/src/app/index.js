@@ -5,7 +5,8 @@ var getLogger = require('./getLogger');
 var mount = require('./mount');
 var getEnvironment = require('./getEnvironment');
 var getHooks = require('./getHooks');
-var sortBooksByLoadOrder = require('./sortBooksByLoadOrder');
+var getInitializers = require('./getInitializers');
+var sortHooksByLoadOrder = require('./sortHooksByLoadOrder');
 var getConfig = require('./getConfig');
 
 /**
@@ -59,9 +60,17 @@ _.extend(Lore.prototype, {
     // user config for the project (loaded and compiled inside this function)
     this.config = getConfig(configOverride, this.hooks);
 
+    // Get initializers and run them
+    this.initializers = getInitializers();
+    if (this.initializers.length > 0) {
+      this.initializers.forEach(function(initializer) {
+        initializer();
+      });
+    }
+
     // Now that we have the final, we can load the hooks, as their behavior is
     // dependant on the final configuration for the application
-    sortBooksByLoadOrder(this.hooks, this.log).forEach(function(hook) {
+    sortHooksByLoadOrder(this.hooks, this.log).forEach(function(hook) {
       this.log.silly('Loading hook: ' + hook.id);
       hook.load(this);
       this.log.verbose(hook.id, 'hook loaded successfully.');

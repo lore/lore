@@ -9,7 +9,8 @@ var loaders = {
   //coreHooks: require('../../src/loaders/coreHooks'),
   models: require('../../src/loaders/models'),
   reducers: require('../../src/loaders/reducers'),
-  userHooks: require('../../src/loaders/userHooks')
+  userHooks: require('../../src/loaders/userHooks'),
+  initializers: require('../../src/loaders/initializers')
 };
 
 function LoaderHelper() {
