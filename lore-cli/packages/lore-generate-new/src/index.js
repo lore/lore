@@ -82,7 +82,10 @@ module.exports = {
 
       './config/env/development.js': { copy: 'config/env/development.js'},
       './config/env/production.js': { copy: 'config/env/production.js'},
-      './config/env/README.md': { copy: 'config/env/README.md'}
+      './config/env/README.md': { copy: 'config/env/README.md'},
+
+      './initializers': { folder: {}},
+      './initializers/REAMD.md': { copy: 'initalizers/README.md'}
 
     };
   }
