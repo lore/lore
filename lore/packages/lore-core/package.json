@@ -11,10 +11,11 @@
     "src"
   ],
   "scripts": {
-    "build": "babel src --presets es2015 --out-dir lib",
+    "build": "../../node_modules/.bin/babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "debug": "mocha debug test/bootstrap.js test/unit test/integration --recursive",
     "prepublish": "npm run build",
-    "test": "mocha --compilers js:babel-core/register test/bootstrap.js test/unit test/integration --recursive",
-    "debug": "mocha debug test/bootstrap.js test/unit test/integration --recursive"
+    "test": "mocha --compilers js:babel-core/register test/bootstrap.js test/unit test/integration --recursive"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/storcery/lore#readme",
   "dependencies": {
+    "invariant": "2.2.0",
     "lodash": "3.10.1",
     "merge-defaults": "0.2.1",
     "pluralize": "1.2.1",
@@ -34,11 +36,6 @@
     "webpack-requiredir": "0.1.1"
   },
   "devDependencies": {
-    "babel-cli": "6.4.5",
-    "babel-core": "6.2.1",
-    "babel-loader": "6.2.2",
-    "babel-preset-es2015": "6.5.0",
-    "babel-preset-react": "6.5.0",
     "chai": "3.4.1",
     "history": "^1.17.0",
     "mocha": "2.3.4",
@@ -49,14 +46,7 @@
     "react-router": "^1.0.3",
     "redux": "^3.0.1",
     "redux-thunk": "1.0.3",
-    "rimraf": "2.5.1",
+    "rimraf": "2.5.2",
     "sinon": "1.17.2"
-  },
-  "peerDependencies": {
-    "history": "^1.17.0",
-    "react": "~0.14.3",
-    "react-dom": "~0.14.2",
-    "react-router": "^1.0.3",
-    "redux": "^3.0.1"
   }
 }
