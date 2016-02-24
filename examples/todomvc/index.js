@@ -6,7 +6,7 @@ window.lore = Lore;
 
 // Note: Intercepts all requests and replaces them with requests against the client store.
 // Remove this to use a real server.
-var fauxServer = require('faux-server')();
+var fauxServer = require('faux-server')();  // example TODO: move to initializers/fauxserver.js
 
 // Summon the app!
 Lore.summon();
