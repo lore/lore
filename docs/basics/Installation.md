@@ -14,5 +14,5 @@ Run lore to see a list of options:
 $ lore
 ```
 
-Ok we're all ready to go.  Lets create a project: [Creating A Project](/docs/basics/creatingAProject.md)
+Ok we're all ready to go.  Lets create a project: [Creating A Project](/docs/basics/CreatingAProject.md)
 

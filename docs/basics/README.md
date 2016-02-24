@@ -1,13 +1,12 @@
 # Basics
 
-The basic usage of Lore. Should cover the default magic provided by the conventions, and explanations of any common
-overrides.
+TODO: add highlevel basic summary summary here
 
-Things that need to be added here:
-
-1. Creating a new project
-2. Adding a model
-3. Connecting components to the data store
-4. Calling actions
-5. Launching dialogs
-6. Over-riding parse methods to accommodate server formatting
+ [Installation](/docs/basics/Installation.md)
+ [Creating A Project](/docs/basics/CreatingAProject.md)
+ [Creating Models](/docs/basics/CreatingComponents.md)
+ [Creating Collections](/docs/basics/CreatingCollections.md)
+ [Creating Reducers](/docs/basics/CreatingReducers.md)
+ [Adding A Faux Server](/docs/basics/AddingFauxServer.md)
+ [Creating Components](/docs/basics/CreatingComponents.md)
+ [Next Steps](/docs/basics/NextSteps.md)
