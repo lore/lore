@@ -24,7 +24,7 @@ At this point webpack should have done its thing and should give you some output
 
 **View app:**
 
-Go to ```localhost:3000``` in your browser and verify that your app is running.
+Go to ``` localhost:3000 ``` in your browser and verify that your app is running.
 
-Now lets add some data to our project: [Creating Models](/docs/basics/creatingModels.md)
+Now lets add a some data to our project: [Creating Models](/docs/basics/CreatingModels.md)
 
