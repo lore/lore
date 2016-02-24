@@ -21,15 +21,13 @@
     "packages"
   ],
   "scripts": {
-    "clean": "monorepo --baseDirectories packages --removeDirectories node_modules lib coverage .tmp",
-    "build": "monorepo --baseDirectories packages --install",
-    "build:production": "monorepo --baseDirectories packages --install --production",
-    "lint": "echo 'tbd: implement me.'",
+    "build": "make build",
     "check": "npm run lint && npm run test",
+    "clean": "make clean",
+    "lint": "echo 'tbd: implement me.'",
+    "postinstall": "make install",
     "prepublish": "npm run clean && npm run build && npm run check",
-    "test": "monorepo --baseDirectories packages --test",
-    "debug": "monorepo --baseDirectories packages --command debug",
-    "install": "npm run build:production"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -39,10 +37,11 @@
     "url": "https://github.com/storcery/lore/issues"
   },
   "homepage": "https://github.com/storcery/lore#readme",
-  "dependencies": {
-    "monorepo": "0.1.8"
-  },
   "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-core": "6.2.1",
+    "babel-preset-es2015": "6.5.0",
+    "babel-preset-react": "6.5.0",
     "json-loader": "0.5.4"
   },
   "peerDependencies": {
