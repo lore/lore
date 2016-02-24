@@ -93,6 +93,10 @@ program.command('generate-reducer <reducer_name>')
   .description('generate a new Lore reducer.')
   .action(call(require('../../lore-generate-reducer')));
 
+program.command('generate-fauxserver')
+  .description('add a faux server to the Lore project.')
+  .action(call(require('../../lore-generate-fauxserver')));
+
 // $ lore
 program.parse(process.argv);
 if(!called) {
