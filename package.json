@@ -9,12 +9,23 @@
   "keywords": [],
   "files": [],
   "scripts": {
-    "build": "make build",
+    "build:lore": "cd lore && npm run build",
+    "build": "npm run build:lore",
     "check": "npm run lint && npm run test",
-    "clean": "make clean",
+    "clean:lore": "cd lore && npm run clean",
+    "clean": "npm run clean:lore",
+    "clean:node:local": "rm -rf node_modules",
+    "clean:node:lore": "cd lore && npm run clean:node",
+    "clean:node:lore-cli": "cd lore-cli && npm run clean:node",
+    "clean:node": "npm run clean:node:local && npm run clean:node:lore && npm run clean:node:lore-cli",
+    "clean:all": "npm run clean && npm run clean:node",
+    "install:lore": "cd lore && npm install",
+    "install:lore-cli": "cd lore-cli && npm install",
     "lint": "echo 'tbd: implement me.'",
-    "postinstall": "make install",
-    "test": "make test"
+    "postinstall": "npm run install:lore && npm run install:lore-cli",
+    "test:lore": "cd lore && npm test",
+    "test:lore-cli": "cd lore-cli && npm test",
+    "test": "npm run test:lore && npm run test:lore-cli"
   },
   "repository": {
     "type": "git",
