@@ -14,7 +14,6 @@
   ],
   "scripts": {
     "check": "npm run lint && npm run test",
-
     "clean:node:local": "rm -rf node_modules",
     "clean:node:lore-cli-core": "rm -rf packages/lore-cli-core/node_modules",
     "clean:node:lore-generate": "rm -rf packages/lore-generate/node_modules",
@@ -28,7 +27,6 @@
     "clean:node:group2": "npm run clean:node:lore-generate-component && npm run clean:node:lore-generate-generator && npm run clean:node:lore-generate-model",
     "clean:node:group3": "npm run clean:node:lore-generate-new && npm run clean:node:lore-generate-reducer",
     "clean:node": "npm run clean:node:local && npm run clean:node:group1 && npm run clean:node:group2 && npm run clean:node:group3",
-
     "install:lore-cli-core": "cd packages/lore-cli-core && npm install",
     "install:lore-generate": "cd packages/lore-generate && npm install",
     "install:lore-generate-collection": "cd packages/lore-generate-collection && npm install",
@@ -40,13 +38,9 @@
     "install:group1": "npm run install:lore-cli-core && npm run install:lore-generate && npm run install:lore-generate-collection",
     "install:group2": "npm run install:lore-generate-component && npm run install:lore-generate-generator && npm run install:lore-generate-model",
     "install:group3": "npm run install:lore-generate-new && npm run install:lore-generate-reducer",
-
     "lint": "echo 'tbd: implement me.'",
-
     "postinstall": "npm run install:group1 && npm run install:group2 && npm run install:group3",
-
     "prepublish": "npm run check",
-
     "test:lore-cli-core": "cd packages/lore-cli-core && npm test",
     "test:lore-generate": "cd packages/lore-generate && npm test",
     "test:lore-generate-collection": "cd packages/lore-generate-collection && npm test",
