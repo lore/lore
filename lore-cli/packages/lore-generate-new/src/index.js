@@ -18,6 +18,7 @@ module.exports = {
       './index.html': { copy: 'index.html' },
       './index.js': { copy: 'index.js' },
       './.lorerc': { jsonfile: lorerc },
+      './gulpfile.js': { copy: 'gulpfile.js' },
       './package.json': { template: 'package.json' },
       './README.md': { template: './README.md' },
       './routes.js': { copy: 'routes.js'},
@@ -84,8 +85,13 @@ module.exports = {
       './config/env/production.js': { copy: 'config/env/production.js'},
       './config/env/README.md': { copy: 'config/env/README.md'},
 
+      './gulp': { folder: {}},
+      './gulp/tasks': { folder: {}},
+      './gulp/tasks/default.js': { copy: 'gulp/tasks/default.js'},
+      './gulp/tasks/README.md': { copy: 'gulp/tasks/README.md'},
+
       './initializers': { folder: {}},
-      './initializers/REAMD.md': { copy: 'initalizers/README.md'}
+      './initializers/REAMDE.md': { copy: 'initializers/README.md'}
 
     };
   }
