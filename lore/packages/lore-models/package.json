@@ -24,7 +24,7 @@
     "build": "../../node_modules/.bin/babel src --out-dir lib",
     "clean": "rimraf lib",
     "debug": "mocha debug --compilers js:babel-core/register --recursive",
-    "prepublish": "npm run build",
+    "x-prepublish": "npm run build",
     "test": "mocha --compilers js:babel-core/register --recursive"
   },
   "repository": {
