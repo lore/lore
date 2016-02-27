@@ -8,18 +8,6 @@ var program = require('commander');
 var nodepath = require('path');
 var loregen = require('../../lore-generate');
 
-console.log('                                 _       ___   ____     ___    ');
-console.log('                                | |     /   \\ |    \\   /  _] ');
-console.log('                                | |    |     ||  D  ) /  [_    ');
-console.log('                                | |    |  O  ||    / |    _]   ');
-console.log('                                | |___ |     ||    \\ |   [_   ');
-console.log('                                |     ||     ||  .  \\|     |  ');
-console.log('                                |_____| \\___/ |__|\\_||_____| ');
-console.log('                                                               ');
-console.log('                               ~ BUILD APPS WORTHY OF LEGEND ~ ');
-console.log('                               -------------------------------');
-console.log('\n');
-
 var called = false;
 function call(generator) {
   return function() {
@@ -40,10 +28,10 @@ function call(generator) {
         loreRoot: nodepath.resolve(__dirname, '..'),
         args: cliArguments
       }).then(function() {
-        console.log('Generator finished successfully.')
+        console.log('Generator finished successfully.');
       }).catch(function(e) {
-        console.log('Generator failed with errors:')
-        console.log(e)
+        console.log('Generator failed with errors:');
+        console.log(e);
       });
     })(arguments);
   }
@@ -93,9 +81,13 @@ program.command('generate-reducer <reducer_name>')
   .description('generate a new Lore reducer.')
   .action(call(require('../../lore-generate-reducer')));
 
-program.command('generate-fauxserver')
-  .description('add a faux server to the Lore project.')
-  .action(call(require('../../lore-generate-fauxserver')));
+program.command('generate-surge')
+  .description('generate a gulp file for publishing your project to surge.sh')
+  .action(call(require('../../lore-generate-surge')));
+
+//program.command('generate-fauxserver')
+//  .description('add a faux server to the Lore project.')
+//  .action(call(require('../../lore-generate-fauxserver')));
 
 // $ lore
 program.parse(process.argv);
