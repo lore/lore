@@ -22,32 +22,22 @@ module.exports = function(settings) {
     resolve: {
       extensions: ['', '.js', '.jsx'],
       alias: {
-        'react/lib': APP_ROOT + '/node_modules/react/lib',
-        'react/addons': APP_ROOT + '/node_modules/react/addons',
-        'react': APP_ROOT + '/node_modules/react',
-        'globals': APP_ROOT + '/config/globals.js'
+        'react': APP_ROOT + '/node_modules/react'
       }
     },
     module: {
-
-      loaders: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          loader: "babel-loader",
-          include: APP_ROOT,
-          query: {
-            presets: ['react', 'es2015']
-          }
-        },
-        {
-          test: /\.(js|jsx)$/,
-          loaders: ['react-hot', 'babel-loader'],
-          include: /node_modules\/material-ui\/src/,
-        }, {
+      loaders: [{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        include: APP_ROOT,
+        query: {
+          presets: ['react', 'es2015']
+        }
+      }, {
         test: /\.js$/,
         loaders: ['babel-loader'],
-        include: path.join(APP_ROOT, '..', '..', 'src'),
+        include: path.join(APP_ROOT, '..', '..', 'src')
       }, {
         test: /\.css/,
         loader: 'style-loader!css-loader'
@@ -60,8 +50,7 @@ module.exports = function(settings) {
       }, {
         test: /\.json/,
         loader: 'json-loader'
-      }
-      ]
+      }]
     }
   }
 };
