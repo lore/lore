@@ -1,31 +1,9 @@
 {
   "name": "lore-monorepo",
   "private": true,
-  "version": "0.0.0",
-  "description": "This is the monorepo for Lore",
   "license": "MIT",
-  "scripts": {
-    "lerna:bootstrap": "lerna bootstrap",
-    "lerna:updated": "lerna updated",
-    "lerna:publish": "lerna publish",
-
-    "check": "npm run lint && npm run test",
-    "clean:lore": "cd lore && npm run clean",
-    "clean": "npm run clean:lore",
-
-    "clean:node:root": "rm -rf node_modules",
-    "clean:node:packages": "rm -rf packages/**/node_modules",
-    "clean:node": "npm run clean:node:packages && npm run clean:node:root",
-
-    "clean:all": "npm run clean && npm run clean:node",
-
-    "lint": "echo 'tbd: implement me.'",
-    "x-postinstall": "npm run install:lore && npm run install:lore-cli",
-
-    "test:lore": "cd lore && npm test",
-    "test:lore-cli": "cd lore-cli && npm test",
-    "test": "npm run test:lore && npm run test:lore-cli"
-  },
+  "description": "This is the monorepo for Lore",
+  "homepage": "https://github.com/lore/lore#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lore/lore.git"
@@ -33,7 +11,40 @@
   "bugs": {
     "url": "https://github.com/lore/lore/issues"
   },
-  "homepage": "https://github.com/lore/lore#readme",
+  "scripts": {
+    "lerna:bootstrap": "lerna bootstrap",
+    "lerna:updated": "lerna updated",
+    "lerna:publish": "lerna publish",
+    "check": "npm run lint && npm run test",
+    "clean:lore": "cd packages/lore && npm run clean",
+    "clean:lore-actions": "cd packages/lore-actions && npm run clean",
+    "clean:lore-models": "cd packages/lore-models && npm run clean",
+    "clean:lore-reducers": "cd packages/lore-reducers && npm run clean",
+    "clean": "npm run clean:lore && npm run clean:lore-actions && npm run clean:lore-models && npm run clean:lore-reducers",
+    "clean:node:packages": "rm -rf packages/**/node_modules",
+    "clean:node": "npm run clean:node:packages && rm -rf node_modules",
+    "clean:all": "npm run clean && npm run clean:node",
+    "lint": "echo 'tbd: implement me.'",
+    "postinstall": "npm run lerna:bootstrap",
+    "test:lore": "cd packages/lore && npm test",
+    "test:lore-actions": "cd packages/lore-actions && npm test",
+    "test:lore-models": "cd packages/lore-models && npm test",
+    "test:lore-reducers": "cd packages/lore-reducers && npm test",
+    "test:lore-cli": "cd packages/lore-cli && npm test",
+    "test:lore-generate": "cd packages/lore-generate && npm test",
+    "test:lore-generate-collection": "cd packages/lore-generate-collection && npm test",
+    "test:lore-generate-component": "cd packages/lore-generate-component && npm test",
+    "test:lore-generate-generator": "cd packages/lore-generate-generator && npm test",
+    "test:lore-generate-model": "cd packages/lore-generate-model && npm test",
+    "test:lore-generate-new": "cd packages/lore-generate-new && npm test",
+    "test:lore-generate-reducer": "cd packages/lore-generate-reducer && npm test",
+    "test:lore-generate-surge": "cd packages/lore-generate-surge && npm test",
+    "test:group1": "npm run test:lore && npm run test:lore-actions && npm run test:lore-models && npm run test:lore-reducers",
+    "test:group2": "npm run test:lore-cli && npm run test:lore-generate && npm run test:lore-generate-collection",
+    "test:group3": "npm run test:lore-generate-component && npm run test:lore-generate-generator && npm run test:lore-generate-model",
+    "test:group4": "npm run test:lore-generate-new && npm run test:lore-generate-reducer && npm run test:lore-generate-surge",
+    "test": "npm run test:group1 && npm run test:group2 && npm run test:group3 && npm run test:group4"
+  },
   "dependencies": {},
   "devDependencies": {
     "babel-cli": "6.5.1",
