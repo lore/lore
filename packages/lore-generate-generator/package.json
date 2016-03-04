@@ -1,0 +1,22 @@
+{
+  "name": "lore-generate-generator",
+  "version": "0.6.12",
+  "license": "MIT",
+  "main": "src/index.js",
+  "description": "Generates a new Lore generator",
+  "keywords": [
+    "lore",
+    "generator"
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "bluebird": "3.1.1",
+    "lodash": "4.3.0"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "2.4.5"
+  }
+}

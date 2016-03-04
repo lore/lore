@@ -7,12 +7,12 @@
 
 Convention driven framework for React + Redux applications.
 
->"We called it `lore` because `opinions!` was already taken."
+>"We called it `lore` because `opinions` was already taken."
 
 > The Creators
 
 TODO:
-Finish the README!  Talk about how to install, link to docs, thanks people! (React, Redux, React-Router, Sails).
+Finish the README!  Talk about how to install, link to docs, thanks people! (React, Redux, React-Router, Sails, Storcery).
 
 Need to mention the project adhers to semantic versioning...link to examples...
 

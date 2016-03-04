@@ -1,0 +1,48 @@
+{
+  "name": "lore-models",
+  "version": "0.6.12",
+  "license": "MIT",
+  "description": "Convention over configuration for CRUD actions against models and collections",
+  "homepage": "http://github.com/lore/lore",
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=0.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lore/lore.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lore/lore/issues"
+  },
+  "keywords": [
+    "lore",
+    "models",
+    "collections",
+    "ajax",
+    "api",
+    "CRUD"
+  ],
+  "scripts": {
+    "build": "../../node_modules/.bin/babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "debug": "mocha debug --compilers js:babel-core/register --recursive",
+    "prepublish": "npm run build",
+    "test": "mocha --compilers js:babel-core/register --recursive"
+  },
+  "dependencies": {
+    "axios": "^0.8.1",
+    "lodash.assign": "^3.2.0",
+    "lodash.clone": "^4.0.2",
+    "lodash.result": "^3.1.2",
+    "lodash.uniqueid": "^3.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.2.0",
+    "chai-spies": "^0.7.1",
+    "mocha": "^2.3.4",
+    "nock": "^3.3.2",
+    "rimraf": "2.5.2"
+  }
+}

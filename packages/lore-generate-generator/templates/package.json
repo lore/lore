@@ -1,0 +1,22 @@
+{
+  "name": "<%= generatorName %>",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "src/index.js",
+  "description": "<%= generatorDescription %>",
+  "keywords": [
+    "lore",
+    "generator"
+  ],
+  "scripts": {
+    "test": "NODE_ENV=test mocha --recursive"
+  },
+  "dependencies": {
+    "bluebird": "3.1.1",
+    "lodash": "3.10.1"
+  },
+  "devDependencies": {
+    "chai": "3.4.1",
+    "mocha": "2.3.4"
+  }
+}
