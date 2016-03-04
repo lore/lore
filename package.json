@@ -5,8 +5,9 @@
   "description": "This is the monorepo for Lore",
   "license": "MIT",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "updated": "lerna updated",
+    "lerna:bootstrap": "lerna bootstrap",
+    "lerna:updated": "lerna updated",
+    "lerna:publish": "lerna publish",
 
     "check": "npm run lint && npm run test",
     "clean:lore": "cd lore && npm run clean",
@@ -27,12 +28,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/storcery/lore.git"
+    "url": "git+https://github.com/lore/lore.git"
   },
   "bugs": {
-    "url": "https://github.com/storcery/lore/issues"
+    "url": "https://github.com/lore/lore/issues"
   },
-  "homepage": "https://github.com/storcery/lore#readme",
+  "homepage": "https://github.com/lore/lore#readme",
   "dependencies": {},
   "devDependencies": {
     "babel-cli": "6.5.1",
