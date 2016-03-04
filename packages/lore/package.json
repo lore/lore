@@ -32,6 +32,9 @@
   "dependencies": {
     "invariant": "2.2.0",
     "lodash": "3.10.1",
+    "lore-actions": "^0.1.0",
+    "lore-models": "^0.1.0",
+    "lore-reducers": "^0.1.0",
     "merge-defaults": "0.2.1",
     "pluralize": "1.2.1",
     "react-redux": "4.0.0",
