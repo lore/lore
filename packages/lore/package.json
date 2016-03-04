@@ -3,7 +3,7 @@
   "version": "0.6.11",
   "description": "Convention-driven framework for building React-Redux applications",
   "license": "MIT",
-  "main": "./lib/index.js",
+  "main": "lib/index.js",
   "homepage": "https://github.com/lore/lore#readme",
   "keywords": [
     "react",
