@@ -2,13 +2,18 @@
   "name": "lore-generate-component",
   "version": "0.1.0",
   "private": true,
-  "author": "Storcery",
-  "license": "MIT'",
-  "description": "<!-- generator description goes here -->",
+  "license": "MIT",
+  "main": "src/index.js",
+  "description": "Generates a React component for a Lore project",
   "keywords": [
     "lore",
-    "generator"
+    "generator",
+    "component",
+    "react"
   ],
+  "scripts": {
+    "test": "NODE_ENV=test mocha --recursive"
+  },
   "dependencies": {
     "bluebird": "3.1.1",
     "lodash": "3.10.1",
@@ -17,14 +22,5 @@
   "devDependencies": {
     "chai": "3.4.1",
     "mocha": "2.3.4"
-  },
-  "scripts": {
-    "test": "NODE_ENV=test mocha --recursive"
-  },
-  "main": "src/index.js",
-  "loreGenerator": {
-    "type": "lore-generate-component",
-    "behavior": "default implementation of `lore lore-generate-component`",
-    "loreVersion": "*"
   }
 }

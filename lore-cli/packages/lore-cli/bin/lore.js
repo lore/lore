@@ -6,7 +6,7 @@ var _ = require('lodash');
 var package = require('../package.json');
 var program = require('commander');
 var nodepath = require('path');
-var loregen = require('../../lore-generate');
+var loregen = require('lore-generate');
 
 var called = false;
 function call(generator) {
@@ -54,36 +54,36 @@ program
 program.command('new <app_name>')
   .usage('<app_name>')
   .description('generate a new Lore project.')
-  .action(call(require('../../lore-generate-new')));
+  .action(call(require('lore-generate-new')));
 
 program.command('generate-generator <generator_name> [generator_description]')
   .usage('<generator_name> [generator_description]')
   .description('generate a new Lore generator.')
-  .action(call(require('../../lore-generate-generator')));
+  .action(call(require('lore-generate-generator')));
 
 program.command('generate-model <model_name>')
   .usage('<model_name>')
   .description('generate a new Lore model.')
-  .action(call(require('../../lore-generate-model')));
+  .action(call(require('lore-generate-model')));
 
 program.command('generate-collection <collection_name>')
   .usage('<collection_name>')
   .description('generate a new Lore collection.')
-  .action(call(require('../../lore-generate-collection')));
+  .action(call(require('lore-generate-collection')));
 
 program.command('generate-component <component_name>')
   .usage('<component_name>')
   .description('generate a new Lore component.')
-  .action(call(require('../../lore-generate-component')));
+  .action(call(require('lore-generate-component')));
 
 program.command('generate-reducer <reducer_name>')
   .usage('<reducer_name>')
   .description('generate a new Lore reducer.')
-  .action(call(require('../../lore-generate-reducer')));
+  .action(call(require('lore-generate-reducer')));
 
 program.command('generate-surge')
   .description('generate a gulp file for publishing your project to surge.sh')
-  .action(call(require('../../lore-generate-surge')));
+  .action(call(require('lore-generate-surge')));
 
 //program.command('generate-fauxserver')
 //  .description('add a faux server to the Lore project.')

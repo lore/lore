@@ -1,17 +1,16 @@
 {
   "name": "lore-generate-generator",
-  "private": true,
-  "version": "0.0.0",
-  "author": "Storcery",
+  "version": "0.1.0",
   "license": "MIT",
-  "description": "Generate a new Lore generator.",
   "main": "src/index.js",
+  "description": "Generates a new Lore generator",
+  "keywords": [
+    "lore",
+    "generator"
+  ],
   "scripts": {
     "test": "mocha"
   },
-  "keywords": [
-    "lore"
-  ],
   "dependencies": {
     "bluebird": "3.1.1",
     "lodash": "4.3.0"
@@ -19,10 +18,5 @@
   "devDependencies": {
     "chai": "3.5.0",
     "mocha": "2.4.5"
-  },
-  "loreGenerator": {
-    "type": "generate-generator",
-    "behavior": "default implementation of `lore generate-generator`",
-    "loreVersion": "*"
   }
 }

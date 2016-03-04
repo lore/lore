@@ -8,11 +8,8 @@
   "bin": {
     "lore": "packages/lore-cli-core/bin/lore.js"
   },
-  "files": [
-    "packages/lore-cli-core/bin",
-    "packages"
-  ],
   "scripts": {
+    "lerna": "lerna",
     "check": "npm run lint && npm run test",
     "clean:node:local": "rm -rf node_modules",
     "clean:node:lore-cli-core": "rm -rf packages/lore-cli-core/node_modules",
@@ -41,8 +38,8 @@
     "install:group2": "npm run install:lore-generate-component && npm run install:lore-generate-generator && npm run install:lore-generate-model",
     "install:group3": "npm run install:lore-generate-new && npm run install:lore-generate-reducer && npm run install:lore-generate-surge",
     "lint": "echo 'tbd: implement me.'",
-    "postinstall": "npm run install:group1 && npm run install:group2 && npm run install:group3",
-    "prepublish": "npm run check",
+    "x-postinstall": "npm run install:group1 && npm run install:group2 && npm run install:group3",
+    "x-prepublish": "npm run check",
     "test:lore-cli-core": "cd packages/lore-cli-core && npm test",
     "test:lore-generate": "cd packages/lore-generate && npm test",
     "test:lore-generate-collection": "cd packages/lore-generate-collection && npm test",
@@ -64,5 +61,8 @@
   "bugs": {
     "url": "https://github.com/storcery/lore/issues"
   },
-  "homepage": "https://github.com/storcery/lore#readme"
+  "homepage": "https://github.com/storcery/lore#readme",
+  "devDependencies": {
+    "lerna": "^1.1.1"
+  }
 }

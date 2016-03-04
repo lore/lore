@@ -1,17 +1,20 @@
 {
   "name": "lore-generate-new",
-  "version": "0.0.0",
-  "author": "Storcery",
-  "private": true,
+  "version": "0.1.0",
   "license": "MIT",
-  "description": "Generate a new Lore app.",
   "main": "src/index.js",
+  "description": "Generates a new Lore app",
+  "keywords": [
+    "lore",
+    "generator"
+  ],
+  "loreGenerator": {
+    "type": "new",
+    "behavior": "default implementation of `lore new`"
+  },
   "scripts": {
     "test": "NODE_ENV=test mocha --recursive"
   },
-  "keywords": [
-    "lore"
-  ],
   "dependencies": {
     "bluebird": "3.1.1",
     "lodash": "3.10.1"
@@ -19,9 +22,5 @@
   "devDependencies": {
     "chai": "3.5.0",
     "mocha": "2.4.5"
-  },
-  "loreGenerator": {
-    "type": "new",
-    "behavior": "default implementation of `lore new`"
   }
 }

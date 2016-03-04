@@ -3,9 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "description": "A Lore application",
-  "main": "server.js",
   "author": "<%= author %>",
-  "license": "",
+  "main": "server.js",
   "keywords": [],
   "scripts": {
     "test": "NODE_ENV=test mocha --recursive"

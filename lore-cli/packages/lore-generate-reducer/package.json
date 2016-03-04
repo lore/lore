@@ -1,14 +1,17 @@
 {
   "name": "lore-generate-model",
   "version": "0.1.0",
-  "private": true,
-  "author": "scope.author || ''",
-  "license": "MIT'",
-  "description": "Generates a Lore model.",
+  "license": "MIT",
+  "main": "src/index.js",
+  "description": "Generates a Redux reducer for a Lore project",
   "keywords": [
     "lore",
-    "generator"
+    "generator",
+    "reducer"
   ],
+  "scripts": {
+    "test": "NODE_ENV=test mocha --recursive"
+  },
   "dependencies": {
     "bluebird": "3.1.1",
     "camel-case": "1.2.2",
@@ -17,14 +20,5 @@
   "devDependencies": {
     "chai": "3.5.0",
     "mocha": "2.3.4"
-  },
-  "scripts": {
-    "test": "NODE_ENV=test mocha --recursive"
-  },
-  "main": "src/index.js",
-  "loreGenerator": {
-    "type": "lore-generate-model",
-    "behavior": "default implementation of `lore lore-generate-model`",
-    "loreVersion": "*"
   }
 }
