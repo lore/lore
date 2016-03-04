@@ -22,6 +22,7 @@
     "commander": "2.9.0",
     "lodash": "3.10.1",
     "lore": "0.6.1",
+    "lore-generate": "^0.6.12",
     "lore-generate-new": "^0.6.12",
     "lore-generate-generator": "^0.6.12",
     "lore-generate-model": "^0.6.12",
