@@ -1,35 +1,27 @@
 {
   "name": "lore-models",
-  "author": "Storcery",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
   "description": "Convention over configuration for CRUD actions against models and collections.",
   "keywords": [
     "lore",
     "models",
     "collections",
-    "fetch",
+    "ajax",
     "api",
-    "react",
-    "redux",
     "CRUD"
   ],
-  "homepage": "http://github.com/storcery/lore",
+  "homepage": "http://github.com/lore/lore",
   "main": "lib/index.js",
-  "files": [
-    "lib",
-    "src"
-  ],
   "scripts": {
-    "build": "../../node_modules/.bin/babel src --out-dir lib",
+    "build": "../node_modules/.bin/babel src --out-dir lib",
     "clean": "rimraf lib",
     "debug": "mocha debug --compilers js:babel-core/register --recursive",
-    "x-prepublish": "npm run build",
+    "prepublish": "npm run build",
     "test": "mocha --compilers js:babel-core/register --recursive"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/storcery/lore.git"
+    "url": "git://github.com/lore/lore.git"
   },
   "engines": {
     "node": ">=0.9.0"
@@ -50,7 +42,7 @@
     "rimraf": "2.5.2"
   },
   "bugs": {
-    "url": "https://github.com/storcery/lore/issues"
+    "url": "https://github.com/lore/lore/issues"
   },
   "license": "MIT"
 }

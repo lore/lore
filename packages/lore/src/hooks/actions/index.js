@@ -1,8 +1,8 @@
 var redux = require('redux');
 var _ = require('lodash');
 var bindActionCreators = redux.bindActionCreators;
-var actionBlueprints = require('../../../../lore-actions').blueprints;
-var utils = require('../../../../lore-actions').utils;
+var actionBlueprints = require('lore-actions').blueprints;
+var utils = require('lore-actions').utils;
 
 function bindAction(action, store) {
   // if the module isn't a function, then it's an object describing the action

@@ -1,30 +1,24 @@
 {
   "name": "lore-actions",
-  "private": true,
-  "version": "0.0.0",
-  "author": "Storcery",
+  "version": "0.1.0",
   "license": "MIT",
   "description": "Blueprints to reduce boilerplate for Redux actions",
+  "homepage": "https://github.com/lore/lore#readme",
   "main": "lib/index.js",
-  "files": [
-    "lib",
-    "src"
-  ],
-  "scripts": {
-    "build": "../../node_modules/.bin/babel src --out-dir lib",
-    "clean": "rimraf lib",
-    "debug": "mocha debug --compilers js:babel-core/register --recursive",
-    "x-prepublish": "npm run build",
-    "test": "mocha --compilers js:babel-core/register --recursive"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/storcery/lore.git"
+    "url": "git+https://github.com/lore/lore.git"
   },
   "bugs": {
-    "url": "https://github.com/storcery/lore/issues"
+    "url": "https://github.com/lore/lore/issues"
   },
-  "homepage": "https://github.com/storcery/lore#readme",
+  "scripts": {
+    "build": "../node_modules/.bin/babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "debug": "mocha debug --compilers js:babel-core/register --recursive",
+    "prepublish": "npm run build",
+    "test": "mocha --compilers js:babel-core/register --recursive"
+  },
   "dependencies": {
     "lodash": "^3.10.1"
   },
