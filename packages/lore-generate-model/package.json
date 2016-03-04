@@ -1,0 +1,24 @@
+{
+  "name": "lore-generate-model",
+  "version": "0.6.12",
+  "license": "MIT",
+  "main": "src/index.js",
+  "description": "Generates a Lore model",
+  "keywords": [
+    "lore",
+    "generator",
+    "model"
+  ],
+  "scripts": {
+    "test": "NODE_ENV=test mocha --recursive"
+  },
+  "dependencies": {
+    "bluebird": "3.1.1",
+    "camel-case": "1.2.2",
+    "lodash": "3.10.1"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "2.3.4"
+  }
+}

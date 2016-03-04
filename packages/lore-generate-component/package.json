@@ -1,0 +1,25 @@
+{
+  "name": "lore-generate-component",
+  "version": "0.6.12",
+  "license": "MIT",
+  "main": "src/index.js",
+  "description": "Generates a React component for a Lore project",
+  "keywords": [
+    "lore",
+    "generator",
+    "component",
+    "react"
+  ],
+  "scripts": {
+    "test": "NODE_ENV=test mocha --recursive"
+  },
+  "dependencies": {
+    "bluebird": "3.1.1",
+    "lodash": "3.10.1",
+    "pascal-case": "1.1.2"
+  },
+  "devDependencies": {
+    "chai": "3.4.1",
+    "mocha": "2.3.4"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "name": "lore",
+  "version": "0.6.12",
+  "description": "Convention-driven framework for building React-Redux applications",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "homepage": "https://github.com/lore/lore#readme",
+  "keywords": [
+    "react",
+    "redux",
+    "framework",
+    "lore",
+    "client-side",
+    "browser",
+    "convention over configuration",
+    "opinionated"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lore/lore.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lore/lore/issues"
+  },
+  "scripts": {
+    "build": "../../node_modules/.bin/babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "debug": "mocha debug test/bootstrap.js test/unit test/integration --recursive",
+    "prepublish": "npm run build",
+    "test": "mocha --compilers js:babel-core/register test/bootstrap.js test/unit test/integration --recursive"
+  },
+  "dependencies": {
+    "invariant": "2.2.0",
+    "lodash": "3.10.1",
+    "lore-actions": "^0.6.12",
+    "lore-models": "^0.6.12",
+    "lore-reducers": "^0.6.12",
+    "merge-defaults": "0.2.1",
+    "pluralize": "1.2.1",
+    "react-redux": "4.0.0",
+    "react-tap-event-plugin": "0.2.1",
+    "topsort": "0.0.2",
+    "webpack-requiredir": "0.1.1"
+  },
+  "devDependencies": {
+    "chai": "3.4.1",
+    "history": "^1.17.0",
+    "mocha": "2.3.4",
+    "nock": "2.6.0",
+    "react": "~0.14.3",
+    "react-addons-test-utils": "0.14.7",
+    "react-dom": "~0.14.2",
+    "react-router": "^1.0.3",
+    "redux": "^3.0.1",
+    "redux-thunk": "1.0.3",
+    "rimraf": "2.5.2",
+    "sinon": "1.17.2"
+  },
+  "peerDependencies": {
+    "history": "^1.17.0",
+    "react": "~0.14.3",
+    "react-dom": "~0.14.2",
+    "react-router": "^1.0.3",
+    "redux": "^3.0.1"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "lore-generate",
+  "version": "0.6.12",
+  "license": "MIT",
+  "main": "src/index.js",
+  "description": "Runner script for lore generators",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lore/lore.git"
+  },
+  "bugs": {
+    "url": "http://github.com/lore/lore/issues"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test mocha --recursive"
+  },
+  "dependencies": {
+    "bluebird": "3.1.1",
+    "fs-extra": "0.8.1",
+    "lodash": "2.4.1"
+  },
+  "devDependencies": {
+    "chai": "3.4.1",
+    "mocha": "2.4.5"
+  }
+}
