@@ -5,7 +5,8 @@
   "description": "This is the monorepo for Lore",
   "license": "MIT",
   "scripts": {
-    "lerna": "lerna",
+    "bootstrap": "lerna bootstrap",
+    "updated": "lerna updated",
 
     "check": "npm run lint && npm run test",
     "clean:lore": "cd lore && npm run clean",

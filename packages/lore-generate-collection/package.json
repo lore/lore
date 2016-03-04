@@ -1,13 +1,13 @@
 {
-  "name": "lore-generate-model",
-  "version": "0.1.0",
+  "name": "lore-generate-collection",
+  "version": "0.1.1",
   "license": "MIT",
   "main": "src/index.js",
-  "description": "Generates a Lore model",
+  "description": "Generates a Lore collection",
   "keywords": [
     "lore",
     "generator",
-    "model"
+    "collection"
   ],
   "scripts": {
     "test": "NODE_ENV=test mocha --recursive"

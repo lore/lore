@@ -24,10 +24,10 @@
     "lore": "0.6.1",
     "lore-generate-new": "^0.1.0",
     "lore-generate-generator": "^0.1.0",
-    "lore-generate-model": "^0.1.0",
+    "lore-generate-model": "^0.2.0",
     "lore-generate-collection": "^0.1.0",
     "lore-generate-component": "^0.1.0",
-    "lore-generate-reducer": "^0.1.0",
+    "lore-generate-reducer": "^0.3.0",
     "lore-generate-surge": "^0.1.0"
   },
   "devDependencies": {
