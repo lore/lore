@@ -1,6 +1,6 @@
 {
   "name": "lore-actions",
-  "version": "0.1.0",
+  "version": "0.4.0",
   "license": "MIT",
   "description": "Blueprints to reduce boilerplate for Redux actions",
   "homepage": "https://github.com/lore/lore#readme",
@@ -13,7 +13,7 @@
     "url": "https://github.com/lore/lore/issues"
   },
   "scripts": {
-    "build": "../node_modules/.bin/babel src --out-dir lib",
+    "build": "../../node_modules/.bin/babel src --out-dir lib",
     "clean": "rimraf lib",
     "debug": "mocha debug --compilers js:babel-core/register --recursive",
     "prepublish": "npm run build",

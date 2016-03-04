@@ -1,7 +1,20 @@
 {
   "name": "lore-models",
-  "version": "0.1.0",
-  "description": "Convention over configuration for CRUD actions against models and collections.",
+  "version": "0.4.0",
+  "license": "MIT",
+  "description": "Convention over configuration for CRUD actions against models and collections",
+  "homepage": "http://github.com/lore/lore",
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=0.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lore/lore.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lore/lore/issues"
+  },
   "keywords": [
     "lore",
     "models",
@@ -10,21 +23,12 @@
     "api",
     "CRUD"
   ],
-  "homepage": "http://github.com/lore/lore",
-  "main": "lib/index.js",
   "scripts": {
-    "build": "../node_modules/.bin/babel src --out-dir lib",
+    "build": "../../node_modules/.bin/babel src --out-dir lib",
     "clean": "rimraf lib",
     "debug": "mocha debug --compilers js:babel-core/register --recursive",
     "prepublish": "npm run build",
     "test": "mocha --compilers js:babel-core/register --recursive"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/lore/lore.git"
-  },
-  "engines": {
-    "node": ">=0.9.0"
   },
   "dependencies": {
     "axios": "^0.8.1",
@@ -40,9 +44,5 @@
     "mocha": "^2.3.4",
     "nock": "^3.3.2",
     "rimraf": "2.5.2"
-  },
-  "bugs": {
-    "url": "https://github.com/lore/lore/issues"
-  },
-  "license": "MIT"
+  }
 }

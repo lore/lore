@@ -1,6 +1,6 @@
 {
   "name": "lore",
-  "version": "0.6.10",
+  "version": "0.6.11",
   "description": "Convention-driven framework for building React-Redux applications",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -23,7 +23,7 @@
     "url": "https://github.com/lore/lore/issues"
   },
   "scripts": {
-    "build": "../node_modules/.bin/babel src --out-dir lib",
+    "build": "../../node_modules/.bin/babel src --out-dir lib",
     "clean": "rimraf lib",
     "debug": "mocha debug test/bootstrap.js test/unit test/integration --recursive",
     "prepublish": "npm run build",
@@ -32,9 +32,9 @@
   "dependencies": {
     "invariant": "2.2.0",
     "lodash": "3.10.1",
-    "lore-actions": "^0.1.0",
-    "lore-models": "^0.1.0",
-    "lore-reducers": "^0.1.0",
+    "lore-actions": "^0.4.0",
+    "lore-models": "^0.4.0",
+    "lore-reducers": "^0.3.0",
     "merge-defaults": "0.2.1",
     "pluralize": "1.2.1",
     "react-redux": "4.0.0",

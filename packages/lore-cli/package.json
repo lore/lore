@@ -1,6 +1,6 @@
 {
   "name": "lore-cli",
-  "version": "0.1.0",
+  "version": "0.4.0",
   "license": "MIT",
   "description": "The Command Line Interface (CLI) for Lore",
   "homepage": "https://github.com/lore/lore#readme",
