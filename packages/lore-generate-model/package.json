@@ -1,6 +1,6 @@
 {
   "name": "lore-generate-model",
-  "version": "0.2.1",
+  "version": "0.6.12",
   "license": "MIT",
   "main": "src/index.js",
   "description": "Generates a Lore model",

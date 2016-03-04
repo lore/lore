@@ -1,6 +1,6 @@
 {
   "name": "lore-generate-reducer",
-  "version": "0.3.1",
+  "version": "0.6.12",
   "license": "MIT",
   "main": "src/index.js",
   "description": "Generates a Redux reducer for a Lore project",

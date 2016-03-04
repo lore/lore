@@ -1,6 +1,6 @@
 {
   "name": "lore-generate-fauxserver",
-  "version": "0.1.0",
+  "version": "0.6.12",
   "license": "MIT",
   "main": "src/index.js",
   "description": "Adds a faux-server initializer to a Lore app",
