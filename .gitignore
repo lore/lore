@@ -7,3 +7,4 @@ coverage
 .tmp
 lib
 npm-debug.log
+_book

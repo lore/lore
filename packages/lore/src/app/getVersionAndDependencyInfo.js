@@ -1,5 +1,11 @@
 var packageLoader = require('../loaders/package');
 
+/**
+ * Read the current version of Lore from the package.json file and create
+ * a simple object to access it from.
+ *
+ * @returns {Object} Information about the current version of Lore
+ */
 module.exports = function getVersionAndDependencyInfo() {
   var json = packageLoader.load();
 
