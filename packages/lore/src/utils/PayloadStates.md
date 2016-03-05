@@ -26,6 +26,7 @@ We should solve this by either:
 
 1. Aliasing `src/constants` in `webpack.config.js` as `constants`, so you can require PayloadStates as 
 `require('constants/PayloadStates')`
+
 2. Attaching PayloadStates to lore as lore.PayloadStates.XYZ.  The downside with that is auto-complete will break, as
 PayloadStates becomes a dynamic object, but I believe aliasing will also cause that issue.
 

@@ -38,6 +38,12 @@ var Lore = function() {
 
 _.extend(Lore.prototype, {
 
+  /**
+   * Builds the application, which involves setting the environment, composing the final
+   * configuration, loading the hooks, and executing any initializers.
+   *
+   * @param {Object} configOverride The configuration passed into lore.build(configOverride)
+   */
   build: function(configOverride) {
     configOverride = configOverride || {};
 
@@ -79,6 +85,11 @@ _.extend(Lore.prototype, {
     this.log.verbose('All hooks were loaded successfully.');
   },
 
+  /**
+   * Builds the application and mounts it to the DOM
+   *
+   * @param {Object} configOverride The configuration passed into lore.build(configOverride)
+   */
   summon: function(configOverride) {
     this.build(configOverride);
     this.log.verbose('Mounting app...');

@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var _ = require('lodash');
-var defaultHooks = require('../../../src/default-hooks');
+var defaultHooks = require('../../../src/defaultHooks');
 
 describe('default-hooks', function() {
 

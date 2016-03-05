@@ -1,5 +1,11 @@
 var _ = require('lodash');
 
+/**
+ * Build a logger that works in both the browser and in Node (to support testing)
+ * TODO: Replace this with a more capable logger that supports colors and logging levels
+ *
+ * @returns {Function} The logger to be used
+ */
 module.exports = function getLogger() {
   var logger = console.log.bind(console);
 

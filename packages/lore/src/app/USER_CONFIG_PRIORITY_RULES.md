@@ -1,20 +1,13 @@
-# hooks/userconfig
+# User Config Priority Rules
 
-### Purpose
+This final user configuration is built from a combination of `/config`, `/config/env` and `/config/local.js`.
 
-This hooks is responsible for building the config object (from the combination of `/config`, `/config/env` and 
-`/config/local.js`).  If you pass in a config object when calling `lore.summon()` it will also be included in the
-config chain and will take precedence over anything else.
+The final configuration is built using the following rules:
 
-### Dependant Hooks
-
-Should be run before any hook that requires access to the `lore.config` object as the config object isn't done being
-built until this hook runs.
-
-### Needed improvements
-
-1. Has references to `appPath` which should be removed as it isn't used anywhere.
-
+1. Build a config object from any files in `/config` *except* `/config/local.js` and anything in `/config/env`.
+2. Based on the environemtn (development, production, test, etc.) load the corresponding file in `/config/env` and 
+override any fields already specified.
+3. Load `/config/local.js` (if it exists) and override any fields that already exist.
 
 ### Example Usage
 

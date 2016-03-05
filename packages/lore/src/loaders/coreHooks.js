@@ -1,11 +1,12 @@
 var _ = require('lodash');
-var DEFAULT_HOOKS = require('../default-hooks');
+var DEFAULT_HOOKS = require('../defaultHooks');
 
 module.exports = {
 
   load: function() {
     // This line makes sure webpack loads all the core hooks so that
-    // the ones we need are available below when we ask for them
+    // the ones we need are available when we ask for them below
+    // TODO: do this in a way that doesn't cause webpack to display a warning
     if (require.context) {
       require.context('../hooks', true, /\.js$/);
     }
