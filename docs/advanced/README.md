@@ -7,8 +7,8 @@
 You have entered the advanced section of the docs.
 This section is intended for those who want to get the most out of Lore's capabilities.
 
-* [Extending Lore](/docs/advanced/Extending.md)
-* [Architecture](/docs/advanced/Architecture.md)
+* [Extending Lore](./Extending.md)
+* [Architecture](./Architecture.md)
 
 Things that need to be added here:
 
