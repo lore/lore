@@ -14,3 +14,7 @@ by navigating to `http://localhost:4000`.
 
 The `book.json` file at the root of the project declares which version of Gitbook to use as well as which plugins 
 should be installed and how they should be configured.
+
+When you first open `http://localhost:4000` in a browser the navigation will be *extremely slow*.  When you click on
+navigation links, the page will not update in a reasonable time (takes 5-10 seconds on my machine).  Not sure why, but
+if do nothing, and wait maybe 20 seconds, the navigation will start being more responsive.
