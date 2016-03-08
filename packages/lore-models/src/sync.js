@@ -38,7 +38,7 @@ export default function sync( method, model, options = {} ) {
   //add a payload for PUT and POST requests
   let payload;
   if ( params.type === type.POST || params.type === type.PUT ) {
-    payload = JSON.stringify(options.attrs || model.toJSON(options));
+    payload = options.attrs || model.toJSON(options);
   }
 
   //make the naive call
