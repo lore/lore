@@ -1,6 +1,6 @@
 {
   "name": "lore",
-  "version": "0.6.12",
+  "version": "0.6.15",
   "description": "Convention-driven framework for building React-Redux applications",
   "license": "MIT",
   "main": "lib/index.js",
@@ -33,7 +33,7 @@
     "invariant": "2.2.0",
     "lodash": "3.10.1",
     "lore-actions": "^0.6.12",
-    "lore-models": "^0.6.12",
+    "lore-models": "^0.6.15",
     "lore-reducers": "^0.6.12",
     "merge-defaults": "0.2.1",
     "pluralize": "1.2.1",
