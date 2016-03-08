@@ -20,7 +20,14 @@ function mergeDataAndIntersectWithDictionaryKeys(oldData, newData, dictionary) {
   var newIds = _.map(newData, 'id');
   var combinedIds = _.union(ids, newIds);
   var dictionaryKeys = _.keys(dictionary);
-  var idsInDictionary = _.intersection(combinedIds, dictionaryKeys);
+
+  // If any ids are Numbers, convert them to Strings so we can compare equality
+  // with the dictionary keys
+  var combinedIdsAsStrings = combinedIds.map(function(id) {
+    return id.toString();
+  });
+
+  var idsInDictionary = _.intersection(combinedIdsAsStrings, dictionaryKeys);
   return idsInDictionary.map(function(id) {
     return dictionary[id];
   });
