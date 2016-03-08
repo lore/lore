@@ -39,4 +39,4 @@ module.exports = generate = function(Generator, scope) {
       return Generator.after();
     });
   });
-}
+};
