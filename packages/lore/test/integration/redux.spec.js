@@ -296,7 +296,7 @@ describe('lore#redux', function() {
     });
   });
 
-  describe.only('action-reducer flow: actions.todo.fetchAll() [id as Number]', function() {
+  describe('action-reducer flow: actions.todo.fetchAll() [id as Number]', function() {
 
     beforeEach(function() {
       nock('https://api.example.com')
