@@ -13,27 +13,25 @@ function call(generator) {
   return function() {
     called = true;
 
-    // commander lowercases arguments, for some reason.  this reverts that.
-    for(i = 0; i < arguments.length; i++) { arguments[i] = argv[i + 3]; }
+    // Commander lowercases arguments, so we need to pull them
+    // from the command line directly
+    var command = argv[2];
+    var args = [argv[3]];
+    var options = argv.length > 3 ? argv.slice(4,argv.length) : [];
 
-    (function (/* arguments */) {
-      var cliArguments = Array.prototype.slice.call(arguments[0]);
-      cliArguments.pop();
-      var args = cliArguments;
-
-      return loregen({
-        generator: generator,
-        rootPath: process.cwd(),
-        modules: {},
-        loreRoot: nodepath.resolve(__dirname, '..'),
-        args: cliArguments
-      }).then(function() {
-        console.log('Generator finished successfully.');
-      }).catch(function(e) {
-        console.log('Generator failed with errors:');
-        console.log(e);
-      });
-    })(arguments);
+    return loregen({
+      generator: generator,
+      rootPath: process.cwd(),
+      modules: {},
+      loreRoot: nodepath.resolve(__dirname, '..'),
+      args: args,
+      options: options
+    }).then(function() {
+      console.log('Generator finished successfully.');
+    }).catch(function(e) {
+      console.log('Generator failed with errors:');
+      console.log(e);
+    });
   }
 }
 
@@ -73,6 +71,9 @@ program.command('generate-collection <collection_name>')
 
 program.command('generate-component <component_name>')
   .usage('<component_name>')
+  .option('--es5', 'Generate an ES5 version of the component')
+  .option('--connect', 'Wrap the component in the lore.connect decorator')
+  .option('--router', 'Configure the component to use the router')
   .description('generate a new Lore component.')
   .action(call(require('lore-generate-component')));
 
