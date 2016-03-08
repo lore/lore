@@ -1,19 +1,25 @@
 /**
- * This component serves as the root of your application.  Typically, it should be the only component subscribed to 
- * the store.
+ * This component serves as the root of your application.  Typically, it should be the only
+ * component subscribed to the store.
  **/
 
 var React = require('react');
 
-module.exports = React.createClass({
-  displayName: 'Master',
+module.exports = lore.connect({subscribe: true}, function(getState, props){
+    return {};
+  },
+  React.createClass({
+    displayName: 'Master',
 
-  render: function() {
-    return (
-      <div>{this.props.children}</div>
-    );
-  }
-});
+    render: function() {
+      return (
+        <div>
+          {React.cloneElement(this.props.children)}
+        </div>
+      );
+    }
+  })
+);
 
 /**
  * If your application has authentication, this is a good place to fetch the
