@@ -37,10 +37,10 @@ function getDependencyGraph(hooks) {
  */
 module.exports = function sortHooksByLoadOrder(hooks, log) {
   var dependencyGraph = getDependencyGraph(hooks);
-  log.debug('hook dependency graph: ', dependencyGraph);
+  //log.debug('hook dependency graph: ', dependencyGraph);
 
   var sortedDependencies = topsort(dependencyGraph);
-  log.debug('loading sorted hooks: ', sortedDependencies);
+  //log.debug('loading sorted hooks: ', sortedDependencies);
 
   return sortedDependencies.map(function(hookName) {
     return hooks[hookName];

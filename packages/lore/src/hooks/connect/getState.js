@@ -78,9 +78,9 @@ module.exports = function(lore) {
     var reducerState = tokens[1];
     var stateMap = null;
 
-    if (reducerState === 'all') {
+    if (reducerState === 'find') {
       stateMap = {
-        action: modelName + '.fetchAll',
+        action: modelName + '.find',
         params: 'where',
         defaultParams: {
           where: {}
@@ -88,7 +88,7 @@ module.exports = function(lore) {
       };
     } else if (reducerState === 'byId') {
       stateMap = {
-        action: modelName + '.fetch',
+        action: modelName + '.get',
         params: 'id'
       };
     }

@@ -64,8 +64,8 @@ describe('hooks#actionBlueprints#load', function() {
       expect(lore.actions.todo).to.include.keys([
         'create',
         'destroy',
-        'fetch',
-        'fetchAll',
+        'get',
+        'find',
         'update'
       ]);
     })

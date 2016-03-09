@@ -29,7 +29,7 @@ describe('lore#actionBlueprints', function() {
       ]);
     });
 
-    it("should create actions for create(), update(), destroy(), fetch(), and fetchAll()", function() {
+    it("should create actions for create(), update(), destroy(), get(), and find()", function() {
       lore.build();
       expect(lore.actions.todo).to.be.an('object');
       expect(_.keys(lore.actions.todo).length).to.equal(5);
@@ -37,8 +37,8 @@ describe('lore#actionBlueprints', function() {
         'create',
         'update',
         'destroy',
-        'fetch',
-        'fetchAll'
+        'get',
+        'find'
       ]);
     });
   });
