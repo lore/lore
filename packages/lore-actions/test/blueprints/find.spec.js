@@ -1,15 +1,15 @@
-const blueprint = require('../../src/blueprints/fetchAll');
+const blueprint = require('../../src/blueprints/find');
 const { ActionTypes, PayloadStates } = require('../constants');
 const sinon = require('sinon');
 const expect = require('chai').expect;
 const Todos = require('../fixtures/todos');
 
-describe('blueprints#fetchAll', function() {
+describe('blueprints#find', function() {
   let template;
 
   beforeEach(function() {
     template = {
-      blueprint: 'fetchAll',
+      blueprint: 'find',
 
       collection: Todos,
 
@@ -32,10 +32,10 @@ describe('blueprints#fetchAll', function() {
   });
 
   it('should call dispatch', function() {
-    const fetch = blueprint(template);
+    const find = blueprint(template);
     const dispatch = sinon.spy();
     const params = {};
-    fetch(params)(dispatch);
+    find(params)(dispatch);
     expect(dispatch.called).to.equal(true);
   });
 

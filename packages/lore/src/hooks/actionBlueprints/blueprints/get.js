@@ -7,7 +7,7 @@ module.exports = function(modelName, models) {
   var Model = models[modelName];
 
   return {
-    blueprint: 'fetch',
+    blueprint: 'get',
 
     model: Model,
 

@@ -1,15 +1,15 @@
-const blueprint = require('../../src/blueprints/fetch');
+const blueprint = require('../../src/blueprints/get');
 const { ActionTypes, PayloadStates } = require('../constants');
 const sinon = require('sinon');
 const expect = require('chai').expect;
 const Todo = require('../fixtures/todo');
 
-describe('blueprints#fetch', function() {
+describe('blueprints#get', function() {
   let template;
 
   beforeEach(function() {
     template = {
-      blueprint: 'fetch',
+      blueprint: 'get',
 
       model: Todo,
 
@@ -32,10 +32,10 @@ describe('blueprints#fetch', function() {
   });
 
   it('should call dispatch', function() {
-    const fetch = blueprint(template);
+    const get = blueprint(template);
     const dispatch = sinon.spy();
     const params = {};
-    fetch(params)(dispatch);
+    get(params)(dispatch);
     expect(dispatch.called).to.equal(true);
   });
 

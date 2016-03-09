@@ -77,12 +77,12 @@ _.extend(Lore.prototype, {
     // Now that we have the final, we can load the hooks, as their behavior is
     // dependant on the final configuration for the application
     sortHooksByLoadOrder(this.hooks, this.log).forEach(function(hook) {
-      this.log.silly('Loading hook: ' + hook.id);
+      //this.log.silly('Loading hook: ' + hook.id);
       hook.load(this);
-      this.log.verbose(hook.id, 'hook loaded successfully.');
+      //this.log.verbose(hook.id, 'hook loaded successfully.');
     }.bind(this));
 
-    this.log.verbose('All hooks were loaded successfully.');
+    //this.log.verbose('All hooks were loaded successfully.');
   },
 
   /**

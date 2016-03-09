@@ -64,7 +64,7 @@ describe('lore#redux', function() {
     });
   });
 
-  describe('action-reducer flow: actions.todo.fetchAll() [id as String]', function() {
+  describe('action-reducer flow: actions.todo.find() [id as String]', function() {
 
     beforeEach(function() {
       nock('https://api.example.com')
@@ -78,9 +78,9 @@ describe('lore#redux', function() {
         ]);
     });
 
-    it("should fetch the todos and add them to the store", function( done ) {
+    it("should find the todos and add them to the store", function( done ) {
       lore.build();
-      var optimisticTodos = lore.actions.todo.fetchAll().payload;
+      var optimisticTodos = lore.actions.todo.find().payload;
 
       // We should have one query dictionary created, but it should have no data
       var state = lore.store.getState();
@@ -106,7 +106,7 @@ describe('lore#redux', function() {
     });
   });
 
-  describe('action-reducer flow: actions.todo.fetch() [id as String]', function() {
+  describe('action-reducer flow: actions.todo.get() [id as String]', function() {
 
     beforeEach(function() {
       nock('https://api.example.com')
@@ -120,7 +120,7 @@ describe('lore#redux', function() {
 
     it("should create a todo, add it to the store, and update it when the server responds", function( done ) {
       lore.build();
-      var optimisticTodo = lore.actions.todo.fetch('1').payload;
+      var optimisticTodo = lore.actions.todo.get('1').payload;
 
       // Because we're specifying the id, it should be in two reducers
       var state = lore.store.getState();
@@ -296,7 +296,7 @@ describe('lore#redux', function() {
     });
   });
 
-  describe('action-reducer flow: actions.todo.fetchAll() [id as Number]', function() {
+  describe('action-reducer flow: actions.todo.find() [id as Number]', function() {
 
     beforeEach(function() {
       nock('https://api.example.com')
@@ -310,9 +310,9 @@ describe('lore#redux', function() {
         ]);
     });
 
-    it("should fetch the todos and add them to the store", function(done) {
+    it("should find the todos and add them to the store", function(done) {
       lore.build();
-      var optimisticTodos = lore.actions.todo.fetchAll().payload;
+      var optimisticTodos = lore.actions.todo.find().payload;
 
       // We should have one query dictionary created, but it should have no data
       var state = lore.store.getState();
@@ -338,7 +338,7 @@ describe('lore#redux', function() {
     });
   });
 
-  describe('action-reducer flow: actions.todo.fetch() [id as Number]', function() {
+  describe('action-reducer flow: actions.todo.get() [id as Number]', function() {
 
     beforeEach(function() {
       nock('https://api.example.com')
@@ -352,7 +352,7 @@ describe('lore#redux', function() {
 
     it("should create a todo, add it to the store, and update it when the server responds", function( done ) {
       lore.build();
-      var optimisticTodo = lore.actions.todo.fetch(1).payload;
+      var optimisticTodo = lore.actions.todo.get(1).payload;
 
       // Because we're specifying the id, it should be in two reducers
       var state = lore.store.getState();
