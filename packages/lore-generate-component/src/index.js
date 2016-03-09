@@ -1,5 +1,4 @@
 var path = require('path');
-var pascalCase = require('pascal-case');
 
 module.exports = {
 
@@ -31,7 +30,7 @@ module.exports = {
     template += '.js';
 
     var result = {};
-    var componentLocation = './src/components/' + pascalCase(scope.componentName) + '.js';
+    var componentLocation = './src/components/' + scope.componentName + '.js';
     result[componentLocation] = { template: template};
     return result;
   }

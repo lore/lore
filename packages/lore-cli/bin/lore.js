@@ -54,22 +54,22 @@ program.command('new <app_name>')
   .description('generate a new Lore project.')
   .action(call(require('lore-generate-new')));
 
-program.command('generate-generator <generator_name> [generator_description]')
+program.command('generate:generator <generator_name> [generator_description]')
   .usage('<generator_name> [generator_description]')
   .description('generate a new Lore generator.')
   .action(call(require('lore-generate-generator')));
 
-program.command('generate-model <model_name>')
+program.command('generate:model <model_name>')
   .usage('<model_name>')
   .description('generate a new Lore model.')
   .action(call(require('lore-generate-model')));
 
-program.command('generate-collection <collection_name>')
+program.command('generate:collection <collection_name>')
   .usage('<collection_name>')
   .description('generate a new Lore collection.')
   .action(call(require('lore-generate-collection')));
 
-program.command('generate-component <component_name>')
+program.command('generate:component <component_name>')
   .usage('<component_name>')
   .option('--es5', 'Generate an ES5 version of the component')
   .option('--connect', 'Wrap the component in the lore.connect decorator')
@@ -77,12 +77,12 @@ program.command('generate-component <component_name>')
   .description('generate a new Lore component.')
   .action(call(require('lore-generate-component')));
 
-program.command('generate-reducer <reducer_name>')
+program.command('generate:reducer <reducer_name>')
   .usage('<reducer_name>')
   .description('generate a new Lore reducer.')
   .action(call(require('lore-generate-reducer')));
 
-program.command('generate-surge')
+program.command('generate:surge')
   .description('generate a gulp file for publishing your project to surge.sh')
   .action(call(require('lore-generate-surge')));
 
