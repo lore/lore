@@ -1,15 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 
-/**
- * IMPORTANT!!
- *
- * Lore does not yet have a lore.connect decorator compatible with ES6 classes.
- * This template will be updated as soon as one exists.
- */
 class <%= componentName %> extends Component {
 
   constructor(props) {
     super(props);
+
+    // Set your initial state here
+    // this.setState = {};
+
+    // Bind your custom methods so you can access the expected 'this'
+    // this.myCustomMethod = this.myCustomMethod.bind(this);
   }
 
   render() {
@@ -19,6 +19,14 @@ class <%= componentName %> extends Component {
   }
 }
 
-<%= componentName %>.propTypes = {};
+<%= componentName %>.propTypes = {
+  //models: React.PropTypes.object.isRequired
+};
 
-export default <%= componentName %>;
+// NOTE: Please see https://github.com/lore/lore/issues/71 for a discussion
+// about why this template is not yet using the ES6 'export' syntax.
+module.exports = lore.connect((getState, props) => {
+  return {
+    //models: getState('model.find')
+  };
+}, <%= componentName %>);
