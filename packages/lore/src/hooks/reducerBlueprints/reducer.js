@@ -10,7 +10,7 @@ module.exports = function(modelName) {
   var byCid = blueprints.byCid(modelName);
 
   var initialState = {
-    all: undefined,
+    find: undefined,
     byId: undefined,
     byCid: undefined
   };
@@ -20,7 +20,7 @@ module.exports = function(modelName) {
 
     var _byId = byId(state.byId, action);
     var _byCid = byCid(state.byCid, action);
-    var _find = find(state.all, action, {
+    var _find = find(state.find, action, {
       nextState: {
         byId: _byId,
         byCid: _byCid
