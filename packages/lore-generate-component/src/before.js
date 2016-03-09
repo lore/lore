@@ -2,13 +2,14 @@ var Promise = require('bluebird');
 var path = require('path');
 var _ = require('lodash');
 var fs = require('fs');
+var pascalCase = require('pascal-case');
 
 module.exports = function(scope) {
   return Promise.resolve().then(function() {
     _.defaults(scope, { });
 
     scope.rootPath = path.resolve(process.cwd());
-    scope.componentName = scope.args[0];
+    scope.componentName = pascalCase(scope.args[0]);
 
     if(scope.componentName === void 0) {
       throw new Error('Missing component name.');
