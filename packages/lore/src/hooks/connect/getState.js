@@ -23,6 +23,14 @@ module.exports = function(lore) {
         }
       }
 
+      // NOTE: this line (and the defaultParams creation in value) was created
+      // in order to prevent the need to pass `{where: {}}` into the `model.all`
+      // call. But there's undoubtedly a better way to do it. This approach should
+      // be refactored/re-examined when pagination is implemented.
+      if (value.defaultParams) {
+        params = _.defaultsDeep(params || {}, value.defaultParams);
+      }
+
       if (value.params) {
         param = params[value.params];
         if (!param) {
@@ -73,7 +81,10 @@ module.exports = function(lore) {
     if (reducerState === 'all') {
       stateMap = {
         action: modelName + '.fetchAll',
-        params: 'where'
+        params: 'where',
+        defaultParams: {
+          where: {}
+        }
       };
     } else if (reducerState === 'byId') {
       stateMap = {
