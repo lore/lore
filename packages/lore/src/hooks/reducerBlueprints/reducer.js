@@ -28,7 +28,7 @@ module.exports = function(modelName) {
     });
 
     return {
-      all: _find,
+      find: _find,
       byId: _byId,
       byCid: _byCid
     };
