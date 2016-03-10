@@ -1,6 +1,6 @@
 {
   "name": "lore-generate-new",
-  "version": "0.6.15",
+  "version": "0.6.17",
   "license": "MIT",
   "main": "src/index.js",
   "description": "Generates a new Lore app",
