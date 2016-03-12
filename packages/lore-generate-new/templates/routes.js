@@ -6,10 +6,10 @@ import { Route, IndexRoute, Redirect } from 'react-router';
  * See: https://github.com/rackt/react-router/blob/master/docs/API.md
  */
 var Master = require('./src/components/Master');
-var Home = require('./src/components/Home');
+var Layout = require('./src/components/Layout');
 
 module.exports = (
-  <Route path="/" component={Master}>
-    <IndexRoute component={Home} />
+  <Route component={Master}>
+    <Route path="/" component={Layout} />
   </Route>
 );
