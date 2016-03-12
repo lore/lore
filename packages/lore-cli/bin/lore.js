@@ -86,6 +86,11 @@ program.command('generate:surge')
   .description('generate a gulp file for publishing your project to surge.sh')
   .action(call(require('lore-generate-surge')));
 
+program.command('generate:tutorial <step>')
+  .usage('<step>')
+  .description('generate files for the specified tutorial step.')
+  .action(call(require('lore-generate-tutorial')));
+
 //program.command('generate-fauxserver')
 //  .description('add a faux server to the Lore project.')
 //  .action(call(require('../../lore-generate-fauxserver')));
