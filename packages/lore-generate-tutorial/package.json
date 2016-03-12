@@ -1,6 +1,6 @@
 {
   "name": "lore-generate-tutorial",
-  "version": "0.6.12",
+  "version": "0.6.18",
   "license": "MIT",
   "main": "src/index.js",
   "description": "Generates code for the Lore tutorial",
