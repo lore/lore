@@ -1,6 +1,6 @@
 {
   "name": "lore-cli",
-  "version": "0.6.18",
+  "version": "0.6.19",
   "license": "MIT",
   "description": "The Command Line Interface (CLI) for Lore",
   "homepage": "https://github.com/lore/lore#readme",
@@ -27,7 +27,7 @@
     "lore-generate-generator": "^0.6.12",
     "lore-generate-model": "^0.6.12",
     "lore-generate-collection": "^0.6.12",
-    "lore-generate-component": "^0.6.16",
+    "lore-generate-component": "^0.6.19",
     "lore-generate-reducer": "^0.6.12",
     "lore-generate-surge": "^0.6.12",
     "lore-generate-tutorial": "^0.6.18"
