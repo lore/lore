@@ -29,7 +29,8 @@
     "lore-generate-collection": "^0.6.12",
     "lore-generate-component": "^0.6.16",
     "lore-generate-reducer": "^0.6.12",
-    "lore-generate-surge": "^0.6.12"
+    "lore-generate-surge": "^0.6.12",
+    "lore-generate-tutorial": "^0.6.12"
   },
   "devDependencies": {
     "bluebird": "3.1.1",

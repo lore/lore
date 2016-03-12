@@ -14,10 +14,14 @@ module.exports = function(options) {
 
     var rootPath = path.resolve(process.cwd(), options.rootPath);
 
-    return fs.existsAsync(rootPath).then(function() {
-      return fs.outputFileAsync(rootPath, options.contents)
-    }).catch(function(err) {
-      throw new Error('Something else already exists at ::' + rootPath);
-    });
+    if (options.overwriteFiles) {
+      return fs.outputFileAsync(rootPath, options.contents);
+    } else {
+      return fs.existsAsync(rootPath).then(function() {
+        return fs.outputFileAsync(rootPath, options.contents)
+      }).catch(function(err) {
+        throw new Error('Something else already exists at ::' + rootPath);
+      });
+    }
   });
 };
