@@ -21,7 +21,7 @@ describe('hooks#reducerBlueprints#reducer', function() {
       expect(_.keys(state).length).to.equal(3);
       expect(state.byId).to.be.an('object');
       expect(state.byCid).to.be.an('object');
-      expect(state.all).to.be.an('object');
+      expect(state.find).to.be.an('object');
     })
   });
 
@@ -50,12 +50,12 @@ describe('hooks#reducerBlueprints#reducer', function() {
       var state = reducer(null, action1);
       expect(_.keys(state.byId).length).to.equal(0);
       expect(_.keys(state.byCid).length).to.equal(1);
-      expect(_.keys(state.all).length).to.equal(0);
+      expect(_.keys(state.find).length).to.equal(0);
 
       var state2 = reducer(state, action2);
       expect(_.keys(state2.byId).length).to.equal(1);
       expect(_.keys(state2.byCid).length).to.equal(1);
-      expect(_.keys(state2.all).length).to.equal(0);
+      expect(_.keys(state2.find).length).to.equal(0);
     });
   });
 
@@ -91,14 +91,14 @@ describe('hooks#reducerBlueprints#reducer', function() {
       var state = reducer(null, action1);
       expect(_.keys(state.byId).length).to.equal(0);
       expect(_.keys(state.byCid).length).to.equal(0);
-      expect(_.keys(state.all).length).to.equal(1);
-      expect(state.all[queryKey].data.length).to.equal(0);
+      expect(_.keys(state.find).length).to.equal(1);
+      expect(state.find[queryKey].data.length).to.equal(0);
 
       var state2 = reducer(state, action2);
       expect(_.keys(state2.byId).length).to.equal(1);
       expect(_.keys(state2.byCid).length).to.equal(1);
-      expect(_.keys(state2.all).length).to.equal(1);
-      expect(state2.all[queryKey].data.length).to.equal(1);
+      expect(_.keys(state2.find).length).to.equal(1);
+      expect(state2.find[queryKey].data.length).to.equal(1);
     });
   });
 
@@ -152,26 +152,26 @@ describe('hooks#reducerBlueprints#reducer', function() {
       var state = reducer(null, action1);
       expect(_.keys(state.byId).length).to.equal(0);
       expect(_.keys(state.byCid).length).to.equal(0);
-      expect(_.keys(state.all).length).to.equal(1);
-      expect(state.all[queryKey].data.length).to.equal(0);
+      expect(_.keys(state.find).length).to.equal(1);
+      expect(state.find[queryKey].data.length).to.equal(0);
 
       var state2 = reducer(state, action2);
       expect(_.keys(state2.byId).length).to.equal(1);
       expect(_.keys(state2.byCid).length).to.equal(1);
-      expect(_.keys(state2.all).length).to.equal(1);
-      expect(state2.all[queryKey].data.length).to.equal(1);
+      expect(_.keys(state2.find).length).to.equal(1);
+      expect(state2.find[queryKey].data.length).to.equal(1);
 
       var state3 = reducer(state2, action3);
       expect(_.keys(state3.byId).length).to.equal(1);
       expect(_.keys(state3.byCid).length).to.equal(2);
-      expect(_.keys(state3.all).length).to.equal(1);
-      expect(state3.all[queryKey].data.length).to.equal(2);
+      expect(_.keys(state3.find).length).to.equal(1);
+      expect(state3.find[queryKey].data.length).to.equal(2);
 
       var state4 = reducer(state3, action4);
       expect(_.keys(state4.byId).length).to.equal(2);
       expect(_.keys(state4.byCid).length).to.equal(2);
-      expect(_.keys(state4.all).length).to.equal(1);
-      expect(state4.all[queryKey].data.length).to.equal(2);
+      expect(_.keys(state4.find).length).to.equal(1);
+      expect(state4.find[queryKey].data.length).to.equal(2);
     });
   });
 
@@ -215,13 +215,13 @@ describe('hooks#reducerBlueprints#reducer', function() {
       var state = reducer(null, action1);
       expect(_.keys(state.byId).length).to.equal(1);
       expect(_.keys(state.byCid).length).to.equal(1);
-      expect(_.keys(state.all).length).to.equal(0);
+      expect(_.keys(state.find).length).to.equal(0);
 
       var state2 = reducer(state, action2);
       expect(_.keys(state2.byId).length).to.equal(1);
       expect(_.keys(state2.byCid).length).to.equal(1);
-      expect(_.keys(state2.all).length).to.equal(1);
-      expect(state2.all[queryKey].data.length).to.equal(1);
+      expect(_.keys(state2.find).length).to.equal(1);
+      expect(state2.find[queryKey].data.length).to.equal(1);
     });
   });
 
@@ -265,14 +265,14 @@ describe('hooks#reducerBlueprints#reducer', function() {
       var state = reducer(null, action1);
       expect(_.keys(state.byId).length).to.equal(1);
       expect(_.keys(state.byCid).length).to.equal(1);
-      expect(_.keys(state.all).length).to.equal(1);
-      expect(state.all[queryKey].data.length).to.equal(1);
+      expect(_.keys(state.find).length).to.equal(1);
+      expect(state.find[queryKey].data.length).to.equal(1);
 
       var state2 = reducer(state, action2);
       expect(_.keys(state2.byId).length).to.equal(1);
       expect(_.keys(state2.byCid).length).to.equal(1);
-      expect(_.keys(state2.all).length).to.equal(1);
-      expect(state2.all[queryKey].data.length).to.equal(1);
+      expect(_.keys(state2.find).length).to.equal(1);
+      expect(state2.find[queryKey].data.length).to.equal(1);
     });
   });
 

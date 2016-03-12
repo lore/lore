@@ -29,13 +29,13 @@ describe('lore#reducerBlueprints', function() {
       expect(lore.reducers.todo).to.be.a('function');
     });
 
-    it("should create store states for .byId, .byCid, and. all", function() {
+    it("should create store states for .byId, .byCid, and. find", function() {
       lore.build();
       var state = lore.store.getState();
       expect(state.todo).to.include.keys([
         'byId',
         'byCid',
-        'all'
+        'find'
       ]);
     });
   });

@@ -40,7 +40,7 @@ describe('lore#redux', function() {
 
       // The first time we check state we should see the optimistic response
       var state = lore.store.getState();
-      expect(_.keys(state.todo.all).length).to.equal(0);
+      expect(_.keys(state.todo.find).length).to.equal(0);
       expect(_.keys(state.todo.byId).length).to.equal(0);
       expect(_.keys(state.todo.byCid).length).to.equal(1);
 
@@ -51,7 +51,7 @@ describe('lore#redux', function() {
 
         // The second time we check state we should see the real model
         state = lore.store.getState();
-        expect(_.keys(state.todo.all).length).to.equal(0);
+        expect(_.keys(state.todo.find).length).to.equal(0);
         expect(_.keys(state.todo.byId).length).to.equal(1);
         expect(_.keys(state.todo.byCid).length).to.equal(1);
 
@@ -84,10 +84,10 @@ describe('lore#redux', function() {
 
       // We should have one query dictionary created, but it should have no data
       var state = lore.store.getState();
-      expect(_.keys(state.todo.all).length).to.equal(1);
+      expect(_.keys(state.todo.find).length).to.equal(1);
       expect(_.keys(state.todo.byId).length).to.equal(0);
       expect(_.keys(state.todo.byCid).length).to.equal(0);
-      expect(state.todo.all['{}'].data.length).to.equal(0);
+      expect(state.todo.find['{}'].data.length).to.equal(0);
 
       // Subscribe to the store so we can be notified once the server response
       // comes back with the real data
@@ -96,10 +96,10 @@ describe('lore#redux', function() {
         // The second time we check state we should see the models returned
         // from the server
         state = lore.store.getState();
-        expect(_.keys(state.todo.all).length).to.equal(1);
+        expect(_.keys(state.todo.find).length).to.equal(1);
         expect(_.keys(state.todo.byId).length).to.equal(1);
         expect(_.keys(state.todo.byCid).length).to.equal(1);
-        expect(state.todo.all['{}'].data.length).to.equal(1);
+        expect(state.todo.find['{}'].data.length).to.equal(1);
 
         done();
       });
@@ -124,7 +124,7 @@ describe('lore#redux', function() {
 
       // Because we're specifying the id, it should be in two reducers
       var state = lore.store.getState();
-      expect(_.keys(state.todo.all).length).to.equal(0);
+      expect(_.keys(state.todo.find).length).to.equal(0);
       expect(_.keys(state.todo.byId).length).to.equal(1);
       expect(_.keys(state.todo.byCid).length).to.equal(1);
 
@@ -135,7 +135,7 @@ describe('lore#redux', function() {
         // The second time we check state we should see the models returned
         // from the server
         state = lore.store.getState();
-        expect(_.keys(state.todo.all).length).to.equal(0);
+        expect(_.keys(state.todo.find).length).to.equal(0);
         expect(_.keys(state.todo.byId).length).to.equal(1);
         expect(_.keys(state.todo.byCid).length).to.equal(1);
 
@@ -178,7 +178,7 @@ describe('lore#redux', function() {
 
       // Because we're specifying the id, it should be in two reducers
       var state = store.getState();
-      expect(_.keys(state.todo.all).length).to.equal(0);
+      expect(_.keys(state.todo.find).length).to.equal(0);
       expect(_.keys(state.todo.byId).length).to.equal(1);
       expect(_.keys(state.todo.byCid).length).to.equal(1);
       expect(state.todo.byId[todo.id].data.title).to.equal(optimisticUpdatedTodo.data.title);
@@ -190,7 +190,7 @@ describe('lore#redux', function() {
         // The second time we check state we should see the models returned
         // from the server
         state = store.getState();
-        expect(_.keys(state.todo.all).length).to.equal(0);
+        expect(_.keys(state.todo.find).length).to.equal(0);
         expect(_.keys(state.todo.byId).length).to.equal(1);
         expect(_.keys(state.todo.byCid).length).to.equal(1);
 
@@ -228,7 +228,7 @@ describe('lore#redux', function() {
 
       // Because we're specifying the id, it should be in two reducers
       var state = store.getState();
-      expect(_.keys(state.todo.all).length).to.equal(0);
+      expect(_.keys(state.todo.find).length).to.equal(0);
       expect(_.keys(state.todo.byId).length).to.equal(1);
       expect(_.keys(state.todo.byCid).length).to.equal(1);
 
@@ -239,7 +239,7 @@ describe('lore#redux', function() {
         // and the model should have been removed from the store
         state = store.getState();
 
-        expect(_.keys(state.todo.all).length).to.equal(0);
+        expect(_.keys(state.todo.find).length).to.equal(0);
         expect(_.keys(state.todo.byId).length).to.equal(0);
         expect(_.keys(state.todo.byCid).length).to.equal(0);
 
@@ -272,7 +272,7 @@ describe('lore#redux', function() {
 
       // The first time we check state we should see the optimistic response
       var state = lore.store.getState();
-      expect(_.keys(state.todo.all).length).to.equal(0);
+      expect(_.keys(state.todo.find).length).to.equal(0);
       expect(_.keys(state.todo.byId).length).to.equal(0);
       expect(_.keys(state.todo.byCid).length).to.equal(1);
 
@@ -283,7 +283,7 @@ describe('lore#redux', function() {
 
         // The second time we check state we should see the real model
         state = lore.store.getState();
-        expect(_.keys(state.todo.all).length).to.equal(0);
+        expect(_.keys(state.todo.find).length).to.equal(0);
         expect(_.keys(state.todo.byId).length).to.equal(1);
         expect(_.keys(state.todo.byCid).length).to.equal(1);
 
@@ -316,10 +316,10 @@ describe('lore#redux', function() {
 
       // We should have one query dictionary created, but it should have no data
       var state = lore.store.getState();
-      expect(_.keys(state.todo.all).length).to.equal(1);
+      expect(_.keys(state.todo.find).length).to.equal(1);
       expect(_.keys(state.todo.byId).length).to.equal(0);
       expect(_.keys(state.todo.byCid).length).to.equal(0);
-      expect(state.todo.all['{}'].data.length).to.equal(0);
+      expect(state.todo.find['{}'].data.length).to.equal(0);
 
       // Subscribe to the store so we can be notified once the server response
       // comes back with the real data
@@ -328,10 +328,10 @@ describe('lore#redux', function() {
         // The second time we check state we should see the models returned
         // from the server
         state = lore.store.getState();
-        expect(_.keys(state.todo.all).length).to.equal(1);
+        expect(_.keys(state.todo.find).length).to.equal(1);
         expect(_.keys(state.todo.byId).length).to.equal(1);
         expect(_.keys(state.todo.byCid).length).to.equal(1);
-        expect(state.todo.all['{}'].data.length).to.equal(1);
+        expect(state.todo.find['{}'].data.length).to.equal(1);
 
         done();
       });
@@ -356,7 +356,7 @@ describe('lore#redux', function() {
 
       // Because we're specifying the id, it should be in two reducers
       var state = lore.store.getState();
-      expect(_.keys(state.todo.all).length).to.equal(0);
+      expect(_.keys(state.todo.find).length).to.equal(0);
       expect(_.keys(state.todo.byId).length).to.equal(1);
       expect(_.keys(state.todo.byCid).length).to.equal(1);
 
@@ -367,7 +367,7 @@ describe('lore#redux', function() {
         // The second time we check state we should see the models returned
         // from the server
         state = lore.store.getState();
-        expect(_.keys(state.todo.all).length).to.equal(0);
+        expect(_.keys(state.todo.find).length).to.equal(0);
         expect(_.keys(state.todo.byId).length).to.equal(1);
         expect(_.keys(state.todo.byCid).length).to.equal(1);
 
@@ -410,7 +410,7 @@ describe('lore#redux', function() {
 
       // Because we're specifying the id, it should be in two reducers
       var state = store.getState();
-      expect(_.keys(state.todo.all).length).to.equal(0);
+      expect(_.keys(state.todo.find).length).to.equal(0);
       expect(_.keys(state.todo.byId).length).to.equal(1);
       expect(_.keys(state.todo.byCid).length).to.equal(1);
       expect(state.todo.byId[todo.id].data.title).to.equal(optimisticUpdatedTodo.data.title);
@@ -422,7 +422,7 @@ describe('lore#redux', function() {
         // The second time we check state we should see the models returned
         // from the server
         state = store.getState();
-        expect(_.keys(state.todo.all).length).to.equal(0);
+        expect(_.keys(state.todo.find).length).to.equal(0);
         expect(_.keys(state.todo.byId).length).to.equal(1);
         expect(_.keys(state.todo.byCid).length).to.equal(1);
 
@@ -460,7 +460,7 @@ describe('lore#redux', function() {
 
       // Because we're specifying the id, it should be in two reducers
       var state = store.getState();
-      expect(_.keys(state.todo.all).length).to.equal(0);
+      expect(_.keys(state.todo.find).length).to.equal(0);
       expect(_.keys(state.todo.byId).length).to.equal(1);
       expect(_.keys(state.todo.byCid).length).to.equal(1);
 
@@ -471,7 +471,7 @@ describe('lore#redux', function() {
         // and the model should have been removed from the store
         state = store.getState();
 
-        expect(_.keys(state.todo.all).length).to.equal(0);
+        expect(_.keys(state.todo.find).length).to.equal(0);
         expect(_.keys(state.todo.byId).length).to.equal(0);
         expect(_.keys(state.todo.byCid).length).to.equal(0);
 
