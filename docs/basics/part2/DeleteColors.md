@@ -1,4 +1,4 @@
-# Create some Colors
+# Deleting Data
 
 Now that we can create data, let's delete it. Deleting data in Lore is pretty straight forward. You just need to 
 call the appropriate action and pass in the resource you want to delete. For this example we're going to add a button
@@ -36,8 +36,8 @@ module.exports = React.createClass({
 
 With this code in place, your application should now look like this, displaying a button next to each line item: 
 
-![Input Box](../../images/tutorial-step3.png)
+**SOME IMAGE**
 
 ## Next Steps
 
-Next we're going to add the ability [to delete colors](./DeleteColors.md).
+Next we're going to add the ability (to delete colors)

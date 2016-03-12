@@ -7,7 +7,10 @@
     "edit-link",
     "prism",
     "-highlight",
-    "github"
+    "github",
+    "gist",
+    "tabs",
+    "youtube"
   ],
   "pluginsConfig": {
     "edit-link": {
@@ -15,7 +18,7 @@
       "label": "Edit This Page"
     },
     "github": {
-      "url": "https://github.com/lore/lore/"
+      "url": "https://github.com/lore/lore"
     }
   }
 }
