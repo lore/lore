@@ -58,7 +58,7 @@
     "gulp": "3.9.1",
     "gulp-sequence": "0.4.5",
     "gulp-shell": "0.5.2",
-    "lerna": "1.1.1"
+    "lerna": "1.1.2"
   },
   "peerDependencies": {}
 }
