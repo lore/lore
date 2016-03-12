@@ -11,6 +11,9 @@ gulp.task('docs:serve', function() {
   browserSync.init({
     server: {
       baseDir: './_book'
+    },
+    ui: {
+      port: 8080
     }
   });
 
