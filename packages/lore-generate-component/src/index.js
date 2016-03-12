@@ -8,15 +8,15 @@ module.exports = {
 	before: require('./before'),
 	after: require('./after'),
 	targets: function(scope) {
-    var isES5 = scope.options.indexOf('--es5') >= 0;
+    var isES6 = scope.options.indexOf('--es6') >= 0;
     var hasConnect = scope.options.indexOf('--connect') >= 0;
     var hasRouter = scope.options.indexOf('--router') >= 0;
     var template = './component';
 
-    if (isES5) {
-      template += '.es5'
-    } else {
+    if (isES6) {
       template += '.es6'
+    } else {
+      template += '.es5'
     }
 
     if (hasConnect) {

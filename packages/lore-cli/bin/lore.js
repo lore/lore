@@ -71,7 +71,7 @@ program.command('generate:collection <collection_name>')
 
 program.command('generate:component <component_name>')
   .usage('<component_name>')
-  .option('--es5', 'Generate an ES5 version of the component')
+  .option('--es6', 'Generate an ES6 version of the component')
   .option('--connect', 'Wrap the component in the lore.connect decorator')
   .option('--router', 'Configure the component to use the router')
   .description('generate a new Lore component.')
