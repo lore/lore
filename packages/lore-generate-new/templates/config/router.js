@@ -6,7 +6,7 @@
  **/
 
 
-var createHashHistory = require('history/lib/createHashHistory');
+var createBrowserHistory = require('history/lib/createBrowserHistory');
 
 module.exports = {
 
@@ -17,6 +17,6 @@ module.exports = {
   *                                                                           *
   ****************************************************************************/
 
-  history: createHashHistory()
+  history: createBrowserHistory()
 
 };
