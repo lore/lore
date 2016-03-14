@@ -83,7 +83,8 @@ module.exports = {
         ]);
       case 'step10':
         return files([
-          'src/components/Color.js'
+          'src/components/Color.js',
+          'src/components/Header.js'
         ]);
       case 'step11':
         return files([
