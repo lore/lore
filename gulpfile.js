@@ -17,7 +17,11 @@ gulp.task('docs:serve', function() {
     }
   });
 
-  gulp.watch(['./README.md', 'docs/**/*.md'], ['docs:rebuild']);
+  gulp.watch([
+    './README.md',
+    './Manifesto.md',
+    'docs/**/*.md'
+  ], ['docs:rebuild']);
 });
 
 /**
