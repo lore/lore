@@ -1,0 +1,18 @@
+{
+  "name": "lore-tutorial-server",
+  "private": true,
+  "version": "0.0.0",
+  "description": "API server for the Lore tutorial",
+  "main": "app.js",
+  "scripts": {
+    "debug": "node debug app.js",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "~0.8.4",
+    "include-all": "~0.1.3",
+    "rc": "~0.5.0",
+    "sails": "~0.11.3",
+    "sails-disk": "~0.10.0"
+  }
+}
