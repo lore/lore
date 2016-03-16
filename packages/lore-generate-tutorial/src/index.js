@@ -31,6 +31,18 @@ function filesForStep(step) {
   }
 }
 
+function filesForServer(files) {
+  var result = {};
+  files.forEach(function(file) {
+    var output = './lore-tutorial-server/' + file;
+    var target = 'server/' + file;
+    result[output] = {
+      copy: target
+    };
+  });
+  return result;
+}
+
 module.exports = {
 
   name: 'lore-generate-tutorial',
@@ -103,6 +115,39 @@ module.exports = {
       case 'step14':
         return files([
           'src/components/Guessatron.js'
+        ]);
+      case 'server':
+        return filesForServer([
+          'api/controllers/ColorController.js',
+          'api/models/Color.js',
+          'config/env/development.js',
+          'config/env/production.js',
+          'config/blueprints.js',
+          'config/bootstrap.js',
+          'config/connections.js',
+          'config/cors.js',
+          'config/csrf.js',
+          'config/globals.js',
+          'config/http.js',
+          'config/i18n.js',
+          'config/log.js',
+          'config/models.js',
+          'config/policies.js',
+          'config/routes.js',
+          'config/session.js',
+          'config/sockets.js',
+          'config/views.js',
+          'views/403.ejs',
+          'views/404.ejs',
+          'views/500.ejs',
+          'views/homepage.ejs',
+          'views/layout.ejs',
+          '.editorconfig',
+          '.gitignore',
+          '.sailsrc',
+          'app.js',
+          'package.json',
+          'README.md'
         ]);
       default:
         return {};
