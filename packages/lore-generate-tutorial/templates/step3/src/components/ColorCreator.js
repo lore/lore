@@ -11,9 +11,9 @@ module.exports = React.createClass({
     return {
       colors: {
         data: [
-          {id: 1, cid: 'c1', data: {name: 'Red'}},
-          {id: 2, cid: 'c2', data: {name: 'Green'}},
-          {id: 3, cid: 'c3', data: {name: 'Blue'}}
+          {id: 1, data: {name: 'Red'}},
+          {id: 2, data: {name: 'Green'}},
+          {id: 3, data: {name: 'Blue'}}
         ]
       }
     };
@@ -21,7 +21,7 @@ module.exports = React.createClass({
 
   renderColor: function(color) {
     return (
-      <a key={color.id || color.cid} className="list-group-item">
+      <a key={color.id} className="list-group-item">
         {color.data.name}
       </a>
     );
@@ -39,7 +39,7 @@ module.exports = React.createClass({
             className="form-control"
             placeholder="What color should Guessatron display?" />
               <span className="input-group-btn">
-                <button className="btn btn-default" type="button" onClick={this.onCreateColor}>
+                <button className="btn btn-default" type="button">
                   Create
                 </button>
               </span>

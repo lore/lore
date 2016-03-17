@@ -33,7 +33,7 @@ module.exports = React.createClass({
     });
   },
 
-  onKeyDownNewColor: function (event) {
+  onKeyPressNewColor: function (event) {
     if (event.charCode !== ENTER_KEY) {
       return;
     }
@@ -72,13 +72,13 @@ module.exports = React.createClass({
             className="form-control"
             placeholder="What color should Guessatron display?"
             value={this.state.newColor}
-            onKeyPress={this.onKeyDownNewColor}
+            onKeyPress={this.onKeyPressNewColor}
             onChange={this.onChangeNewColor} />
-              <span className="input-group-btn">
-                <button className="btn btn-default" type="button" onClick={this.onCreateColor}>
-                  Create
-                </button>
-              </span>
+          <span className="input-group-btn">
+            <button className="btn btn-default" type="button" onClick={this.onCreateColor}>
+              Create
+            </button>
+          </span>
         </div>
         <div className="list-group" style={{paddingTop: '16px'}}>
           {colors.data.map(this.renderColor)}
