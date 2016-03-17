@@ -15,6 +15,7 @@
   * [Step 2: Add Header](/docs/tutorial/Step2.md)
   * [Step 3: Add ColorCreator](/docs/tutorial/Step3.md)
   * [Step 4: Input Callbacks for ColorCreator](/docs/tutorial/Step4.md)
+  * [Step 4.5: Generate API Server](/docs/tutorial/Step4-5.md)
   * [Step 5: Add Model](/docs/tutorial/Step5.md)
   * [Step 6: Connect ColorCreator](/docs/tutorial/Step6.md)
   * [Step 7: Create Colors](/docs/tutorial/Step7.md)

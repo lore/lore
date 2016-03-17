@@ -8,39 +8,6 @@ If you're using the CLI to follow along, you can complete this step by running t
 lore generate:tutorial step5
 ```
 
-## IMPORTANT! And needs to be communicated before demo is released. Should be in it's own step.
-
-While Lore is developing a local storage abstraction library that will emulate the server experience in the browser (to
-remove the need to spin up a server for simple app dev) it's still a work in progress. In the meantime, you still need 
-a server. Also, since Lore is focused on promoting architecture and patterns that scale, we're not going to use local
-storage for this tutorial as integrating it sometimes glosses over where/how server communication happens in an app.
-
-So for now, you'll need to download the API server for this example using:
-
-```sh
-git clone https://github.com/lore/lore-tutorial-server.git
-cd lore-tutorial-server
-npm install
-sails lift
-```
-
-Cloning this repo will install a [Sails](https://github.com/balderdashy/sails) server pre-configured to support this 
-example app.  By default, the server will start on port `1337`. If you need to change the port, you can do so by
-providing a `--port` argument to the `sails lift` command, such as `sails lift --port=3001`.
-
-Finally, you'll need to let Lore know what port your API server is running on. For that, modify `config/models.js` and
-change the default `apiRoot` from `https://api.example.com` to `http://localhost:1337`.
-
-```js
-// config/models.js
-
-module.exports = {
-  ...
-  apiRoot: 'http://localhost:1337',
-  ...
-};
-```
-
 ### Generate a Color Model
 
 One of Lore's goals is to reduce the boilerplate associated with creating React/Redux applications. Models are how this

@@ -1,7 +1,7 @@
 # Basics
 
 Welcome to the Lore tutorial.  This will walk you through the basics of using Lore with a step-by-step guide you can 
-follow along with.  You can also watch a video of the tutorial below.
+follow along with. Or, if you'd prefer, you can watch a video version of the tutorial below.
 
 {% youtube %}https://www.youtube.com/watch?v=xsSnOQynTHs{% endyoutube %}
 

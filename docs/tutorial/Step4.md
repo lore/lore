@@ -272,5 +272,6 @@ module.exports = React.createClass({
 
 ## Next Steps
 
-Next we're going to [add a Model](./Step5.md) to our application so that we can persistent data to the server. Once 
-we do that we'll be able to create data for real.
+Next we're going to add a Model to our application so that we can persistent data to the server. Once 
+we do that we'll be able to create data for real. But first we're going to [generate an API server](./Step4-5.md) 
+we can use to persist the data.
