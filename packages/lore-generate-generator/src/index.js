@@ -1,7 +1,6 @@
 var path = require('path');
 
 module.exports = {
-
   name: 'lore-generate-generator',
 	moduleDir: require('path').resolve(__dirname, '..'),
 	templatesDirectory: require('path').resolve(__dirname,'../templates'),
@@ -9,10 +8,6 @@ module.exports = {
 	after: require('./after'),
 	targets: function(scope) {
     return {
-      './LICENSE': { template: './LICENSE' },
-      './README.md': { template: './README.md' },
-      './package.json': { template: './package.json' },
-
       './src': { folder: {}},
       './src/before.js': { copy: 'src/before.js'},
       './src/index.js': { template: 'src/index.js'},
@@ -21,7 +16,11 @@ module.exports = {
       './test': { folder: {}},
       './test/test.spec.js': { copy: 'test/test.spec.js'},
 
-      './templates': { folder: {}}
+      './templates': { folder: {}},
+      './templates/.gitkeep': { copy: '.gitkeep'},
+
+      './README.md': { template: './README.md' },
+      './package.json': { template: './package.json' }
     };
   }
 };
