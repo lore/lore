@@ -92,14 +92,14 @@ _.extend(Lore.prototype, {
    */
   summon: function(configOverride) {
     this.build(configOverride);
-    this.log.verbose('Mounting app...');
+    // this.log.verbose('Mounting app...');
 
     var store = this.store;
     var routes = this.loader.loadRoutes();
     var history = this.config.router.history;
 
     mount(store, routes, history, function() {
-      this.log.info('App summoned from lore!');
+      // this.log.info('App summoned from lore!');
       this.isSummoned = true;
     }.bind(this));
   }
