@@ -1,17 +1,17 @@
 # Step 4.5: Installing the Tutorial Server
 
-Since Lore is focused on promoting architecture and patterns that scale, we're not going to use local storage for this 
+Since Lore is focused on promoting architecture and patterns that scale, we are not going to use localStorage for this 
 tutorial. Some tutorials that rely on it end up glossing over how server communication happens, and that can obstruct
-the realism and believability of the experience. Instead, we're going to quickly generate an API server is 
+the realism and believability of the experience. Instead, we're going to quickly generate an API server that is 
 pre-configured to support the needs of this tutorial.
 
-> Currently, we *are* developing a local storage abstraction library for Lore that will emulate the server experience 
-in the browser, so that you don't *have* to spin up a server for simple application development. Once an application
-stops being trivial, having something that can emulate API calls becomes necessary for the continued refinement and 
-development of the user experience. 
+> That being said, we *are* developing a local storage abstraction library for Lore that will emulate the server 
+experience in the browser, so that you *don't* have to spin up a server for simple application development. Once an 
+application stops being trivial, having something that can emulate API calls becomes necessary for the continued 
+refinement and development of the user experience. 
 
 > While a service like [Apiary](https://apiary.io) can help prolong that need by providing a mock API, the fact that 
-it doesn't actually create data or auto-generate new unique ids or support foreign key relationships means the utility 
+it doesn't actually create data, auto-generate new unique ids, or support foreign key relationships means the utility 
 it provides is limited.
 
 > Once the localStorage abstraction library is ready we will update this tutorial to provide it as an alternative
@@ -48,14 +48,15 @@ npm start
 By default, the server will start up on `localhost:1337`. If you need to change the port, you can do so by starting the
 server through an alternative command, `node app.js --port=3001`.
 
-If everything went well, you should see this when you navigate to `http://localhost:1337`:
+If everything went well, you should see this when you navigate to `http://localhost:1337`.
 
 ![Tutorial Server](../../images/step4-5-visual.png)
 
 ### Tell Lore about the Server
 
-Finally, you'll need to let Lore know where the API server can be found. For that, modify `config/models.js` and change
-the default `apiRoot` from `https://api.example.com` to `http://localhost:1337`.
+Finally, you'll need to let Lore know where the API server can be found. Go back into your Lore tutorial app
+and open `config/models.js`. Then change the default `apiRoot` value from `https://api.example.com` to 
+`http://localhost:1337`.
 
 ```js
 // config/models.js

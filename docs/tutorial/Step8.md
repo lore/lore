@@ -71,12 +71,13 @@ creator, it gets a cid and then two things happen at essentially the same time:
 
 Once the request comes back from the server, a second action is emitted with the new data (that now contains an id).
 Without the cid, the reducers would have no way of knowing that the data that just came back is the same data it already
-has in the reducer state.  The `cid` is how it makes that association, and it makes sure your data stays properly in 
+has in the reducer state.  The `cid` is how it makes that association, and how it makes sure your data stays properly 
 synced.
 
-There's also use case that cids enable, which has to do with blocking a UI experience (like a wizard) until a 
-*specific* piece of data has been confirmed by the server. Without cids, that use case is somewhere between painful, 
-fragile and impossible.
+There's another use case that cids enable, which has to do with creating a UI experience (such as in a wizard) that 
+blocks user interaction until a *specific* piece of data has been confirmed by the server (like when you need to know 
+the id of something that was just created before moving forward). Without cids, that use case is somewhere between 
+painful, fragile and impossible.
 
 ### Visual Check-in
 
@@ -167,11 +168,11 @@ module.exports = lore.connect(function(getState, props) {
               value={this.state.newColor}
               onKeyPress={this.onKeyDownNewColor}
               onChange={this.onChangeNewColor} />
-                <span className="input-group-btn">
-                  <button className="btn btn-default" type="button" onClick={this.onCreateColor}>
-                    Create
-                  </button>
-                </span>
+            <span className="input-group-btn">
+              <button className="btn btn-default" type="button" onClick={this.onCreateColor}>
+                Create
+              </button>
+            </span>
           </div>
           <div className="list-group" style={{paddingTop: '16px'}}>
             {colors.data.map(this.renderColor)}

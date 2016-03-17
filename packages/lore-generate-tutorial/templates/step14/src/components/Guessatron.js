@@ -14,9 +14,11 @@ function getRandomInt(min, max) {
  */
 function getBragPhrase() {
   var bragPhrases = [
-    "I'm pretty sure I nailed it.",
-    "Impressive right? Don't be shy. I know I'm awesome.",
-    "YOU'RE WELCOME."
+    "Nailed it!",
+    "I'm on fire.",
+    "YOU'RE WELCOME.",
+    "I interpret your silence as awe.",
+    "Impressive, right?"
   ];
   return bragPhrases[getRandomInt(0,bragPhrases.length - 1)];
 }
@@ -35,9 +37,19 @@ module.exports = lore.connect(function(getState, props) {
       color: React.PropTypes.object.isRequired
     },
 
+    getStyles: function() {
+      return {
+        media: {
+          height: '64px',
+          width: '64px',
+          backgroundColor: randomColor()
+        }
+      }
+    },
+
     render: function() {
       var color = this.props.color;
-      var generatedColor = randomColor();
+      var styles = this.getStyles();
       var bragPhrase = getBragPhrase();
 
       return (
@@ -46,9 +58,7 @@ module.exports = lore.connect(function(getState, props) {
           <div className="media">
             <div className="media-left">
               <a href="#">
-                <div
-                  className="media-object"
-                  style={{height: '64px', width: '64px', backgroundColor: generatedColor}} />
+                <div className="media-object" style={styles.media} />
               </a>
             </div>
             <div className="media-body">

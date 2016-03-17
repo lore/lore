@@ -36,15 +36,14 @@ module.exports = React.createClass({
 });
 ```
 
-Now granted, while that may not be very useful by itself (as you could have just copy/modified the `Layout` component), the 
+While that may not be very useful by itself, as you could have just copy/modified the `Layout` component, the component
 generator is primarily meant to solve the problem of *creating* boilerplate during the initial app building stages. 
 
 In addition to generating ES5 components (like the one above) you can also pass in a `--es6` flag to generate an ES6 
-component, and there are additional flags for pre-configuring components for routing and connecting them to the data 
-store.
+component, as well as flags for pre-configuring components for routing and connecting them to the data store.
 
 You'll see more examples of using the component generator later in this tutorial, and you can also learn more
-about it [in the CLI docs](../cli/GenerateComponent.md).
+about it [in the docs for the CLI](../cli/GenerateComponent.md).
 
 ### Modify the Header Component
 
@@ -71,11 +70,12 @@ Now that we've created the skeleton for the Header component, modify the render 
 
 ### Add the Header to the Layout
 
-Now we need to modify the output of the `Layout` component so the Header gets rendered to the browser. Update the render
-function for the `Layout` component to look like this:
+Now we need to modify the output of the `Layout` component so the Header gets rendered to the browser. Import the 
+`Header` component into `Layout` and update the render function for `Layout` to look like this:
 
 ```js
 // src/components/Layout.js
+var Header = require('./Header');
 ...
   render: function() {
     return (

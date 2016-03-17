@@ -15,9 +15,19 @@ module.exports = lore.connect(function(getState, props) {
       color: React.PropTypes.object.isRequired
     },
 
+    getStyles: function() {
+      return {
+        media: {
+          height: '64px',
+          width: '64px',
+          backgroundColor: randomColor()
+        }
+      }
+    },
+
     render: function() {
       var color = this.props.color;
-      var generatedColor = randomColor();
+      var styles = this.getStyles();
 
       return (
         <div>
@@ -25,9 +35,7 @@ module.exports = lore.connect(function(getState, props) {
           <div className="media">
             <div className="media-left">
               <a href="#">
-                <div
-                  className="media-object"
-                  style={{height: '64px', width: '64px', backgroundColor: generatedColor}} />
+                <div className="media-object" style={styles.media} />
               </a>
             </div>
             <div className="media-body">

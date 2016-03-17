@@ -38,9 +38,9 @@ module.exports = {
 ```
 
 Yep! It's empty. Since Lore's conventions are driven off the filename, it doesn't need to know anything else until
-you need to override those default behaviors. Among other things, you can use the file to change the API server that
+you need to override the default behaviors. Among other things, you can use the file to change the API server that
 specific model uses, or to manipulate data before or after it comes back from the API server. You can learn more about 
-all the available overrides [in the Model docs](../basics/Models.md). For this tutorial, we won't need any of them.
+all the available overrides [in the docs for Models](../basics/Models.md). For this tutorial, we won't need any of them.
 
 ### Visual Check-in
 

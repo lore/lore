@@ -15,7 +15,7 @@ first is in `routes.js` at the root of your project. This file is where you will
 the route hierarchy for your application. We'll be touching on that more later in the tutorial.
 
 The second place react-router shows up is in `config/router.js`. This file is where you can change the type of your 
-router, which will typically be either "browser history/push state", which will allow your application to have clean 
+router, which will typically be either "browser history" (push-state), which will allow your application to have clean 
 URLs like `localhost:3000/colors/1`, or "hash history", which will create URLs like `localhost:3000/#/colors/1`. 
 
 Lore defaults to "browser history" in order to promote clean URLs, but you won't always be able to use that routing 
@@ -86,7 +86,8 @@ return (
 ### Visual Check-in
 
 If everything went well, your application should still look like this. Nothing has changed visually, but if you click
-on any of the colors now, the route URL should update to something like `localhost:3000/colors/12`.
+on any of the colors now, the route URL should update to something like `localhost:3000/colors/12`. If you have the
+developer tools open, you'll also see an error in the console. We'll be addressing that in the next step.
 
 ![New Lore App](../../images/step10-visual.png)
 

@@ -18,24 +18,22 @@ intelligence. First we're going to need to download his brain, so run this from 
 npm install randomcolor --save
 ```
 
-[randomColor](https://github.com/davidmerfield/randomColor) is an npm package that displays attractive colors. With
-that package installed, require it into `Guessatron` and update your render function to use it like this:
+[randomColor](https://github.com/davidmerfield/randomColor) is an npm package that generates attractive colors. With
+that package installed, require it into `Guessatron` and update your `getStyles` function to use it like this:
 
 ```js
 // src/components/Guessatron.js
 var randomColor = require('randomcolor');
 ...
 
-render: function() {
-  var color = this.props.color;
-  var generatedColor = randomColor();
-  
-  return (
-    ...
-      <div className="media-object"
-           style={{height: '64px', width: '64px', backgroundColor: generatedColor}} />
-    ...
-  );
+getStyles: function() {
+  return {
+    media: {
+      height: '64px',
+      width: '64px',
+      backgroundColor: randomColor()
+    }
+  }
 }
 ```
 
@@ -76,9 +74,19 @@ module.exports = lore.connect(function(getState, props) {
       color: React.PropTypes.object.isRequired
     },
 
+    getStyles: function() {
+      return {
+        media: {
+          height: '64px',
+          width: '64px',
+          backgroundColor: randomColor()
+        }
+      }
+    },
+
     render: function() {
       var color = this.props.color;
-      var generatedColor = randomColor();
+      var styles = this.getStyles();
 
       return (
         <div>
@@ -86,9 +94,7 @@ module.exports = lore.connect(function(getState, props) {
           <div className="media">
             <div className="media-left">
               <a href="#">
-                <div
-                  className="media-object"
-                  style={{height: '64px', width: '64px', backgroundColor: generatedColor}} />
+                <div className="media-object" style={styles.media} />
               </a>
             </div>
             <div className="media-body">

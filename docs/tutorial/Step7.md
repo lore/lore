@@ -59,7 +59,8 @@ re-renders. It was hard to see in the previous step, but much easier to see now.
 
 ### Visual Check-in
 
-If everything went well, your application should now look like this.
+If everything went well, your application should now look like this. If you open up the developer tools (and have 
+`Log XMLHttpRequests` checked in Settings) you should see a POST request being sent out each time you submit a color.
 
 ![New Lore App](../../images/step7-visual.png)
 
@@ -146,11 +147,11 @@ module.exports = lore.connect(function(getState, props) {
               value={this.state.newColor}
               onKeyPress={this.onKeyDownNewColor}
               onChange={this.onChangeNewColor} />
-                <span className="input-group-btn">
-                  <button className="btn btn-default" type="button" onClick={this.onCreateColor}>
-                    Create
-                  </button>
-                </span>
+            <span className="input-group-btn">
+              <button className="btn btn-default" type="button" onClick={this.onCreateColor}>
+                Create
+              </button>
+            </span>
           </div>
           <div className="list-group" style={{paddingTop: '16px'}}>
             {colors.data.map(this.renderColor)}

@@ -1,7 +1,7 @@
 # Connect
 
-Need to add better documentation explaining `lore.connect` and how it's different from the connect decorator in 
-[react-redux](https://github.com/reactjs/react-redux).
+> TODO: Need to add better documentation explaining `lore.connect` and how it's different from the connect decorator 
+in [react-redux](https://github.com/reactjs/react-redux).
 
 If you're familiar with [react-redux](https://github.com/reactjs/react-redux) it's worth noting that the `connect` 
 decorator in Lore is **not** the same as the `connect` decorator in `react-redux`. Lore's version is intentionally

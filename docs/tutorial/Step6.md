@@ -128,6 +128,7 @@ global variable that gets added to `window` when application loads. If you take 
 root of your application, it should look like this:
 
 ```js
+// index.js
 var lore = require('lore');
 
 // Allows you to access your lore app globally as well as from within
@@ -140,14 +141,14 @@ lore.summon();
 
 It's important to mention that Lore itself is a singleton. Any component that requires lore through 
 `var lore = require('lore')` receives the same instance as every other component. There is good and bad to this 
-approach, and it may change overtime, but for now it was a conscious decision based on the good outweighing the bad.
+approach, and it may change overtime, but for now it was a conscious decision that the good outweighed the bad.
 
 So while you may not be able to control whether lore is exposed as a singleton, you can control whether it's exposed 
 as a global variable or not. If you don't want it to be, remove the `window.lore = lore` line, and then explicitly 
 `require('lore')` in every file that needs it.
 
-Also, it is fairly likely that as React's `context` is better understood, we will update the framework to make `lore` 
-accessible through `context`, and recommend that approach over the others.
+Also, it is fairly likely that as React's `context` becomes better understood, we will update the framework to make 
+`lore` accessible through `context`, and recommend that approach over the others.
 
 ### Connect the ColorCreator Component
 
@@ -187,7 +188,7 @@ module.exports = lore.connect(function(getState, props) {
 );
 ```
 
-Finally, now that the component is being fed `colors` from the data store, you can remove the `getDefaultProps`
+Finally, now that the component is being provided `colors` from the data store, you can remove the `getDefaultProps`
 function.
 
 ```js
@@ -208,7 +209,8 @@ getDefaultProps: function() {
 ### Visual Check-in
 
 Okay! Big step, a lot to absorb.  But it's over now! Refresh your browser and if everything went well, your application 
-should look like this (same as before, but no data).
+should look like this; same as before, but with no data. However if you open up the developer tools, you should a GET 
+request go out to the API server to retrieve the list of colors.
 
 ![New Lore App](../../images/step6-visual.png)
 
@@ -334,11 +336,11 @@ module.exports = lore.connect(function(getState, props) {
               value={this.state.newColor}
               onKeyPress={this.onKeyDownNewColor}
               onChange={this.onChangeNewColor} />
-                <span className="input-group-btn">
-                  <button className="btn btn-default" type="button" onClick={this.onCreateColor}>
-                    Create
-                  </button>
-                </span>
+            <span className="input-group-btn">
+              <button className="btn btn-default" type="button" onClick={this.onCreateColor}>
+                Create
+              </button>
+            </span>
           </div>
           <div className="list-group" style={{paddingTop: '16px'}}>
             {colors.data.map(this.renderColor)}

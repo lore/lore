@@ -56,11 +56,11 @@ module.exports = React.createClass({
             type="text"
             className="form-control"
             placeholder="What color should Guessatron display?" />
-              <span className="input-group-btn">
-                <button className="btn btn-default" type="button">
-                  Create
-                </button>
-              </span>
+          <span className="input-group-btn">
+            <button className="btn btn-default" type="button">
+              Create
+            </button>
+          </span>
         </div>
         <div className="list-group" style={{paddingTop: '16px'}}>
           {colors.data.map(this.renderColor)}
@@ -85,6 +85,7 @@ Now we just need to render our `ColorCreator` component from the left column of 
 
 ```js
 // src/components/Layout.js
+var ColorCreator = require('./ColorCreator');
 ...
   render: function() {
     return (
@@ -164,11 +165,11 @@ module.exports = React.createClass({
             type="text"
             className="form-control"
             placeholder="What color should Guessatron display?" />
-              <span className="input-group-btn">
-                <button className="btn btn-default" type="button">
-                  Create
-                </button>
-              </span>
+          <span className="input-group-btn">
+            <button className="btn btn-default" type="button">
+              Create
+            </button>
+          </span>
         </div>
         <div className="list-group" style={{paddingTop: '16px'}}>
           {colors.data.map(this.renderColor)}

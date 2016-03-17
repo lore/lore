@@ -49,7 +49,7 @@ module.exports = React.createClass({
 
 Next we want to update our state value as the user enters text, so that we can have it ready when we need to do 
 something with the data. For that we're going to use the `onChange` callback of the `<input/>` element and update the
-value of our `newColor` state as on changes.
+value of our `newColor` state as it changes.
 
 ```js
 // src/components/ColorCreator.js
@@ -254,11 +254,11 @@ module.exports = React.createClass({
             value={this.state.newColor}
             onKeyPress={this.onKeyPressNewColor}
             onChange={this.onChangeNewColor} />
-              <span className="input-group-btn">
-                <button className="btn btn-default" type="button" onClick={this.onCreateColor}>
-                  Create
-                </button>
-              </span>
+          <span className="input-group-btn">
+            <button className="btn btn-default" type="button" onClick={this.onCreateColor}>
+              Create
+            </button>
+          </span>
         </div>
         <div className="list-group" style={{paddingTop: '16px'}}>
           {colors.data.map(this.renderColor)}

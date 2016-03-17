@@ -48,6 +48,7 @@
   * Stylesheets
   * Error Handling
   * [Disabling Optimistic Behavior](/docs/recipes/DisablingOptimisticBehavior.md)
+  * [Loading Screen](/docs/recipes/LoadingScreen.md)
 * [Troubleshooting](/docs/Troubleshooting.md)
 * [Misc](/docs/misc/README.md)
   * [Installing Node](/docs/misc/InstallingNode.md)

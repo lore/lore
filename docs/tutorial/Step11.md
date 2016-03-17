@@ -15,6 +15,7 @@ First, we're going to create a component called `Guessatron`. You can do this ei
 CLI to run `lore generate:component Guessatron` from the command line.  Modify the file to look like this:
 
 ```js
+// src/components/Guessatron.js
 var React = require('react');
 
 module.exports = React.createClass({
@@ -34,8 +35,19 @@ module.exports = React.createClass({
     }
   },
 
+  getStyles: function() {
+    return {
+      media: {
+        height: '64px',
+        width: '64px',
+        backgroundColor: '#00BFFF'
+      }
+    }
+  },
+
   render: function() {
     var color = this.props.color;
+    var styles = this.getStyles();
 
     return (
       <div>
@@ -43,9 +55,7 @@ module.exports = React.createClass({
         <div className="media">
           <div className="media-left">
             <a href="#">
-              <div
-                className="media-object"
-                style={{height: '64px', width: '64px', backgroundColor: '#00BFFF'}} />
+              <div className="media-object" style={styles.media} />
             </a>
           </div>
           <div className="media-body">
@@ -61,7 +71,7 @@ module.exports = React.createClass({
 ```
 
 For now, our Guessatron component will simply take a color as property, and render some mostly static content. However,
-since we don't know how to tell Guessatron what color to display yet, we'll just hardcode a nice color in 
+since we don't know how to tell Guessatron what color to display yet, we'll just hardcode an attractive color in 
 `getDefaultProps`.
 
 ### Add the Guessatron to routes.js
@@ -88,7 +98,7 @@ module.exports = (
 );
 ```
 
-### Update Layout to 
+### Update Layout
 
 At this point, if you refresh your browser and try clicking on color, the routes will change, and you won't see any
 errors or warnings. But you also won't see the Guessatron in the right column. The reason for this is because we
@@ -116,7 +126,7 @@ With this change, the Guessatron will show up in the right column.  Yay!
 
 ### Visual Check-in
 
-If everything went well, your application should now look like this. Now as you click on a color, the Guessatron
+If everything went well, your application should now look like this. Now when you click on a color, the Guessatron
 should be rendered in the right column. If you click on the "Guessatron 5000" title in the Header, the route should
 reset to the root and the Guessatron should disappear.
 
@@ -216,8 +226,19 @@ module.exports = React.createClass({
     }
   },
 
+  getStyles: function() {
+    return {
+      media: {
+        height: '64px',
+        width: '64px',
+        backgroundColor: '#00BFFF'
+      }
+    }
+  },
+
   render: function() {
     var color = this.props.color;
+    var styles = this.getStyles();
 
     return (
       <div>
@@ -225,9 +246,7 @@ module.exports = React.createClass({
         <div className="media">
           <div className="media-left">
             <a href="#">
-              <div
-                className="media-object"
-                style={{height: '64px', width: '64px', backgroundColor: '#00BFFF'}} />
+              <div className="media-object" style={styles.media} />
             </a>
           </div>
           <div className="media-body">

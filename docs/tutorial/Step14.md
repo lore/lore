@@ -31,9 +31,11 @@ function getRandomInt(min, max) {
  */
 function getBragPhrase() {
   var bragPhrases = [
-    "I'm pretty sure I nailed it.",
-    "Impressive right? Don't be shy. I know I'm awesome.",
-    "YOU'RE WELCOME."
+    "Nailed it!",
+    "I'm on fire.",
+    "YOU'RE WELCOME.",
+    "I interpret your silence as awe.",
+    "Impressive, right?"
   ];
   return bragPhrases[getRandomInt(0,bragPhrases.length - 1)];
 }
@@ -45,8 +47,8 @@ module.exports = lore.connect(function(getState, props) {
 ### Add the Speech AI
 
 Now let's give Guessatron the ability to express what he's thinking.  For that, update the `render` function of 
-`Guessatron` to get his most recent thought and display it on screen. We're going to replace the current hardcoded
-thought `I hope it is because it's the only color I know.` with his most recent thought from `bragPhrase`.
+`Guessatron` to get the most recent thought and display it on screen. We're going to replace the current hardcoded
+thought (`I hope it is because it's the only color I know`) with the value of `bragPhrase`.
  
 ```js
 render: function() {
@@ -100,9 +102,11 @@ function getRandomInt(min, max) {
  */
 function getBragPhrase() {
   var bragPhrases = [
-    "I'm pretty sure I nailed it.",
-    "Impressive right? Don't be shy. I know I'm awesome.",
-    "YOU'RE WELCOME."
+    "Nailed it!",
+    "I'm on fire.",
+    "YOU'RE WELCOME.",
+    "I interpret your silence as awe.",
+    "Impressive, right?"
   ];
   return bragPhrases[getRandomInt(0,bragPhrases.length - 1)];
 }
@@ -121,9 +125,19 @@ module.exports = lore.connect(function(getState, props) {
       color: React.PropTypes.object.isRequired
     },
 
+    getStyles: function() {
+      return {
+        media: {
+          height: '64px',
+          width: '64px',
+          backgroundColor: randomColor()
+        }
+      }
+    },
+
     render: function() {
       var color = this.props.color;
-      var generatedColor = randomColor();
+      var styles = this.getStyles();
       var bragPhrase = getBragPhrase();
 
       return (
@@ -132,9 +146,7 @@ module.exports = lore.connect(function(getState, props) {
           <div className="media">
             <div className="media-left">
               <a href="#">
-                <div
-                  className="media-object"
-                  style={{height: '64px', width: '64px', backgroundColor: generatedColor}} />
+                <div className="media-object" style={styles.media} />
               </a>
             </div>
             <div className="media-body">
@@ -153,5 +165,5 @@ module.exports = lore.connect(function(getState, props) {
 
 ## Next Steps
 
-This step concludes Part 1 of the Tutorial. In Part 2, we'll cover editing and deleting data, as well as modal dialogs 
-and displaying visual cues as to the state of data (being created, not found, etc).
+This step concludes Part 1 of the Tutorial. In Part 2 (coming soon), we'll cover editing and deleting data, as well 
+as modal dialogs and displaying visual cues as to the state of data (being created, not found, etc).

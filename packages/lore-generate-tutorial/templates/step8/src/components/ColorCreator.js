@@ -69,11 +69,11 @@ module.exports = lore.connect(function(getState, props) {
               value={this.state.newColor}
               onKeyPress={this.onKeyDownNewColor}
               onChange={this.onChangeNewColor} />
-                <span className="input-group-btn">
-                  <button className="btn btn-default" type="button" onClick={this.onCreateColor}>
-                    Create
-                  </button>
-                </span>
+            <span className="input-group-btn">
+              <button className="btn btn-default" type="button" onClick={this.onCreateColor}>
+                Create
+              </button>
+            </span>
           </div>
           <div className="list-group" style={{paddingTop: '16px'}}>
             {colors.data.map(this.renderColor)}
