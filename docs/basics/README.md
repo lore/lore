@@ -1,38 +1,33 @@
 # Basics
 
-Welcome to the Lore tutorial.  This will walk you through the basics of using Lore with a step-by-step guide you can 
-follow along with.  You can also watch a video of the tutorial below.
+This section will cover all the basic concepts you need to know to use Lore, in the way that they apply to Lore. For
+example, if you aren't familiar with Actions or Reducers (Redux concepts) it's highly recommended you learn about them
+through some of the official documentation and educational channels. But if you want to know how they're used in Lore,
+and how Lore implements them within the framework, you can learn about that here.
 
-{% youtube %}https://www.youtube.com/watch?v=xsSnOQynTHs{% endyoutube %}
+Lore takes the approach of trying to hide as much of the complexity of a React/Redux/React-Router/Webpack app as possible
+early on, following an approach of "learn about it as you need to". Starting out, you may not need to know much about
+these concepts, but as your application becomes more demanding, you may start wanting to tailor specific behaviors
+to meet your needs. The documentation for that will be here and in [Recipes](../recipes/README.md).
 
-This is the application we'll be building:
+**Concepts to Cover**
+* Actions
+* Reducers
+* Connect
+* Data Structure
+* Webpack
+* Router & Routing
 
-![Lore Tutorial App](../../images/step14-visual.png)
 
-The tutorial will be broken up into two parts.  The first will demonstrate the following features:
+### Links to external resources you might find useful
 
-1. Creating a new project
-2. Connecting components to your data store
-3. Creating data
-4. Routing
+*Redux Concepts*
+* [Getting Started With Redux (Video Series)](https://egghead.io/series/getting-started-with-redux)
+* [Actions](http://redux.js.org/docs/basics/Actions.html)
+* [Reducers](http://redux.js.org/docs/basics/Reducers.html)
 
-The second part of the tutorial will expand on part 1 and demonstrate:
+*React-Router Concepts*
+* [Routing](https://github.com/reactjs/react-router/blob/master/docs/guides/RouteConfiguration.md)
 
-1. Deleting data
-2. Launching modal dialogs
-3. Editing data
-4. Detecting and communicating state changes (how to know when data is being created, or a GET request returns a 
-404 NOT FOUND from the server)
-
-**NOTE** Lore is NOT a replacement or alternative to Redux.  It is build **on top** of Redux and is merely a set of 
-conventions and utilities to make developing React/Redux applications faster. The more comfortable you are with Redux, 
-the less magical Lore will seem. Lore is intended to reduce the learning curve for React/Redux development, by applying
-reasonable conventions around the smaller pieces (Webpack, Redux, React-Router, publishing). Also, most of Lore's magic
-relies on the assumption that the API(s) your application is using follow certain conventions, mainly that they're 
-a) flat, and b) behave consistently, similar data structures, etc. Much of the complexity in UI development comes from
-the API.  The more difficult and inconsitent the API is, the more you'll need to understand Redux, and more parts of
-Lore you will need to override.
-
-## Next Steps
-
-Start the [tutorial](./Step0a.md).
+*Webpack Concepts*
+* [Webpack Howto](https://github.com/petehunt/webpack-howto)

@@ -21,7 +21,7 @@ through a decorator Lore provides called `connect`.
 > If you're familiar with [react-redux](https://github.com/reactjs/react-redux) it's worth noting that the `connect` 
 decorator in Lore is **not** the same as the `connect` decorator in `react-redux`. Lore's version is intentionally
 dumber, and will **never** block the rendering cycle. If you're curious, you can learn more about 
-[the reason for the difference](../misc/Connect.md).
+[the reason for the difference](../basics/Connect.md).
 
 To demonstrate the `connect` decorator, we're going to revisit the component generator, but this time we're going to
 have it generate a component pre-configured to be connected to the data store. Run the following command:

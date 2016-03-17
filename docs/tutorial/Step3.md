@@ -76,7 +76,7 @@ rendering a list of colors for the Guessatron to display, we're declaring `color
 since this component isn't connected to the data store yet, we're going to hard-code some data inside `getDefaultProps`.
 
 If the data structure for `colors` looks unnecessarily complex to you, there's good reason it looks this way. We'll 
-touch on it more throughout the tutorial, and you can also learn more about it [on the doc page](../misc/DataStructure.md).
+touch on it more throughout the tutorial, and you can also learn more about it [on the doc page](../basics/DataStructure.md).
 
 ### Add ColorCreator to the Layout
 

@@ -32,7 +32,7 @@ renderColor: function(color) {
 
 The reason we're getting this warning is because when we first create a color, the color doesn't have an `id` until it 
 comes back from the server. Lore defaults to optimistic behavior (actions are assumed to succeed), which means data 
-will get rendered as soon as it's created. While you can [disable that behavior](../misc/DisablingOptimisticBehavior.md)
+will get rendered as soon as it's created. While you can [disable that behavior](../recipes/DisablingOptimisticBehavior.md)
 if you want, it's not recommended as a general practice.
 
 ### Add cid as a Key
