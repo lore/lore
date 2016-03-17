@@ -10,7 +10,7 @@ module.exports = {
 	after: require('./after'),
 	targets: function(scope) {
     var result = {};
-    result['./src/models/' + camelCase(scope.modelName) + '.js'] = { copy: './modelfile.js'};
+    result['./src/models/' + camelCase(scope.modelName) + '.js'] = { copy: './model.js'};
     return result;
 	}
 };
