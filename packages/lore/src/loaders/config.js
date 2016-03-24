@@ -11,9 +11,10 @@ function loadOtherConfigFiles() {
 // 'config/local'
 function loadLocalOverrideFile() {
   var context = require.context(__LORE_ROOT__ + '/config', false, /\local.js$/);
-  return buildDictionary(context, {
+  var dictionary = buildDictionary(context, {
     // options
   });
+  return dictionary.local || {};
 }
 
 // 'config/env/*'
