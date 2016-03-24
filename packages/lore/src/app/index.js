@@ -64,7 +64,7 @@ _.extend(Lore.prototype, {
     // Generate the final config from the combination of the overrides passed
     // into the app, the default config (calculated from the hooks), and the
     // user config for the project (loaded and compiled inside this function)
-    this.config = getConfig(configOverride, this.hooks);
+    this.config = getConfig(configOverride, this.hooks, this.environment);
 
     // Get initializers and run them
     this.initializers = getInitializers();
