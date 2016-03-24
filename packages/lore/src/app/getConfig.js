@@ -22,8 +22,8 @@ function getDefaultConfig(hooks) {
  * passed object, and builds a state object with the same shape.
  */
 
-module.exports = function getConfig(configOverride, hooks) {
+module.exports = function getConfig(configOverride, hooks, env) {
   var defaultConfig = getDefaultConfig(hooks);
-  var userConfig = configLoader.load();
+  var userConfig = configLoader.load(env);
   return _.merge({}, defaultConfig, userConfig, configOverride);
 };
