@@ -1,6 +1,7 @@
 import {type} from "./constants";
 import axios from "axios";
-import result from "lodash.result";
+import _assign from "lodash.assign";
+import _result from "lodash.result";
 
 /**
  * The lore.models "sync" function does all the heavy lifting of communicating with the server
@@ -10,7 +11,7 @@ import result from "lodash.result";
  */
 export default function sync( method, model, options = {} ) {
 
-  //build our params
+  //get our url
   let params = {type: method, url: options['url'] || model['url']};
 
   //check for URL
@@ -18,30 +19,21 @@ export default function sync( method, model, options = {} ) {
     throw new Error("An url must be provided in the model or the options for lore.models.sync")
   }
 
-  //determine the correct XHR type
-  let xhr;
-  switch ( params.type ) {
-    case type.GET:
-      xhr = axios.get;
-      break;
-    case type.POST:
-      xhr = axios.post;
-      break;
-    case type.PUT:
-      xhr = axios.put;
-      break;
-    case type.DELETE:
-      xhr = axios.delete;
-      break;
-  }
-
-  //add a payload for PUT and POST requests
+  //create a payload for PUT and POST requests
   let payload;
   if ( params.type === type.POST || params.type === type.PUT ) {
     payload = options.attrs || model.toJSON(options);
   }
 
-  //make the naive call
-  return xhr(result(params, 'url'), payload);
+  //build config object
+  let config = {
+    url: _result(params, 'url'),
+    method: params.type,
+    headers: options.headers,
+    data: payload
+  }
+
+  //override config with passed in options
+  return axios(_assign(config, options));
 
 };
