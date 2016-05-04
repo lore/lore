@@ -42,19 +42,19 @@
   * [Generate Component](/docs/cli/GenerateComponent.md)
   * Generate Task: Surge
   * Generate Initializer: Faux Server
-* Challenges
-  * Data Structure
-  * AJAX/Action Abstraction Tier
-  * Filtering
-  * Pagination
+* [Challenges](/docs/challenges/README.md)
+  * [Data Structure](/docs/challenges/DataStructure.md)
+  * [AJAX/Action Abstraction Tier](/docs/challenges/AjaxAbstraction.md)
+  * [Filtering](/docs/challenges/Filtering.md)
+  * [Pagination](/docs/challenges/Pagination.md)
   * Infinite Scrolling
-  * WebSockets (real-time)
-  * Visual Cues
-  * Optimistic Updates
+  * [WebSockets (real-time)](/docs/challenges/WebSockets.md)
+  * [Visual Cues](/docs/challenges/VisualCues.md)
+  * [Optimistic Updates](/docs/challenges/OptimisticUpdates.md)
   * Dialogs
   * Wizards
-  * Error Handling
-  * 404 Pages
+  * [Error Handling](/docs/challenges/ErrorHandling.md)
+  * [404 Pages](/docs/challenges/NotFoundPages.md)
 * [Recipes](/docs/recipes/README.md)
   * User Authentication
   * Stylesheets

@@ -12,20 +12,46 @@ Convention driven framework for React + Redux applications. Heavily opinionated 
 among other reasons, does not yet have built in support for pagination (coming soon). Additionally, the project does not 
 yet support a dedicated ES6 experience, which we know many of you will prefer (also coming soon).
 
-### Videos
+### Videos: Beginner Experience
 
-If you want to dive in and understand why Lore was created, what problems it's trying to solve, and how it solves them (or plans to solve them), please see the following videos.
+Lore's goal is to provide a framework that makes it easy to build React applications and is capable of supporting a 
+mature real-world application. To understand how the framework makes it easier to get started with React, and what
+problem it's trying to solve for beginners, please see the following videos:
 
-[React Beginner Experience](https://www.youtube.com/watch?v=pfxJ9sebMCc)
+[Challenges building a React application today from scratch](https://www.youtube.com/watch?v=pfxJ9sebMCc)
 
-[React Beginner Experience with Lore](https://www.youtube.com/watch?v=vHol_Zu58p8)
+[How Lore makes it easier to get started with React](https://www.youtube.com/watch?v=vHol_Zu58p8)
 
-[Front-end Architecture Challenges](https://www.youtube.com/watch?v=Mm4G_uUl86U)
+
+### Videos: Advanced Experience
+
+There are a lot of demands on front-end applications as they evolve to support the growing demands of the user base. 
+Lore's goal is to build support for many of those common feature concerns into the architecture. To understand how the
+client-side architecture you start with can impact your development speed as your application grows, as well as which 
+feature concerns Lore is being architected to solve for, please see the following videos:
+
+*(IN PROGRESS) Impact of your client-side architecture on development progress over time*
+
+[Feature concerns Lore is being build to address](https://www.youtube.com/watch?v=Mm4G_uUl86U)
+
+* [Data Structure](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=1m45s)
+* [AJAX Abstration Tier](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=5m38s)
+* [Filtering](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=8m45s)
+* [Pagination](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=15m14s)
+* Infinite Scrolling
+* [WebSockets (real-time)](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=18m17s)
+* [Visual Cues](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=26m32s)
+* [Optimistic Updates](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=30m16s)
+* Dialogs
+* Wizards
+* [Error Handling](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=35m13s)
+* [404 Pages](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=37m50s)
 
 
 ### Documentation
 
-You can find the documentation for Lore hosted on Gitbook at https://www.lorejs.org
+The documentation for Lore is hosted at http://www.lorejs.org
+
 
 ### Tutorial
 
