@@ -42,6 +42,19 @@
   * [Generate Component](/docs/cli/GenerateComponent.md)
   * Generate Task: Surge
   * Generate Initializer: Faux Server
+* Challenges
+  * Data Structure
+  * AJAX/Action Abstraction Tier
+  * Filtering
+  * Pagination
+  * Infinite Scrolling
+  * WebSockets (real-time)
+  * Visual Cues
+  * Optimistic Updates
+  * Dialogs
+  * Wizards
+  * Error Handling
+  * 404 Pages
 * [Recipes](/docs/recipes/README.md)
   * User Authentication
   * Stylesheets
