@@ -21,13 +21,13 @@ solve them), please see the following videos.
 This video provides a quick introduction to Lore, and touches on some key aspects of framework and the problems it's
 trying to solve. It's basically a quick summary of all the other videos mentioned below.
 
-[Beginner Experience](https://drive.google.com/open?id=0B0wmusAX_7BwRXBzVlQ1WXZZa3c)
+[React Beginner Experience](https://www.youtube.com/watch?v=pfxJ9sebMCc)
 This video talks about the beginner experience when getting started with React for the first time, and the things you 
 need to learn along the way in order to build an application suitable for production. It's intended to provide a baseline
 to point out  what the current experience looks like and what Lore does to improve it. It also calls out the libraries 
 that is built on (React, Webpack, Redux, React-Router).
 
-[Lore Project](https://drive.google.com/open?id=0B0wmusAX_7BwOVNLUjBWQ0Y5UFU)
+[React Beginner Experience with Lore](https://www.youtube.com/watch?v=vHol_Zu58p8)
 This video talks about what Lore does to improve the beginner experience, and make it easier for people to start
 developing React applications. It talks some about the design philosophy of the framework, and touches on many aspects
 of the project template the framework uses.
@@ -36,7 +36,7 @@ of the project template the framework uses.
 This video talks about the challenges involved in growing and supporting a large client-side application, and the 
 impact that your application's architecture can have on your project's development speed over time.
 
-*Advanced Use Cases (IN PROGRESS)*
+[Front-end Architecture Challenges](https://www.youtube.com/watch?v=Mm4G_uUl86U)
 This video walks through many of challenges you'll face while growing and supporting a large client-side application, 
 as well as the implementation that Lore uses (or expects to use) in order to address each of them. This video currently 
 covers application *data structure, AJAX abstraction tiers, filtering, pagination, real-time support, visual cues, 
