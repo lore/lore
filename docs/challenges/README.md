@@ -1,6 +1,6 @@
 ## Challenges
 
-This section will contain documentation for using the CLI, as well as explanations for each of the generators.
+This section contains documentation for the specific feature concerns the framework is integrating support for:
 
 * [Data Structure](DataStructure.md)
 * [AJAX/Action Abstraction Tier](AjaxAbstraction.md)

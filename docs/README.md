@@ -2,10 +2,13 @@
 
 * [Read Me](/README.md)
 * [Introduction](/docs/introduction/README.md)
+  * [Getting Started](/docs/introduction/GettingStarted.md)
+  * [Advanced Challenges](/docs/introduction/Challenges.md)
+  * [Tutorial](/docs/introduction/Tutorial.md)
+  * [CLI](/docs/introduction/CLI.md)
+  * [Recipes](/docs/introduction/Recipes.md)
   * [Examples](/docs/introduction/Examples.md)
-  * [Ecosystem](/docs/introduction/Ecosystem.md)
-  * [Boilerplate](/docs/introduction/Boilerplate.md)
-  * [Next Steps](/docs/introduction/NextSteps.md)
+  * [Philosophy](/docs/introduction/Philosophy.md)
 * [Tutorial](/docs/tutorial/README.md)
   * [Installing the CLI](/docs/tutorial/Step0a.md)
   * [Creating a Project](/docs/tutorial/Step0b.md)
@@ -35,13 +38,12 @@
   * [Extending Lore](/docs/advanced/Extending.md)
   * [Architecture](/docs/advanced/Architecture.md)
 * [CLI](/docs/cli/README.md)
-  * Generate Model
-  * Generate Collection
-  * Generate Action
-  * Generate Reducer
-  * [Generate Component](/docs/cli/GenerateComponent.md)
-  * Generate Task: Surge
-  * Generate Initializer: Faux Server
+  * generate:model
+  * generate:collection
+  * generate:action
+  * generate:reducer
+  * [generate:component](/docs/cli/GenerateComponent.md)
+  * generate:surge
 * [Challenges](/docs/challenges/README.md)
   * [Data Structure](/docs/challenges/DataStructure.md)
   * [AJAX/Action Abstraction Tier](/docs/challenges/AjaxAbstraction.md)

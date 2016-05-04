@@ -5,7 +5,8 @@
 ![lore](https://cloud.githubusercontent.com/assets/5898306/13093056/654b5c76-d4c0-11e5-8968-643aae655030.png)
 
 
-Convention driven framework for React + Redux applications. Heavily opinionated and highly respectful.
+Convention driven framework for React + Redux applications. Heavily opinionated and highly respectful. Built on 
+React, Webpack, Redux and React-Router.
 
 ### NOT FOR PRODUCTION
 **PLEASE NOTE**: Lore is not currently recommended for use in production. It is still in active development, and 

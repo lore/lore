@@ -1,6 +1,7 @@
 # Examples
 
-Lore is distributed with a few examples in its [source code](https://github.com/lore/lore/tree/master/examples).
+Lore is distributed with a few examples in its [source code](https://github.com/lore/lore/tree/master/examples). 
+If there is a specific example you'd like to see that doesn't exist, feel free to create an issue to suggest it. 
 
 ## TodoMVC
 
