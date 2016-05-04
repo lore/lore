@@ -1,13 +1,13 @@
 # Examples
 
-Lore is distributed with a few examples in its [source code](https://github.com/storcery/lore/tree/master/examples).
+Lore is distributed with a few examples in its [source code](https://github.com/lore/lore/tree/master/examples).
 
 ## TodoMVC
 
-Run the [TodoMVC](https://github.com/storcery/lore/tree/master/examples/todomvc) example:
+Run the [TodoMVC](https://github.com/lore/lore/tree/master/examples/todomvc) example:
 
 ```
-git clone https://github.com/storcery/lore.git
+git clone https://github.com/lore/lore.git
 
 cd lore/examples/todomvc
 npm install
@@ -24,10 +24,10 @@ It covers:
 
 ## Dialogs-Querying
 
-Run the [Counter](https://github.com/storcery/lore/tree/master/examples/dialogs-querying) example:
+Run the [Dialog-Querying](https://github.com/lore/lore/tree/master/examples/dialogs-querying) example:
 
 ```
-git clone https://github.com/storcery/lore.git
+git clone https://github.com/lore/lore.git
 
 cd lore/examples/dialogs-querying
 npm install

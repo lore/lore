@@ -2,7 +2,6 @@
 
 * [Read Me](/README.md)
 * [Introduction](/docs/introduction/README.md)
-  * [Motivation](/docs/introduction/Motivation.md)
   * [Examples](/docs/introduction/Examples.md)
   * [Ecosystem](/docs/introduction/Ecosystem.md)
   * [Boilerplate](/docs/introduction/Boilerplate.md)
