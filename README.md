@@ -14,36 +14,14 @@ yet support a dedicated ES6 experience, which we know many of you will prefer (a
 
 ### Videos
 
-To help you understand why Lore was created, what problems it's trying to solve, and how it solves them (or plans to 
-solve them), please see the following videos.
-
-*Introduction (IN PROGRESS)*:
-This video provides a quick introduction to Lore, and touches on some key aspects of framework and the problems it's
-trying to solve. It's basically a quick summary of all the other videos mentioned below.
+If you want to dive in and understand why Lore was created, what problems it's trying to solve, and how it solves them (or plans to solve them), please see the following videos.
 
 [React Beginner Experience](https://www.youtube.com/watch?v=pfxJ9sebMCc)
-This video talks about the beginner experience when getting started with React for the first time, and the things you 
-need to learn along the way in order to build an application suitable for production. It's intended to provide a baseline
-to point out  what the current experience looks like and what Lore does to improve it. It also calls out the libraries 
-that is built on (React, Webpack, Redux, React-Router).
 
 [React Beginner Experience with Lore](https://www.youtube.com/watch?v=vHol_Zu58p8)
-This video talks about what Lore does to improve the beginner experience, and make it easier for people to start
-developing React applications. It talks some about the design philosophy of the framework, and touches on many aspects
-of the project template the framework uses.
-
-*Advanced Experience (IN PROGRESS)*
-This video talks about the challenges involved in growing and supporting a large client-side application, and the 
-impact that your application's architecture can have on your project's development speed over time.
 
 [Front-end Architecture Challenges](https://www.youtube.com/watch?v=Mm4G_uUl86U)
-This video walks through many of challenges you'll face while growing and supporting a large client-side application, 
-as well as the implementation that Lore uses (or expects to use) in order to address each of them. This video currently 
-covers application *data structure, AJAX abstraction tiers, filtering, pagination, real-time support, visual cues, 
-optimistic updates, error handling and 404 pages*. It is currently missing videos for *infinite scrolling, dialogs and 
-mulit-step wizards*. Those will be added in the coming days, and this video will be broken up entirely and a dedicated 
-page in the documentation will be created for each challenge.
-  
+
 
 ### Documentation
 
@@ -51,11 +29,9 @@ You can find the documentation for Lore hosted on Gitbook at https://www.lorejs.
 
 ### Tutorial
 
-While Lore does have a tutorial, at the moment the videos are a far better way to learn about the framework and what it
+At the moment the videos are a far better way to learn about the framework and what it
 can do. That being said, [there is an issue](https://github.com/lore/lore/issues/90) created specifically to discuss 
-ideas for improving the tutorial, so if you have some, feel free to let me know. The goals for the tutorial are that 
-it demonstrates a large number of features in the framework, while highlighting Lore's ability to let you focus on 
-React components and not infrastructure. 
+ideas for improving the tutorial.
 
 
 ### Near-term Focus
