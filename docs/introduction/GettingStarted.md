@@ -9,4 +9,4 @@ the value proposition the framework provides to new React developers.
 To understand *how* the framework makes it easier to get started with React, the project structure, and the design 
 philosophy behind Lore, please see this video.
 
-[How Lore makes it easier to get started with React](https://www.youtube.com/watch?v=vHol_Zu58p8)
+[How Lore makes it easier to get started with React](https://www.youtube.com/watch?v=u34LnAbcfNQ)

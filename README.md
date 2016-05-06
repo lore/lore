@@ -21,7 +21,7 @@ problem it's trying to solve for beginners, please see the following videos:
 
 [Challenges building a React application today from scratch](https://www.youtube.com/watch?v=XuANgUKhs8o)
 
-[How Lore makes it easier to get started with React](https://www.youtube.com/watch?v=vHol_Zu58p8)
+[How Lore makes it easier to get started with React](https://www.youtube.com/watch?v=u34LnAbcfNQ)
 
 
 ### Videos: Advanced Experience
