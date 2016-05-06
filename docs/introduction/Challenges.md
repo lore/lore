@@ -12,14 +12,14 @@ If you're interested in learning more about the specific feature concerns the fr
 architecture, please see the following videos:
 
 * [Data Structure](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=1m45s)
-* [AJAX Abstration Tier](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=5m38s)
-* [Filtering](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=8m45s)
-* [Pagination](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=15m14s)
+* [AJAX Abstration Tier](https://www.youtube.com/watch?v=ywuTrpAdaRo)
+* [Filtering](https://www.youtube.com/watch?v=RKIGCzJfdgk)
+* [Pagination](https://www.youtube.com/watch?v=QMBdnxZvylY)
 * Infinite Scrolling
-* [WebSockets (real-time)](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=18m17s)
-* [Visual Cues](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=26m32s)
-* [Optimistic Updates](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=30m16s)
+* [WebSockets (real-time)](https://www.youtube.com/watch?v=tNPE1ZI9DIY)
+* [Visual Cues](https://www.youtube.com/watch?v=k9EDfOunw9U)
+* [Optimistic Updates](https://www.youtube.com/watch?v=0QO52YYa7hY)
 * Dialogs
 * Wizards
-* [Error Handling](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=35m13s)
-* [404 Pages](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=37m50s)
+* [Error Handling](https://www.youtube.com/watch?v=KbHK3LpK2xo)
+* [404 Pages](https://www.youtube.com/watch?v=mShvcMQEL8o)
