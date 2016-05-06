@@ -1,7 +1,5 @@
 ## WebSockets (real-time)
 
-TODO: Add video and written explanation.
+TODO: Add written explanation.
 
-Link to video clip:
-
-https://www.youtube.com/watch?v=tNPE1ZI9DIY
+{% youtube %}https://www.youtube.com/watch?v=tNPE1ZI9DIY{% endyoutube %}

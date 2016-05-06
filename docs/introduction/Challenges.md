@@ -11,15 +11,15 @@ application grows, and lays the foundation for the value proposition the framewo
 If you're interested in learning more about the specific feature concerns the framework is integrating into the
 architecture, please see the following videos:
 
-* [Data Structure](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=1m45s)
-* [AJAX Abstration Tier](https://www.youtube.com/watch?v=ywuTrpAdaRo)
-* [Filtering](https://www.youtube.com/watch?v=RKIGCzJfdgk)
-* [Pagination](https://www.youtube.com/watch?v=QMBdnxZvylY)
+* [Data Structure](../challenges/DataStructure.md)
+* [AJAX Abstration Tier](../challenges/AjaxAbstraction.md)
+* [Filtering](../challenges/Filtering.md)
+* [Pagination](../challenges/Pagination.md)
 * Infinite Scrolling
-* [WebSockets (real-time)](https://www.youtube.com/watch?v=tNPE1ZI9DIY)
-* [Visual Cues](https://www.youtube.com/watch?v=k9EDfOunw9U)
-* [Optimistic Updates](https://www.youtube.com/watch?v=0QO52YYa7hY)
+* [WebSockets (real-time)](../challenges/Pagination.md)
+* [Visual Cues](../challenges/VisualCues.md)
+* [Optimistic Updates](../challenges/OptimisticUpdates.md)
 * Dialogs
 * Wizards
-* [Error Handling](https://www.youtube.com/watch?v=KbHK3LpK2xo)
-* [404 Pages](https://www.youtube.com/watch?v=mShvcMQEL8o)
+* [Error Handling](../challenges/ErrorHandling.md)
+* [404 Pages](../challenges/NotFoundPages.md)

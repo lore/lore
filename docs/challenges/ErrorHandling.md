@@ -1,7 +1,5 @@
 ## Error Handling
 
-TODO: Add video and written explanation.
+TODO: Add written explanation.
 
-Link to video clip:
-
-https://www.youtube.com/watch?v=KbHK3LpK2xo
+{% youtube %}https://www.youtube.com/watch?v=KbHK3LpK2xo{% endyoutube %}

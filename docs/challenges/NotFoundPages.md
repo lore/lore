@@ -1,7 +1,5 @@
 ## 404 Pages
 
-TODO: Add video and written explanation.
+TODO: Add written explanation.
 
-Link to video clip:
-
-https://www.youtube.com/watch?v=mShvcMQEL8o
+{% youtube %}https://www.youtube.com/watch?v=mShvcMQEL8o{% endyoutube %}

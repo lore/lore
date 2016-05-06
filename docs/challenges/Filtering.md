@@ -1,7 +1,5 @@
 ## Filtering
 
-TODO: Add video and written explanation.
+TODO: Add written explanation.
 
-Link to video clip:
-
-https://www.youtube.com/watch?v=RKIGCzJfdgk
+{% youtube %}https://www.youtube.com/watch?v=RKIGCzJfdgk{% endyoutube %}

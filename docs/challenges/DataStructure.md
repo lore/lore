@@ -1,7 +1,5 @@
 ## Data Structure
 
-TODO: Add video and written explanation.
+TODO: Add written explanation, break out data-structure into it's own dedicated video.
 
-Link to video clip:
-
-https://www.youtube.com/watch?v=Mm4G_uUl86U&t=1m45s
+{% youtube %}https://www.youtube.com/watch?v=Mm4G_uUl86U&t=1m45s{% endyoutube %}

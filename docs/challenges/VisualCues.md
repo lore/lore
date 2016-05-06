@@ -1,7 +1,5 @@
 ## Visual Cues
 
-TODO: Add video and written explanation.
+TODO: Add written explanation.
 
-Link to video clip:
-
-https://www.youtube.com/watch?v=k9EDfOunw9U
+{% youtube %}https://www.youtube.com/watch?v=k9EDfOunw9U{% endyoutube %}

@@ -1,7 +1,5 @@
 ## Optimistic Updates
 
-TODO: Add video and written explanation.
+TODO: Add written explanation.
 
-Link to video clip:
-
-https://www.youtube.com/watch?v=0QO52YYa7hY
+{% youtube %}https://www.youtube.com/watch?v=0QO52YYa7hY{% endyoutube %}
