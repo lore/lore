@@ -12,6 +12,7 @@ module.exports = {
 	targets: function(scope) {
     return {
 
+      // root
       './.editorconfig': { copy: 'editorconfig.template' },
       './.gitignore': { copy: 'gitignore' },
       './index.html': { copy: 'index.html' },
@@ -24,46 +25,45 @@ module.exports = {
       './server.js': { copy: 'server.js' },
       './webpack.config.js': { copy: 'webpack.config.js' },
 
-      './webpack': { folder: {}},
-      './webpack/env': { folder: {}},
+      // webpack
       './webpack/config.js': { copy: 'webpack/config.js'},
       './webpack/README.md': { copy: 'webpack/README.md'},
       './webpack/env/development.js': { copy: 'webpack/env/development.js'},
       './webpack/env/production.js': { copy: 'webpack/env/production.js'},
       './webpack/env/README.md': { copy: 'webpack/env/README.md'},
 
-      './src': { folder: {}},
+      // src
       './src/README.md': { copy: 'src/README.md'},
 
-      './src/actions': { folder: {}},
+      // actions
       './src/actions/README.md': { copy: 'src/actions/README.md'},
 
-      './src/collections': { folder: {}},
+      // collections
       './src/collections/README.md': { copy: 'src/collections/README.md'},
 
-      './src/components': { folder: {}},
+      // components
       './src/components/README.md': { copy: 'src/components/README.md'},
       './src/components/Layout.js': { copy: 'src/components/Layout.js'},
       './src/components/Master.js': { copy: 'src/components/Master.js'},
 
-      './src/constants': { folder: {}},
+      // constants
       './src/constants/README.md': { copy: 'src/constants/README.md'},
       './src/constants/ActionTypes.js': { copy: 'src/constants/ActionTypes.js'},
       './src/constants/PayloadStates.js': { copy: 'src/constants/PayloadStates.js'},
 
-      './src/dialogs': { folder: {}},
+      // dialogs
       './src/dialogs/.gitkeep': { copy: '.gitkeep'},
 
-      './src/mixins': { folder: {}},
+      // mixins
       './src/mixins/.gitkeep': { copy: '.gitkeep'},
 
-      './src/models': { folder: {}},
+      // mixins
       './src/models/README.md': { copy: 'src/models/README.md'},
 
-      './src/reducers': { folder: {}},
+      // reducers
       './src/reducers/README.md': { copy: 'src/reducers/README.md'},
 
-      './config': { folder: {}},
+      // config
       './config/actionBlueprints.js': { copy: 'config/actionBlueprints.js'},
       './config/actions.js': { copy: 'config/actions.js'},
       './config/collections.js': { copy: 'config/collections.js'},
@@ -78,17 +78,16 @@ module.exports = {
       './config/router.js': { copy: 'config/router.js'},
       './config/README.md': { copy: 'config/README.md'},
 
-      './config/env': { folder: {}},
+      // config/env
       './config/env/development.js': { copy: 'config/env/development.js'},
       './config/env/production.js': { copy: 'config/env/production.js'},
       './config/env/README.md': { copy: 'config/env/README.md'},
 
-      './gulp': { folder: {}},
-      './gulp/tasks': { folder: {}},
+      // gulp
       './gulp/tasks/default.js': { copy: 'gulp/tasks/default.js'},
       './gulp/tasks/README.md': { copy: 'gulp/tasks/README.md'},
 
-      './initializers': { folder: {}},
+      // initializers
       './initializers/REAMDE.md': { copy: 'initializers/README.md'}
 
     };

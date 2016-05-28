@@ -24,7 +24,7 @@ module.exports = function(scope) {
     if(fs.existsSync(scope.rootPath)) {
       var files = fs.readdirSync(scope.rootPath);
       if (files.length > 0) {
-        throw new Error('Couldn\'t create a new Lore app in "'+scope.rootPath+'" (directory already exists and is not empty)');
+        throw new Error("Couldn't create a new Lore app in '" + scope.rootPath + "' (directory already exists and is not empty)");
       }
     }
   });
