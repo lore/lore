@@ -75,7 +75,7 @@ describe('hooks#actions#load', function() {
                 },
                 onSuccess: {
                   actionType: ActionTypes.update('todo'),
-                  payloadState: PayloadStates.EXISTS
+                  payloadState: PayloadStates.RESOLVED
                 },
                 onError: {
                   actionType: ActionTypes.remove('todo'),

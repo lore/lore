@@ -18,7 +18,7 @@ module.exports = function(modelName, models) {
 
     onSuccess: {
       actionType: ActionTypes.update(modelName),
-      payloadState: PayloadStates.EXISTS
+      payloadState: PayloadStates.RESOLVED
     },
 
     onError: {

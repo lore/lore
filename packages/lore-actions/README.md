@@ -23,7 +23,7 @@ module.exports = {
 
   onSuccess: {
     actionType: ActionTypes.UPDATE_TODO,
-    payloadState: PayloadStates.EXISTS
+    payloadState: PayloadStates.RESOLVED
   },
 
   onError: {

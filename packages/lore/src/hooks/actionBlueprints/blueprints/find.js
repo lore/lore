@@ -32,7 +32,7 @@ module.exports = function(collectionName, collections) {
       }).then(function () {
         dispatch({
           type: ActionTypes.fetchPlural(collectionName),
-          payload: hackPayloadCollection(collection, query, PayloadStates.EXISTS),
+          payload: hackPayloadCollection(collection, query, PayloadStates.RESOLVED),
           query: query
         })
       }).catch(function (response) {
