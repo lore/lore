@@ -52,12 +52,6 @@
     "babel-loader": "6.2.3",
     "babel-preset-es2015": "6.5.0",
     "babel-preset-react": "6.5.0",
-    "browser-sync": "2.11.1",
-    "del": "2.2.0",
-    "gitbook-cli": "2.1.2",
-    "gulp": "3.9.1",
-    "gulp-sequence": "0.4.5",
-    "gulp-shell": "0.5.2",
     "lerna": "1.1.2"
   },
   "peerDependencies": {}
