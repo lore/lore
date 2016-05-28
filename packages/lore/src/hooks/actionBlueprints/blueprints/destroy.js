@@ -18,12 +18,17 @@ module.exports = function(modelName, models) {
 
     onSuccess: {
       actionType: ActionTypes.remove(modelName),
-      payloadState: PayloadStates.NONEXISTENT
+      payloadState: PayloadStates.RESOLVED
     },
 
     onError: {
       actionType: ActionTypes.update(modelName),
       payloadState: PayloadStates.ERROR_DELETING
+    },
+
+    onNotFound: {
+      actionType: ActionTypes.update(modelName),
+      payloadState: PayloadStates.NOT_FOUND
     }
 
   };

@@ -24,6 +24,11 @@ module.exports = function(modelName, models) {
     onError: {
       actionType: ActionTypes.update(modelName),
       payloadState: PayloadStates.ERROR_FETCHING
+    },
+
+    onNotFound: {
+      actionType: ActionTypes.update(modelName),
+      payloadState: PayloadStates.NOT_FOUND
     }
   }
 };

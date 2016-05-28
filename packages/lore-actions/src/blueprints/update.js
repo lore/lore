@@ -34,8 +34,24 @@ module.exports = function(opts = {}) {
           });
         }
       }).catch(function(response) {
-        if (options.onError) {
-          const error = response.responseJSON;
+        const error = response.responseJSON;
+
+        if (response.status === 404) {
+          if (options.onNotFound) {
+
+            if (options.onNotFound.beforeDispatch) {
+              options.onNotFound.beforeDispatch(response, [model]);
+            }
+
+            dispatch({
+              type: options.onNotFound.actionType,
+              payload: _.merge(model, {
+                state: options.onNotFound.payloadState,
+                error: error
+              })
+            });
+          }
+        } else if (options.onError) {
 
           if (options.onError.beforeDispatch) {
             options.onError.beforeDispatch(response, [model, params]);
