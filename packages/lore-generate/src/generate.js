@@ -20,7 +20,9 @@ module.exports = generate = function(Generator, scope) {
       var target = targets[keyPath];
       var err;
 
-      if (!target) throw new Error('Generator error: Invalid target: {"' + keyPath + '": ' + util.inspect(target) + '}');
+      if (!target) {
+        throw new Error('Generator error: Invalid target: {"' + keyPath + '": ' + util.inspect(target) + '}');
+      }
 
       var targetScope = _.merge({}, scope, {
         rootPath: path.resolve(scope.rootPath, keyPath),
