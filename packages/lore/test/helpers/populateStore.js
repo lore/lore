@@ -24,7 +24,7 @@ function dispatchModel(store, modelName, data) {
   // update the store
   var action = {
     type: ActionTypes.add(modelName),
-    payload: utils.payload(model, PayloadStates.EXISTS)
+    payload: utils.payload(model, PayloadStates.RESOLVED)
   };
 
   // Dispatch the action - this will immediately update the store
