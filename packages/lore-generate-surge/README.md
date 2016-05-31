@@ -1,3 +1,3 @@
 # lore-generate-surge
 
-<!-- generator description goes here -->
+Adds a gulp task for publishing a Lore project to [Surge](https://surge.sh/)

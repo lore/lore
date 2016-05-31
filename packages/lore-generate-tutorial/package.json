@@ -2,7 +2,7 @@
   "name": "lore-generate-tutorial",
   "version": "0.6.24",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "index.js",
   "description": "Generates code for the Lore tutorial",
   "keywords": [
     "lore",
@@ -12,6 +12,7 @@
     "test": "NODE_ENV=test mocha --recursive"
   },
   "dependencies": {
+    "lore-generate": "^0.6.18",
     "bluebird": "3.1.1",
     "lodash": "3.10.1"
   },

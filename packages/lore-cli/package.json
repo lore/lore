@@ -19,18 +19,17 @@
     "test": "NODE_ENV=test mocha --recursive"
   },
   "dependencies": {
-    "commander": "2.9.0",
     "lodash": "3.10.1",
-    "lore": "0.6.1",
-    "lore-generate": "^0.6.18",
-    "lore-generate-new": "^0.6.18",
-    "lore-generate-generator": "^0.6.12",
-    "lore-generate-model": "^0.6.12",
     "lore-generate-collection": "^0.6.12",
     "lore-generate-component": "^0.6.19",
+    "lore-generate-generator": "^0.6.12",
+    "lore-generate-model": "^0.6.12",
+    "lore-generate-new": "^0.6.18",
     "lore-generate-reducer": "^0.6.12",
     "lore-generate-surge": "^0.6.12",
-    "lore-generate-tutorial": "^0.6.18"
+    "lore-generate-tutorial": "^0.6.18",
+    "lore-generate-tutorial-server": "^0.6.18",
+    "nested-yargs": "^1.0.7"
   },
   "devDependencies": {
     "bluebird": "3.1.1",

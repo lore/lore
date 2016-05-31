@@ -1,3 +1,3 @@
 # lore-generate-generator
 
-A generator for Lore.js generators.
+A generator for creating Lore generators.
