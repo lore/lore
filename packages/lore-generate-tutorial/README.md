@@ -1,3 +1,3 @@
 # lore-generate-tutorial
 
-<!-- generator description goes here -->
+Generates the code used for each step in the Lore tutorial.

@@ -1,3 +1,3 @@
 # lore-generate-new
 
-A generator for Lore.js.
+Creates a new Lore application.

@@ -1,3 +1,3 @@
 # <%= appName %>
 
-A [Lore](http://lorejs.org) application.
+A [Lore](http://www.lorejs.org) application.

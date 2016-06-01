@@ -2,8 +2,8 @@
   "name": "<%= generatorName %>",
   "version": "0.1.0",
   "license": "MIT",
-  "main": "src/index.js",
-  "description": "<%= generatorDescription %>",
+  "main": "index.js",
+  "description": "A generator for the Lore CLI",
   "keywords": [
     "lore",
     "generator"
@@ -12,6 +12,7 @@
     "test": "NODE_ENV=test mocha --recursive"
   },
   "dependencies": {
+    "lore-generate": "^0.6.18",
     "bluebird": "3.1.1",
     "lodash": "3.10.1"
   },
