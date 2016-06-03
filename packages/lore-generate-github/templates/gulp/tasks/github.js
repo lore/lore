@@ -1,24 +1,24 @@
 'use strict';
 
-var gulp              = require('gulp');
-var gutil             = require('gulp-util');
-var webpack           = require('webpack');
-var clean             = require('gulp-clean');
-var argv              = require('yargs').argv;
-var surge             = require('gulp-surge');
-var gulpSequence      = require('gulp-sequence');
+var gulp         = require('gulp');
+var gutil        = require('gulp-util');
+var webpack      = require('webpack');
+var clean        = require('gulp-clean');
+var argv         = require('yargs').argv;
+var gulpSequence = require('gulp-sequence');
+var githubPages  = require('gulp-gh-pages');
 
 var config = {
   dest: './tmp',
   webpack: '../../webpack.config.js',
-  domain: '', // <= todo: change this to your-custom-domain.surge.sh
+  branch: 'gh-pages', // <= change this to 'master' to publish to username.github.io
   env: 'production'
 };
 
 /**
  * Run webpack, making sure to load the config and set the NODE_ENV
  */
-gulp.task('surge:webpack', ['surge:config'], function(callback) {
+gulp.task('github:webpack', ['github:config'], function(callback) {
   process.env.NODE_ENV = config.env;
   var webpackConfig = require(config.webpack);
   var myConfig = Object.create(webpackConfig);
@@ -48,26 +48,26 @@ gulp.task('surge:webpack', ['surge:config'], function(callback) {
 /**
  * Build the project and copy the index.html file into the resulting directory
  */
-gulp.task('surge:build', ['surge:webpack'], function() {
+gulp.task('github:build', ['github:webpack'], function() {
   return gulp.src(['./index.html'], {
     base: './'
   }).pipe(gulp.dest(config.dest));
 });
 
 /**
- * Push project to Surge
+ * Push project to GitHub Pages
  */
-gulp.task('surge:publish', function(cb) {
-  return surge({
-    project: config.dest,  // Path to your static build directory
-    domain: config.domain  // Your domain or Surge subdomain
-  }).on('close', cb);
+gulp.task('github:publish', function() {
+  return gulp.src(config.dest + '/**/**')
+    .pipe(githubPages({
+      branch: config.branch
+    }));
 });
 
 /**
  * Remove any generated artifacts
  */
-gulp.task('surge:clean',  function() {
+gulp.task('github:clean',  function() {
   return gulp.src([
     config.dest
   ]).pipe(clean());
@@ -76,8 +76,8 @@ gulp.task('surge:clean',  function() {
 /**
  * Override configuration defaults if provided as command line arguments
  */
-gulp.task('surge:config',  function() {
-  config.domain = argv.domain || config.domain;
+gulp.task('github:config',  function() {
+  config.branch = argv.branch || config.branch;
   config.webpack = argv.webpack || config.webpack;
   config.env = argv.env || config.env;
 });
@@ -85,12 +85,12 @@ gulp.task('surge:config',  function() {
 /**
  * Build the project and publish to the web
  */
-gulp.task('surge', function(cb) {
+gulp.task('github', function(cb) {
   gulpSequence(
-    'surge:clean',
-    'surge:build',
-    'surge:publish',
-    'surge:clean',
+    'github:clean',
+    'github:build',
+    'github:publish',
+    'github:clean',
     cb
   );
 });
