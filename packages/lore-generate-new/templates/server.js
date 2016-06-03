@@ -12,6 +12,18 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config');
+var url = require('url');
+var _ = require('lodash');
+
+function getDevServerPort() {
+  var devServerEntry = _.find(config.entry, function(entry) {
+    return entry.indexOf('webpack-dev-server/client?') === 0;
+  });
+  var devServer = devServerEntry.split('?')[1];
+  return url.parse(devServer).port;
+}
+
+var PORT = getDevServerPort();
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
@@ -20,10 +32,10 @@ new WebpackDevServer(webpack(config), {
   stats: {
     colors: true
   }
-}).listen(3000, 'localhost', function (err) {
+}).listen(PORT, 'localhost', function (err) {
   if (err) {
     console.log(err);
   }
 
-  console.log('Listening at localhost:3000');
+  console.log('Listening at localhost:' + PORT);
 });

@@ -21,7 +21,6 @@ module.exports = Generator.extend({
         'gulp-sequence@0.4.5',
         'gulp-surge@0.1.0',
         'gulp-util@3.0.7',
-        'yargs@4.2.0',
         '--save-dev'
       ], {
         stdio: 'inherit'
