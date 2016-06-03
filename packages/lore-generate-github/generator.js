@@ -19,7 +19,7 @@ module.exports = Generator.extend({
         'gulp@3.9.1',
         'gulp-clean@0.3.1',
         'gulp-sequence@0.4.5',
-        'gulp-surge@0.1.0',
+        'gulp-gh-pages@0.5.4',
         'gulp-util@3.0.7',
         'yargs@4.2.0',
         '--save-dev'
@@ -44,23 +44,13 @@ module.exports = Generator.extend({
     logger.info();
     logger.info('Publishing Instructions');
     logger.info('-----------------------');
-    logger.info('Run `gulp surge` to publish your project to surge.');
+    logger.info('Run `gulp github` to publish your project to GitHub Pages.');
     logger.info();
-    logger.info('The script will pause once you see this screen:');
+    logger.info('Note that unless you plan on using a custom domain, you will have to modify');
+    logger.info('your index.html and routes.js files to prepend the name of your repository');
+    logger.info('before your application will work correctly on GitHub Pages.');
     logger.info();
-    logger.info('    Surge - surge.sh');
-    logger.info();
-    logger.info('    email: name@email.com');
-    logger.info('    token: *****************');
-    logger.info('    project path: /users/username/lore-project/tmp');
-    logger.info('    size: 2 files, 2.3 MB');
-    logger.info('    domain: frozen-tunda.surge.sh');
-    logger.info();
-    logger.info('To proceed, either hit enter to accept the randomly generated domain, or delete it and replace it with your own.');
-    logger.info();
-    logger.info('You can also set the domain your project is published to by running `gulp surge --domain=your-custom-subdomain.surge.sh`');
-    logger.info('If you want to set a default domain the task always publishes to, modify `config.domain` in `gulp/tasks/surge.sh`');
-    logger.info();
+    logger.info('See the docs for additional information.');
   },
 
   after: function(options, targets) {
@@ -71,12 +61,12 @@ module.exports = Generator.extend({
       .then(this.installDependencies.bind(this))
       .then(this.displayUsageInstructions.bind(this))
       .then(function() {
-        logger.info('Created gulp task for publishing to surge.sh at `' + dest + '`. See usage instructions above.');
+        logger.info('Created gulp task for publishing to GitHub Pages `' + dest + '`. See usage instructions above.');
       });
   },
 
   targets: {
-    './gulp/tasks/surge.js': { copy: 'gulp/tasks/surge.js'}
+    './gulp/tasks/github.js': { copy: 'gulp/tasks/github.js'}
   }
 
 });

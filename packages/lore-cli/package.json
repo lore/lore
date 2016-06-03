@@ -23,6 +23,7 @@
     "lore-generate-collection": "^0.6.12",
     "lore-generate-component": "^0.6.19",
     "lore-generate-generator": "^0.6.12",
+    "lore-generate-github": "^0.6.12",
     "lore-generate-model": "^0.6.12",
     "lore-generate-new": "^0.6.18",
     "lore-generate-reducer": "^0.6.12",
