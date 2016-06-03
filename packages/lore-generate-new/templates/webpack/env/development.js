@@ -10,10 +10,11 @@ var webpack = require('webpack');
 
 module.exports = function(settings) {
   var APP_ROOT = settings.APP_ROOT;
+  var PORT = settings.PORT;
 
   return {
     entry: [
-      'webpack-dev-server/client?http://localhost:3000',
+      'webpack-dev-server/client?http://localhost:' + PORT,
       'webpack/hot/only-dev-server',
       './index'
     ],

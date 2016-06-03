@@ -21,9 +21,11 @@
 var requireDir = require('require-dir');
 var _ = require('lodash');
 var envConfigs = requireDir('./webpack/env');
+var yargs = require('yargs');
 
 var settings = {
-  APP_ROOT: __dirname
+  APP_ROOT: __dirname,
+  PORT: yargs.argv.port || 3000
 };
 
 // build the base webpack config
