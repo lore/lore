@@ -17,7 +17,7 @@ module.exports = {
     },
 
     handler: function(argv) {
-      var generator = new Generator();
+      var generator = new Generator(argv);
       generator.generate(argv);
     }
   }
