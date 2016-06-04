@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var package = require('../package.json');
 var Cli = require('nested-yargs');
 
