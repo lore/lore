@@ -5,7 +5,7 @@ var extend = require('./extend');
 var FileWriterFactory = require('../FileWriterFactory');
 var Target = require('../Target');
 var fs = require('fs-extra');
-var getLogger = require('./getLogger');
+var Logger = require('../Logger');
 
 /**
  * The Generator class constructor. Exposes the following fields for use:
@@ -13,9 +13,9 @@ var getLogger = require('./getLogger');
  * generator.generate
  *
  */
-var Generator = function() {
+var Generator = function(options) {
   this.fileWriterFactory = new FileWriterFactory();
-  this.logger = getLogger();
+  this.logger = new Logger(options);
 };
 
 _.extend(Generator.prototype, {

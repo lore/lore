@@ -18,7 +18,23 @@ function commandify(module) {
   options.options = options.options || {};
   options.options.force = {
     description: 'Overwrite existing files',
-      type: 'boolean'
+      type: 'boolean',
+      default: false
+  };
+
+  // expose --logLevel on all commands
+  options.options.logLevel = {
+    description: 'Desired level of logging output',
+    type: 'string',
+    choices: [
+      'trace',
+      'debug',
+      'log',
+      'info',
+      'warn',
+      'error'
+    ],
+    default: 'info'
   };
 
   return Cli.createCommand(name, description, options);
