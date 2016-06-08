@@ -13,22 +13,22 @@ React, Webpack, Redux and React-Router.
 among other reasons, does not yet have built in support for pagination (coming soon). Additionally, the project does not 
 yet support a dedicated ES6 experience, which we know many of you will prefer (also coming soon).
 
-### Videos: Beginner Experience
+### Orientation
 
 Lore's goal is to provide a framework that makes it easy to build React applications and is capable of supporting a 
 mature real-world application. To understand how the framework makes it easier to get started with React, and what
-problem it's trying to solve for beginners, please see the following videos:
+problems it's trying to solve, please see [the intro video on the homepage](http://www.lorejs.org) or through 
+[this direct link](https://www.youtube.com/watch?v=u3cK4fz1GNg).
 
-[Challenges building a React application today from scratch](http://www.lorejs.org/getting-started/building-your-first-react-app/)
+If you're new to React, you may be interested in this video discussing 
+[the challenges building a React application from scratch](http://www.lorejs.org/getting-started/building-your-first-react-app/) 
+as additional context on how Lore reduces the learning curve for React development.
 
-[How Lore makes it easier to get started with React](http://www.lorejs.org/getting-started/introduction-to-lore/)
-
-
-### Videos: Advanced Experience
+### Features
 
 There are a lot of demands on front-end applications as they evolve to support the growing demands of the user base. 
 Lore's goal is to build support for many of those common feature concerns into the architecture. Below is a list of UI
-concerns Lore is being built to address, with a link to their documentation page:
+concerns Lore addresses or is planning to address, linked to their documentation page:
 
 * [Data Structure](http://www.lorejs.org/features/challenges/data-structure/)
 * [AJAX Abstration Tier](http://www.lorejs.org/features/challenges/ajax-abstraction/)
