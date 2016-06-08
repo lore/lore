@@ -8,7 +8,7 @@
 Convention driven framework for React + Redux applications. Heavily opinionated and highly respectful. Built on 
 React, Webpack, Redux and React-Router.
 
-### NOT FOR PRODUCTION
+### NOT RECOMMENDED FOR PRODUCTION
 **PLEASE NOTE**: Lore is not currently recommended for use in production. It is still in active development, and 
 among other reasons, does not yet have built in support for pagination (coming soon). Additionally, the project does not 
 yet support a dedicated ES6 experience, which we know many of you will prefer (also coming soon).
@@ -19,56 +19,55 @@ Lore's goal is to provide a framework that makes it easy to build React applicat
 mature real-world application. To understand how the framework makes it easier to get started with React, and what
 problem it's trying to solve for beginners, please see the following videos:
 
-[Challenges building a React application today from scratch](https://www.youtube.com/watch?v=XuANgUKhs8o)
+[Challenges building a React application today from scratch](http://www.lorejs.org/getting-started/building-your-first-react-app/)
 
-[How Lore makes it easier to get started with React](https://www.youtube.com/watch?v=u34LnAbcfNQ)
+[How Lore makes it easier to get started with React](http://www.lorejs.org/getting-started/introduction-to-lore/)
 
 
 ### Videos: Advanced Experience
 
 There are a lot of demands on front-end applications as they evolve to support the growing demands of the user base. 
-Lore's goal is to build support for many of those common feature concerns into the architecture. To understand how the
-client-side architecture you start with can impact your development speed as your application grows, as well as which 
-feature concerns Lore is being architected to solve for, please see the following videos:
+Lore's goal is to build support for many of those common feature concerns into the architecture. Below is a list of UI
+concerns Lore is being built to address, with a link to their documentation page:
 
-_[IN PROGRESS] Impact of your client-side architecture on development progress over time_
-
-* [Data Structure](https://www.youtube.com/watch?v=Mm4G_uUl86U&t=1m45s)
-* [AJAX Abstration Tier](https://www.youtube.com/watch?v=ywuTrpAdaRo)
-* [Filtering](https://www.youtube.com/watch?v=RKIGCzJfdgk)
-* [Pagination](https://www.youtube.com/watch?v=QMBdnxZvylY)
-* Infinite Scrolling
-* [WebSockets (real-time)](https://www.youtube.com/watch?v=tNPE1ZI9DIY)
-* [Visual Cues](https://www.youtube.com/watch?v=k9EDfOunw9U)
-* [Optimistic Updates](https://www.youtube.com/watch?v=0QO52YYa7hY)
-* Dialogs
-* Wizards
-* [Error Handling](https://www.youtube.com/watch?v=KbHK3LpK2xo)
-* [404 Pages](https://www.youtube.com/watch?v=mShvcMQEL8o)
+* [Data Structure](http://www.lorejs.org/features/challenges/data-structure/)
+* [AJAX Abstration Tier](http://www.lorejs.org/features/challenges/ajax-abstraction/)
+* [Filtering](http://www.lorejs.org/features/challenges/filtering/)
+* [Pagination](http://www.lorejs.org/features/challenges/pagination/)
+* [Infinite Scrolling](http://www.lorejs.org/features/challenges/infinite-scrolling/)
+* [WebSockets (real-time)](http://www.lorejs.org/features/challenges/websockets/)
+* [Visual Cues](http://www.lorejs.org/features/challenges/visual-cues/)
+* [Optimistic Updates](http://www.lorejs.org/features/challenges/optimistic-updates/)
+* [Dialogs](http://www.lorejs.org/features/challenges/dialogs/)
+* [Wizards](http://www.lorejs.org/features/challenges/wizards/)
+* [Error Handling](http://www.lorejs.org/features/challenges/error-handling/)
+* [404 Pages](http://www.lorejs.org/features/challenges/404-pages/)
 
 
 ### Documentation
 
-The documentation for Lore is hosted at http://www.lorejs.org
+The documentation for Lore is hosted at http://www.lorejs.org.
 
 
 ### Tutorial
 
 At the moment the videos are a far better way to learn about the framework and what it
-can do. That being said, [there is an issue](https://github.com/lore/lore/issues/90) created specifically to discuss 
-ideas for improving the tutorial.
+can do. That being said, there are issues created specifically to discuss ideas for improving 
+the tutorials.
+
+* [Beginner](https://github.com/lore/lore/issues/101)
+* [Intermediate](https://github.com/lore/lore/issues/102)
+* [Advanced](https://github.com/lore/lore/issues/103)
 
 
 ### Near-term Focus
 
 Since Lore is still in active development, I'm going to list the things that have immediate focus here.
 
-1. Finish uploading missing videos mentioned above.
-2. Clean up docs & give each challenge mentioned in "Advanced Use Cases" a dedicated doc page
-3. Upgrade react-router to v2
-4. Support ES6 version of the new project template
-5. Support ES6 versions of all the generators
-6. Add support for pagination
+1. Add flag to generate new project template in ES6 syntax (currently a mix of ES5 and ES6)
+2. Upgrade react-router to v2
+3. Clean up all ES6 generator templates (and routing to the ones that should have routing)
+4. Verify lore.connect works as an ESNext decorator (@lore.connect snyax)
 
 
 ### Thanks
