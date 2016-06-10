@@ -8,10 +8,6 @@
 Convention driven framework for React + Redux applications. Heavily opinionated and highly respectful. Built on 
 React, Webpack, Redux and React-Router.
 
-### NOT RECOMMENDED FOR PRODUCTION
-**PLEASE NOTE**: Lore is not currently recommended for use in production. It is still in active development, and 
-among other reasons, does not yet have built in support for pagination (coming soon). Additionally, the project does not 
-yet support a dedicated ES6 experience, which we know many of you will prefer (also coming soon).
 
 ### Orientation
 
