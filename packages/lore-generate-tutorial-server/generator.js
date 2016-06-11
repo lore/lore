@@ -75,7 +75,7 @@ module.exports = Generator.extend({
       'views/homepage.ejs',
       'views/layout.ejs',
       '.editorconfig',
-      '.gitignore',
+      '.npmignore',
       '.sailsrc',
       'app.js',
       'package.json',
