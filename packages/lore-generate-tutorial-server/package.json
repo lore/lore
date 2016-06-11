@@ -1,6 +1,6 @@
 {
   "name": "lore-generate-tutorial-server",
-  "version": "0.6.27",
+  "version": "0.6.29",
   "license": "MIT",
   "main": "index.js",
   "description": "Generates the API server for the Lore tutorial",
