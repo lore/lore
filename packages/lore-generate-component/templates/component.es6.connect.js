@@ -23,9 +23,7 @@ class <%= componentName %> extends Component {
   //models: React.PropTypes.object.isRequired
 };
 
-// NOTE: Please see https://github.com/lore/lore/issues/71 for a discussion
-// about why this template is not yet using the ES6 'export' syntax.
-module.exports = lore.connect((getState, props) => {
+export default lore.connect((getState, props) => {
   return {
     //models: getState('model.find')
   };

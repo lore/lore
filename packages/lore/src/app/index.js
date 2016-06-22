@@ -96,7 +96,9 @@ _.extend(Lore.prototype, {
 
     var store = this.store;
     var routes = this.loader.loadRoutes();
-    var history = this.config.router.history;
+
+    var router = this.config.router;
+    var history = router.default ? router.default.history : router.history;
 
     mount(store, routes, history, function() {
       // this.log.info('App summoned from lore!');

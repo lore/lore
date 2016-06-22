@@ -27,6 +27,4 @@ class <%= componentName %> extends Component {
 
 <%= componentName %>.propTypes = {};
 
-// NOTE: Please see https://github.com/lore/lore/issues/71 for a discussion
-// about why this template is not yet using the ES6 'export' syntax.
-module.exports = <%= componentName %>;
+export default <%= componentName %>;

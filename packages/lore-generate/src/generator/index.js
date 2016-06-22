@@ -6,6 +6,7 @@ var FileWriterFactory = require('../FileWriterFactory');
 var Target = require('../Target');
 var fs = require('fs-extra');
 var Logger = require('../Logger');
+var rc = require('rc');
 
 /**
  * The Generator class constructor. Exposes the following fields for use:
@@ -16,6 +17,11 @@ var Logger = require('../Logger');
 var Generator = function(options) {
   this.fileWriterFactory = new FileWriterFactory();
   this.logger = new Logger(options);
+  this.lorerc = rc('lore', {
+    generators: {
+      language: "es5"
+    }
+  });
 };
 
 _.extend(Generator.prototype, {
@@ -84,6 +90,11 @@ _.extend(Generator.prototype, {
     var fileWriterFactory = this.fileWriterFactory;
     var templatesDirectory = this.getTemplatesDirectory();
     var projectDirectory = options.projectDirectory;
+
+    // Set the language the generator should use (globally set in .lorerc, can be overrideen by CLI arguments)
+    if (this.lorerc.generators.language === 'es6') {
+      options.es6 = true;
+    }
 
     // The `targets` property can be an object or a function, so get the value accordingly
     var files = _.isPlainObject(this.targets) ? this.targets : this.targets(options);

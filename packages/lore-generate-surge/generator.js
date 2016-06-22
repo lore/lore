@@ -74,8 +74,16 @@ module.exports = Generator.extend({
       });
   },
 
-  targets: {
-    './gulp/tasks/surge.js': { copy: 'gulp/tasks/surge.js'}
+  targets: function(options) {
+    if (options.es6) {
+      return {
+        './gulp/tasks/surge.js': { copy: 'gulp/tasks/surge.es6.js'}
+      };
+    } else {
+      return {
+        './gulp/tasks/surge.js': { copy: 'gulp/tasks/surge.es5.js'}
+      };
+    }
   }
 
 });
