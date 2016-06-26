@@ -64,8 +64,16 @@ module.exports = Generator.extend({
       });
   },
 
-  targets: {
-    './gulp/tasks/github.js': { copy: 'gulp/tasks/github.js'}
+  targets: function(options) {
+    if (options.es6) {
+      return {
+        './gulp/tasks/github.js': { copy: 'gulp/tasks/github.es6.js'}
+      };
+    } else {
+      return {
+        './gulp/tasks/github.js': { copy: 'gulp/tasks/github.es5.js'}
+      };
+    }
   }
 
 });

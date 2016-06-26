@@ -1,0 +1,51 @@
+{
+  "name": "<%= appName %>",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A Lore application",
+  "main": "server.js",
+  "keywords": [],
+  "scripts": {
+    "start": "node server.js",
+    "test": "NODE_ENV=test mocha --recursive"
+  },
+  "dependencies": {
+    "classnames": "2.1.3",
+    "history": "1.17.0",
+    "invariant": "2.1.0",
+    "jquery": "2.1.4",
+    "lodash": "3.10.1",
+    "lore": "^0.6.16",
+    "moment": "2.10.3",
+    "react": "0.14.3",
+    "react-dom": "0.14.2",
+    "react-redux": "4.0.0",
+    "react-router": "1.0.3",
+    "react-tap-event-plugin": "0.2.1",
+    "redux": "3.0.1",
+    "redux-thunk": "1.0.0",
+    "require-dir": "0.3.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.4.5",
+    "babel-core": "6.2.1",
+    "babel-loader": "6.2.2",
+    "babel-preset-es2015": "6.5.0",
+    "babel-preset-react": "6.5.0",
+    "css-loader": "0.21.0",
+    "file-loader": "0.8.4",
+    "gulp": "3.9.1",
+    "json-loader": "0.5.4",
+    "less": "2.5.1",
+    "less-loader": "2.2.0",
+    "mocha": "2.3.4",
+    "normalize.css": "3.0.3",
+    "react-hot-loader": "1.2.8",
+    "redux-devtools": "2.1.5",
+    "style-loader": "0.13.0",
+    "webpack": "1.10.5",
+    "webpack-dev-server": "1.10.1",
+    "yargs": "^4.7.1"
+  }
+}
+

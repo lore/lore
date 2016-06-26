@@ -13,6 +13,10 @@ module.exports = {
       appName: {
         description: 'Name of the application',
         type: 'string'
+      },
+      es6: {
+        alias: '6',
+        describe: 'Generate an ES6 version of the project'
       }
     },
 

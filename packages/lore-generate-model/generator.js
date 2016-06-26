@@ -16,7 +16,14 @@ module.exports = Generator.extend({
 
   targets: function(options) {
     var result = {};
-    result['./src/models/' + camelCase(options.modelName) + '.js'] = { copy: './model.js'};
+    var filename = './src/models/' + camelCase(options.modelName) + '.js';
+
+    if (options.es6) {
+      result[filename] = { copy: './model.es6.js'};
+    } else {
+      result[filename] = { copy: './model.es5.js'};
+    }
+    
     return result;
   }
 
