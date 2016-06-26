@@ -1,7 +1,10 @@
 module.exports = {
 
   load: function() {
-    return require(__LORE_ROOT__ + '/routes.js');
+    var routes = require(__LORE_ROOT__ + '/routes.js');
+
+    // ES6 hack around: return .default if it exists.
+    return routes.default ? routes.default : routes;
   }
 
 };
