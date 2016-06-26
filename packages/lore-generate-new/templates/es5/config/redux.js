@@ -6,8 +6,9 @@
  * enabling the redux dev-tools if it makes sense.
  */
 
-// const { applyMiddleware } = require('redux');
-// const thunk = require('redux-thunk');
+// var Redux = require('redux');
+// var applyMiddleware = Redux.applyMiddleware;
+// var thunk = require('redux-thunk');
 
 module.exports = {
 

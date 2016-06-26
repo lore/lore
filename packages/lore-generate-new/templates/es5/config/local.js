@@ -13,7 +13,7 @@
  * in the env/ subfolder.
  */
 
-// import createBrowserHistory from 'history/lib/createBrowserHistory'
+// var createBrowserHistory = require('history/lib/createBrowserHistory');
 
 module.exports = {
 
