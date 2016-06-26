@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, IndexRoute, Redirect } from 'react-router';
+var React = require('react');
+var Route = require('react-router').Route;
 
 /**
  * Routes are used to declare your view hierarchy
