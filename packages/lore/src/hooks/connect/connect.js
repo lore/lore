@@ -1,5 +1,5 @@
 var React = require('react');
-var storeShape = require('react-redux/lib/utils/storeShape');
+var storeShape = require('react-redux/lib/utils/storeShape').default;
 var _ = require('lodash');
 var invariant = require('invariant');
 var getDisplayName = require('./getDisplayName');
