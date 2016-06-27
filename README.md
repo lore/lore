@@ -61,9 +61,10 @@ the tutorials.
 Since Lore is still in active development, I'm going to list the things that have immediate focus here.
 
 1. [[done](https://github.com/lore/lore/pull/107)] Add flag to generate new project template in ES6 syntax (currently a mix of ES5 and ES6)
-2. Upgrade react-router to v2
-3. Clean up all ES6 generator templates (and routing to the ones that should have routing)
-4. Verify lore.connect works as an ESNext decorator (@lore.connect snyax)
+2. [[done](https://github.com/lore/lore/pull/108)] Upgrade `react` from v0.14 to v15
+3. Upgrade `react-router` from v1 to v2
+4. Clean up all ES6 generator templates (and routing to the ones that should have routing)
+5. Verify lore.connect works as an ESNext decorator (@lore.connect snyax)
 
 
 ### Thanks
