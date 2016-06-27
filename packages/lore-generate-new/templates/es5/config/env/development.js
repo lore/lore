@@ -2,11 +2,11 @@
  * Development environment settings
  *
  * This file is where you define overrides for any of the config settings when operating under the development
- * environment. Development environment is defined as `NODE_ENV=development` or the absense of an `NODE_ENV` environment
+ * environment. Development environment is defined as `NODE_ENV=development` or the absence of an `NODE_ENV` environment
  * variable.
  **/
 
-// var createBrowserHistory = require('history/lib/createBrowserHistory');
+// var browserHistory = require('react-router').browserHistory;
 
 module.exports = {
 
@@ -21,7 +21,7 @@ module.exports = {
   // },
 
   // router: {
-  //   history: createBrowserHistory()
+  //   history: browserHistory
   // }
 
 };
