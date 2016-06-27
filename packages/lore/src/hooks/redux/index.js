@@ -1,5 +1,5 @@
 var Redux = require('redux');
-var thunk = require('redux-thunk');
+var thunk = require('redux-thunk').default;
 var applyMiddleware = Redux.applyMiddleware;
 var generateStore = require('./generateStore');
 
