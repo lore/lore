@@ -4,18 +4,17 @@
  * history or push state).
  **/
 
-
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+import { browserHistory } from 'react-router';
 
 export default {
 
-  /****************************************************************************
-  *                                                                           *
-  * Whether browser should use pushState or hash to keep track of routes      *
-  * See: https://github.com/rackt/history                                     *
-  *                                                                           *
-  ****************************************************************************/
+  /************************************************************************************
+  *                                                                                   *
+  * Whether browser should use pushState or hash to keep track of routes              *
+  * See: https://github.com/reactjs/react-router/blob/master/docs/guides/Histories.md *
+  *                                                                                   *
+  *************************************************************************************/
 
-  history: createBrowserHistory()
+  history: browserHistory
 
 }

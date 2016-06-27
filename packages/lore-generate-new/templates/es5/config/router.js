@@ -4,17 +4,17 @@
  * history or push state).
  **/
 
-var createBrowserHistory = require('history/lib/createBrowserHistory');
+var browserHistory = require('react-router').browserHistory;
 
 module.exports = {
 
-  /****************************************************************************
-  *                                                                           *
-  * Whether browser should use pushState or hash to keep track of routes      *
-  * See: https://github.com/rackt/history                                     *
-  *                                                                           *
-  ****************************************************************************/
+  /************************************************************************************
+  *                                                                                   *
+  * Whether browser should use pushState or hash to keep track of routes              *
+  * See: https://github.com/reactjs/react-router/blob/master/docs/guides/Histories.md *
+  *                                                                                   *
+  *************************************************************************************/
 
-  history: createBrowserHistory()
+  history: browserHistory
 
 };

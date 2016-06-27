@@ -44,14 +44,13 @@
   },
   "devDependencies": {
     "chai": "3.4.1",
-    "history": "^1.17.0",
     "json-loader": "0.5.4",
     "mocha": "2.3.4",
     "nock": "2.6.0",
     "react": "^15.0.0",
     "react-addons-test-utils": "^15.0.0",
     "react-dom": "^15.0.0",
-    "react-router": "^1.0.3",
+    "react-router": "^2.0.0",
     "redux": "^3.0.2",
     "redux-thunk": "^2.0.1",
     "rimraf": "2.5.2",
@@ -62,7 +61,7 @@
     "json-loader": "0.5.4",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
-    "react-router": "^1.0.3",
+    "react-router": "^2.0.0",
     "redux": "^3.0.2"
   }
 }

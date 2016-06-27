@@ -1,11 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import { Link, withRouter } from 'react-router';
 
-/**
- * IMPORTANT!!
- *
- * The template for ES6 components does not currently support react-router integration.
- * This template will be updated as soon a solution is in place.
- */
 class <%= componentName %> extends Component {
 
   constructor(props) {
@@ -25,6 +20,13 @@ class <%= componentName %> extends Component {
   }
 }
 
-<%= componentName %>.propTypes = {};
+<%= componentName %>.propTypes = {
+  //models: React.PropTypes.object.isRequired,
+  router: React.PropTypes.object.isRequired
+};
 
-export default <%= componentName %>;
+export default lore.connect((getState, props) => {
+  return {
+    //models: getState('model.find')
+  };
+}, withRouter(<%= componentName %>));
