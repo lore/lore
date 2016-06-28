@@ -1,4 +1,4 @@
-import createHashHistory from 'history/lib/createHashHistory'
+var browserHistory = require('react-router').browserHistory;
 
 module.exports = {
 
@@ -9,6 +9,6 @@ module.exports = {
   *                                                                           *
   ****************************************************************************/
 
-  history: createHashHistory()
+  history: browserHistory
 
 };

@@ -9,7 +9,7 @@ var ENTER_KEY = 13;
 
 module.exports = lore.connect(function(getState, props) {
     return {
-      todos: getState('todo.all', {
+      todos: getState('todo.find', {
         where: {}
       }),
       nowShowing: props.location.query.filter
