@@ -29,8 +29,7 @@ module.exports = React.createClass({
         <ul className="filters">
           <li>
             <Router.Link
-              to="/todos"
-              query={{filter: Filters.ALL_TODOS}}
+              to={{ pathname: "/todos", query: {filter: Filters.ALL_TODOS} }}
               activeClassName="selected">
                 All
             </Router.Link>
@@ -38,8 +37,7 @@ module.exports = React.createClass({
           {' '}
           <li>
             <Router.Link
-              to="/todos"
-              query={{filter: Filters.ACTIVE_TODOS}}
+              to={{ pathname: "/todos", query: {filter: Filters.ACTIVE_TODOS} }}
               activeClassName="selected">
                 Active
             </Router.Link>
@@ -47,8 +45,7 @@ module.exports = React.createClass({
           {' '}
           <li>
             <Router.Link
-              to="/todos"
-              query={{filter: Filters.COMPLETED_TODOS}}
+              to={{ pathname: "/todos", query: {filter: Filters.COMPLETED_TODOS} }}
               activeClassName="selected">
                 Completed
             </Router.Link>

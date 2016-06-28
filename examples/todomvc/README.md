@@ -8,7 +8,7 @@ This is a modified version of the [React TodoMVC example](http://todomvc.com/exa
 It has been modified in the following ways:
 
 1. It uses [React Router](https://github.com/rackt/react-router)
-2. Calls against the server are intercepted using [faux-server](https://github.com/storcery/faux-server) which replaces the network calls with calls against the localstore.
+2. Calls against the server are intercepted using [faux-server](https://github.com/lore/faux-server) which intercepts any AJAX calls and mocks out the responses, storing the mocked data in localStorage.
 
 ## Misc Notes
 Unsure why at the moment, but in `src/components/Master.js` if the line:
