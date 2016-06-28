@@ -11,25 +11,22 @@ var EmptyListView = require('../EmptyListView');
 var PayloadStates = require('../../constants/PayloadStates');
 var Spinner = require('../common/Spinner');
 var TodoListItem = require('./TodoListItem');
-var MoreVertIcon = require('material-ui/lib/svg-icons/navigation/more-vert');
-var MenuItem = require('material-ui/lib/menus/menu-item');
+var MoreVertIcon = require('material-ui/svg-icons/navigation/more-vert').default;
 
 module.exports = lore.connect(function(getState, props) {
     return {
       list: getState('list.byId', {
         id: props.params.listId
       }),
-      todos: getState('todo.all', {
+      todos: getState('todo.find', {
         where: {
           list: props.params.listId
         }
       })
     };
   },
-  React.createClass({
+  Router.withRouter(React.createClass({
     displayName: 'Todos',
-
-    mixins: [Router.History],
 
     propTypes: {
       list: React.PropTypes.object.isRequired,
@@ -71,7 +68,7 @@ module.exports = lore.connect(function(getState, props) {
 
     onMenuItemSelection: function(e, value) {
       var list = this.props.list;
-      var history = this.history;
+      var router = this.props.router;
 
       function updateList(params) {
         lore.actions.list.update(list, params);
@@ -79,7 +76,7 @@ module.exports = lore.connect(function(getState, props) {
 
       function deleteList() {
         lore.actions.list.destroy(list);
-        history.push('/lists');
+        router.push('/lists');
       }
 
       lore.dialog.show(function(){
@@ -118,7 +115,7 @@ module.exports = lore.connect(function(getState, props) {
         );
       } else {
         var listItems = [
-          <mui.ListDivider
+          <mui.Divider
             key={'divider-beginning'}
             inset={false} />
         ];
@@ -140,7 +137,7 @@ module.exports = lore.connect(function(getState, props) {
             <TodoListItem
               key={todo.id || todo.cid}
               todo={todo} />,
-            <mui.ListDivider
+            <mui.Divider
               key={'divider' + (todo.id || todo.cid)}
               inset={false} />
           ]);
@@ -180,8 +177,8 @@ module.exports = lore.connect(function(getState, props) {
               iconButtonElement={iconButtonElement}
               desktop={true}
               onItemTouchTap={this.onMenuItemSelection} >
-              <MenuItem ref="edit" primaryText="Edit" />
-              <MenuItem ref="delete" primaryText="Delete" />
+              <mui.MenuItem ref="edit" primaryText="Edit" />
+              <mui.MenuItem ref="delete" primaryText="Delete" />
             </mui.IconMenu>
           </div>
         </mui.Card>
@@ -199,5 +196,5 @@ module.exports = lore.connect(function(getState, props) {
       )
     }
 
-  })
+  }))
 );

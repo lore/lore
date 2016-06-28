@@ -1,7 +1,7 @@
 /**
  * Development environment settings
  */
-// import createBrowserHistory from 'history/lib/createBrowserHistory'
+// import browserHistory from 'react-router'
 
 module.exports = {
 
@@ -16,7 +16,7 @@ module.exports = {
   // },
 
   // router: {
-  //   history: createBrowserHistory()
+  //   history: browserHistory
   // }
 
 };

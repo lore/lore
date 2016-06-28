@@ -9,7 +9,7 @@ var Lists = require('./lists/Lists');
 
 module.exports = lore.connect(function(getState, props){
     return {
-      lists: getState('list.all', {
+      lists: getState('list.find', {
         where: { }
       })
     }

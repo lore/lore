@@ -2,9 +2,9 @@
 
 var React = require('react');
 var mui = require('material-ui');
-var DeleteIcon = require('material-ui/lib/svg-icons/action/delete');
-var EditIcon = require('material-ui/lib/svg-icons/image/edit');
-let Colors = require('material-ui/lib/styles/colors');
+var DeleteIcon = require('material-ui/svg-icons/action/delete').default;
+var EditIcon = require('material-ui/svg-icons/image/edit').default;
+let Colors = require('material-ui/styles/colors');
 var PayloadStates = require('../../constants/PayloadStates');
 var UpdateTodoDialog = require('../../dialogs/todo/Update');
 var DeleteTodoDialog = require('../../dialogs/todo/Delete');

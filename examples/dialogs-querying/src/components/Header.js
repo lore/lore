@@ -1,31 +1,16 @@
 var React = require('react');
 var Router = require('react-router');
 var mui = require('material-ui');
-var SvgIcons = require('material-ui/lib/svg-icons');
+var SvgIcons = require('material-ui/svg-icons');
 
-module.exports = React.createClass({
+module.exports = Router.withRouter(React.createClass({
   displayName: 'Header',
 
-  mixins: [Router.History],
-
-  propTypes: {
-    children: React.PropTypes.any
-  },
-
-  getStyles: function() {
-    return {
-      appBar: {
-        position: 'fixed'
-      }
-    }
-  },
-
   _onLeftIconButtonTouchTap: function() {
-    this.history.push('/');
+    this.props.router.push('/');
   },
 
   render: function() {
-    var styles = this.getStyles();
     var title = "Lore Example: Dialogs & Querying";
 
     var logoIcon = (
@@ -35,13 +20,9 @@ module.exports = React.createClass({
     );
 
     return (
-      <div>
-        <mui.AppBar
-          style={styles.appBar}
-          zDepth={1}
-          title={title}
-          iconElementLeft={logoIcon} />
-      </div>
+      <mui.AppBar
+        title={title}
+        iconElementLeft={logoIcon} />
     );
   }
-});
+}));

@@ -2,13 +2,14 @@
 
 var React = require('react');
 var mui = require('material-ui');
-var MuiThemeMixin = require('../../mixins/MuiThemeMixin');
 var DialogMixin = require('../../mixins/DialogMixin');
+var withMuiTheme = require('../../decorators/withMuiTheme').default;
+import FlatButton from 'material-ui/FlatButton';
 
-module.exports = React.createClass({
+module.exports = withMuiTheme(React.createClass({
   displayName: 'DeleteListDialog',
 
-  mixins: [MuiThemeMixin, DialogMixin],
+  mixins: [DialogMixin],
 
   onSubmit: function(e) {
     this.props.onSubmit();
@@ -21,8 +22,17 @@ module.exports = React.createClass({
 
   render: function () {
     var dialogActions = [
-      { text: 'CANCEL', onClick: this.onCancel  },
-      { text: 'DELETE', onClick: this.onSubmit }
+      <FlatButton
+        label="Cancel"
+        primary={true}
+        onTouchTap={this.onCancel}
+      />,
+      <FlatButton
+        label="Submit"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this.onSubmit}
+      />
     ];
 
     return (
@@ -37,4 +47,4 @@ module.exports = React.createClass({
     );
   }
 
-});
+}));

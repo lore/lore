@@ -2,13 +2,14 @@
 
 var React = require('react');
 var mui = require('material-ui');
-var MuiThemeMixin = require('../../mixins/MuiThemeMixin');
 var DialogMixin = require('../../mixins/DialogMixin');
+var withMuiTheme = require('../../decorators/withMuiTheme').default;
+import FlatButton from 'material-ui/FlatButton';
 
-module.exports = React.createClass({
+module.exports = withMuiTheme(React.createClass({
   displayName: 'UpdateTodoDialog',
 
-  mixins: [MuiThemeMixin, DialogMixin],
+  mixins: [DialogMixin],
 
   propTypes: {
     todo: React.PropTypes.object.isRequired
@@ -49,8 +50,17 @@ module.exports = React.createClass({
 
   render: function () {
     var dialogActions = [
-      { text: 'CANCEL', onClick: this.onCancel  },
-      { text: 'SUBMIT', onClick: this.onSubmit }
+      <FlatButton
+        label="Cancel"
+        primary={true}
+        onTouchTap={this.onCancel}
+      />,
+      <FlatButton
+        label="Submit"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this.onSubmit}
+      />
     ];
 
     var error = this.state.title ? null : "Required";
@@ -73,4 +83,4 @@ module.exports = React.createClass({
     );
   }
 
-});
+}));
