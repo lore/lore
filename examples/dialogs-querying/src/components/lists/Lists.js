@@ -9,15 +9,13 @@ var CreateListDialog = require('../../dialogs/list/Create');
 
 module.exports = lore.connect(function(getState, props){
     return {
-      lists: getState('list.all', {
+      lists: getState('list.find', {
         where: { }
       })
     }
   },
-  React.createClass({
+  Router.withRouter(React.createClass({
     displayName: 'CollectionList',
-
-    mixins: [Router.History],
 
     propTypes: {
       lists: React.PropTypes.object.isRequired
@@ -53,7 +51,7 @@ module.exports = lore.connect(function(getState, props){
 
       var listItems = lists.data.map(function(list) {
         function navigateToList() {
-          this.history.push(`/lists/${list.id}`);
+          this.props.router.push(`/lists/${list.id}`);
         }
 
         return (
@@ -66,7 +64,10 @@ module.exports = lore.connect(function(getState, props){
 
       return (
         <mui.Paper>
-          <mui.List subheader="Todo Lists">
+          <mui.List>
+            <mui.Subheader>
+              Todo Lists
+            </mui.Subheader>
             {listItems}
           </mui.List>
           <div style={styles.buttonWrapper}>
@@ -78,5 +79,5 @@ module.exports = lore.connect(function(getState, props){
         </mui.Paper>
       );
     }
-  })
+  }))
 );

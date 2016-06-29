@@ -1,6 +1,6 @@
 var React = require('react');
 var mui = require('material-ui');
-var AddIcon = require('material-ui/lib/svg-icons/content/add');
+var AddIcon = require('material-ui/svg-icons/content/add').default;
 var CreateListDialog = require('../dialogs/list/Create');
 
 module.exports = React.createClass({
@@ -42,6 +42,7 @@ module.exports = React.createClass({
           <h2>To create your first list click the big plus button in the top right.</h2>
         </div>
         <mui.FloatingActionButton
+          secondary={true}
           style={styles.floatingActionButton}
           onTouchTap={this.onFloatingActionButtonTouchTap} >
           <AddIcon />

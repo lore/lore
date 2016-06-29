@@ -9,15 +9,13 @@ var cx = require('classnames');
 
 module.exports = lore.connect(function(getState, props) {
     return {
-      lists: getState('list.all', {
+      lists: getState('list.find', {
         where: { }
       })
     }
   },
-  React.createClass({
+  Router.withRouter(React.createClass({
     displayName: 'Layout',
-
-    mixins: [Router.History],
 
     propTypes: {
       lists: React.PropTypes.object.isRequired
@@ -100,5 +98,5 @@ module.exports = lore.connect(function(getState, props) {
         </div>
       );
     }
-  })
+  }))
 );

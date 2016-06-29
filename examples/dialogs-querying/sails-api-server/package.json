@@ -1,0 +1,25 @@
+{
+  "name": "lore-example-server-todo-lists",
+  "private": true,
+  "version": "0.0.0",
+  "description": "a Sails application",
+  "keywords": [],
+  "dependencies": {
+    "ejs": "~0.8.4",
+    "node-uuid": "^1.4.7",
+    "rc": "~0.5.0",
+    "sails": "~0.12.3",
+    "sails-disk": "~0.10.0"
+  },
+  "scripts": {
+    "debug": "node debug app.js",
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jchansen/lore-example-server-todo-lists.git"
+  },
+  "author": "jchansen",
+  "license": ""
+}

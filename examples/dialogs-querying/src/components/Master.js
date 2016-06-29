@@ -1,8 +1,15 @@
 var React = require('react');
-var mui = require('material-ui');
-var MuiThemeMixin = require('../mixins/MuiThemeMixin');
+var MuiThemeProvider = require('material-ui/styles/MuiThemeProvider').default;
+var getMuiTheme = require('material-ui/styles/getMuiTheme').default;
 var Header = require('./Header');
 require('../../assets/main.less');
+
+var muiTheme = getMuiTheme({
+  // theme overrides
+  zIndex: {
+    appBar: 3
+  }
+});
 
 module.exports = lore.connect({subscribe: true}, function(getState, props){
     return {};
@@ -10,27 +17,16 @@ module.exports = lore.connect({subscribe: true}, function(getState, props){
   React.createClass({
     displayName: 'Master',
 
-    mixins: [MuiThemeMixin],
-
-    getStyles: function() {
-      return {
-        content: {
-          paddingTop: mui.Styles.Spacing.desktopKeylineIncrement,
-          paddingBottom: mui.Styles.Spacing.desktopKeylineIncrement
-        }
-      };
-    },
-
     render: function() {
-      var styles = this.getStyles();
-
       return (
-        <mui.AppCanvas>
-          <Header params={this.props.params} />
-          <div style={styles.content}>
-            {this.props.children}
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <div>
+            <Header params={this.props.params} />
+            <div>
+              {this.props.children}
+            </div>
           </div>
-        </mui.AppCanvas>
+        </MuiThemeProvider>
       );
     }
   })
