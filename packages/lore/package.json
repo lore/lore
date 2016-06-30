@@ -1,6 +1,6 @@
 {
   "name": "lore",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Convention-driven framework for building React-Redux applications",
   "license": "MIT",
   "main": "lib/index.js",
