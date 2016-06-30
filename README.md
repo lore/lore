@@ -64,9 +64,10 @@ Since Lore is still in active development, I'm going to list the things that hav
 2. [[done](https://github.com/lore/lore/pull/108)] Upgrade `react` from v0.14 to v15
 3. [[done](https://github.com/lore/lore/pull/109)] Upgrade `react-router` from v1 to v2
 4. [[done](https://github.com/lore/lore/pull/109)] Clean up all ES6 generator templates, add v2 routing
-5. [[done](https://github.com/lore/lore/pull/110),[done](https://github.com/lore/lore/pull/111)]Upgrade examples to work with React v15 and React-Router v2
-6. Verify lore.connect works as an ESNext decorator (@lore.connect snyax)
-7. If it does, add generators for ESNext syntax (using @decorators and static properties, and @withRouter for react-router)
+5. [[done](https://github.com/lore/lore/pull/110),[done](https://github.com/lore/lore/pull/111)] Upgrade examples to work with React v15 and React-Router v2
+6. [[issue](https://github.com/lore/lore/issues/112)] Verify lore.connect works as an ESNext decorator (@lore.connect snyax)
+7. [does not] If it does, add generators for ESNext syntax (using @decorators and static properties, and @withRouter for react-router)
+8. Publish v0.7
 
 
 ### Thanks
