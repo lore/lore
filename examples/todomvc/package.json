@@ -1,19 +1,25 @@
 {
-  "name": "LoreTodoMVCexample",
-  "main": "server.js",
-  "author": "Storcery",
-  "license": "MIT",
-  "private": true,
+  "name": "lore-example-todomvc",
   "version": "0.0.0",
   "description": "An example Lore application.",
-  "keywords": [],
+  "private": true,
+  "license": "MIT",
+  "main": "server.js",
+  "keywords": [
+    "lore",
+    "example",
+    "todomvc"
+  ],
+  "scripts": {
+    "test": "NODE_ENV=test mocha --recursive"
+  },
   "dependencies": {
     "classnames": "2.1.3",
     "faux-server": "0.2.2",
     "invariant": "2.1.0",
     "jquery": "2.1.4",
     "lodash": "3.10.1",
-    "lore": "^0.6.16",
+    "lore": "~0.7.0",
     "moment": "2.10.3",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
@@ -48,8 +54,5 @@
     "webpack": "1.12.14",
     "webpack-dev-server": "1.14.1",
     "yargs": "^4.7.1"
-  },
-  "scripts": {
-    "test": "NODE_ENV=test mocha --recursive"
   }
 }
