@@ -7,9 +7,9 @@ The features with immediate focus (either currently being worked on or next up i
 
  Feature                                                  | Owner                                          | Details
  :------------------------------------------------------- | :--------------------------------------------- | :------
- Support ES6 version of project                           | [@jchansen](https://github.com/jchansen)       | There needs to a FULL ES6 version of the project, especially as browsers and Node [become fully compatible](https://kangax.github.io/compat-table/es6/). Lore was originally developed in ES5 to facilitate browser debugging, and source maps were not an adequate solution.
- Upgrade React-Router to v2                               | [@jchansen](https://github.com/jchansen)       | React-Router has been at v2 for a while, but Lore hasn't integrated yet due to a focus on videos, docs and the website. So catch up!
- Verify @lore.connect decorator works                     | [@jchansen](https://github.com/jchansen)       | It might, but it hasn't been tried. If it does, --esnext generators also need to be created to use it.
+ Add support for pagination                               | [@jchansen](https://github.com/jchansen)       | Add support for pagination, following the approach [outlined in the proposal](http://www.lorejs.org/features/challenges/pagination/).
+ Refactor lore.connect to support decoration              | [@jchansen](https://github.com/jchansen)       | More details [in this issue](https://github.com/lore/lore/issues/112). 
+ Support dedicated ESNext experience                      | [@jchansen](https://github.com/jchansen)       | Support passing a --esnext flag to new project template and associated generators.
 
 ### Backlog
 
