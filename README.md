@@ -60,11 +60,8 @@ the tutorials.
 
 Since Lore is still in active development, I'm going to list the things that have immediate focus here.
 
-1. [done] Publish v0.7 (react v15, react-router v2, ES6 project template & generators)
-2. Record video update showing what's changed, send out newsletter
-3. Add support for pagination
-4. Refactor lore.connect [to support ESNext decorators](https://github.com/lore/lore/issues/112)
-5. Publish v0.8
+1. Add support for pagination
+2. Refactor lore.connect [to support ESNext decorators](https://github.com/lore/lore/issues/112)
 
 
 ### Thanks
