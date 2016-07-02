@@ -34,7 +34,7 @@ module.exports = function(opts = {}) {
           });
         }
       }).catch(function(response) {
-        const error = response.responseJSON;
+        const error = response.data;
 
         if (response.status === 404) {
           if (options.onNotFound) {

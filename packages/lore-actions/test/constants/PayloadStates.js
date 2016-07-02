@@ -1,12 +1,4 @@
-const ActionTypes = {
-  ADD_TODO: 'ADD_TODO',
-  UPDATE_TODO: 'UPDATE_TODO',
-  DELETE_TODO: 'DELETE_TODO',
-  FETCH_TODO: 'FETCH_TODO',
-  FETCH_TODOS: 'FETCH_TODOS'
-};
-
-const PayloadStates = {
+module.exports = {
   RESOLVED: 'RESOLVED',
   NOT_FOUND: 'NOT_FOUND',
 
@@ -19,9 +11,4 @@ const PayloadStates = {
   ERROR_UPDATING: 'ERROR_UPDATING',
   ERROR_DELETING: 'ERROR_DELETING',
   ERROR_FETCHING: 'ERROR_FETCHING'
-};
-
-module.exports = {
-  ActionTypes,
-  PayloadStates
 };

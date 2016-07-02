@@ -35,7 +35,7 @@ module.exports = function(opts = {}) {
         }
       }).catch(function(response) {
         if (options.onError) {
-          const error = response.responseJSON;
+          const error = response.data;
 
           if (options.onError.beforeDispatch) {
             options.onError.beforeDispatch(response, [query]);

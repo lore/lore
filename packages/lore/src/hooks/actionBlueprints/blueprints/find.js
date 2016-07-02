@@ -1,56 +1,29 @@
 var ActionTypes = require('../../../utils/ActionTypes');
 var PayloadStates = require('../../../utils/PayloadStates');
-var utils = require('lore-actions').utils;
-
-function hackPayloadCollection(collection, query, payloadState) {
-  if (Object.keys(query).length === 0) {
-    return utils.payloadCollection(collection, payloadState);
-  }
-
-  var queryParam = Object.keys(query)[0];
-  var value = query[queryParam];
-
-  return utils.payloadCollection({
-    models: collection.models.filter(function (models) {
-      return models.get(queryParam) === value;
-    })
-  }, payloadState);
-}
 
 module.exports = function(collectionName, collections) {
 
   var Collection = collections[collectionName];
 
-  return function fetchAll(query) {
-    query = query || {};
+  return {
+    blueprint: 'find',
 
-    return function(dispatch) {
-      var collection = new Collection();
+    collection: Collection,
 
-      collection.fetch({
-        data: query
-      }).then(function () {
-        dispatch({
-          type: ActionTypes.fetchPlural(collectionName),
-          payload: hackPayloadCollection(collection, query, PayloadStates.RESOLVED),
-          query: query
-        })
-      }).catch(function (response) {
-        var error = response.responseJSON;
-        dispatch({
-          type: ActionTypes.fetchPlural(collectionName),
-          payload: utils.payload(collection, PayloadStates.ERROR_FETCHING, error),
-          query: query
-        })
-      });
+    optimistic: {
+      actionType: ActionTypes.fetchPlural(collectionName),
+      payloadState: PayloadStates.FETCHING
+    },
 
-      // todo: add ERROR_FETCHING state
+    onSuccess: {
+      actionType: ActionTypes.fetchPlural(collectionName),
+      payloadState: PayloadStates.RESOLVED
+    },
 
-      return dispatch({
-        type: ActionTypes.fetchPlural(collectionName),
-        payload: utils.payloadCollection(collection, PayloadStates.FETCHING),
-        query: query
-      })
+    onError: {
+      actionType: ActionTypes.fetchPlural(collectionName),
+      payloadState: PayloadStates.ERROR_FETCHING
     }
-  }
+
+  };
 };

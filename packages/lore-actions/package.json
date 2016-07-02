@@ -25,7 +25,9 @@
   "devDependencies": {
     "bluebird": "^3.2.1",
     "chai": "^3.4.1",
+    "lore-models": "^0.7.0",
     "mocha": "^2.3.4",
+    "nock": "^3.3.2",
     "rimraf": "^2.5.2",
     "sinon": "^1.17.2"
   }

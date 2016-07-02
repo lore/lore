@@ -1,6 +1,5 @@
 var ActionTypes = require('../../../utils/ActionTypes');
 var PayloadStates = require('../../../utils/PayloadStates');
-var _ = require('lodash');
 
 module.exports = function(modelName, models) {
 

@@ -1,7 +1,15 @@
-import {type} from "./constants";
-import axios from "axios";
-import _assign from "lodash.assign";
-import _result from "lodash.result";
+var axios = require('axios');
+var _ = require('lodash');
+var urlError = require('./utils/urlError');
+
+// Map from CRUD to HTTP for our default `Backbone.sync` implementation.
+var methodMap = {
+  'create': 'POST',
+  'update': 'PUT',
+  'patch': 'PATCH',
+  'delete': 'DELETE',
+  'read': 'GET'
+};
 
 /**
  * The lore.models "sync" function does all the heavy lifting of communicating with the server
@@ -9,31 +17,35 @@ import _result from "lodash.result";
  * @param model
  * @param options
  */
-export default function sync( method, model, options = {} ) {
+module.exports = function sync(method, model, options) {
+  options = options || {};
+  var type = methodMap[method];
 
-  //get our url
-  let params = {type: method, url: options['url'] || model['url']};
+  // Default JSON-request options.
+  var params = {method: type, responseType: 'json'};
 
-  //check for URL
-  if ( !params.url ) {
-    throw new Error("An url must be provided in the model or the options for lore.models.sync")
+  // Ensure that we have a URL.
+  if (!options.url) {
+    params.url = _.result(model, 'url') || urlError();
   }
 
-  //create a payload for PUT and POST requests
-  let payload;
-  if ( params.type === type.POST || params.type === type.PUT ) {
-    payload = options.attrs || model.toJSON(options);
+  // Ensure that we have the appropriate request data.
+  if (options.data == null && model && (method === 'create' || method === 'update' || method === 'patch')) {
+    params.contentType = 'application/json';
+    params.data = JSON.stringify(options.attrs || model.toJSON(options));
   }
 
-  //build config object
-  let config = {
-    url: _result(params, 'url'),
-    method: params.type,
-    headers: options.headers,
-    data: payload
+  // Ensure data is converted to query parameters for a GET request
+  if (options.data && method === 'read') {
+    options.params = options.data;
+    delete options.data;
   }
 
-  //override config with passed in options
-  return axios(_assign(config, options));
-
+  // Make the request, allowing the user to override any Ajax options.
+  return axios(_.extend(params, options)).then(function(resp) {
+    if (options.success) {
+      options.success(resp.data, options);
+    }
+    return resp;
+  });
 };
