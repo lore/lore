@@ -1,207 +1,202 @@
-import extend from "./extend";
-import assign from "lodash.assign";
-import uniqueId from "lodash.uniqueid";
-import sync from "./sync";
-import {type} from "./constants";
-import result from "lodash.result";
-import clone from "lodash.clone";
+var _ = require('lodash');
+var extend = require('./utils/extend');
+var sync = require('./sync');
+var urlError = require('./utils/urlError');
 
-/**
- * The Model class represents the base AJAX abstraction tier for lore. The
- * Model is tailored after Backbone Models, with a subset of functions
- * @param attributes
- * @param options
- * @constructor
- */
-class Model {
-  constructor( attributes = {}, options = {collection: null} ) {
-    this.cid = uniqueId(this.cidPrefix);
-    this.id = attributes[this.idAttribute];
-    this.attributes = assign({}, attributes);
-    this.collection = options.collection;
+var Model = function(attributes, options) {
+  var attrs = attributes || {};
+  options || (options = {});
 
-    this.initialize.apply(this, arguments);
+  this.cid = _.uniqueId(this.cidPrefix);
+  this.attributes = {};
+  if (options.collection) this.collection = options.collection;
+  if (options.parse) attrs = this.parse(attrs, options) || {};
+  var defaults = _.result(this, 'defaults');
+  attrs = _.defaults(_.extend({}, defaults, attrs), defaults);
+  this.set(attrs, options);
+  this.changed = {};
+  this.initialize.apply(this, arguments);
+};
 
-    //prebind the appropriate methods
-    this.url = this.url.bind(this);
-    this.isNew = this.isNew.bind(this);
-    this.toJSON = this.toJSON.bind(this);
-    this.parse = this.parse.bind(this);
-    this.destroy = this.destroy.bind(this);
-  }
+// Attach all inheritable methods to the Model prototype.
+_.extend(Model.prototype, {
 
-  /**
-   * Initialize is an empty function, can be overridden
-   */
-  initialize() {
+  // The value returned during the last failed validation.
+  validationError: null,
 
-  }
+  // The default name for the JSON `id` attribute is `"id"`. MongoDB and
+  // CouchDB users may want to set this to `"_id"`.
+  idAttribute: 'id',
 
-  /**
-   * Initialize an empty parse function, can be overridden
-   */
-  parse( attributes ) {
-    return attributes;
-  }
+  // The prefix is used to create the client id which is used to identify models locally.
+  // You may want to override this if you're experiencing name clashes with model ids.
+  cidPrefix: 'c',
 
-  /**
-   * Fetch the model from the server, returning the response and storing the ID
-   */
-  fetch( options = {parse: true} ) {
-    const req = this.sync(type.GET, this, options);
+  // Initialize is an empty function by default. Override it with your own
+  // initialization logic.
+  initialize: function(){},
 
-    return new Promise(( resolve, reject )=> {
-      req.then(( resp )=> {
-        //store our response
+  // Return a copy of the model's `attributes` object.
+  toJSON: function(options) {
+    return _.clone(this.attributes);
+  },
 
-        let serverAttrs = options.parse ? this.parse(resp.data) : resp.data;
+  // Proxy `Backbone.sync` by default -- but override this if you need
+  // custom syncing semantics for *this* particular model.
+  sync: function() {
+    return sync.apply(this, arguments);
+  },
 
-        //set id
-        this.id = serverAttrs[this.idAttribute] || this[this.idAttribute];
+  // Get the value of an attribute.
+  get: function(attr) {
+    return this.attributes[attr];
+  },
 
-        //set the attributes
-        assign(this.attributes, serverAttrs);
+  // Returns `true` if the attribute contains a value that is not null
+  // or undefined.
+  has: function(attr) {
+    return this.get(attr) != null;
+  },
 
-        //resolve with the new attributes
-        resolve(this.attributes);
+  // Set a hash of model attributes on the object, firing `"change"`. This is
+  // the core primitive operation of a model, updating the data and notifying
+  // anyone who needs to know about the change in state. The heart of the beast.
+  set: function(key, val, options) {
+    if (key == null) return this;
 
-      }, ( err )=> {
-        reject(err);
-      });
-    })
-
-  }
-
-  /**
-   * Get a value from the attributes
-   * @param key
-   * @returns value
-   */
-  get( key ) {
-    return this.attributes[key];
-  }
-
-  /**
-   * Set a value on the attributes
-   * @param key
-   * @param value
-   * @returns {Model}
-   */
-  set( key, value ) {
-
-    let attrs;
-    if ( typeof key === 'object' ) {
+    // Handle both `"key", value` and `{key: value}` -style arguments.
+    var attrs;
+    if (typeof key === 'object') {
       attrs = key;
+      options = val;
     } else {
-      (attrs = {})[key] = value;
+      (attrs = {})[key] = val;
     }
 
-    //set the values
-    assign(this.attributes, attrs);
+    options || (options = {});
 
-    //set the id
-    this.id = this.attributes[this.idAttribute] || this[this.idAttribute];
+    // Run validation.
+    if (!this._validate(attrs, options)) return false;
+
+    var current = this.attributes;
+
+    // For each `set` attribute, update or delete the current value.
+    for (var attr in attrs) {
+      val = attrs[attr];
+      current[attr] = val;
+    }
+
+    // Update the `id`.
+    if (this.idAttribute in attrs) this.id = this.get(this.idAttribute);
 
     return this;
-  }
+  },
 
-  /**
-   * Save the model to the server
-   * @param options
-   */
-  save( options = {parse: true} ) {
-    return new Promise(( resolve, reject )=> {
-      //determine the correct sync call based on whether the model is new
-      const req = this.isNew()
-        ? this.sync(type.POST, this, options)
-        : this.sync(type.PUT, this, options);
+  // Fetch the model from the server, merging the response with the model's
+  // local attributes. Any changed attributes will trigger a "change" event.
+  fetch: function(options) {
+    options = _.extend({parse: true}, options);
 
-      req.then(( resp )=> {
+    // After a successful fetch, the model is updated with the server-side state.
+    var model = this;
+    options.success = function(attributes) {
+      if (options.parse) {
+        attributes = model.parse(attributes, options);
+      }
 
-        //store our response
-        let serverAttrs = options.parse ? this.parse(resp.data) : resp.data;
+      if (attributes && !model.set(attributes, options)) {
+        return false;
+      }
+    };
 
-        //set id
-        this.id = serverAttrs[this.idAttribute] || this[this.idAttribute];
+    return this.sync('read', this, options);
+  },
 
-        //set the attributes
-        assign(this.attributes, serverAttrs);
-
-        //resolve with the new attributes
-        resolve(this.attributes);
-
-      }, ( err )=> {
-
-        reject(err);
-      });
-    })
-  }
-
-  destroy( options = {} ) {
-    return new Promise(( resolve, reject )=> {
-      //determine the correct sync call based on whether the model is new
-      this.sync(type.DELETE, this, options).then(( resp )=> {
-
-        //resolve
-        resolve(resp.data || null);
-
-      }, ( err )=> {
-
-        reject(err);
-      });
-    })
-  }
-
-  /**
-   * Serialize the attributes to JSON
-   */
-  toJSON() {
-    return clone(this.attributes);
-  }
-
-  /**
-   * Does the model contain an ID attribute? If not, it is considered new
-   * @returns {*}
-   */
-  isNew() {
-    return !this.attributes[this.idAttribute];
-  }
-
-  /**
-   * Get the URL for this model
-   * @returns {*}
-   */
-  url() {
-    var base =
-          result(this, 'urlRoot') ||
-          result(this.collection, 'url');
-
-    if ( !base ) {
-      throw new Error("No urlRoot specified in model or no collection with url specified");
+  // Set a hash of model attributes, and sync the model to the server.
+  // If the server returns an attributes hash that differs, the model's
+  // state will be `set` again.
+  save: function(key, val, options) {
+    // Handle both `"key", value` and `{key: value}` -style arguments.
+    var attrs;
+    if (key == null || typeof key === 'object') {
+      attrs = key;
+      options = val;
+    } else {
+      (attrs = {})[key] = val;
     }
 
-    if ( this.isNew() ) return base;
-    var id = this.attributes[this.idAttribute];
-    return base.replace(/[^\/]$/, '$&/') + encodeURIComponent(id);
-  }
-}
+    options = _.extend({validate: true, parse: true}, options);
 
-/**
- * Extend prototype with required properties
- * TODO This can be removed once ES7 Class properties become final
- */
-assign(Model.prototype, {
-  idAttribute: 'id',
-  cidPrefix: 'c',
-  urlRoot: 'http://www.example.com',
-  sync
+    // If we're not waiting and attributes exist, save acts as
+    // `set(attr).save(null, opts)` with validation. Otherwise, check if
+    // the model will be valid when the attributes, if any, are set.
+    if (attrs) {
+      if (!this.set(attrs, options)) return false;
+    } else if (!this._validate(attrs, options)) {
+      return false;
+    }
+
+    // After a successful server-side save, the model is updated with the server-side state.
+    var model = this;
+    options.success = function(attributes) {
+      if (options.parse) {
+        attributes = model.parse(attributes, options);
+      }
+
+      if (attributes && !model.set(attributes, options)) {
+        return false;
+      }
+    };
+
+    var method = this.isNew() ? 'create' : (options.patch ? 'patch' : 'update');
+    if (method === 'patch' && !options.attrs) options.attrs = attrs;
+    return this.sync(method, this, options);
+  },
+
+  // Destroy this model on the server if it was already persisted.
+  // Optimistically removes the model from its collection, if it has one.
+  // If `wait: true` is passed, waits for the server to respond before removal.
+  destroy: function(options) {
+    options = options ? _.clone(options) : {};
+    return this.sync('delete', this, options);
+  },
+
+  // Default URL for the model's representation on the server -- if you're
+  // using Backbone's restful methods, override this to change the endpoint
+  // that will be called.
+  url: function() {
+    var base =
+      _.result(this, 'urlRoot') ||
+      _.result(this.collection, 'url') ||
+      urlError();
+    if (this.isNew()) return base;
+    var id = this.get(this.idAttribute);
+    return base.replace(/[^\/]$/, '$&/') + encodeURIComponent(id);
+  },
+
+  // **parse** converts a response into the hash of attributes to be `set` on
+  // the model. The default implementation is just to pass the response along.
+  parse: function(resp, options) {
+    return resp;
+  },
+
+  // A model is new if it has never been saved to the server, and lacks an id.
+  isNew: function() {
+    return !this.has(this.idAttribute);
+  },
+
+  // Run validation against the next complete set of model attributes,
+  // returning `true` if all is well. Otherwise, fire an `"invalid"` event.
+  _validate: function(attrs, options) {
+    if (!options.validate || !this.validate) return true;
+    attrs = _.extend({}, this.attributes, attrs);
+    var error = this.validationError = this.validate(attrs, options) || null;
+    if (!error) return true;
+    return false;
+  }
+
 });
 
-/**
- * Add extend method
- * TODO This can go away once ES7 Static class properties become final
- */
 Model.extend = extend;
 
-//default export
-export default Model;
+module.exports = Model;

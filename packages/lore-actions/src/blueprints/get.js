@@ -32,8 +32,8 @@ module.exports = function(opts = {}) {
           });
         }
       }).catch(function(response) {
-        const error = response.responseJSON;
-        
+        const error = response.data;
+
         if (response.status === 404) {
           if (options.onNotFound) {
 
@@ -43,7 +43,7 @@ module.exports = function(opts = {}) {
 
             dispatch({
               type: options.onNotFound.actionType,
-              payload: _.merge(model, {
+              payload: _.merge(payload(model), {
                 state: options.onNotFound.payloadState,
                 error: error
               })

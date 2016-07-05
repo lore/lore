@@ -103,3 +103,44 @@ This will either become a PUT (update) or POST (create) request depending on whe
 #### model.destroy
 
 Will send a `DELETE http://localhost:300/api/todos/:id` request to the API server.
+
+### Response Object
+This library uses [Axios](https://github.com/mzabriskie/axios) to make AJAX calls, which has a [response schema](https://github.com/mzabriskie/axios#response-schema) that something like this:
+
+```js
+var response = {
+  config: {
+    headers: {
+      Accept: "application/json, text/plain, */*"
+    },
+    method: "GET",
+    parse: true,
+    responseType: "json",
+    url: "http://localhost:1337/todos/91"
+  },
+  data: {
+    id: 91,
+    title: "Update README",
+    createdAt: "2016-07-02T00:00:06.407Z",
+    updatedAt: "2016-07-02T00:00:06.407Z"
+  },
+  headers: {},
+  request: function() {},
+  status: 200,
+  statusText: "OK"
+};
+```
+
+So when you make a call like this:
+
+```js
+var todo = new Todo({
+  id: 91
+})
+
+todo.fetch().then(function(response) {
+  // do something with response
+})
+```
+
+the response object in the promise looks like the example above

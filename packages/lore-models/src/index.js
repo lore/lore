@@ -1,3 +1,5 @@
-export {default as Model} from "./model";
-export {default as Collection} from "./collection";
-export {type as MethodTypes} from "./constants";
+module.exports = {
+  Model: require('./model'),
+  Collection: require('./collection'),
+  sync: require('./sync')
+};
