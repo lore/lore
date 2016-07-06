@@ -6,15 +6,6 @@ var _ = require('lodash');
  * find Reducer Blueprint
  */
 
-function intersectionOfDataAndDictionaryKeys(data, dictionary) {
-  var ids = _.map(data, 'id');
-  var dictionaryKeys = _.keys(dictionary);
-  var idsInDictionary = _.intersection(ids, dictionaryKeys);
-  return idsInDictionary.map(function(id) {
-    return dictionary[id];
-  });
-}
-
 function mergeDataAndIntersectWithDictionaryKeys(oldData, newData, dictionary) {
   var ids = _.map(oldData, 'id');
   var newIds = _.map(newData, 'id');
@@ -33,9 +24,7 @@ function mergeDataAndIntersectWithDictionaryKeys(oldData, newData, dictionary) {
   });
 }
 
-function mergeMissingDataIntoDictionary(data, query, state) {
-  var byCid = state.byCid;
-
+function mergeMissingDataIntoDictionary(data, query, byCid) {
   _.keys(byCid).forEach(function(cid) {
     var datum = byCid[cid];
     var existingDatum = _.findWhere(data, { cid: cid });
@@ -54,6 +43,11 @@ function mergeMissingDataIntoDictionary(data, query, state) {
   })
 }
 
+var SETTINGS = {
+  REMOVE_DESTROYED_DATA: true,
+  ADD_NEW_DATA_TO_QUERIES: true
+};
+
 module.exports = function(modelName) {
 
   var initialState = {};
@@ -65,23 +59,44 @@ module.exports = function(modelName) {
     var byId = options.nextState.byId;
     var byCid = options.nextState.byCid;
 
-    // update the data in each query to reflect what's in the dictionary
-    // will update data that's changed and remove data that doesn't exist
-    _.keys(nextState).forEach(function(query) {
-      var queryState = nextState[query];
-      nextState[query] = _.assign({}, queryState, {
-        data: intersectionOfDataAndDictionaryKeys(queryState.data, byId)
+    // Remove any data that no longer exists in byId
+    // This usually means it was deleted
+    if (SETTINGS.REMOVE_DESTROYED_DATA) {
+      nextState = _.mapValues(nextState, function(collection, key) {
+        var ids = collection.data.map(function(data){
+          // id will not always exist for the empty query case: {}
+          return data.id ? data.id.toString() : data.id;
+        });
+
+        // get the list of ids that still exist
+        var idsThatExist = _.keys(byId);
+
+        // get the list of ids that should remain in the collection
+        var validIds = _.intersection(ids, idsThatExist);
+
+        // convert the array of ids in the collection back to real objects
+        collection.data = validIds.map(function(id) {
+          return byId[id];
+        });
+
+        return collection;
       });
-    });
+    }
 
-    _.keys(nextState).forEach(function(queryKey) {
-      var queryState = nextState[queryKey];
-      var query = JSON.parse(queryKey);
-      mergeMissingDataIntoDictionary(queryState.data, query, options.nextState);
+    // This adds new data to queries it should be in...
+    // Unsure whether this is good or bad...what are the limits?
+    if (SETTINGS.ADD_NEW_DATA_TO_QUERIES) {
+      nextState = _.mapValues(nextState, function(collection, key) {
+        var query = JSON.parse(key);
 
-      // sort the data by cid, so it has some kind of default ordering
-      _.sortBy(queryState.data, 'cid');
-    });
+        mergeMissingDataIntoDictionary(collection.data, query, byCid);
+
+        // sort the data by cid, so it has some kind of default ordering
+        _.sortBy(collection.data, 'cid');
+
+        return collection;
+      });
+    }
 
     switch (action.type) {
       case ActionTypes.fetchPlural(modelName):

@@ -55,6 +55,7 @@ describe('blueprints#find', function() {
       payload: {
         state: PayloadStates.FETCHING,
         data: [],
+        meta: undefined,
         error: {}
       }
     });
@@ -101,6 +102,7 @@ describe('blueprints#find', function() {
                 error: {}
               }
             ],
+            meta: undefined,
             error: {}
           }
         });
@@ -136,6 +138,7 @@ describe('blueprints#find', function() {
           payload: {
             state: PayloadStates.ERROR_FETCHING,
             data: [],
+            meta: undefined,
             error: {
               message: 'You do not have permission to retrieve this resource'
             }

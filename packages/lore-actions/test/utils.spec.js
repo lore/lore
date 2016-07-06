@@ -62,6 +62,7 @@ describe('utils', function() {
             field: 'someError'
           }
         }],
+        meta: undefined,
         error: {
           field: 'someError'
         }
