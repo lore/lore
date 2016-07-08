@@ -58,7 +58,8 @@ function payloadCollection( collection, state, error ) {
     error: error || {},
     data: collection.models.map(function( model ) {
       return payload(model, state, error);
-    })
+    }),
+    meta: collection.meta
   };
 }
 
