@@ -25,6 +25,16 @@ function mergeDataAndIntersectWithDictionaryKeys(oldData, newData, dictionary) {
 }
 
 function mergeMissingDataIntoDictionary(data, query, byCid) {
+  var where = query.where;
+  var pagination = query.pagination;
+
+  // Do NOT add data to paginated data sets. This function only exists
+  // to facilitate use cases where the user needs to display ALL results
+  // or results for simple queries (like authorId=xyz)
+  if (pagination && Object.keys(pagination).length > 0) {
+    return;
+  }
+
   _.keys(byCid).forEach(function(cid) {
     var datum = byCid[cid];
     var existingDatum = _.findWhere(data, { cid: cid });
@@ -32,11 +42,11 @@ function mergeMissingDataIntoDictionary(data, query, byCid) {
     // if the datum is not in the data set
     if (!existingDatum) {
       // if this is the empty query add it (it stores everything)
-      if (Object.keys(query).length === 0) {
+      if (Object.keys(where).length === 0) {
         data.push(datum);
 
-      // else if the datum matches the query, add it
-      } else if (_.findWhere([datum.data], query)) {
+      // else if the datum matches the 'where' query, add it
+      } else if (_.findWhere([datum.data], where)) {
         data.push(datum);
       }
     }

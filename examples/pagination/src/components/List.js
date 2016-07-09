@@ -17,7 +17,9 @@ module.exports = lore.connect(function(getState, props) {
     return {
       repositories: getState('repository.find', {
         where: {
-          q: 'stars:>1000',
+          q: 'stars:>1000'
+        },
+        pagination: {
           sort: 'stars',
           per_page: REPOS_PER_PAGE,
           page: props.location.query.page || '1'

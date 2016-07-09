@@ -47,21 +47,25 @@ describe('utils', function() {
       };
       state = 'ERROR_FETCHING';
 
-      const result = utils.payloadCollection(collection, state, error);
+      const result = utils.payloadCollection(collection, state, error, {where: {}, pagination: undefined});
 
       expect(result).to.deep.equal({
         state: 'ERROR_FETCHING',
         data: [{
           id: 1,
           cid: 'c1',
+          state: 'ERROR_FETCHING',
           data: {
             name: 'testModel'
           },
-          state: 'ERROR_FETCHING',
           error: {
             field: 'someError'
           }
         }],
+        query: {
+          where: {},
+          pagination: undefined
+        },
         meta: undefined,
         error: {
           field: 'someError'
