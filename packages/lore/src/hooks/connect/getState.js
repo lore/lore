@@ -46,7 +46,30 @@ module.exports = function(lore) {
 
       // TODO refactor this. param is not the correct term for this.
       if (param) {
-        if (_.isPlainObject(param)) {
+        if (_.isPlainObject(param) && value.params === 'where') {
+          // TODO: Account for this issue but in a less hacky way
+          // Problem: there is no specification regarding how objects get serialized or
+          // in what order. For Lore, we NEED the keys be identical, regardless
+          // of the order of the parameters inside of them. For now, this should guarntee
+          // the keys matches what's in the reducer state, as this object is created in this same
+          // way inside of the find method in lore-actions (where property first, then pagination)
+          // There should be a more general solution created however when generating keys, that will
+          // iterate over an object and recreate a new object by alphabetizing all the keys. That
+          // way it can be a generic "toKey(params)" function.
+          //
+          // More information about browser order for objects at this link:
+          // https://bugs.chromium.org/p/v8/issues/detail?id=164
+          var _paramOrderHack = {
+            where: params.where,
+            pagination: params.pagination
+          };
+          model = model[JSON.stringify(_paramOrderHack)];
+        } else if (_.isPlainObject(param)) {
+          // TODO: for real, refactor this whole 'param' concept
+          // The block above was added as after pagination was introduced, because the "where" clause
+          // could no longer be extracted to form the correct key, and thus would cause an infinite
+          // loop to be triggered as the key would never match the query.
+          // Plus...shouldn't the blueprints be decided what parameters are required, not this file?
           model = model[JSON.stringify(param)];
         } else {
           model = model[param];
@@ -54,7 +77,7 @@ module.exports = function(lore) {
       }
 
       if (action && !model || model.state === PayloadStates.INITIAL_STATE) {
-        model = action(param || params).payload;
+        model = action(param || params, params.pagination).payload;
       }
 
       return model;

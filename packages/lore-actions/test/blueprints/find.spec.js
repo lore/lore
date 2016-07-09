@@ -51,10 +51,17 @@ describe('blueprints#find', function() {
     // optimistic response
     expect(dispatch.firstCall.args[0]).to.eql({
       type: ActionTypes.FETCH_TODOS,
-      query: {},
+      query: {
+        where: {},
+        pagination: undefined
+      },
       payload: {
         state: PayloadStates.FETCHING,
         data: [],
+        query: {
+          where: {},
+          pagination: undefined
+        },
         meta: undefined,
         error: {}
       }
@@ -87,7 +94,10 @@ describe('blueprints#find', function() {
         var cid = action.payload.data[0].cid;
         expect(action).to.eql({
           type: ActionTypes.FETCH_TODOS,
-          query: {},
+          query: {
+            where: {},
+            pagination: undefined
+          },
           payload: {
             state: PayloadStates.RESOLVED,
             data: [
@@ -102,6 +112,10 @@ describe('blueprints#find', function() {
                 error: {}
               }
             ],
+            query: {
+              where: {},
+              pagination: undefined
+            },
             meta: undefined,
             error: {}
           }
@@ -134,10 +148,17 @@ describe('blueprints#find', function() {
         // resolved response
         expect(dispatch.secondCall.args[0]).to.eql({
           type: ActionTypes.FETCH_TODOS,
-          query: {},
+          query: {
+            where: {},
+            pagination: undefined
+          },
           payload: {
             state: PayloadStates.ERROR_FETCHING,
             data: [],
+            query: {
+              where: {},
+              pagination: undefined
+            },
             meta: undefined,
             error: {
               message: 'You do not have permission to retrieve this resource'

@@ -63,7 +63,9 @@ describe('hooks#reducerBlueprints#reducer', function() {
     var action1, action2, query;
 
     beforeEach(function() {
-      query = {};
+      query = {
+        where: {}
+      };
 
       action1 = {
         type: ActionTypes.fetchPlural(modelName),
@@ -106,7 +108,9 @@ describe('hooks#reducerBlueprints#reducer', function() {
     var action1, action2, action3, action4, query;
 
     beforeEach(function() {
-      query = {};
+      query = {
+        where: {}
+      };
 
       action1 = {
         type: ActionTypes.fetchPlural(modelName),

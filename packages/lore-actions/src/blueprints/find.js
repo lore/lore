@@ -19,18 +19,25 @@ module.exports = function(opts = {}) {
 
   validatePartialPairs(options);
 
-  return function fetchAll(query = {}) {
+  return function fetchAll(query = {}, pagination) {
     return function(dispatch) {
       const collection = new Collection();
 
+      var queryParameters = _.extend({}, query, pagination);
+
+      var combinedQuery = {
+        where: query,
+        pagination: pagination
+      };
+
       collection.fetch({
-        data: query
+        data: queryParameters
       }).then(function() {
         if (options.onSuccess) {
           dispatch({
             type: options.onSuccess.actionType,
-            payload: payloadCollection(collection, options.onSuccess.payloadState),
-            query: query
+            payload: payloadCollection(collection, options.onSuccess.payloadState, null, combinedQuery),
+            query: combinedQuery
           });
         }
       }).catch(function(response) {
@@ -43,8 +50,8 @@ module.exports = function(opts = {}) {
 
           dispatch({
             type: options.onError.actionType,
-            payload: payloadCollection(collection, options.onError.payloadState, error),
-            query: query
+            payload: payloadCollection(collection, options.onError.payloadState, error, combinedQuery),
+            query: combinedQuery
           });
         }
       });
@@ -52,8 +59,8 @@ module.exports = function(opts = {}) {
       if (options.optimistic) {
         return dispatch({
           type: options.optimistic.actionType,
-          payload: payloadCollection(collection, options.optimistic.payloadState),
-          query: query
+          payload: payloadCollection(collection, options.optimistic.payloadState, null, combinedQuery),
+          query: combinedQuery
         });
       }
     };

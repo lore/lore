@@ -52,13 +52,14 @@ function payload( model, state, error ) {
   };
 }
 
-function payloadCollection( collection, state, error ) {
+function payloadCollection( collection, state, error, query ) {
   return {
     state: state,
     error: error || {},
     data: collection.models.map(function( model ) {
       return payload(model, state, error);
     }),
+    query: query,
     meta: collection.meta
   };
 }
