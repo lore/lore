@@ -14,6 +14,10 @@ module.exports = {
         description: 'Name of the application',
         type: 'string'
       },
+      esnext: {
+        alias: 'n',
+        describe: 'Generate an ESNext version of the project'
+      },
       es6: {
         alias: '6',
         describe: 'Generate an ES6 version of the project'

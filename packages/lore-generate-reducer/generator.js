@@ -18,7 +18,7 @@ module.exports = Generator.extend({
     var result = {};
     var filename = './src/reducers/' + camelCase(options.reducerName) + '.js';
 
-    if (options.es6) {
+    if (options.es6 || options.esnext) {
       result[filename] = { copy: './reducer.es6.js'};
     } else {
       result[filename] = { copy: './reducer.es5.js'};

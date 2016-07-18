@@ -29,4 +29,4 @@ export default lore.connect((getState, props) => {
   return {
     //models: getState('model.find')
   };
-}, withRouter(<%= componentName %>));
+})(withRouter(<%= componentName %>));

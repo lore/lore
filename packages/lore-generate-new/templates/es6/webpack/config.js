@@ -52,7 +52,10 @@ module.exports = function(settings) {
           loader: "babel-loader",
           include: APP_ROOT,
           query: {
-            presets: ['react', 'es2015']
+            presets: [
+              'react',
+              'es2015'
+            ]
           }
         },{
           test: /\.js$/,

@@ -1,0 +1,6 @@
+{
+  "generators": {
+    "language": "esnext"
+  },
+  "hooks": {}
+}

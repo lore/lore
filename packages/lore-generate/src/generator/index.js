@@ -92,8 +92,11 @@ _.extend(Generator.prototype, {
     var projectDirectory = options.projectDirectory;
 
     // Set the language the generator should use (globally set in .lorerc, can be overrideen by CLI arguments)
-    if (this.lorerc.generators.language === 'es6') {
+    var language = this.lorerc.generators.language;
+    if (language === 'es6') {
       options.es6 = true;
+    } else if (language === 'esnext') {
+      options.esnext = true;
     }
 
     // The `targets` property can be an object or a function, so get the value accordingly

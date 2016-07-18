@@ -4,7 +4,7 @@ module.exports = lore.connect(function(getState, props) {
     return {
       //models: getState('model.find')
     }
-  },
+  })(
   React.createClass({
     displayName: '<%= componentName %>',
 

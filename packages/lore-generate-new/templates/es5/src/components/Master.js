@@ -5,9 +5,9 @@
 
 var React = require('react');
 
-module.exports = lore.connect({subscribe: true}, function(getState, props) {
-    return {};
-  },
+module.exports = lore.connect(function(getState, props) {
+  return {};
+}, { subscribe: true })(
   React.createClass({
     displayName: 'Master',
 
@@ -30,13 +30,11 @@ module.exports = lore.connect({subscribe: true}, function(getState, props) {
  * var React = require('react');
  * var PayloadStates = require('../constants/PayloadStates');
  *
- * module.exports = lore.connect({
- *     subscribe: true
- *   }, function(getState, props){
- *     return {
- *       user: getState('user.current')
- *     }
- *   },
+ * module.exports = lore.connect(function(getState, props){
+ *   return {
+ *     user: getState('user.current')
+ *   }
+ * }, {subscribe: true})(
  *   React.createClass({
  *     displayName: 'Master',
  *
@@ -61,5 +59,5 @@ module.exports = lore.connect({subscribe: true}, function(getState, props) {
  *     }
  *   })
  * );
- * 
+ *
  **/

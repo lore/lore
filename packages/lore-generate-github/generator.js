@@ -65,7 +65,7 @@ module.exports = Generator.extend({
   },
 
   targets: function(options) {
-    if (options.es6) {
+    if (options.es6 || options.esnext) {
       return {
         './gulp/tasks/github.js': { copy: 'gulp/tasks/github.es6.js'}
       };

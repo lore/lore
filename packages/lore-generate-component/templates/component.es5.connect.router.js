@@ -5,7 +5,7 @@ module.exports = lore.connect(function(getState, props) {
     return {
       //models: getState('model.find')
     }
-  },
+  })(
   Router.withRouter(React.createClass({
     displayName: '<%= componentName %>',
 

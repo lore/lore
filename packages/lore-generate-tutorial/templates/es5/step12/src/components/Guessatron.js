@@ -6,7 +6,7 @@ module.exports = lore.connect(function(getState, props) {
         id: props.params.colorId
       })
     }
-  },
+  })(
   React.createClass({
     displayName: 'Guessatron',
 
