@@ -16,7 +16,9 @@ module.exports = Generator.extend({
 	targets: function(options) {
     var template = './component';
 
-    if (options.es6) {
+    if (options.esnext) {
+      template += '.esnext'
+    } else if (options.es6) {
       template += '.es6'
     } else {
       template += '.es5'

@@ -43,11 +43,9 @@ Guessatron.propTypes = {
 };
 
 export default lore.connect(function(getState, props) {
-    return {
-      color: getState('color.byId', {
-        id: props.params.colorId
-      })
-    }
-  },
-  Guessatron
-);
+  return {
+    color: getState('color.byId', {
+      id: props.params.colorId
+    })
+  }
+})(Guessatron);

@@ -18,12 +18,12 @@ module.exports = Generator.extend({
     var result = {};
     var filename = './src/models/' + camelCase(options.modelName) + '.js';
 
-    if (options.es6) {
+    if (options.es6 || options.esnext) {
       result[filename] = { copy: './model.es6.js'};
     } else {
       result[filename] = { copy: './model.es5.js'};
     }
-    
+
     return result;
   }
 

@@ -2,6 +2,7 @@ var path = require('path');
 var Generator = require('lore-generate').Generator;
 var es5Targets = require('./targets/es5');
 var es6Targets = require('./targets/es6');
+var esnextTargets = require('./targets/esnext');
 
 module.exports = Generator.extend({
 
@@ -25,7 +26,9 @@ module.exports = Generator.extend({
   },
 
   targets: function(options) {
-    if (options.es6) {
+    if (options.esnext) {
+      return esnextTargets(options);
+    } else if (options.es6) {
       return es6Targets(options);
     } else {
       return es5Targets(options);

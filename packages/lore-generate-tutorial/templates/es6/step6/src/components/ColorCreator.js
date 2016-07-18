@@ -81,9 +81,7 @@ ColorCreator.propTypes = {
 };
 
 export default lore.connect(function(getState, props) {
-    return {
-      colors: getState('color.find')
-    }
-  },
-  ColorCreator
-);
+  return {
+    colors: getState('color.find')
+  }
+})(ColorCreator);

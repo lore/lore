@@ -17,11 +17,9 @@ class Master extends React.Component {
 
 }
 
-export default lore.connect({ subscribe: true }, function(getState, props) {
-    return {};
-  },
-  Master
-);
+export default lore.connect(function(getState, props) {
+  return {};
+}, { subscribe: true })(Master);
 
 /**
  * If your application has authentication, this is a good place to fetch the
@@ -64,7 +62,7 @@ export default lore.connect({ subscribe: true }, function(getState, props) {
  *   },
  *   Master
  * );
- * 
+ *
  **/
 
 

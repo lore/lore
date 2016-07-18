@@ -7,7 +7,7 @@ module.exports = lore.connect(function(getState, props) {
     return {
       colors: getState('color.find')
     }
-  },
+  })(
   React.createClass({
     displayName: 'ColorCreator',
 

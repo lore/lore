@@ -75,7 +75,7 @@ module.exports = Generator.extend({
   },
 
   targets: function(options) {
-    if (options.es6) {
+    if (options.es6 || options.esnext) {
       return {
         './gulp/tasks/surge.js': { copy: 'gulp/tasks/surge.es6.js'}
       };
