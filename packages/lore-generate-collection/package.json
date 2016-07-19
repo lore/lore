@@ -1,6 +1,6 @@
 {
   "name": "lore-generate-collection",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "license": "MIT",
   "main": "index.js",
   "description": "Generates a Lore collection",
@@ -13,7 +13,7 @@
     "test": "NODE_ENV=test mocha --recursive"
   },
   "dependencies": {
-    "lore-generate": "^0.7.0",
+    "lore-generate": "^0.8.0",
     "bluebird": "3.1.1",
     "camel-case": "1.2.2",
     "lodash": "3.10.1"
