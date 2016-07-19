@@ -6,12 +6,19 @@ Example application to demonstrate use of dialogs and querying.
 
 ## Usage
 
-Build and run the front-end:
+This example uses [json-server](https://github.com/typicode/json-server) to provide an API for the example. All data
+is stored persistently in the `db.json` file at the root of the project.
 
-```sh
-npm install
+To start the API server, run this command:
+
+```
+npm run server
+```
+
+Next, run webpack to build and serve the project:
+
+```
 npm start
 ```
 
-Note: calls against the server are intercepted using [faux-server](https://github.com/storcery/faux-server) which replaces the network calls with calls against the localstore.
-
+Finally, open your browser and navigate to `http://localhost:3000` to view the example.

@@ -16,15 +16,15 @@ var MoreVertIcon = require('material-ui/svg-icons/navigation/more-vert').default
 module.exports = lore.connect(function(getState, props) {
     return {
       list: getState('list.byId', {
-        id: props.params.listId
+        id: Number(props.params.listId)
       }),
       todos: getState('todo.find', {
         where: {
-          list: props.params.listId
+          list: Number(props.params.listId)
         }
       })
     };
-  },
+  })(
   Router.withRouter(React.createClass({
     displayName: 'Todos',
 

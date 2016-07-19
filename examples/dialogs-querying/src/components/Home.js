@@ -9,11 +9,9 @@ var Lists = require('./lists/Lists');
 
 module.exports = lore.connect(function(getState, props){
     return {
-      lists: getState('list.find', {
-        where: { }
-      })
+      lists: getState('list.find')
     }
-  },
+  })(
   React.createClass({
     displayName: 'Home',
 

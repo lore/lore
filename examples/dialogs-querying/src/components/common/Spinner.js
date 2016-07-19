@@ -7,8 +7,7 @@ module.exports = React.createClass({
     return (
       <svg
         className="spinner"
-        viewBox="0 0 66 66"
-        xmlns="http://www.w3.org/2000/svg" >
+        viewBox="0 0 66 66">
         <circle
           className="path"
           fill="none"

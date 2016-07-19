@@ -17,14 +17,14 @@ export default {
   // apiRoot: 'https://api.example.com',
 
   /****************************************************************************
-   *                                                                           *
-   * If pluralize is true, all model names will be converted to their plural   *
-   * form when making API calls. A model called 'foo' will made a call to      *
-   * '/foos' if pluralize is true, and to '/foo' if pluralize is false         *
-   * Uses the pluralize.js library to determine the plural model name          *
-   * See: https://github.com/blakeembrey/pluralize                             *
-   *                                                                           *
-   ****************************************************************************/
+  *                                                                           *
+  * If pluralize is true, all model names will be converted to their plural   *
+  * form when making API calls. A model called 'foo' will made a call to      *
+  * '/foos' if pluralize is true, and to '/foo' if pluralize is false         *
+  * Uses the pluralize.js library to determine the plural model name          *
+  * See: https://github.com/blakeembrey/pluralize                             *
+  *                                                                           *
+  ****************************************************************************/
 
   // pluralize: true,
 

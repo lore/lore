@@ -9,12 +9,10 @@ var ENTER_KEY = 13;
 
 module.exports = lore.connect(function(getState, props) {
     return {
-      todos: getState('todo.find', {
-        where: {}
-      }),
+      todos: getState('todo.find'),
       nowShowing: props.location.query.filter
     };
-  },
+  })(
   React.createClass({
     displayName: 'Home',
 
@@ -114,7 +112,7 @@ module.exports = lore.connect(function(getState, props) {
       var todoItems = shownTodos.map(function (todo) {
         return (
           <TodoItem
-            key={todo.id}
+            key={todo.id || todo.cid}
             todo={todo}
             onToggle={this.toggle.bind(this, todo)}
             onDestroy={this.destroy.bind(this, todo)}

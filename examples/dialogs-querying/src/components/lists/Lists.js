@@ -9,11 +9,9 @@ var CreateListDialog = require('../../dialogs/list/Create');
 
 module.exports = lore.connect(function(getState, props){
     return {
-      lists: getState('list.find', {
-        where: { }
-      })
+      lists: getState('list.find')
     }
-  },
+  })(
   Router.withRouter(React.createClass({
     displayName: 'CollectionList',
 
@@ -56,7 +54,7 @@ module.exports = lore.connect(function(getState, props){
 
         return (
           <mui.ListItem
-            key={list.id}
+            key={list.id || list.cid}
             primaryText={list.data.title}
             onTouchTap={navigateToList.bind(this)} />
         );

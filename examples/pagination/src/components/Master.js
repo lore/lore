@@ -5,9 +5,9 @@
 
 var React = require('react');
 
-module.exports = lore.connect({subscribe: true}, function(getState, props) {
+module.exports = lore.connect(function(getState, props) {
     return {};
-  },
+  }, {subscribe: true})(
   React.createClass({
     displayName: 'Master',
 
@@ -61,5 +61,5 @@ module.exports = lore.connect({subscribe: true}, function(getState, props) {
  *     }
  *   })
  * );
- * 
+ *
  **/

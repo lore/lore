@@ -9,11 +9,9 @@ var cx = require('classnames');
 
 module.exports = lore.connect(function(getState, props) {
     return {
-      lists: getState('list.find', {
-        where: { }
-      })
+      lists: getState('list.find')
     }
-  },
+  })(
   Router.withRouter(React.createClass({
     displayName: 'Layout',
 
