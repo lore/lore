@@ -13,6 +13,11 @@ module.exports = function(options) {
   var files = filesForStep(options.step);
 
   switch(options.step) {
+    case 'server':
+      return files([
+        'db.json',
+        'config/models.js'
+      ], es5);
     case 'step1':
       return files([
         'index.html'

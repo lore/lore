@@ -67,7 +67,6 @@ generators.command(commandify(require('lore-generate-reducer')));
 generators.command(commandify(require('lore-generate-surge')));
 generators.command(commandify(require('lore-generate-github')));
 generators.command(commandify(require('lore-generate-tutorial')));
-generators.command(commandify(require('lore-generate-tutorial-server')));
 
 app.command(generators);
 
