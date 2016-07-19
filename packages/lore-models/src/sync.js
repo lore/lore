@@ -22,7 +22,13 @@ module.exports = function sync(method, model, options) {
   var type = methodMap[method];
 
   // Default JSON-request options.
-  var params = {method: type, responseType: 'json'};
+  var params = {
+    method: type,
+    responseType: 'json',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
 
   // Ensure that we have a URL.
   if (!options.url) {

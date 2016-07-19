@@ -22,8 +22,6 @@ var requireDir = require('require-dir');
 var _ = require('lodash');
 var yargs = require('yargs');
 
-console.log(yargs.argv);
-
 var envConfigs = requireDir('./webpack/env');
 
 var settings = {

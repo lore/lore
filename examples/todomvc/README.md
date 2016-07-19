@@ -8,7 +8,26 @@ This is a modified version of the [React TodoMVC example](http://todomvc.com/exa
 It has been modified in the following ways:
 
 1. It uses [React Router](https://github.com/rackt/react-router)
-2. Calls against the server are intercepted using [faux-server](https://github.com/lore/faux-server) which intercepts any AJAX calls and mocks out the responses, storing the mocked data in localStorage.
+2. Data is served from a real API (not localStorage) using json-server](https://github.com/typicode/json-server).
+
+## Usage
+
+This example uses [json-server](https://github.com/typicode/json-server) to provide an API for the example. All data
+is stored persistently in the `db.json` file at the root of the project.
+
+To start the API server, run this command:
+
+```
+npm run server
+```
+
+Next, run webpack to build and serve the project:
+
+```
+npm start
+```
+
+Finally, open your browser and navigate to `http://localhost:3000` to view the example.
 
 ## Misc Notes
 Unsure why at the moment, but in `src/components/Master.js` if the line:

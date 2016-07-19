@@ -26,7 +26,7 @@ module.exports = lore.connect(function(getState, props) {
         }
       })
     }
-  },
+  })(
   Router.withRouter(React.createClass({
     displayName: 'List',
 
