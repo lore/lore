@@ -13,9 +13,10 @@ module.exports = {
   // root
   './.editorconfig': {copy: common('editorconfig.template')},
   './.gitignore': {copy: common('gitignore')},
+  './.lorerc': {copy: es5('lorerc')},
+  './db.json': {copy: common('db.json')},
   './index.html': {copy: common('index.html')},
   './index.js': {copy: es5('index.js')},
-  './.lorerc': {copy: es5('lorerc')},
   './gulpfile.js': {copy: es5('gulpfile.js')},
   './package.json': {template: es5('package.json')},
   './README.md': {template: common('./README.md')},

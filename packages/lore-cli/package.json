@@ -29,7 +29,6 @@
     "lore-generate-reducer": "^0.7.0",
     "lore-generate-surge": "^0.7.0",
     "lore-generate-tutorial": "^0.7.0",
-    "lore-generate-tutorial-server": "^0.7.0",
     "nested-yargs": "^1.0.7"
   },
   "devDependencies": {
