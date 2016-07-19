@@ -60,8 +60,10 @@ the tutorials.
 
 Since Lore is still in active development, I'm going to list the things that have immediate focus here.
 
-1. Add support for pagination
-2. Refactor lore.connect [to support ESNext decorators](https://github.com/lore/lore/issues/112)
+1. [[done](https://github.com/lore/lore/pull/114),[done](https://github.com/lore/lore/pull/115)] Add support for pagination
+2. [[done](https://github.com/lore/lore/pull/116)] Refactor lore.connect [to support ESNext decorators](https://github.com/lore/lore/issues/112)
+3. Update examples
+4. Publish v0.8 to NPM
 
 
 ### Thanks
