@@ -62,8 +62,11 @@ Since Lore is still in active development, I'm going to list the things that hav
 
 1. [[done](https://github.com/lore/lore/pull/114),[done](https://github.com/lore/lore/pull/115)] Add support for pagination
 2. [[done](https://github.com/lore/lore/pull/116)] Refactor lore.connect [to support ESNext decorators](https://github.com/lore/lore/issues/112)
-3. Update examples
-4. Publish v0.8 to NPM
+3. [[done](https://github.com/lore/lore/pull/117),[done](https://github.com/lore/lore/pull/118)] Update examples
+4. [done] Publish v0.8 to NPM
+5. [[done](https://github.com/lore/lore/pull/119)] Add infinite scrolling example
+6. Update release notes & record video of changes
+7. Send out newsletter
 
 
 ### Thanks
