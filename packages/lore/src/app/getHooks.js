@@ -9,10 +9,10 @@ var Hook = require('../Hook');
  *
  * @returns {Object} Final set of hooks that should be loaded into the application
  */
-module.exports = function getHooks() {
+module.exports = function getHooks(hookOverrides) {
   var coreHookDefinitions = coreHooksLoader.load();
   var userHookDefinitions = userHooksLoader.load();
-  var hookDefinitions =  _.assign({}, coreHookDefinitions, userHookDefinitions);
+  var hookDefinitions =  _.assign({}, coreHookDefinitions, userHookDefinitions, hookOverrides);
   var hooks = _.mapValues(hookDefinitions, function(definition, hookName) {
     definition.id = hookName;
     return new Hook(definition);

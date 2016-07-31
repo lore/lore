@@ -59,7 +59,7 @@ _.extend(Lore.prototype, {
 
     // Next we need to load the hooks before the config, as the hooks contain
     // the defaults we need to build the final configuration for the app
-    this.hooks = getHooks();
+    this.hooks = getHooks(configOverride.hooks);
 
     // Generate the final config from the combination of the overrides passed
     // into the app, the default config (calculated from the hooks), and the
