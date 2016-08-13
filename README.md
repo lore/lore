@@ -60,8 +60,11 @@ the tutorials.
 
 Since Lore is still in active development, I'm going to list the things that have immediate focus here.
 
-1. Improve support for launching dialogs
-2. Provide a set of convention-generated dialogs for basic CRUD operations
+1. [[done](https://github.com/lore/lore/pull/120)] Improve support for launching dialogs
+2. [[bootstrap](https://github.com/lore/lore/pull/120),[material-ui](https://github.com/lore/lore/pull/122)] Provide a set of convention-generated dialogs for basic CRUD operations
+3. Add support for setting custom headers on network requests
+4. Create authentication example
+5. Create hook for real-time support
 
 
 ### Thanks
