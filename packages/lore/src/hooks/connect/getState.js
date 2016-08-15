@@ -13,8 +13,11 @@ module.exports = function(lore) {
       return value;
     }
 
-    return function (state, params) {
+    return function (state, params, options) {
       var param, action, model;
+      options = _.assign({
+        shouldCallAction: true
+      }, options);
 
       if (value.action) {
         action = _.get(lore.actions, value.action);
@@ -76,7 +79,7 @@ module.exports = function(lore) {
         }
       }
 
-      if (action && !model || model.state === PayloadStates.INITIAL_STATE) {
+      if (options.shouldCallAction && action && (!model || model.state === PayloadStates.INITIAL_STATE)) {
         model = action(param || params, params.pagination).payload;
       }
 
@@ -121,7 +124,7 @@ module.exports = function(lore) {
     }
   }
 
-  return function (state, stateKey, params) {
+  return function (state, stateKey, params, options) {
     if (!stateMap) {
       configureStateMap();
     }
@@ -133,7 +136,7 @@ module.exports = function(lore) {
     if (!getState) {
       throw new Error('no getState function found for ' + stateKey + '. Did you mean ' + Object.keys(stateMap).join(", ") + '?');
     }
-    return getState(state, params);
+    return getState(state, params, options);
   };
 
 };
