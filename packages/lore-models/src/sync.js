@@ -25,9 +25,9 @@ module.exports = function sync(method, model, options) {
   var params = {
     method: type,
     responseType: 'json',
-    headers: {
+    headers: _.assign({
       'Content-Type': 'application/json'
-    }
+    }, _.result(model, 'headers'))
   };
 
   // Ensure that we have a URL.
