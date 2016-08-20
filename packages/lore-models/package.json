@@ -1,6 +1,6 @@
 {
   "name": "lore-models",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "license": "MIT",
   "description": "Convention over configuration for CRUD actions against models and collections",
   "homepage": "http://github.com/lore/lore",
