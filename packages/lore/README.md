@@ -65,7 +65,7 @@ for making UI development a more fun and magical experience (even if it is [abou
 * [Storcery](http://storcery.io) for providing the environment, discussion and impetus that gave birth to Lore.
 * [April Zero](http://aprilzero.com) for showing just how beautiful web apps can be.  Your creation continues to inspire.
 * [Backbone](https://github.com/jashkenas/backbone) for a wonderfully well-thought-out interface for an API abstraction tier.
-
+* [Redux-Auth-Wrapper](https://github.com/mjrussell/redux-auth-wrapper) for demonstrating a simple and expressive way to handle authentication and authorization concerns.
 
 [circle-url]: https://circleci.com/gh/lore/lore
 [circle-image]: https://circleci.com/gh/lore/lore.svg?style=shield&circle-token=6ef9571387d0e08d802f6769026fcf91fc30459f
