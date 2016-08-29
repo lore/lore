@@ -62,9 +62,12 @@ Since Lore is still in active development, I'm going to list the things that hav
 
 1. [[done](https://github.com/lore/lore/pull/120)] Improve support for launching dialogs
 2. [[bootstrap](https://github.com/lore/lore/pull/120),[material-ui](https://github.com/lore/lore/pull/122)] Provide a set of convention-generated dialogs for basic CRUD operations
-3. Add support for setting custom headers on network requests
-4. Create authentication example
-5. Create hook for real-time support
+3. [[done](https://github.com/lore/lore/pull/124)] Add support for setting custom headers on network requests
+4. [[done](https://github.com/lore/lore/pull/127)] Create lore-auth package to simplify authentication and authorization concerns
+5. [[done](https://github.com/lore/lore/pull/126)] Create hook for supporting WebSockets with Sails backend
+6. Create hook for supporting WebSockets with Rails 5 backend (using ActionCable)
+7. Create authentication example
+8. Create WebSockets example
 
 
 ### Thanks
