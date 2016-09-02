@@ -24,7 +24,7 @@
     "json-server": "^0.8.16",
     "lodash": "^4.0.0",
     "lore": "~0.8.0",
-    "lore-hook-dialogs-material-ui": "0.1.0",
+    "lore-hook-dialogs-material-ui": "~0.8.0",
     "material-ui": "^0.15.1",
     "moment": "2.10.3",
     "react": "^15.1.0",
