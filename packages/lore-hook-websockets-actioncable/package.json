@@ -1,0 +1,35 @@
+{
+  "name": "lore-hook-websockets-actioncable",
+  "version": "0.8.0",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "description": "A lore hook that add websockets support for the ActionCable implementation in Rails",
+  "keywords": [
+    "lore",
+    "hook",
+    "websockets",
+    "actioncable",
+    "rails"
+  ],
+  "scripts": {
+    "build": "../../node_modules/.bin/babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "debug": "mocha debug --compilers js:babel-core/register --recursive",
+    "prepublish": "npm run build",
+    "test": "mocha --compilers js:babel-core/register --recursive"
+  },
+  "dependencies": {
+    "lodash": "^4.0.0",
+    "lore-websockets": "^0.8.0",
+    "pluralize": "1.2.1"
+  },
+  "devDependencies": {
+    "actioncable": "^5.0.0",
+    "chai": "3.4.1",
+    "mocha": "2.3.4",
+    "rimraf": "2.5.2"
+  },
+  "peerDependencies": {
+    "actioncable": "^5.0.0"
+  }
+}
