@@ -1,0 +1,31 @@
+{
+  "name": "lore-websockets",
+  "version": "0.8.0",
+  "license": "MIT",
+  "description": "Common code used by all lore-hook-websockets-* packages",
+  "homepage": "https://github.com/lore/lore#readme",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lore/lore.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lore/lore/issues"
+  },
+  "scripts": {
+    "build": "../../node_modules/.bin/babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "debug": "mocha debug --compilers js:babel-core/register --recursive",
+    "prepublish": "npm run build",
+    "test": "mocha --compilers js:babel-core/register --recursive"
+  },
+  "dependencies": {
+    "lodash": "^4.0.0"
+  },
+  "devDependencies": {
+    "chai": "3.4.1",
+    "mocha": "2.3.4",
+    "rimraf": "2.5.2",
+    "sinon": "1.17.2"
+  }
+}

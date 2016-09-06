@@ -1,0 +1,17 @@
+{
+  "name": "lore-example-websockets-server-express",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.0",
+    "express": "~4.13.4",
+    "sequelize": "^3.24.1",
+    "socket.io": "^1.4.8",
+    "sqlite3": "^3.1.4"
+  }
+}

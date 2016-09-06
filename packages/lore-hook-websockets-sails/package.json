@@ -1,0 +1,36 @@
+{
+  "name": "lore-hook-websockets-sails",
+  "version": "0.8.0",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "description": "A lore hook that add websockets support for Sails",
+  "keywords": [
+    "lore",
+    "hook",
+    "websockets",
+    "sails"
+  ],
+  "scripts": {
+    "build": "../../node_modules/.bin/babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "debug": "mocha debug --compilers js:babel-core/register --recursive",
+    "prepublish": "npm run build",
+    "test": "mocha --compilers js:babel-core/register --recursive"
+  },
+  "dependencies": {
+    "lodash": "^4.0.0",
+    "lore-websockets": "^0.8.0",
+    "pluralize": "1.2.1"
+  },
+  "devDependencies": {
+    "chai": "3.4.1",
+    "mocha": "2.3.4",
+    "rimraf": "2.5.2",
+    "sails.io.js": "^0.13.8",
+    "socket.io-client": "^1.4.8"
+  },
+  "peerDependencies": {
+    "sails.io.js": "^0.13.8",
+    "socket.io-client": "^1.4.8"
+  }
+}
