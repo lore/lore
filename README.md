@@ -64,10 +64,14 @@ Since Lore is still in active development, I'm going to list the things that hav
 2. [[bootstrap](https://github.com/lore/lore/pull/120),[material-ui](https://github.com/lore/lore/pull/122)] Provide a set of convention-generated dialogs for basic CRUD operations
 3. [[done](https://github.com/lore/lore/pull/124)] Add support for setting custom headers on network requests
 4. [[done](https://github.com/lore/lore/pull/127)] Create lore-auth package to simplify authentication and authorization concerns
-5. [[done](https://github.com/lore/lore/pull/126)] Create hook for supporting WebSockets with Sails backend
-6. Create hook for supporting WebSockets with Rails 5 backend (using ActionCable)
-7. Create authentication example
-8. Create WebSockets example
+5. [[done](https://github.com/lore/lore/pull/128)] Create hook for supporting WebSockets with Sails backend
+6. [[done](https://github.com/lore/lore/pull/128)] Create hook for supporting WebSockets with Rails 5 backend (using ActionCable)
+7. [[done](https://github.com/lore/lore/pull/128)] Create hook for supporting WebSockets with Socket.io
+8. [[done](https://github.com/lore/lore/pull/128)] Create examples demonstrating WebSocket usage
+9. Create authentication example
+10. Publish v0.8.2
+11. Record video for release notes
+12. Publish newsletter
 
 
 ### Thanks
@@ -76,8 +80,7 @@ Since Lore is still in active development, I'm going to list the things that hav
 * [React Hot Loader](https://github.com/gaearon/react-hot-loader)/[React Transform](https://github.com/gaearon/react-transform-boilerplate) 
 for making UI development a more fun and magical experience (even if it is [about to be sunset](https://medium.com/@dan_abramov/hot-reloading-in-react-1140438583bf)).
 * [Sails](https://github.com/balderdashy/sails) for showing that a framework can be both strongly opinionated and highly respectful.
-* [Rincon Strategies](http://www.rinconstrategies.io) for creating a React community in Tucson and for always building 
-apps that emphasize the importance of the user experience. I’m constantly learning :)
+* [Lerna](https://github.com/lerna/lerna/) for providing a sane solution for managing a monorepo.
 * [Storcery](http://storcery.io) for providing the environment, discussion and impetus that gave birth to Lore.
 * [April Zero](http://aprilzero.com) for showing just how beautiful web apps can be.  Your creation continues to inspire.
 * [Backbone](https://github.com/jashkenas/backbone) for a wonderfully well-thought-out interface for an API abstraction tier.
