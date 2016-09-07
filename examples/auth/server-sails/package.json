@@ -1,0 +1,22 @@
+{
+  "name": "lore-examples-auth-server-sails",
+  "private": true,
+  "version": "0.0.0",
+  "description": "API server for the Auth example in Lore",
+  "keywords": [],
+  "main": "app.js",
+  "scripts": {
+    "debug": "node debug app.js",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "ejs": "2.3.4",
+    "lodash": "^4.15.0",
+    "passport": "^0.3.2",
+    "passport-http-bearer": "^1.0.1",
+    "rc": "1.0.1",
+    "sails": "~0.12.3",
+    "sails-disk": "~0.10.9"
+  }
+}

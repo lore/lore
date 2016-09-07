@@ -12,11 +12,11 @@ describe('hooks#reducers#load', function() {
 
   beforeEach(function() {
     hook = new Hook(definition);
-    defaultConfig = hook.defaults();
+    defaultConfig = hook.defaults;
 
     lore = {
       config: {
-        reducers: defaultConfig
+        reducers: defaultConfig.reducers
       },
       loader: loader({})
     };
@@ -24,7 +24,7 @@ describe('hooks#reducers#load', function() {
 
   describe('and no reducers exist', function() {
 
-    it('should append an empty object to lore.actions', function() {
+    it('should append an empty object to lore.reducers', function() {
       hook.load(lore);
       expect(lore.reducers).to.be.an('object');
       expect(_.keys(lore.reducers).length).to.equal(0);
@@ -39,19 +39,49 @@ describe('hooks#reducers#load', function() {
         loaderHelper.stub({
           reducers: {
             todo: {
-              count: function(){}
-            }
+              index: function(){}
+            },
+            list: function(){}
           }
         })
       });
 
-      it('should append the the function to lore.actions', function() {
+      it('should append the the function to lore.reducers', function() {
         hook.load(lore);
-        expect(_.keys(lore.reducers).length).to.equal(1);
-        expect(lore.reducers.todo.count).to.be.a('function');
+        expect(_.keys(lore.reducers).length).to.equal(2);
+        expect(lore.reducers.todo).to.be.a('function');
+        expect(lore.reducers.list).to.be.a('function');
       });
 
     });
+
+  });
+
+  describe('when no models exist', function() {
+
+    it('should append an empty object to lore.reducers', function() {
+      hook.load(lore);
+      expect(lore.reducers).to.be.an('object');
+      expect(_.keys(lore.reducers).length).to.equal(0);
+    })
+  });
+
+  describe('and models exist', function() {
+
+    beforeEach(function() {
+      _.merge(lore, {
+        models: {
+          todo: {}
+        }
+      });
+    });
+
+    it('should create reducers for each model and append them to lore.reducers', function() {
+      hook.load(lore);
+      expect(lore.reducers).to.be.an('object');
+      expect(_.keys(lore.reducers).length).to.equal(1);
+      expect(lore.reducers.todo).to.be.a('function');
+    })
 
   });
 

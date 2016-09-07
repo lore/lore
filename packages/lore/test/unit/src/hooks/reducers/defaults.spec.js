@@ -6,8 +6,12 @@ describe('hooks#reducers#defaults', function() {
 
   it('should have the correct fields', function() {
     var hook = new Hook(definition);
-    var defaultConfig = {};
-    expect(hook.defaults()).to.deep.equal(defaultConfig);
+    var defaultConfig = {
+      reducers: {
+        dependencies: {}
+      }
+    };
+    expect(hook.defaults).to.deep.equal(defaultConfig);
   });
 
 });
