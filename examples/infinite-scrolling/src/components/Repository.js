@@ -27,7 +27,7 @@ module.exports = React.createClass({
 
   render: function() {
     var repository = this.props.repository;
-    var description = repository.data.description;
+    var description = repository.data.description || '';
     var styles = this.getStyles();
     var tokens = [];
 
