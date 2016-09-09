@@ -15,6 +15,7 @@
     "lerna:bootstrap": "lerna bootstrap",
     "lerna:updated": "lerna updated",
     "lerna:publish": "lerna publish",
+    "lerna:publish:prerelease": "NPM_DIST_TAG=next lerna publish",
     "check": "npm run lint && npm run test",
     "clean:lore": "cd packages/lore && npm run clean",
     "clean:lore-auth": "cd packages/lore-auth && npm run clean",
