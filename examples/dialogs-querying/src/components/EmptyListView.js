@@ -28,7 +28,8 @@ module.exports = React.createClass({
 
     function createList(partialParams) {
       var params = _.assign({}, partialParams, {
-        list: list.id
+        list: list.id,
+        isCompleted: false
       });
       lore.actions.todo.create(params);
     }

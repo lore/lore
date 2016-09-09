@@ -54,7 +54,8 @@ module.exports = lore.connect(function(getState, props) {
 
       function createTodo(partialParams) {
         var params = _.assign({}, partialParams, {
-          list: list.id
+          list: list.id,
+          isCompleted: false
         });
         lore.actions.todo.create(params);
       }
