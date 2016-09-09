@@ -43,7 +43,8 @@ module.exports = lore.connect(function(getState, props) {
 
       if (val) {
         lore.actions.todo.create({
-          title: val
+          title: val,
+          isCompleted: false
         });
         this.setState({newTodo: ''});
       }
