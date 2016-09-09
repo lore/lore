@@ -1,5 +1,7 @@
 var _ = require('lodash');
 
+// todo: rename this to something like ActionTypeGenerator...
+
 /**
  * Methods that generate ActionTypes using naming conventions. Used by action and reducer blueprints.
  * TODO: Since these functions generate ActionTypes, maybe rename it to ActionTypeGenerator or ActionTypeFactory?
@@ -33,5 +35,7 @@ module.exports = {
 
   fetchPlural: function(modelName) {
     return 'FETCH_' + _.snakeCase(modelName).toUpperCase() + 'S';
-  }
+  },
+
+  RESET_STORE: 'RESET_STORE'
 };

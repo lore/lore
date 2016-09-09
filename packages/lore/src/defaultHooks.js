@@ -13,7 +13,6 @@ module.exports = {
   connect: true,
   models: true,
   collections: true,
-  reducerBlueprints: true,
   reducers: true,
   redux: true,
   dialog: true,

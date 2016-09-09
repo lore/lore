@@ -1,0 +1,36 @@
+<!--This is the HTML file that gets served to the browser.  It contains text-->
+<!--that says "Loading..." that will disappear as soon as `bundle.js` has been-->
+<!--downloaded and `lore.summon()` has finished setting up your application.-->
+
+<!--It also contains a DOM element to hang dialogs from so they don't conflict-->
+<!--with any CSS or JavaScript behaviors in the application (styling overrides-->
+<!--or event bubbling cancellation).-->
+
+<html>
+  <head>
+    <title>Lore Example: Authentication & Authorization</title>
+    <style>
+      .loading-text {
+        text-align: center;
+        line-height: 100vh;
+        font-size: 32px;
+        margin: 0;
+        font-weight: bold;
+        color: rgba(0,0,0,.54);
+      }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div id="root">
+      <h1 class="loading-text">
+        Loading...
+      </h1>
+    </div>
+    <div id="dialog"></div>
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="/dist/bundle.js"></script>
+  </body>
+</html>

@@ -30,7 +30,6 @@ describe('lore#build', function() {
         'connect',
         'dialog',
         'models',
-        'reducerBlueprints',
         'reducers',
         'redux'
       ]);
