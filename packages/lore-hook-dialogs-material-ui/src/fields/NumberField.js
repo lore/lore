@@ -5,8 +5,12 @@ module.exports = React.createClass({
   displayName: 'NumberField',
 
   propTypes: {
+    attribute: React.PropTypes.object.isRequired,
     label: React.PropTypes.string.isRequired,
-    value: React.PropTypes.number.isRequired,
+    value: React.PropTypes.oneOfType([
+      React.PropTypes.number,
+      React.PropTypes.string
+    ]).isRequired,
     onChange: React.PropTypes.func.isRequired
   },
 
@@ -18,7 +22,7 @@ module.exports = React.createClass({
 
   getInitialState: function() {
     return {
-      error: null
+      error: isNaN(Number(this.props.value)) ? 'Must be a number' : null
     }
   },
 
@@ -48,11 +52,13 @@ module.exports = React.createClass({
   },
 
   render: function () {
+    var attribute = this.props.attribute;
     var error = this.state.error;
 
     return (
       <mui.TextField
-        floatingLabelText={this.props.label}
+        floatingLabelText={attribute.displayName || this.props.label}
+        hintText={attribute.placeholder}
         errorText={error}
         value={this.props.value}
         onChange={this.onChange} />

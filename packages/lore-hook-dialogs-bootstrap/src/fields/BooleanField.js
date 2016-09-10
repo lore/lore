@@ -4,23 +4,25 @@ module.exports = React.createClass({
   displayName: 'BooleanField',
 
   propTypes: {
+    attribute: React.PropTypes.object.isRequired,
     label: React.PropTypes.string.isRequired,
     value: React.PropTypes.bool.isRequired,
     onChange: React.PropTypes.func.isRequired
   },
 
-  getStyles: function() {
-    return {
-      checkbox: {
-        width: 'inherit',
-        height: 'inherit'
-      }
-    }
-  },
-
   getDefaultProps: function() {
     return {
       value: false
+    }
+  },
+
+  getStyles: function() {
+    return {
+      description: {
+        marginTop: '-5px',
+        marginBottom: '3px',
+        color: '#777'
+      }
     }
   },
 
@@ -36,11 +38,18 @@ module.exports = React.createClass({
   },
 
   render: function () {
+    var attribute = this.props.attribute;
+    var styles = this.getStyles();
+
     return (
-      <div className="checkbox">
+      <div className="form-group">
         <label className="control-label">
-          <input type="checkbox" checked={this.props.value} onChange={this.onChange} /> {this.props.label}
+          {attribute.displayName || this.props.label}
         </label>
+        <p style={styles.description}>
+          {attribute.description}
+        </p>
+        <input type="checkbox" checked={this.props.value} onChange={this.onChange} />
       </div>
     );
   }

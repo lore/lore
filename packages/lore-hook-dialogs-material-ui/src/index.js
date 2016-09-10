@@ -2,45 +2,31 @@ var React = require('react');
 var Create = require('./blueprints/Create');
 var Update = require('./blueprints/Update');
 var Destroy = require('./blueprints/Destroy');
+var _ = require('lodash');
 
 function getCreateDialog(defaults) {
   return function(props, options) {
+    var params = _.assign({}, defaults, options);
     return React.createElement(
-      Create({
-        title: defaults.title,
-        submitButtonText: defaults.submitButtonText,
-        attributes: defaults.attributes,
-        defaults: defaults.defaults,
-        muiTheme: options.muiTheme
-      }), props
+      Create(params), props
     );
   }
 }
 
 function getUpdateDialog(defaults) {
   return function(props, options) {
+    var params = _.assign({}, defaults, options);
     return React.createElement(
-      Update({
-        title: defaults.title,
-        submitButtonText: defaults.submitButtonText,
-        attributes: defaults.attributes,
-        defaults: defaults.defaults,
-        muiTheme: options.muiTheme
-      }), props
+      Update(params), props
     );
   }
 }
 
 function getDestroyDialog(defaults) {
   return function(props, options) {
+    var params = _.assign({}, defaults, options);
     return React.createElement(
-      Destroy({
-        title: defaults.title,
-        submitButtonText: defaults.submitButtonText,
-        attributes: defaults.attributes,
-        defaults: defaults.defaults,
-        muiTheme: options.muiTheme
-      }), props
+      Destroy(params), props
     );
   }
 }
@@ -60,7 +46,8 @@ module.exports = {
       lore.dialogs[modelName].create = getCreateDialog({
         modelName: modelName,
         attributes: schema.attributes,
-        title: 'Create ' + modelName,
+        title: 'Create ' + _.capitalize(modelName),
+        cancelButtonText: 'Cancel',
         submitButtonText: 'Create',
         defaults: {}
       });
@@ -68,7 +55,8 @@ module.exports = {
       lore.dialogs[modelName].update = getUpdateDialog({
         modelName: modelName,
         attributes: schema.attributes,
-        title: 'Update ' + modelName,
+        title: 'Update ' + _.capitalize(modelName),
+        cancelButtonText: 'Cancel',
         submitButtonText: 'Update',
         defaults: {}
       });
@@ -76,7 +64,8 @@ module.exports = {
       lore.dialogs[modelName].destroy = getDestroyDialog({
         modelName: modelName,
         attributes: schema.attributes,
-        title: 'Delete ' + modelName,
+        title: 'Delete ' + _.capitalize(modelName),
+        cancelButtonText: 'Cancel',
         submitButtonText: 'Delete',
         defaults: {}
       });

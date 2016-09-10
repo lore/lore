@@ -1,4 +1,21 @@
 {
   "lists": [],
-  "todos": []
+  "todos": [
+    {
+      "isOpen": true,
+      "title": "Task",
+      "description": "asdafsdf",
+      "isCompleted": true,
+      "priority": 1,
+      "id": 1
+    },
+    {
+      "isOpen": true,
+      "title": "Test",
+      "description": "test",
+      "isCompleted": false,
+      "priority": 12,
+      "id": 2
+    }
+  ]
 }

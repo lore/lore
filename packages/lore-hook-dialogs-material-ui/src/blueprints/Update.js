@@ -12,6 +12,7 @@ module.exports = function(options) {
   options = options || {};
 
   var title = options.title;
+  var cancelButtonText = options.cancelButtonText;
   var submitButtonText = options.submitButtonText;
   var attributes = options.attributes;
   var defaults = options.defaults;
@@ -55,6 +56,7 @@ module.exports = function(options) {
           return (
             <StringField
               key={attributeName}
+              attribute={attribute}
               label={attributeName}
               value={this.state[attributeName]}
               onChange={this.onChangeCallbacks[attributeName]} />
@@ -63,6 +65,7 @@ module.exports = function(options) {
           return (
             <TextField
               key={attributeName}
+              attribute={attribute}
               label={attributeName}
               value={this.state[attributeName]}
               onChange={this.onChangeCallbacks[attributeName]} />
@@ -71,6 +74,7 @@ module.exports = function(options) {
           return (
             <BooleanField
               key={attributeName}
+              attribute={attribute}
               label={attributeName}
               value={this.state[attributeName]}
               onChange={this.onChangeCallbacks[attributeName]} />
@@ -79,6 +83,7 @@ module.exports = function(options) {
           return (
             <NumberField
               key={attributeName}
+              attribute={attribute}
               label={attributeName}
               value={this.state[attributeName]}
               onChange={this.onChangeCallbacks[attributeName]} />
@@ -90,7 +95,7 @@ module.exports = function(options) {
 
       var dialogActions = [
         <FlatButton
-          label="Cancel"
+          label={cancelButtonText}
           primary={true}
           onTouchTap={this.onCancel}
         />,

@@ -4,6 +4,7 @@ module.exports = React.createClass({
   displayName: 'NumberField',
 
   propTypes: {
+    attribute: React.PropTypes.object.isRequired,
     label: React.PropTypes.string.isRequired,
     value: React.PropTypes.number.isRequired,
     onChange: React.PropTypes.func.isRequired
@@ -12,6 +13,15 @@ module.exports = React.createClass({
   getDefaultProps: function() {
     return {
       value: 0
+    }
+  },
+
+  getStyles: function() {
+    return {
+      description: {
+        marginTop: '-5px',
+        color: '#777'
+      }
     }
   },
 
@@ -27,11 +37,17 @@ module.exports = React.createClass({
   },
 
   render: function () {
+    var attribute = this.props.attribute;
+    var styles = this.getStyles();
+
     return (
       <div className="form-group">
         <label className="control-label">
-          {this.props.label}
+          {attribute.displayName || this.props.label}
         </label>
+        <p style={styles.description}>
+          {attribute.description}
+        </p>
         <input
           type="number"
           className="form-control"

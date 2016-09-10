@@ -15,6 +15,15 @@ module.exports = React.createClass({
     }
   },
 
+  getStyles: function() {
+    return {
+      description: {
+        marginTop: '-5px',
+        color: '#777'
+      }
+    }
+  },
+
   onChange: function(e){
     var value = e.target.value;
 
@@ -27,15 +36,22 @@ module.exports = React.createClass({
   },
 
   render: function () {
+    var attribute = this.props.attribute;
+    var styles = this.getStyles();
+
     return (
       <div className="form-group">
         <label className="control-label">
-          {this.props.label}
+          {attribute.displayName || this.props.label}
         </label>
+        <p style={styles.description}>
+          {attribute.description}
+        </p>
         <input
           type="text"
           className="form-control"
           value={this.props.value}
+          placeholder={attribute.placeholder}
           onChange={this.onChange} />
       </div>
     );

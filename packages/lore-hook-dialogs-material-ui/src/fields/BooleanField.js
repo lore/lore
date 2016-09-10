@@ -5,6 +5,7 @@ module.exports = React.createClass({
   displayName: 'BooleanField',
 
   propTypes: {
+    attribute: React.PropTypes.object.isRequired,
     label: React.PropTypes.string.isRequired,
     value: React.PropTypes.bool.isRequired,
     onChange: React.PropTypes.func.isRequired
@@ -36,12 +37,13 @@ module.exports = React.createClass({
   },
 
   render: function () {
+    var attribute = this.props.attribute;
     var styles = this.getStyles();
 
     return (
       <mui.Checkbox
         style={styles.field}
-        label={this.props.label}
+        label={attribute.displayName || this.props.label}
         checked={this.props.value}
         onCheck={this.onChange}
       />

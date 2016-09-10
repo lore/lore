@@ -5,6 +5,7 @@ module.exports = function(options) {
   options = options || {};
 
   var title = options.title;
+  var cancelButtonText = options.cancelButtonText;
   var submitButtonText = options.submitButtonText;
 
   return React.createClass({
@@ -16,7 +17,17 @@ module.exports = function(options) {
       model: React.PropTypes.object.isRequired
     },
 
+    getStyles: function() {
+      return {
+        form: {
+          marginTop: '14px'
+        }
+      }
+    },
+
     render: function () {
+      var styles = this.getStyles();
+
       return (
         <div className="modal fade">
           <div className="modal-dialog">
@@ -30,17 +41,13 @@ module.exports = function(options) {
                 </h4>
               </div>
               <div className="modal-body">
-                <form>
-                  <div className="form-group">
-                    <label className="control-label">
-                      Are you sure you want to destroy this model?
-                    </label>
-                  </div>
+                <form style={styles.form}>
+                  <p>Are you sure you want to delete this?</p>
                 </form>
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-default" data-dismiss="modal">
-                  Close
+                  {cancelButtonText}
                 </button>
                 <button type="button" className="btn btn-primary" onClick={this.onSubmit}>
                   {submitButtonText}

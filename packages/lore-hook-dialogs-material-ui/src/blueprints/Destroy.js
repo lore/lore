@@ -8,6 +8,7 @@ module.exports = function(options) {
   options = options || {};
 
   var title = options.title;
+  var cancelButtonText = options.cancelButtonText;
   var submitButtonText = options.submitButtonText;
 
   return options.muiTheme(React.createClass({
@@ -23,7 +24,7 @@ module.exports = function(options) {
     render: function () {
       var dialogActions = [
         <FlatButton
-          label="Cancel"
+          label={cancelButtonText}
           primary={true}
           onTouchTap={this.onCancel}
         />,
@@ -43,7 +44,7 @@ module.exports = function(options) {
           actions={dialogActions}
           contentClassName={this.props.contentClassName} >
           <p>
-            Are you sure you want to destroy this model?
+            Are you sure you want to delete this?
           </p>
         </mui.Dialog>
       );
