@@ -1,6 +1,6 @@
 {
   "name": "lore-cli",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "license": "MIT",
   "description": "The Command Line Interface (CLI) for Lore",
   "homepage": "https://github.com/lore/lore#readme",
@@ -20,15 +20,15 @@
   },
   "dependencies": {
     "lodash": "3.10.1",
-    "lore-generate-collection": "^0.8.0",
-    "lore-generate-component": "^0.8.0",
-    "lore-generate-generator": "^0.8.0",
-    "lore-generate-github": "^0.8.0",
-    "lore-generate-model": "^0.8.0",
-    "lore-generate-new": "^0.8.0",
-    "lore-generate-reducer": "^0.8.0",
-    "lore-generate-surge": "^0.8.0",
-    "lore-generate-tutorial": "^0.8.0",
+    "lore-generate-collection": "^0.9.0",
+    "lore-generate-component": "^0.9.0",
+    "lore-generate-generator": "^0.9.0",
+    "lore-generate-github": "^0.9.0",
+    "lore-generate-model": "^0.9.0",
+    "lore-generate-new": "^0.9.0",
+    "lore-generate-reducer": "^0.9.0",
+    "lore-generate-surge": "^0.9.0",
+    "lore-generate-tutorial": "^0.9.0",
     "nested-yargs": "^1.0.7"
   },
   "devDependencies": {
