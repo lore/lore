@@ -71,7 +71,6 @@ module.exports = {
   './config/local.js': {copy: es5('config/local.js')},
   './config/models.js': {copy: es5('config/models.js')},
   './config/reducerActionMap.js': {copy: es5('config/reducerActionMap.js')},
-  './config/reducerBlueprints.js': {copy: es5('config/reducerBlueprints.js')},
   './config/reducers.js': {copy: es5('config/reducers.js')},
   './config/redux.js': {copy: es5('config/redux.js')},
   './config/router.js': {copy: es5('config/router.js')},
