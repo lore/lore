@@ -2,11 +2,15 @@ module.exports = {
 
   attributes: {
     title: {
-      type: 'string'
+      type: 'string',
+      displayName: 'Title',
+      placeholder: 'What needs to be done?'
     },
     isCompleted: {
       type: 'boolean',
-      defaultValue: false
+      defaultValue: false,
+      displayName: 'Is the task complete?',
+      description: 'Check the box if it is.'
     }
   }
 
