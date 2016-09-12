@@ -1,0 +1,40 @@
+{
+  "name": "lore-hook-dialog",
+  "version": "0.10.0",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "description": "A lore hook that mounts a dialog to the DOM",
+  "keywords": [
+    "lore",
+    "hook",
+    "dialog"
+  ],
+  "scripts": {
+    "build": "../../node_modules/.bin/babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "debug": "mocha debug --compilers js:babel-core/register --recursive",
+    "prepublish": "npm run build",
+    "test": "mocha --compilers js:babel-core/register test/bootstrap.js test/**/*.spec.js --recursive"
+  },
+  "dependencies": {
+    "lodash": "^4.0.0",
+    "lore-utils": "^0.10.0"
+  },
+  "devDependencies": {
+    "chai": "3.4.1",
+    "mocha": "2.3.4",
+    "react": "^15.0.0",
+    "react-addons-test-utils": "^15.0.0",
+    "react-dom": "^15.0.0",
+    "react-redux": "^4.4.1",
+    "redux": "^3.0.2",
+    "rimraf": "2.5.2",
+    "sinon": "1.17.2"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
+    "react-redux": "^4.4.1",
+    "redux": "^3.0.2"
+  }
+}

@@ -43,6 +43,10 @@ module.exports = function sortHooksByLoadOrder(hooks, log) {
   //log.debug('loading sorted hooks: ', sortedDependencies);
 
   return sortedDependencies.map(function(hookName) {
-    return hooks[hookName];
+    var hook = hooks[hookName];
+    if (!hook) {
+      throw new Error(`Expected to find hook named '${hookName}' but none was included`);
+    }
+    return hook;
   });
 };

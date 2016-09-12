@@ -2,6 +2,9 @@ var expect = require('chai').expect;
 var sinon = require('sinon');
 var Lore = require('../../src/app/index');
 var loaderHelper = require('../helpers/loaderHelper');
+var config = {
+  hooks: require('../defaultHooks')
+};
 
 describe('lore#reducers', function() {
   var lore = null;
@@ -21,7 +24,7 @@ describe('lore#reducers', function() {
     });
 
     it("should create reducers for each model and attach them to lore.reducers", function() {
-      lore.build();
+      lore.build(config);
       expect(lore.reducers).to.include.keys([
         'todo'
       ]);
@@ -41,7 +44,7 @@ describe('lore#reducers', function() {
     });
 
     it("should create reducers for each files and attach them to lore.reducers", function() {
-      lore.build();
+      lore.build(config);
       expect(lore.reducers).to.include.keys([
         'todo'
       ]);
@@ -69,7 +72,7 @@ describe('lore#reducers', function() {
       });
 
       it("it should use the reducer created by the user instead of the blueprint", function() {
-        lore.build();
+        lore.build(config);
         // lore.reducers.todo();
         expect(spy.called).to.equal(true);
       });
@@ -94,7 +97,7 @@ describe('lore#reducers', function() {
       });
 
       it("it should use the index reducer instead of the blueprint", function() {
-        lore.build();
+        lore.build(config);
         // lore.reducers.todo();
         expect(spy.called).to.equal(true);
       });
@@ -119,7 +122,7 @@ describe('lore#reducers', function() {
       });
 
       it("it should use that reducer instead of the blueprint", function() {
-        lore.build();
+        lore.build(config);
         // lore.reducers.todo();
         expect(spy.called).to.equal(true);
       });
@@ -144,7 +147,7 @@ describe('lore#reducers', function() {
       });
 
       it("it should add that reducer to the set provided by the blueprints", function() {
-        lore.build();
+        lore.build(config);
         expect(lore.store.getState().todo.byUser).to.be.an('object');
         expect(spy.called).to.equal(true);
       });
@@ -167,7 +170,7 @@ describe('lore#reducers', function() {
       });
 
       it("it should add that reducer to those created from models", function() {
-        lore.build();
+        lore.build(config);
         // lore.reducers.todo();
         expect(spy.called).to.equal(true);
       });

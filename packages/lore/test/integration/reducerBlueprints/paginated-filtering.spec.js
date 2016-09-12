@@ -3,6 +3,9 @@ var Lore = require('../../../src/app/index');
 var loaderHelper = require('../../helpers/loaderHelper');
 var nock = require('nock');
 var _ = require('lodash');
+var config = {
+  hooks: require('../../defaultHooks')
+};
 
 var API_ROOT = 'http://localhost:1337';
 var TEST_DELAY = 100;
@@ -50,7 +53,7 @@ describe('lore#reducerBlueprints#paginated-filtering', function() {
     });
 
     it("should combine data for simple queries", function(done) {
-      lore.build();
+      lore.build(config);
       lore.actions.post.find({
         authorId: '1',
         page: '1'
@@ -120,7 +123,7 @@ describe('lore#reducerBlueprints#paginated-filtering', function() {
     });
 
     it("should combine data for simple queries", function(done) {
-      lore.build();
+      lore.build(config);
       lore.actions.post.find({
         authorId: '1',
         title: 'One'
@@ -198,7 +201,7 @@ describe('lore#reducerBlueprints#paginated-filtering', function() {
     });
 
     it("should combine data for simple queries", function(done) {
-      lore.build();
+      lore.build(config);
       lore.actions.post.find();
       lore.actions.post.find({
         authorId: '1'

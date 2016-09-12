@@ -3,6 +3,9 @@ var Lore = require('../../../src/app/index');
 var loaderHelper = require('../../helpers/loaderHelper');
 var nock = require('nock');
 var _ = require('lodash');
+var config = {
+  hooks: require('../../defaultHooks')
+};
 
 var API_ROOT = 'https://api.github.com/search';
 var TEST_DELAY = 100;
@@ -64,7 +67,7 @@ describe('lore#reducerBlueprints#pagination', function() {
     });
 
     it("should create store states for .byId, .byCid, and. find", function(done) {
-      lore.build();
+      lore.build(config);
       lore.actions.repository.find({
         q: 'stars:>1000',
         sort: 'stars',

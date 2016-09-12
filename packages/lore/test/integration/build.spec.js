@@ -1,13 +1,16 @@
 var expect = require('chai').expect;
 var _ = require('lodash');
 var Lore = require('../../src/app/index');
+var config = {
+  hooks: require('../defaultHooks')
+};
 
 describe('lore#build', function() {
   var lore = null;
 
   beforeEach(function() {
     lore = new Lore();
-    lore.build();
+    lore.build(config);
   });
 
   describe('expected properties', function() {
@@ -24,7 +27,7 @@ describe('lore#build', function() {
 
     it("should list the core hooks", function() {
       expect(lore.hooks).to.include.keys([
-        'actionBlueprints',
+        'action-blueprints',
         'actions',
         'collections',
         'connect',

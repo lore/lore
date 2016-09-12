@@ -6,7 +6,6 @@ var loaders = {
   actions: require('../../src/loaders/actions'),
   collections: require('../../src/loaders/collections'),
   config: require('../../src/loaders/config'),
-  //coreHooks: require('../../src/loaders/coreHooks'),
   models: require('../../src/loaders/models'),
   reducers: require('../../src/loaders/reducers'),
   userHooks: require('../../src/loaders/userHooks'),

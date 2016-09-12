@@ -15,9 +15,17 @@ window.lore = lore;
 // Summon the app!
 lore.summon({
   hooks: {
+    'action-blueprints': require("lore-hook-action-blueprints"),
+    actions: require("lore-hook-actions"),
+    collections: require("lore-hook-collections"),
+    connect: require("lore-hook-connect"),
+    dialog: require("lore-hook-dialog"),
     dialogs: require('lore-hook-dialogs-bootstrap'),
-    websockets: require('lore-hook-websockets-sails')
-    // websockets: require('lore-hook-websockets-socketio')
-    // websockets: require('lore-hook-websockets-actioncable')
+    models: require("lore-hook-models"),
+    reducers: require("lore-hook-reducers"),
+    redux: require("lore-hook-redux"),
+    websockets: require('lore-hook-websockets-sails') // for example
+    // websockets: require('lore-hook-websockets-socketio') // for example
+    // websockets: require('lore-hook-websockets-actioncable') // for example
   }
 });

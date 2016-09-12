@@ -35,17 +35,17 @@ after(function(){
 // Make sure the DOM helpers are stubbed out for testing
 // We need this to test the dialog component
 // -----------------------------------------------------
-var domHelper = require('../src/hooks/dialog/domHelper');
-var ReactTestUtils = require('react-addons-test-utils');
-
-beforeEach(function() {
-  sinon.stub(domHelper, 'renderComponentToDomElementWithId', function (domElementId, component, cb) {
-    var renderer = ReactTestUtils.createRenderer();
-    renderer.render(component);
-    cb(renderer.getRenderOutput());
-  });
-});
-
-afterEach(function() {
-  domHelper.renderComponentToDomElementWithId.restore();
-});
+// var domHelper = require('../src/hooks/dialog/domHelper');
+// var ReactTestUtils = require('react-addons-test-utils');
+//
+// beforeEach(function() {
+//   sinon.stub(domHelper, 'renderComponentToDomElementWithId', function (domElementId, component, cb) {
+//     var renderer = ReactTestUtils.createRenderer();
+//     renderer.render(component);
+//     cb(renderer.getRenderOutput());
+//   });
+// });
+//
+// afterEach(function() {
+//   domHelper.renderComponentToDomElementWithId.restore();
+// });

@@ -1,0 +1,30 @@
+{
+  "name": "lore-hook-reducers",
+  "version": "0.10.0",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "description": "A lore hook that creates Redux reducers",
+  "keywords": [
+    "lore",
+    "hook",
+    "reducers",
+    "redux"
+  ],
+  "scripts": {
+    "build": "../../node_modules/.bin/babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "debug": "mocha debug --compilers js:babel-core/register --recursive",
+    "prepublish": "npm run build",
+    "test": "mocha --compilers js:babel-core/register test/bootstrap.js test/**/*.spec.js --recursive"
+  },
+  "dependencies": {
+    "lodash": "^4.0.0",
+    "lore-utils": "^0.10.0",
+    "topsort": "0.0.2"
+  },
+  "devDependencies": {
+    "chai": "3.4.1",
+    "mocha": "2.3.4",
+    "rimraf": "2.5.2"
+  }
+}

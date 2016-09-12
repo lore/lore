@@ -4,6 +4,9 @@ var nock = require('nock');
 var Lore = require('../../src/app/index');
 var loaderHelper = require('../helpers/loaderHelper');
 var populateStore = require('../helpers/populateStore');
+var config = {
+  hooks: require('../defaultHooks')
+};
 
 describe('lore#redux', function() {
   var lore = null;
@@ -33,7 +36,7 @@ describe('lore#redux', function() {
     });
 
     it("should create a todo and add it to the store", function( done ) {
-      lore.build();
+      lore.build(config);
       var optimisticTodo = lore.actions.todo.create({
         title: 'foo'
       }).payload;
@@ -79,7 +82,7 @@ describe('lore#redux', function() {
     });
 
     it("should find the todos and add them to the store", function( done ) {
-      lore.build();
+      lore.build(config);
       var optimisticTodos = lore.actions.todo.find().payload;
 
       // We should have one query dictionary created, but it should have no data
@@ -119,7 +122,7 @@ describe('lore#redux', function() {
     });
 
     it("should create a todo, add it to the store, and update it when the server responds", function( done ) {
-      lore.build();
+      lore.build(config);
       var optimisticTodo = lore.actions.todo.get('1').payload;
 
       // Because we're specifying the id, it should be in two reducers
@@ -161,7 +164,7 @@ describe('lore#redux', function() {
     });
 
     it("should udpate the todo and update it in the store", function( done ) {
-      lore.build();
+      lore.build(config);
       var store = lore.store;
       var data = populateStore(store, {
         todo: [{
@@ -213,7 +216,7 @@ describe('lore#redux', function() {
     });
 
     it("should delete a todo and remove it from the store", function( done ) {
-      lore.build();
+      lore.build(config);
       var store = lore.store;
       var data = populateStore(store, {
         todo: [{
@@ -265,7 +268,7 @@ describe('lore#redux', function() {
     });
 
     it("should create a todo and add it to the store", function( done ) {
-      lore.build();
+      lore.build(config);
       var optimisticTodo = lore.actions.todo.create({
         title: 'foo'
       }).payload;
@@ -311,7 +314,7 @@ describe('lore#redux', function() {
     });
 
     it("should find the todos and add them to the store", function(done) {
-      lore.build();
+      lore.build(config);
       var optimisticTodos = lore.actions.todo.find().payload;
 
       // We should have one query dictionary created, but it should have no data
@@ -351,7 +354,7 @@ describe('lore#redux', function() {
     });
 
     it("should create a todo, add it to the store, and update it when the server responds", function( done ) {
-      lore.build();
+      lore.build(config);
       var optimisticTodo = lore.actions.todo.get(1).payload;
 
       // Because we're specifying the id, it should be in two reducers
@@ -393,7 +396,7 @@ describe('lore#redux', function() {
     });
 
     it("should udpate the todo and update it in the store", function( done ) {
-      lore.build();
+      lore.build(config);
       var store = lore.store;
       var data = populateStore(store, {
         todo: [{
@@ -445,7 +448,7 @@ describe('lore#redux', function() {
     });
 
     it("should delete a todo and remove it from the store", function( done ) {
-      lore.build();
+      lore.build(config);
       var store = lore.store;
       var data = populateStore(store, {
         todo: [{

@@ -1,6 +1,9 @@
 var expect = require('chai').expect;
 var Lore = require('../../src/app/index');
 var loaderHelper = require('../helpers/loaderHelper');
+var config = {
+  hooks: require('../defaultHooks')
+};
 
 describe('lore#models', function() {
   var lore = null;
@@ -21,7 +24,7 @@ describe('lore#models', function() {
     });
 
     it("should instantiate them and attach to lore.models", function() {
-      lore.build();
+      lore.build(config);
       expect(lore.models).to.include.keys([
         'todo',
         'list'
@@ -58,7 +61,7 @@ describe('lore#models', function() {
     });
 
     it("the final properties should be a combination of the two configurations", function() {
-      lore.build();
+      lore.build(config);
       var prototype = lore.models.todo.prototype;
       expect(prototype.urlRoot).to.equal('https://config.models/todo');
       expect(prototype.propA).to.equal('a');
