@@ -40,7 +40,7 @@ module.exports = React.createClass({
         <div className="container" style={styles.container}>
           <div className="navbar-header">
             <Router.Link className="navbar-brand" to={{pathname: '/'}}>
-              Websockets
+              WebSockets
             </Router.Link>
           </div>
           <button type="button" className="btn btn-primary btn-lg" style={styles.createButton} onClick={this.onClick}>

@@ -25,6 +25,7 @@
     "lore-hook-websockets-sails": "~0.9.0",
     "lore-hook-websockets-socketio": "~0.9.0",
     "moment": "2.10.3",
+    "node-uuid": "^1.4.7",
     "pluralize": "^3.0.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
