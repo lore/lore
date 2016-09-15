@@ -60,19 +60,9 @@ the tutorials.
 
 Since Lore is still in active development, I'm going to list the things that have immediate focus here.
 
-1. [[done](https://github.com/lore/lore/pull/120)] Improve support for launching dialogs
-2. [[bootstrap](https://github.com/lore/lore/pull/120),[material-ui](https://github.com/lore/lore/pull/122)] Provide a set of convention-generated dialogs for basic CRUD operations
-3. [[done](https://github.com/lore/lore/pull/124)] Add support for setting custom headers on network requests
-4. [[done](https://github.com/lore/lore/pull/127)] Create lore-auth package to simplify authentication and authorization concerns
-5. [[done](https://github.com/lore/lore/pull/128)] Create hook for supporting WebSockets with Sails backend
-6. [[done](https://github.com/lore/lore/pull/128)] Create hook for supporting WebSockets with Rails 5 backend (using ActionCable)
-7. [[done](https://github.com/lore/lore/pull/128)] Create hook for supporting WebSockets with Socket.io
-8. [[done](https://github.com/lore/lore/pull/128)] Create examples demonstrating WebSocket usage
-9. [[done](https://github.com/lore/lore/pull/129)] Create authentication example
-10. [[done](https://github.com/lore/lore/pull/129)] Make reducers composable
-11. Publish v0.9.0
-12. Record video for release notes
-13. Publish newsletter
+1. Move all internal hooks into external npm packages
+2. Create "extract" command
+3. Improve WebSockets support
 
 
 ### Thanks
