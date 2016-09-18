@@ -20,7 +20,7 @@
   "dependencies": {
     "invariant": "2.2.0",
     "lodash": "3.10.1",
-    "lore-utils": "^0.10.0"
+    "lore-utils": "~0.10.0"
   },
   "devDependencies": {
     "chai": "3.4.1",
