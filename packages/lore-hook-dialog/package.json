@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-dialog",
-  "version": "0.10.0",
+  "version": "0.10.0-rc.1",
   "license": "MIT",
   "main": "./lib/index.js",
   "description": "A lore hook that mounts a dialog to the DOM",
