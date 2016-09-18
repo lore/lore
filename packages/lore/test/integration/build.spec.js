@@ -27,7 +27,6 @@ describe('lore#build', function() {
 
     it("should list the core hooks", function() {
       expect(lore.hooks).to.include.keys([
-        'action-blueprints',
         'actions',
         'collections',
         'connect',

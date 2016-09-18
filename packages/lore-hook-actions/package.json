@@ -3,7 +3,7 @@
   "version": "0.10.0",
   "license": "MIT",
   "main": "./lib/index.js",
-  "description": "A lore hook that loads redux actions",
+  "description": "A lore hook that loads redux actions and generates default actions from blueprints",
   "keywords": [
     "lore",
     "hook",
