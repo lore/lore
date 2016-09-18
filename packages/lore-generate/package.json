@@ -13,6 +13,7 @@
     "url": "http://github.com/lore/lore/issues"
   },
   "scripts": {
+    "clean": "echo 'nothing to clean'",
     "test": "NODE_ENV=test mocha --recursive"
   },
   "dependencies": {

@@ -9,6 +9,7 @@
     "generator"
   ],
   "scripts": {
+    "clean": "echo 'nothing to clean'",
     "test": "mocha"
   },
   "dependencies": {
