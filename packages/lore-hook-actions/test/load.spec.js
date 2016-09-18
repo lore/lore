@@ -24,8 +24,52 @@ describe('load', function() {
       loader: loader({}),
       store: {
         dispatch: function(){}
-      }
+      },
+      models: {},
+      collections: {}
     };
+  });
+
+  describe('if no models or collections exist', function() {
+    it('should append an empty object to lore.actions', function() {
+      hook.load(lore);
+      expect(lore.actions).to.exist;
+    })
+  });
+
+  describe('if models and collections exist', function() {
+    beforeEach(function() {
+      lore = {
+        config: {
+          actions: defaultConfig
+        },
+        loader: loader({}),
+        store: {
+          dispatch: function(){}
+        },
+        models: {
+          todo: {}
+        },
+        collections: {
+          todo: {}
+        }
+      };
+    });
+
+    it('should create actions and append them to lore.actions', function() {
+      hook.load(lore);
+      expect(lore.actions).to.be.an('object');
+      expect(_.keys(lore.actions).length).to.equal(1);
+      expect(lore.actions.todo).to.be.an('object');
+      expect(_.keys(lore.actions.todo).length).to.equal(5);
+      expect(lore.actions.todo).to.include.keys([
+        'create',
+        'destroy',
+        'get',
+        'find',
+        'update'
+      ]);
+    })
   });
 
   describe('and no actions exist', function() {

@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "lodash": "3.10.1",
-    "lore-hook-action-blueprints": "^0.10.0",
     "lore-hook-actions": "^0.10.0",
     "lore-hook-collections": "^0.10.0",
     "lore-hook-connect": "^0.10.0",

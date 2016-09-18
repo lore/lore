@@ -15,7 +15,6 @@ window.lore = lore;
 // Summon the app!
 lore.summon({
   hooks: {
-    'action-blueprints': require("lore-hook-action-blueprints"),
     actions: require("lore-hook-actions"),
     collections: require("lore-hook-collections"),
     connect: require("lore-hook-connect"),
