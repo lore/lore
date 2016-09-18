@@ -60,7 +60,8 @@ the tutorials.
 
 Since Lore is still in active development, I'm going to list the things that have immediate focus here.
 
-1. Move all internal hooks into external npm packages
+1. [[done](https://github.com/lore/lore/pull/130),[done](https://github.com/lore/lore/pull/131)] Move all internal hooks into external npm packages
+2. [done] Migrate monorepo from lerna v1 to lerna v2
 2. Create "extract" command
 3. Improve WebSockets support
 
