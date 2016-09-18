@@ -2,6 +2,9 @@ var expect = require('chai').expect;
 var _ = require('lodash');
 var Lore = require('../../src/app/index');
 var loaderHelper = require('../helpers/loaderHelper');
+var config = {
+  hooks: require('../defaultHooks')
+};
 
 describe('lore#actionBlueprints', function() {
   var lore = null;
@@ -22,7 +25,7 @@ describe('lore#actionBlueprints', function() {
     });
 
     it("should create an action for each model and attach it to lore.actions", function() {
-      lore.build();
+      lore.build(config);
       expect(lore.actions).to.include.keys([
         'todo',
         'list'
@@ -30,7 +33,7 @@ describe('lore#actionBlueprints', function() {
     });
 
     it("should create actions for create(), update(), destroy(), get(), and find()", function() {
-      lore.build();
+      lore.build(config);
       expect(lore.actions.todo).to.be.an('object');
       expect(_.keys(lore.actions.todo).length).to.equal(5);
       expect(lore.actions.todo).to.include.keys([

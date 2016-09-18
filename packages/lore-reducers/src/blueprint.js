@@ -42,7 +42,7 @@ module.exports = function blueprint(initialState = {}, params = {}) {
       throw new Error('action.type is undefined');
     }
 
-    const param = _.findWhere(params, {
+    const param = _.find(params, {
       actionType: actionType
     });
 

@@ -1,6 +1,9 @@
 var expect = require('chai').expect;
 var Lore = require('../../src/app/index');
 var loaderHelper = require('../helpers/loaderHelper');
+var config = {
+  hooks: require('../defaultHooks')
+};
 
 describe('lore#reducerBlueprints', function() {
   var lore = null;
@@ -21,7 +24,7 @@ describe('lore#reducerBlueprints', function() {
     });
 
     it("should create a reducer for each model and attach it to lore.reducers", function() {
-      lore.build();
+      lore.build(config);
       expect(lore.reducers).to.include.keys([
         'todo',
         'list'
@@ -30,7 +33,7 @@ describe('lore#reducerBlueprints', function() {
     });
 
     it("should create store states for .byId, .byCid, and. find", function() {
-      lore.build();
+      lore.build(config);
       var state = lore.store.getState();
       expect(state.todo).to.include.keys([
         'byId',

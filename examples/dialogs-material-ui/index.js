@@ -7,7 +7,14 @@ window.lore = Lore;
 // Summon the app!
 Lore.summon({
   hooks: {
-    // dialogs: require('lore-hook-dialogs-bootstrap')
-    dialogs: require('lore-hook-dialogs-material-ui')
+    'action-blueprints': require("lore-hook-action-blueprints"),
+    actions: require("lore-hook-actions"),
+    collections: require("lore-hook-collections"),
+    connect: require("lore-hook-connect"),
+    dialog: require("lore-hook-dialog"),
+    dialogs: require('lore-hook-dialogs-material-ui'), // for example
+    models: require("lore-hook-models"),
+    reducers: require("lore-hook-reducers"),
+    redux: require("lore-hook-redux")
   }
 });

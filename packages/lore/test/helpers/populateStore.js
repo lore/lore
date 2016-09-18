@@ -1,8 +1,8 @@
 var _ = require('lodash');
 var utils = require('../../../lore-actions').utils;
 var Model = require('../../../lore-models').Model;
-var ActionTypes = require('../../src/utils/ActionTypes');
-var PayloadStates = require('../../src/utils/PayloadStates');
+var ActionTypes = require('lore-utils').ActionTypes;
+var PayloadStates = require('lore-utils').PayloadStates;
 
 /**
  *

@@ -2,6 +2,9 @@ var expect = require('chai').expect;
 var _ = require('lodash');
 var Lore = require('../../src/app/index');
 var loaderHelper = require('../helpers/loaderHelper');
+var config = {
+  hooks: require('../defaultHooks')
+};
 
 describe('lore#actions', function() {
   var lore = null;
@@ -22,7 +25,7 @@ describe('lore#actions', function() {
     });
 
     it("should create actions for each file and attach them to lore.actions", function() {
-      lore.build();
+      lore.build(config);
       expect(lore.actions).to.include.keys([
         'todo'
       ]);

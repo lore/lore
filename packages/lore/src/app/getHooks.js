@@ -1,7 +1,6 @@
 var _ = require('lodash');
-var coreHooksLoader = require('../loaders/coreHooks');
 var userHooksLoader = require('../loaders/userHooks');
-var Hook = require('../Hook');
+var Hook = require('lore-utils').Hook;
 
 /**
  * Obtain and merge the core hooks and user hooks.  If a user hook exists with
@@ -10,9 +9,8 @@ var Hook = require('../Hook');
  * @returns {Object} Final set of hooks that should be loaded into the application
  */
 module.exports = function getHooks(hookOverrides) {
-  var coreHookDefinitions = coreHooksLoader.load();
   var userHookDefinitions = userHooksLoader.load();
-  var hookDefinitions =  _.assign({}, coreHookDefinitions, userHookDefinitions, hookOverrides);
+  var hookDefinitions =  _.assign({}, userHookDefinitions, hookOverrides);
   var hooks = _.mapValues(hookDefinitions, function(definition, hookName) {
     definition.id = hookName;
     return new Hook(definition);
