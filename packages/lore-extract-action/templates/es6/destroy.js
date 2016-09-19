@@ -4,7 +4,7 @@ import { ActionTypes, PayloadStates } from 'lore-utils';
 /*
  * Blueprint for Destroy method
  */
-module.exports = function destroy(model) {
+export default function destroy(model) {
   return function(dispatch) {
     const Model = lore.models.<%= modelName %>;
     const proxyModel = new Model(model.data);

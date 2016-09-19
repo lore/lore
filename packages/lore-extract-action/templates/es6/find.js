@@ -5,7 +5,7 @@ import { ActionTypes, PayloadStates, payloadCollection } from 'lore-utils';
  * Blueprint for Find method
  */
 
-module.exports = function find(query = {}, pagination) {
+export default function find(query = {}, pagination) {
   return function(dispatch) {
     const Collection = lore.models.<%= modelName %>;
     const collection = new Collection();
