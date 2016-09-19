@@ -71,6 +71,15 @@ generators.command(commandify(require('lore-generate-tutorial')));
 app.command(generators);
 
 /**
+ * Category: Extractors
+ */
+var extractors = Cli.createCategory('extract', 'Create files that mirror the blueprint behavior');
+
+extractors.command(commandify(require('lore-extract-action')));
+
+app.command(extractors);
+
+/**
  * Start up the CLI!
  */
 Cli.run(app);
