@@ -76,6 +76,7 @@ app.command(generators);
 var extractors = Cli.createCategory('extract', 'Create files that mirror the blueprint behavior');
 
 extractors.command(commandify(require('lore-extract-action')));
+extractors.command(commandify(require('lore-extract-reducer')));
 
 app.command(extractors);
 

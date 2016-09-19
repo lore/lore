@@ -4,7 +4,7 @@ import { ActionTypes, PayloadStates } from 'lore-utils';
 /*
  * Blueprint for Update method
  */
-module.exports = function update(model, params) {
+export default function update(model, params) {
   return function(dispatch) {
     const Model = lore.models.<%= modelName %>;
     const proxyModel = new Model(model.data);

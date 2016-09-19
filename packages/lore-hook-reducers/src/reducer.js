@@ -19,7 +19,7 @@ module.exports = function compositeReducer(reducers, dependencies) {
     state = state || initialState;
     var nextState = {};
 
-    // If we recieve an action to reset the store (such as when logging out)
+    // If we receive an action to reset the store (such as when logging out)
     // reset the state to the initial state
     if (action.type === ActionTypes.RESET_STORE) {
       state = initialState;
@@ -27,12 +27,12 @@ module.exports = function compositeReducer(reducers, dependencies) {
 
     loadOrder.forEach(function(reducerName) {
       // Equivalent to calling:
-      // var _find = byId(state.find, action, {
+      // var _find = find(state.find, action, {
       //   nextState: {
-      //     byCid: _byCid
+      //     byCid: _byCid,
       //     byId: _byId
       //   }
-      // }
+      // })
       nextState[reducerName] = reducers[reducerName](
         state[reducerName],
         action,

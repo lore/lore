@@ -4,7 +4,7 @@ import { ActionTypes, PayloadStates, payload } from 'lore-utils';
 /*
  * Blueprint for Get method
  */
-module.exports = function get(modelId) {
+export default function get(modelId) {
   return function(dispatch) {
     const Model = lore.models.<%= modelName %>;
     const model = new Model({

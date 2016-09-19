@@ -1,0 +1,25 @@
+{
+  "name": "lore-extract-reducer",
+  "version": "0.10.0",
+  "license": "MIT",
+  "main": "index.js",
+  "description": "Creates a reducer matching the implicit pattern used by Lore",
+  "keywords": [
+    "lore",
+    "extract",
+    "reducer"
+  ],
+  "scripts": {
+    "test": "NODE_ENV=test mocha --recursive"
+  },
+  "dependencies": {
+    "camel-case": "^3.0.0",
+    "lore-generate": "~0.9.0",
+    "bluebird": "3.1.1",
+    "lodash": "3.10.1"
+  },
+  "devDependencies": {
+    "chai": "3.4.1",
+    "mocha": "2.3.4"
+  }
+}

@@ -3,7 +3,7 @@ import { ActionTypes, PayloadStates, payload } from 'lore-utils';
 /*
  * Blueprint for Create method
  */
-module.exports = function create(params) {
+export default function create(params) {
   return function(dispatch) {
     const Model = lore.models.<%= modelName %>;
     const model = new Model(params);
