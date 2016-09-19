@@ -2,16 +2,16 @@ var Generator = require('./generator');
 
 module.exports = {
 
-  command: "example",
+  command: "action",
 
-  describe: "Generate an example file in src/examples",
+  describe: "Creates an action that mirrors the behavior of the corresponding blueprint in Lore",
 
   options: {
     params: '<filename>',
 
     options: {
       filename: {
-        description: 'Name of the file',
+        description: 'Name of the file(s) to extract, e.g. `post` or `post/create`',
         type: 'string'
       }
     },

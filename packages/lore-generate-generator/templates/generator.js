@@ -1,6 +1,7 @@
 var path = require('path');
+var Generator = require('lore-generate').Generator;
 
-module.exports = {
+module.exports = Generator.extend({
 
   /**
    * The absolute path to the root of this generator
@@ -51,4 +52,4 @@ module.exports = {
     return files;
   }
 
-};
+});
