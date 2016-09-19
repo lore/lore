@@ -62,8 +62,9 @@ Since Lore is still in active development, I'm going to list the things that hav
 
 1. [[done](https://github.com/lore/lore/pull/130),[done](https://github.com/lore/lore/pull/131)] Move all internal hooks into external npm packages
 2. [done] Migrate monorepo from lerna v1 to lerna v2
-2. Create "extract" command
-3. Improve WebSockets support
+3. [[actions](https://github.com/lore/lore/pull/132),[reducers](https://github.com/lore/lore/pull/133)] Create "extract" command
+4. Enable extending the CLI with custom commands
+5. Improve WebSockets support
 
 
 ### Thanks
