@@ -2,6 +2,88 @@
 
 var package = require('../package.json');
 var Cli = require('nested-yargs');
+var rc = require('rc');
+var path = require('path');
+var _ = require('lodash');
+
+function local(module) {
+  return path.resolve(__dirname, '../node_modules', module);
+}
+
+var lorerc = rc('lore', {
+  options: {
+    debugLoading: false
+  },
+  generators: {
+    language: "es5"
+  },
+  commands: {
+    new: local("lore-generate-new"),
+    extract: {
+      description: "Create files that mirror the blueprint behavior",
+      commands: {
+        action: local("lore-extract-action"),
+        reducer: local("lore-extract-reducer")
+      }
+    },
+    generate: {
+      description: "Generate common project files",
+      commands: {
+        collection: local("lore-generate-collection"),
+        component: local("lore-generate-component"),
+        generator: local("lore-generate-generator"),
+        model: local("lore-generate-model"),
+        reducer: local("lore-generate-reducer"),
+        surge: local("lore-generate-surge"),
+        github: local("lore-generate-github"),
+        tutorial: local("lore-generate-tutorial")
+      }
+    }
+  }
+});
+
+function log(message) {
+  if (lorerc.options.debugLoading) {
+    console.log(message);
+  }
+}
+
+function loadProjectModule(scope, module) {
+  var modulePath = path.resolve(scope.projectPath, 'node_modules', module);
+  return require(modulePath)
+}
+
+function loadGlobalModule(scope, module) {
+  return require(module);
+}
+
+function loadProjectRelativeModule(scope, module) {
+  var modulePath = path.resolve(scope.projectPath, module);
+  return require(modulePath);
+}
+
+function loadModule(scope, modulePath) {
+  var isAbsolute = path.isAbsolute(modulePath);
+  var isDirectory = !!path.parse(modulePath).dir;
+
+  if (isAbsolute) {
+    log('Loading absolute module: ' + modulePath);
+    return require(modulePath);
+  }
+
+  if (isDirectory) {
+    log('Loading directory module: ' + modulePath);
+    return loadProjectRelativeModule(scope, modulePath);
+  }
+
+  try {
+    log('Loading project module: ' + modulePath);
+    return loadProjectModule(scope, modulePath);
+  } catch(err) {
+    log('Loading global module: ' + modulePath);
+    return loadGlobalModule(scope, modulePath);
+  }
+}
 
 // If you get the error "v8debug is not defined" while debugging,
 // see this issue for more information:
@@ -11,8 +93,9 @@ var Cli = require('nested-yargs');
  * Convert 'lore-generator-*' modules to 'nested-args' a command
  * @param module
  */
-function commandify(module) {
-  var name = module.command;
+function commandify(module, overrides) {
+  overrides = overrides || {};
+  var name = overrides.command || module.command;
   var description = module.describe;
   var options = module.options;
 
@@ -43,6 +126,14 @@ function commandify(module) {
 }
 
 /**
+ * Setup any variables the module loaders will need
+ */
+
+var scope = {
+  projectPath: path.parse(lorerc.config).dir
+};
+
+/**
  * Create the CLI Root
  */
 var app = Cli.createApp({
@@ -50,35 +141,38 @@ var app = Cli.createApp({
 });
 
 /**
- * Command: New
+ * Create the Commands and Categories for the CLI
  */
-app.command(commandify(require('lore-generate-new')));
 
-/**
- * Category: Generators
- */
-var generators = Cli.createCategory('generate', 'Generate common project files');
+function createCommand(category, command, modulePath) {
+  var module = loadModule(scope, modulePath);
+  category.command(commandify(module, {
+    command: command
+  }));
+}
 
-generators.command(commandify(require('lore-generate-collection')));
-generators.command(commandify(require('lore-generate-component')));
-generators.command(commandify(require('lore-generate-generator')));
-generators.command(commandify(require('lore-generate-model')));
-generators.command(commandify(require('lore-generate-reducer')));
-generators.command(commandify(require('lore-generate-surge')));
-generators.command(commandify(require('lore-generate-github')));
-generators.command(commandify(require('lore-generate-tutorial')));
+function createCategory(app, name, description, commands) {
+  description = description || '';
+  commands = commands || {};
 
-app.command(generators);
+  var category = Cli.createCategory(name, description);
 
-/**
- * Category: Extractors
- */
-var extractors = Cli.createCategory('extract', 'Create files that mirror the blueprint behavior');
+  _.mapKeys(commands, function(modulePath, command) {
+    createCommand(category, command, modulePath);
+  });
 
-extractors.command(commandify(require('lore-extract-action')));
-extractors.command(commandify(require('lore-extract-reducer')));
+  app.command(category);
+}
 
-app.command(extractors);
+_.mapKeys(lorerc.commands, function(value, key) {
+  if (_.isString(value)) {
+    createCommand(app, key, value);
+  } else if (_.isPlainObject(value)) {
+    createCategory(app, key, value.description, value.commands);
+  } else {
+    throw new Error('Commands must be either a string or an object');
+  }
+});
 
 /**
  * Start up the CLI!
