@@ -68,7 +68,6 @@ module.exports = {
   './src/reducers/README.md': {copy: common('src/reducers/README.md')},
 
   // config
-  './config/actionBlueprints.js': {copy: es6('config/actionBlueprints.js')},
   './config/actions.js': {copy: es6('config/actions.js')},
   './config/collections.js': {copy: es6('config/collections.js')},
   './config/connect.js': {copy: es6('config/connect.js')},
