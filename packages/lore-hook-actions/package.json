@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-actions",
-  "version": "0.10.0",
+  "version": "0.10.0-beta.1",
   "license": "MIT",
   "main": "./lib/index.js",
   "description": "A lore hook that loads redux actions and generates default actions from blueprints",
@@ -19,12 +19,12 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-actions": "~0.9.0",
-    "lore-utils": "~0.10.0"
+    "lore-actions": "^0.10.0-beta.1",
+    "lore-utils": "^0.10.0-beta.1"
   },
   "devDependencies": {
     "chai": "3.4.1",
-    "lore-models": "~0.9.0",
+    "lore-models": "^0.10.0-beta.1",
     "mocha": "2.3.4",
     "redux": "^3.0.2",
     "rimraf": "2.5.2"
