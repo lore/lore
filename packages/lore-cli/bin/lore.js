@@ -129,8 +129,10 @@ function commandify(module, overrides) {
  * Setup any variables the module loaders will need
  */
 
-var scope = {
-  projectPath: path.parse(lorerc.config).dir
+var getScope = function() {
+  return {
+    projectPath: path.parse(lorerc.config || '').dir
+  }
 };
 
 /**
@@ -145,6 +147,7 @@ var app = Cli.createApp({
  */
 
 function createCommand(category, command, modulePath) {
+  var scope = getScope();
   var module = loadModule(scope, modulePath);
   category.command(commandify(module, {
     command: command
