@@ -7,7 +7,7 @@ var Model = function(attributes, options) {
   var attrs = attributes || {};
   options || (options = {});
 
-  this.cid = _.uniqueId(this.cidPrefix);
+  this.cid = this.generateCid();
   this.attributes = {};
   if (options.collection) this.collection = options.collection;
   if (options.parse) attrs = this.parse(attrs, options) || {};
@@ -31,6 +31,12 @@ _.extend(Model.prototype, {
   // The prefix is used to create the client id which is used to identify models locally.
   // You may want to override this if you're experiencing name clashes with model ids.
   cidPrefix: 'c',
+
+  // Generate the client id. You may want to override this if you need to replace the cid
+  // with a UUID for optimistic websocket updates
+  generateCid: function() {
+    return _.uniqueId(this.cidPrefix);
+  },
 
   // Initialize is an empty function by default. Override it with your own
   // initialization logic.
