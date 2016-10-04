@@ -22,6 +22,10 @@ module.exports = function(opts = {}) {
     return function(dispatch) {
       const model = new Model(params);
 
+      if (options.addCidToBody) {
+        model.set(options.cidBodyAttributeName, model.cid);
+      }
+
       model.save().then(function() {
         if (options.onSuccess) {
           dispatch({

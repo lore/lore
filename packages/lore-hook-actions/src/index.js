@@ -40,12 +40,20 @@ module.exports = {
 
   dependencies: ['models', 'collections', 'redux'],
 
+  defaults: {
+    actions: {
+      addCidToBody: false,
+      cidBodyAttributeName: 'cid',
+    }
+  },
+
   load: function(lore) {
     lore.actions = lore.actions || {};
     var models = lore.models;
     var collections = lore.collections;
     var store = lore.store;
     var actions = lore.loader.loadActions();
+    var config = lore.config.actions;
 
     // todo: should actions be created for files in /collections
     // that have no corresponding model in /models Currently
@@ -54,7 +62,7 @@ module.exports = {
     Object.keys(models).forEach(function(modelName) {
       lore.actions[modelName] = lore.actions[modelName] || {};
       _.assign(lore.actions[modelName], {
-        create: blueprints.create(modelName, models),
+        create: blueprints.create(modelName, models, config),
         destroy: blueprints.destroy(modelName, models),
         get: blueprints.get(modelName, models),
         find: blueprints.find(modelName, collections),

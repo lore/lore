@@ -10,7 +10,9 @@ const defaultOptions = {
     optimistic: null,
     onSuccess: null,
     onError: null
-  }
+  },
+  addCidToBody: false,
+  cidBodyAttributeName: 'cid'
 };
 
 function hasPartialPair( handler ) {

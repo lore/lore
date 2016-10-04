@@ -1,7 +1,8 @@
 var ActionTypes = require('lore-utils').ActionTypes;
 var PayloadStates = require('lore-utils').PayloadStates;
 
-module.exports = function(modelName, models) {
+module.exports = function(modelName, models, options) {
+  options = options || {};
 
   var Model = models[modelName];
 
@@ -9,6 +10,10 @@ module.exports = function(modelName, models) {
     blueprint: 'create',
 
     model: Model,
+
+    addCidToBody: options.addCidToBody || false,
+
+    cidBodyAttributeName: options.cidField || 'cid',
 
     optimistic: {
       actionType: ActionTypes.add(modelName),
