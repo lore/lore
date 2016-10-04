@@ -10,6 +10,8 @@ var SOCKET_VERBS = {
   ADDED_TO: 'addedTo'
 };
 
+var sailsIoClient = null;
+
 module.exports = WebSocketConnection.extend({
 
   // serverUrl: '',
@@ -19,8 +21,15 @@ module.exports = WebSocketConnection.extend({
   // event: '',
 
   initialize: function(dispatchers, actions) {
-    this.io = SailsIOClient(io);
-    this.io.sails.url = this.serverUrl;
+    // sails.io.js modifies the `io` instance passed in which prevents you from
+    // creating multiple clients using the same `io` import (will throw an
+    // error if you try).
+    // Currently this also means you can only talk to a SINGLE WebSockets server
+    if (!sailsIoClient) {
+      sailsIoClient = SailsIOClient(io);
+      sailsIoClient.sails.url = this.serverUrl;
+    }
+    this.io = sailsIoClient;
   },
 
   url: function() {},
