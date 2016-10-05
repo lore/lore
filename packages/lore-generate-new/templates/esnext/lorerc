@@ -2,5 +2,5 @@
   "generators": {
     "language": "esnext"
   },
-  "hooks": {}
+  "commands": {}
 }
