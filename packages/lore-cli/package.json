@@ -1,6 +1,6 @@
 {
   "name": "lore-cli",
-  "version": "0.10.0-beta.2",
+  "version": "0.10.0-beta.3",
   "license": "MIT",
   "description": "The Command Line Interface (CLI) for Lore",
   "homepage": "https://github.com/lore/lore#readme",
@@ -28,7 +28,7 @@
     "lore-generate-generator": "^0.10.0-beta.1",
     "lore-generate-github": "^0.10.0-beta.1",
     "lore-generate-model": "^0.10.0-beta.1",
-    "lore-generate-new": "^0.10.0-beta.1",
+    "lore-generate-new": "^0.10.0-beta.3",
     "lore-generate-reducer": "^0.10.0-beta.1",
     "lore-generate-surge": "^0.10.0-beta.1",
     "lore-generate-tutorial": "^0.10.0-beta.1",
