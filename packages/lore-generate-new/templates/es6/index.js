@@ -13,4 +13,14 @@ import lore from 'lore';
 window.lore = lore;
 
 // Summon the app!
-lore.summon();
+lore.summon({
+  hooks: {
+    actions: require('lore-hook-actions'),
+    collections: require('lore-hook-collections'),
+    connect: require('lore-hook-connect'),
+    dialog: require('lore-hook-dialog'),
+    models: require('lore-hook-models'),
+    reducers: require('lore-hook-reducers'),
+    redux: require('lore-hook-redux')
+  }
+});
