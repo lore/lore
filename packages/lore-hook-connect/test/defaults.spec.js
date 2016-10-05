@@ -6,7 +6,11 @@ describe('defaults', function() {
 
   it('should have the correct fields', function() {
     var hook = new Hook(definition);
-    var defaultConfig = {};
+    var defaultConfig = {
+      connect: {
+        reducerActionMap: {}
+      }
+    };
     expect(hook.defaults).to.deep.equal(defaultConfig);
   });
 
