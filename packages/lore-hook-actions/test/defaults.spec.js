@@ -6,7 +6,12 @@ describe('defaults', function() {
 
   it('should have the correct fields', function() {
     var hook = new Hook(definition);
-    var defaultConfig = {};
+    var defaultConfig = {
+      actions: {
+        addCidToBody: false,
+        cidBodyAttributeName: 'cid',
+      }
+    };
     expect(hook.defaults).to.deep.equal(defaultConfig);
   });
 
