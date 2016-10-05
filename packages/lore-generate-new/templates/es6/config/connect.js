@@ -6,10 +6,20 @@
 
 export default {
 
-  /****************************************************************************
-  *                                                                           *
-  * No options currently exist                                                *
-  *                                                                           *
-  ****************************************************************************/
+  /**
+   * Add custom action-reducer maps here, or override existing ones
+   */
+
+  reducerActionMap: {
+
+    // 'post.find': {
+    //   action: 'post.find'
+    // },
+    //
+    // 'post.byId': {
+    //   action: 'post.get'
+    // }
+
+  }
 
 }

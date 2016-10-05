@@ -39,7 +39,7 @@ var _getState = require('./getState');
  */
 module.exports = function(lore) {
 
-  // provide getState with a copy of lore so it can access lore.config.actionReducers (the map)
+  // provide getState with a copy of lore so it can access reducer-action map
   var getState = _getState(lore);
 
   return function connect(select, options = {}) {

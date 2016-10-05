@@ -7,7 +7,7 @@ module.exports = function(lore) {
 
   // key: path of the reducer under the state object, i.e. state.user.current
   // value: Object or Function that denotes how to map between the reducer state
-  //        and the action to call if it's not available
+  // and the action to call if it's not available
   function mapFunctionGenerator(key, value) {
     if (_.isFunction(value)) {
       return value;
@@ -91,7 +91,7 @@ module.exports = function(lore) {
    * Iterate through the reducer-to-action map, turning all keys into executable functions
    */
   function configureStateMap() {
-    var reducerActionMap = lore.config.reducerActionMap;
+    var reducerActionMap = lore.config.connect.reducerActionMap;
     stateMap = {};
     _.forOwn(reducerActionMap, function (value, key) {
       stateMap[key] = mapFunctionGenerator(key, value);
