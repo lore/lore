@@ -18,7 +18,7 @@ module.exports = {
   properties: {
 
     // Headers that should be applied to all network requests
-    // You can override this function on a per-model basis
+    // You can override this function on a per-collection basis
     // headers: function() {
     //   return {
     //     'Authorization': 'Bearer xyz'
