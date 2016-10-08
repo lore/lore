@@ -17,6 +17,14 @@ export default {
 
   properties: {
 
+    // Headers that should be applied to all network requests
+    // You can override this function on a per-collection basis
+    // headers: function() {
+    //   return {
+    //     'Authorization': 'Bearer xyz'
+    //   };
+    // }
+
     //
     // See http://backbonejs.org/#Collection-parse
     //

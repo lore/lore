@@ -39,6 +39,14 @@ module.exports = {
 
   properties: {
 
+    // Headers that should be applied to all network requests
+    // You can override this function on a per-model basis
+    // headers: function() {
+    //   return {
+    //     'Authorization': 'Bearer xyz'
+    //   };
+    // }
+
     //
     // See http://backbonejs.org/#Model-parse
     //
