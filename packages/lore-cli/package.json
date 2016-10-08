@@ -32,6 +32,7 @@
     "lore-generate-reducer": "^0.10.0-beta.1",
     "lore-generate-surge": "^0.10.0-beta.1",
     "lore-generate-tutorial": "^0.10.0-beta.1",
+    "lore-tutorial": "^0.10.0-beta.1",
     "nested-yargs": "^1.0.7",
     "rc": "^1.1.6"
   },
