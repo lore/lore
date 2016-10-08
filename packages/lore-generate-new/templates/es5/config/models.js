@@ -39,6 +39,11 @@ module.exports = {
 
   properties: {
 
+    // Generate a UUID to support optimistic websocket updates
+    // generateCid: function() {
+    //   return uuid.v4();
+    // },
+
     // Headers that should be applied to all network requests
     // You can override this function on a per-model basis
     // headers: function() {
