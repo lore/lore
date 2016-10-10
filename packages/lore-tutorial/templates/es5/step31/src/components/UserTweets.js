@@ -16,7 +16,8 @@ module.exports = lore.connect(function(getState, props) {
         where: {
           createdAt: {
             '<=': timestamp
-          }
+          },
+          user: props.params.userId
         }
       },
       pagination: {
