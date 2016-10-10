@@ -66,7 +66,7 @@ module.exports = function(options) {
     case 'step10':
       return files([
         'index.js',
-        'package.json',
+        // 'package.json',
         'src/components/CreateButton.js',
         'src/models/tweet.js'
       ], es5);
@@ -83,7 +83,7 @@ module.exports = function(options) {
       ], es5);
     case 'step13':
       return files([
-        'package.json',
+        // 'package.json',
         'routes.js',
         'config/auth0.js',
         'src/components/Login.js'
@@ -105,7 +105,7 @@ module.exports = function(options) {
       ], es5);
     case 'step17':
       return files([
-        'package.json',
+        // 'package.json',
         'routes.js',
         'src/decorators/UserIsAuthenticated.js'
       ], es5);
@@ -182,7 +182,7 @@ module.exports = function(options) {
     case 'step32':
       return files([
         'index.js',
-        'package.json',
+        // 'package.json',
         'config/websockets.js',
         'src/components/Master.js'
       ], es5);
