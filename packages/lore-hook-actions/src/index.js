@@ -1,6 +1,4 @@
-var redux = require('redux');
 var _ = require('lodash');
-var bindActionCreators = redux.bindActionCreators;
 var actionBlueprints = require('lore-actions').blueprints;
 var utils = require('lore-actions').utils;
 
@@ -12,24 +10,24 @@ var blueprints = {
   update: require('./blueprints/update')
 };
 
-function bindAction(action, store) {
+function convertBlueprintToActionCreator(action, store) {
   // if the module isn't a function, then it's an object describing the action
   // config and needs to be converted to a real function
   if(!_.isFunction(action)){
     action = actionBlueprints[action.blueprint](action);
   }
 
-  return bindActionCreators(action, store.dispatch);
+  return action;
 }
 
-function bindActionsToActionCreators(actions, store) {
+function convertBlueprintsToActionCreators(actions, store) {
   Object.keys(actions).forEach(function(key) {
     var action = actions[key];
     var boundAction = null;
     if (_.isPlainObject(action) && Object.keys(action).length > 0 && Object.keys(action).indexOf('blueprint') < 0) {
-      boundAction = bindActionsToActionCreators(action, store);
+      boundAction = convertBlueprintsToActionCreators(action, store);
     } else {
-      boundAction = bindAction(action, store);
+      boundAction = convertBlueprintToActionCreator(action, store);
     }
     actions[key] = boundAction;
   });
@@ -38,7 +36,7 @@ function bindActionsToActionCreators(actions, store) {
 
 module.exports = {
 
-  dependencies: ['models', 'collections', 'redux'],
+  dependencies: ['models', 'collections'],
 
   defaults: {
     actions: {
@@ -74,7 +72,7 @@ module.exports = {
     actions = _.defaultsDeep({}, actions, lore.actions);
 
     // Bind all actions to the store's dispatch method
-    lore.actions = bindActionsToActionCreators(actions, store);
+    lore.actions = convertBlueprintsToActionCreators(actions, store);
 
     lore.utils = lore.utils || {};
     lore.utils.payload = utils.payload;
