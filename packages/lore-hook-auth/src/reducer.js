@@ -22,6 +22,9 @@ module.exports = function(modelName) {
       case ActionTypes.remove(modelName):
         return action.payload;
 
+      case ActionTypes.RESET_STORE:
+        return initialState;
+
       default:
         return nextState
     }
