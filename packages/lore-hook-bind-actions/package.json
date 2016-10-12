@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-bind-actions",
-  "version": "0.10.0-beta.3",
+  "version": "0.10.0-beta.7",
   "license": "MIT",
   "main": "./lib/index.js",
   "description": "A lore hook binds action to the Redux store",
