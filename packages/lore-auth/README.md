@@ -14,6 +14,12 @@ To accomplish that, we're going to wrap the root component of our application (c
 var AuthenticationGenerator = require('lore-auth').generators.AuthenticationGenerator;
 
 var UserIsAuthenticated = AuthenticationGenerator({
+  wrapperDisplayName: 'UserIsAuthenticated',
+  
+  // redirectUrl: '/login',
+  
+  // redirectQueryParamName: 'redirect',
+  
   isAuthenticated: function (storeState) {
     return !!localStorage.userToken;
   }
@@ -138,6 +144,12 @@ This file is intended to be used as the foundation for your `UserIsAuthenticated
 var AuthenticationGenerator = require('lore-auth').generators.AuthenticationGenerator;
 
 var UserIsAuthenticated = AuthenticationGenerator({
+  wrapperDisplayName: 'UserIsAuthenticated',
+  
+  // redirectUrl: '/login',
+  
+  // redirectQueryParamName: 'redirect',
+  
   isAuthenticated: function (storeState) {
     return !!localStorage.userToken;
   }
