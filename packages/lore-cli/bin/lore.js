@@ -33,11 +33,11 @@ var lorerc = rc('lore', {
         collection: local("lore-generate-collection"),
         component: local("lore-generate-component"),
         generator: local("lore-generate-generator"),
+        hook: local("lore-generate-hook"),
         model: local("lore-generate-model"),
         reducer: local("lore-generate-reducer"),
         surge: local("lore-generate-surge"),
-        github: local("lore-generate-github"),
-        tutorial: local("lore-generate-tutorial")
+        github: local("lore-generate-github")
       }
     }
   }
