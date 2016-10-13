@@ -10,6 +10,7 @@
     "hook"
   ],
   "scripts": {
+    "clean": "echo 'nothing to clean'",
     "test": "NODE_ENV=test mocha --recursive"
   },
   "dependencies": {
