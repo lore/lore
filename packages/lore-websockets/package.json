@@ -1,6 +1,6 @@
 {
   "name": "lore-websockets",
-  "version": "0.10.0-beta.1",
+  "version": "0.10.0",
   "license": "MIT",
   "description": "Common code used by all lore-hook-websockets-* packages",
   "homepage": "https://github.com/lore/lore#readme",
