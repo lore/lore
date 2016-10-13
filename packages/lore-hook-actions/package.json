@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-actions",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "license": "MIT",
   "main": "./lib/index.js",
   "description": "A lore hook that generates default actions from blueprints",
