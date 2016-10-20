@@ -1,6 +1,6 @@
 {
   "name": "lore-extract-action",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "license": "MIT",
   "main": "index.js",
   "description": "Creates an action matching the implicit pattern used by Lore",
