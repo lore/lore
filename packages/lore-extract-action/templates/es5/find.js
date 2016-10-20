@@ -9,7 +9,7 @@ var payloadCollection = require('lore-utils').payloadCollection;
 
 module.exports = function find(query = {}, pagination) {
   return function(dispatch) {
-    var Collection = lore.models.<%= modelName %>;
+    var Collection = lore.collections.<%= modelName %>;
     var collection = new Collection();
 
     var queryParameters = _.extend({}, query, pagination);

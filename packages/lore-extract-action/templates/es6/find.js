@@ -7,7 +7,7 @@ import { ActionTypes, PayloadStates, payloadCollection } from 'lore-utils';
 
 export default function find(query = {}, pagination) {
   return function(dispatch) {
-    const Collection = lore.models.<%= modelName %>;
+    const Collection = lore.collections.<%= modelName %>;
     const collection = new Collection();
 
     const queryParameters = _.extend({}, query, pagination);
