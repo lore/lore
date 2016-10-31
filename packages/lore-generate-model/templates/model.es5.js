@@ -55,6 +55,10 @@ module.exports = {
      * properties to absorb breaking API changes.
      */
 
+    // parse: function(resp, options) {
+    //   return resp;
+    // },
+
     /**
      * Override the sync method if you need to modify data before sending
      * it to the server.
@@ -66,10 +70,6 @@ module.exports = {
      * Use of 'sync' refers to sync method provided by the 'lore-models'
      * package, i.e. require('lore-models').sync
      */
-
-    // parse: function(resp, options) {
-    //   return resp;
-    // },
 
     // sync: function() {
     //   return sync.apply(this, arguments);
