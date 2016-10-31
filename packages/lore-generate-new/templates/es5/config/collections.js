@@ -8,26 +8,28 @@ module.exports = {
 
   /****************************************************************************
   *                                                                           *
-  * Define properties that should apply to all collections here. Since we     *
-  * only lightly wrapping Backbone, you can define any properties here that   *
-  * Backbone supports for Collections.                                        *
-  * See: http://backbonejs.org/#Collection                                    *
+  * Define properties that should apply to all collections here.              *
+  * You can override all of these methods on a per-collection basis.          *
   *                                                                           *
   ****************************************************************************/
 
   properties: {
 
-    // Headers that should be applied to all network requests
-    // You can override this function on a per-model basis
+    /**
+     * Headers that should be applied to all network requests
+     */
+
     // headers: function() {
     //   return {
     //     'Authorization': 'Bearer xyz'
     //   };
     // }
 
-    //
-    // See http://backbonejs.org/#Collection-parse
-    //
+    /**
+     * Use this function to transform the server response before using it
+     * in the application (such as adding, removing or changing properties)
+     */
+
     // parse: function(attributes) {
     //   return attributes;
     // }
