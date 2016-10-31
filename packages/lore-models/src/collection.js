@@ -54,6 +54,10 @@ _.extend(Collection.prototype, {
     // parse the models
     models = this.parse(models, options) || [];
 
+    if (!_.isArray(models)) {
+      console.error('Expected models to be an array but got ', models, '. Did you forget to override parse to extract the models?');
+    }
+
     var singular = !_.isArray(models);
     models = singular ? [models] : models.slice();
 
