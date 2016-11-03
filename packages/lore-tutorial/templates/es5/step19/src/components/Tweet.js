@@ -1,25 +1,23 @@
 var React = require('react');
 var moment = require('moment');
+var EditLink = require('./EditLink');
+var DeleteLink = require('./DeleteLink');
 
-module.exports = React.createClass({
+module.exports = lore.connect(function(getState, props){
+  var tweet = props.tweet;
+
+  return {
+    user: getState('user.byId', {
+      id: tweet.data.user
+    })
+  };
+})(
+React.createClass({
   displayName: 'Tweet',
 
   propTypes: {
     tweet: React.PropTypes.object.isRequired,
     user: React.PropTypes.object.isRequired
-  },
-
-  getDefaultProps: function() {
-    return {
-      user: {
-        id: 1,
-        data: {
-          id: 1,
-          nickname: "lucca",
-          avatar: "https://cloud.githubusercontent.com/assets/2637399/19027072/a36f0c7a-88e1-11e6-931e-7f67fe01367b.png"
-        }
-      }
-    }
   },
 
   getStyles: function() {
@@ -78,8 +76,13 @@ module.exports = React.createClass({
           <p className="list-group-item-text" style={styles.text}>
             {tweet.data.text}
           </p>
+          <div>
+            <EditLink tweet={tweet}/>
+            <DeleteLink tweet={tweet}/>
+          </div>
         </div>
       </li>
     );
   }
-});
+})
+);

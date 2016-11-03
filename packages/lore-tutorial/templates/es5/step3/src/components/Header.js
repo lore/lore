@@ -1,4 +1,5 @@
 var React = require('react');
+var Router = require('react-router');
 
 module.exports = React.createClass({
   displayName: 'Header',
@@ -8,9 +9,9 @@ module.exports = React.createClass({
       <nav className="navbar navbar-default navbar-static-top">
         <div className="container">
           <div className="navbar-header">
-            <div className="navbar-brand">
+            <Router.Link className="navbar-brand" to="/">
               Lore Tutorial
-            </div>
+            </Router.Link>
           </div>
         </div>
       </nav>
