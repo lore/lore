@@ -1,0 +1,50 @@
+import React from 'react';
+
+class EditLink extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.onEdit = this.onEdit.bind(this);
+  }
+
+  getStyles() {
+    return {
+      link: {
+        cursor: 'pointer',
+        marginRight: '16px'
+      }
+    }
+  }
+
+  onEdit() {
+    const tweet = this.props.tweet;
+
+    function updateTweet(params) {
+      lore.actions.tweet.update(tweet, params);
+    }
+
+    lore.dialog.show(function() {
+      return lore.dialogs.tweet.update({
+        model: tweet,
+        onSubmit: updateTweet
+      });
+    });
+  }
+
+  render() {
+    const styles = this.getStyles();
+
+    return (
+      <a style={styles.link} onClick={this.onEdit}>
+        edit
+      </a>
+    );
+  }
+
+}
+
+EditLink.propTypes = {
+  tweet: React.PropTypes.object.isRequired
+};
+
+export default EditLink;

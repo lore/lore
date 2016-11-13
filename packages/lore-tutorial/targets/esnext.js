@@ -17,11 +17,6 @@ module.exports = function(options) {
   var files = filesForStep(options.step);
 
   switch(options.step) {
-    case 'server':
-      return files([
-        'db.json',
-        'config/models.js'
-      ], es6);
     case 'step1':
       return files([
         'index.html'
@@ -33,56 +28,82 @@ module.exports = function(options) {
       ], es6);
     case 'step3':
       return files([
-        'src/components/ColorCreator.js',
-        'src/components/Layout.js'
-      ], esnext);
+        'src/components/Header.js'
+      ], es6);
     case 'step4':
       return files([
-        'src/components/ColorCreator.js'
-      ], esnext);
+        'routes.js',
+        'src/components/Feed.js',
+        'src/components/Layout.js'
+      ], es6);
     case 'step5':
       return files([
-        'src/models/color.js'
-      ], es6);
+        'src/components/Feed.js'
+      ], esnext);
     case 'step6':
       return files([
-        'src/components/ColorCreator.js'
+        'src/components/Feed.js',
+        'src/components/Tweet.js'
       ], esnext);
     case 'step7':
       return files([
-        'src/components/ColorCreator.js'
+        'src/components/Tweet.js'
       ], esnext);
     case 'step8':
       return files([
-        'src/components/ColorCreator.js'
-      ], esnext);
+        'config/models.js'
+      ], es6);
     case 'step9':
       return files([
-        'src/components/Color.js',
-        'src/components/ColorCreator.js'
-      ], esnext);
+        'src/models/tweet.js'
+      ], es6);
     case 'step10':
       return files([
-        'src/components/Color.js',
-        'src/components/Header.js'
+        'src/components/Feed.js'
       ], esnext);
     case 'step11':
       return files([
-        'routes.js',
-        'src/components/Guessatron.js',
-        'src/components/Layout.js'
-      ], esnext);
+        'config/collections.js'
+      ], es6);
     case 'step12':
       return files([
-        'src/components/Guessatron.js'
+        'src/components/Tweet.js',
+        'src/models/user.js'
       ], esnext);
     case 'step13':
       return files([
-        'src/components/Guessatron.js'
+        'src/components/Feed.js'
       ], esnext);
     case 'step14':
       return files([
-        'src/components/Guessatron.js'
+        'src/components/CreateButton.js',
+        'src/components/Header.js'
+      ], es6);
+    case 'step15':
+      return files([
+        'src/components/CreateButton.js',
+        'src/components/CreateDialog.js'
+      ], es6);
+    case 'step16':
+      return files([
+        'index.js',
+        'package.json',
+        'src/components/CreateButton.js',
+        'src/models/tweet.js'
+      ], es6);
+    case 'step17':
+      return files([
+        'src/components/CreateButton.js',
+      ], es6);
+    case 'step18':
+      return files([
+        'src/components/EditLink.js',
+        'src/components/Tweet.js',
+      ], esnext);
+    case 'step19':
+      return files([
+        'src/components/DeleteLink.js',
+        'src/components/Tweet.js',
       ], esnext);
     default:
       return {};
