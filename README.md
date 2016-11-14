@@ -5,8 +5,7 @@
 ![lore](https://cloud.githubusercontent.com/assets/5898306/13093056/654b5c76-d4c0-11e5-8968-643aae655030.png)
 
 
-Convention driven framework for React + Redux applications. Heavily opinionated and highly respectful. Built on 
-React, Webpack, Redux and React-Router.
+Convention driven framework for building front-end applications using React/Redux. Heavily opinionated and highly respectful. Built on React, Webpack, Redux and React-Router.
 
 
 ### Orientation
@@ -26,7 +25,7 @@ There are a lot of demands on front-end applications as they evolve to support t
 Lore's goal is to build support for many of those common feature concerns into the architecture. Below is a list of UI
 concerns Lore addresses or is planning to address, linked to their documentation page:
 
-* [Data Structure](http://www.lorejs.org/features/challenges/data-structure/)
+* [Data Structure](http://www.lorejs.org/features/foundation/data-structure/)
 * [AJAX Abstration Tier](http://www.lorejs.org/features/challenges/ajax-abstraction/)
 * [Filtering](http://www.lorejs.org/features/challenges/filtering/)
 * [Pagination](http://www.lorejs.org/features/challenges/pagination/)
@@ -47,25 +46,18 @@ The documentation for Lore is hosted at http://www.lorejs.org.
 
 ### Tutorial
 
-At the moment the videos are a far better way to learn about the framework and what it
-can do. That being said, there are issues created specifically to discuss ideas for improving 
-the tutorials.
-
-* [Beginner](https://github.com/lore/lore/issues/101)
-* [Intermediate](https://github.com/lore/lore/issues/102)
-* [Advanced](https://github.com/lore/lore/issues/103)
+You can find the [tutorial for learning Lore](http://www.lorejs.org/tutorial/) on the website. It's intended to be conversational, and makes an attempt to explain some of the reasoning behind each of the features introduced. Not all steps of the tutorial have been written out, but you can find the (current) final version of the application in the [lore-tutorial](https://github.com/lore/lore-tutorial) repo.
 
 
 ### Near-term Focus
 
 Since Lore is still in active development, I'm going to list the things that have immediate focus here.
 
-1. [[done](https://github.com/lore/lore/pull/130),[done](https://github.com/lore/lore/pull/131)] Move all internal hooks into external npm packages
-2. [done] Migrate monorepo from lerna v1 to lerna v2
-3. [[actions](https://github.com/lore/lore/pull/132),[reducers](https://github.com/lore/lore/pull/133)] Create "extract" command
-4. [[done](https://github.com/lore/lore/pull/134)] Enable extending the CLI with custom commands
-5. Improve WebSockets support & update example
-6. Update all website documentation (no more proposals, all planned features now exist, so everything gets docs and videos)
+1. [done for now] Write a new tutorial
+2. [done for now] Update all website documentation (no more proposals, all planned features now exist)
+3. [done] Publish v0.10.0
+4. Update release notes for v0.10.0
+5. Send out newsletter
 
 
 ### Thanks
