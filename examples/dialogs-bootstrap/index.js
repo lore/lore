@@ -16,6 +16,7 @@ window.lore = lore;
 lore.summon({
   hooks: {
     actions: require("lore-hook-actions"),
+    bindActions: require("lore-hook-bind-actions"),
     collections: require("lore-hook-collections"),
     connect: require("lore-hook-connect"),
     dialog: require("lore-hook-dialog"),

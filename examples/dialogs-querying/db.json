@@ -1,4 +1,20 @@
 {
-  "lists": [],
-  "todos": []
+  "lists": [
+    {
+      "title": "test",
+      "id": 1
+    },
+    {
+      "title": "test",
+      "id": 2
+    }
+  ],
+  "todos": [
+    {
+      "title": "test",
+      "list": 2,
+      "isCompleted": true,
+      "id": 1
+    }
+  ]
 }
