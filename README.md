@@ -58,6 +58,9 @@ Since Lore is still in active development, I'm going to list the things that hav
 3. Integrate auth support into new project generator ([#136](https://github.com/lore/lore/issues/136))
 4. Improve multi-API experience by associating models with APIs, not URLs ([#135](https://github.com/lore/lore/issues/135))
 5. Enable ability to specify casing style of endpoint ([#141](https://github.com/lore/lore/issues/141))
+6. Investigate replacing npm with yarn
+7. Fix hot-reloading and remove the console error about service workers (they appear to be related)
+8. Publish v0.11 with above changes
 
 
 ### Thanks
