@@ -2,11 +2,25 @@ var LoreModels = require('lore-models');
 var _ = require('lodash');
 var generateProperties = require('./generateProperties');
 
+function getConnectionName(config, collectionName) {
+  var connection = config.defaultConnection;
+  var connectionModelMap = config.connectionModelMap;
+
+  _.mapKeys(connectionModelMap, function(models, connectionName) {
+    if (models.indexOf(collectionName) >= 0) {
+      connection = connectionName;
+    }
+  });
+
+  return connection;
+}
+
 module.exports = {
-  dependencies: ['models'],
+  dependencies: ['connections', 'models'],
 
   defaults: {
     collections: {
+      defaultConnection: 'default',
       //apiRoot: 'https://api.example.com',
       //pluralize: true,
       //properties: {}
@@ -15,6 +29,7 @@ module.exports = {
 
   load: function(lore) {
     var config = lore.config;
+    var connections = lore.connections;
     lore.collections = {};
 
     var modelModules = lore.loader.loadModels();
@@ -26,12 +41,16 @@ module.exports = {
       // should change to be PascalCase, like lore.collections.CollectionName
       var collectionName = moduleName;
 
+      // get the connection for this model
+      var connection = connections[getConnectionName(config.models, collectionName)];
+
       // Create the final set of properties for the Collection
       var properties = generateProperties(collectionName, {
         collectionsConfig: config.collections,
         collectionDefinition: collectionModules[collectionName],
         modelsConfig: config.models,
-        modelDefinition: modelModules[collectionName]
+        modelDefinition: modelModules[collectionName],
+        connection: connection
       });
 
       // If a model hasn't already been provided for the collection, and one with that

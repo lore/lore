@@ -7,7 +7,9 @@ describe('defaults', function() {
   it('should have the correct fields', function() {
     var hook = new Hook(definition);
     var defaultConfig = {
-      collections: {}
+      collections: {
+        defaultConnection: 'default'
+      }
     };
     expect(hook.defaults).to.deep.equal(defaultConfig);
   });

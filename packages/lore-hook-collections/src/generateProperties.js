@@ -2,18 +2,48 @@ var pluralize = require('pluralize');
 var defaultsDeep = require('merge-defaults');
 var _ = require('lodash');
 
-function conventionProperties(collectionName, config) {
+var CasingStyles = {
+  Camel: 'camel',
+  Snake: 'snake',
+  Kebab: 'kebab',
+  Pascal: 'pascal'
+};
+
+function applyCasingStyle(casingStyle, modelName) {
+  switch (casingStyle) {
+    case CasingStyles.Camel:
+      return _.camelCase(modelName);
+    case CasingStyles.Kebab:
+      return _.kebabCase(modelName);
+    case CasingStyles.Pascal:
+      return _.upperFirst(_.camelCase(modelName));
+    case CasingStyles.Snake:
+      return _.snakeCase(modelName);
+    default:
+      throw new Error(`Illegal casingStyle of '${casingStyle}' provided. Must be one of [${[
+        CasingStyles.Camel,
+        CasingStyles.Kebab,
+        CasingStyles.Pascal,
+        CasingStyles.Snake
+      ]}]`);
+  }
+}
+
+function getUrl(collectionName, config) {
   var apiRoot = config.apiRoot;
+  var isPlural = config.pluralize;
+  var casingStyle = config.casingStyle;
+  var endpoint = config.endpoint;
 
-  if (config.pluralize) {
-    return {
-      url: apiRoot ? apiRoot + '/' + pluralize(collectionName) : pluralize(collectionName)
-    }
+  // if the user did not provide a custom endpoint, generate
+  // one from the collection name
+  if (!endpoint) {
+    endpoint = isPlural ?
+      applyCasingStyle(casingStyle, pluralize(collectionName)) :
+      applyCasingStyle(casingStyle, collectionName);
   }
 
-  return {
-    url: apiRoot ? apiRoot + '/' + collectionName : '/' + collectionName
-  }
+  return apiRoot ? apiRoot + '/' + endpoint : endpoint;
 }
 
 module.exports = function(collectionName, options) {
@@ -21,6 +51,7 @@ module.exports = function(collectionName, options) {
   var modelsConfig = options.modelsConfig || {};
   var collectionDefinition = options.collectionDefinition || {};
   var modelDefinition = options.modelDefinition || {};
+  var connection = options.connection || {};
 
   /**
    * Create the final config object
@@ -51,20 +82,25 @@ module.exports = function(collectionName, options) {
   defaultsDeep(definition, _.omit(modelDefinition, 'properties'));
 
   /**
-   * Build conventions from config and collection definition. The config that
-   * drives conventions is built from the apiRoot and pluralize fields in:
-   * 1. collections/collectionName.js
-   * 2. config/collections.js
+   * Merge apiRoot, pluralize and casingStyle from config files for
+   * connections, collections and the individual collection definition
    */
-  var conventionConfig = _.merge({}, config, definition);
+  var combinedConfig = _.merge({}, connection, config, definition);
   var conventions = {
-    properties: conventionProperties(collectionName, conventionConfig)
+    properties: {
+      url: getUrl(collectionName, combinedConfig)
+    }
   };
+
+  if (connection.headers) {
+    conventions.properties.headers = connection.headers;
+  }
 
   // Build the final set of properties for the collection
   var properties = {};
   defaultsDeep(properties, definition.properties);
   defaultsDeep(properties, config.properties);
+  defaultsDeep(properties, connection.collections.properties);
   defaultsDeep(properties, conventions.properties);
 
   return properties;

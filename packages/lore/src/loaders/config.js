@@ -1,11 +1,14 @@
 var buildDictionary = require('webpack-requiredir');
+var _ = require('lodash');
 
 // 'config/*'
 function loadOtherConfigFiles() {
-  var context = require.context(__LORE_ROOT__ + '/config', false, /\.js$/);
-  return buildDictionary(context, {
+  var context = require.context(__LORE_ROOT__ + '/config', true, /\.js$/);
+  var config = buildDictionary(context, {
     exclude: ['local.js']
   });
+
+  return _.omit(config, 'env');
 }
 
 // 'config/local'

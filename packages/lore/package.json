@@ -43,6 +43,7 @@
     "lore-hook-actions": "~0.10.0",
     "lore-hook-bind-actions" : "~0.10.0",
     "lore-hook-collections": "~0.10.0",
+    "lore-hook-connections": "~0.10.0",
     "lore-hook-connect": "~0.10.0",
     "lore-hook-dialog": "~0.10.0",
     "lore-hook-models": "~0.10.0",
