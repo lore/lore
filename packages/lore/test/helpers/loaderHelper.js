@@ -5,6 +5,7 @@ var sinon = require('sinon');
 var loaders = {
   actions: require('../../src/loaders/actions'),
   collections: require('../../src/loaders/collections'),
+  connections: { load: function(){} },
   config: require('../../src/loaders/config'),
   models: require('../../src/loaders/models'),
   reducers: require('../../src/loaders/reducers'),

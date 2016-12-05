@@ -2,11 +2,13 @@ var expect = require('chai').expect;
 var _ = require('lodash');
 var generateProperties = require('../src/generateProperties');
 var Hook = require('lore-utils').Hook;
+var defaultConnection = require('./defaultConnection');
 
 describe('generateProperties', function() {
 
   it('should create urlRoot from apiRoot and pluralize settings', function() {
     var properties = generateProperties('todo', {
+      connection: defaultConnection,
       config: {
         apiRoot: 'https://config.models',
         pluralize: true
@@ -17,6 +19,7 @@ describe('generateProperties', function() {
 
   it('models/todo takes priority over config/models', function() {
     var properties = generateProperties('todo', {
+      connection: defaultConnection,
       config: {
         apiRoot: 'https://config.models'
       },
@@ -24,11 +27,12 @@ describe('generateProperties', function() {
         apiRoot: 'https://models.todo'
       }
     });
-    expect(properties.urlRoot).to.equal('https://models.todo/todo');
+    expect(properties.urlRoot).to.equal('https://models.todo/todos');
   });
 
   it('should pass properties along', function() {
     var properties = generateProperties('todo', {
+      connection: defaultConnection,
       config: {
         properties: {
           propA: 'a'
@@ -43,7 +47,7 @@ describe('generateProperties', function() {
     expect(properties).to.deep.equal({
       propA: 'a',
       propB: 'b',
-      urlRoot: '/todo'
+      urlRoot: defaultConnection.apiRoot + '/todos'
     });
   });
 

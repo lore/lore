@@ -6,6 +6,7 @@ var definition = require('../src/index');
 var loaderHelper = require('../../lore/test/helpers/loaderHelper');
 var loader = require('../../lore/src/loader');
 var Hook = require('lore-utils').Hook;
+var defaultConnection = require('./defaultConnection');
 
 describe('load', function() {
   var lore = null;
@@ -14,11 +15,17 @@ describe('load', function() {
 
   beforeEach(function() {
     hook = new Hook(definition);
-    defaultConfig = hook.defaults;
+    defaultConfig = hook.defaults.collections;
 
     lore = {
+      connections: {
+        default: defaultConnection
+      },
       config: {
-        collections: defaultConfig
+        collections: defaultConfig,
+        models: {
+          defaultConnection: 'default'
+        }
       },
       loader: loader({})
     };

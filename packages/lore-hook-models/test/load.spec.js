@@ -5,6 +5,7 @@ var loaderHelper = require('../../lore/test/helpers/loaderHelper');
 var loader = require('../../lore/src/loader');
 var Model = require('lore-models').Model;
 var Hook = require('lore-utils').Hook;
+var defaultConnection = require('./defaultConnection');
 
 describe('load', function() {
   var lore = null;
@@ -16,6 +17,9 @@ describe('load', function() {
     defaultConfig = hook.defaults.models;
 
     lore = {
+      connections: {
+        default: _.extend({}, defaultConnection)
+      },
       config: {
         models: defaultConfig
       },

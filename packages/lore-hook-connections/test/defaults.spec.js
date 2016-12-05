@@ -7,9 +7,15 @@ describe('defaults', function() {
   it('should have the correct fields', function() {
     var hook = new Hook(definition);
     var defaultConfig = {
-      models: {
-        defaultConnection: 'default',
-        connectionModelMap: {},
+      connections: {
+        default: {
+          apiRoot: 'https://api.example.com',
+          pluralize: true,
+          casingStyle: 'camel',
+          // headers: function() {},
+          models: {},
+          collections: {}
+        }
       }
     };
     expect(hook.defaults).to.deep.equal(defaultConfig);
