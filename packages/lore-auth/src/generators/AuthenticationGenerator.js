@@ -2,6 +2,20 @@ var React = require('react');
 var Router = require('react-router');
 var AuthGeneratorFactory = require('../factories/AuthGeneratorFactory');
 var _ = require('lodash');
+var url = require('url');
+
+function isFullyQualifiedUrl(url) {
+  return (
+    _.startsWith(url, 'https://') ||
+    _.startsWith(url, 'http://')
+  );
+}
+
+function redirectToExternalUrl(pathname, query) {
+  var uri = url.parse(pathname);
+  uri.query = query;
+  window.location = uri.format();
+}
 
 module.exports = function(options) {
   var defaults = {
@@ -45,7 +59,13 @@ module.exports = function(options) {
       };
       route.query[redirectQueryParamName] = `${location.pathname}${location.search}`;
 
-      router.replace(route);
+      // use window.location instead of React Router if the link is fully qualified
+      // React Router doesn't handle fully qualified URLs
+      if (isFullyQualifiedUrl(redirectUrl)) {
+        redirectToExternalUrl(route.pathname, route.query);
+      } else {
+        router.replace(route);
+      }
     }
 
   };

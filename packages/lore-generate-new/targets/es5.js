@@ -50,21 +50,33 @@ module.exports = {
   './src/constants/ActionTypes.js': {copy: es5('src/constants/ActionTypes.js')},
   './src/constants/PayloadStates.js': {copy: es5('src/constants/PayloadStates.js')},
 
+  // decorators
+  './src/decorators/README.md': {copy: common('src/decorators/README.md')},
+  './src/decorators/UserIsAuthenticated.js': {copy: es5('src/decorators/UserIsAuthenticated.js')},
+  './src/decorators/UserIsAuthorized.js': {copy: es5('src/decorators/UserIsAuthorized.js')},
+
   // dialogs
   './src/dialogs/.gitkeep': {copy: common('.gitkeep')},
 
   // mixins
   './src/mixins/.gitkeep': {copy: common('.gitkeep')},
 
-  // mixins
+  // models
   './src/models/README.md': {copy: common('src/models/README.md')},
+  './src/models/currentUser.js': {copy: es5('src/models/currentUser.js')},
 
   // reducers
   './src/reducers/README.md': {copy: common('src/reducers/README.md')},
 
+  // utils
+  './src/utils/README.md': {copy: common('src/utils/README.md')},
+  './src/utils/auth.js': {copy: es5('src/utils/auth.js')},
+
   // config
   './config/actions.js': {copy: es5('config/actions.js')},
+  './config/auth.js': {copy: es5('config/auth.js')},
   './config/collections.js': {copy: es5('config/collections.js')},
+  './config/connections.js': {copy: es5('config/connections.js')},
   './config/connect.js': {copy: es5('config/connect.js')},
   './config/dialog.js': {copy: es5('config/dialog.js')},
   './config/local.js': {copy: es5('config/local.js')},
