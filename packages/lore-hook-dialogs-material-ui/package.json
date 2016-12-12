@@ -26,13 +26,11 @@
     "mocha": "2.3.4",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
-    "react-tap-event-plugin": "^2.0.0",
     "rimraf": "2.5.2"
   },
   "peerDependencies": {
     "material-ui": "^0.15.1",
     "react": "^15.4.0",
-    "react-dom": "^15.4.0",
-    "react-tap-event-plugin": "^2.0.0"
+    "react-dom": "^15.4.0"
   }
 }
