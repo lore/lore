@@ -33,6 +33,15 @@ class Master extends React.Component {
   //   };
   // },
 
+  componentDidMount() {
+    // If you want to play with the router through the browser's dev console then
+    // uncomment out this line. React Router automatically provides 'router'
+    // to any components that are "routes" (such as Master and Layout), so this
+    // is a good location to attach it to the global lore object.
+
+    // lore.router = this.props.router;
+  }
+
   render() {
     // const user = this.props.user;
 
