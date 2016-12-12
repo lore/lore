@@ -1,6 +1,6 @@
 {
   "name": "lore-extract-action",
-  "version": "0.10.1",
+  "version": "0.11.0-beta.1",
   "license": "MIT",
   "main": "index.js",
   "description": "Creates an action matching the implicit pattern used by Lore",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "camel-case": "^3.0.0",
-    "lore-generate": "~0.10.0",
+    "lore-generate": "^0.11.0-beta.1",
     "bluebird": "3.1.1",
     "lodash": "3.10.1"
   },
