@@ -6,34 +6,17 @@
 
 export default {
 
-  /****************************************************************************
-  *                                                                           *
-  * Define properties that should apply to all collections here.              *
-  * You can override all of these methods on a per-collection basis.          *
-  *                                                                           *
-  ****************************************************************************/
+  /**
+   * While this file can influence the behavior of collections, there is currently
+   * no clear reason why you would ever need to use it.
+   *
+   * If you need to define collection specific behavior (such as parsing server responses
+   * or defining headers to add to requests) you should do that in 'config/connections.js'.
+   *
+   * If you have multiple connections, and need to define which collections use each
+   * connection, you should do that in 'config/models.js' as this file inherits that
+   * behavior.
+   *
+   */
 
-  properties: {
-
-    /**
-     * Headers that should be applied to all network requests
-     */
-
-    // headers: function() {
-    //   return {
-    //     'Authorization': 'Bearer xyz'
-    //   };
-    // }
-
-    /**
-     * Use this function to transform the server response before using it
-     * in the application (such as adding, removing or changing properties)
-     */
-
-    // parse: function(attributes) {
-    //   return attributes;
-    // }
-
-  }
-
-};
+}

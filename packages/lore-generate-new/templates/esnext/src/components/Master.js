@@ -1,16 +1,49 @@
 /**
- * This component serves as the root of your application.  Typically, it should be the only
+ * This component serves as the root of your application, and should typically be the only
  * component subscribed to the store.
+ *
+ * It is also a good place to fetch the current user. Once you have configured 'models/currentUser'
+ * to fetch the current user (by pointing it to the correct API endpoint) uncomment the commented
+ * out code below in order to fetch the user, display a loading experience while they're being
+ * fetched, and store the user in the applications context so that components can retrieve it
+ * without having to pass it down through props or extract it from the Redux store directly.
  **/
 
 import React from 'react';
+import PayloadStates from '../constants/PayloadStates';
 
 @lore.connect(function(getState, props) {
-  return {};
+  return {
+    // user: getState('currentUser', {})
+  };
 }, { subscribe: true })
 class Master extends React.Component {
 
+  // propTypes: {
+  //   user: React.PropTypes.object.isRequired
+  // },
+
+  // childContextTypes: {
+  //   user: React.PropTypes.object
+  // },
+
+  // getChildContext() {
+  //   return {
+  //     user: this.props.user
+  //   };
+  // },
+
   render() {
+    // const user = this.props.user;
+
+    // if (user.state === PayloadStates.FETCHING) {
+    //   return (
+    //     <h1 className="loading-text">
+    //       Loading...
+    //     </h1>
+    //   )
+    // }
+
     return (
       <div>
         {React.cloneElement(this.props.children)}
@@ -21,46 +54,3 @@ class Master extends React.Component {
 }
 
 export default Master;
-
-/**
- * If your application has authentication, this is a good place to fetch the
- * current user.  Assuming you've created an action that knows how to fetch
- * the user, and a reducer to store the user, and defined the map between them
- * in `config/reducerActionMap`, you would do something like this:
- *
- *  import React from 'react';
- *  import PayloadStates from '../constants/PayloadStates';
- *
- *  @lore.connect(function(getState, props){
- *    return {
- *      user: getState('user.current')
- *    }
- *  }, { subscribe: true })
- *  class Master extends React.Component {
- *
- *    static propTypes = {
- *      children: React.PropTypes.any,
- *      user: React.PropTypes.object.isRequired
- *    };
- *
- *    render() {
- *      const user = this.props.user;
- *
- *      // show some kind of loading screen until we know who the user is
- *      if (user.state === PayloadStates.FETCHING) {
- *        return (
- *          <h1>Loading...</h1>
- *        );
- *      }
- *
- *      return (
- *        <div>{this.props.children}</div>
- *      );
- *    }
- *  }
- *
- *  export default Master;
- *
- **/
-
-

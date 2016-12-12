@@ -7,68 +7,32 @@
 
 module.exports = {
 
-  /****************************************************************************
-  *                                                                           *
-  * The URL of your API server. If you have multiple API servers, set the     *
-  * primary server here and override this property in the models that use     *
-  * a different server.                                                       *
-  *                                                                           *
-  * Collections inherit this property.                                        *
-  *                                                                           *
-  ****************************************************************************/
+  /**
+   * The default API connection that models should use if they have no explicit mapping.
+   */
 
-  // apiRoot: 'https://api.example.com',
+  // defaultConnection: 'default'
 
-  /****************************************************************************
-  *                                                                           *
-  * If pluralize is true, all model names will be converted to their plural   *
-  * form when making API calls. A model called 'foo' will made a call to      *
-  * '/foos' if pluralize is true, and to '/foo' if pluralize is false         *
-  * Uses the pluralize.js library to determine the plural model name          *
-  * See: https://github.com/blakeembrey/pluralize                             *
-  *                                                                           *
-  * Collections inherit this property.                                        *
-  *                                                                           *
-  ****************************************************************************/
+  /**
+   * If your application interacts with multiple APIs, create a connection for each
+   * API and then define which models are associated with each connection here.
+   *
+   * Here is an example for an application with a versioned API (v1 and v2):
+   *
+   * {
+   *   v1: [
+   *     'currentUser',
+   *     'author'
+   *   ],
+   *   v2: [
+   *     'book',
+   *     'publisher'
+   *   ]
+   * }
+   */
 
-  // pluralize: true,
-
-  /****************************************************************************
-  *                                                                           *
-  * Define properties that should apply to all models here.                   *
-  * You can override all of these methods on a per-model basis.               *
-  *                                                                           *
-  ****************************************************************************/
-
-  properties: {
-
-    /**
-     * Generate a UUID to support optimistic websocket updates
-     */
-
-    // generateCid: function() {
-    //   return uuid.v4();
-    // },
-
-    /**
-     * Headers that should be applied to all network requests
-     */
-
-    // headers: function() {
-    //   return {
-    //     'Authorization': 'Bearer xyz'
-    //   };
-    // }
-
-    /**
-     * Use this function to transform the server response before using it
-     * in the application (such as adding, removing or changing properties)
-     */
-
-    // parse: function(attributes) {
-    //   return attributes;
-    // }
-
-  }
+  // connectionModelMap: {
+  //   default: []
+  // }
 
 };
