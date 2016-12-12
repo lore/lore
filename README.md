@@ -55,9 +55,9 @@ Since Lore is still in active development, I'm going to list the things that hav
 
 1. Replace tutorial with a short feature-focused text-centric quickstart (remove the videos) ([branch](https://github.com/lore/www.lorejs.org/tree/quickstart))
 2. Move tutorial to [Teachable](https://teachable.com/) as a formal course, with a video-centric focus
-3. Integrate auth support into new project generator ([#136](https://github.com/lore/lore/issues/136))
-4. Improve multi-API experience by associating models with APIs, not URLs ([#135](https://github.com/lore/lore/issues/135))
-5. Enable ability to specify casing style of endpoint ([#141](https://github.com/lore/lore/issues/141))
+3. [[done](https://github.com/lore/lore/pull/145)] Integrate auth support into new project generator ([#136](https://github.com/lore/lore/issues/136))
+4. [[done](https://github.com/lore/lore/pull/144)] Improve multi-API experience by associating models with APIs, not URLs ([#135](https://github.com/lore/lore/issues/135))
+5. [[done](https://github.com/lore/lore/pull/144)] Enable ability to specify casing style of endpoint ([#141](https://github.com/lore/lore/issues/141))
 6. Investigate replacing npm with yarn
 7. Fix hot-reloading and remove the console error about service workers (they appear to be related)
 8. Publish v0.11 with above changes
