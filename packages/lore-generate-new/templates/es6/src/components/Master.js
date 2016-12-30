@@ -9,24 +9,16 @@
  * without having to pass it down through props or extract it from the Redux store directly.
  **/
 
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import PayloadStates from '../constants/PayloadStates';
 
-class Master extends React.Component {
-
-  // propTypes: {
-  //   user: React.PropTypes.object.isRequired
-  // },
-
-  // childContextTypes: {
-  //   user: React.PropTypes.object
-  // },
+class Master extends Component {
 
   // getChildContext() {
   //   return {
   //     user: this.props.user
   //   };
-  // },
+  // }
 
   componentDidMount() {
     // If you want to play with the router through the browser's dev console then
@@ -57,9 +49,16 @@ class Master extends React.Component {
 
 }
 
+// Master.propTypes = {
+//   user: PropTypes.object.isRequired
+// };
+
+// Master.childContextTypes = {
+//   user: PropTypes.object
+// };
+
 export default lore.connect(function(getState, props) {
   return {
     // user: getState('currentUser', {})
   };
 }, { subscribe: true })(Master);
-

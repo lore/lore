@@ -4,9 +4,9 @@
  * top-level navigation. All other components should be rendered by route handlers.
  **/
 
-import React from 'react';
+import React, { Component } from 'react';
 
-class Layout extends React.Component {
+class Layout extends Component {
 
   render() {
     return (

@@ -9,7 +9,7 @@
  * without having to pass it down through props or extract it from the Redux store directly.
  **/
 
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import PayloadStates from '../constants/PayloadStates';
 
 @lore.connect(function(getState, props) {
@@ -17,21 +17,21 @@ import PayloadStates from '../constants/PayloadStates';
     // user: getState('currentUser', {})
   };
 }, { subscribe: true })
-class Master extends React.Component {
+class Master extends Component {
 
-  // propTypes: {
-  //   user: React.PropTypes.object.isRequired
-  // },
+  // static propTypes = {
+  //   user: PropTypes.object.isRequired
+  // };
 
-  // childContextTypes: {
-  //   user: React.PropTypes.object
-  // },
+  // static childContextTypes = {
+  //   user: PropTypes.object
+  // };
 
   // getChildContext() {
   //   return {
   //     user: this.props.user
   //   };
-  // },
+  // }
 
   componentDidMount() {
     // If you want to play with the router through the browser's dev console then

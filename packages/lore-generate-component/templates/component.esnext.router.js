@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router';
 class <%= componentName %> extends Component {
 
   static propTypes = {
-    router: React.PropTypes.object.isRequired
+    router: PropTypes.object.isRequired
   };
 
   constructor(props) {

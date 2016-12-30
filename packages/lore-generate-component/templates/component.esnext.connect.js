@@ -8,9 +8,9 @@ import React, { Component, PropTypes } from 'react';
 class <%= componentName %> extends Component {
 
   static propTypes = {
-    //models: React.PropTypes.object.isRequired
+    //models: PropTypes.object.isRequired
   };
-  
+
   constructor(props) {
     super(props);
 

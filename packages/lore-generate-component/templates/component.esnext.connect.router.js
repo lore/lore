@@ -10,8 +10,8 @@ import { Link, withRouter } from 'react-router';
 class <%= componentName %> extends Component {
 
   static propTypes = {
-    //models: React.PropTypes.object.isRequired,
-    router: React.PropTypes.object.isRequired
+    //models: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired
   };
 
   constructor(props) {

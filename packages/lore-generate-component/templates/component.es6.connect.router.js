@@ -21,8 +21,8 @@ class <%= componentName %> extends Component {
 }
 
 <%= componentName %>.propTypes = {
-  //models: React.PropTypes.object.isRequired,
-  router: React.PropTypes.object.isRequired
+  //models: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired
 };
 
 export default lore.connect((getState, props) => {

@@ -20,7 +20,7 @@ class <%= componentName %> extends Component {
 }
 
 <%= componentName %>.propTypes = {
-  //models: React.PropTypes.object.isRequired
+  //models: PropTypes.object.isRequired
 };
 
 export default lore.connect((getState, props) => {

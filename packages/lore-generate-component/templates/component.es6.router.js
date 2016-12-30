@@ -21,7 +21,7 @@ class <%= componentName %> extends Component {
 }
 
 <%= componentName %>.propTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 export default withRouter(<%= componentName %>);
