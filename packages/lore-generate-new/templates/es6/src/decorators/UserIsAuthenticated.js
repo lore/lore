@@ -12,7 +12,7 @@
  * https://github.com/lore/lore/tree/master/packages/lore-auth
  */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { AuthenticationGenerator } from 'lore-auth';
 
 export default AuthenticationGenerator({

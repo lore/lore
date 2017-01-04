@@ -73,15 +73,6 @@ module.exports = {
     //   return {};
     // },
 
-    /**
-     * Use this function to transform the server response before using it
-     * in the application (such as adding, removing or changing properties)
-     */
-
-    // parse: function(attributes) {
-    //   return attributes;
-    // }
-
 
     /****************************************************************************
     *                                                                           *
