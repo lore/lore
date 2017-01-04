@@ -1,10 +1,10 @@
-const gulp              = require('gulp');
-const gutil             = require('gulp-util');
-const webpack           = require('webpack');
-const clean             = require('gulp-clean');
-const yargs              = require('yargs');
-const gulpSequence      = require('gulp-sequence');
-const surge             = require('gulp-surge');
+const gulp         = require('gulp');
+const gutil        = require('gulp-util');
+const webpack      = require('webpack');
+const clean        = require('gulp-clean');
+const yargs        = require('yargs');
+const gulpSequence = require('gulp-sequence');
+const surge        = require('gulp-surge');
 
 const argv = yargs.argv;
 

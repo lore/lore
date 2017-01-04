@@ -1,12 +1,10 @@
-'use strict';
-
-var gulp              = require('gulp');
-var gutil             = require('gulp-util');
-var webpack           = require('webpack');
-var clean             = require('gulp-clean');
-var argv              = require('yargs').argv;
-var gulpSequence      = require('gulp-sequence');
-var surge             = require('gulp-surge');
+var gulp         = require('gulp');
+var gutil        = require('gulp-util');
+var webpack      = require('webpack');
+var clean        = require('gulp-clean');
+var argv         = require('yargs').argv;
+var gulpSequence = require('gulp-sequence');
+var surge        = require('gulp-surge');
 
 var config = {
   dest: './tmp',
