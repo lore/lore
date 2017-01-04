@@ -18,7 +18,7 @@ module.exports = function(settings) {
   return {
     entry: [
       'webpack-dev-server/client?http://localhost:' + PORT,
-      'webpack/hot/only-dev-server',
+      'webpack/hot/dev-server',
       './index'
     ],
     plugins: [

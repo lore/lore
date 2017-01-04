@@ -1,0 +1,146 @@
+/*
+ * Element Styles
+ */
+html, body {
+  text-align: left;
+  font-size: 1em
+}
+
+html, body, img, form, textarea, input, fieldset, div, p, div, ul, li, ol, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, code {
+  margin: 0;
+  padding: 0
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  font-weight: normal;
+  font-family: inherit
+}
+
+*:active, *:focus {
+  outline: 0;
+  -moz-outline-style: none
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  color: #118798;
+}
+
+code {
+  font-size: inherit;
+  font-family: 'Consolas', 'Monaco', monospace;
+  padding: 4px 4px;
+  background-color: #f3f5f7
+}
+
+a {
+  color: #2595FF;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #007cf1;
+  cursor: pointer;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+blockquote {
+  background-color: #e4f0f1;
+  padding: 25px;
+  line-height: 1.5em;
+  margin: 15px 0;
+}
+
+blockquote span {
+  font-weight: 600;
+  padding-right: 5px;
+}
+
+
+/*
+ * Container
+ */
+.container {
+  width: 80%;
+  max-width: 720px;
+  margin: auto;
+}
+
+/*
+ * Header
+ */
+
+.header {
+  padding: 96px 0 64px;
+  background: linear-gradient(#6c5b7b 0%, #355c7d 60%);
+}
+
+.header h1 {
+  color: #fff;
+  font-weight: 400;
+  font-size: 2.5em;
+}
+
+.header h3 {
+  color: #b1eef7;
+  font-style: italic;
+  font-weight: 400;
+  color: whitesmoke;
+}
+
+.header h3 code {
+  font-style: normal !important;
+  background-color: rgba(255, 255, 255, 0.87);
+  font-weight: 300;
+  color: rgba(0,0,0,0.67);
+  margin: 0px 5px;
+}
+
+.title {
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  height: 80px;
+  left: -96px;
+  margin-top: 4px;
+}
+
+/*
+ * Main
+ */
+
+.main .container {
+  padding: 32px 0;
+  opacity: 0.9;
+}
+
+.main ul li {
+  padding: 24px 0;
+}
+
+.main ul li h3 {
+  padding-bottom: 8px;
+  font-size: 24px;
+  opacity: 0.87;
+}
