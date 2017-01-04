@@ -1,5 +1,4 @@
 var _ = require('lodash');
-var configLoader = require('../loaders/config');
 
 function getDefaultConfig(hooks) {
   return _.reduce(hooks, function(result, value, key) {
@@ -22,8 +21,8 @@ function getDefaultConfig(hooks) {
  * passed object, and builds a state object with the same shape.
  */
 
-module.exports = function getConfig(configOverride, hooks, env) {
+module.exports = function getConfig(configOverride, hooks, loader) {
   var defaultConfig = getDefaultConfig(hooks);
-  var userConfig = configLoader.load(env);
+  var userConfig = loader.loadUserConfig();
   return _.merge({}, defaultConfig, userConfig, configOverride);
 };
