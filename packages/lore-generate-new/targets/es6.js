@@ -97,6 +97,13 @@ module.exports = {
   './gulp/tasks/README.md': {copy: common('gulp/tasks/README.md')},
 
   // initializers
-  './initializers/REAMDE.md': {copy: common('initializers/README.md')}
+  './initializers/REAMDE.md': {copy: common('initializers/README.md')},
+
+  // assets
+  './assets/REAMDE.md': {copy: common('assets/README.md')},
+  './assets/css/main.css': {copy: common('assets/css/main.css')},
+  './assets/images/logo.png': {copy: common('assets/images/logo.png')},
+  './assets/less/main.css': {copy: common('assets/less/main.css')},
+  './assets/sass/main.css': {copy: common('assets/sass/main.css')}
 
 };
