@@ -34,7 +34,8 @@ module.exports = {
     _.set(lore.reducers, reducerName, reducer);
 
     _.set(lore.config.connect.reducerActionMap, reducerName, {
-      action: actionName
+      action: actionName,
+      blueprint: 'singleton'
     });
   }
 

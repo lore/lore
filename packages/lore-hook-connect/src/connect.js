@@ -1,40 +1,39 @@
 var React = require('react');
-var storeShape = require('react-redux/lib/utils/storeShape').default;
+var storeShape = require('./utils/storeShape');
 var _ = require('lodash');
 var invariant = require('invariant');
-var getDisplayName = require('./getDisplayName');
+var getDisplayName = require('./utils/getDisplayName');
 var _getState = require('./getState');
 
 /**
- * Decorator for React components that allows the component to specify which data they need
+ * Decorator for React components that allows the component to specify what data they need
  * and will automatically fetch that data if it doesn't exist.
  *
- * @param options: {subscribe: true}
  * @param select: function(getState, props, context){...}
- * @param DecoratedComponent: React Component
- * @returns Decorated component
+ * @param options: {subscribe: true}
+ * @returns Function to pass to the component to be decorated
  *
  * Example usage:
  *
  * Scenario 1: If the component doesn't need to be subscribed to changes in the store (which
- * is the typical scenario) just pass in two arguments; the state function and the component:
+ * is the typical scenario) just pass in one argument; the state function and the component:
  *
  * connect(function(getState, props, context){
  *   return {
  *     user: getState('user.current')
  *   }
- * }, React.createClass({...})
+ * })(React.createClass({...}))
  *
- * Scenario 2: If the component does need to be subscribed to changs in the store, pass in
- * three arguments; options, the state function, and the component.
+ * Scenario 2: If the component does need to be subscribed to changes in the store, pass in
+ * two arguments; the state function and options.
  *
- * connect({
- *    subscribe: true
- * }, function(getState, props, context){
+ * connect(function(getState, props, context){
  *    return {
  *       user: getState('user.current')
  *    }
- * }, React.createClass({...})
+ * }, {
+ *    subscribe: true
+ * })(React.createClass({...})
  *
  */
 module.exports = function(lore) {
