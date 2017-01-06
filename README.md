@@ -53,14 +53,15 @@ You can find the [tutorial for learning Lore](http://www.lorejs.org/tutorial/) o
 
 Since Lore is still in active development, I'm going to list the things that have immediate focus here.
 
-1. Replace tutorial with a short feature-focused text-centric quickstart (remove the videos) ([branch](https://github.com/lore/www.lorejs.org/tree/quickstart))
-2. Move tutorial to [Teachable](https://teachable.com/) as a formal course, with a video-centric focus
+1. [[development site (in progress)](http://master.lorejs.org/quickstart/)] Replace tutorial with a short feature-focused text-centric quickstart (remove the videos) ([branch](https://github.com/lore/www.lorejs.org/tree/quickstart))
+2. [cancelled until v1 is released] Move tutorial to [Teachable](https://teachable.com/) as a formal course, with a video-centric focus
 3. [[done](https://github.com/lore/lore/pull/145)] Integrate auth support into new project generator ([#136](https://github.com/lore/lore/issues/136))
 4. [[done](https://github.com/lore/lore/pull/144)] Improve multi-API experience by associating models with APIs, not URLs ([#135](https://github.com/lore/lore/issues/135))
 5. [[done](https://github.com/lore/lore/pull/144)] Enable ability to specify casing style of endpoint ([#141](https://github.com/lore/lore/issues/141))
-6. Investigate replacing npm with yarn
-7. Fix hot-reloading and remove the console error about service workers (they appear to be related)
-8. Publish v0.11 with above changes
+6. [[done](https://github.com/lore/lore/pull/149)] Fix hot-reloading and remove the console error about service workers ([issue](https://github.com/lore/lore/issues/79))
+7. [[done](https://github.com/lore/lore/pull/151)] Refactor lore-hook-connect, remove need to provide empty object for second param
+8. [will add support next release] Investigate replacing npm with yarn ([issue](https://github.com/lore/lore/issues/152))
+9. Publish v0.11 with above changes
 
 
 ### Thanks
