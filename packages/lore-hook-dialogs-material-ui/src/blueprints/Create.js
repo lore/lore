@@ -12,6 +12,7 @@ module.exports = function(options) {
   options = options || {};
 
   var title = options.title;
+  var description = options.description || '';
   var cancelButtonText = options.cancelButtonText;
   var submitButtonText = options.submitButtonText;
   var attributes = options.attributes;
@@ -112,6 +113,7 @@ module.exports = function(options) {
           open={this.state.isOpen}
           actions={dialogActions}
           contentClassName={this.props.contentClassName} >
+          {description}
           {formFields}
         </mui.Dialog>
       );
