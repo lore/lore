@@ -53,13 +53,20 @@ module.exports = function(lore) {
         },
 
         getInitialState: function () {
-          var initialState = this.selectState(this.props, this.context);
+          // provide a decorator over getState that will force data to be fetched on mount if desired
+          var initialState = this.selectState(this.props, this.context, function getStateOnMount(state, stateKey, params, options) {
+            options = options || {};
+            return getState(state, stateKey, params, _.assign({}, options, {
+              force: options.forceFetchOnMount
+            }));
+          });
+
           this.nextState = initialState;
           return {};
         },
 
         shouldComponentUpdate: function (nextProps, nextState) {
-          var nextState = this.selectState(nextProps, this.context);
+          var nextState = this.selectState(nextProps, this.context, getState);
           this.nextState = nextState;
           return true;
         },
@@ -70,7 +77,7 @@ module.exports = function(lore) {
           }
 
           this.unsubscribe = this.context.store.subscribe(function () {
-            var nextState = this.selectState(this.props, this.context);
+            var nextState = this.selectState(this.props, this.context, getState);
 
             // Why is setTimeout here?
             //
@@ -106,7 +113,7 @@ module.exports = function(lore) {
           }
         },
 
-        selectState: function (props, context) {
+        selectState: function (props, context, getState) {
           const state = context.store.getState();
           const slice = select(getState.bind(null, state), props, context);
 

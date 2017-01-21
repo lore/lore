@@ -102,7 +102,8 @@ _.extend(Connection.prototype, {
    * @param {Object} userParams : parameters passed to the getState function
    * @returns {Object} payload sent to the Redux Store
    */
-  getState: function(state, userParams) {
+  getState: function(state, userParams, options) {
+    options = options || {};
     var params = _.assign({}, this.defaults, userParams);
     this.verifyParams(params);
 
@@ -110,7 +111,7 @@ _.extend(Connection.prototype, {
     var reducerState = this.getReducerState(state);
     var payload = this.getPayload(reducerState, params);
 
-    if (!payload || payload.state === PayloadStates.INITIAL_STATE) {
+    if (!payload || payload.state === PayloadStates.INITIAL_STATE || options.force) {
       payload = this.callAction(action, params) || payload;
     }
 
