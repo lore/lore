@@ -68,6 +68,16 @@ module.exports = function(collectionName, options) {
   defaultsDeep(config, _.omit(modelsConfig, 'properties'));
 
   /**
+   * SPECIAL CASE:
+   * Copy the headers from the model to the collection if none provided
+   */
+  // var modelHeaders = modelsConfig.properties && modelsConfig.properties.headers
+  // config.properties = config.properties || {};
+  // if (modelsConfig.properties.headers && !config.properties.headers) {
+  //   config.properties.headers = modelsConfig.properties.headers;
+  // }
+
+  /**
    * Create the final definition object
    * 1. Start with anything in /collections/collectionName.js
    * 2. Add anything specified in /models/collectionName.js not already defined
@@ -92,7 +102,13 @@ module.exports = function(collectionName, options) {
     }
   };
 
-  if (connection.headers) {
+  /**
+   * SPECIAL CASE: Headers
+   * If headers are defined in the model, use those instead of the connection
+   */
+  if (_.get(modelDefinition, 'properties.headers')) {
+    conventions.properties.headers = _.get(modelDefinition, 'properties.headers')
+  } else if (connection.headers) {
     conventions.properties.headers = connection.headers;
   }
 
