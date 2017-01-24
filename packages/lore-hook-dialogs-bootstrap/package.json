@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-dialogs-bootstrap",
-  "version": "0.11.0-beta.2",
+  "version": "0.11.0-rc.1",
   "license": "MIT",
   "main": "./lib/index.js",
   "description": "A lore hook that generates dialogs using Bootstrap",
