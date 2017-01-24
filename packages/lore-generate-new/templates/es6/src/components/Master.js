@@ -59,6 +59,6 @@ class Master extends Component {
 
 export default lore.connect(function(getState, props) {
   return {
-    // user: getState('currentUser', {})
+    // user: getState('currentUser')
   };
 }, { subscribe: true })(Master);

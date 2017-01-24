@@ -14,7 +14,7 @@ var PayloadStates = require('../constants/PayloadStates');
 
 module.exports = lore.connect(function(getState, props) {
   return {
-    // user: getState('currentUser', {})
+    // user: getState('currentUser')
   };
 }, { subscribe: true })(
   React.createClass({

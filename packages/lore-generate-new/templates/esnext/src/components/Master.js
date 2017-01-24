@@ -14,7 +14,7 @@ import PayloadStates from '../constants/PayloadStates';
 
 @lore.connect(function(getState, props) {
   return {
-    // user: getState('currentUser', {})
+    // user: getState('currentUser')
   };
 }, { subscribe: true })
 class Master extends Component {
