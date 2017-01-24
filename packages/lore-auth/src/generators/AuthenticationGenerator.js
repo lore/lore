@@ -70,7 +70,7 @@ module.exports = function(options) {
 
   };
 
-  var properties = _.assign(defaults, options);
+  var properties = _.defaultsDeep({}, options, defaults);
 
   return AuthGeneratorFactory(properties, Router.withRouter);
 };

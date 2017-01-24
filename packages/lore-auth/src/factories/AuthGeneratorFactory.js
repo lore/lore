@@ -66,7 +66,7 @@ module.exports = function(options, Decorator) {
 
     };
 
-    var properties = _.assign(defaults, options);
+    var properties = _.defaultsDeep({}, options, defaults);
 
     if (Decorator) {
       return Decorator(
