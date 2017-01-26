@@ -41,30 +41,35 @@ module.exports = function(settings) {
       }
     },
     module: {
-      loaders: [{
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel-loader",
-        include: APP_ROOT,
-        query: {
-          presets: ['react', 'es2015']
-        }
-      }, {
-        test: /\.js$/,
-        loaders: ['babel-loader'],
-        include: path.join(APP_ROOT, '..', '..', 'src')
-      }, {
-        test: /\.css/,
-        loader: 'style-loader!css-loader'
-      }, {
-        test: /\.less$/,
-        loader: 'style-loader!css-loader!less-loader'
-      }, {
-        test: /\.(png|jpg)$/,
-        loader: 'url-loader?limit=8192'
-      }, {
-        test: /\.json/,
-        loader: 'json-loader'
+
+      loaders: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: "babel-loader",
+          include: APP_ROOT,
+          query: {
+            presets: ['react', 'es2015']
+          }
+        },{
+          test: /\.js$/,
+          loaders: ['babel-loader'],
+          include: path.join(APP_ROOT, '..', '..', 'src')
+        },{
+          test: /\.css/,
+          loader: 'style-loader!css-loader'
+        },{
+          test: /\.less$/,
+          loader: 'style-loader!css-loader!less-loader'
+        },{
+          test: /\.scss$/,
+          loader: 'style-loader!css-loader!sass-loader'
+        },{
+          test: /\.(png|jpg)$/,
+          loader: 'url-loader?limit=8192'
+        },{
+          test: /\.json/,
+          loader: 'json-loader'
       }]
     }
   }
