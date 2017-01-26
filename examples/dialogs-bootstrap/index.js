@@ -15,14 +15,15 @@ window.lore = lore;
 // Summon the app!
 lore.summon({
   hooks: {
-    actions: require("lore-hook-actions"),
-    bindActions: require("lore-hook-bind-actions"),
-    collections: require("lore-hook-collections"),
-    connect: require("lore-hook-connect"),
-    dialog: require("lore-hook-dialog"),
+    actions: require('lore-hook-actions'),
+    bindActions: require('lore-hook-bind-actions'),
+    collections: require('lore-hook-collections'),
+    connections: require('lore-hook-connections'),
+    connect: require('lore-hook-connect'),
+    dialog: require('lore-hook-dialog'),
     dialogs: require('lore-hook-dialogs-bootstrap'), // for example
-    models: require("lore-hook-models"),
-    reducers: require("lore-hook-reducers"),
-    redux: require("lore-hook-redux")
+    models: require('lore-hook-models'),
+    reducers: require('lore-hook-reducers'),
+    redux: require('lore-hook-redux')
   }
 });

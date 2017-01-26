@@ -1,51 +1,38 @@
 /**
- * Configuration file for models-collections
+ * Configuration file for models
  *
  * This file is where you define overrides for the default model behaviors.
+ * Settings here apply to all models, and some are inherited by collections.
  */
 
 module.exports = {
 
-  /****************************************************************************
-  *                                                                           *
-  * Define properties that should apply to all collections here. Since we     *
-  * only lightly wrapping Backbone, you can define any properties here that   *
-  * Backbone supports for Collections.                                        *
-  *                                                                           *
-  ****************************************************************************/
+  /**
+   * The default API connection that models should use if they have no explicit mapping.
+   */
 
-  apiRoot: 'http://localhost:1337',
+  // defaultConnection: 'default'
 
-  /****************************************************************************
-   *                                                                           *
-   * If pluralize is true, all model names will be converted to their plural   *
-   * form when making API calls. A model called 'foo' will made a call to      *
-   * '/foos' if pluralize is true, and to '/foo' if pluralize is false         *
-   * Uses the pluralize.js library to determine the plural model name          *
-   * See: https://github.com/blakeembrey/pluralize                             *
-   *                                                                           *
-   ****************************************************************************/
+  /**
+   * If your application interacts with multiple APIs, create a connection for each
+   * API and then define which models are associated with each connection here.
+   *
+   * Here is an example for an application with a versioned API (v1 and v2):
+   *
+   * {
+   *   v1: [
+   *     'currentUser',
+   *     'author'
+   *   ],
+   *   v2: [
+   *     'book',
+   *     'publisher'
+   *   ]
+   * }
+   */
 
-  // pluralize: true,
-
-  /****************************************************************************
-  *                                                                           *
-  * Define properties that should apply to all models here. Since we are      *
-  * only lightly wrapping Backbone, you can define any properties here that   *
-  * Backbone supports for Models.                                             *
-  * See: http://backbonejs.org/#Model                                         *
-  *                                                                           *
-  ****************************************************************************/
-
-  properties: {
-
-    //
-    // See http://backbonejs.org/#Model-parse
-    //
-    // parse: function(attributes) {
-    //   return attributes;
-    // }
-
-  }
+  // connectionModelMap: {
+  //   default: []
+  // }
 
 };
