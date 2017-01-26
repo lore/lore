@@ -1,5 +1,5 @@
 var React = require('react');
-var AuthenticationGenerator = require('lore-auth').generators.AuthenticationGenerator;
+var AuthenticationGenerator = require('lore-auth').AuthenticationGenerator;
 var auth = require('../../auth');
 
 module.exports = AuthenticationGenerator({

@@ -3,36 +3,20 @@
  *
  * This file is where you define overrides for the default collection behaviors.
  */
-var auth = require('../src/auth');
 
 module.exports = {
 
-  /****************************************************************************
-  *                                                                           *
-  * Define properties that should apply to all collections here. Since we     *
-  * only lightly wrapping Backbone, you can define any properties here that   *
-  * Backbone supports for Collections.                                        *
-  * See: http://backbonejs.org/#Collection                                    *
-  *                                                                           *
-  ****************************************************************************/
-
-  properties: {
-
-    // Headers that should be applied to all network requests
-    // You can override this function on a per-model basis
-    headers: function() {
-      return {
-        'Authorization': 'Bearer ' + auth.getToken()
-      };
-    }
-
-    //
-    // See http://backbonejs.org/#Collection-parse
-    //
-    // parse: function(attributes) {
-    //   return attributes;
-    // }
-
-  }
+  /**
+   * While this file can influence the behavior of collections, there is currently
+   * no clear reason why you would ever need to use it.
+   *
+   * If you need to define collection specific behavior (such as parsing server responses
+   * or defining headers to add to requests) you should do that in 'config/connections.js'.
+   *
+   * If you have multiple connections, and need to define which collections use each
+   * connection, you should do that in 'config/models.js' as this file inherits that
+   * behavior.
+   *
+   */
 
 };

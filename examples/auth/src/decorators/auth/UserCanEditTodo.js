@@ -1,6 +1,6 @@
 var _ = require('lodash');
 var React = require('react');
-var AuthorizationGenerator = require('lore-auth').generators.AuthorizationGenerator;
+var AuthorizationGenerator = require('lore-auth').AuthorizationGenerator;
 var PermissionTypes = require('../../constants/PermissionTypes');
 
 module.exports = AuthorizationGenerator({
