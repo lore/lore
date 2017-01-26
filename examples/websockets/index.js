@@ -15,15 +15,16 @@ window.lore = lore;
 // Summon the app!
 lore.summon({
   hooks: {
-    actions: require("lore-hook-actions"),
-    bindActions: require("lore-hook-bind-actions"),
-    collections: require("lore-hook-collections"),
-    connect: require("lore-hook-connect"),
-    dialog: require("lore-hook-dialog"),
+    actions: require('lore-hook-actions'),
+    bindActions: require('lore-hook-bind-actions'),
+    collections: require('lore-hook-collections'),
+    connect: require('lore-hook-connect'),
+    connections: require('lore-hook-connections'),
+    dialog: require('lore-hook-dialog'),
     dialogs: require('lore-hook-dialogs-bootstrap'),
-    models: require("lore-hook-models"),
-    reducers: require("lore-hook-reducers"),
-    redux: require("lore-hook-redux"),
+    models: require('lore-hook-models'),
+    reducers: require('lore-hook-reducers'),
+    redux: require('lore-hook-redux'),
     websockets: require('lore-hook-websockets-sails') // for example
     // websockets: require('lore-hook-websockets-socketio') // for example
     // websockets: require('lore-hook-websockets-actioncable') // for example

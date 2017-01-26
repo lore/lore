@@ -1,6 +1,6 @@
-var ActionTypes = require('lore/lib/utils/ActionTypes');
-var PayloadStates = require('lore/lib/utils/PayloadStates');
-var payload = require('lore-actions/lib/utils').payload;
+var ActionTypes = require('lore-utils').ActionTypes;
+var PayloadStates = require('lore-utils').PayloadStates;
+var payload = require('lore-utils').payload;
 var uuid = require('node-uuid');
 var _ = require('lodash');
 
