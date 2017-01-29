@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-actions",
-  "version": "0.11.0-rc.1",
+  "version": "0.11.0",
   "license": "MIT",
   "main": "./lib/index.js",
   "description": "A lore hook that generates default actions from blueprints",
@@ -18,12 +18,12 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-actions": "^0.11.0-rc.1",
-    "lore-utils": "^0.11.0-rc.1"
+    "lore-actions": "^0.11.0",
+    "lore-utils": "^0.11.0"
   },
   "devDependencies": {
     "chai": "3.4.1",
-    "lore-models": "^0.11.0-rc.1",
+    "lore-models": "^0.11.0",
     "mocha": "2.3.4",
     "rimraf": "2.5.2"
   }

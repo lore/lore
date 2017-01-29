@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-models",
-  "version": "0.11.0-rc.1",
+  "version": "0.11.0",
   "license": "MIT",
   "main": "./lib/index.js",
   "description": "A lore hook that creates models for AJAX communication",
@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-models": "^0.11.0-rc.1",
-    "lore-utils": "^0.11.0-rc.1",
+    "lore-models": "^0.11.0",
+    "lore-utils": "^0.11.0",
     "merge-defaults": "0.2.1",
     "pluralize": "1.2.1"
   },

@@ -1,6 +1,6 @@
 {
   "name": "lore-generate",
-  "version": "0.11.0-rc.1",
+  "version": "0.11.0",
   "license": "MIT",
   "main": "index.js",
   "description": "Runner script for lore generators",
