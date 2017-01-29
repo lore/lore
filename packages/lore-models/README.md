@@ -11,12 +11,14 @@ The interface for this library is designed to mirror [Backbone.Model](http://bac
 
 
 ```js
+var Model = require('lore-models').Model;
+var sync = require('lore-models').sync;
 var _ = require('lodash');
 
 // The .extend() method is something that allows you to define common functionality in
 // one model (like common parse methods or url buidling logic) and then build other
 // models from that so you don't have to duplicate the code.
-var Todo = Backbone.Model.extend({
+var Todo = Model.extend({
 
   // A model's unique identifier is stored under the id attribute. If you're 
   // directly communicating with a backend (CouchDB, MongoDB) that uses a different 
@@ -60,7 +62,7 @@ var Todo = Backbone.Model.extend({
     return resp;
   },
   
-  // Uses Backbone.sync to persist the state of a model to the server. Can be 
+  // Uses sync to persist the state of a model to the server. Can be 
   // overridden for custom behavior.
   // This method has two really useful applications:
   //
@@ -73,10 +75,10 @@ var Todo = Backbone.Model.extend({
   // 2. For inspecting the response before the application gets it.  For example,
   // if you wanted to log the user out of the application whenever an API response
   // returns a 401 (because their token expired) sync is a method that ALL requests
-  // go through (or at least they all go through Backbone.sync).  So it's a way to
+  // go through (or at least they all go through sync).  So it's a way to
   // observe and act on or log all network requests.
   sync: function() {
-    return Backbone.sync.apply(this, arguments);
+    return sync.apply(this, arguments);
   },
   
   // this interface allows you to create and refernce your own methods.  Not very
