@@ -19,7 +19,7 @@ var lorerc = rc('lore', {
   },
   commands: {
     new: local("lore-generate-new"),
-    tutorial: local("lore-tutorial"),
+    // tutorial: local("lore-tutorial"),
     extract: {
       description: "Create files that mirror the blueprint behavior",
       commands: {
