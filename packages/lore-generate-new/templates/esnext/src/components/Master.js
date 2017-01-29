@@ -11,6 +11,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import PayloadStates from '../constants/PayloadStates';
+import '../../assets/css/main.css';
 
 @lore.connect(function(getState, props) {
   return {

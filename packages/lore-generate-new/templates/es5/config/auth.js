@@ -22,7 +22,7 @@ module.exports = {
   // reducerName: 'currentUser'
 
   /**
-   * The name of the action that should be created at this responsible
+   * The name of the action that should be created that is responsible
    * for fetching the current user. This defaults to the name of the
    * model.
    */

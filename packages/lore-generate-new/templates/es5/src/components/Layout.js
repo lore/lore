@@ -6,8 +6,6 @@
 
 var React = require('react');
 var logo = require('../../assets/images/logo.png');
-require('../../assets/css/main.css');
-
 
 module.exports = React.createClass({
   displayName: 'Layout',

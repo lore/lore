@@ -6,7 +6,6 @@
 
 import React, { Component } from 'react';
 import logo from '../../assets/images/logo.png';
-import '../../assets/css/main.css';
 
 class Layout extends Component {
 

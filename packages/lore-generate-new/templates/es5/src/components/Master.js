@@ -11,6 +11,7 @@
 
 var React = require('react');
 var PayloadStates = require('../constants/PayloadStates');
+require('../../assets/css/main.css');
 
 module.exports = lore.connect(function(getState, props) {
   return {
