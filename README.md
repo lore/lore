@@ -46,7 +46,19 @@ The documentation for Lore is hosted at http://www.lorejs.org.
 
 ### Tutorial
 
-You can find the [tutorial for learning Lore](http://www.lorejs.org/tutorial/) on the website. It's intended to be conversational, and makes an attempt to explain some of the reasoning behind each of the features introduced. Not all steps of the tutorial have been written out, but you can find the (current) final version of the application in the [lore-tutorial](https://github.com/lore/lore-tutorial) repo.
+There is a [tutorial for learning Lore](http://www.lorejs.org/quickstart/) on the website. It covers:
+
+* Creating a new application
+* Prototyping with mock data
+* Routing
+* Fetching data from an API
+* Launching dialogs
+* Authentication (logging users in)
+* Authorization (restricting what users see)
+* Resolving breaking API changes
+* Pagination
+* Infinite Scrolling
+* Filtering
 
 
 ### Near-term Focus
