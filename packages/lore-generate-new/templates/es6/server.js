@@ -32,7 +32,7 @@ new WebpackDevServer(webpack(config), {
   stats: {
     colors: true
   }
-}).listen(PORT, 'localhost', function (err) {
+}).listen(PORT, 'localhost', function(err) {
   if (err) {
     console.log(err);
   }

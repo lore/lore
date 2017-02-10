@@ -22,7 +22,7 @@ module.exports = AuthenticationGenerator({
 
   // redirectQueryParamName: 'redirect',
 
-  isAuthenticated: function () {
+  isAuthenticated: function() {
     return true;
   }
 });

@@ -25,7 +25,7 @@ var AuthorizationGenerator = require('lore-auth').AuthorizationGenerator;
 module.exports = AuthorizationGenerator({
   wrapperDisplayName: 'UserIsAuthorized',
 
-  isAuthorized: function (storeState) {
+  isAuthorized: function(storeState) {
     return true;
   }
 });
