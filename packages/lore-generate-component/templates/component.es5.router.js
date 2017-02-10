@@ -8,7 +8,7 @@ module.exports = Router.withRouter(React.createClass({
     router: React.PropTypes.object.isRequired
   },
 
-  render: function () {
+  render: function() {
     return (
       <div></div>
     );

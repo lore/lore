@@ -5,7 +5,7 @@ module.exports = React.createClass({
 
   propTypes: {},
 
-  render: function () {
+  render: function() {
     return (
       <div></div>
     );

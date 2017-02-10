@@ -14,7 +14,7 @@ module.exports = lore.connect(function(getState, props) {
       router: React.PropTypes.object.isRequired
     },
 
-    render: function () {
+    render: function() {
       return (
         <div></div>
       );

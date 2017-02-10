@@ -12,7 +12,7 @@ module.exports = lore.connect(function(getState, props) {
       //models: React.PropTypes.object.isRequired
     },
 
-    render: function () {
+    render: function() {
       return (
         <div></div>
       );
