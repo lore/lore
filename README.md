@@ -61,6 +61,10 @@ There is a [tutorial for learning Lore](http://www.lorejs.org/quickstart/) on th
 * Filtering
 
 
+### Discussion
+If you have any questions, feel free to [create an issue](https://github.com/lore/lore/issues/new). If you'd rather discuss over chat, there is a [Lore Slack Team](https://lorejs.slack.com) which you can join [using this link](https://lorejs.slack.com/shared_invite/MTQxMjk5NDk1MzYyLTE0ODcwODY0MTAtYWZkZWNlMDBhMA).
+
+
 ### Near-term Focus
 
 Since Lore is still in active development, I'm going to list the things that have immediate focus here.
