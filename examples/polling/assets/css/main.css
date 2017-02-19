@@ -1,0 +1,147 @@
+/*
+ * Create Tweet Button
+ */
+
+.create-button {
+  position: absolute;
+  top: 25px;
+  right: 15px;
+  z-index: 1000;
+  border-radius: 100px;
+  outline: none;
+}
+
+/*
+ * Edit and Delete Links
+ */
+
+.link {
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+/*
+ * Feed
+ */
+
+.feed .title {
+  text-align: center;
+}
+
+.feed .tweets {
+  margin-top: 32px;
+}
+
+.feed .pagination {
+  text-align: center;
+}
+
+.feed nav {
+  text-align: center;
+}
+
+/*
+ * Filter
+ */
+
+.filter {
+  marginTop: 20px;
+}
+
+
+/*
+ * Header
+ */
+
+.header .container {
+  position: relative;
+}
+
+/*
+ * Footer
+ */
+
+.footer {
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 64px;
+}
+
+.footer button {
+  outline: none;
+}
+
+/*
+ * Profile
+ */
+
+.profile {
+  position: relative;
+  display: block;
+  margin-bottom: .75rem;
+  background-color: #fff;
+  border-radius: .25rem;
+  border: 1px solid rgba(0,0,0,.125);
+  margin-top: 20px;
+}
+
+.profile .card-block {
+  padding: 1.25rem
+}
+
+.profile .avatar {
+  width: 48px;
+  position: absolute;
+  top: -24px;
+  left: calc(50% - 24px);
+  border: 1px solid gray
+}
+
+.profile .permissions {
+  margin-left: -12px;
+}
+
+/*
+ * Tweet
+ */
+
+.tweet .avatar {
+  width: 32px;
+  border: 1px solid gray
+}
+
+.tweet .image-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 32px
+}
+
+.tweet .content-container {
+  display: inline-block;
+  margin-left: 8px;
+  max-width: 85%
+}
+
+.tweet .title {
+  line-height: 32px;
+  display: inline-block
+}
+
+.tweet .text {
+  margin-bottom: 5px
+}
+
+.tweet .timestamp {
+  display: inline-block;
+  margin-left: 8px;
+  color: #999;
+  font-size: 14px
+}
+
+/*
+ * Misc Styles
+ */
+
+body {
+  padding-bottom: 64px;
+}
