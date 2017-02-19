@@ -1,6 +1,6 @@
 {
   "name": "lore-generate-component",
-  "version": "0.11.0",
+  "version": "0.11.2",
   "license": "MIT",
   "main": "index.js",
   "description": "Generates a React component for a Lore project",
