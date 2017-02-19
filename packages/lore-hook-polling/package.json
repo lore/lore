@@ -1,0 +1,26 @@
+{
+  "name": "lore-hook-polling",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "description": "A hook for Lore",
+  "keywords": [
+    "lore",
+    "hook"
+  ],
+  "scripts": {
+    "build": "../../node_modules/.bin/babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "debug": "mocha debug --compilers js:babel-core/register --recursive",
+    "prepublish": "npm run build",
+    "test": "mocha --compilers js:babel-core/register test/bootstrap.js test/**/*.spec.js --recursive"
+  },
+  "dependencies": {
+    "lodash": "^4.0.0"
+  },
+  "devDependencies": {
+    "chai": "3.4.1",
+    "lore-utils": "^0.11.0",
+    "mocha": "2.3.4"
+  }
+}
