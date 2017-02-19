@@ -69,10 +69,11 @@ If you have any questions, feel free to [create an issue](https://github.com/lor
 
 Since Lore is still in active development, I'm going to list the things that have immediate focus here.
 
-1. Implement automatic normalization of API responses
-2. Improve default production configuration
-3. Add normalization and publishing steps to Quickstart
-4. Publish v0.12
+1. [[done](https://github.com/lore/lore/pull/157)] Add hook for polling actions
+2. Implement automatic normalization of API responses
+3. Improve default production configuration
+4. Add normalization and publishing steps to Quickstart
+5. Publish v0.12
 
 
 ### Thanks
