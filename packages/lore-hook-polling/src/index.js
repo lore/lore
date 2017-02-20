@@ -36,7 +36,7 @@ function generateKey(actionName, args) {
 function createPollingWrapper(actionKey, action, config) {
   return function callAction() {
     // Create a version of the action that is bound to the arguments provided by the
-    // user. This makes sure the hook will work with any arbitary function - it simply
+    // user. This makes sure the hook will work with any arbitrary function - it simply
     // invokes that action with the provided arguments on the requested interval
     var boundAction = Function.prototype.apply.bind(action).bind(null, null, arguments);
 
@@ -72,16 +72,22 @@ module.exports = {
     // get the application level config (defaults + config/polling.js)
     var appConfig = lore.config.polling;
 
-    // get the model specific config (for tweet)
-    var modelConfig = lore.loader.loadModels().tweet;
+    // get the model specific configs
+    var modelConfigs = lore.loader.loadModels();
 
-    // combine values from both configs, giving priority to values in the model config
-    var config = _.defaults({}, modelConfig.polling, appConfig);
-
-    // create a polling object that mirrors the structure of the actions object, and
-    // where each value is a pollable wrapper over a real object
+    // create a polling object that will mirror the structure of the actions object
     lore.polling = {};
+
+    // iterate over each action and create a pollable version attached to the polling object
     _.mapKeys(flattenObject(actions), function(action, actionKey) {
+      // get the model specific config
+      var modelName = actionKey.split('.')[0];
+      var modelConfig = modelConfigs[modelName] || {};
+
+      // combine values from both configs, giving priority to values in the model config
+      var config = _.defaults({}, modelConfig.polling, appConfig);
+
+      // generate the
       _.set(lore.polling, actionKey, createPollingWrapper(actionKey, action, config));
     });
   }
