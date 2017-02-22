@@ -1,6 +1,6 @@
 # lore
 
-[![Build Status][circle-image]][circle-url]
+[![Build Status][circle-image]][circle-url] [![Slack Status][slackin-image]][slackin-url]
 
 ![lore](https://cloud.githubusercontent.com/assets/5898306/13093056/654b5c76-d4c0-11e5-8968-643aae655030.png)
 
@@ -62,7 +62,7 @@ There is a [tutorial for learning Lore](http://www.lorejs.org/quickstart/) on th
 
 
 ### Discussion
-If you have any questions, feel free to [create an issue](https://github.com/lore/lore/issues/new). If you'd rather discuss over chat, there is a [Lore Slack Team](https://lorejs.slack.com) which you can join [using this link](https://lorejs.slack.com/shared_invite/MTQxMjk5NDk1MzYyLTE0ODcwODY0MTAtYWZkZWNlMDBhMA).
+If you have any questions, feel free to [create an issue](https://github.com/lore/lore/issues/new). If you'd rather discuss over chat, there is a [Lore Slack Team](https://lorejs.slack.com) which you can join [using this link][slackin-url].
 
 
 ### Near-term Focus
@@ -91,3 +91,5 @@ for making UI development a more fun and magical experience (even if it is [abou
 
 [circle-url]: https://circleci.com/gh/lore/lore
 [circle-image]: https://circleci.com/gh/lore/lore.svg?style=shield&circle-token=6ef9571387d0e08d802f6769026fcf91fc30459f
+[slackin-image]: https://lorejs-slack.herokuapp.com/badge.svg
+[slackin-url]: https://lorejs-slack.herokuapp.com
