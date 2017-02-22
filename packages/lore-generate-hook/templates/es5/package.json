@@ -9,11 +9,13 @@
     "hook"
   ],
   "scripts": {
-    "test": "NODE_ENV=test mocha --recursive"
+    "clean": "echo 'nothing to clean'",
+    "debug": "mocha debug --recursive",
+    "test": "mocha --recursive"
   },
   "dependencies": {},
   "devDependencies": {
-    "chai": "3.4.1",
-    "mocha": "2.3.4"
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
   }
 }
