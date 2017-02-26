@@ -55,7 +55,9 @@ _.extend(Lore.prototype, {
 
     // The loader needs to be setup before the hooks as they will need to use
     // it to set up the project files
-    this.loader = loader(this.environment);
+    this.loader = loader({
+      environment: this.environment
+    });
 
     // Next we need to load the hooks before the config, as the hooks contain
     // the defaults we need to build the final configuration for the app
