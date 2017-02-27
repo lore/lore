@@ -70,10 +70,12 @@ If you have any questions, feel free to [create an issue](https://github.com/lor
 Since Lore is still in active development, I'm going to list the things that have immediate focus here.
 
 1. [[done](https://github.com/lore/lore/pull/157)] Add hook for polling actions
-2. Implement automatic normalization of API responses
-3. Improve default production configuration
-4. Add normalization and publishing steps to Quickstart
-5. Publish v0.12
+2. [in-progress] Add ability to override redux store creation [[branch](https://github.com/lore/lore/tree/normalization-support)]
+3. [in-progress] Add ability to override root component construction and DOM mounting [[branch](https://github.com/lore/lore/tree/normalization-support)]
+4. [in-progress] Implement automatic normalization of API responses [[branch](https://github.com/lore/lore/tree/normalization-support)]
+5. Improve default production configuration
+6. Add normalization and publishing steps to Quickstart
+7. Publish v0.12
 
 
 ### Thanks
