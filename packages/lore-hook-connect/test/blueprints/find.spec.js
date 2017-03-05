@@ -3,6 +3,11 @@ var _ = require('lodash');
 var sinon = require('sinon');
 var _getState = require('../../src/getState');
 var toJsonKey = require('../../src/utils/toJsonKey');
+var blueprints = {
+  find: require('../../src/blueprints/find'),
+  byId: require('../../src/blueprints/byId'),
+  singleton: require('../../src/blueprints/singleton')
+};
 
 describe('blueprints#find', function() {
   var lore, storeState, key, testAction;
@@ -50,7 +55,7 @@ describe('blueprints#find', function() {
 
     describe('and no params are provided', function() {
       it('should call the action', function () {
-        var getState = _getState(lore);
+        var getState = _getState(lore.actions, blueprints, lore.config.connect.reducerActionMap);
         var payload = getState(storeState, 'post.find');
         expect(payload).to.be.an('object');
         expect(payload.state).to.equal(testAction.payload.state);
@@ -60,7 +65,7 @@ describe('blueprints#find', function() {
 
     describe('and params are provided', function() {
       it('should call the action', function () {
-        var getState = _getState(lore);
+        var getState = _getState(lore.actions, blueprints, lore.config.connect.reducerActionMap);
         var payload = getState(storeState, 'post.find', {
           where: {
             author: 1
@@ -106,7 +111,7 @@ describe('blueprints#find', function() {
       });
 
       it('should return the data and not call the action', function() {
-        var getState = _getState(lore);
+        var getState = _getState(lore.actions, blueprints, lore.config.connect.reducerActionMap);
         var payload = getState(storeState, 'post.find');
         expect(payload).to.be.an('object');
         expect(payload.state).to.equal(reducerState.state);
@@ -130,7 +135,7 @@ describe('blueprints#find', function() {
       });
 
       it('should return the data and not call the action', function() {
-        var getState = _getState(lore);
+        var getState = _getState(lore.actions, blueprints, lore.config.connect.reducerActionMap);
         var payload = getState(storeState, 'post.find', {
           where: {
             author: 1

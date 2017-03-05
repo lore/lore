@@ -2,6 +2,11 @@ var expect = require('chai').expect;
 var _ = require('lodash');
 var sinon = require('sinon');
 var _getState = require('../../src/getState');
+var blueprints = {
+  find: require('../../src/blueprints/find'),
+  byId: require('../../src/blueprints/byId'),
+  singleton: require('../../src/blueprints/singleton')
+};
 
 describe('blueprints#byId', function() {
   var lore, storeState, key, testAction;
@@ -56,7 +61,7 @@ describe('blueprints#byId', function() {
 
     describe('and params are provided', function() {
       it('should call the action', function () {
-        var getState = _getState(lore);
+        var getState = _getState(lore.actions, blueprints, lore.config.connect.reducerActionMap);
         var payload = getState(storeState, 'post.byId', {
           id: 1
         });
@@ -110,7 +115,7 @@ describe('blueprints#byId', function() {
       });
 
       it('should return the data and not call the action', function() {
-        var getState = _getState(lore);
+        var getState = _getState(lore.actions, blueprints, lore.config.connect.reducerActionMap);
         var payload = getState(storeState, 'post.byId', {
           id: 1
         });

@@ -8,7 +8,12 @@ describe('defaults', function() {
     var hook = new Hook(definition);
     var defaultConfig = {
       connect: {
-        reducerActionMap: {}
+        blueprints: {
+          find: require('../src/blueprints/find'),
+          byId: require('../src/blueprints/byId'),
+          singleton: require('../src/blueprints/singleton')
+        },
+        reducerActionMap: {},
       }
     };
     expect(hook.defaults).to.deep.equal(defaultConfig);

@@ -36,10 +36,10 @@ var _getState = require('./getState');
  * })(React.createClass({...})
  *
  */
-module.exports = function(lore) {
+module.exports = function(actions, blueprints, reducerActionMap) {
 
   // provide getState with a copy of lore so it can access reducer-action map
-  var getState = _getState(lore);
+  var getState = _getState(actions, blueprints, reducerActionMap);
 
   return function connect(select, options = {}) {
     return function(DecoratedComponent) {
