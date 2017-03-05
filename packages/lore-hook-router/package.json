@@ -1,13 +1,14 @@
 {
-  "name": "lore-hook-polling",
-  "version": "0.11.3",
+  "name": "lore-hook-router",
+  "version": "0.1.0",
   "license": "MIT",
   "main": "lib/index.js",
-  "description": "A Lore hook that enables polling of action",
+  "description": "A hook for Lore",
   "keywords": [
     "lore",
     "hook",
-    "polling"
+    "router",
+    "react-router"
   ],
   "scripts": {
     "build": "../../node_modules/.bin/babel src --out-dir lib",
@@ -16,12 +17,13 @@
     "prepublish": "npm run build",
     "test": "mocha --compilers js:babel-core/register test/bootstrap.js test/**/*.spec.js --recursive"
   },
-  "dependencies": {
-    "lodash": "^4.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "chai": "3.4.1",
-    "lore-utils": "^0.11.0",
-    "mocha": "2.3.4"
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "react-router": "^3.0.0"
+  },
+  "peerDependencies": {
+    "react-router": "^3.0.0"
   }
 }
