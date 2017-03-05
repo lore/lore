@@ -1,10 +1,8 @@
 var getConnection = require('./getConnection');
 
-module.exports = function(lore) {
+module.exports = function(actions, blueprints, reducerActionMap) {
   return function (state, stateKey, params, options) {
-    var reducerActionMap = lore.config.connect.reducerActionMap;
-    var actions = lore.actions;
-    var connection = getConnection(stateKey, reducerActionMap, actions);
+    var connection = getConnection(stateKey, reducerActionMap, actions, blueprints);
     return connection.getState(state, params, options);
   };
 };

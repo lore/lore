@@ -2,13 +2,8 @@ var _ = require('lodash');
 var Connection = require('../Connection');
 var MissingBlueprintError = require('../errors/MissingBlueprintError');
 var InvalidBlueprintError = require('../errors/InvalidBlueprintError');
-var blueprints = {
-  find: require('../blueprints/find'),
-  byId: require('../blueprints/byId'),
-  singleton: require('../blueprints/singleton')
-};
 
-module.exports = function convertDefinitionToConnection(stateKey, definition, actions) {
+module.exports = function convertDefinitionToConnection(stateKey, definition, actions, blueprints) {
   var action = definition.action;
   var blueprint = definition.blueprint;
 

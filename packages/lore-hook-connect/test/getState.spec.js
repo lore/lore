@@ -3,15 +3,25 @@ var _ = require('lodash');
 var sinon = require('sinon');
 var _getState = require('../src/getState/index');
 var toJsonKey = require('../src/utils/toJsonKey');
+var blueprints = {
+  find: require('../src/blueprints/find'),
+  byId: require('../src/blueprints/byId')
+};
 
 describe('getState', function() {
   var lore, storeState, key, testAction;
   var findBlueprintAction, byIdBlueprintAction;
 
   beforeEach(function () {
+    var findBlueprintAction = sinon.spy();
+    var byIdBlueprintAction = sinon.spy();
     lore = {
       config: {
         connect: {
+          // blueprints: {
+          //   find: findBlueprintAction,
+          //   byId: byIdBlueprintAction
+          // },
           reducerActionMap: {}
         }
       },
@@ -41,8 +51,6 @@ describe('getState', function() {
       }
     };
 
-    findBlueprintAction = sinon.spy();
-    byIdBlueprintAction = sinon.spy();
     lore.actions.post.find = findBlueprintAction;
     lore.actions.post.get = byIdBlueprintAction;
 
@@ -60,14 +68,14 @@ describe('getState', function() {
   describe('conventions', function() {
 
     it('should use the find blueprint if asking for model.find', function() {
-      var getState = _getState(lore);
+      var getState = _getState(lore.actions, blueprints, lore.config.connect.reducerActionMap);
       var payload = getState(storeState, 'post.find');
       expect(payload).to.be.an('object');
       expect(payload.state).to.equal('RESOLVED');
     });
 
     it('should use the byId blueprint if asking for model.byId', function() {
-      var getState = _getState(lore);
+      var getState = _getState(lore.actions, blueprints, lore.config.connect.reducerActionMap);
       var payload = getState(storeState, 'post.byId', {
         id: 1
       });
@@ -115,7 +123,7 @@ describe('getState', function() {
         blueprint: blueprint
       };
 
-      var getState = _getState(lore);
+      var getState = _getState(lore.actions, blueprints, lore.config.connect.reducerActionMap);
       var payload = getState(storeState, 'currentUser');
       expect(payload).to.be.an('object');
       expect(payload.state).to.equal('RESOLVED');
@@ -132,7 +140,7 @@ describe('getState', function() {
         state: 'RESOLVED'
       };
 
-      var getState = _getState(lore);
+      var getState = _getState(lore.actions, blueprints, lore.config.connect.reducerActionMap);
       var payload = getState(storeState, 'currentUser');
       expect(payload).to.be.an('object');
       expect(payload.state).to.equal('RESOLVED');

@@ -11,13 +11,13 @@ function ConnectionMappingError(stateKey) {
   return error;
 }
 
-module.exports = function getConnection(stateKey, reducerActionMap, actions) {
+module.exports = function getConnection(stateKey, reducerActionMap, actions, blueprints) {
   var definition = reducerActionMap[stateKey] || generateBlueprintFromConventions(stateKey);
 
   if (!definition) {
     throw new ConnectionMappingError(stateKey);
   }
 
-  var connection = convertDefinitionToConnection(stateKey, definition, actions);
+  var connection = convertDefinitionToConnection(stateKey, definition, actions, blueprints);
   return connection;
 };
