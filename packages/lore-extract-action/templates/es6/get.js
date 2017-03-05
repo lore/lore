@@ -1,21 +1,31 @@
 import _ from 'lodash';
 import { ActionTypes, PayloadStates, payload } from 'lore-utils';
+import normalize from 'lore-hook-actions/lib/normalize';
 
 /*
  * Blueprint for Get method
  */
-export default function get(modelId) {
+export default function get(modelId, query = {}) {
   return function(dispatch) {
     const Model = lore.models.<%= modelName %>;
     const model = new Model({
       id: modelId
     });
 
-    model.fetch().then(function() {
+    model.fetch({
+      data: query
+    }).then(function() {
+      // look through the model and generate actions for any attributes with
+      // nested data that should be normalized
+      var actions = normalize(lore, '<%= modelName %>').model(model);
+
       dispatch({
         type: ActionTypes.update('<%= modelName %>'),
         payload: payload(model, PayloadStates.RESOLVED)
       });
+
+      // dispatch any actions created from normalizing nested data
+      actions.forEach(dispatch);
     }).catch(function(response) {
       const error = response.data;
 
