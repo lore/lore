@@ -1,14 +1,13 @@
 {
-  "name": "lore-hook-router",
+  "name": "lore-hook-react",
   "version": "0.1.0",
   "license": "MIT",
   "main": "lib/index.js",
-  "description": "A Lore hook for specifying the react-router routes and history type",
+  "description": "A Lore hook that builds the root component and mounts it to the DOM",
   "keywords": [
     "lore",
     "hook",
-    "router",
-    "react-router"
+    "react"
   ],
   "scripts": {
     "build": "../../node_modules/.bin/babel src --out-dir lib",
@@ -17,13 +16,21 @@
     "prepublish": "npm run build",
     "test": "mocha --compilers js:babel-core/register test/**/*.spec.js --recursive"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-redux": "^4.4.1"
+  },
   "devDependencies": {
     "chai": "^3.4.1",
     "mocha": "^2.3.4",
-    "react-router": "^3.0.0"
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "react-router": "^3.0.0",
+    "redux": "^3.0.2"
   },
   "peerDependencies": {
-    "react-router": "^3.0.0"
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "react-router": "^3.0.0",
+    "redux": "^3.0.2"
   }
 }

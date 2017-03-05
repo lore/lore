@@ -2,12 +2,12 @@ var _ = require('lodash');
 var loader = require('../loader');
 var getVersionAndDependencyInfo = require('./getVersionAndDependencyInfo');
 var getLogger = require('./getLogger');
-var mount = require('./mount');
 var getEnvironment = require('./getEnvironment');
 var getHooks = require('./getHooks');
 var getInitializers = require('./getInitializers');
 var sortHooksByLoadOrder = require('./sortHooksByLoadOrder');
 var getConfig = require('./getConfig');
+var validateReactConfig = require('./validateReactConfig');
 
 /**
  * The Lore class constructor. Exposes the following fields for use:
@@ -96,16 +96,18 @@ _.extend(Lore.prototype, {
     this.build(configOverride);
     // this.log.verbose('Mounting app...');
 
-    var store = this.store;
-    var routes = this.loader.loadRoutes();
+    // Get the React config, so we can learn how to construct the Root component
+    // and mount the application
+    var react = this.config.react;
 
-    var router = this.config.router;
-    var history = router.default ? router.default.history : router.history;
+    // Validate the React config has all required methods
+    validateReactConfig(react);
 
-    mount(store, routes, history, function() {
-      // this.log.info('App summoned from lore!');
-      this.isSummoned = true;
-    }.bind(this));
+    // Get the Root component we should mount to the DOM
+    var Root = react.getRootComponent(this);
+
+    // Mount the app!
+    react.mount(Root, this);
   }
 
 });
