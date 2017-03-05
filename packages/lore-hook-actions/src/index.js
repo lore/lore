@@ -2,14 +2,6 @@ var _ = require('lodash');
 var actionBlueprints = require('lore-actions').blueprints;
 var utils = require('lore-actions').utils;
 
-var blueprints = {
-  create: require('./blueprints/create'),
-  destroy: require('./blueprints/destroy'),
-  get: require('./blueprints/get'),
-  find: require('./blueprints/find'),
-  update: require('./blueprints/update')
-};
-
 function convertBlueprintToActionCreator(action, store) {
   // if the module isn't a function, then it's an object describing the action
   // config and needs to be converted to a real function
@@ -40,8 +32,16 @@ module.exports = {
 
   defaults: {
     actions: {
+      normalize: true,
       addCidToBody: false,
       cidBodyAttributeName: 'cid',
+      blueprints: {
+        create: require('./blueprints/create'),
+        destroy: require('./blueprints/destroy'),
+        get: require('./blueprints/get'),
+        find: require('./blueprints/find'),
+        update: require('./blueprints/update')
+      }
     }
   },
 
@@ -52,6 +52,7 @@ module.exports = {
     var store = lore.store;
     var actions = lore.loader.loadActions();
     var config = lore.config.actions;
+    var blueprints = config.blueprints;
 
     // todo: should actions be created for files in /collections
     // that have no corresponding model in /models Currently
@@ -62,8 +63,8 @@ module.exports = {
       _.assign(lore.actions[modelName], {
         create: blueprints.create(modelName, models, config),
         destroy: blueprints.destroy(modelName, models),
-        get: blueprints.get(modelName, models),
-        find: blueprints.find(modelName, collections),
+        get: blueprints.get(modelName, models, lore),
+        find: blueprints.find(modelName, collections, lore),
         update: blueprints.update(modelName, models)
       })
     });

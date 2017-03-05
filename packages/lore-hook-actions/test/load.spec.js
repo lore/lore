@@ -19,7 +19,7 @@ describe('load', function() {
 
     lore = {
       config: {
-        actions: defaultConfig
+        actions: defaultConfig.actions
       },
       loader: loader({}),
       store: {
@@ -41,7 +41,7 @@ describe('load', function() {
     beforeEach(function() {
       lore = {
         config: {
-          actions: defaultConfig
+          actions: defaultConfig.actions
         },
         loader: loader({}),
         store: {

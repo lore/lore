@@ -2,7 +2,7 @@ const _ = require('lodash');
 const { payload, defaultOptions, validatePartialPairs } = require('../utils');
 
 /*
- * Blueprint for Fetch method
+ * Blueprint for Get method
  */
 module.exports = function(opts = {}) {
   // clone the options so we don't unintentionally modify them
@@ -18,18 +18,33 @@ module.exports = function(opts = {}) {
 
   validatePartialPairs(options);
 
-  return function fetch(modelId) {
+  return function fetch(modelId, query = {}) {
     return function(dispatch) {
       const model = new Model({
         id: modelId
       });
 
-      model.fetch().then(function() {
+      model.fetch({
+        data: query
+      }).then(function() {
         if (options.onSuccess) {
+          var actions = [];
+
+          if (options.normalize && options.normalize.getActions) {
+            // look through the model and generate actions for any attributes with
+            // nested data that should be normalized
+            actions = options.normalize.getActions(model);
+          }
+
           dispatch({
             type: options.onSuccess.actionType,
             payload: payload(model, options.onSuccess.payloadState)
           });
+
+          if (options.normalize && options.normalize.dispatchActions) {
+            // dispatch any actions created from normalizing nested data
+            options.normalize.dispatchActions(actions, dispatch);
+          }
         }
       }).catch(function(response) {
         const error = response.data;

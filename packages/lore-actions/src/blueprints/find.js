@@ -2,7 +2,7 @@ const _ = require('lodash');
 const { payloadCollection, defaultOptions, validatePartialPairs } = require('../utils');
 
 /*
- * Blueprint for FetchAll method
+ * Blueprint for Find method
  */
 
 module.exports = function(opts = {}) {
@@ -34,11 +34,24 @@ module.exports = function(opts = {}) {
         data: queryParameters
       }).then(function() {
         if (options.onSuccess) {
+          var actions = [];
+
+          if (options.normalize && options.normalize.getActions) {
+            // look through all models in the collection and generate actions for any attributes
+            // with nested data that should be normalized
+            actions = options.normalize.getActions(collection);
+          }
+
           dispatch({
             type: options.onSuccess.actionType,
             payload: payloadCollection(collection, options.onSuccess.payloadState, null, combinedQuery),
             query: combinedQuery
           });
+
+          if (options.normalize && options.normalize.dispatchActions) {
+            // dispatch any actions created from normalizing nested data
+            options.normalize.dispatchActions(actions, dispatch);
+          }
         }
       }).catch(function(response) {
         if (options.onError) {
