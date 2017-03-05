@@ -84,8 +84,6 @@ module.exports = function(options) {
               value={this.state[attributeName]}
               onChange={this.onChangeCallbacks[attributeName]} />
           );
-        } else {
-          throw new Error('Unrecognized attribute type: ' + attribute.type);
         }
       }.bind(this));
 
