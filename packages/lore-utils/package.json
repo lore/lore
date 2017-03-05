@@ -1,6 +1,6 @@
 {
   "name": "lore-utils",
-  "version": "0.11.0",
+  "version": "0.12.0-beta.1",
   "license": "MIT",
   "main": "./lib/index.js",
   "description": "Functions and files used across multiple Lore packages",
