@@ -75,8 +75,8 @@ Since Lore is still in active development, I'm going to list the things that hav
 4. [[done](https://github.com/lore/lore/pull/161)] Add ability to override redux store creation
 5. [[done](https://github.com/lore/lore/pull/162)] Add ability to normalize API responses
 6. [[done](https://github.com/lore/lore/pull/163)] Add ability to override connect blueprints
-7. [in-progress] Add ability to override root component construction and DOM mounting
-8. Add Redux DevTools to new projects by default in development environment (with flag to enable/disable)
+7. [[done](https://github.com/lore/lore/pull/164)] Add ability to override root component construction and DOM mounting
+8. [in-progress] Add Redux DevTools to new projects by default in development environment (with flag to enable/disable)
 9. Improve default production configuration
 10. Add normalization and publishing steps to Quickstart
 11. Publish v0.12
