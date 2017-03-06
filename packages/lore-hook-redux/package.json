@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-utils": "^0.12.0-beta.1"
+    "lore-utils": "^0.12.0-beta.1",
+    "redux-batched-subscribe": "^0.1.6"
   },
   "devDependencies": {
     "chai": "3.4.1",

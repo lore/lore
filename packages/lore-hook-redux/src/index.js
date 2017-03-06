@@ -1,5 +1,7 @@
 var Redux = require('redux');
 var thunk = require('redux-thunk').default;
+var batchedSubscribe = require('redux-batched-subscribe').batchedSubscribe;
+var _ = require('lodash');
 
 module.exports = {
 
@@ -18,6 +20,17 @@ module.exports = {
       middleware: [thunk],
 
       /**
+       * Length of time (in milliseconds) that needs to exist between updates
+       * to the Redux store before React is notified the store has changed.
+       *
+       * A value of zero corresponds to "one tick".
+       *
+       * https://lodash.com/docs/4.17.4#debounce
+       */
+
+      debounceWait: 0,
+
+      /**
        * Enhance the store with third-party capabilities such as middleware,
        * time travel, persistence, etc.
        *
@@ -26,7 +39,10 @@ module.exports = {
 
       enhancer: function(middleware, config) {
         return Redux.compose(
-          Redux.applyMiddleware.apply(null, middleware)
+          Redux.applyMiddleware.apply(null, middleware),
+          batchedSubscribe(_.debounce(function(notify) {
+            notify();
+          }, config.redux.debounceWait))
         );
       },
 
