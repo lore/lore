@@ -14,7 +14,7 @@ var LogMonitor = require('redux-devtools-log-monitor').default;
 var DockMonitor = require('redux-devtools-dock-monitor').default;
 var Provider = require('react-redux').Provider;
 var Router = require('react-router').Router;
-import { batchedSubscribe } from 'redux-batched-subscribe';
+var batchedSubscribe = require('redux-batched-subscribe').batchedSubscribe;
 
 /**
  * Redux DevTools, for a practical and fun development experience
@@ -53,17 +53,10 @@ module.exports = {
         return Redux.compose(
           Redux.applyMiddleware.apply(null, middleware),
           DevTools.instrument(),
-          // batchedSubscribe((notify) => {
-          //   notify();
-          // })
           batchedSubscribe(_.debounce(function(notify) {
             console.log('notify()');
             notify();
-          }, 10))
-          // batchedSubscribe(_.debounce(function(notify) {
-          //   console.log('notify()')
-          //   notify();
-          // }, 0))
+          }, 0))
         );
       }
 

@@ -8,39 +8,58 @@ module.exports = {
 
   /**
    * Extend or override the built-in blueprints. This is helpful if you want to
-   * change the interface for 'lore.connect'. For example the default syntax to
-   * fetch a model by id looks like this:
+   * change the interface for 'lore.connect'.
    *
-   *   getState('tweet.byId', {
-   *     id: 1
-   *   })
+   * Lore has three built-in blueprints:
    *
-   * If you overrode the blueprint, you could modify the syntax to look like this
-   * instead, to match the interface for the 'find' blueprint:
-   *
-   *   getState('tweet.find', {
-   *     where: {
-   *       id: 1
-   *     }
-   *   })
-   *
-   * While it's unlikely you'll need to override the blueprints
+   *  - find      : used for calls like getState('tweet.find')
+   *  - byId      : used for calls like getState('tweet.byId')
+   *  - singleton : used for calls like getState('currentUser')
    */
 
   blueprints: {
 
-    byId: {
-      getPayload: function (reducerState, params) {
-        var key = params.id;
-        return reducerState[key];
-      },
+    /**
+     * As an example, the default syntax to fetch a model by id looks like this:
+     *
+     *   getState('tweet.byId', {
+     *     id: 1
+     *   })
+     *
+     * If you wanted to modify the syntax to use a 'where' clause (similar to the
+     * 'find' blueprint) you could achieve that by overriding 'byId' blueprint with
+     * the implementation below.
+     *
+     *   getState('tweet.find', {
+     *     where: {
+     *       id: 1
+     *     }
+     *   })
+     */
 
-      callAction: function (action, params) {
-        var id = params.id;
-        var query = params.query;
-        return action(id, query).payload;
-      }
-    }
+    // byId: {
+    //   defaults: {
+    //     where: {
+    //       id: null
+    //     }
+    //   },
+    //
+    //   verifyParams: function(params) {
+    //     if (!params.where.id) {
+    //       throw new Error('Missing required field: id');
+    //     }
+    //   },
+    //
+    //   getPayload: function (reducerState, params) {
+    //     var key = params.where.id;
+    //     return reducerState[key];
+    //   },
+    //
+    //   callAction: function (action, params) {
+    //     var id = params.where.id;
+    //     return action(id).payload;
+    //   }
+    // }
 
   },
 
@@ -100,24 +119,6 @@ module.exports = {
     //
     //     callAction: function(action, params) {
     //       return action().payload;
-    //     }
-    //   }
-    // }
-
-    // 'tweet.byId': {
-    //   action: 'tweet.get',
-    //   reducer: 'tweet.byId',
-    //   blueprint: {
-    //     getPayload: function (reducerState, params) {
-    //       debugger
-    //       var key = params.id;
-    //       return reducerState[key];
-    //     },
-    //
-    //     callAction: function (action, params) {
-    //       debugger
-    //       var id = params.id;
-    //       return action(id).payload;
     //     }
     //   }
     // }
