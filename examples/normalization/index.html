@@ -24,6 +24,10 @@
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
+    <!-- Webpack will place styles below this line
+    <link href="styles.main.css" rel="stylesheet">
+    -->
+
   </head>
   <body>
     <div id="root">
@@ -35,6 +39,11 @@
 
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="/dist/bundle.js"></script>
+
+    <!-- Webpack will place the vendor.js and bundle.js scripts below this line
+    <script type="text/javascript" src="bundle.vendor.js"></script>
+    <script type="text/javascript" src="bundle.main.js"></script>
+    -->
+
   </body>
 </html>

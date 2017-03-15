@@ -11,25 +11,19 @@ function es5(template) {
 module.exports = {
 
   // root
-  './.editorconfig': {copy: common('editorconfig.template')},
+  './.babelrc': {copy: es5('babelrc')},
+  './.editorconfig': {copy: common('editorconfig')},
   './.gitignore': {copy: common('gitignore')},
   './.lorerc': {copy: es5('lorerc')},
   './db.json': {copy: common('db.json')},
+  './gulpfile.js': {copy: es5('gulpfile.js')},
   './index.html': {copy: common('index.html')},
   './index.js': {copy: es5('index.js')},
-  './gulpfile.js': {copy: es5('gulpfile.js')},
   './package.json': {template: es5('package.json')},
+  './postcss.config.js': {copy: es5('postcss.config.js')},
   './README.md': {template: common('./README.md')},
   './routes.js': {copy: es5('routes.js')},
-  './server.js': {copy: es5('server.js')},
   './webpack.config.js': {copy: es5('webpack.config.js')},
-
-  // webpack
-  './webpack/config.js': {copy: es5('webpack/config.js')},
-  './webpack/README.md': {copy: common('webpack/README.md')},
-  './webpack/env/development.js': {copy: es5('webpack/env/development.js')},
-  './webpack/env/production.js': {copy: es5('webpack/env/production.js')},
-  './webpack/env/README.md': {copy: common('webpack/env/README.md')},
 
   // src
   './src/README.md': {copy: common('src/README.md')},
@@ -76,11 +70,12 @@ module.exports = {
   './config/actions.js': {copy: es5('config/actions.js')},
   './config/auth.js': {copy: es5('config/auth.js')},
   './config/collections.js': {copy: es5('config/collections.js')},
-  './config/connections.js': {copy: es5('config/connections.js')},
   './config/connect.js': {copy: es5('config/connect.js')},
+  './config/connections.js': {copy: es5('config/connections.js')},
   './config/dialog.js': {copy: es5('config/dialog.js')},
   './config/local.js': {copy: es5('config/local.js')},
   './config/models.js': {copy: es5('config/models.js')},
+  './config/react.js': {copy: es5('config/react.js')},
   './config/reducers.js': {copy: es5('config/reducers.js')},
   './config/redux.js': {copy: es5('config/redux.js')},
   './config/router.js': {copy: es5('config/router.js')},
@@ -101,6 +96,7 @@ module.exports = {
   // assets
   './assets/REAMDE.md': {copy: common('assets/README.md')},
   './assets/css/main.css': {copy: common('assets/css/main.css')},
+  './assets/images/favicon.png': {copy: common('assets/images/favicon.png')},
   './assets/images/logo.png': {copy: common('assets/images/logo.png')},
   './assets/less/main.less': {copy: common('assets/less/main.less')},
   './assets/sass/main.scss': {copy: common('assets/sass/main.scss')}
