@@ -32,12 +32,13 @@ describe('load', function() {
     it('should append the Redux Store to lore.store', function() {
       hook.load(lore);
       expect(lore.store).to.be.an('object');
-      expect(_.keys(lore.store).length).to.equal(4);
+      expect(_.keys(lore.store).length).to.equal(5);
       expect(lore.store).to.include.keys([
         'dispatch',
         'getState',
         'replaceReducer',
-        'subscribe'
+        'subscribe',
+        'subscribeImmediate'
       ]);
     })
   });
@@ -57,12 +58,13 @@ describe('load', function() {
     it('should append the Redux Store to lore.store', function() {
       hook.load(lore);
       expect(lore.store).to.be.an('object');
-      expect(_.keys(lore.store).length).to.equal(4);
+      expect(_.keys(lore.store).length).to.equal(5);
       expect(lore.store).to.include.keys([
         'dispatch',
         'getState',
         'replaceReducer',
-        'subscribe'
+        'subscribe',
+        'subscribeImmediate'
       ]);
     });
 

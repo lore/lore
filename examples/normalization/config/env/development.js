@@ -56,7 +56,7 @@ module.exports = {
           batchedSubscribe(_.debounce(function(notify) {
             console.log('notify()');
             notify();
-          }, 0))
+          }, config.redux.debounceWait))
         );
       }
 
@@ -65,7 +65,7 @@ module.exports = {
         batchedSubscribe(_.debounce(function(notify) {
           console.log('notify()');
           notify();
-        }, 0))
+        }, config.redux.debounceWait))
       );
     }
 

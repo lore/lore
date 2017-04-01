@@ -7,6 +7,7 @@ var populateStore = require('../helpers/populateStore');
 var config = {
   hooks: require('../defaultHooks')
 };
+var TEST_DELAY = 10;
 
 describe('lore#redux', function() {
   var lore = null;
@@ -35,7 +36,7 @@ describe('lore#redux', function() {
         });
     });
 
-    it("should create a todo and add it to the store", function( done ) {
+    it("should create a todo and add it to the store", function(done) {
       lore.build(config);
       var optimisticTodo = lore.actions.todo.create({
         title: 'foo'
@@ -47,10 +48,9 @@ describe('lore#redux', function() {
       expect(_.keys(state.todo.byId).length).to.equal(0);
       expect(_.keys(state.todo.byCid).length).to.equal(1);
 
-
       // Subscribe to the store so we can be notified once the server response
       // comes back with the real data
-      lore.store.subscribe(function() {
+      lore.store.subscribe(_.debounce(function() {
 
         // The second time we check state we should see the real model
         state = lore.store.getState();
@@ -62,8 +62,7 @@ describe('lore#redux', function() {
         var realTodo = state.todo.byCid[optimisticTodo.cid];
         expect(realTodo.id).to.exist;
         done();
-
-      });
+      }, TEST_DELAY));
     });
   });
 
@@ -81,7 +80,7 @@ describe('lore#redux', function() {
         ]);
     });
 
-    it("should find the todos and add them to the store", function( done ) {
+    it("should find the todos and add them to the store", function(done) {
       lore.build(config);
       var optimisticTodos = lore.actions.todo.find().payload;
 
@@ -94,7 +93,8 @@ describe('lore#redux', function() {
 
       // Subscribe to the store so we can be notified once the server response
       // comes back with the real data
-      lore.store.subscribe(function() {
+
+      lore.store.subscribe(_.debounce(function () {
 
         // The second time we check state we should see the models returned
         // from the server
@@ -105,7 +105,7 @@ describe('lore#redux', function() {
         expect(state.todo.find['{"where":{}}'].data.length).to.equal(1);
 
         done();
-      });
+      }, TEST_DELAY));
     });
   });
 
@@ -121,7 +121,7 @@ describe('lore#redux', function() {
         });
     });
 
-    it("should create a todo, add it to the store, and update it when the server responds", function( done ) {
+    it("should create a todo, add it to the store, and update it when the server responds", function(done) {
       lore.build(config);
       var optimisticTodo = lore.actions.todo.get('1').payload;
 
@@ -133,7 +133,7 @@ describe('lore#redux', function() {
 
       // Subscribe to the store so we can be notified once the server response
       // comes back with the real data
-      lore.store.subscribe(function() {
+      lore.store.subscribe(_.debounce(function () {
 
         // The second time we check state we should see the models returned
         // from the server
@@ -147,7 +147,8 @@ describe('lore#redux', function() {
         expect(realTodo.data.title).to.equal('foo');
 
         done();
-      });
+      }, TEST_DELAY));
+
     });
   });
 
@@ -163,7 +164,7 @@ describe('lore#redux', function() {
         });
     });
 
-    it("should udpate the todo and update it in the store", function( done ) {
+    it("should udpate the todo and update it in the store", function(done) {
       lore.build(config);
       var store = lore.store;
       var data = populateStore(store, {
@@ -188,7 +189,7 @@ describe('lore#redux', function() {
 
       // Subscribe to the store so we can be notified once the server response
       // comes back with the real data
-      store.subscribe(function() {
+      store.subscribe(_.debounce(function () {
 
         // The second time we check state we should see the models returned
         // from the server
@@ -202,7 +203,7 @@ describe('lore#redux', function() {
         expect(realTodo.data.title).to.equal('bar');
 
         done();
-      });
+      }, TEST_DELAY));
     });
   });
 
@@ -215,7 +216,7 @@ describe('lore#redux', function() {
         .reply(200);
     });
 
-    it("should delete a todo and remove it from the store", function( done ) {
+    it("should delete a todo and remove it from the store", function(done) {
       lore.build(config);
       var store = lore.store;
       var data = populateStore(store, {
@@ -237,7 +238,8 @@ describe('lore#redux', function() {
 
       // Subscribe to the store so we can be notified once the server confirms
       // the request
-      store.subscribe(function() {
+      store.subscribe(_.debounce(function () {
+
         // The second time we check state the delete request will have completed
         // and the model should have been removed from the store
         state = store.getState();
@@ -247,7 +249,7 @@ describe('lore#redux', function() {
         expect(_.keys(state.todo.byCid).length).to.equal(0);
 
         done();
-      });
+      }, TEST_DELAY));
     });
   });
 
@@ -267,7 +269,7 @@ describe('lore#redux', function() {
         });
     });
 
-    it("should create a todo and add it to the store", function( done ) {
+    it("should create a todo and add it to the store", function(done) {
       lore.build(config);
       var optimisticTodo = lore.actions.todo.create({
         title: 'foo'
@@ -282,7 +284,7 @@ describe('lore#redux', function() {
 
       // Subscribe to the store so we can be notified once the server response
       // comes back with the real data
-      lore.store.subscribe(function() {
+      lore.store.subscribe(_.debounce(function () {
 
         // The second time we check state we should see the real model
         state = lore.store.getState();
@@ -294,8 +296,7 @@ describe('lore#redux', function() {
         var realTodo = state.todo.byCid[optimisticTodo.cid];
         expect(realTodo.id).to.exist;
         done();
-
-      });
+      }, TEST_DELAY));
     });
   });
 
@@ -326,7 +327,7 @@ describe('lore#redux', function() {
 
       // Subscribe to the store so we can be notified once the server response
       // comes back with the real data
-      lore.store.subscribe(function() {
+      lore.store.subscribe(_.debounce(function () {
 
         // The second time we check state we should see the models returned
         // from the server
@@ -337,7 +338,7 @@ describe('lore#redux', function() {
         expect(state.todo.find['{"where":{}}'].data.length).to.equal(1);
 
         done();
-      });
+      }, TEST_DELAY));
     });
   });
 
@@ -353,7 +354,7 @@ describe('lore#redux', function() {
         });
     });
 
-    it("should create a todo, add it to the store, and update it when the server responds", function( done ) {
+    it("should create a todo, add it to the store, and update it when the server responds", function(done) {
       lore.build(config);
       var optimisticTodo = lore.actions.todo.get(1).payload;
 
@@ -365,7 +366,7 @@ describe('lore#redux', function() {
 
       // Subscribe to the store so we can be notified once the server response
       // comes back with the real data
-      lore.store.subscribe(function() {
+      lore.store.subscribe(_.debounce(function () {
 
         // The second time we check state we should see the models returned
         // from the server
@@ -379,7 +380,7 @@ describe('lore#redux', function() {
         expect(realTodo.data.title).to.equal('foo');
 
         done();
-      });
+      }, TEST_DELAY));
     });
   });
 
@@ -395,7 +396,7 @@ describe('lore#redux', function() {
         });
     });
 
-    it("should udpate the todo and update it in the store", function( done ) {
+    it("should udpate the todo and update it in the store", function(done) {
       lore.build(config);
       var store = lore.store;
       var data = populateStore(store, {
@@ -420,7 +421,7 @@ describe('lore#redux', function() {
 
       // Subscribe to the store so we can be notified once the server response
       // comes back with the real data
-      store.subscribe(function() {
+      store.subscribe(_.debounce(function () {
 
         // The second time we check state we should see the models returned
         // from the server
@@ -434,7 +435,7 @@ describe('lore#redux', function() {
         expect(realTodo.data.title).to.equal('bar');
 
         done();
-      });
+      }, TEST_DELAY));
     });
   });
 
@@ -447,7 +448,7 @@ describe('lore#redux', function() {
         .reply(200);
     });
 
-    it("should delete a todo and remove it from the store", function( done ) {
+    it("should delete a todo and remove it from the store", function(done) {
       lore.build(config);
       var store = lore.store;
       var data = populateStore(store, {
@@ -469,7 +470,8 @@ describe('lore#redux', function() {
 
       // Subscribe to the store so we can be notified once the server confirms
       // the request
-      store.subscribe(function() {
+      store.subscribe(_.debounce(function () {
+
         // The second time we check state the delete request will have completed
         // and the model should have been removed from the store
         state = store.getState();
@@ -479,7 +481,7 @@ describe('lore#redux', function() {
         expect(_.keys(state.todo.byCid).length).to.equal(0);
 
         done();
-      });
+      }, TEST_DELAY));
     });
   });
 

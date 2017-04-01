@@ -11,9 +11,10 @@ describe('defaults', function() {
     expect(hook.defaults).to.include.keys([
       'redux'
     ]);
-    expect(_.keys(hook.defaults.redux).length).to.equal(5);
+    expect(_.keys(hook.defaults.redux).length).to.equal(6);
     expect(hook.defaults.redux).to.include.keys([
       'middleware',
+      'debounceWait',
       'enhancer',
       'rootReducer',
       'preloadedState',

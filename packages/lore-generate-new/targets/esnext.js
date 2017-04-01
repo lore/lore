@@ -15,26 +15,19 @@ function esnext(template) {
 module.exports = {
 
   // root
-  './.babelrc': {copy: esnext('.babelrc')},
-  './.editorconfig': {copy: common('editorconfig.template')},
+  './.babelrc': {copy: esnext('babelrc')},
+  './.editorconfig': {copy: common('editorconfig')},
   './.gitignore': {copy: common('gitignore')},
   './.lorerc': {copy: esnext('lorerc')},
   './db.json': {copy: common('db.json')},
+  './gulpfile.js': {copy: es6('gulpfile.js')},
   './index.html': {copy: common('index.html')},
   './index.js': {copy: es6('index.js')},
-  './gulpfile.js': {copy: es6('gulpfile.js')},
   './package.json': {template: esnext('package.json')},
+  './postcss.config.js': {copy: es6('postcss.config.js')},
   './README.md': {template: common('./README.md')},
   './routes.js': {copy: es6('routes.js')},
-  './server.js': {copy: es6('server.js')},
   './webpack.config.js': {copy: es6('webpack.config.js')},
-
-  // webpack
-  './webpack/config.js': {copy: esnext('webpack/config.js')},
-  './webpack/README.md': {copy: common('webpack/README.md')},
-  './webpack/env/development.js': {copy: es6('webpack/env/development.js')},
-  './webpack/env/production.js': {copy: es6('webpack/env/production.js')},
-  './webpack/env/README.md': {copy: common('webpack/env/README.md')},
 
   // src
   './src/README.md': {copy: common('src/README.md')},
@@ -86,6 +79,7 @@ module.exports = {
   './config/dialog.js': {copy: es6('config/dialog.js')},
   './config/local.js': {copy: es6('config/local.js')},
   './config/models.js': {copy: es6('config/models.js')},
+  './config/react.js': {copy: es6('config/react.js')},
   './config/reducers.js': {copy: es6('config/reducers.js')},
   './config/redux.js': {copy: es6('config/redux.js')},
   './config/router.js': {copy: es6('config/router.js')},
@@ -106,6 +100,7 @@ module.exports = {
   // assets
   './assets/REAMDE.md': {copy: common('assets/README.md')},
   './assets/css/main.css': {copy: common('assets/css/main.css')},
+  './assets/images/favicon.png': {copy: common('assets/images/favicon.png')},
   './assets/images/logo.png': {copy: common('assets/images/logo.png')},
   './assets/less/main.less': {copy: common('assets/less/main.less')},
   './assets/sass/main.scss': {copy: common('assets/sass/main.scss')}

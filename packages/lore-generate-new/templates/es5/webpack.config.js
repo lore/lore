@@ -1,46 +1,210 @@
 /**
- * This file builds and exports the final webpack config using the default
- * configuration in `/webpack/config.js` plus any environment specific
- * overrides that should be applied on top of it.
+ * Webpack config for the project
  *
- * This file also needs to specify the application root and pass it to the
- * webpack configs in `/webpack`, so `/webpack/config.js` can define the
- * `__LORE_ROOT__` constant (which the Lore framework uses to build file paths
- * to project folders like /models, /actions, /reducers, etc.
+ * This file tells webpack how to build your project, and includes instructions for both development and production
+ * environments. For an understanding of what each setting is for, see the official webpack documentation:
  *
- * Because webpack bundles the project into a single file under
- * `/dist/bundle.js`, it needs to know at *build* time what files it needs to
- * include.  So while dynamic require statements will work in a Node app
- * (because `require()` is a synchronous operation, that approach won't work
- * with Webpack. All file paths need to be explicit during build time.  The
- * alternative was to use relative paths to back out of the `lore` package in
- * `node_modules` and into the project itself, but that seemed like a worse
- * and somewhat fragile alternative.
+ * https://webpack.js.org/configuration/
+ *
+ * If you're new to webpack, you may find this video series by Kent Dodds helpful for getting up to speed quickly:
+ * https://egghead.io/courses/using-webpack-for-production-javascript-applications
  **/
 
-var requireDir = require('require-dir');
-var _ = require('lodash');
-var yargs = require('yargs');
+var path = require('path');
+var webpack = require('webpack');
+var ProgressBarPlugin = require('progress-bar-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ManifestPlugin = require('webpack-manifest-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var { getIfUtils, removeEmpty } = require('webpack-config-utils');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
-var envConfigs = requireDir('./webpack/env');
+module.exports = function(env) {
+  var { ifProduction, ifNotProduction } = getIfUtils(env);
 
-var settings = {
-  APP_ROOT: __dirname,
-  PORT: yargs.argv.port || 3000
+  return {
+    devtool: ifProduction('source-map', 'eval'),
+    entry: {
+      main: './index.js',
+      vendor: [
+        'react',
+        'react-dom',
+        'react-router'
+      ]
+    },
+    output: {
+      filename: ifProduction(
+        'bundle.[name].[chunkhash].js',
+        'bundle.[name].js'
+      ),
+      path: path.resolve('dist'),
+      pathinfo: ifNotProduction(),
+      publicPath: '/'
+    },
+    resolve: {
+      alias: {
+        'react': path.resolve(__dirname, 'node_modules/react')
+      }
+    },
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          use: 'babel-loader',
+          exclude: /node_modules/
+        },
+        {
+          test: /\.css/,
+          use: ifProduction(ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  importLoaders: 1
+                }
+              },
+              'postcss-loader'
+            ]
+          }), [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1
+              }
+            },
+            'postcss-loader'
+          ])
+        },
+        {
+          test: /\.less$/,
+          use: ifProduction(ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  importLoaders: 1
+                }
+              },
+              'postcss-loader',
+              'less-loader'
+            ]
+          }), [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1
+              }
+            },
+            'postcss-loader',
+            'less-loader'
+          ])
+        },
+        {
+          test: /\.scss$/,
+          use: ifProduction(ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  importLoaders: 1
+                }
+              },
+              'postcss-loader',
+              'sass-loader'
+            ]
+          }), [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1
+              }
+            },
+            'postcss-loader',
+            'sass-loader'
+          ])
+        },
+        {
+          test: /\.(png|jpg|jpeg|gif|tif|tiff|bmp|svg)$/,
+          use: {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: ifProduction(
+                'assets/images/[name].[hash:8].[ext]',
+                'assets/images/[name].[ext]'
+              )
+            }
+          }
+        },
+        {
+          test: /\.(ttf|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: ifProduction(
+                'assets/fonts/[name].[hash:8].[ext]',
+                'assets/fonts/[name].[ext]'
+              )
+            }
+          }
+        },
+        {
+          test: /\.json/,
+          use: 'json-loader'
+        }
+      ]
+    },
+    plugins: removeEmpty([
+      new webpack.DefinePlugin({
+        __LORE_ROOT__: JSON.stringify(__dirname),
+        'process.env': {
+          'NODE_ENV': JSON.stringify(env)
+        }
+      }),
+      new ProgressBarPlugin(),
+      new ExtractTextPlugin(ifProduction(
+        'styles.[name].[chunkhash].css',
+        'styles.[name].css'
+      )),
+      ifProduction(new ManifestPlugin({
+        fileName: 'asset-manifest.json'
+      })),
+      ifProduction(new webpack.optimize.CommonsChunkPlugin({
+        names: [
+          'vendor'
+        ]
+      })),
+      ifProduction(new CopyWebpackPlugin([{
+        from: 'assets/images',
+        to: 'assets/images'
+      }])),
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        inject: 'body',
+      }),
+      new FaviconsWebpackPlugin({
+        logo: './assets/images/favicon.png',
+        prefix: 'favicons-[hash]/',
+        emitStats: true,
+        statsFilename: 'favicon-manifest.json',
+        icons: {
+          android: false,
+          appleIcon: false,
+          appleStartup: false,
+          coast: false,
+          favicons: true,
+          firefox: false,
+          windows: false,
+          yandex: false
+        }
+      })
+    ]),
+  };
 };
-
-// build the base webpack config
-var config = require('./webpack/config')(settings);
-
-// get the environment specific config
-var env = process.env.NODE_ENV || 'development';
-var envConfig = envConfigs[env];
-
-// if there is a config for this environment, override the base
-// config with whatever is specified there
-if (envConfig) {
-  _.assign(config, envConfig(settings));
-}
-
-// export the final config file
-module.exports = config;
