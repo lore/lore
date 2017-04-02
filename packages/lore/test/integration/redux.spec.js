@@ -7,7 +7,7 @@ var populateStore = require('../helpers/populateStore');
 var config = {
   hooks: require('../defaultHooks')
 };
-var TEST_DELAY = 10;
+var TEST_DELAY = 50;
 
 describe('lore#redux', function() {
   var lore = null;
