@@ -21,7 +21,7 @@ module.exports = Generator.extend({
 
     if(fs.existsSync(options.projectDirectory)) {
       var files = fs.readdirSync(options.projectDirectory);
-      if (files.length > 0) {
+      if (files.length > 0 && !options.force) {
         throw new Error("Could not create a new Lore app in '" + options.projectDirectory + "' (directory already exists and is not empty)");
       }
     }
