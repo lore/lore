@@ -24,9 +24,11 @@ lore.summon({
     connect: require('lore-hook-connect'),
     dialog: require('lore-hook-dialog'),
     models: require('lore-hook-models'),
+    react: require('lore-hook-react'),
     reducers: require('lore-hook-reducers'),
     redux: _.extend(require('lore-hook-redux'), {
       dependencies: ['reducers', 'auth']
-    })
+    }),
+    router: require('lore-hook-router')
   }
 });

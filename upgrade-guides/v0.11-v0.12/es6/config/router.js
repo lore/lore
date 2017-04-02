@@ -2,7 +2,7 @@
  * This file is where you define overrides for the default routing behavior.
  **/
 
-// var browserHistory = require('react-router').browserHistory;
+// import { browserHistory } from 'react-router';
 
 export default {
 

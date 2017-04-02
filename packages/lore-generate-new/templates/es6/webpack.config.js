@@ -205,6 +205,6 @@ module.exports = function(env) {
           yandex: false
         }
       })
-    ]),
+    ])
   };
 };

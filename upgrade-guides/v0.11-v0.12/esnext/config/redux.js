@@ -4,10 +4,10 @@
  * This file is where you define overrides for the default Redux behavior.
  */
 
-// var Redux = require('redux');
-// var thunk = require('redux-thunk').default;
-// var batchedSubscribe = require('redux-batched-subscribe').batchedSubscribe;
-// var _ = require('lodash');
+// import { compose, applyMiddleware, combineReducers, createStore } from 'redux';
+// import { thunk } from 'redux-thunk';
+// import { batchedSubscribe } from 'redux-batched-subscribe';
+// import _ from 'lodash';
 
 export default {
 
@@ -55,8 +55,8 @@ export default {
    */
 
   // enhancer: function(middleware, config) {
-  //   return Redux.compose(
-  //     Redux.applyMiddleware.apply(null, middleware),
+  //   return compose(
+  //     applyMiddleware.apply(null, middleware),
   //     batchedSubscribe(_.debounce(function(notify) {
   //       notify();
   //     }, config.redux.debounceWait))
@@ -73,7 +73,7 @@ export default {
 
   // rootReducer: function(reducers) {
   //   var hasReducers = Object.keys(reducers).length > 0;
-  //   return hasReducers ? Redux.combineReducers(reducers) : function() {};
+  //   return hasReducers ? combineReducers(reducers) : function() {};
   // },
 
   /**
@@ -94,7 +94,7 @@ export default {
    */
 
   // configureStore: function(rootReducer, preloadedState, enhancer) {
-  //   return Redux.createStore(rootReducer, preloadedState, enhancer);
+  //   return createStore(rootReducer, preloadedState, enhancer);
   // }
 
 }
