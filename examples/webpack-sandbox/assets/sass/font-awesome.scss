@@ -1,0 +1,73 @@
+/*!
+ *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+
+@import "variables";
+@import "mixins";
+@import "path";
+@import "core";
+@import "larger";
+@import "fixed-width";
+@import "list";
+@import "bordered-pulled";
+@import "animated";
+@import "rotated-flipped";
+@import "stacked";
+@import "icons";
+@import "screen-reader";
+
+
+/*
+ * Font Overrides
+ */
+
+@font-face {
+  font-family: 'FontAwesome-eot';
+  src: url('#{$fa-font-path}/fontawesome-webfont.eot?#iefix&v=#{$fa-version}') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FontAwesome-woff2';
+  src: url('#{$fa-font-path}/fontawesome-webfont.woff2?v=#{$fa-version}') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FontAwesome-woff';
+  src: url('#{$fa-font-path}/fontawesome-webfont.woff?v=#{$fa-version}') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FontAwesome-ttf';
+  src: url('#{$fa-font-path}/fontawesome-webfont.ttf?v=#{$fa-version}') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FontAwesome-svg';
+  src: url('#{$fa-font-path}/fontawesome-webfont.svg?v=#{$fa-version}#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FontAwesome-otf';
+  src: url('#{$fa-font-path}/FontAwesome.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*
+ * Custom Styles
+ */
+
+.fa-check-sass {
+  @extend .fa-check;
+}
