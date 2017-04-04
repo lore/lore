@@ -8,7 +8,7 @@
 
 import _ from 'lodash';
 import React from 'react';
-import Redux from 'redux';
+import { applyMiddleware, compose } from 'redux';
 import { createDevTools } from 'redux-devtools';
 import LogMonitor from 'redux-devtools-log-monitor';
 import DockMonitor from 'redux-devtools-dock-monitor';
@@ -50,8 +50,8 @@ export default {
 
     enhancer: function(middleware, config) {
       if (config.redux.devToolsEnabled) {
-        return Redux.compose(
-          Redux.applyMiddleware.apply(null, middleware),
+        return compose(
+          applyMiddleware.apply(null, middleware),
           DevTools.instrument(),
           batchedSubscribe(_.debounce(function(notify) {
             notify();
@@ -59,8 +59,8 @@ export default {
         );
       }
 
-      return Redux.compose(
-        Redux.applyMiddleware.apply(null, middleware),
+      return compose(
+        applyMiddleware.apply(null, middleware),
         batchedSubscribe(_.debounce(function(notify) {
           notify();
         }, config.redux.debounceWait))

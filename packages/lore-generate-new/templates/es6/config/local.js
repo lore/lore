@@ -3,7 +3,7 @@
  *
  * This file is excluded from your project by default as part of the .gitignore
  * file.  Use it to override any configuration settings for any other config
- * files, or to specify sensitive data that you shouldn't be comitted to your
+ * files, or to specify sensitive data that you shouldn't be committed to your
  * git repo.
  *
  * Use this file to specify configuration settings for use while developing
@@ -13,22 +13,20 @@
  * in the env/ subfolder.
  */
 
-// import createBrowserHistory from 'history/lib/createBrowserHistory'
-
 export default {
 
-  /****************************************************************************
-   *                                                                           *
-   * This file will override other config settings based on the environment    *
-   *                                                                           *
-   ****************************************************************************/
+  /**
+   * This file will override other config settings based on the environment
+   */
 
-  // models: {
-  //   apiRoot: 'https://api.example.dev'
+  // actions: {
+  //   normalize: true
   // },
 
-  // router: {
-  //   history: createBrowserHistory()
+  // connections: {
+  //   default: {
+  //     apiRoot: 'https://api.example.dev'
+  //   }
   // }
 
 }
