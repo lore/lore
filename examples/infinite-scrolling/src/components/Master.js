@@ -10,14 +10,50 @@
  **/
 
 var React = require('react');
+var PayloadStates = require('../constants/PayloadStates');
 
 module.exports = lore.connect(function(getState, props) {
-  return {};
-}, {subscribe: true})(
+  return {
+    // user: getState('currentUser')
+  };
+}, { subscribe: true })(
   React.createClass({
     displayName: 'Master',
 
+    // propTypes: {
+    //   user: React.PropTypes.object.isRequired
+    // },
+
+    // childContextTypes: {
+    //   user: React.PropTypes.object
+    // },
+
+    // getChildContext: function() {
+    //   return {
+    //     user: this.props.user
+    //   };
+    // },
+
+    componentDidMount: function() {
+      // If you want to play with the router through the browser's dev console then
+      // uncomment out this line. React Router automatically provides 'router'
+      // to any components that are "routes" (such as Master and Layout), so this
+      // is a good location to attach it to the global lore object.
+
+      // lore.router = this.props.router;
+    },
+
     render: function() {
+      // var user = this.props.user;
+
+      // if (user.state === PayloadStates.FETCHING) {
+      //   return (
+      //     <h1 className="loading-text">
+      //       Loading...
+      //     </h1>
+      //   )
+      // }
+
       return (
         <div>
           {React.cloneElement(this.props.children)}
