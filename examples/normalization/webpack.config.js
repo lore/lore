@@ -18,6 +18,7 @@ var ManifestPlugin = require('webpack-manifest-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var { getIfUtils, removeEmpty } = require('webpack-config-utils');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = function(env) {
   var { ifProduction, ifNotProduction } = getIfUtils(env);
@@ -52,7 +53,8 @@ module.exports = function(env) {
           test: /\.js$/,
           use: 'babel-loader',
           exclude: /node_modules/
-        },{
+        },
+        {
           test: /\.css/,
           use: ifProduction(ExtractTextPlugin.extract({
             fallback: 'style-loader',
@@ -75,7 +77,8 @@ module.exports = function(env) {
             },
             'postcss-loader'
           ])
-        },{
+        },
+        {
           test: /\.less$/,
           use: ifProduction(ExtractTextPlugin.extract({
             fallback: 'style-loader',
@@ -100,7 +103,8 @@ module.exports = function(env) {
             'postcss-loader',
             'less-loader'
           ])
-        },{
+        },
+        {
           test: /\.scss$/,
           use: ifProduction(ExtractTextPlugin.extract({
             fallback: 'style-loader',
@@ -125,22 +129,37 @@ module.exports = function(env) {
             'postcss-loader',
             'sass-loader'
           ])
-        },{
-          test: /\.(png|jpg|gif|ttf|woff|woff2|eot)$/,
+        },
+        {
+          test: /\.(png|jpg|jpeg|gif|tif|tiff|bmp|svg)$/,
           use: {
             loader: 'url-loader',
             options: {
-              limit: 10000
+              limit: 10000,
+              name: ifProduction(
+                'assets/images/[name].[hash:8].[ext]',
+                'assets/images/[name].[ext]'
+              )
             }
           }
         },
         {
-          test: /\.svg$/,
-          use: 'svg-inline-loader'
-        },{
+          test: /\.(ttf|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: ifProduction(
+                'assets/fonts/[name].[hash:8].[ext]',
+                'assets/fonts/[name].[ext]'
+              )
+            }
+          }
+        },
+        {
           test: /\.json/,
           use: 'json-loader'
-        }]
+        }
+      ]
     },
     plugins: removeEmpty([
       new webpack.DefinePlugin({
@@ -170,6 +189,22 @@ module.exports = function(env) {
         template: './index.html',
         inject: 'body',
       }),
-    ]),
+      new FaviconsWebpackPlugin({
+        logo: './assets/images/favicon.png',
+        prefix: 'favicons-[hash]/',
+        emitStats: true,
+        statsFilename: 'favicon-manifest.json',
+        icons: {
+          android: false,
+          appleIcon: false,
+          appleStartup: false,
+          coast: false,
+          favicons: true,
+          firefox: false,
+          windows: false,
+          yandex: false
+        }
+      })
+    ])
   };
 };

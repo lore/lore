@@ -22,13 +22,13 @@ module.exports = function fetchAll(query) {
 
     collection.fetch({
       data: query
-    }).done(function () {
+    }).done(function() {
       dispatch({
         type: ActionTypes.FETCH_TODOS,
         payload: utils.payloadCollection(collection, query, PayloadStates.RESOLVED),
         query: query
       })
-    }).fail(function (response) {
+    }).fail(function(response) {
       var error = response.responseJSON;
       dispatch({
         type: ActionTypes.FETCH_TODOS,

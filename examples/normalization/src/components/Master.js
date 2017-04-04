@@ -45,7 +45,6 @@ module.exports = lore.connect(function(getState, props) {
     },
 
     render: function() {
-      console.log('Master:render');
       // var user = this.props.user;
 
       // if (user.state === PayloadStates.FETCHING) {

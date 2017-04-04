@@ -3,14 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "description": "A Lore example demonstrating normalization",
-  "main": "server.js",
   "keywords": [],
   "scripts": {
-    "clean": "rimraf dist",
     "build": "npm run clean && webpack --env=production",
     "build:prod": "npm run clean && webpack --env=production -p",
-    "start": "webpack-dev-server --history-api-fallback --hot --env=development --port=3000",
+    "clean": "rimraf dist",
     "server": "json-server --watch db.json --port=1337",
+    "start": "webpack-dev-server --history-api-fallback --hot --env=development --port=3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -39,7 +38,7 @@
     "redux": "^3.0.2",
     "redux-batched-subscribe": "^0.1.6",
     "redux-thunk": "^2.0.1",
-    "require-dir": "0.3.0"
+    "require-dir": "~0.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
@@ -50,8 +49,9 @@
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.26.2",
     "extract-text-webpack-plugin": "^2.1.0",
+    "favicons-webpack-plugin": "0.0.7",
     "file-loader": "^0.10.1",
-    "gulp": "3.9.1",
+    "gulp": "^3.9.1",
     "html-webpack-plugin": "^2.28.0",
     "json-loader": "^0.5.4",
     "json-server": "^0.8.16",
@@ -66,7 +66,6 @@
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.13.2",
-    "svg-inline-loader": "^0.7.1",
     "url-loader": "^0.5.8",
     "webpack": "^2.2.1",
     "webpack-config-utils": "^2.3.0",
