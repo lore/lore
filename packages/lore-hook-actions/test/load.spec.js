@@ -122,7 +122,7 @@ describe('load', function() {
                   payloadState: PayloadStates.RESOLVED
                 },
                 onError: {
-                  actionType: ActionTypes.remove('todo'),
+                  actionType: ActionTypes.update('todo'),
                   payloadState: PayloadStates.ERROR_CREATING
                 }
               }

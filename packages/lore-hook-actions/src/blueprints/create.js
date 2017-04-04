@@ -26,7 +26,7 @@ module.exports = function(modelName, models, options) {
     },
 
     onError: {
-      actionType: ActionTypes.remove(modelName),
+      actionType: ActionTypes.update(modelName),
       payloadState: PayloadStates.ERROR_CREATING,
       beforeDispatch: function(response, args){
         // no op
