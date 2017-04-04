@@ -16,16 +16,15 @@ var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ManifestPlugin = require('webpack-manifest-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var {getIfUtils, removeEmpty} = require('webpack-config-utils');
+var { getIfUtils, removeEmpty } = require('webpack-config-utils');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-
-var APP_ROOT = __dirname;
+var FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = function(env) {
-  var {ifProd, ifNotProd} = getIfUtils(env);
+  var { ifProduction, ifNotProduction } = getIfUtils(env);
 
   return {
-    devtool: ifProd('source-map', 'eval'),
+    devtool: ifProduction('source-map', 'eval'),
     entry: {
       main: './index.js',
       vendor: [
@@ -35,83 +34,176 @@ module.exports = function(env) {
       ]
     },
     output: {
-      filename: ifProd(
+      filename: ifProduction(
         'bundle.[name].[chunkhash].js',
         'bundle.[name].js'
       ),
       path: path.resolve('dist'),
-      pathinfo: ifNotProd(),
+      pathinfo: ifNotProduction(),
       publicPath: '/'
     },
     resolve: {
       alias: {
-        'react': APP_ROOT + '/node_modules/react'
+        'react': path.resolve(__dirname, 'node_modules/react')
       }
     },
     module: {
       rules: [
         {
           test: /\.js$/,
-          use: "babel-loader",
+          use: 'babel-loader',
           exclude: /node_modules/
-        },{
-          test: /\.css/,
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: 'css-loader'
-          })
-        },{
-          test: /\.less$/,
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: [
-              'css-loader',
-              'less-loader'
-            ]
-          })
-        },{
-          test: /\.scss$/,
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: [
-              'css-loader',
-              'sass-loader'
-            ]
-          })
-        },{
-          test: /\.(png|jpg|ttf|woff|woff2|eot)$/,
-          use: 'url-loader?limit=8192'
         },
         {
-          test: /\.svg$/,
-          use: 'svg-loader'
-        },{
+          test: /\.css/,
+          use: ifProduction(ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  importLoaders: 1
+                }
+              },
+              'postcss-loader'
+            ]
+          }), [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1
+              }
+            },
+            'postcss-loader'
+          ])
+        },
+        {
+          test: /\.less$/,
+          use: ifProduction(ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  importLoaders: 1
+                }
+              },
+              'postcss-loader',
+              'less-loader'
+            ]
+          }), [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1
+              }
+            },
+            'postcss-loader',
+            'less-loader'
+          ])
+        },
+        {
+          test: /\.scss$/,
+          use: ifProduction(ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  importLoaders: 1
+                }
+              },
+              'postcss-loader',
+              'sass-loader'
+            ]
+          }), [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1
+              }
+            },
+            'postcss-loader',
+            'sass-loader'
+          ])
+        },
+        {
+          test: /\.(png|jpg|jpeg|gif|tif|tiff|bmp|svg)$/,
+          use: {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: ifProduction(
+                'assets/images/[name].[hash:8].[ext]',
+                'assets/images/[name].[ext]'
+              )
+            }
+          }
+        },
+        {
+          test: /\.(ttf|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: ifProduction(
+                'assets/fonts/[name].[hash:8].[ext]',
+                'assets/fonts/[name].[ext]'
+              )
+            }
+          }
+        },
+        {
           test: /\.json/,
           use: 'json-loader'
-        }]
+        }
+      ]
     },
     plugins: removeEmpty([
       new webpack.DefinePlugin({
-        __LORE_ROOT__: JSON.stringify(APP_ROOT)
+        __LORE_ROOT__: JSON.stringify(__dirname),
+        'process.env': {
+          'NODE_ENV': JSON.stringify(env)
+        }
       }),
       new ProgressBarPlugin(),
-      new ExtractTextPlugin(ifProd(
+      new ExtractTextPlugin(ifProduction(
         'styles.[name].[chunkhash].css',
         'styles.[name].css'
       )),
-      ifProd(new ManifestPlugin({
+      ifProduction(new ManifestPlugin({
         fileName: 'asset-manifest.json'
       })),
-      new webpack.optimize.CommonsChunkPlugin({
-        names: ['vendor'],
-      }),
-      ifProd(new CopyWebpackPlugin([{
+      ifProduction(new webpack.optimize.CommonsChunkPlugin({
+        names: [
+          'vendor'
+        ]
+      })),
+      ifProduction(new CopyWebpackPlugin([{
         from: 'assets/images',
         to: 'assets/images'
       }])),
       new HtmlWebpackPlugin({
         template: './index.html',
         inject: 'body',
+      }),
+      new FaviconsWebpackPlugin({
+        logo: './assets/images/favicon.png',
+        prefix: 'favicons-[hash]/',
+        emitStats: true,
+        statsFilename: 'favicon-manifest.json',
+        icons: {
+          android: false,
+          appleIcon: false,
+          appleStartup: false,
+          coast: false,
+          favicons: true,
+          firefox: false,
+          windows: false,
+          yandex: false
+        }
       })
     ])
   };

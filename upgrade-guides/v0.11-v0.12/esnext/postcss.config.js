@@ -7,7 +7,7 @@
  * variables and mixins, transpile future CSS syntax, inline images, and more.
  */
 
-export default {
+module.exports = {
   plugins: [
 
     /**
@@ -20,4 +20,4 @@ export default {
       /* ...options... */
     })
   ]
-}
+};

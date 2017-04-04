@@ -72,7 +72,7 @@ export default {
    */
 
   // rootReducer: function(reducers) {
-  //   var hasReducers = Object.keys(reducers).length > 0;
+  //   const hasReducers = Object.keys(reducers).length > 0;
   //   return hasReducers ? combineReducers(reducers) : function() {};
   // },
 
