@@ -8,11 +8,11 @@ var _ = require('lodash');
 var ENTER_KEY = 13;
 
 module.exports = lore.connect(function(getState, props) {
-    return {
-      todos: getState('todo.find'),
-      nowShowing: props.location.query.filter
-    };
-  })(
+  return {
+    todos: getState('todo.find'),
+    nowShowing: props.location.query.filter
+  };
+})(
   React.createClass({
     displayName: 'Home',
 
