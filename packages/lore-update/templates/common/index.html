@@ -1,0 +1,113 @@
+<!--
+This is the HTML file that gets served to the browser.  It contains text
+that says "Loading..." that will disappear as soon as the bundles have been
+downloaded and `lore.summon()` has finished setting up your application.
+
+It also contains a DOM element to hang dialogs from so they don't conflict
+with any CSS or JavaScript behaviors in the application, which as styling
+overrides or event bubbling cancellation.
+-->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>New Lore App</title>
+
+    <style>
+      .loading-text {
+        font-family: "Open Sans", Arial, sans-serif;
+        text-align: center;
+        line-height: 100vh;
+        font-size: 32px;
+        margin: 0;
+        font-weight: normal;
+        color: rgba(0,0,0,.54);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    </style>
+
+    <!--
+      Favicons!
+
+      Webpack will automatically convert the high-resolution image saved to "assets/images/favicon.png"
+      into a series of favicons for various devices like the browser, android, apple, windows, etc.
+
+      By default, only the favicons for the browser are generated, but you can change that by modifying
+      the settings for the FaviconsWebpackPlugin in the webpack config. The generated favicons all contain
+      a unique hash in the URL to facilitate cache busting, and will look like this:
+
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicons-[hash]/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicons-[hash]/favicon-16x16.png">
+      <link rel="shortcut icon" href="/favicons-[hash]/favicon.ico">
+
+      If you'd like to take full control over favicon generation process, or learn more about why
+      favicon generation can be challenging, the Real Favicon Generator website is a great resource:
+
+      http://realfavicongenerator.net/faq
+    -->
+
+    <!--
+      Styles!
+
+      Webpack will place your styles below this comment.
+
+      In development, they will be included inline, like this:
+
+      <style>
+        ... your styles ...
+      </style>
+
+      In production, the ExtractTextPlugin in the webpack config will extract
+      all styles and place them in a file called styles.main.css, which will be
+      included like this:
+
+      <link href="/styles.main.css" rel="stylesheet">
+
+      To facilitate cache busting, this file will also contain a unique hash, to
+      prevent browsers from using old styles once they've been updated. The final
+      production file will look something like this:
+
+      <link href="/styles.main.bb904647341499c464e6.css" rel="stylesheet">
+    -->
+
+  </head>
+  <body>
+    <div id="root">
+      <h1 class="loading-text">
+        Loading...
+      </h1>
+    </div>
+    <div id="dialog"></div>
+
+    <!--
+      Webpack will place your JavaScript bundles below this comment.
+
+      The number of bundles your project has can have a large impact on your first
+      page load time, since it takes longer to load one single large bundle (with
+      all your code inside) compared to loading multiple smaller bundles that can
+      be fetched in parallel.
+
+      New Lore projects include two bundles by default. The first is called 'main'
+      and includes the Lore core and your custom project files. The second is called
+      'vendor' and includes vendor libraries like React, React DOM, and React Router.
+
+      To further optimize the first page load time of your application, you are encouraged
+      to add more libraries to the vendor bundle, or to create new bundles as needed.
+
+      In development, the bundles will be included like this:
+
+      <script type="text/javascript" src="/bundle.vendor.js"></script>
+      <script type="text/javascript" src="/bundle.main.js"></script>
+
+      In production, in order to facilitate cache busting, these files will also contain a
+      unique hash, to prevent browsers from using old files once they've been updated. The
+      final production files will look something like this:
+
+      <script type="text/javascript" src="/bundle.vendor.bbf77f84f00fd43296cb.js"></script>
+      <script type="text/javascript" src="/bundle.main.bb904647341499c464e6.js"></script>
+    -->
+
+  </body>
+</html>
