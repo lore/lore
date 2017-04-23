@@ -13,7 +13,7 @@ _.extend(Target.prototype, {
   write: function(options) {
     var source = path.resolve(this.source.rootPath, this.source.relativePath);
     var destination = path.resolve(this.destination.rootPath, this.destination.relativePath);
-    return this.fileWriter.write(source, destination, options);
+    return this.fileWriter.write(source, destination, options, this.source.relativePath);
   }
 
 });
