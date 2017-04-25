@@ -15,8 +15,8 @@ var PayloadStates = require('../constants/PayloadStates');
 module.exports = lore.connect(function(getState, props) {
   return {
     user: getState('user.current')
-  }
-}, {subscribe: true})(
+  };
+}, { subscribe: true })(
   React.createClass({
     displayName: 'Master',
 
@@ -46,12 +46,12 @@ module.exports = lore.connect(function(getState, props) {
     render: function() {
       var user = this.props.user;
 
-      if(user.state === PayloadStates.FETCHING){
+      if (user.state === PayloadStates.FETCHING) {
         return (
           <h1 className="loading-text">
             Loading...
           </h1>
-        );
+        )
       }
 
       return (

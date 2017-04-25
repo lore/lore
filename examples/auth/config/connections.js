@@ -77,12 +77,10 @@ module.exports = {
     },
 
 
-    /****************************************************************************
-    *                                                                           *
-    * Define properties that should apply to all models here.                   *
-    * You can override all of these methods on a per-model basis.               *
-    *                                                                           *
-    ****************************************************************************/
+    /**
+     * Define properties that should apply to all models here.
+     * You can override all of these methods on a per-model basis.
+     */
 
     models: {
 
@@ -124,12 +122,10 @@ module.exports = {
 
     },
 
-    /****************************************************************************
-     *                                                                           *
-     * Define properties that should apply to all collections here.              *
-     * You can override all of these methods on a per-collection basis.          *
-     *                                                                           *
-     ****************************************************************************/
+    /**
+     * Define properties that should apply to all collections here.
+     * You can override all of these methods on a per-collection basis.
+     */
 
     collections: {
 
