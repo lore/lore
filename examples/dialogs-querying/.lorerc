@@ -1,7 +1,6 @@
 {
   "generators": {
-    "modules": {
-
-    }
-  }
+    "language": "es5"
+  },
+  "commands": {}
 }

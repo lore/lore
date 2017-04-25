@@ -1,5 +1,13 @@
-import React from 'react';
-import { Route, IndexRoute, Redirect } from 'react-router';
+var React = require('react');
+var Route = require('react-router').Route;
+var IndexRoute = require('react-router').IndexRoute;
+var Redirect = require('react-router').Redirect;
+
+/**
+ * Wrapping the Master component with this decorator provides an easy way
+ * to redirect the user to a login experience if we don't know who they are.
+ */
+var UserIsAuthenticated = require('./src/decorators/UserIsAuthenticated');
 
 /**
  * Routes are used to declare your view hierarchy
@@ -14,7 +22,7 @@ var NoListSelectedView = require('./src/components/NoListSelectedView');
 module.exports = (
   <Route>
     <Redirect from="/" to="/lists" />
-    <Route path="/" component={Master}>
+    <Route path="/" component={UserIsAuthenticated(Master)}>
       <Route path="lists" component={Layout}>
         <IndexRoute components={{
           leftPanel: Lists,
