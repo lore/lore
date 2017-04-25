@@ -7,6 +7,7 @@
 **/
 
 var lore = require('lore');
+var _ = require('lodash');
 
 // Allows you to access your lore app globally as well as from within
 // the console. Remove this line if you don't want to be able to do that.
@@ -15,15 +16,20 @@ window.lore = lore;
 // Summon the app!
 lore.summon({
   hooks: {
+    auth: require('lore-hook-auth'),
     actions: require('lore-hook-actions'),
     bindActions: require('lore-hook-bind-actions'),
     collections: require('lore-hook-collections'),
     connections: require('lore-hook-connections'),
     connect: require('lore-hook-connect'),
     dialog: require('lore-hook-dialog'),
-    dialogs: require('lore-hook-dialogs-bootstrap'), // for example
+    dialogs: require('lore-hook-dialogs-bootstrap'),
     models: require('lore-hook-models'),
+    react: require('lore-hook-react'),
     reducers: require('lore-hook-reducers'),
-    redux: require('lore-hook-redux')
+    redux: _.extend(require('lore-hook-redux'), {
+      dependencies: ['reducers', 'auth']
+    }),
+    router: require('lore-hook-router')
   }
 });

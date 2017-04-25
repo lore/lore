@@ -14,7 +14,7 @@ a file called `hello.js` in `/gulp/tasks` and execute it by typing `gulp say:hel
 ```
 // file: hello.js
 
-gulp.task('say:hello', function () {
+gulp.task('say:hello', function() {
   console.log('Hello! Nice to meet you : )');
 });
 ```
