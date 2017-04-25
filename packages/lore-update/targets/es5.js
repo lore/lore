@@ -11,9 +11,10 @@ function es5(template) {
 module.exports = {
 
   // root
+  './.babelrc': {copy: es5('babelrc')},
   './index.html': {copy: common('index.html')},
   './index.js': {copy: es5('index.js')},
-  './package.json': {template: es5('package.json')},
+  // './package.json': {template: es5('package.json')},
   // './package-test.json': {json: es5('package-test.json')},
   './postcss.config.js': {copy: es5('postcss.config.js')},
   './webpack.config.js': {copy: es5('webpack.config.js')},

@@ -4,6 +4,38 @@ var Generator = require('lore-generate').Generator;
 var es5Targets = require('./targets/es5');
 var es6Targets = require('./targets/es6');
 var esnextTargets = require('./targets/esnext');
+var _ = require('lodash');
+
+function updatePackageJson(packageJson) {
+  packageJson.scripts = {
+    "clean": "rimraf dist",
+    "build": "npm run clean && webpack --env.prod",
+    "build:prod": "npm run clean && webpack --env.prod -p",
+    "start": "webpack-dev-server --history-api-fallback --env.dev --hot --port=3000",
+    "server": "json-server --watch db.json --port=1337",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  };
+
+  return _.merge({}, packageJson, {
+    "dependencies": {
+      "lore": "~0.12.0-beta",
+      "lore-auth": "~0.12.0-beta",
+      "lore-hook-actions": "~0.12.0-beta",
+      "lore-hook-auth": "~0.12.0-beta",
+      "lore-hook-bind-actions": "~0.12.0-beta",
+      "lore-hook-collections": "~0.12.0-beta",
+      "lore-hook-connect": "~0.12.0-beta",
+      "lore-hook-connections": "~0.12.0-beta",
+      "lore-hook-dialog": "~0.12.0-beta",
+      "lore-hook-models": "~0.12.0-beta",
+      "lore-hook-reducers": "~0.12.0-beta",
+      "lore-hook-react": "~0.12.0-beta",
+      "lore-hook-redux": "~0.12.0-beta",
+      "lore-hook-router": "~0.12.0-beta",
+      "lore-utils": "~0.12.0-beta",
+    }
+  });
+}
 
 module.exports = Generator.extend({
 
@@ -48,8 +80,11 @@ module.exports = Generator.extend({
       return es6Targets;
     } else {
       targets = es5Targets;
+      // targets['./package-test.json'] = {
+      //   json: JSON.stringify(options.packageJson, null, 2)
+      // };
       targets['./package-test.json'] = {
-        json: JSON.stringify(options.packageJson, null, 2)
+        json: JSON.stringify(updatePackageJson(options.packageJson), null, 2)
       };
       console.log('targets');
       console.log(targets);
