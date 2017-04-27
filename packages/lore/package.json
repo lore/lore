@@ -1,6 +1,6 @@
 {
   "name": "lore",
-  "version": "0.12.0-beta.1",
+  "version": "0.12.0-beta.2",
   "description": "Convention-driven framework for building React-Redux applications",
   "license": "MIT",
   "main": "lib/index.js",
@@ -39,7 +39,7 @@
   "devDependencies": {
     "chai": "3.4.1",
     "json-loader": "0.5.4",
-    "lore-hook-actions": "^0.12.0-beta.1",
+    "lore-hook-actions": "^0.12.0-beta.2",
     "lore-hook-bind-actions": "^0.12.0-beta.1",
     "lore-hook-collections": "^0.12.0-beta.1",
     "lore-hook-connections": "^0.12.0-beta.1",
@@ -47,7 +47,7 @@
     "lore-hook-dialog": "^0.12.0-beta.1",
     "lore-hook-models": "^0.12.0-beta.1",
     "lore-hook-reducers": "^0.12.0-beta.1",
-    "lore-hook-redux": "^0.12.0-beta.1",
+    "lore-hook-redux": "^0.12.0-beta.2",
     "mocha": "2.3.4",
     "nock": "^7.0.0",
     "react": "^15.4.0",
