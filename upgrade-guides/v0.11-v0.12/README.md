@@ -270,3 +270,12 @@ This config has been modified. It now allows you to change how the routes are lo
 this was previously the only config file that didn't map to a real hook. But with the creation of the new 
 `lore-hook-router` hook, you can now fully customize which version of `react-router` you use and how the routes are
 integrated into the application. Copy the template into your project.
+
+### config/reducers.js
+
+This config has been modified. It now allows you to modify the final state that gets returned from the top-level
+reducer. This is intended as a way to explore different solutions for addressing the immmutablity issue that arises
+when components have a direct reference to the store state, which allows components to change the state of the store
+if they ever try to change the data returned *from* the store. The default behavior is to return a copy of the store
+state (which breaks the reference), but other solutions could be to freeze the state, or convert it to an Immutable 
+object using Immutable.js.

@@ -2,7 +2,7 @@ var _ = require('lodash');
 var sortReducersByLoadOrder = require('./sortReducersByLoadOrder');
 var ActionTypes = require('lore-utils').ActionTypes;
 
-module.exports = function compositeReducer(reducers, dependencies) {
+module.exports = function compositeReducer(reducers, dependencies, config) {
   var loadOrder = sortReducersByLoadOrder(dependencies);
 
   // Create an initial state object from the reducer names
@@ -40,6 +40,7 @@ module.exports = function compositeReducer(reducers, dependencies) {
       );
     });
 
-    return nextState;
+    // Provide the config the ability to modify the next state returned
+    return config.nextState(nextState);
   };
 };
