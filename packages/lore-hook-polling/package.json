@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-polling",
-  "version": "0.12.0-beta.1",
+  "version": "0.12.0-rc.1",
   "license": "MIT",
   "main": "lib/index.js",
   "description": "A Lore hook that enables polling of action",
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "chai": "3.4.1",
-    "lore-utils": "^0.12.0-beta.1",
+    "lore-utils": "^0.12.0-rc.1",
     "mocha": "2.3.4"
   }
 }
