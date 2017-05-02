@@ -4,10 +4,12 @@
 This README describes the changes you'll need to make when upgrading from Lore v0.11 to Lore v0.12, and this
 directory contains copies of all of the core files that have been changed.
 
-The easiest way to upgrade is to create a new project (using the v0.12 version of the CLI) and then:
+The easiest way to upgrade might be to create a new project (using the v0.12 version of the CLI) and then:
 
 1. Copy your `/src` directory into the new project
 2. Modify the settings in `/config` to match your project settings
+3. Add your routes back to `routes.js`
+4. Add missing packages to `package.json`
 
 But if you would prefer to upgrade your project in-place, all required changes are described below.
 
