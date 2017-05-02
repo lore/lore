@@ -22,26 +22,26 @@ There are several packages that need to be added or updated. The changes will be
 All Lore-related packages need to be updated to v0.12:
 
 ```json
-"lore": "~0.12.0-beta",
-"lore-auth": "~0.12.0-beta",
-"lore-hook-actions": "~0.12.0-beta",
-"lore-hook-auth": "~0.12.0-beta",
-"lore-hook-bind-actions": "~0.12.0-beta",
-"lore-hook-collections": "~0.12.0-beta",
-"lore-hook-connect": "~0.12.0-beta",
-"lore-hook-connections": "~0.12.0-beta",
-"lore-hook-dialog": "~0.12.0-beta",
-"lore-hook-models": "~0.12.0-beta",
-"lore-hook-reducers": "~0.12.0-beta",
-"lore-hook-redux": "~0.12.0-beta",
-"lore-utils": "~0.12.0-beta",
+"lore": "~0.12.0-rc",
+"lore-auth": "~0.12.0-rc",
+"lore-hook-actions": "~0.12.0-rc",
+"lore-hook-auth": "~0.12.0-rc",
+"lore-hook-bind-actions": "~0.12.0-rc",
+"lore-hook-collections": "~0.12.0-rc",
+"lore-hook-connect": "~0.12.0-rc",
+"lore-hook-connections": "~0.12.0-rc",
+"lore-hook-dialog": "~0.12.0-rc",
+"lore-hook-models": "~0.12.0-rc",
+"lore-hook-reducers": "~0.12.0-rc",
+"lore-hook-redux": "~0.12.0-rc",
+"lore-utils": "~0.12.0-rc",
 ```
 
 Additionally you need to add two new packages for the `react` and `router` hooks:
 
 ```json
-"lore-hook-react": "~0.12.0-beta",
-"lore-hook-router": "~0.12.0-beta",
+"lore-hook-react": "~0.12.0-rc",
+"lore-hook-router": "~0.12.0-rc",
 ```
 
 To support normalization, you'll need to add the package `redux-batched-subscribe`:
