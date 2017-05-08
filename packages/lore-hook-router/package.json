@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-router",
-  "version": "0.12.0-rc.1",
+  "version": "0.12.0",
   "license": "MIT",
   "main": "lib/index.js",
   "description": "A Lore hook for specifying the react-router routes and history type",

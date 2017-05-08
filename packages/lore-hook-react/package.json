@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-react",
-  "version": "0.12.0-rc.1",
+  "version": "0.12.0",
   "license": "MIT",
   "main": "lib/index.js",
   "description": "A Lore hook that builds the root component and mounts it to the DOM",
