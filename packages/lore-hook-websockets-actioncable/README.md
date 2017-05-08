@@ -57,7 +57,6 @@ If you have a Sails backend for example, then you'll need to run:
 `npm install lore-hook-websockets-sails --save`
 
 ### Tell Lore about the Hook
-
 To notify Lore about the hook (so it loads it during the build process) modify the `lore.summon` method call in 
 your `index.js` file at the root of the project to look like this:
 
@@ -68,8 +67,8 @@ lore.summon({
   }
 });
 ```
-### Create the WebSockets Config File
 
+### Create the WebSockets Config File
 Lastly, you need to create a file called `websockets.js` in your `/config` folder that looks like this (replacing 
 the serverUrl with the real location of your server):
 
@@ -80,6 +79,7 @@ module.exports = {
   serverUrl: 'http://localhost:1337'
 }
 ```
+
 ### Connect and Subscribe
 
 Each of these hooks create dispatchers for handling messages about created, updated or deleted resources. So if you
