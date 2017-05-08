@@ -1,73 +1,83 @@
-# lore-hook-websockets
+# lore-hook-websockets-sails
 
-A [Lore](http://www.lorejs.org) hook that generates actions usable with the WebSockets implementation in [Sails](http://sailsjs.org).
+The Sails hook behaves identical to the SocketIo hook, except for the implementation. The big callout here is that 
+you need to install both the `socket.io-client` _and_ the `sails.io.js` package (that takes the socket.io client as 
+an argument). You also need to set the URL _immediately_ after creating this object, as it will try to call out to 
+the server. Alternatively, you can set `io.sails.url.authConnect = false`. I'm still playing with this implementation 
+a bit, but am leaning towards that solution (so that it doesn't make ANY server calls until you tell it to).
 
-This is the first implementation of this hook, and currently Sails is the reference implementation for the WebSockets interface. In the future it will be expanded to account for other implementations (such as ActionCable in Rails), with the goal of creating an interface that can be adapted to *any* (convention abiding) WebSocket implementation.
+The other thing to point out is the `dispatch` implementation. For the most part Sails used a message structure 
+consisting of `verb` and `data` fields, but sometimes replaces `data` with `previous` when it comes to updated and 
+deleted data. So the parse method has been modified to convert everything into a verb/data structure.
 
-As a worst case scenario, if there ends up being no sensible common abstraction, there will need to be multiple hooks like `lore-hook-websockets-sails`, `lore-hook-websockets-rails`, etc.
-
-## Usage
-The steps below describe how to use this hook.
-
-### Register the Hook
-First, tell Lore you want the hook to be loaded by adding a reference to it in the `index.js` file at the root of your project:
-
-```
-Lore.summon({
-  hooks: {
-    websockets: require('lore-hook-websockets')
-  }
-});
-```
-
-### Install Packages
-Next you'll need to install two packages:
-
-```
-npm install socket.io-client --save
-npm install sails.io.js --save
-```
-
-### Create Initializer File
-Next, create an `initializer` file that will configure the websocket connection when Lore boots up. You can call it whatever you want, but we'll call it `initializers/websockets.js` for this README. Because `sails.io.js` attempts to connect to the server as soon as it's created, we need to set the url for the websocket connection immediately after it's created (before it has a chance to connect). We also need to expose the `io` variable as a global for now, though in the future it will likely be attached to lore like `lore.websockets.io`.
-
-```
-// initializers/websockets.js
-var SocketIOClient = require('socket.io-client');
+``` js
+var _ = require('lodash');
+var WebSocketConnection = require('lore-websockets').WebSocketConnection;
+var io = require('socket.io-client');
 var SailsIOClient = require('sails.io.js');
 
-module.exports = function() {
-  var io = SailsIOClient(SocketIOClient);
-  io.sails.url = 'http://localhost:1337';
-  window.io = io;
+var SOCKET_VERBS = {
+  CREATED: 'created',
+  UPDATED: 'updated',
+  DESTROYED: 'destroyed',
+  ADDED_TO: 'addedTo'
 };
-```
 
-### Subscribe to Endpoints
-Finally, you need to subscribe to the endpoints you want to listen to in your app. For that, create a `componentDidMount` method in `components/Master`, and subscribe to your endpoints:
+module.exports = WebSocketConnection.extend({
 
-```
-// components/Master.js
-  ...
-  componentDidMount: function() {
-    lore.websockets.posts.subscribe();
+  // serverUrl: 'http://localhost:1337',
+  // namespace: '/posts',
+  // event: 'post',
+
+  initialize: function(dispatchers, actions) {
+    this.io = SailsIOClient(io);
+    this.io.sails.url = this.serverUrl;
   },
-  ...
-```
 
-For Sails, the call above (`lore.websockets.posts.subscribe()`) would make a GET call to `http://localhost:1337/posts`, which is how you subscribe to data in Sails by default.
-
-### Authentication (optional)
-If your server uses token based authentication, you will need to configure the `io` connection to use the appropriate headers. For this example, we'll set the header before we subscribe to any endpoints in our `Master` component.
-
-```
-// components/Master.
-  ...
-  componentDidMount: function() {
-    io.sails.headers = {
-      authorization: 'Bearer ' + localStorage.userToken
-    };
-    lore.websockets.posts.subscribe();
+  connect: function() {
+    var namespace = this.namespace;
+    // we have to make a GET request to this endpoint before we're connected
+    this.io.socket.get(namespace, function() {
+      console.log(`Connected to ${namespace}`);
+    });
   },
-  ...
+
+  subscribe: function() {
+    this.io.socket.on(this.event, this.dispatch);
+  },
+
+  unsubscribe: function() {
+    this.io.socket.off(this.event, this.dispatch);
+  },
+
+  parse: function(message) {
+    if (message.verb === SOCKET_VERBS.CREATED) {
+      return {
+        verb: message.verb,
+        data: message.data
+      }
+    } else if (message.verb === SOCKET_VERBS.UPDATED) {
+      return {
+        verb: message.verb,
+        data: message.data
+      }
+    } else if (message.verb === SOCKET_VERBS.DESTROYED) {
+      return {
+        verb: message.verb,
+        data: message.previous
+      }
+    } else if (message.verb === SOCKET_VERBS.ADDED_TO) {
+      return {
+        verb: message.verb,
+        data: message.data
+      }
+    } else {
+      return {
+        verb: 'unknown_verb',
+        data: message
+      }
+    }
+  }
+
+});
 ```

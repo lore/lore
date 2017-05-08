@@ -1,3 +1,5 @@
+# lore-reducers
+
 ## Installation
 
 Lore Reducers is available as an [npm package](https://www.npmjs.org/package/lore-reducers).

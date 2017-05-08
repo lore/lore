@@ -1,5 +1,9 @@
 # lore-hook-websockets
 
+> WARNING: This hook is the original v1 test implementation of websocket integration for Lore, and IS NOT intended to 
+> be used in a project. If you want to use websockets, use one of the `lore-hook-websockets-*` hooks (for Rails, Sails 
+> or Socket.io) or create your own hook using the `lore-websockets` library.
+
 A [Lore](http://www.lorejs.org) hook that generates actions usable with the WebSockets implementation in [Sails](http://sailsjs.org).
 
 This is the first implementation of this hook, and currently Sails is the reference implementation for the WebSockets interface. In the future it will be expanded to account for other implementations (such as ActionCable in Rails), with the goal of creating an interface that can be adapted to *any* (convention abiding) WebSocket implementation.

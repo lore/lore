@@ -1,73 +1,88 @@
-# lore-hook-websockets
+# lore-hook-websockets-socketio
 
-A [Lore](http://www.lorejs.org) hook that generates actions usable with the WebSockets implementation in [Sails](http://sailsjs.org).
+This hook does two things:
 
-This is the first implementation of this hook, and currently Sails is the reference implementation for the WebSockets interface. In the future it will be expanded to account for other implementations (such as ActionCable in Rails), with the goal of creating an interface that can be adapted to *any* (convention abiding) WebSocket implementation.
+1. It provides an implementation of the above interface that can be used with socket.io
+2. Provides a set of methods and dispatchers that can be used by default with any model in the application (using some 
+overridable conventions)
 
-As a worst case scenario, if there ends up being no sensible common abstraction, there will need to be multiple hooks like `lore-hook-websockets-sails`, `lore-hook-websockets-rails`, etc.
+### Implementation
 
-## Usage
-The steps below describe how to use this hook.
+Implementing support for socket.io is fairly straight forward. The implementation just needs to know the `serverUrl` 
+(which is the root URL for the socket.io server), the `namespace` (if your server uses one) and the `event` that will 
+be emitted when CRUD operations occur for the desired resource.
 
-### Register the Hook
-First, tell Lore you want the hook to be loaded by adding a reference to it in the `index.js` file at the root of your project:
+``` js
+var io = require('socket.io-client');
+var WebSocketConnection = require('lore-websockets').WebSocketConnection;
 
-```
-Lore.summon({
-  hooks: {
-    websockets: require('lore-hook-websockets')
+module.exports = WebSocketConnection.extend({
+
+  // These three values are provided by the project configuration or conventions
+  serverUrl: 'http://localhost:1337',
+  namespace: '/posts',
+  event: 'post',
+
+  connect: function() {
+    var url = this.serverUrl + this.namespace;
+    this.socket = io(url);
+  },
+
+  subscribe: function() {
+    this.socket.on(this.event, this.dispatch);
+  },
+
+  unsubscribe: function() {
+    this.socket.off(this.event, this.dispatch);
   }
+
 });
 ```
+### Default Methods and Dispatchers
 
-### Install Packages
-Next you'll need to install two packages:
+The code below illustrates the general setup process used when the hook creates the WebSocket instance:
 
-```
-npm install socket.io-client --save
-npm install sails.io.js --save
-```
-
-### Create Initializer File
-Next, create an `initializer` file that will configure the websocket connection when Lore boots up. You can call it whatever you want, but we'll call it `initializers/websockets.js` for this README. Because `sails.io.js` attempts to connect to the server as soon as it's created, we need to set the url for the websocket connection immediately after it's created (before it has a chance to connect). We also need to expose the `io` variable as a global for now, though in the future it will likely be attached to lore like `lore.websockets.io`.
-
-```
-// initializers/websockets.js
-var SocketIOClient = require('socket.io-client');
-var SailsIOClient = require('sails.io.js');
-
-module.exports = function() {
-  var io = SailsIOClient(SocketIOClient);
-  io.sails.url = 'http://localhost:1337';
-  window.io = io;
+``` js
+// these "guess" the namespace and event based on conventions
+// can be provided explicitly by the user
+var conventions = {
+  namespace: config.pluralize ? `/${pluralize(modelName)}` : `/${modelName}`,
+  event: modelName
 };
+
+// these three dispatchers are provided by default to update the Redux store
+// based on data that was created, updated or deleted by other users.
+var dispatchers = {
+  created: blueprints.dispatchers.created(modelName, Model)(store),
+  updated: blueprints.dispatchers.updated(modelName, Model)(store),
+  destroyed: blueprints.dispatchers.destroyed(modelName, Model)(store)
+};
+
+
+// override the SocketIo WebSocketConnection with conventions and configuration
+var CustomWebSocketConnection = SocketIoWebSocketConnection.extend(_.extend(conventions, config));
+
+// make the connection accessible under lore.websockets, i.e. lore.websockets.post for example.
+lore.websockets[modelName] = new CustomSocketIoWebSocketConnection(dispatchers);
 ```
 
-### Subscribe to Endpoints
-Finally, you need to subscribe to the endpoints you want to listen to in your app. For that, create a `componentDidMount` method in `components/Master`, and subscribe to your endpoints:
+If you want to listen for events during the entire lifecycle of your application, a good place to connect and listen 
+for data is within the `componentDidMount` method of the `Master` component, like so:
 
-```
-// components/Master.js
-  ...
+``` js
+// src/components/Master.js
+React.createClass({
   componentDidMount: function() {
-    lore.websockets.posts.subscribe();
+    lore.websockets.post.connect();
+    lore.websockets.post.subscribe();
   },
-  ...
+
+  componentWillUnmount: function() {
+    lore.websockets.post.unsubscribe();
+  }
+})
 ```
 
-For Sails, the call above (`lore.websockets.posts.subscribe()`) would make a GET call to `http://localhost:1337/posts`, which is how you subscribe to data in Sails by default.
-
-### Authentication (optional)
-If your server uses token based authentication, you will need to configure the `io` connection to use the appropriate headers. For this example, we'll set the header before we subscribe to any endpoints in our `Master` component.
-
-```
-// components/Master.
-  ...
-  componentDidMount: function() {
-    io.sails.headers = {
-      authorization: 'Bearer ' + localStorage.userToken
-    };
-    lore.websockets.posts.subscribe();
-  },
-  ...
-```
+Calling `lore.websockets.post.connect()` will cause the websocket instance to connect with the server. Calling 
+`lore.websockets.post.subscribe()` will cause it to listen for the event it was configured for, such as events 
+called `post` that contain data about Post resources that have been created, updated or deleted by other users.

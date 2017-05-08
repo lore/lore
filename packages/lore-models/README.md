@@ -1,4 +1,4 @@
-# Lore Models
+# lore-models
 AJAX abstraction tier for Lore.
 
 ### Interface

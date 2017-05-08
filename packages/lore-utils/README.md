@@ -1,73 +1,90 @@
-# lore-hook-websockets
+# lore-utils
 
-A [Lore](http://www.lorejs.org) hook that generates actions usable with the WebSockets implementation in [Sails](http://sailsjs.org).
+A catch-all folder for any functions used in multiple places across the Lore ecosystem.
 
-This is the first implementation of this hook, and currently Sails is the reference implementation for the WebSockets interface. In the future it will be expanded to account for other implementations (such as ActionCable in Rails), with the goal of creating an interface that can be adapted to *any* (convention abiding) WebSocket implementation.
+1. **ActionTypes**: Factory that generates ActionTypes based on Lore's naming conventions
+2. **PayloadStates**: Default PayloadStates used by the action blueprints
+3. **Hook**: Defines the interface implemented by all hooks
+4. **payload**: A function to convert a Model into a payload for an action
+5. **payloadCollection**: A function to convert a Collection into a payload for an action
 
-As a worst case scenario, if there ends up being no sensible common abstraction, there will need to be multiple hooks like `lore-hook-websockets-sails`, `lore-hook-websockets-rails`, etc.
+## Payload
+Converts a model into a payload for an action. Also defines the structure of the data passed around the application.
 
-## Usage
-The steps below describe how to use this hook.
-
-### Register the Hook
-First, tell Lore you want the hook to be loaded by adding a reference to it in the `index.js` file at the root of your project:
-
-```
-Lore.summon({
-  hooks: {
-    websockets: require('lore-hook-websockets')
-  }
-});
-```
-
-### Install Packages
-Next you'll need to install two packages:
-
-```
-npm install socket.io-client --save
-npm install sails.io.js --save
+```js
+function payload(model, state, error) {
+  return {
+    id: model.id,
+    cid: model.cid,
+    state: state,
+    error: error || {},
+    data: model.toJSON()
+  };
+}
 ```
 
-### Create Initializer File
-Next, create an `initializer` file that will configure the websocket connection when Lore boots up. You can call it whatever you want, but we'll call it `initializers/websockets.js` for this README. Because `sails.io.js` attempts to connect to the server as soon as it's created, we need to set the url for the websocket connection immediately after it's created (before it has a chance to connect). We also need to expose the `io` variable as a global for now, though in the future it will likely be attached to lore like `lore.websockets.io`.
+## PayloadCollection
+Converts a collection into a payload for an action. Also defines the structure of the data passed around the application.
 
+```js
+function payloadCollection(collection, state, error, query) {
+  return {
+    state: state,
+    error: error || {},
+    data: collection.models.map(function( model ) {
+      return payload(model, state, error);
+    }),
+    query: query,
+    meta: collection.meta
+  };
+}
 ```
-// initializers/websockets.js
-var SocketIOClient = require('socket.io-client');
-var SailsIOClient = require('sails.io.js');
 
-module.exports = function() {
-  var io = SailsIOClient(SocketIOClient);
-  io.sails.url = 'http://localhost:1337';
-  window.io = io;
+## PayloadStates
+Stores the PayloadStates used by action and reducer blueprints. Default states are:
+
+```js
+module.exports = {
+  INITIAL_STATE: 'INITIAL_STATE',
+
+  RESOLVED:  'RESOLVED',
+  NOT_FOUND: 'NOT_FOUND',
+
+  CREATING: 'CREATING',
+  UPDATING: 'UPDATING',
+  DELETING: 'DELETING',
+  FETCHING: 'FETCHING',
+
+  ERROR_CREATING: 'ERROR_CREATING',
+  ERROR_UPDATING: 'ERROR_UPDATING',
+  ERROR_DELETING: 'ERROR_DELETING',
+  ERROR_FETCHING: 'ERROR_FETCHING'
 };
 ```
 
-### Subscribe to Endpoints
-Finally, you need to subscribe to the endpoints you want to listen to in your app. For that, create a `componentDidMount` method in `components/Master`, and subscribe to your endpoints:
+#### Needed improvements
 
-```
-// components/Master.js
-  ...
-  componentDidMount: function() {
-    lore.websockets.posts.subscribe();
-  },
-  ...
+Something's weird about this.  The true set of PayloadStates (from Lore's perspective) is this file plus whatever
+custom Payload States the user specifies in `src/constants/PayloadStates.js`, a file which starts off empty.
+
+This file was created because Lore needs to emit PayloadStates in the action blueprints.  But it's obnoxious and opaque
+that there's no easy way for a user to learn what they are.  One idea is created a CLI command like `lore payloadStates`
+that lists the full set of payload states for the application.  That would at least give the user something to 
+copy/paste when they need to check them.  Another option is to copy them into `src/constants/PayloadStates` as part of
+the 'lore-generate-new' project generator (the thing responsible for generating the new project structure).
+
+Additionally, PayloadStates are usable in any component, and trying to keep track of the relative path is obnoxious. It
+doesn't take a very large app before you have require statements in components like:
+
+```js
+var PayloadStates = require('../../../../constants/PayloadStates');
 ```
 
-For Sails, the call above (`lore.websockets.posts.subscribe()`) would make a GET call to `http://localhost:1337/posts`, which is how you subscribe to data in Sails by default.
+We should solve this by either:
 
-### Authentication (optional)
-If your server uses token based authentication, you will need to configure the `io` connection to use the appropriate headers. For this example, we'll set the header before we subscribe to any endpoints in our `Master` component.
+1. Aliasing `src/constants` in `webpack.config.js` as `constants`, so you can require PayloadStates as 
+`require('constants/PayloadStates')`
 
-```
-// components/Master.
-  ...
-  componentDidMount: function() {
-    io.sails.headers = {
-      authorization: 'Bearer ' + localStorage.userToken
-    };
-    lore.websockets.posts.subscribe();
-  },
-  ...
-```
+2. Attaching PayloadStates to lore as lore.PayloadStates.XYZ.  The downside with that is auto-complete will break, as
+PayloadStates becomes a dynamic object, but I believe aliasing will also cause that issue.
+

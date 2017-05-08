@@ -1,73 +1,171 @@
-## Installation
+# lore-websockets
 
-Lore Reducers is available as an [npm package](https://www.npmjs.org/package/lore-reducers).
-```sh
-npm install lore-reducers
-```
-After npm install, you'll find all the .js files in the /src folder and their compiled versions in the /lib folder.
+This library defines the interface for WebSockets used in Lore and has two main concepts; a `WebSocketConnection` class 
+responsible for connected to the server and listening for events, and a set of `dispatchers` responsible for converting 
+a websocket message into an action the Redux reducers understand what to do with.
 
-## Usage
+### Dispatchers
 
-lore-reducers is an abstraction teir to reduce the boilerplate associated with created reducers for use with [Redux](https://github.com/rackt/redux).  It provides a set of common reducer functions as well as a blueprint you can use to build reducers.
+Each `dispatcher` is a curry function that takes the redux store as the argument for the first function, and a 
+websocket message as the argument for the second function. Here's an example dispatcher that converts a message 
+about a new Post resource being created into an action understood by the Redux store:
 
-The blueprint looks like this:
-
-```js
-var { utils, blueprint } = require('lore-reducers');
-
-var all = blueprint({
-    state: 'INITIAL_STATE',
-    data: []
-  }, [
-    {
-      actionType: types.ADD_TODO,
-      method: utils.addOrUpdateModel
-    },{
-      actionType: types.UPDATE_TODO,
-      method: utils.updateModel
-    },{
-      actionType: types.REMOVE_TODO,
-      method: utils.removeModel
-    },{
-      actionType: types.FETCH_TODO,
-      method: utils.mergeModels
-    },{
-    actionType: types.FETCH_TODOS_IN_LIST,
-    method: utils.mergeModels
+``` js
+// dispatchers/create.js
+function (store) {
+  return function (message) {
+    var post = new Post(message.data);
+    store.dispatch({
+      type: ActionTypes.ADD_POST,
+      payload: payload(post, PayloadStates.RESOLVED)
+    });
   }
-  ]
-);
+}
+```
+### Default Message Structure
+
+While the interface can adapt to any type of message emitted by the server, it assumes a default structure with a 
+`verb` field broadcasting the type of change (created, updated, or deleted) and a `data` field containing the data 
+about that resource. Examples for each assumed default message type are below:
+
+``` js
+// for a resource that was just CREATED
+{
+  verb: 'created',
+  data: {
+    id: 1,
+    title: 'Some New Post'
+  }
+}
 ```
 
-The following common functions are also available within the `utils` object.  Given a reducer that looks like this:
-
+``` js
+// for a resource that was just UPDATED
+{
+  verb: 'updated',
+  data: {
+    id: 1,
+    title: 'Some Updated Post'
+  }
+}
 ```
-function(state, action){...}
+
+``` js
+// for a resource that was just DESTROYED
+{
+  verb: 'destroyed',
+  data: {
+    id: 1,
+    title: 'Some Updated Post'
+  }
+}
+```
+### WebSocketConnection class
+
+Now that we've covered dispatchers and message structure, the last thing to cover for the interface is the process 
+of connection to the server, listening for events, and then invoking the proper dispatcher to handle each event type.
+
+The WebSocketConnection class looks like this:
+
+``` js
+var WebSocketConnection = function(dispatchers, actions, options) {
+  this.dispatchers = dispatchers || {};
+  this.actions = actions || {};
+  this.options = options || {};
+  _.bindAll(this, _.functionsIn(this));
+  this.initialize.apply(this, arguments);
+};
+
+_.extend(WebSocketConnection.prototype, {
+
+  serverUrl: '',
+
+  initialize: function() {},
+
+  connect: function() {},
+
+  subscribe: function() {},
+
+  unsubscribe: function() {},
+
+  parse: function(message) {
+    return message;
+  },
+
+  dispatch: function(message) {
+    var parsedMessage = this.parse(message);
+    var verb = parsedMessage.verb;
+    var dispatcher = this.dispatchers[verb];
+
+    if (dispatcher) {
+      dispatcher(parsedMessage);
+    }
+  }
+
+});
 ```
 
-* **addModel**: take the action.payload add it to state.data
-* **updateModel**: find the model within state.data that matches action.payload and replace it
-* **removeModel**: find the model within state.data that matches action.payload and remove it
-* **replaceModels**: poorly named, but effectively replaces the current state with action.payload
-* **mergeModels**: takes the set of models in action.payload and merges them into state.data (adding or updating each model as applicable)
-* **copyState**: copy action.payload.state and action.payload.error to state.state and state.error respectively
-* **getIndex**: if action.payload is in state.data, returns the index, otherwise returns -1
-* **addOrUpdateModel**: updates the model in state.data if action.payload already exists, otherwise adds it to state.data
-* **mergeModelsAndCopyState**: calls mergeModels and also runs copyState to copy state and error attributes to state
+When creating a websocket connection, it expects a set of dispatchers as an argument, which is an object of key/value 
+pairs where the key is the verb in the message (created, updated, etc.) and the value is the dispatcher function that
+ has already been invoked with the store. So a set of dispatchers being provided would look like this:
 
-The following functions are also available, which are mean to be used as reducers themselves:
+``` js
+var dispatchers = {
+  created: createDispatcher(store) // returns a function that takes a message
+}
+```
 
-* **function byId(state)**: takes all models in state.data and creates a dictionary from them using their id as the key
-* **function byCid(state)**: takes all models in state.data and creates a dictionary from them using their cid as the key
+The methods `initialize`, `connect`, `subscribe` and `unsubscribe` are left to be implemented by specific websocket 
+implementations (such as those for Sails, Socket.io and ActionCable).
 
-## Reasoning for Interface
+The two methods that have a default implementation are `parse` and `dispatch`.
+#### parse: function(message)
 
-The thought process behind this was to reduce boilerplate while being extensible, and providing an interface that was generic enough to adapt to the wide array of (often changing) reducer needs on the client side.
+Parse is a method that lets you transform the message from the server before a dispatcher converts it into an action. 
+For example, let's say that when a resource was created your server emitted a message structure that looked like this:
 
-The central logic of a reducer is a case statement that says "if the action.type matches X, apply this reducing function to the state".  With that in mind, the only unique about a reducer is the ActionType it's listening for and the method it should apply to state.  So that's why those are the two arguments in the object.
+``` js
+{
+  action: 'create',
+  result: {
+    id: 1,
+    title: 'Some New Post'
+  }
+}
+```
 
-Additionally, this interface can also let you pass in custom functions aren't in the utils helpers in order to accomodate custom application needs.
+While you don't _have_ to convert the message to the default assumed structure, doing so allows you to take advantage 
+of the default dispatchers and `dispatch` implementation (otherwise you need to provide a custom implementation). So 
+if you wanted to convert the above structure to the assumed one, your parse method would look like this:
 
-Another design goal was to create an interface that could easily be generated by a series of conventions.
+``` js
+parse: function(message) {
+  if(message.action === 'create') {
+    return {
+      verb: 'created',
+      data: message.result
+    }
+  }
+}
+```
+#### dispatch: function(message)
 
-The `actionType` follows the pattern of `MethodName_ModelName`, and in most cases `MethodName` (add, update, remove) maps to a common function (addModel, updateModel, removeModel).  So if a framework created a set of conventions for the ActionTypes, and made sure they were consistent between the Actions and Reducers, many of the reducers could be reduced to an empty config files, similar to the magic that [Sails](http://sailsjs.org) applies to Models and Controllers which both start off as empty objects.
+The Dispatch method is responsible for figuring out which dispatcher should handle the message, and then invoking 
+that dispatcher. The default implementation looks like this:
+
+``` js
+dispatch: function(message) {
+  var parsedMessage = this.parse(message);
+  var verb = parsedMessage.verb;
+  var dispatcher = this.dispatchers[verb];
+
+  if (dispatcher) {
+    dispatcher(parsedMessage);
+  }
+}
+```
+
+First the message is parsed, to make sure it has the expected structure. Then the verb is extracted, and (recalling 
+that the dispatchers are a key/value pair where the key is the verb) the verb is used to see if a matching dispatcher 
+exists. If one does, it's invoked with the message, and will then convert it to an action that gets dispatched to the 
+Redux store.
