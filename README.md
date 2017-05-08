@@ -80,7 +80,8 @@ Since Lore is still in active development, I'm going to list the things that hav
 9. [[done](https://github.com/lore/lore/pull/167)] Improve default production configuration
 10. [[done](https://github.com/lore/www.lorejs.org/commit/1ba4baec7652a592cac042292a1fd823fcc20151)] Add normalization and publishing steps to Quickstart
 11. [[done](https://github.com/lore/lore/releases/tag/v0.12.0)] Publish v0.12
-12. Send out newsletter
+12. Recreate quickstart repository using v0.12 (currently v0.11)
+13. Send out newsletter
 
 
 ### Note about React Hot Reloading
