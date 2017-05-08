@@ -78,8 +78,9 @@ Since Lore is still in active development, I'm going to list the things that hav
 7. [[done](https://github.com/lore/lore/pull/164)] Add ability to override root component construction and DOM mounting
 8. [[done](https://github.com/lore/lore/pull/166)] Add Redux DevTools to new projects by default in development environment (with flag to enable/disable)
 9. [[done](https://github.com/lore/lore/pull/167)] Improve default production configuration
-10. Add normalization and publishing steps to Quickstart
-11. Publish v0.12
+10. [[done](https://github.com/lore/www.lorejs.org/commit/1ba4baec7652a592cac042292a1fd823fcc20151)] Add normalization and publishing steps to Quickstart
+11. [[done](https://github.com/lore/lore/releases/tag/v0.12.0)] Publish v0.12
+12. Send out newsletter
 
 
 ### Note about React Hot Reloading
