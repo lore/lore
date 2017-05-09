@@ -16,7 +16,7 @@ problems it's trying to solve, please see [the intro video on the homepage](http
 [this direct link](https://www.youtube.com/watch?v=u3cK4fz1GNg).
 
 If you're new to React, you may be interested in this video discussing 
-[the challenges building a React application from scratch](http://www.lorejs.org/getting-started/building-your-first-react-app/) 
+[the challenges building a React application from scratch](http://www.lorejs.org/videos/building-your-first-react-app/) 
 as additional context on how Lore reduces the learning curve for React development.
 
 ### Features
