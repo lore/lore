@@ -59,6 +59,8 @@ There is a [tutorial for learning Lore](http://www.lorejs.org/quickstart/) on th
 * Pagination
 * Infinite Scrolling
 * Filtering
+* Normalization
+* Publishing
 
 
 ### Discussion
