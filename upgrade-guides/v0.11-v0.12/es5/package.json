@@ -52,7 +52,7 @@
     "gulp": "^3.9.1",
     "html-webpack-plugin": "^2.28.0",
     "json-loader": "^0.5.4",
-    "json-server": "^0.8.16",
+    "json-server": "^0.9.5",
     "less": "2.5.1",
     "less-loader": "^2.2.0",
     "node-sass": "^4.1.1",
