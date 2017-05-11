@@ -95,6 +95,7 @@ webpack plugins to support the build process.
 "copy-webpack-plugin": "^4.0.1",
 "html-webpack-plugin": "^2.28.0",
 "extract-text-webpack-plugin": "^2.1.0",
+"favicons-webpack-plugin": "0.0.7",
 "progress-bar-webpack-plugin": "^1.9.3",
 "webpack-manifest-plugin": "^1.1.0",
 ```
@@ -125,7 +126,6 @@ Next update all webpack loaders (and add a few new ones):
 "postcss-loader": "^1.3.3",
 "sass-loader": "^6.0.3",
 "style-loader": "^0.13.2",
-"svg-loader": "0.0.2",
 "url-loader": "^0.5.8",
 ```
 

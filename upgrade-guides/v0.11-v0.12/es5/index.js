@@ -7,6 +7,7 @@
 **/
 
 var lore = require('lore');
+var _ = require('lodash');
 
 // Allows you to access your lore app globally as well as from within
 // the console. Remove this line if you don't want to be able to do that.
@@ -22,7 +23,6 @@ lore.summon({
     connections: require('lore-hook-connections'),
     connect: require('lore-hook-connect'),
     dialog: require('lore-hook-dialog'),
-    dialogs: require('lore-hook-dialogs-material-ui'),
     models: require('lore-hook-models'),
     react: require('lore-hook-react'),
     reducers: require('lore-hook-reducers'),

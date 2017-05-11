@@ -1,9 +1,13 @@
 /**
  * Development environment settings
  *
- * This file is where you define overrides for any of the config settings when operating under the development
- * environment. Development environment is defined as `NODE_ENV=development` or the absence of an `NODE_ENV` environment
- * variable.
+ * This file is where you define overrides for any of the config settings that
+ * should only be applied in the development environment.
+ *
+ * The development environment is defined as 'process.env.NODE_ENV=development' and
+ * is automatically set when webpack is invoked using the --env=development argument.
+ *
+ * The development environment is also the default when no environment is specified.
  **/
 
 var _ = require('lodash');
