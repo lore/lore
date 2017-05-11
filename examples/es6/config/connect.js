@@ -7,6 +7,63 @@
 export default {
 
   /**
+   * Extend or override the built-in blueprints. This is helpful if you want to
+   * change the interface for 'lore.connect'.
+   *
+   * Lore has three built-in blueprints:
+   *
+   *  - find      : used for calls like getState('tweet.find')
+   *  - byId      : used for calls like getState('tweet.byId')
+   *  - singleton : used for calls like getState('currentUser')
+   */
+
+  blueprints: {
+
+    /**
+     * As an example, the default syntax to fetch a model by id looks like this:
+     *
+     *   getState('tweet.byId', {
+     *     id: 1
+     *   })
+     *
+     * If you wanted to modify the syntax to use a 'where' clause (similar to the
+     * 'find' blueprint) you could achieve that by overriding 'byId' blueprint with
+     * the implementation below.
+     *
+     *   getState('tweet.find', {
+     *     where: {
+     *       id: 1
+     *     }
+     *   })
+     */
+
+    // byId: {
+    //   defaults: {
+    //     where: {
+    //       id: null
+    //     }
+    //   },
+    //
+    //   verifyParams: function(params) {
+    //     if (!params.where.id) {
+    //       throw new Error('Missing required field: id');
+    //     }
+    //   },
+    //
+    //   getPayload: function (reducerState, params) {
+    //     const key = params.where.id;
+    //     return reducerState[key];
+    //   },
+    //
+    //   callAction: function (action, params) {
+    //     const id = params.where.id;
+    //     return action(id).payload;
+    //   }
+    // }
+
+  },
+
+  /**
    * Add custom reducer-action maps here, or override existing ones
    *
    * This map determines what action gets called when the requested

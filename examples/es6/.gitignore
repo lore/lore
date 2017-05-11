@@ -21,4 +21,4 @@ npm-debug.log
 .DS_STORE
 .idea
 .node_history
-
+dist
