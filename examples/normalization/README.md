@@ -1,8 +1,8 @@
-# polling
+# normalization
 
-Example application to demonstrate use of polling.
+Example application to demonstrate normalization.
 
-![lore example polling](https://cloud.githubusercontent.com/assets/2637399/23101096/1eec92e8-f64a-11e6-930b-bde38117fbd4.png)
+![lore example normalization](https://cloud.githubusercontent.com/assets/2637399/25986626/8725c2f8-36a5-11e7-8ac1-07d9d5b3886e.png)
 
 ## Usage
 
@@ -37,58 +37,90 @@ For this example, it is recommended to open two browser tabs so you can see chan
 
 This example is a modified version of the Quickstart, using the code from the end of the Dialogs section.
 
-The first modification is installing the `lore-hook-polling` hook, and adding it to the list of hooks in `index.js`.
+When the application normally requests `tweets` from the API, it makes a network request for `localhost:1337/tweets` which produces a response that looks like this:
 
 ```js
-// index.js
-lore.summon({
-  hooks: {
-    // ...
-    models: require('lore-hook-models'),
-    polling: require('packages/lore-hook-polling'),
-    reducers: require('lore-hook-reducers'),
-    // ...
+{
+  id: 1,
+  userId: 1,
+  text: "Ayla fight while alive! Win and live. Lose and die. Rule of life. No change rule.",
+  createdAt: "2016-11-26T04:03:25.546Z"
+}
+```
+
+Since this application needs information about the user, like the URL for their avatar, we then need to make an additional request to retrieve the user data. To reduce the number of network requests, we can instead pass a query parameter to `json-server` asking it to `expand` the `user` field and include the user resource in the response.
+
+That network request looks like `localhost:1337/tweets?_expand=user` and the response looks like this:
+
+```js
+{
+  id: 1,
+  userId: 1,
+  text: "Ayla fight while alive! Win and live. Lose and die. Rule of life. No change rule.",
+  createdAt: "2016-11-26T04:03:25.546Z",
+  user: {
+    id: 1,
+    nickname: "ayla",
+    avatar: "https://cloud.githubusercontent.com/assets/2637399/19027069/a356e82a-88e1-11e6-87d8-e3e74f55c069.png"
   }
-});
+}
 ```
 
-Next, the `Feed` component is configured to begin polling when the component is mounted, and to stop polling when 
-the component is unmounted.
+The first modification we need to perform to perform to get this response is to provide a `pagination` parameter to the `lore.connect` call in the `Feed` component, requesting that the API embed the `user` in all tweet responses.
 
-```jsx
+```js
 // src/components/Feed.js
-...
-
-  componentDidMount: function() {
-    this.poll = lore.polling.tweet.find();
-    this.poll.start();
-  },
-
-  componentWillUnmount: function() {
-    this.poll.stop();
-  },
-
-...
+lore.connect(function(getState, props){
+  return {
+    tweets: getState('tweet.find', {
+      pagination: {
+        _expand: 'user'
+      }
+    })
+  }
+})
 ```
 
-In this example, we aren't querying the server for anything, so we don't pass any arguments to the action call. But
-if you needed to, the recommended way to accomplish that is by extract the arguments from the `query` attribute of
-the collection data passed to `Feed` like this:
+Next, we need to tell Lore some API responses may contain data for the `user` embedded inside a `tweet`. To communicate this to the framework, we need to add an `attribute` to the `tweet` model and specifying the `type` of the `user` attribute as a `model`, where that model is going to be a `user`.
 
-```jsx
-// src/components/Feed.js
-...
+```js
+// src/models/tweet.js
+module.exports = {
+  attributes: {
+    user: {
+      type: 'model',
+      model: 'user'
+    }
+  }
+};
+```
 
-  componentDidMount: function() {
-    var tweets = this.props.tweets;
-    var query = tweets.query;
-    this.poll = lore.polling.tweet.find(query.where, query.pagination);
-    this.poll.start();
-  },
+Now, whenever we get `tweet` data from the API, Lore will inspect the response, and if the `user` field is an object, it will extract the data, convert it to a `user` model, and dispatch that action to Store.
 
-  componentWillUnmount: function() {
-    this.poll.stop();
-  },
+The result of this behavior is that we can reduce the number of network requests the application makes. Without normalization, we would need to make 8 network requests to populate the Feed - one request to get the list of tweets (7 in total) and then 7 more requests to fetch the user for each tweet:
 
-...
+```
+GET "http://localhost:1337/tweets"
+GET "http://localhost:1337/users/1"
+GET "http://localhost:1337/users/2"
+GET "http://localhost:1337/users/3"
+GET "http://localhost:1337/users/4"
+GET "http://localhost:1337/users/5"
+GET "http://localhost:1337/users/6"
+GET "http://localhost:1337/users/7"
+```
+
+But WITH normalization, we only need to make one network request, and the framework understands how to break up the data and store it so that we won't need the follow up requests. Now we can populate the feed with just a single request:
+
+```
+GET "http://localhost:1337/tweets?_expand=user"
+```
+
+If you'd like to see the effect or normalization, you can disable it completely by opening `config/actions.js` and setting `normalize` to `false`:
+
+```js
+// config/actions.js
+module.exports = {
+  normalize: false
+};
 ```
