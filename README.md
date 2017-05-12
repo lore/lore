@@ -26,7 +26,7 @@ Lore's goal is to build support for many of those common feature concerns into t
 concerns Lore addresses or is planning to address, linked to their documentation page:
 
 * [Data Structure](http://www.lorejs.org/features/foundation/data-structure/)
-* [AJAX Abstration Tier](http://www.lorejs.org/features/challenges/ajax-abstraction/)
+* [AJAX Abstration Tier](http://www.lorejs.org/architecture/ajax-abstraction/)
 * [Filtering](http://www.lorejs.org/features/challenges/filtering/)
 * [Pagination](http://www.lorejs.org/features/challenges/pagination/)
 * [Infinite Scrolling](http://www.lorejs.org/features/challenges/infinite-scrolling/)
