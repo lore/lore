@@ -22,7 +22,18 @@ describe('getState', function() {
           //   find: findBlueprintAction,
           //   byId: byIdBlueprintAction
           // },
-          reducerActionMap: {}
+          reducerActionMap: {
+            '*.find': {
+              action: '*.find',
+              reducer: '*.find',
+              blueprint: 'find'
+            },
+            '*.byId': {
+              action: '*.get',
+              reducer: '*.byId',
+              blueprint: 'byId'
+            }
+          }
         }
       },
       actions: {

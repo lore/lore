@@ -16,7 +16,13 @@ describe('blueprints#find', function() {
     lore = {
       config: {
         connect: {
-          reducerActionMap: {}
+          reducerActionMap: {
+            '*.find': {
+              action: '*.find',
+              reducer: '*.find',
+              blueprint: 'find'
+            }
+          }
         }
       },
       actions: {

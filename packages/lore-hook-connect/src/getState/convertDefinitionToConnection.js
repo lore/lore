@@ -5,6 +5,7 @@ var InvalidBlueprintError = require('../errors/InvalidBlueprintError');
 
 module.exports = function convertDefinitionToConnection(stateKey, definition, actions, blueprints) {
   var action = definition.action;
+  var reducer = definition.reducer || stateKey;
   var blueprint = definition.blueprint;
 
   if (!blueprint) {
@@ -13,7 +14,7 @@ module.exports = function convertDefinitionToConnection(stateKey, definition, ac
 
   if (_.isPlainObject(blueprint)) {
     return new Connection(blueprint, {
-      reducer: stateKey,
+      reducer: reducer,
       action: action,
       actions: actions
     })
@@ -26,7 +27,7 @@ module.exports = function convertDefinitionToConnection(stateKey, definition, ac
   }
 
   return new Connection(conventionBasedBlueprint, {
-    reducer: stateKey,
+    reducer: reducer,
     action: action,
     actions: actions
   })
