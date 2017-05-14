@@ -10,10 +10,12 @@ module.exports = {
    * Extend or override the built-in blueprints. This is helpful if you want to
    * change the interface for 'lore.connect'.
    *
-   * Lore has three built-in blueprints:
+   * Lore has five built-in blueprints:
    *
-   *  - find      : used for calls like getState('tweet.find')
+   *  - all       : used for calls like getState('tweet.all')
+   *  - byCid     : used for calls like getState('tweet.byCid')
    *  - byId      : used for calls like getState('tweet.byId')
+   *  - find      : used for calls like getState('tweet.find')
    *  - singleton : used for calls like getState('currentUser')
    */
 
@@ -77,24 +79,41 @@ module.exports = {
   reducerActionMap: {
 
     /**
-     * There are three blueprints built into the framework, with mappings
+     * There are five blueprints built into the framework, with mappings
      * that look like this. These are examples of the mappings automatically
      * created by the framework based on conventions.
+     *
+     * The '*' in the mappings below is special syntax that means "put the
+     * name of the model here". It allows you to say "this mapping applies
+     * to all models". For example, '*.find' will apply to 'tweet.find',
+     * 'user.find', etc.
      *
      * You can reuse built-in blueprints by setting the value of blueprint
      * to the name of the blueprint you want to reuse.
      */
 
-    // 'post.find': {
-    //   action: 'post.find',
-    //   reducer: 'post.find',
+    // '*.all': {
+    //   action: null,
+    //   reducer: '*.find',
     //   blueprint: 'find'
     // },
     //
-    // 'post.byId': {
-    //   action: 'post.get',
-    //   reducer: 'post.byId',
+    // '*.byCid': {
+    //   action: null,
+    //   reducer: '*.byCid',
+    //   blueprint: 'byCid'
+    // },
+    //
+    // '*.byId': {
+    //   action: '*.get',
+    //   reducer: '*.byId',
     //   blueprint: 'byId'
+    // },
+    //
+    // '*.find': {
+    //   action: '*.find',
+    //   reducer: '*.find',
+    //   blueprint: 'find'
     // },
     //
     // 'currentUser': {

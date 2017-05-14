@@ -1,6 +1,6 @@
 var _ = require('lodash');
 var convertDefinitionToConnection = require('./convertDefinitionToConnection');
-var generateBlueprintFromConventions = require('./generateBlueprintFromConventions');
+var generateDefinitionFromConventions = require('./generateDefinitionFromConventions');
 
 function ConnectionMappingError(stateKey) {
   var error = new Error(
@@ -12,7 +12,7 @@ function ConnectionMappingError(stateKey) {
 }
 
 module.exports = function getConnection(stateKey, reducerActionMap, actions, blueprints) {
-  var definition = reducerActionMap[stateKey] || generateBlueprintFromConventions(stateKey);
+  var definition = reducerActionMap[stateKey] || generateDefinitionFromConventions(stateKey, reducerActionMap);
 
   if (!definition) {
     throw new ConnectionMappingError(stateKey);

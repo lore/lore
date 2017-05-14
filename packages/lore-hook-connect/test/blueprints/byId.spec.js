@@ -15,7 +15,13 @@ describe('blueprints#byId', function() {
     lore = {
       config: {
         connect: {
-          reducerActionMap: {}
+          reducerActionMap: {
+            '*.byId': {
+              action: '*.get',
+              reducer: '*.byId',
+              blueprint: 'byId'
+            }
+          }
         }
       },
       actions: {
