@@ -71,20 +71,20 @@ If you have any questions, feel free to [create an issue](https://github.com/lor
 
 Since Lore is still in active development, I'm going to list the things that have immediate focus here.
 
-1. [[done](https://github.com/lore/lore/pull/157)] Add hook for polling actions
-2. [[done](https://github.com/lore/lore/pull/159)] Add normalization example capturing code changes for v0.12
-3. [[done](https://github.com/lore/lore/pull/160)] Remove router creation from lore core and place into router hook
-4. [[done](https://github.com/lore/lore/pull/161)] Add ability to override redux store creation
-5. [[done](https://github.com/lore/lore/pull/162)] Add ability to normalize API responses
-6. [[done](https://github.com/lore/lore/pull/163)] Add ability to override connect blueprints
-7. [[done](https://github.com/lore/lore/pull/164)] Add ability to override root component construction and DOM mounting
-8. [[done](https://github.com/lore/lore/pull/166)] Add Redux DevTools to new projects by default in development environment (with flag to enable/disable)
-9. [[done](https://github.com/lore/lore/pull/167)] Improve default production configuration
-10. [[done](https://github.com/lore/www.lorejs.org/commit/1ba4baec7652a592cac042292a1fd823fcc20151)] Add normalization and publishing steps to Quickstart
-11. [[done](https://github.com/lore/lore/releases/tag/v0.12.0)] Publish v0.12
-12. [[es5](https://github.com/lore/lore-quickstart-es5-v0.12), [es6](https://github.com/lore/lore-quickstart-es6-v0.12), [esnext](https://github.com/lore/lore-quickstart-esnext-v0.12)] Recreate quickstart repository using v0.12 (currently v0.11)
-13. [done] Send out newsletter
-14. Reprioritize near-term focus :)
+1. [[done](https://github.com/lore/lore/pull/168)] Simplify ability to extend `lore-hook-connect` with new blueprints and mappings
+2. [in-progress] Add Quickstart section to display new twees at top of Feed ([branch](https://github.com/lore/www.lorejs.org/tree/add-websockets-to-quickstart), [dev site](http://master.lorejs.org/quickstart/optimistic/overview/))
+3. [in-progress] Add Quickstart section to connect WebSockets for real-time behavior ([branch](https://github.com/lore/www.lorejs.org/tree/add-websockets-to-quickstart), [dev site](http://master.lorejs.org/quickstart/websockets/overview/))
+4. Publish v0.12.4
+5. Send out Newsletter about Quickstart update
+6. Break out form code into formal library
+7. Refactor `lore-hook-dialogs-bootstrap` to use form library
+8. Refactor `lore-hook-dialogs-material-ui` to use form library
+9. Update `dialogs-bootstrap` example
+10. Update `dialogs-material-ui` example
+11. Create complex `dialogs` example (beyond simple hook examples) to show what form library was designed for, use cases it solves for, and the interface for using it
+12. Expand Quickstart to demonstrate form validation
+13. Publish v0.13
+14. Send out Newsletter
 
 
 ### Note about React Hot Reloading
