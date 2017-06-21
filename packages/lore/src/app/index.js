@@ -68,6 +68,14 @@ _.extend(Lore.prototype, {
     // user config for the project (loaded and compiled inside this function)
     this.config = getConfig(configOverride, this.hooks, this.loader);
 
+    // Now that we have the final config, we can load the hooks, as their behavior
+    // is dependant on the final configuration for the application
+    sortHooksByLoadOrder(this.hooks, this.log).forEach(function(hook) {
+      //this.log.silly('Loading hook: ' + hook.id);
+      hook.load(this);
+      //this.log.verbose(hook.id, 'hook loaded successfully.');
+    }.bind(this));
+
     // Get initializers and run them
     this.initializers = getInitializers();
     if (this.initializers.length > 0) {
@@ -75,14 +83,6 @@ _.extend(Lore.prototype, {
         initializer();
       });
     }
-
-    // Now that we have the final, we can load the hooks, as their behavior is
-    // dependant on the final configuration for the application
-    sortHooksByLoadOrder(this.hooks, this.log).forEach(function(hook) {
-      //this.log.silly('Loading hook: ' + hook.id);
-      hook.load(this);
-      //this.log.verbose(hook.id, 'hook loaded successfully.');
-    }.bind(this));
 
     //this.log.verbose('All hooks were loaded successfully.');
   },
