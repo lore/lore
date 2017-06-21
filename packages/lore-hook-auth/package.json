@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-auth",
-  "version": "0.12.0",
+  "version": "0.12.3",
   "license": "MIT",
   "main": "lib/index.js",
   "description": "A Lore hook that generates an action and reducer for retriving the current user.",
