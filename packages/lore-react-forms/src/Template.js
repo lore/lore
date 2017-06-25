@@ -25,8 +25,12 @@ class Template extends React.Component {
     ].forEach(function(methodName) {
       if (props[methodName]) {
         this[methodName] = props[methodName].bind(this);
+      } else {
+        this[methodName] = this[methodName].bind(this);
       }
     }.bind(this));
+
+    this.onSubmit = this.onSubmit.bind(this);
 
     this.state = _.mapValues(props.fields, function(value, key) {
       return value.data;
