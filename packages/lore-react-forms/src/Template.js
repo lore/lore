@@ -57,8 +57,8 @@ class Template extends React.Component {
     var Field = lore.config.forms.typeFieldMap[field.type];
 
     return (
-      <FormSection key={name} className="row">
-        <FormSection className="col-md-12">
+      <FormSection key={name}>
+        <FormSection>
           {Field ? Field(name, field.options) : null}
         </FormSection>
       </FormSection>
