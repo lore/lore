@@ -1,0 +1,36 @@
+{
+  "name": "lore-hook-forms-bootstrap",
+  "version": "0.12.0",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "description": "A lore hook that generates forms using Bootstrap",
+  "keywords": [
+    "lore",
+    "hook",
+    "forms",
+    "bootstrap"
+  ],
+  "scripts": {
+    "build": "../../node_modules/.bin/babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "debug": "mocha debug --compilers js:babel-core/register --recursive",
+    "prepublish": "npm run build",
+    "test": "mocha --compilers js:babel-core/register --recursive"
+  },
+  "dependencies": {
+    "lodash": "^4.0.0",
+    "lore-react-forms": "~0.12.0",
+    "lore-react-forms-bootstrap": "~0.12.0"
+  },
+  "devDependencies": {
+    "chai": "3.4.1",
+    "mocha": "2.3.4",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "rimraf": "2.5.2"
+  },
+  "peerDependencies": {
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0"
+  }
+}
