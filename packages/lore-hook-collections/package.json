@@ -20,7 +20,6 @@
   "dependencies": {
     "lodash": "^4.0.0",
     "lore-models": "^0.12.0",
-    "merge-defaults": "0.2.1",
     "pluralize": "1.2.1",
     "lore-utils": "^0.12.0"
   },

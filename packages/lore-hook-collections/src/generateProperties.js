@@ -1,5 +1,5 @@
 var pluralize = require('pluralize');
-var defaultsDeep = require('merge-defaults');
+var defaultsDeep = require('lore-utils').defaultsDeep;
 var _ = require('lodash');
 
 var CasingStyles = {

@@ -25,5 +25,6 @@ module.exports = {
   PayloadStates: require('./PayloadStates'),
   Hook: require('./Hook'),
   payload: payload,
-  payloadCollection: payloadCollection
+  payloadCollection: payloadCollection,
+  defaultsDeep: require('./defaultsDeep')
 };
