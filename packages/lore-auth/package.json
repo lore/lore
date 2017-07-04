@@ -1,6 +1,6 @@
 {
   "name": "lore-auth",
-  "version": "0.12.5",
+  "version": "0.12.6",
   "license": "MIT",
   "description": "Set of decorators to help with authentication and authorization",
   "homepage": "https://github.com/lore/lore#readme",

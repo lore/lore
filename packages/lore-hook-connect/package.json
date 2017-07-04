@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-connect",
-  "version": "0.12.5",
+  "version": "0.12.6",
   "license": "MIT",
   "main": "./lib/index.js",
   "description": "A lore hook that generates dialogs using Bootstrap",
@@ -20,7 +20,7 @@
   "dependencies": {
     "invariant": "2.2.0",
     "lodash": "^4.0.0",
-    "lore-utils": "^0.12.0"
+    "lore-utils": "^0.12.6"
   },
   "devDependencies": {
     "chai": "3.4.1",

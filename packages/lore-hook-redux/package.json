@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-redux",
-  "version": "0.12.0",
+  "version": "0.12.6",
   "license": "MIT",
   "main": "./lib/index.js",
   "description": "A lore hook that configures Redux and creates the store",
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-utils": "^0.12.0",
+    "lore-utils": "^0.12.6",
     "redux-batched-subscribe": "^0.1.6"
   },
   "devDependencies": {

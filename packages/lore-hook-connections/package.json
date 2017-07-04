@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-connections",
-  "version": "0.12.0",
+  "version": "0.12.6",
   "license": "MIT",
   "main": "./lib/index.js",
   "description": "A lore hook that stores connection information for multiple APIs",
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-utils": "^0.12.0"
+    "lore-utils": "^0.12.6"
   },
   "devDependencies": {
     "chai": "3.4.1",

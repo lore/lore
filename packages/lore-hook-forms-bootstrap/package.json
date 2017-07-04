@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-forms-bootstrap",
-  "version": "0.12.0",
+  "version": "0.12.6",
   "license": "MIT",
   "main": "./lib/index.js",
   "description": "A lore hook that generates forms using Bootstrap",
@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-react-forms": "~0.12.0",
-    "lore-react-forms-bootstrap": "~0.12.0"
+    "lore-react-forms": "^0.12.6",
+    "lore-react-forms-bootstrap": "^0.12.6"
   },
   "devDependencies": {
     "chai": "3.4.1",
