@@ -6,5 +6,6 @@ coverage
 .tracker
 .tmp
 lib
+package-lock.json
 npm-debug.log
-_book
+
