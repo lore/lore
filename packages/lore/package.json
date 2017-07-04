@@ -30,7 +30,7 @@
     "test": "mocha --compilers js:babel-core/register test/bootstrap.js test/unit test/integration --recursive"
   },
   "dependencies": {
-    "lodash": "3.10.1",
+    "lodash": "^4.0.0",
     "lore-utils": "^0.12.0",
     "react-redux": "^4.4.1",
     "topsort": "0.0.2",
