@@ -1,6 +1,4 @@
-var React = require('react');
-var _ = require('lodash');
-var Field = require('lore-react-forms/Field');
+import Field from 'lore-react-forms/Field';
 
 class BootstrapField extends Field {
 
@@ -13,4 +11,4 @@ class BootstrapField extends Field {
 
 }
 
-module.exports = BootstrapField;
+export default BootstrapField;

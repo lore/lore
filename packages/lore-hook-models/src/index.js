@@ -1,10 +1,12 @@
-var LoreModels = require('lore-models');
-var _ = require('lodash');
-var generateProperties = require('./generateProperties');
+/* eslint no-param-reassign: "off" */
+
+import _ from 'lodash';
+import { Model } from 'lore-models';
+import generateProperties from './generateProperties';
 
 function getConnectionName(config, modelName) {
-  var connection = config.defaultConnection;
-  var connectionModelMap = config.connectionModelMap;
+  let connection = config.defaultConnection;
+  const connectionModelMap = config.connectionModelMap;
 
   _.mapKeys(connectionModelMap, function(models, connectionName) {
     if (models.indexOf(modelName) >= 0) {
@@ -15,7 +17,7 @@ function getConnectionName(config, modelName) {
   return connection;
 }
 
-module.exports = {
+export default {
   dependencies: ['connections'],
 
   defaults: {
@@ -33,30 +35,30 @@ module.exports = {
   },
 
   load: function(lore) {
-    var models = lore.loader.loadModels();
-    var config = lore.config.models;
-    var connections = lore.connections;
+    const models = lore.loader.loadModels();
+    const config = lore.config.models;
+    const connections = lore.connections;
     lore.models = {};
 
     _.mapKeys(models, function(module, moduleName) {
       // todo: currently setting the modelName to the filename, but
       // should change to be PascalCase, like lore.models.ModelName
-      var modelName = moduleName;
+      const modelName = moduleName;
 
       // get the connection for this model
-      var connection = connections[getConnectionName(config, modelName)];
+      const connection = connections[getConnectionName(config, modelName)];
 
       // Cascaded series of defaults to define the models final properties
       // 1. Start from anything the user defined in the collections's config
       // 2. Add any missing application level settings from config.models
       // 2. Add any missing settings from conventions
-      var properties = generateProperties(modelName, {
+      const properties = generateProperties(modelName, {
         config: config,
         connection: connection,
         definition: module
       });
 
-      lore.models[modelName] = LoreModels.Model.extend(properties);
+      lore.models[modelName] = Model.extend(properties);
     });
   }
 

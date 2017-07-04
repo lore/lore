@@ -1,9 +1,12 @@
-var Redux = require('redux');
-var thunk = require('redux-thunk').default;
-var batchedSubscribe = require('redux-batched-subscribe').batchedSubscribe;
-var _ = require('lodash');
+/* eslint prefer-spread: "off" */
+/* eslint no-param-reassign: "off" */
 
-module.exports = {
+import _ from 'lodash';
+import thunk from 'redux-thunk';
+import { compose, applyMiddleware, combineReducers, createStore } from 'redux';
+import { batchedSubscribe } from 'redux-batched-subscribe';
+
+export default {
 
   dependencies: ['reducers'],
 
@@ -38,8 +41,8 @@ module.exports = {
        */
 
       enhancer: function(middleware, config) {
-        return Redux.compose(
-          Redux.applyMiddleware.apply(null, middleware),
+        return compose(
+          applyMiddleware.apply(null, middleware),
           batchedSubscribe(_.debounce(function(notify) {
             notify();
           }, config.redux.debounceWait))
@@ -55,8 +58,8 @@ module.exports = {
        */
 
       rootReducer: function(reducers) {
-        var hasReducers = Object.keys(reducers).length > 0;
-        return hasReducers ? Redux.combineReducers(reducers) : function() {};
+        const hasReducers = Object.keys(reducers).length > 0;
+        return hasReducers ? combineReducers(reducers) : function() {};
       },
 
       /**
@@ -77,7 +80,7 @@ module.exports = {
        */
 
       configureStore: function(rootReducer, preloadedState, enhancer) {
-        return Redux.createStore(rootReducer, preloadedState, enhancer);
+        return createStore(rootReducer, preloadedState, enhancer);
       }
 
     }
@@ -88,11 +91,11 @@ module.exports = {
       throw new Error('Error: lore.reducers does not exist. Must load hooks/reducers before hooks/redux');
     }
 
-    var config = lore.config.redux;
-    var middleware = config.middleware;
-    var enhancer = config.enhancer(middleware, lore.config);
-    var rootReducer = config.rootReducer(lore.reducers);
-    var preloadedState = config.preloadedState();
+    const config = lore.config.redux;
+    const middleware = config.middleware;
+    const enhancer = config.enhancer(middleware, lore.config);
+    const rootReducer = config.rootReducer(lore.reducers);
+    const preloadedState = config.preloadedState();
     lore.store = config.configureStore(rootReducer, preloadedState, enhancer);
   }
 

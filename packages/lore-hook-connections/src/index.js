@@ -1,6 +1,8 @@
-var _ = require('lodash');
+/* eslint no-param-reassign: "off" */
 
-var defaultConnectionData = {
+import _ from 'lodash';
+
+const defaultConnectionData = {
   apiRoot: 'https://api.example.com',
   pluralize: true,
   casingStyle: 'camel',
@@ -9,7 +11,7 @@ var defaultConnectionData = {
   collections: {}
 };
 
-module.exports = {
+export default {
 
   dependencies: [],
 
@@ -20,7 +22,7 @@ module.exports = {
   },
 
   load: function(lore) {
-    var config = lore.config.connections;
+    const config = lore.config.connections;
     lore.connections = {};
 
     _.mapKeys(config, function(data, connectionName) {

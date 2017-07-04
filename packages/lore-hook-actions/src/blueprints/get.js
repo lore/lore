@@ -1,10 +1,8 @@
-var ActionTypes = require('lore-utils').ActionTypes;
-var PayloadStates = require('lore-utils').PayloadStates;
-var normalize = require('../normalize');
+import { ActionTypes, PayloadStates } from 'lore-utils';
+import normalize from '../normalize';
 
-module.exports = function(modelName, models, lore) {
-
-  var Model = models[modelName];
+export default function(modelName, models, lore) {
+  const Model = models[modelName];
 
   return {
     blueprint: 'get',
@@ -46,6 +44,6 @@ module.exports = function(modelName, models, lore) {
 
     }
 
-  }
-};
+  };
+}
 

@@ -1,16 +1,19 @@
-var React = require('react');
-var _ = require('lodash');
+/* eslint no-param-reassign: "off" */
 
-module.exports = {
+import React from 'react';
+import _ from 'lodash';
+import config from './config';
+
+export default {
 
   dependencies: ['models'],
 
   defaults: {
-    forms: require('./config')
+    forms: config
   },
 
   load: function(lore) {
-    var schemas = lore.loader.loadModels();
+    const schemas = lore.loader.loadModels();
 
     lore.forms = {};
 
@@ -18,19 +21,19 @@ module.exports = {
       lore.forms[modelName] = lore.forms[modelName] || {};
 
       lore.forms[modelName].create = function(props) {
-        var Template = lore.config.forms.templates[props.template || 'default'];
-        var templateProps = _.merge({}, schema.forms, props);
+        const Template = lore.config.forms.templates[props.template || 'default'];
+        const templateProps = _.merge({}, schema.forms, props);
         return React.createElement(Template, templateProps);
       };
 
       lore.forms[modelName].update = function(model, props) {
-        var Template = lore.config.forms.templates[props.template || 'default'];
+        const Template = lore.config.forms.templates[props.template || 'default'];
 
         // get an object with all fields that will passed to the form
-        var tempProps = _.merge({}, schema.forms, props);
+        const tempProps = _.merge({}, schema.forms, props);
 
         // populate the data attribute of each field with the model's data
-        var modelFieldsData = {
+        const modelFieldsData = {
           fields: _.mapValues(tempProps.fields, function (value, key) {
             return {
               data: model.data[key]
@@ -39,7 +42,7 @@ module.exports = {
         };
 
         // create the final props for the template, overwriting the model data with provided data
-        var templateProps = _.merge({}, schema.forms, modelFieldsData, props);
+        const templateProps = _.merge({}, schema.forms, modelFieldsData, props);
         return React.createElement(Template, templateProps);
       };
     });

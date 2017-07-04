@@ -1,17 +1,14 @@
-var React = require('react');
-var TextField = require('lore-react-forms-bootstrap/TextField');
-// var CheckboxField = require('../lib/react-form-bootstrap/CheckboxField');
-// var NumberField = require('../lib/react-form-bootstrap/NumberField');
-var SelectField = require('lore-react-forms-bootstrap/SelectField');
-var DynamicTextField = require('lore-react-forms-bootstrap/DynamicTextField');
-var AutoCompleteField = require('lore-react-forms-bootstrap/AutoCompleteField');
-var ConfigConnect = require('./ConfigConnect');
-var Connect = null;
+import React from 'react';
+import Template from 'lore-react-forms/Template';
+import { TextField, SelectField, DynamicTextField, AutoCompleteField } from 'lore-react-forms-bootstrap';
+import ConfigConnect from './ConfigConnect';
 
-module.exports = {
+let Connect = null;
+
+export default {
 
   templates: {
-    default: require('lore-react-forms/Template'),
+    default: Template,
   },
 
   typeFieldMap: {
@@ -76,7 +73,7 @@ module.exports = {
             field={attributes.field || 'username'}
           />
         </Connect>
-      )
+      );
     },
 
     autocomplete: function(name, attributes) {
@@ -89,7 +86,7 @@ module.exports = {
             field={attributes.field || 'username'}
           />
         </Connect>
-      )
+      );
     }
 
   },
@@ -100,7 +97,8 @@ module.exports = {
       return (
         <button
           key={name}
-          className="btn btn-default">
+          className="btn btn-default"
+        >
           {attributes.label || 'Cancel'}
         </button>
       );
@@ -111,7 +109,8 @@ module.exports = {
         <button
           key={name}
           className="btn btn-primary"
-          onClick={onSubmit}>
+          onClick={onSubmit}
+        >
           {attributes.label || 'Submit'}
         </button>
       );

@@ -1,7 +1,7 @@
-var pluralize = require('pluralize');
-var _ = require('lodash');
+import pluralize from 'pluralize';
+import _ from 'lodash';
 
-var CasingStyles = {
+const CasingStyles = {
   Camel: 'camel',
   Snake: 'snake',
   Kebab: 'kebab',
@@ -29,10 +29,10 @@ function applyCasingStyle(casingStyle, modelName) {
 }
 
 function getUrlRoot(modelName, config) {
-  var apiRoot = config.apiRoot;
-  var isPlural = config.pluralize;
-  var casingStyle = config.casingStyle;
-  var endpoint = config.endpoint;
+  const apiRoot = config.apiRoot;
+  const isPlural = config.pluralize;
+  const casingStyle = config.casingStyle;
+  let endpoint = config.endpoint;
 
   // if the user did not provide a custom endpoint, generate
   // one from the model name
@@ -42,20 +42,20 @@ function getUrlRoot(modelName, config) {
       applyCasingStyle(casingStyle, modelName);
   }
 
-  return apiRoot ? apiRoot + '/' + endpoint : endpoint;
+  return apiRoot ? `${apiRoot}/${endpoint}` : endpoint;
 }
 
-module.exports = function(modelName, options) {
-  var connection = options.connection || {};
-  var config = options.config || {};
-  var definition = options.definition || {};
+export default function(modelName, options) {
+  const connection = options.connection || {};
+  const config = options.config || {};
+  const definition = options.definition || {};
 
   /**
    * Merge apiRoot, pluralize and casingStyle from config files for
    * connections, models and the individual model definition
    */
-  var combinedConfig = _.merge({}, connection, config, definition);
-  var conventions = {
+  const combinedConfig = _.merge({}, connection, config, definition);
+  const conventions = {
     properties: {
       urlRoot: getUrlRoot(modelName, combinedConfig)
     }
@@ -66,7 +66,7 @@ module.exports = function(modelName, options) {
   }
 
   // Build the final set of properties for the collection
-  var properties = _.defaultsDeep(
+  const properties = _.defaultsDeep(
     {},
     definition.properties,
     config.properties,
@@ -75,4 +75,4 @@ module.exports = function(modelName, options) {
   );
 
   return properties;
-};
+}

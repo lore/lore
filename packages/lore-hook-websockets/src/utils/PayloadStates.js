@@ -1,4 +1,6 @@
-module.exports = {
+/* eslint key-spacing: "off" */
+
+export default {
   INITIAL_STATE: 'INITIAL_STATE',
 
   RESOLVED   : 'RESOLVED',

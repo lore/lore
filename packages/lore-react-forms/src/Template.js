@@ -1,10 +1,11 @@
-var React = require('react');
-var _ = require('lodash');
+/* global lore */
+/* eslint arrow-parens: "off" */
 
-// react-form
-var Form = require('./Form');
-var FormSection = require('./FormSection');
-var PropBarrier = require('./PropBarrier');
+import React from 'react';
+import _ from 'lodash';
+import Form from './Form';
+import FormSection from './FormSection';
+import PropBarrier from './PropBarrier';
 
 class Template extends React.Component {
 
@@ -44,7 +45,7 @@ class Template extends React.Component {
   }
 
   onChange(name, value) {
-    var state = {};
+    const state = {};
     state[name] = value;
     this.setState(state);
   }
@@ -54,7 +55,7 @@ class Template extends React.Component {
   }
 
   renderField(name, field) {
-    var Field = lore.config.forms.typeFieldMap[field.type];
+    const Field = lore.config.forms.typeFieldMap[field.type];
 
     return (
       <FormSection key={name}>
@@ -66,7 +67,7 @@ class Template extends React.Component {
   }
 
   getFields(dialog, form) {
-    var fields = [];
+    const fields = [];
     _.mapValues(this.props.fields, function(value, key) {
       fields.push(this.renderField(key, value));
     }.bind(this));
@@ -82,12 +83,12 @@ class Template extends React.Component {
   }
 
   renderAction(name, action) {
-    var Action = lore.config.forms.typeActionMap[action.type];
+    const Action = lore.config.forms.typeActionMap[action.type];
     return Action ? Action(name, action.options, this.onSubmit) : null;
   }
 
   getActions(dialog, form) {
-    var actions = [];
+    const actions = [];
     _.mapValues(this.props.actions, function(value, key) {
       actions.push(this.renderAction(key, value));
     }.bind(this));
@@ -95,7 +96,7 @@ class Template extends React.Component {
   }
 
   renderActions(dialog, form) {
-    var actions = this.getActions(dialog, form);
+    const actions = this.getActions(dialog, form);
 
     if (actions.length === 0) {
       return null;
@@ -109,15 +110,16 @@ class Template extends React.Component {
   }
 
   render() {
-    var data = this.state;
-    var validators = this.getValidators(data);
-    var dialog = null;
+    const data = this.state;
+    const validators = this.getValidators(data);
+    const dialog = null;
 
     return (
       <Form
         data={data}
         validators={validators}
-        onChange={this.onChange}>
+        onChange={this.onChange}
+      >
         {(form) => (
           <FormSection>
             {this.renderFields(dialog, form)}
@@ -136,7 +138,8 @@ Template.propTypes = {
 
 Template.defaultProps = {
   fields: {},
-  actions: {}
+  actions: {},
+  onSubmit: function() {}
 };
 
-module.exports = Template;
+export default Template;

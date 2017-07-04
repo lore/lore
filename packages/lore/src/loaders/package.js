@@ -1,7 +1,9 @@
-module.exports = {
+import packageJson from '../../package.json';
+
+export default {
 
   load: function () {
-    return require('../../package.json');
+    return packageJson;
   }
 
 };

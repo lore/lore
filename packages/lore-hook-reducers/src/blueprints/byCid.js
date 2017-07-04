@@ -1,5 +1,8 @@
-var ActionTypes = require('lore-utils').ActionTypes;
-var _ = require('lodash');
+/* eslint eqeqeq: "off" */
+/* eslint no-param-reassign: "off" */
+
+import _ from 'lodash';
+import { ActionTypes } from 'lore-utils';
 
 /*
  * byCid Reducer Blueprint
@@ -15,7 +18,7 @@ var _ = require('lodash');
 // will merge them together, and overwrite the initially incorrect '123' id with the
 // proper 123 id.
 function findKey(state, object) { // 1 or '1'
-  var keys = _.keys(state); // [1,2,'3']
+  const keys = _.keys(state); // [1,2,'3']
 
   return _.find(keys, function(key) {
     return state[key].id == object.id;
@@ -23,8 +26,8 @@ function findKey(state, object) { // 1 or '1'
 }
 
 function addOrUpdateByCid(nextState, payload) {
-  var cid = payload && payload.cid;
-  var cidWithDuplicatedId = null;
+  const cid = payload && payload.cid;
+  let cidWithDuplicatedId = null;
 
   if (cid) {
     if (payload.id) {
@@ -48,18 +51,17 @@ function addOrUpdateByCid(nextState, payload) {
 }
 
 function removeByCid(nextState, payload) {
-  var cid = payload && payload.cid;
+  const cid = payload && payload.cid;
   if (cid) {
     delete nextState[cid];
   }
   return nextState;
 }
 
-module.exports = function(modelName) {
-
+export default function(modelName) {
   return function byCid(state, action) {
     state = state || {};
-    var nextState = _.assign({}, state);
+    const nextState = _.assign({}, state);
 
     switch (action.type) {
       case ActionTypes.add(modelName):
@@ -78,8 +80,7 @@ module.exports = function(modelName) {
         return nextState;
 
       default:
-        return nextState
+        return nextState;
     }
   };
-
-};
+}

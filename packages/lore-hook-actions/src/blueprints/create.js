@@ -1,10 +1,7 @@
-var ActionTypes = require('lore-utils').ActionTypes;
-var PayloadStates = require('lore-utils').PayloadStates;
+import { ActionTypes, PayloadStates } from 'lore-utils';
 
-module.exports = function(modelName, models, options) {
-  options = options || {};
-
-  var Model = models[modelName];
+export default function(modelName, models, options = {}) {
+  const Model = models[modelName];
 
   return {
     blueprint: 'create',
@@ -28,9 +25,9 @@ module.exports = function(modelName, models, options) {
     onError: {
       actionType: ActionTypes.update(modelName),
       payloadState: PayloadStates.ERROR_CREATING,
-      beforeDispatch: function(response, args){
+      beforeDispatch: function(response, args) {
         // no op
       }
     }
   };
-};
+}

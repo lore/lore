@@ -1,7 +1,9 @@
-var React = require('react');
-var _ = require('lodash');
+/* eslint consistent-return: "off" */
 
-module.exports = React.createClass({
+import React from 'react';
+import _ from 'lodash';
+
+export default React.createClass({
   displayName: 'FormSection',
 
   propTypes: {
@@ -16,26 +18,26 @@ module.exports = React.createClass({
       element: 'div',
       className: '',
       style: {}
-    }
+    };
   },
 
   createFields: function() {
     return React.Children.map(this.props.children, (child) => {
       if (React.isValidElement(child)) {
-        var props = _.omit(this.props, ['className', 'style', 'children']);
+        const props = _.omit(this.props, ['className', 'style', 'children']);
         return React.cloneElement(child, props);
       }
     });
   },
 
   render: function() {
-    var element = this.props.element;
-    var className = this.props.className;
-    var style = this.props.style;
+    const element = this.props.element;
+    const className = this.props.className;
+    const style = this.props.style;
 
-    var props = {
-      className: className ? className : null,
-      style: style ? style : null,
+    const props = {
+      className: className || null,
+      style: style || null
     };
 
     return React.createElement(element, props,

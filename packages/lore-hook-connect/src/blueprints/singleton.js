@@ -2,7 +2,7 @@
  * Singleton Connection Blueprint
  */
 
-module.exports = {
+export default {
 
   getPayload: function(reducerState, params) {
     return reducerState;
@@ -10,6 +10,6 @@ module.exports = {
 
   callAction: function(action, params) {
     return action().payload;
-  },
+  }
 
 };

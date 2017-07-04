@@ -1,24 +1,25 @@
-var React = require('react');
-var _ = require('lodash');
-var Field = require('./common/BootstrapField');
+/* eslint prefer-template: "off" */
+
+import React from 'react';
+import Field from './common/BootstrapField';
 
 class TextField extends Field {
 
   render() {
-    var name = this.props.name;
-    var error = this.props.errors[name];
-    var value = this.props.data[name];
-    var touched = this.state.touched;
-    var hintText = this.props.hintText;
-    var label = this.props.label;
-    var disabled = this.props.disabled;
-    var multiLine = this.props.multiLine || false;
-    var displayError = touched && error;
+    const name = this.props.name;
+    const error = this.props.errors[name];
+    const value = this.props.data[name];
+    const touched = this.state.touched;
+    const hintText = this.props.hintText;
+    const label = this.props.label;
+    // const disabled = this.props.disabled;
+    // const multiLine = this.props.multiLine || false;
+    const displayError = touched && error;
 
-    var style = _.assign({}, {width: '100%'}, this.props.style);
+    // const style = _.assign({}, { width: '100%' }, this.props.style);
 
     return (
-      <div className={"form-group" + (displayError ? " has-error" : "")}>
+      <div className={'form-group' + (displayError ? ' has-error' : '')}>
         <label>{label}</label>
         <input
           type="text"
@@ -27,7 +28,8 @@ class TextField extends Field {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           className="form-control"
-          placeholder={hintText} />
+          placeholder={hintText}
+        />
         {displayError ? (
           <span className="help-block">{error}</span>
         ) : null}
@@ -37,4 +39,4 @@ class TextField extends Field {
 
 }
 
-module.exports = TextField;
+export default TextField;

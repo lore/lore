@@ -1,4 +1,8 @@
-const _ = require('lodash');
+/* eslint consistent-return: "off" */
+/* eslint no-param-reassign: "off" */
+/* eslint max-len: "off" */
+
+import _ from 'lodash';
 
 function byId(models) {
   const modelsById = {};
@@ -164,18 +168,18 @@ const customDictionaryHelpers = {
 
 };
 
-module.exports = {
-  byId: byId,
-  byCid: byCid,
-  byCustomField: byCustomField,
-  getIndex: getIndex,
-  addModel: addModel,
-  addOrUpdateModel: addOrUpdateModel,
-  updateModel: updateModel,
-  removeModel: removeModel,
-  mergeModels: mergeModels,
-  replaceModels: replaceModels,
-  copyState: copyState,
-  mergeModelsAndCopyState: mergeModelsAndCopyState,
-  customDictionaryHelpers: customDictionaryHelpers
+export {
+  byId,
+  byCid,
+  byCustomField,
+  getIndex,
+  addModel,
+  addOrUpdateModel,
+  updateModel,
+  removeModel,
+  mergeModels,
+  replaceModels,
+  copyState,
+  mergeModelsAndCopyState,
+  customDictionaryHelpers
 };

@@ -1,11 +1,19 @@
-var _ = require('lodash');
-var actionBlueprints = require('lore-actions').blueprints;
-var utils = require('lore-actions').utils;
+/* eslint no-param-reassign: "off" */
+
+import _ from 'lodash';
+import { utils, blueprints as actionBlueprints } from 'lore-actions';
+
+// blueprints
+import create from './blueprints/create';
+import destroy from './blueprints/destroy';
+import get from './blueprints/get';
+import find from './blueprints/find';
+import update from './blueprints/update';
 
 function convertBlueprintToActionCreator(action, store) {
   // if the module isn't a function, then it's an object describing the action
   // config and needs to be converted to a real function
-  if(!_.isFunction(action)){
+  if (!_.isFunction(action)) {
     action = actionBlueprints[action.blueprint](action);
   }
 
@@ -14,8 +22,8 @@ function convertBlueprintToActionCreator(action, store) {
 
 function convertBlueprintsToActionCreators(actions, store) {
   Object.keys(actions).forEach(function(key) {
-    var action = actions[key];
-    var boundAction = null;
+    const action = actions[key];
+    let boundAction = null;
     if (_.isPlainObject(action) && Object.keys(action).length > 0 && Object.keys(action).indexOf('blueprint') < 0) {
       boundAction = convertBlueprintsToActionCreators(action, store);
     } else {
@@ -26,7 +34,7 @@ function convertBlueprintsToActionCreators(actions, store) {
   return actions;
 }
 
-module.exports = {
+export default {
 
   dependencies: ['models', 'collections'],
 
@@ -36,23 +44,23 @@ module.exports = {
       addCidToBody: false,
       cidBodyAttributeName: 'cid',
       blueprints: {
-        create: require('./blueprints/create'),
-        destroy: require('./blueprints/destroy'),
-        get: require('./blueprints/get'),
-        find: require('./blueprints/find'),
-        update: require('./blueprints/update')
+        create,
+        destroy,
+        get,
+        find,
+        update
       }
     }
   },
 
   load: function(lore) {
     lore.actions = lore.actions || {};
-    var models = lore.models;
-    var collections = lore.collections;
-    var store = lore.store;
-    var actions = lore.loader.loadActions();
-    var config = lore.config.actions;
-    var blueprints = config.blueprints;
+    const models = lore.models;
+    const collections = lore.collections;
+    const store = lore.store;
+    const config = lore.config.actions;
+    const blueprints = config.blueprints;
+    let actions = lore.loader.loadActions();
 
     // todo: should actions be created for files in /collections
     // that have no corresponding model in /models Currently
@@ -66,7 +74,7 @@ module.exports = {
         get: blueprints.get(modelName, models, lore),
         find: blueprints.find(modelName, collections, lore),
         update: blueprints.update(modelName, models)
-      })
+      });
     });
 
     // overwrite any blueprints with custom implementations

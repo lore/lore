@@ -1,34 +1,35 @@
-var ActionTypes = require('../utils/ActionTypes');
-var PayloadStates = require('../utils/PayloadStates');
-var payload = require('../utils/payload');
-var pluralize = require('pluralize');
-var _ = require('lodash');
+/* global io */
 
-var SOCKET_VERBS = {
+import pluralize from 'pluralize';
+import ActionTypes from '../utils/ActionTypes';
+import PayloadStates from '../utils/PayloadStates';
+import payload from '../utils/payload';
+
+const SOCKET_VERBS = {
   CREATED: 'created',
   UPDATED: 'updated',
   DESTROYED: 'destroyed',
   ADDED_TO: 'addedTo'
 };
 
-module.exports = function(modelName, models) {
-  var Model = models[modelName];
+export default function(modelName, models) {
+  const Model = models[modelName];
 
   return function () {
     return function (dispatch) {
-      io.socket.get('/' + pluralize(modelName), function (modelData) {
-        console.log('Subscribed to ' + pluralize(modelName) + '!');
+      io.socket.get(`/${pluralize(modelName)}`, function (modelData) {
+        console.log(`Subscribed to ${pluralize(modelName)}!`);
       });
 
       io.socket.on(modelName, function (message) {
-        var model = null;
-        var verb = message.verb;
+        let model = null;
+        const verb = message.verb;
 
         if (verb === SOCKET_VERBS.CREATED) {
           model = new Model(message.data);
 
           // todo: replace this with a more configurable solution
-          if(model.get('cid')) {
+          if (model.get('cid')) {
             model.cid = model.get('cid');
           }
 
@@ -54,9 +55,9 @@ module.exports = function(modelName, models) {
         } else if (verb === SOCKET_VERBS.ADDED_TO) {
           console.log('lore:hook:websockets - association message received, but ignoring');
         } else {
-          throw new Error('Unrecognized verb from sockets connection: ' + verb);
+          throw new Error(`Unrecognized verb from sockets connection: ${verb}`);
         }
       });
     };
-  }
-};
+  };
+}

@@ -1,9 +1,7 @@
-var React = require('react');
-var AuthorizationGenerator = require('../generators/AuthorizationGenerator');
-var _ = require('lodash');
+import AuthorizationGenerator from '../generators/AuthorizationGenerator';
 
-module.exports = function(isAuthorized) {
-  var properties = {
+export default function(isAuthorized) {
+  const properties = {
     wrapperDisplayName: 'UserIsAuthorized',
 
     isAuthorized: function (storeState) {
@@ -12,4 +10,4 @@ module.exports = function(isAuthorized) {
   };
 
   return AuthorizationGenerator(properties);
-};
+}

@@ -28,18 +28,18 @@ to be abstracted out to support testing.
 The `./index.js` file that exposes Lore does so like this:
 
 ```js
-var Lore = require('./app');
-module.exports = new Lore();
+import Lore from './app';
+export default new Lore();
 ```
 
 This approach means that *any* file that requires lore will receive the same instance, so there's no need to pass 
-lore around in `context` or `props` to access it.  Instead, just `var lore = require('lore')` in the file that 
+lore around in `context` or `props` to access it.  Instead, just `import lore from 'lore'` in the file that 
 needs it, and then access it directly like `lore.config` or `lore.models`.
 
 In a browser, you can create a shortcut to `lore` by exposing it in the global namespace like this:
 
 ```js
-var lore = require('lore');
+import lore from 'lore';
 window.lore = lore;
 ```
 
@@ -47,7 +47,7 @@ window.lore = lore;
 
 The decision to expose Lore as a singleton was made purely for convenience.  Lore's design goals (among others) are 
 simplicity and ease of use, and when the good and bad were weighed against each other it was decided that it was more 
-advantageous to expose it as a singleton, and promote it's usage through `require('lore')` or (optionally) accessing 
+advantageous to expose it as a singleton, and promote it's usage through `import 'lore'` or (optionally) accessing 
 it through the global namespace. 
 
 The downside of exposing Lore as a singleton is that it doesn't naturally allow for use cases where you might

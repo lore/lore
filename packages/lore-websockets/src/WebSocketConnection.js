@@ -1,7 +1,10 @@
-var _ = require('lodash');
-var extend = require('./utils/extend');
+/* eslint prefer-rest-params: "off" */
+/* eslint prefer-spread: "off" */
 
-var WebSocketConnection = function(dispatchers, actions, options) {
+import _ from 'lodash';
+import extend from './utils/extend';
+
+const WebSocketConnection = function(dispatchers, actions, options) {
   this.dispatchers = dispatchers || {};
   this.actions = actions || {};
   this.options = options || {};
@@ -26,9 +29,9 @@ _.extend(WebSocketConnection.prototype, {
   },
 
   dispatch: function(message) {
-    var parsedMessage = this.parse(message);
-    var verb = parsedMessage.verb;
-    var dispatcher = this.dispatchers[verb];
+    const parsedMessage = this.parse(message);
+    const verb = parsedMessage.verb;
+    const dispatcher = this.dispatchers[verb];
 
     if (dispatcher) {
       dispatcher(parsedMessage);
@@ -39,4 +42,4 @@ _.extend(WebSocketConnection.prototype, {
 
 WebSocketConnection.extend = extend;
 
-module.exports = WebSocketConnection;
+export default WebSocketConnection;

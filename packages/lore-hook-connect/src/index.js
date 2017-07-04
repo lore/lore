@@ -1,17 +1,24 @@
-var connect = require('./connect');
+/* eslint no-param-reassign: "off" */
 
-module.exports = {
+import connect from './connect';
+import find from './blueprints/find';
+import byId from './blueprints/byId';
+import singleton from './blueprints/singleton';
+import all from './blueprints/all';
+import byCid from './blueprints/byCid';
+
+export default {
 
   dependencies: ['actions'],
 
   defaults: {
     connect: {
       blueprints: {
-        find: require('./blueprints/find'),
-        byId: require('./blueprints/byId'),
-        singleton: require('./blueprints/singleton'),
-        all: require('./blueprints/all'),
-        byCid: require('./blueprints/byCid')
+        find,
+        byId,
+        singleton,
+        all,
+        byCid
       },
       reducerActionMap: {
         '*.all': {
@@ -39,10 +46,10 @@ module.exports = {
   },
 
   load: function(lore) {
-    var config = lore.config.connect;
-    var actions = lore.actions;
-    var reducerActionMap = config.reducerActionMap;
-    var blueprints = config.blueprints;
+    const config = lore.config.connect;
+    const actions = lore.actions;
+    const reducerActionMap = config.reducerActionMap;
+    const blueprints = config.blueprints;
 
     lore.connect = connect(actions, blueprints, reducerActionMap);
   }

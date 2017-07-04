@@ -1,16 +1,18 @@
-var _ = require('lodash');
-// var reducer = require('../reducerBlueprints/reducer');
-var sortReducersByLoadOrder = require('./sortReducersByLoadOrder');
-var ActionTypes = require('lore-utils').ActionTypes;
-var compositeReducer = require('./reducer');
+/* eslint no-param-reassign: "off" */
 
-var blueprints = {
-  find: require('./blueprints/find'),
-  byId: require('./blueprints/byId'),
-  byCid: require('./blueprints/byCid')
+import _ from 'lodash';
+import compositeReducer from './reducer';
+import find from './blueprints/find';
+import byId from './blueprints/byId';
+import byCid from './blueprints/byCid';
+
+const blueprints = {
+  find,
+  byId,
+  byCid
 };
 
-module.exports = {
+export default {
 
   dependencies: ['models'],
 
@@ -66,20 +68,20 @@ module.exports = {
   load: function(lore) {
     lore.reducers = {}; // todo: allow to default after reducerBlueprints hook has been deleted
     lore.models = lore.models || {};
-    var config = lore.config.reducers;
+    const config = lore.config.reducers;
 
-    var userReducers = lore.loader.loadReducers();
-    var reducers = {};
-    var dependencies = {};
+    const userReducers = lore.loader.loadReducers();
+    const reducers = {};
+    const dependencies = {};
 
     // Combine all the reducer dependencies so we can figure out the load order
-    Object.keys(lore.models).forEach(function(modelName){
-      var blueprintDependencies = {
+    Object.keys(lore.models).forEach(function(modelName) {
+      const blueprintDependencies = {
         byId: [],
         byCid: [],
         find: ['byId', 'byCid']
       };
-      var userDependencies = config.dependencies[modelName];
+      const userDependencies = config.dependencies[modelName];
       dependencies[modelName] = _.assign({},
         blueprintDependencies,
         userDependencies
@@ -87,8 +89,8 @@ module.exports = {
     });
 
     // Combine all the reducers
-    Object.keys(lore.models).forEach(function(modelName){
-      var blueprintReducers = {
+    Object.keys(lore.models).forEach(function(modelName) {
+      const blueprintReducers = {
         find: blueprints.find(modelName),
         byId: blueprints.byId(modelName),
         byCid: blueprints.byCid(modelName)
@@ -115,8 +117,8 @@ module.exports = {
     });
 
     // Create the composite reducer
-    Object.keys(lore.models).forEach(function(modelName){
-      var reducer = reducers[modelName];
+    Object.keys(lore.models).forEach(function(modelName) {
+      const reducer = reducers[modelName];
       if (_.isFunction(reducer)) {
         lore.reducers[modelName] = reducer;
       } else {
@@ -134,10 +136,10 @@ module.exports = {
     });
 
     // Add in any reducers that don't match model names
-    var nonModelReducers = _.difference(Object.keys(userReducers), Object.keys(lore.models));
+    const nonModelReducers = _.difference(Object.keys(userReducers), Object.keys(lore.models));
     nonModelReducers.forEach(function(reducerName) {
-      var userReducer = userReducers[reducerName];
-      var reducer = null;
+      const userReducer = userReducers[reducerName];
+      let reducer = null;
 
       if (_.isFunction(userReducer)) {
         reducer = userReducer;
@@ -146,16 +148,16 @@ module.exports = {
           reducer = userReducer.index;
         } else {
           throw new Error(
-            'Looks like you are trying to create a reducer called `index` in a folder called `' + reducerName + '`\n' +
-            'but the reducer is not a function. Reducers must be functions with the signature `function(state, action)`.'
+            `Looks like you are trying to create a reducer called 'index' in a folder called ${reducerName}
+            but the reducer is not a function. Reducers must be functions with the signature 'function(state, action)'.`
           );
         }
       } else {
         throw new Error(
-          'Looks like you are trying to create a composite reducer called `' + reducerName + '`\n' +
-          'but did not provide a reducer for the base of the Redux store. If you want to have your \n' +
-          'root reducer inside a folder, please name it `index`, such as `/reducers/' + reducerName + '/index.js`.\n' +
-          'If you want to have it located under /reducers, please take it out of the folder and call if `/reducers/' + reducerName+ '.js`.'
+          `Looks like you are trying to create a composite reducer called ${reducerName}
+          but did not provide a reducer for the base of the Redux store. If you want to have your
+          root reducer inside a folder, please name it 'index', such as '/reducers/${reducerName}/index.js'.
+          If you want to have it located under '/reducers', please take it out of the folder and call it '/reducers/${reducerName}.js'.`
         );
       }
 

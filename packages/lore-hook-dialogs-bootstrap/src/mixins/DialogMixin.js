@@ -1,8 +1,8 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-// var $ = require('jquery');
+import React from 'react';
+import ReactDOM from 'react-dom';
+// import $ from 'jquery';
 
-module.exports = {
+export default {
 
   propTypes: {
     onSubmit: React.PropTypes.func.isRequired

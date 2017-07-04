@@ -1,10 +1,8 @@
-var ActionTypes = require('lore-utils').ActionTypes;
-var PayloadStates = require('lore-utils').PayloadStates;
-var normalize = require('../normalize');
+import { ActionTypes, PayloadStates } from 'lore-utils';
+import normalize from '../normalize';
 
-module.exports = function(collectionName, collections, lore) {
-
-  var Collection = collections[collectionName];
+export default function(collectionName, collections, lore) {
+  const Collection = collections[collectionName];
 
   return {
     blueprint: 'find',
@@ -42,4 +40,4 @@ module.exports = function(collectionName, collections, lore) {
     }
 
   };
-};
+}

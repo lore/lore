@@ -1,9 +1,12 @@
-var React = require('react');
-var _ = require('lodash');
+/* global lore */
+/* eslint prefer-rest-params: "off" */
 
-module.exports = function() {
+import React from 'react';
+import _ from 'lodash';
+
+export default function() {
   return lore.connect(function(getState, props) {
-    return props.callback.apply(null, arguments)
+    return props.callback.apply(null, arguments);
   })(
   React.createClass({
     displayName: 'Connect',
@@ -14,13 +17,13 @@ module.exports = function() {
     },
 
     render: function() {
-      var props = _.omit(this.props, [
+      const props = _.omit(this.props, [
         'callback',
         'children'
       ]);
 
-      return React.cloneElement(this.props.children, props)
+      return React.cloneElement(this.props.children, props);
     }
 
   }));
-};
+}

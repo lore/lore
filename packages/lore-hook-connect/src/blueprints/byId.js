@@ -1,14 +1,12 @@
 function InvalidGetStateCall(reducerKey) {
-  var newline = '\n';
-  var error = new Error(
-    newline + newline +
-    'Invalid call to `getState(\'' + reducerKey + '\')`. Missing required attribute `id`. ' + newline +
-    newline +
-    'Expected method call to look like this:' + newline +
-    newline +
-    'getState(\'' + reducerKey + '\', {' + newline +
-    '  id: 1' + newline +
-    '})'
+  const error = new Error(
+    `
+    Invalid call to 'getState('${reducerKey}')'. Missing required attribute 'id'.
+    Expected method call to look like this:
+    
+    getState('${reducerKey}', {
+      id: 1
+    })`
   );
   error.name = 'InvalidGetStateCall';
   return error;
@@ -18,7 +16,7 @@ function InvalidGetStateCall(reducerKey) {
  * byId Connection Blueprint
  */
 
-module.exports = {
+export default {
 
   defaults: {
     id: null
@@ -31,13 +29,13 @@ module.exports = {
   },
 
   getPayload: function(reducerState, params) {
-    var key = params.id;
+    const key = params.id;
     return reducerState[key];
   },
 
   callAction: function(action, params) {
-    var id = params.id;
+    const id = params.id;
     return action(id).payload;
-  },
+  }
 
 };

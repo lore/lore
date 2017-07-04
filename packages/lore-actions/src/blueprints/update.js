@@ -1,10 +1,14 @@
-const _ = require('lodash');
-const { defaultOptions, validatePartialPairs } = require('../utils');
+/* eslint consistent-return: "off" */
+
+import _ from 'lodash';
+import utils from '../utils';
+
+const { defaultOptions, validatePartialPairs } = utils;
 
 /*
  * Blueprint for Update method
  */
-module.exports = function(opts = {}) {
+export default function(opts = {}) {
   // clone the options so we don't unintentionally modify them
   let options = _.cloneDeep(opts);
 
@@ -38,7 +42,6 @@ module.exports = function(opts = {}) {
 
         if (response.status === 404) {
           if (options.onNotFound) {
-
             if (options.onNotFound.beforeDispatch) {
               options.onNotFound.beforeDispatch(response, [model]);
             }
@@ -52,7 +55,6 @@ module.exports = function(opts = {}) {
             });
           }
         } else if (options.onError) {
-
           if (options.onError.beforeDispatch) {
             options.onError.beforeDispatch(response, [model, params]);
           }
@@ -79,4 +81,4 @@ module.exports = function(opts = {}) {
       }
     };
   };
-};
+}

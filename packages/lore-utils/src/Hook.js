@@ -1,4 +1,4 @@
-var _ = require('lodash');
+import _ from 'lodash';
 
 /**
  * Hook class object.  The thing all definitions in /hooks are eventually instantiated as.
@@ -30,4 +30,4 @@ _.extend(Hook.prototype, {
 
 });
 
-module.exports = Hook;
+export default Hook;

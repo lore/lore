@@ -1,8 +1,9 @@
-var ActionTypes = require('lore-utils').ActionTypes;
-var PayloadStates = require('lore-utils').PayloadStates;
-var payload = require('lore-actions').utils.payload;
+import { ActionTypes, PayloadStates } from 'lore-utils';
+import { utils } from 'lore-actions';
 
-module.exports = function(modelName, models) {
+const payload = utils.payload;
+
+export default function(modelName, models) {
   const Model = models[modelName];
 
   return function get() {
@@ -29,4 +30,4 @@ module.exports = function(modelName, models) {
       });
     };
   };
-};
+}

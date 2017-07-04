@@ -1,4 +1,7 @@
-module.exports = {
-  utils: require('./utils'),
-  blueprint: require('./blueprint')
+import utils from './utils';
+import blueprint from './blueprint';
+
+export {
+  utils,
+  blueprint,
 };

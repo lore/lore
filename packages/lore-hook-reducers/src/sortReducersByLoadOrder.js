@@ -1,4 +1,4 @@
-var topsort = require('topsort');
+import topsort from 'topsort';
 
 /**
  * Convert the set of hooks in Object form to a format topsort can work with
@@ -7,16 +7,16 @@ var topsort = require('topsort');
  * @returns {Array} Hooks converted to an array format recognizable by topsort
  */
 function getDependencyGraph(hooks) {
-  var dependencyGraph = [];
+  const dependencyGraph = [];
 
   Object.keys(hooks).forEach(function(hookName) {
     if (!hooks[hookName]) {
       return;
     }
 
-    var dependencies = hooks[hookName] || [];
+    const dependencies = hooks[hookName] || [];
 
-    if(dependencies.length === 0) {
+    if (dependencies.length === 0) {
       dependencyGraph.push([hookName]);
     }
 
@@ -35,12 +35,12 @@ function getDependencyGraph(hooks) {
  * @param {Object} hooks Set of hooks to load
  * @returns {Array} List of hooks, sorted by execution order
  */
-module.exports = function sortHooksByLoadOrder(hooks) {
-  var dependencyGraph = getDependencyGraph(hooks);
-  //log.debug('hook dependency graph: ', dependencyGraph);
+export default function sortHooksByLoadOrder(hooks) {
+  const dependencyGraph = getDependencyGraph(hooks);
+  // log.debug('hook dependency graph: ', dependencyGraph);
 
-  var sortedDependencies = topsort(dependencyGraph);
-  //log.debug('loading sorted hooks: ', sortedDependencies);
+  const sortedDependencies = topsort(dependencyGraph);
+  // log.debug('loading sorted hooks: ', sortedDependencies);
 
   return sortedDependencies;
-};
+}

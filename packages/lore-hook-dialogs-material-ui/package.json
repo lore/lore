@@ -2,7 +2,7 @@
   "name": "lore-hook-dialogs-material-ui",
   "version": "0.12.6",
   "license": "MIT",
-  "main": "./lib/index.js",
+  "main": "lib/index.js",
   "description": "A lore hook that generates dialogs using Material UI",
   "keywords": [
     "lore",
@@ -11,11 +11,14 @@
     "material-ui"
   ],
   "scripts": {
-    "build": "../../node_modules/.bin/babel src --out-dir lib",
-    "clean": "rimraf lib",
+    "build": "npm run build:cjs && npm run build:es",
+    "build:cjs": "BABEL_ENV=cjs ../../node_modules/.bin/babel src --out-dir lib",
+    "build:es": "BABEL_ENV=es ../../node_modules/.bin/babel src --out-dir es",
+    "clean": "rimraf lib && rimraf es",
     "debug": "mocha debug --compilers js:babel-core/register --recursive",
+    "lint": "echo 'tbd: implement me'",
     "prepublish": "npm run build",
-    "test": "mocha --compilers js:babel-core/register --recursive"
+    "test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive"
   },
   "dependencies": {
     "lodash": "^4.0.0"

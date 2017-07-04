@@ -1,6 +1,8 @@
-var _ = require('lodash');
-var userHooksLoader = require('../loaders/userHooks');
-var Hook = require('lore-utils').Hook;
+/* eslint no-param-reassign: "warn" */
+
+import _ from 'lodash';
+import { Hook } from 'lore-utils';
+import userHooksLoader from '../loaders/userHooks';
 
 /**
  * Obtain and merge the core hooks and user hooks.  If a user hook exists with
@@ -8,12 +10,12 @@ var Hook = require('lore-utils').Hook;
  *
  * @returns {Object} Final set of hooks that should be loaded into the application
  */
-module.exports = function getHooks(hookOverrides) {
-  var userHookDefinitions = userHooksLoader.load();
-  var hookDefinitions =  _.assign({}, userHookDefinitions, hookOverrides);
-  var hooks = _.mapValues(hookDefinitions, function(definition, hookName) {
+export default function getHooks(hookOverrides) {
+  const userHookDefinitions = userHooksLoader.load();
+  const hookDefinitions = _.assign({}, userHookDefinitions, hookOverrides);
+  const hooks = _.mapValues(hookDefinitions, function(definition, hookName) {
     definition.id = hookName;
     return new Hook(definition);
   });
   return hooks;
-};
+}

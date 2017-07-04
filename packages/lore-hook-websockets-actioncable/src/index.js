@@ -1,10 +1,12 @@
-var _ = require('lodash');
-var pluralize = require('pluralize');
-var ActionCableWebSocketConnection = require('./ActionCableWebSocketConnection');
-var blueprints = require('lore-websockets').blueprints;
+/* eslint no-param-reassign: "off" */
+
+import _ from 'lodash';
+import pluralize from 'pluralize';
+import { blueprints } from 'lore-websockets';
+import ActionCableWebSocketConnection from './ActionCableWebSocketConnection';
 
 function getChannelName(modelName, config) {
-  var capitalizedModelName = _.capitalize(modelName);
+  const capitalizedModelName = _.capitalize(modelName);
 
   if (config.pluralize) {
     return `${pluralize(capitalizedModelName)}Channel`;
@@ -13,7 +15,7 @@ function getChannelName(modelName, config) {
   return `${capitalizedModelName}Channel`;
 }
 
-module.exports = {
+export default {
 
   dependencies: ['models', 'redux'],
 
@@ -26,31 +28,33 @@ module.exports = {
   },
 
   load: function(lore) {
-    var models = lore.models;
-    var store = lore.store;
-    var config = lore.config.websockets;
-    var websockets = {};
+    const models = lore.models;
+    const store = lore.store;
+    const config = lore.config.websockets;
+    const websockets = {};
 
     Object.keys(models).forEach(function(modelName) {
-      var Model = models[modelName];
+      const Model = models[modelName];
 
       // establish conventions for the namespace and event to listen for
-      var conventions = {
+      const conventions = {
         channel: getChannelName(modelName, config)
       };
 
       // create the default dispatchers from blueprints
-      var dispatchers = {
+      const dispatchers = {
         created: blueprints.dispatchers.created(modelName, Model)(store),
         updated: blueprints.dispatchers.updated(modelName, Model)(store),
         destroyed: blueprints.dispatchers.destroyed(modelName, Model)(store)
       };
 
       // there are currently no actions provided by default
-      var actions = {};
+      const actions = {};
 
       // override the defaults with an user provided configuration
-      var CustomActionCableWebSocketConnection = ActionCableWebSocketConnection.extend(_.extend(conventions, config));
+      const CustomActionCableWebSocketConnection = ActionCableWebSocketConnection.extend(
+        _.extend(conventions, config)
+      );
 
       // create the websocket connection for the model
       websockets[modelName] = new CustomActionCableWebSocketConnection(dispatchers, actions);

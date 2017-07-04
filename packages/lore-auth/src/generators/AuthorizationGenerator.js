@@ -1,9 +1,8 @@
-var React = require('react');
-var AuthGeneratorFactory = require('../factories/AuthGeneratorFactory');
-var _ = require('lodash');
+import _ from 'lodash';
+import AuthGeneratorFactory from '../factories/AuthGeneratorFactory';
 
-module.exports = function(options) {
-  var defaults = {
+export default function(options) {
+  const defaults = {
     wrapperDisplayName: 'UserIsAuthorized',
 
     predicate: function (storeState) {
@@ -20,7 +19,7 @@ module.exports = function(options) {
 
   };
 
-  var properties = _.defaultsDeep({}, options, defaults);
+  const properties = _.defaultsDeep({}, options, defaults);
 
   return AuthGeneratorFactory(properties);
-};
+}

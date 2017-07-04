@@ -1,9 +1,11 @@
-var buildDictionary = require('webpack-requiredir');
+/* global __LORE_ROOT__ */
 
-module.exports = {
+import buildDictionary from 'webpack-requiredir';
+
+export default {
 
   load: function () {
-    var context = require.context(__LORE_ROOT__ + '/src/reducers', true, /\.js$/);
+    const context = require.context(`${__LORE_ROOT__}/src/reducers`, true, /\.js$/);
     return buildDictionary(context, {
       // options
     });

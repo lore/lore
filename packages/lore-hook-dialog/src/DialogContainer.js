@@ -1,9 +1,7 @@
-var React = require('react');
-var ReactRedux = require('react-redux');
-var Provider = ReactRedux.Provider;
+import React from 'react';
+import { Provider } from 'react-redux';
 
-module.exports = function(lore) {
-
+export default function(lore) {
   return React.createClass({
     displayName: 'DialogContainer',
 
@@ -18,11 +16,11 @@ module.exports = function(lore) {
     getChildContext: function () {
       return {
         history: lore.config.router.history
-      }
+      };
     },
 
     render: function () {
-      var dialog = this.props.dialog;
+      const dialog = this.props.dialog;
 
       return React.createElement(
         Provider, {
@@ -32,5 +30,4 @@ module.exports = function(lore) {
       );
     }
   });
-
-};
+}

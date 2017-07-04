@@ -2,18 +2,21 @@
   "name": "lore-hook-connections",
   "version": "0.12.6",
   "license": "MIT",
-  "main": "./lib/index.js",
+  "main": "lib/index.js",
   "description": "A lore hook that stores connection information for multiple APIs",
   "keywords": [
     "lore",
     "hook"
   ],
   "scripts": {
-    "build": "../../node_modules/.bin/babel src --out-dir lib",
-    "clean": "rimraf lib",
+    "build": "npm run build:cjs && npm run build:es",
+    "build:cjs": "BABEL_ENV=cjs ../../node_modules/.bin/babel src --out-dir lib",
+    "build:es": "BABEL_ENV=es ../../node_modules/.bin/babel src --out-dir es",
+    "clean": "rimraf lib && rimraf es",
     "debug": "mocha debug --compilers js:babel-core/register --recursive",
+    "lint": "../../node_modules/.bin/eslint src",
     "prepublish": "npm run build",
-    "test": "mocha --compilers js:babel-core/register test/bootstrap.js test/**/*.spec.js --recursive"
+    "test": "BABEL_ENV=test mocha --compilers js:babel-core/register test/bootstrap.js test/**/*.spec.js --recursive"
   },
   "dependencies": {
     "lodash": "^4.0.0",

@@ -1,13 +1,13 @@
-var React = require('react');
-var _ = require('lodash');
-var getDisplayName = require('../utils/getDisplayName');
+import React from 'react';
+import _ from 'lodash';
+import getDisplayName from '../utils/getDisplayName';
 
-module.exports = function(options, Decorator) {
+export default function(options, Decorator) {
   return function (DecoratedComponent) {
-    var displayName = getDisplayName(DecoratedComponent);
-    var displayWrapperName = options.displayWrapperName || 'AuthDecorator';
+    const displayName = getDisplayName(DecoratedComponent);
+    const displayWrapperName = options.displayWrapperName || 'AuthDecorator';
 
-    var defaults = {
+    const defaults = {
       displayName: `${displayWrapperName}(${displayName})`,
 
       contextTypes: {
@@ -28,8 +28,8 @@ module.exports = function(options, Decorator) {
 
       // Redirect if not authenticated
       componentWillMount: function () {
-        var storeState = this.context.store.getState();
-        var hasPermission = this.predicate(storeState);
+        const storeState = this.context.store.getState();
+        const hasPermission = this.predicate(storeState);
 
         if (hasPermission) {
           this.onSuccess();
@@ -55,7 +55,7 @@ module.exports = function(options, Decorator) {
       },
 
       render: function () {
-        var hasPermission = this.state.hasPermission;
+        const hasPermission = this.state.hasPermission;
 
         if (hasPermission) {
           return this.renderSuccess();
@@ -66,14 +66,14 @@ module.exports = function(options, Decorator) {
 
     };
 
-    var properties = _.defaultsDeep({}, options, defaults);
+    const properties = _.defaultsDeep({}, options, defaults);
 
     if (Decorator) {
       return Decorator(
         React.createClass(properties)
       );
-    } else {
-      return React.createClass(properties);
     }
-  }
-};
+
+    return React.createClass(properties);
+  };
+}

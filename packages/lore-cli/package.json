@@ -17,6 +17,7 @@
   },
   "scripts": {
     "clean": "echo 'nothing to clean'",
+    "lint": "echo 'tbd: implement me'",
     "test": "NODE_ENV=test mocha --recursive"
   },
   "dependencies": {

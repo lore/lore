@@ -1,5 +1,9 @@
-module.exports = {
-  Model: require('./model'),
-  Collection: require('./collection'),
-  sync: require('./sync')
+import Model from './model';
+import Collection from './collection';
+import sync from './sync';
+
+export {
+  Model,
+  Collection,
+  sync
 };

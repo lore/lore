@@ -1,6 +1,4 @@
-var _ = require('lodash');
-
-class Poll {
+export default class Poll {
 
   constructor(action, options) {
     this.action = action;
@@ -18,7 +16,7 @@ class Poll {
   }
 
   poll() {
-    var interval = this.interval;
+    const interval = this.interval;
 
     if (this.isPolling) {
       // invoke the action
@@ -56,5 +54,3 @@ class Poll {
   }
 
 }
-
-module.exports = Poll;

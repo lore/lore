@@ -1,27 +1,39 @@
-var _ = require('lodash');
-var extend = require('./utils/extend');
-var sync = require('./sync');
-var Model = require('./model');
-var urlError = require('./utils/urlError');
+/* eslint prefer-spread: "off" */
+/* eslint no-param-reassign: "off" */
+/* eslint prefer-rest-params: "off" */
+/* eslint no-unused-expressions: "off" */
+/* eslint consistent-return: "off" */
+/* eslint no-plusplus: "off" */
+/* eslint no-void: "off" */
+/* eslint new-cap: "off" */
+
+import _ from 'lodash';
+import extend from './utils/extend';
+import sync from './sync';
+import Model from './model';
 
 // Splices `insert` into `array` at index `at`.
-var splice = function(array, insert, at) {
+const splice = function(array, insert, at) {
   at = Math.min(Math.max(at, 0), array.length);
-  var tail = Array(array.length - at);
-  var length = insert.length;
-  var i;
+  const tail = Array(array.length - at);
+  const length = insert.length;
+  let i;
   for (i = 0; i < tail.length; i++) tail[i] = array[i + at];
   for (i = 0; i < length; i++) array[i + at] = insert[i];
   for (i = 0; i < tail.length; i++) array[i + length + at] = tail[i];
 };
 
-var Collection = function(models, options) {
+const Collection = function(models, options) {
   options || (options = {});
   if (options.model) this.model = options.model;
-  if (options.comparator !== void 0) this.comparator = options.comparator;
+  if (options.comparator !== void 0) {
+    this.comparator = options.comparator;
+  }
   this._reset();
   this.initialize.apply(this, arguments);
-  if (models) this.reset(models, _.extend({silent: true}, options));
+  if (models) {
+    this.reset(models, _.extend({ silent: true }, options));
+  }
 };
 
 // Attach all inheritable methods to the Model prototype.
@@ -33,7 +45,7 @@ _.extend(Collection.prototype, {
 
   // Initialize is an empty function by default. Override it with your own
   // initialization logic.
-  initialize: function(){},
+  initialize: function() {},
 
   // Add a model, or list of models to the set. `models` may be Backbone
   // Models or raw JavaScript objects to be converted to Models, or any
@@ -58,12 +70,13 @@ _.extend(Collection.prototype, {
       console.error('Expected models to be an array but got ', models, '. Did you forget to override parse to extract the models?');
     }
 
-    var singular = !_.isArray(models);
+    const singular = !_.isArray(models);
     models = singular ? [models] : models.slice();
 
     // Turn bare objects into model references, and prevent invalid models
     // from being added.
-    var model, i;
+    let model;
+    let i;
     for (i = 0; i < models.length; i++) {
       model = models[i];
 
@@ -102,10 +115,10 @@ _.extend(Collection.prototype, {
   // Fetch the default set of models for this collection, resetting the
   // collection when they arrive.
   fetch: function(options) {
-    options = _.extend({parse: true}, options);
+    options = _.extend({ parse: true }, options);
 
     // Reset the default models
-    var collection = this;
+    const collection = this;
     options.success = function(attributes) {
       collection.reset(attributes, options);
     };
@@ -124,7 +137,7 @@ _.extend(Collection.prototype, {
   _reset: function() {
     this.length = 0;
     this.models = [];
-    this._byId  = {};
+    this._byId = {};
   },
 
   // Prepare a hash of attributes (or other model) to be added to this
@@ -132,7 +145,7 @@ _.extend(Collection.prototype, {
   _prepareModel: function(attrs, options) {
     options = options ? _.clone(options) : {};
     options.collection = this;
-    var model = new this.model(attrs, options);
+    const model = new this.model(attrs, options);
     return model;
   }
 
@@ -140,4 +153,4 @@ _.extend(Collection.prototype, {
 
 Collection.extend = extend;
 
-module.exports = Collection;
+export default Collection;

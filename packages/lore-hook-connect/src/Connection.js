@@ -1,7 +1,7 @@
-var _ = require('lodash');
-var InvalidReducerKeyError = require('./errors/InvalidReducerKeyError');
-var InvalidActionKeyError = require('./errors/InvalidActionKeyError');
-var PayloadStates = require('lore-utils').PayloadStates;
+import _ from 'lodash';
+import { PayloadStates } from 'lore-utils';
+import InvalidReducerKeyError from './errors/InvalidReducerKeyError';
+import InvalidActionKeyError from './errors/InvalidActionKeyError';
 
 
 /**
@@ -53,8 +53,8 @@ _.extend(Connection.prototype, {
    * @returns {Function} action to invoke
    */
   getAction: function(actions) {
-    var key = this.actionKey;
-    var action = _.get(actions, key);
+    const key = this.actionKey;
+    const action = _.get(actions, key);
     if (!action) {
       throw InvalidActionKeyError(key);
     }
@@ -67,8 +67,8 @@ _.extend(Connection.prototype, {
    * @returns {Object} the piece of state owned by the reducer
    */
   getReducerState: function(storeState) {
-    var key = this.reducerKey;
-    var reducerState = _.get(storeState, key);
+    const key = this.reducerKey;
+    const reducerState = _.get(storeState, key);
     if (!reducerState) {
       throw InvalidReducerKeyError(key);
     }
@@ -102,14 +102,13 @@ _.extend(Connection.prototype, {
    * @param {Object} userParams : parameters passed to the getState function
    * @returns {Object} payload sent to the Redux Store
    */
-  getState: function(state, userParams, options) {
-    options = options || {};
-    var params = _.assign({}, this.defaults, userParams);
+  getState: function(state, userParams, options = {}) {
+    const params = _.assign({}, this.defaults, userParams);
     this.verifyParams(params);
 
-    var action = this.getAction(this.actions);
-    var reducerState = this.getReducerState(state);
-    var payload = this.getPayload(reducerState, params);
+    const action = this.getAction(this.actions);
+    const reducerState = this.getReducerState(state);
+    let payload = this.getPayload(reducerState, params);
 
     if (!payload || payload.state === PayloadStates.INITIAL_STATE || options.force) {
       payload = this.callAction(action, params) || payload;
@@ -120,4 +119,4 @@ _.extend(Connection.prototype, {
 
 });
 
-module.exports = Connection;
+export default Connection;

@@ -6,7 +6,7 @@ Most of these files are functions intended to be used only by the Lore core, fou
 official public interface for lore is this:
 
 ```js
-var lore = require('lore');
+import lore from 'lore';
 
 // Builds the lore app, but does not mount it to the DOM. Useful for testing.
 lore.build(configOverride)

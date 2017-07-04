@@ -1,24 +1,26 @@
-var React = require('react');
-var Router = require('react-router');
-var AuthGeneratorFactory = require('../factories/AuthGeneratorFactory');
-var _ = require('lodash');
-var url = require('url');
+/* global window */
 
-function isFullyQualifiedUrl(url) {
+import React from 'react';
+import _ from 'lodash';
+import url from 'url';
+import { withRouter } from 'react-router';
+import AuthGeneratorFactory from '../factories/AuthGeneratorFactory';
+
+function isFullyQualifiedUrl(value) {
   return (
-    _.startsWith(url, 'https://') ||
-    _.startsWith(url, 'http://')
+    _.startsWith(value, 'https://') ||
+    _.startsWith(value, 'http://')
   );
 }
 
 function redirectToExternalUrl(pathname, query) {
-  var uri = url.parse(pathname);
+  const uri = url.parse(pathname);
   uri.query = query;
   window.location = uri.format();
 }
 
-module.exports = function(options) {
-  var defaults = {
+export default function(options) {
+  const defaults = {
     wrapperDisplayName: 'UserIsAuthenticated',
 
     propTypes: {
@@ -46,14 +48,14 @@ module.exports = function(options) {
     },
 
     redirectToLoginPage: function () {
-      var location = this.props.location;
-      var router = this.props.router;
-      var redirectUrl = this.redirectUrl;
-      var redirectQueryParamName = this.redirectQueryParamName;
+      const location = this.props.location;
+      const router = this.props.router;
+      const redirectUrl = this.redirectUrl;
+      const redirectQueryParamName = this.redirectQueryParamName;
 
       // create the new route, composed of where we want to go and where we
       // are now (so we can come back to this point after user is logged in)
-      var route = {
+      const route = {
         pathname: redirectUrl,
         query: {}
       };
@@ -70,7 +72,7 @@ module.exports = function(options) {
 
   };
 
-  var properties = _.defaultsDeep({}, options, defaults);
+  const properties = _.defaultsDeep({}, options, defaults);
 
-  return AuthGeneratorFactory(properties, Router.withRouter);
-};
+  return AuthGeneratorFactory(properties, withRouter);
+}

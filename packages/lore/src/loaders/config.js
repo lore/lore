@@ -1,10 +1,12 @@
-var buildDictionary = require('webpack-requiredir');
-var _ = require('lodash');
+/* global __LORE_ROOT__ */
+
+import buildDictionary from 'webpack-requiredir';
+import _ from 'lodash';
 
 // 'config/*'
 function loadOtherConfigFiles() {
-  var context = require.context(__LORE_ROOT__ + '/config', true, /\.js$/);
-  var config = buildDictionary(context, {
+  const context = require.context(`${__LORE_ROOT__}/config`, true, /\.js$/);
+  const config = buildDictionary(context, {
     exclude: ['local.js']
   });
 
@@ -13,8 +15,8 @@ function loadOtherConfigFiles() {
 
 // 'config/local'
 function loadLocalOverrideFile() {
-  var context = require.context(__LORE_ROOT__ + '/config', false, /\local.js$/);
-  var dictionary = buildDictionary(context, {
+  const context = require.context(`${__LORE_ROOT__}/config`, false, /local.js$/);
+  const dictionary = buildDictionary(context, {
     // options
   });
   return dictionary.local || {};
@@ -22,20 +24,20 @@ function loadLocalOverrideFile() {
 
 // 'config/env/*'
 function loadEnvConfigFile(env) {
-  var context = require.context(__LORE_ROOT__ + '/config/env', false, /\.js$/);
-  var dictionary = buildDictionary(context, {
+  const context = require.context(`${__LORE_ROOT__}/config/env`, false, /\.js$/);
+  const dictionary = buildDictionary(context, {
     // options
   });
   return dictionary[env] || {};
 }
 
-module.exports = {
+export default {
 
   load: function(env) {
     // Load all the config files we need to combine
-    var configs = {
+    const configs = {
       'config/*': loadOtherConfigFiles(),
-      'config/local' : loadLocalOverrideFile(),
+      'config/local': loadLocalOverrideFile(),
       'config/env/*': loadEnvConfigFile(env)
     };
 

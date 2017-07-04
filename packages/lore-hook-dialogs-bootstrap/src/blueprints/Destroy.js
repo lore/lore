@@ -1,7 +1,7 @@
-var React = require('react');
-var DialogMixin = require('../mixins/DialogMixin');
+import React from 'react';
+import DialogMixin from '../mixins/DialogMixin';
 
-module.exports = function(options) {
+export default function(options) {
   options = options || {};
 
   var title = options.title;

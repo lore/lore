@@ -1,23 +1,24 @@
-var _ = require('lodash');
-var sortReducersByLoadOrder = require('./sortReducersByLoadOrder');
-var ActionTypes = require('lore-utils').ActionTypes;
+/* eslint no-param-reassign: "off" */
 
-module.exports = function compositeReducer(reducers, dependencies, config) {
-  var loadOrder = sortReducersByLoadOrder(dependencies);
+import _ from 'lodash';
+import { ActionTypes } from 'lore-utils';
+import sortReducersByLoadOrder from './sortReducersByLoadOrder';
+
+export default function compositeReducer(reducers, dependencies, config) {
+  const loadOrder = sortReducersByLoadOrder(dependencies);
 
   // Create an initial state object from the reducer names
-  // var initialState = {
+  // const initialState = {
   //   find: undefined,
   //   byId: undefined,
   //   byCid: undefined
   // };
-  var initialState = _.mapValues(reducers, function() {
+  const initialState = _.mapValues(reducers, function() {
     return undefined;
   });
 
-  return function (state, action) {
-    state = state || initialState;
-    var nextState = {};
+  return function (state = initialState, action) {
+    const nextState = {};
 
     // If we receive an action to reset the store (such as when logging out)
     // reset the state to the initial state
@@ -27,7 +28,7 @@ module.exports = function compositeReducer(reducers, dependencies, config) {
 
     loadOrder.forEach(function(reducerName) {
       // Equivalent to calling:
-      // var _find = find(state.find, action, {
+      // const _find = find(state.find, action, {
       //   nextState: {
       //     byCid: _byCid,
       //     byId: _byId
@@ -43,4 +44,4 @@ module.exports = function compositeReducer(reducers, dependencies, config) {
     // Provide the config the ability to modify the next state returned
     return config.nextState(nextState);
   };
-};
+}

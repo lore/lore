@@ -1,8 +1,8 @@
-var React = require('react');
-var Create = require('./blueprints/Create');
-var Update = require('./blueprints/Update');
-var Destroy = require('./blueprints/Destroy');
-var _ = require('lodash');
+import React from 'react';
+import Create from './blueprints/Create';
+import Update from './blueprints/Update';
+import Destroy from './blueprints/Destroy';
+import _ from 'lodash';
 
 function getCreateDialog(defaults) {
   return function(props, options) {
@@ -31,7 +31,7 @@ function getDestroyDialog(defaults) {
   }
 }
 
-module.exports = {
+export default {
 
   dependencies: ['models'],
 

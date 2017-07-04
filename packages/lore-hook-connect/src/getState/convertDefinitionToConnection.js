@@ -1,12 +1,12 @@
-var _ = require('lodash');
-var Connection = require('../Connection');
-var MissingBlueprintError = require('../errors/MissingBlueprintError');
-var InvalidBlueprintError = require('../errors/InvalidBlueprintError');
+import _ from 'lodash';
+import Connection from '../Connection';
+import MissingBlueprintError from '../errors/MissingBlueprintError';
+import InvalidBlueprintError from '../errors/InvalidBlueprintError';
 
-module.exports = function convertDefinitionToConnection(stateKey, definition, actions, blueprints) {
-  var action = definition.action;
-  var reducer = definition.reducer || stateKey;
-  var blueprint = definition.blueprint;
+export default function convertDefinitionToConnection(stateKey, definition, actions, blueprints) {
+  const action = definition.action;
+  const reducer = definition.reducer || stateKey;
+  const blueprint = definition.blueprint;
 
   if (!blueprint) {
     throw MissingBlueprintError(stateKey);
@@ -17,10 +17,10 @@ module.exports = function convertDefinitionToConnection(stateKey, definition, ac
       reducer: reducer,
       action: action,
       actions: actions
-    })
+    });
   }
 
-  var conventionBasedBlueprint = blueprints[blueprint];
+  const conventionBasedBlueprint = blueprints[blueprint];
 
   if (!conventionBasedBlueprint) {
     throw InvalidBlueprintError(blueprint, _.keys(blueprints));
@@ -30,5 +30,5 @@ module.exports = function convertDefinitionToConnection(stateKey, definition, ac
     reducer: reducer,
     action: action,
     actions: actions
-  })
-};
+  });
+}

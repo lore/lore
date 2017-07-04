@@ -6,6 +6,47 @@
     // do not require function expressions to have a name
     "func-names": 0,
     // only quote object literal properties when needed
-    "quote-props": [2, "as-needed"]
+    "quote-props": [2, "as-needed"],
+    //
+    "space-before-function-paren": 0,
+    // allow function arguments to be unused
+    "no-unused-vars": [
+      2,
+      {
+        "args": "none"
+      }
+    ],
+    // don't require arrow syntax for callbacks
+    "prefer-arrow-callback": 0,
+    // allow console.log statements
+    "no-console": 0,
+    // allow syntax like x = { y: function() {} }
+    "object-shorthand": 0,
+    // allow dynamic requires, currently neccesary for testing
+    "import/no-dynamic-require": 1,
+    // allow use of vague PropTypes like object
+    "react/forbid-prop-types": 0,
+    // allow jsx in .js files
+    "react/jsx-filename-extension": 0,
+    // warn if imports are unresolved
+    "import/no-unresolved": "warn",
+    // do not require file extensions
+    "import/extensions": 0,
+    // allow missing PropTypes
+    "react/prop-types": 0,
+    // do not sort methods
+    "react/sort-comp": 0,
+    // allow class methods that don't use "this"
+    "class-methods-use-this": 0,
+    // do not require form labels to have an associated control
+    "jsx-a11y/label-has-for": 0,
+    // allow interactions on non-interactive elements
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    // allow underscore dangles like _var
+    "no-underscore-dangle": 0,
+    // allow ability to specify boolean props however you want
+    "react/jsx-boolean-value": 0,
+    // allow nested ternary expressions
+    "no-nested-ternary": 0
   }
 }

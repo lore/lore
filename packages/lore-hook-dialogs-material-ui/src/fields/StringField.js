@@ -1,7 +1,7 @@
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react';
+import { TextField } from 'material-ui';
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'StringField',
 
   propTypes: {
@@ -41,7 +41,7 @@ module.exports = React.createClass({
     var styles = this.getStyles();
 
     return (
-      <mui.TextField
+      <TextField
         style={styles.field}
         floatingLabelText={attribute.displayName || this.props.label}
         hintText={attribute.placeholder}

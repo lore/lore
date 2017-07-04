@@ -1,10 +1,8 @@
-var React = require('react');
-var mui = require('material-ui');
-var _ = require('lodash');
-import FlatButton from 'material-ui/FlatButton';
-var DialogMixin = require('../mixins/DialogMixin');
+import React from 'react';
+import { Dialog, FlatButton } from 'material-ui';
+import DialogMixin from '../mixins/DialogMixin';
 
-module.exports = function(options) {
+export default function(options) {
   options = options || {};
 
   var title = options.title;
@@ -37,7 +35,7 @@ module.exports = function(options) {
       ];
 
       return (
-        <mui.Dialog
+        <Dialog
           ref="dialog"
           title={title}
           open={this.state.isOpen}
@@ -46,7 +44,7 @@ module.exports = function(options) {
           <p>
             Are you sure you want to delete this?
           </p>
-        </mui.Dialog>
+        </Dialog>
       );
     }
   }));

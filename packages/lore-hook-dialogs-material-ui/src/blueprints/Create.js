@@ -1,14 +1,13 @@
-var React = require('react');
-var mui = require('material-ui');
-var _ = require('lodash');
-import FlatButton from 'material-ui/FlatButton';
-var DialogMixin = require('../mixins/DialogMixin');
-var StringField = require('../fields/StringField');
-var TextField = require('../fields/TextField');
-var BooleanField = require('../fields/BooleanField');
-var NumberField = require('../fields/NumberField');
+import React from 'react';
+import { Dialog, FlatButton } from 'material-ui';
+import _ from 'lodash';
+import DialogMixin from '../mixins/DialogMixin';
+import StringField from '../fields/StringField';
+import TextField from '../fields/TextField';
+import BooleanField from '../fields/BooleanField';
+import NumberField from '../fields/NumberField';
 
-module.exports = function(options) {
+export default function(options) {
   options = options || {};
 
   var title = options.title;
@@ -105,7 +104,7 @@ module.exports = function(options) {
       ];
 
       return (
-        <mui.Dialog
+        <Dialog
           ref="dialog"
           title={title}
           open={this.state.isOpen}
@@ -113,7 +112,7 @@ module.exports = function(options) {
           contentClassName={this.props.contentClassName} >
           {description}
           {formFields}
-        </mui.Dialog>
+        </Dialog>
       );
     }
   }));

@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react';
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'PropBarrier',
 
   propTypes: {
@@ -12,16 +12,16 @@ module.exports = React.createClass({
     return {
       element: 'div',
       className: ''
-    }
+    };
   },
 
   render: function() {
-    var element = this.props.element;
-    var className = this.props.className;
-    var children = this.props.children;
+    const element = this.props.element;
+    const className = this.props.className;
+    const children = this.props.children;
 
-    var props = {
-      className: className ? className : null
+    const props = {
+      className: className || null
     };
 
     if (children.length) {

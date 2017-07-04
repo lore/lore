@@ -1,4 +1,4 @@
-const _ = require('lodash');
+import _ from 'lodash';
 
 /**
  * Blueprint for building reducers from a set of common behaviors
@@ -31,7 +31,7 @@ function validateInitialState(initialState) {
   }
 }
 
-module.exports = function blueprint(initialState = {}, params = {}) {
+export default function blueprint(initialState = {}, params = {}) {
   validateInitialState(initialState);
 
   return function reducer(state, action) {
@@ -52,4 +52,4 @@ module.exports = function blueprint(initialState = {}, params = {}) {
 
     return newState;
   };
-};
+}
