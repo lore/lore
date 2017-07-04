@@ -1,5 +1,4 @@
 var pluralize = require('pluralize');
-var defaultsDeep = require('lore-utils').defaultsDeep;
 var _ = require('lodash');
 
 var CasingStyles = {
@@ -63,9 +62,11 @@ module.exports = function(collectionName, options) {
    * just interested in whether apiRoot or pluralize has been set in /models.
    */
 
-  var config = {};
-  defaultsDeep(config, collectionsConfig);
-  defaultsDeep(config, _.omit(modelsConfig, 'properties'));
+  var config = _.defaultsDeep(
+    {},
+    collectionsConfig,
+    _.omit(modelsConfig, 'properties')
+  );
 
   /**
    * SPECIAL CASE:
@@ -87,9 +88,11 @@ module.exports = function(collectionName, options) {
    * just interested in whether apiRoot or pluralize has been set in /models.
    */
 
-  var definition = {};
-  defaultsDeep(definition, collectionDefinition);
-  defaultsDeep(definition, _.omit(modelDefinition, 'properties'));
+  var definition = _.defaultsDeep(
+    {},
+    collectionDefinition,
+    _.omit(modelDefinition, 'properties')
+  );
 
   /**
    * Merge apiRoot, pluralize and casingStyle from config files for
@@ -113,11 +116,12 @@ module.exports = function(collectionName, options) {
   }
 
   // Build the final set of properties for the collection
-  var properties = {};
-  defaultsDeep(properties, definition.properties);
-  defaultsDeep(properties, config.properties);
-  defaultsDeep(properties, connection.collections.properties);
-  defaultsDeep(properties, conventions.properties);
+  var properties = _.defaultsDeep({},
+    definition.properties,
+    config.properties,
+    connection.collections.properties,
+    conventions.properties
+  );
 
   return properties;
 };

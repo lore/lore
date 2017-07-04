@@ -1,5 +1,4 @@
 var pluralize = require('pluralize');
-var defaultsDeep = require('lore-utils').defaultsDeep;
 var _ = require('lodash');
 
 var CasingStyles = {
@@ -67,11 +66,13 @@ module.exports = function(modelName, options) {
   }
 
   // Build the final set of properties for the collection
-  var properties = {};
-  defaultsDeep(properties, definition.properties);
-  defaultsDeep(properties, config.properties);
-  defaultsDeep(properties, connection.models.properties);
-  defaultsDeep(properties, conventions.properties);
+  var properties = _.defaultsDeep(
+    {},
+    definition.properties,
+    config.properties,
+    connection.models.properties,
+    conventions.properties
+  );
 
   return properties;
 };
