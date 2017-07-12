@@ -18,7 +18,8 @@ _.extend(TemplateFileWriter.prototype, {
 
   write: function(source, target, options) {
     return readFile(source, 'utf8').then(function(template) {
-      var data = _.template(template, options);
+      var compiled = _.template(template);
+      var data = compiled(options);
 
       if (!options.escapeHTMLEntities) {
         data = _.unescape(data);
