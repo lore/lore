@@ -1,6 +1,6 @@
 {
   "name": "lore-generate-model",
-  "version": "0.12.6",
+  "version": "0.12.7",
   "license": "MIT",
   "main": "index.js",
   "description": "Generates a Lore model",
@@ -17,7 +17,7 @@
     "bluebird": "3.1.1",
     "camel-case": "1.2.2",
     "lodash": "^4.0.0",
-    "lore-generate": "^0.12.6"
+    "lore-generate": "^0.12.7"
   },
   "devDependencies": {
     "chai": "3.5.0",

@@ -1,6 +1,6 @@
 {
   "name": "lore-generate-github",
-  "version": "0.12.6",
+  "version": "0.12.7",
   "license": "MIT",
   "main": "index.js",
   "description": "Generates a gulp task to publish a Lore project to GitHub Pages",
@@ -16,7 +16,7 @@
   "dependencies": {
     "bluebird": "3.1.1",
     "lodash": "^4.0.0",
-    "lore-generate": "^0.12.6"
+    "lore-generate": "^0.12.7"
   },
   "devDependencies": {
     "chai": "3.4.1",
