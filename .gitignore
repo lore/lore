@@ -6,6 +6,7 @@ coverage
 .tracker
 .tmp
 lib
+es
 package-lock.json
 npm-debug.log
 

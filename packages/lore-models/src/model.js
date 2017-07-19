@@ -1,17 +1,27 @@
-var _ = require('lodash');
-var extend = require('./utils/extend');
-var sync = require('./sync');
-var urlError = require('./utils/urlError');
+/* eslint prefer-spread: "off" */
+/* eslint no-param-reassign: "off" */
+/* eslint no-useless-escape: "off" */
+/* eslint no-restricted-syntax: "off" */
+/* eslint prefer-rest-params: "off" */
+/* eslint no-unused-expressions: "off" */
+/* eslint consistent-return: "off" */
+/* eslint no-multi-assign: "off" */
+/* eslint guard-for-in: "off" */
 
-var Model = function(attributes, options) {
-  var attrs = attributes || {};
+import _ from 'lodash';
+import extend from './utils/extend';
+import sync from './sync';
+import urlError from './utils/urlError';
+
+const Model = function(attributes, options) {
+  let attrs = attributes || {};
   options || (options = {});
 
   this.cid = this.generateCid();
   this.attributes = {};
   if (options.collection) this.collection = options.collection;
   if (options.parse) attrs = this.parse(attrs, options) || {};
-  var defaults = _.result(this, 'defaults');
+  const defaults = _.result(this, 'defaults');
   attrs = _.defaults(_.extend({}, defaults, attrs), defaults);
   this.set(attrs, options);
   this.changed = {};
@@ -40,7 +50,7 @@ _.extend(Model.prototype, {
 
   // Initialize is an empty function by default. Override it with your own
   // initialization logic.
-  initialize: function(){},
+  initialize: function() {},
 
   // Return a copy of the model's `attributes` object.
   toJSON: function(options) {
@@ -71,7 +81,7 @@ _.extend(Model.prototype, {
     if (key == null) return this;
 
     // Handle both `"key", value` and `{key: value}` -style arguments.
-    var attrs;
+    let attrs;
     if (typeof key === 'object') {
       attrs = key;
       options = val;
@@ -84,10 +94,10 @@ _.extend(Model.prototype, {
     // Run validation.
     if (!this._validate(attrs, options)) return false;
 
-    var current = this.attributes;
+    const current = this.attributes;
 
     // For each `set` attribute, update or delete the current value.
-    for (var attr in attrs) {
+    for (const attr in attrs) {
       val = attrs[attr];
       current[attr] = val;
     }
@@ -101,10 +111,10 @@ _.extend(Model.prototype, {
   // Fetch the model from the server, merging the response with the model's
   // local attributes. Any changed attributes will trigger a "change" event.
   fetch: function(options) {
-    options = _.extend({parse: true}, options);
+    options = _.extend({ parse: true }, options);
 
     // After a successful fetch, the model is updated with the server-side state.
-    var model = this;
+    const model = this;
     options.success = function(attributes) {
       if (options.parse) {
         attributes = model.parse(attributes, options);
@@ -123,7 +133,7 @@ _.extend(Model.prototype, {
   // state will be `set` again.
   save: function(key, val, options) {
     // Handle both `"key", value` and `{key: value}` -style arguments.
-    var attrs;
+    let attrs;
     if (key == null || typeof key === 'object') {
       attrs = key;
       options = val;
@@ -131,7 +141,7 @@ _.extend(Model.prototype, {
       (attrs = {})[key] = val;
     }
 
-    options = _.extend({validate: true, parse: true}, options);
+    options = _.extend({ validate: true, parse: true }, options);
 
     // If we're not waiting and attributes exist, save acts as
     // `set(attr).save(null, opts)` with validation. Otherwise, check if
@@ -143,7 +153,7 @@ _.extend(Model.prototype, {
     }
 
     // After a successful server-side save, the model is updated with the server-side state.
-    var model = this;
+    const model = this;
     options.success = function(attributes) {
       if (options.parse) {
         attributes = model.parse(attributes, options);
@@ -154,7 +164,9 @@ _.extend(Model.prototype, {
       }
     };
 
-    var method = this.isNew() ? 'create' : (options.patch ? 'patch' : 'update');
+    const method = this.isNew() ? 'create' : (
+      options.patch ? 'patch' : 'update'
+    );
     if (method === 'patch' && !options.attrs) options.attrs = attrs;
     return this.sync(method, this, options);
   },
@@ -171,12 +183,12 @@ _.extend(Model.prototype, {
   // using Backbone's restful methods, override this to change the endpoint
   // that will be called.
   url: function() {
-    var base =
+    const base =
       _.result(this, 'urlRoot') ||
       _.result(this.collection, 'url') ||
       urlError();
     if (this.isNew()) return base;
-    var id = this.get(this.idAttribute);
+    const id = this.get(this.idAttribute);
     return base.replace(/[^\/]$/, '$&/') + encodeURIComponent(id);
   },
 
@@ -196,7 +208,7 @@ _.extend(Model.prototype, {
   _validate: function(attrs, options) {
     if (!options.validate || !this.validate) return true;
     attrs = _.extend({}, this.attributes, attrs);
-    var error = this.validationError = this.validate(attrs, options) || null;
+    const error = this.validationError = this.validate(attrs, options) || null;
     if (!error) return true;
     return false;
   }
@@ -205,4 +217,4 @@ _.extend(Model.prototype, {
 
 Model.extend = extend;
 
-module.exports = Model;
+export default Model;

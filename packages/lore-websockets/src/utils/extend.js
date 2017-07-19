@@ -1,3 +1,5 @@
+/* eslint prefer-rest-params: "off" */
+
 // Helper function to correctly set up the prototype chain for subclasses.
 // Similar to `goog.inherits`, but uses a hash of prototype properties and
 // class properties to be extended.
@@ -5,9 +7,11 @@
 // Implementation copied from Backbone.js:
 // http://backbonejs.org
 
-module.exports = function extend(protoProps, staticProps) {
-  var parent = this;
-  var child;
+import _ from 'lodash';
+
+export default function extend(protoProps, staticProps) {
+  const parent = this;
+  let child;
 
   // The constructor function for the new subclass is either defined by you
   // (the "constructor" property in your `extend` definition), or defaulted
@@ -15,7 +19,9 @@ module.exports = function extend(protoProps, staticProps) {
   if (protoProps && _.has(protoProps, 'constructor')) {
     child = protoProps.constructor;
   } else {
-    child = function(){ return parent.apply(this, arguments); };
+    child = function() {
+      return parent.apply(this, arguments);
+    };
   }
 
   // Add static properties to the constructor function, if supplied.
@@ -31,4 +37,4 @@ module.exports = function extend(protoProps, staticProps) {
   child.__super__ = parent.prototype;
 
   return child;
-};
+}

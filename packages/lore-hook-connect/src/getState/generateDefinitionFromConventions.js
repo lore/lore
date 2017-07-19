@@ -1,18 +1,21 @@
-var _ = require('lodash');
+/* eslint no-unused-vars: "off" */
+/* eslint no-param-reassign: "off" */
 
-module.exports = function generateDefinitionFromConventions(stateKey, reducerActionMap) {
-  var tokens = stateKey.split('.');
-  var modelName = tokens[0];
-  var reducer = tokens[1];
+import _ from 'lodash';
 
-  var map = _.transform(reducerActionMap, function(result, value, key) {
-    var newKey = key.replace('*', modelName);
+export default function generateDefinitionFromConventions(stateKey, reducerActionMap) {
+  const tokens = stateKey.split('.');
+  const modelName = tokens[0];
+  const reducer = tokens[1];
+
+  const map = _.transform(reducerActionMap, function(result, value, key) {
+    const newKey = key.replace('*', modelName);
     result[newKey] = {
       action: value.action ? value.action.replace('*', modelName) : null,
       reducer: value.reducer ? value.reducer.replace('*', modelName) : null,
       blueprint: value.blueprint ? value.blueprint.replace('*', modelName) : null,
-    }
+    };
   }, {});
 
   return map[stateKey];
-};
+}

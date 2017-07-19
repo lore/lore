@@ -1,14 +1,16 @@
-var axios = require('axios');
-var _ = require('lodash');
-var urlError = require('./utils/urlError');
+/* eslint no-param-reassign: "off" */
+
+import axios from 'axios';
+import _ from 'lodash';
+import urlError from './utils/urlError';
 
 // Map from CRUD to HTTP for our default `Backbone.sync` implementation.
-var methodMap = {
-  'create': 'POST',
-  'update': 'PUT',
-  'patch': 'PATCH',
-  'delete': 'DELETE',
-  'read': 'GET'
+const methodMap = {
+  create: 'POST',
+  update: 'PUT',
+  patch: 'PATCH',
+  delete: 'DELETE',
+  read: 'GET'
 };
 
 /**
@@ -17,12 +19,12 @@ var methodMap = {
  * @param model
  * @param options
  */
-module.exports = function sync(method, model, options) {
+export default function sync(method, model, options) {
   options = options || {};
-  var type = methodMap[method];
+  const type = methodMap[method];
 
   // Default JSON-request options.
-  var params = {
+  const params = {
     method: type,
     responseType: 'json',
     headers: _.assign({
@@ -54,4 +56,4 @@ module.exports = function sync(method, model, options) {
     }
     return resp;
   });
-};
+}

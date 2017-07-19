@@ -1,23 +1,25 @@
-var _ = require('lodash');
-var convertDefinitionToConnection = require('./convertDefinitionToConnection');
-var generateDefinitionFromConventions = require('./generateDefinitionFromConventions');
+import convertDefinitionToConnection from './convertDefinitionToConnection';
+import generateDefinitionFromConventions from './generateDefinitionFromConventions';
 
 function ConnectionMappingError(stateKey) {
-  var error = new Error(
-    'Could not map reducer state ' + stateKey + ' to an action.\n' +
-    'Does not map to conventions and did not find a definition in the reducerActionMap.'
+  const error = new Error(
+    `Could not map reducer state ${stateKey} to an action.
+    Does not map to conventions and did not find a definition in the reducerActionMap.`
   );
   error.name = 'ConnectionMappingError';
   return error;
 }
 
-module.exports = function getConnection(stateKey, reducerActionMap, actions, blueprints) {
-  var definition = reducerActionMap[stateKey] || generateDefinitionFromConventions(stateKey, reducerActionMap);
+export default function getConnection(stateKey, reducerActionMap, actions, blueprints) {
+  const definition = (
+    reducerActionMap[stateKey] ||
+    generateDefinitionFromConventions(stateKey, reducerActionMap)
+  );
 
   if (!definition) {
     throw new ConnectionMappingError(stateKey);
   }
 
-  var connection = convertDefinitionToConnection(stateKey, definition, actions, blueprints);
+  const connection = convertDefinitionToConnection(stateKey, definition, actions, blueprints);
   return connection;
-};
+}

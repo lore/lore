@@ -1,5 +1,4 @@
-module.exports = function toJsonKey(params) {
-
+export default function toJsonKey(params) {
   // Why are we recreating the params object before stringify-ing it?
   //
   // In order for this lookup to work, we NEED the key we generate to match the key used to
@@ -22,4 +21,4 @@ module.exports = function toJsonKey(params) {
     where: params.where,
     pagination: params.pagination
   });
-};
+}

@@ -1,14 +1,12 @@
 function InvalidGetStateCall(reducerKey) {
-  var newline = '\n';
-  var error = new Error(
-    newline + newline +
-    'Invalid call to `getState(\'' + reducerKey + '\')`. Missing required attribute `cid`. ' + newline +
-    newline +
-    'Expected method call to look like this:' + newline +
-    newline +
-    'getState(\'' + reducerKey + '\', {' + newline +
-    "  cid: 'c1'" + newline +
-    '})'
+  const error = new Error(
+    `
+    Invalid call to 'getState('${reducerKey}'). Missing required attribute 'cid'.
+    Expected method call to look like this:
+    
+    getState('${reducerKey}', {
+      cid: 'c1'
+    })`
   );
   error.name = 'InvalidGetStateCall';
   return error;
@@ -18,7 +16,7 @@ function InvalidGetStateCall(reducerKey) {
  * byCid Connection Blueprint
  */
 
-module.exports = {
+export default {
 
   defaults: {
     cid: null
@@ -35,7 +33,7 @@ module.exports = {
   },
 
   getPayload: function(reducerState, params) {
-    var key = params.cid;
+    const key = params.cid;
     return reducerState[key];
   }
 

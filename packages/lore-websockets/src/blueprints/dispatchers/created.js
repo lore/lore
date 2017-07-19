@@ -1,11 +1,11 @@
-var ActionTypes = require('../../utils/ActionTypes');
-var PayloadStates = require('../../utils/PayloadStates');
-var payload = require('../../utils/payload');
+import ActionTypes from '../../utils/ActionTypes';
+import PayloadStates from '../../utils/PayloadStates';
+import payload from '../../utils/payload';
 
-module.exports = function(modelName, Model) {
+export default function(modelName, Model) {
   return function (store) {
     return function (message) {
-      var model = new Model(message.data);
+      const model = new Model(message.data);
 
       // todo: replace this with a more configurable solution
       if (model.get('cid')) {
@@ -16,6 +16,6 @@ module.exports = function(modelName, Model) {
         type: ActionTypes.add(modelName),
         payload: payload(model, PayloadStates.RESOLVED)
       });
-    }
-  }
-};
+    };
+  };
+}

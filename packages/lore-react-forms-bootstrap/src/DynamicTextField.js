@@ -1,26 +1,27 @@
-var React = require('react');
-var _ = require('lodash');
-var Field = require('./common/BootstrapField');
+/* eslint prefer-template: "off" */
+
+import React from 'react';
+import Field from './common/BootstrapField';
 
 class DynamicTextField extends Field {
 
   render() {
-    var name = this.props.name;
-    var error = this.props.errors[name];
-    var value = this.props.data[name];
-    var touched = this.state.touched;
-    var hintText = this.props.hintText;
-    var label = this.props.label;
-    var disabled = this.props.disabled;
-    var _model = this.props._model;
+    const name = this.props.name;
+    const error = this.props.errors[name];
+    const value = this.props.data[name];
+    const touched = this.state.touched;
+    const hintText = this.props.hintText;
+    const label = this.props.label;
+    // const disabled = this.props.disabled;
+    const _model = this.props._model;
 
-    var style = _.assign({}, {width: '100%'}, this.props.style);
-    var options = this.props.getMessage ? this.props.getMessage(_model) : {};
+    // const style = _.assign({}, {width: '100%'}, this.props.style);
+    const options = this.props.getMessage ? this.props.getMessage(_model) : {};
 
-    var displayError = (touched && error) || options.message;
+    const displayError = (touched && error) || options.message;
 
     return (
-      <div className={"form-group" + (displayError ? " has-error" : "")} style={{position: 'relative'}}>
+      <div className={'form-group' + (displayError ? ' has-error' : '')} style={{ position: 'relative' }}>
         <label>{label}</label>
         <input
           type="text"
@@ -29,7 +30,8 @@ class DynamicTextField extends Field {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           className="form-control"
-          placeholder={hintText} />
+          placeholder={hintText}
+        />
         {displayError ? (
           <span className="help-block">{error || options.message}</span>
         ) : null}
@@ -42,4 +44,4 @@ class DynamicTextField extends Field {
 
 }
 
-module.exports = DynamicTextField;
+export default DynamicTextField;

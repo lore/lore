@@ -1,8 +1,8 @@
-var _ = require('lodash');
-var actionGenerator = require('./action');
-var reducerGenerator = require('./reducer');
+import _ from 'lodash';
+import actionGenerator from './action';
+import reducerGenerator from './reducer';
 
-module.exports = {
+export default {
 
   dependencies: ['models', 'actions', 'reducers', 'connect'],
 
@@ -10,27 +10,26 @@ module.exports = {
     auth: {
       modelName: null,
       actionName: null, // defaults to modelName
-      reducerName:null // defaults to modelName
+      reducerName: null // defaults to modelName
     }
   },
 
   load: function(lore) {
-    var config = lore.config.auth;
-    var modelName = config.modelName;
-    var models = lore.models;
-    var store = lore.store;
+    const config = lore.config.auth;
+    const modelName = config.modelName;
+    const models = lore.models;
 
     if (!modelName) {
       throw new Error('lore-hook-auth requires a modelName be set in the config');
     }
 
-    var actionName = config.actionName || modelName;
-    var reducerName = config.reducerName || modelName;
+    const actionName = config.actionName || modelName;
+    const reducerName = config.reducerName || modelName;
 
-    var action = actionGenerator(modelName, models);
+    const action = actionGenerator(modelName, models);
     _.set(lore.actions, actionName, action);
 
-    var reducer = reducerGenerator(modelName);
+    const reducer = reducerGenerator(modelName);
     _.set(lore.reducers, reducerName, reducer);
 
     _.set(lore.config.connect.reducerActionMap, reducerName, {

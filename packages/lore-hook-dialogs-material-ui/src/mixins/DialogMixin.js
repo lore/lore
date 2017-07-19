@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react';
 
-module.exports = {
+export default {
 
   propTypes: {
     onSubmit: React.PropTypes.func

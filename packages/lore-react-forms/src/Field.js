@@ -1,11 +1,13 @@
-var React = require('react');
-var _ = require('lodash');
+/* eslint react/no-unused-prop-types: "off" */
+
+import React from 'react';
+import _ from 'lodash';
 
 class Field extends React.Component {
 
   constructor(props) {
     super(props);
-    var value = props.data[props.name];
+    // const value = props.data[props.name];
     this.state = {
       // value: value,
       touched: false
@@ -33,10 +35,10 @@ class Field extends React.Component {
   }
 
   render() {
-    var name = this.props.name;
-    var error = this.props.errors[name];
-    var validators = this.props.validators[name];
-    var value = this.props.data[name];
+    const name = this.props.name;
+    // const error = this.props.errors[name];
+    // const validators = this.props.validators[name];
+    const value = this.props.data[name];
 
     return (
       <div>{value}</div>
@@ -55,7 +57,7 @@ Field.propTypes = {
 Field.defaultProps = {
   validators: {},
   data: {},
-  // onChange: function(){},
+  onChange: function() {}
 };
 
-module.exports = Field;
+export default Field;

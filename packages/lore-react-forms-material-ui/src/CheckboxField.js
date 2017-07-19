@@ -1,7 +1,7 @@
-var React = require('react');
-var _ = require('lodash');
-var Field = require('lore-react-forms/Field');
-var mui = require('material-ui');
+import React from 'react';
+import _ from 'lodash';
+import Field from 'lore-react-forms/Field';
+import mui from 'material-ui';
 
 class TextField extends Field {
 
@@ -11,13 +11,13 @@ class TextField extends Field {
   }
 
   render() {
-    var name = this.props.name;
-    var error = this.props.errors[name];
-    var value = this.props.data[name];
-    var touched = this.state.touched;
-    var label = this.props.label;
+    const name = this.props.name;
+    // const error = this.props.errors[name];
+    const value = this.props.data[name];
+    // const touched = this.state.touched;
+    const label = this.props.label;
 
-    var style = _.assign({}, {width: '100%'}, this.props.style);
+    const style = _.assign({}, { width: '100%' }, this.props.style);
 
     return (
       <mui.Checkbox
@@ -31,4 +31,4 @@ class TextField extends Field {
 
 }
 
-module.exports = TextField;
+export default TextField;

@@ -1,15 +1,18 @@
-var _ = require('lodash');
-var redux = require('redux');
-var bindActionCreators = redux.bindActionCreators;
-var blueprints = {
-  subscribe: require('./blueprints/subscribe')
+/* eslint no-param-reassign: "off" */
+
+import _ from 'lodash';
+import { bindActionCreators } from 'redux';
+import subscribe from './blueprints/subscribe';
+
+const blueprints = {
+  subscribe: subscribe
 };
 
 function bindAction(action, store) {
   // if the module isn't a function, then it's an object describing the action
   // config and needs to be converted to a real function
-  if(!_.isFunction(action)){
-    action = actionBlueprints[action.blueprint](action);
+  if (!_.isFunction(action)) {
+    action = blueprints[action.blueprint](action);
   }
 
   return bindActionCreators(action, store.dispatch);
@@ -17,8 +20,8 @@ function bindAction(action, store) {
 
 function bindActionsToActionCreators(actions, store) {
   Object.keys(actions).forEach(function(key) {
-    var action = actions[key];
-    var boundAction = null;
+    const action = actions[key];
+    let boundAction = null;
     if (_.isPlainObject(action) && Object.keys(action).length > 0 && Object.keys(action).indexOf('blueprint') < 0) {
       boundAction = bindActionsToActionCreators(action, store);
     } else {
@@ -29,15 +32,15 @@ function bindActionsToActionCreators(actions, store) {
   return actions;
 }
 
-module.exports = {
+export default {
 
   dependencies: ['models', 'collections', 'redux'],
 
   load: function(lore) {
-    var models = lore.models;
-    var collections = lore.collections;
-    var store = lore.store;
-    var actions = {};
+    const models = lore.models;
+    // const collections = lore.collections;
+    const store = lore.store;
+    const actions = {};
 
     // todo: should actions be created for files in /collections
     // that have no corresponding model in /models Currently
@@ -47,7 +50,7 @@ module.exports = {
       actions[modelName] = actions[modelName] || {};
       _.assign(actions[modelName], {
         subscribe: blueprints.subscribe(modelName, models)
-      })
+      });
     });
 
     // Bind all actions to the store's dispatch method

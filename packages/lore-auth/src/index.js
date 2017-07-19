@@ -1,13 +1,11 @@
-module.exports = {
+import UserIsAuthorized from './decorators/UserIsAuthorized';
+import AuthGeneratorFactory from './factories/AuthGeneratorFactory';
+import AuthenticationGenerator from './generators/AuthenticationGenerator';
+import AuthorizationGenerator from './generators/AuthorizationGenerator';
 
-  // decorators
-  UserIsAuthorized: require('./decorators/UserIsAuthorized'),
-
-  // generator factories
-  AuthGeneratorFactory: require('./factories/AuthGeneratorFactory'),
-
-  // generators
-  AuthenticationGenerator: require('./generators/AuthenticationGenerator'),
-  AuthorizationGenerator: require('./generators/AuthorizationGenerator')
-
+export {
+  UserIsAuthorized,
+  AuthGeneratorFactory,
+  AuthenticationGenerator,
+  AuthorizationGenerator
 };

@@ -1,10 +1,10 @@
-var _ = require('lodash');
+import _ from 'lodash';
 
 /**
  * All Connection Blueprint
  */
 
-module.exports = {
+export default {
 
   defaults: {
     where: function(model) {
@@ -30,18 +30,15 @@ module.exports = {
   },
 
   getPayload: function (reducerState, params) {
-    var data = _
-      .chain(reducerState)
-      .transform(function(result, model) {
-        result.push(model);
-      }, [])
-      .filter(params.where)
-      .sortBy(params.sortBy)
-      .value();
+    const transformed = _.transform(reducerState, function(result, model) {
+      result.push(model);
+    }, []);
+    const filtered = _.filter(transformed, params.where);
+    const sorted = _.sortBy(filtered, params.sortBy);
 
     return {
       state: 'RESOLVED',
-      data: data
+      data: sorted
     };
   }
 

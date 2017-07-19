@@ -1,4 +1,4 @@
-var Lore = require('./app');
+import Lore from './app';
 
 // Instantiate and expose a Lore singleton
-module.exports = new Lore();
+export default new Lore();

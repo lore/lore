@@ -1,12 +1,16 @@
-var ReactDOM = require('react-dom');
+/* global document */
 
-module.exports = {
+import ReactDOM from 'react-dom';
 
-  renderComponentToDomElementWithId: function(domElementId, component, cb) {
-    cb = cb || function() {};
+function noop() {
+  // does nothing
+}
 
+export default {
+
+  renderComponentToDomElementWithId: function(domElementId, component, cb = noop) {
     // Figure out where we should be mounting the dialog on the DOM
-    var node = document.getElementById(domElementId);
+    const node = document.getElementById(domElementId);
 
     // Umnount (remove) any dialog previously mounted to the DOM element
     // They only disappear when they're closed, they aren't deleted.

@@ -1,7 +1,7 @@
-var io = require('socket.io-client');
-var WebSocketConnection = require('lore-websockets').WebSocketConnection;
+import io from 'socket.io-client';
+import { WebSocketConnection } from 'lore-websockets';
 
-module.exports = WebSocketConnection.extend({
+export default WebSocketConnection.extend({
 
   // serverUrl: '',
 
@@ -10,7 +10,7 @@ module.exports = WebSocketConnection.extend({
   // event: '',
 
   connect: function() {
-    var url = this.serverUrl + this.namespace;
+    const url = this.serverUrl + this.namespace;
     this.socket = io(url);
   },
 

@@ -22,7 +22,7 @@ pull in everything we fine.  So a typical loader function will look like this:
 
 ```js
 loadModels: function() {
-  var context = require.context(__LORE_ROOT__ + '/src/models', false, /\.js$/);
+  const context = require.context(__LORE_ROOT__ + '/src/models', false, /\.js$/);
   return buildDictionary(context, {
     // options
   });
@@ -63,6 +63,6 @@ this:
 Then any hooks that need the model config files can just call:
 
 ```js
-var models = lore.loaders.loadModels();
+const models = lore.loaders.loadModels();
 // iterate through the models
 ```

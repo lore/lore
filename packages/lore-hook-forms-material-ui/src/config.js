@@ -1,18 +1,22 @@
-var React = require('react');
-var mui = require('material-ui');
-var TextField = require('lore-react-forms-material-ui/TextField');
-var CheckboxField = require('lore-react-forms-material-ui/CheckboxField');
-var NumberField = require('lore-react-forms-material-ui/NumberField');
-var SelectField = require('lore-react-forms-material-ui/SelectField');
-var DynamicTextField = require('lore-react-forms-material-ui/DynamicTextField');
-var AutoCompleteField = require('lore-react-forms-material-ui/AutoCompleteField');
-var ConfigConnect = require('./ConfigConnect');
-var Connect = null;
+import React from 'react';
+import mui from 'material-ui';
+import {
+  TextField,
+  CheckboxField,
+  NumberField,
+  SelectField,
+  DynamicTextField,
+  AutoCompleteField
+} from 'lore-react-forms-material-ui/TextField';
+import Template from 'lore-react-forms/Template';
+import ConfigConnect from './ConfigConnect';
 
-module.exports = {
+let Connect = null;
+
+export default {
 
   templates: {
-    default: require('lore-react-forms/Template'),
+    default: Template,
   },
 
   typeFieldMap: {
@@ -77,7 +81,7 @@ module.exports = {
             field={attributes.field || 'username'}
           />
         </Connect>
-      )
+      );
     },
 
     autocomplete: function(name, attributes) {
@@ -90,7 +94,7 @@ module.exports = {
             field={attributes.field || 'username'}
           />
         </Connect>
-      )
+      );
     }
 
   },

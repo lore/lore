@@ -1,6 +1,8 @@
-var browserHistory = require('react-router').browserHistory;
+/* eslint no-param-reassign: "off" */
 
-module.exports = {
+import { browserHistory } from 'react-router';
+
+export default {
 
   dependencies: ['connect'],
 
@@ -14,11 +16,11 @@ module.exports = {
   },
 
   load: function(lore) {
-    var config = lore.config.router;
+    const config = lore.config.router;
     lore.router = {
       history: config.history,
       routes: config.routes(lore)
-    }
+    };
   }
 
 };

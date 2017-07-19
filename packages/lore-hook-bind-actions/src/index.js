@@ -1,6 +1,7 @@
-var redux = require('redux');
-var bindActionCreators = redux.bindActionCreators;
-var _ = require('lodash');
+/* eslint no-param-reassign: "off" */
+
+import { bindActionCreators } from 'redux';
+import _ from 'lodash';
 
 function bindAction(action, store) {
   return bindActionCreators(action, store.dispatch);
@@ -8,8 +9,8 @@ function bindAction(action, store) {
 
 function bindActionsToActionCreators(actions, store) {
   Object.keys(actions).forEach(function(key) {
-    var action = actions[key];
-    var boundAction = null;
+    const action = actions[key];
+    let boundAction = null;
     if (_.isPlainObject(action) && Object.keys(action).length > 0) {
       boundAction = bindActionsToActionCreators(action, store);
     } else {
@@ -20,15 +21,15 @@ function bindActionsToActionCreators(actions, store) {
   return actions;
 }
 
-module.exports = {
+export default {
 
   dependencies: ['actions', 'redux'],
 
   defaults: {},
 
   load: function(lore) {
-    var actions = lore.actions;
-    var store = lore.store;
+    const actions = lore.actions;
+    const store = lore.store;
 
     // Bind all actions to the store's dispatch method
     lore.actions = bindActionsToActionCreators(actions, store);

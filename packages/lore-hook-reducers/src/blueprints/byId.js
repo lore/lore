@@ -1,13 +1,14 @@
-var ActionTypes = require('lore-utils').ActionTypes;
-var _ = require('lodash');
+/* eslint no-param-reassign: "off" */
+import _ from 'lodash';
+import { ActionTypes } from 'lore-utils';
 
 /*
  * byId Reducer Blueprint
  */
 
 function addOrUpdateById(nextState, payload) {
-  var id = payload && payload.id;
-  var existingModel = null;
+  const id = payload && payload.id;
+  let existingModel = null;
 
   if (id) {
     existingModel = nextState[id];
@@ -23,18 +24,17 @@ function addOrUpdateById(nextState, payload) {
 }
 
 function removeById(nextState, payload) {
-  var id = payload && payload.id;
+  const id = payload && payload.id;
   if (id) {
     delete nextState[id];
   }
   return nextState;
 }
 
-module.exports = function(modelName) {
-
+export default function(modelName) {
   return function byId(state, action) {
     state = state || {};
-    var nextState = _.assign({}, state);
+    const nextState = _.assign({}, state);
 
     switch (action.type) {
       case ActionTypes.add(modelName):
@@ -53,8 +53,7 @@ module.exports = function(modelName) {
         return nextState;
 
       default:
-        return nextState
+        return nextState;
     }
   };
-
-};
+}

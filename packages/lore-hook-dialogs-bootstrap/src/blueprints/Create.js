@@ -1,12 +1,12 @@
-var React = require('react');
-var DialogMixin = require('../mixins/DialogMixin');
-var StringField = require('../fields/StringField');
-var TextField = require('../fields/TextField');
-var BooleanField = require('../fields/BooleanField');
-var NumberField = require('../fields/NumberField');
-var _ = require('lodash');
+import React from 'react';
+import DialogMixin from '../mixins/DialogMixin';
+import StringField from '../fields/StringField';
+import TextField from '../fields/TextField';
+import BooleanField from '../fields/BooleanField';
+import NumberField from '../fields/NumberField';
+import _ from 'lodash';
 
-module.exports = function(options) {
+export default function(options) {
   options = options || {};
 
   var title = options.title;

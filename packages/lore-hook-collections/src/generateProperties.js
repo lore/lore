@@ -1,7 +1,7 @@
-var pluralize = require('pluralize');
-var _ = require('lodash');
+import pluralize from 'pluralize';
+import _ from 'lodash';
 
-var CasingStyles = {
+const CasingStyles = {
   Camel: 'camel',
   Snake: 'snake',
   Kebab: 'kebab',
@@ -29,10 +29,10 @@ function applyCasingStyle(casingStyle, modelName) {
 }
 
 function getUrl(collectionName, config) {
-  var apiRoot = config.apiRoot;
-  var isPlural = config.pluralize;
-  var casingStyle = config.casingStyle;
-  var endpoint = config.endpoint;
+  const apiRoot = config.apiRoot;
+  const isPlural = config.pluralize;
+  const casingStyle = config.casingStyle;
+  let endpoint = config.endpoint;
 
   // if the user did not provide a custom endpoint, generate
   // one from the collection name
@@ -42,15 +42,15 @@ function getUrl(collectionName, config) {
       applyCasingStyle(casingStyle, collectionName);
   }
 
-  return apiRoot ? apiRoot + '/' + endpoint : endpoint;
+  return apiRoot ? `${apiRoot}/${endpoint}` : endpoint;
 }
 
-module.exports = function(collectionName, options) {
-  var collectionsConfig = options.collectionsConfig || {};
-  var modelsConfig = options.modelsConfig || {};
-  var collectionDefinition = options.collectionDefinition || {};
-  var modelDefinition = options.modelDefinition || {};
-  var connection = options.connection || {};
+export default function(collectionName, options) {
+  const collectionsConfig = options.collectionsConfig || {};
+  const modelsConfig = options.modelsConfig || {};
+  const collectionDefinition = options.collectionDefinition || {};
+  const modelDefinition = options.modelDefinition || {};
+  const connection = options.connection || {};
 
   /**
    * Create the final config object
@@ -62,7 +62,7 @@ module.exports = function(collectionName, options) {
    * just interested in whether apiRoot or pluralize has been set in /models.
    */
 
-  var config = _.defaultsDeep(
+  const config = _.defaultsDeep(
     {},
     collectionsConfig,
     _.omit(modelsConfig, 'properties')
@@ -72,7 +72,7 @@ module.exports = function(collectionName, options) {
    * SPECIAL CASE:
    * Copy the headers from the model to the collection if none provided
    */
-  // var modelHeaders = modelsConfig.properties && modelsConfig.properties.headers
+  // const modelHeaders = modelsConfig.properties && modelsConfig.properties.headers
   // config.properties = config.properties || {};
   // if (modelsConfig.properties.headers && !config.properties.headers) {
   //   config.properties.headers = modelsConfig.properties.headers;
@@ -88,7 +88,7 @@ module.exports = function(collectionName, options) {
    * just interested in whether apiRoot or pluralize has been set in /models.
    */
 
-  var definition = _.defaultsDeep(
+  const definition = _.defaultsDeep(
     {},
     collectionDefinition,
     _.omit(modelDefinition, 'properties')
@@ -98,8 +98,8 @@ module.exports = function(collectionName, options) {
    * Merge apiRoot, pluralize and casingStyle from config files for
    * connections, collections and the individual collection definition
    */
-  var combinedConfig = _.merge({}, connection, config, definition);
-  var conventions = {
+  const combinedConfig = _.merge({}, connection, config, definition);
+  const conventions = {
     properties: {
       url: getUrl(collectionName, combinedConfig)
     }
@@ -110,13 +110,13 @@ module.exports = function(collectionName, options) {
    * If headers are defined in the model, use those instead of the connection
    */
   if (_.get(modelDefinition, 'properties.headers')) {
-    conventions.properties.headers = _.get(modelDefinition, 'properties.headers')
+    conventions.properties.headers = _.get(modelDefinition, 'properties.headers');
   } else if (connection.headers) {
     conventions.properties.headers = connection.headers;
   }
 
   // Build the final set of properties for the collection
-  var properties = _.defaultsDeep({},
+  const properties = _.defaultsDeep({},
     definition.properties,
     config.properties,
     connection.collections.properties,
@@ -124,4 +124,4 @@ module.exports = function(collectionName, options) {
   );
 
   return properties;
-};
+}

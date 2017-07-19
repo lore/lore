@@ -1,7 +1,10 @@
-var React = require('react');
-var _ = require('lodash');
-var Field = require('lore-react-forms/Field');
-var PayloadStates = require('lore-utils').PayloadStates;
+/* eslint prefer-template: "off" */
+/* eslint import/no-unresolved: "off" */
+
+import React from 'react';
+import _ from 'lodash';
+import Field from 'lore-react-forms/Field';
+import { PayloadStates } from 'lore-utils';
 
 class SelectField extends Field {
 
@@ -14,8 +17,8 @@ class SelectField extends Field {
   }
 
   renderOption(option) {
-    var text = option.text;
-    var value = option.value;
+    const text = option.text;
+    const value = option.value;
 
     return (
       <option key={value} value={value}>
@@ -25,21 +28,21 @@ class SelectField extends Field {
   }
 
   render() {
-    var name = this.props.name;
-    var error = this.props.errors[name];
-    var value = this.props.data[name];
-    var touched = this.state.touched;
+    const name = this.props.name;
+    const error = this.props.errors[name];
+    // const value = this.props.data[name];
+    const touched = this.state.touched;
 
-    var label = this.props.label;
-    var options = this.props.options;
-    var field = this.props.field;
+    const label = this.props.label;
+    const options = this.props.options;
+    const field = this.props.field;
 
-    var displayError = touched && error;
+    const displayError = touched && error;
 
     if (options.state === PayloadStates.FETCHING) {
       return (
         <div>Loading...</div>
-      )
+      );
     }
 
     function mapDataToOptions(data) {
@@ -47,17 +50,17 @@ class SelectField extends Field {
         return {
           value: datum.id,
           text: datum.data[field]
-        }
+        };
       });
     }
 
-    var optionsData = mapDataToOptions(options.data);
+    const optionsData = mapDataToOptions(options.data);
 
     return (
-      <div className={"form-group" + (displayError ? " has-error" : "")}>
+      <div className={'form-group' + (displayError ? ' has-error' : '')}>
         <label>{label}</label>
         <select className="form-control">
-          {[this.renderOption({ value: null, text: ''})].concat(
+          {[this.renderOption({ value: null, text: '' })].concat(
             optionsData.map(this.renderOption)
           )}
         </select>
@@ -80,4 +83,4 @@ SelectField.defaultProps = _.assign({}, Field.defaultProps, {
   }
 });
 
-module.exports = SelectField;
+export default SelectField;

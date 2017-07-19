@@ -1,13 +1,15 @@
-var _ = require('lodash');
-var loader = require('../loader');
-var getVersionAndDependencyInfo = require('./getVersionAndDependencyInfo');
-var getLogger = require('./getLogger');
-var getEnvironment = require('./getEnvironment');
-var getHooks = require('./getHooks');
-var getInitializers = require('./getInitializers');
-var sortHooksByLoadOrder = require('./sortHooksByLoadOrder');
-var getConfig = require('./getConfig');
-var validateReactConfig = require('./validateReactConfig');
+/* eslint no-param-reassign: "warn" */
+
+import _ from 'lodash';
+import loader from '../loader';
+import getVersionAndDependencyInfo from './getVersionAndDependencyInfo';
+import getLogger from './getLogger';
+import getEnvironment from './getEnvironment';
+import getHooks from './getHooks';
+import getInitializers from './getInitializers';
+import sortHooksByLoadOrder from './sortHooksByLoadOrder';
+import getConfig from './getConfig';
+import validateReactConfig from './validateReactConfig';
 
 /**
  * The Lore class constructor. Exposes the following fields for use:
@@ -23,10 +25,10 @@ var validateReactConfig = require('./validateReactConfig');
  * lore.hooks
  *
  */
-var Lore = function() {
+const Lore = function() {
   this.log = getLogger();
 
-  var versionInfo = getVersionAndDependencyInfo();
+  const versionInfo = getVersionAndDependencyInfo();
   this.version = versionInfo.version;
   this.majorVersion = versionInfo.majorVersion;
   this.minorVersion = versionInfo.minorVersion;
@@ -71,9 +73,9 @@ _.extend(Lore.prototype, {
     // Now that we have the final config, we can load the hooks, as their behavior
     // is dependant on the final configuration for the application
     sortHooksByLoadOrder(this.hooks, this.log).forEach(function(hook) {
-      //this.log.silly('Loading hook: ' + hook.id);
+      // this.log.silly('Loading hook: ' + hook.id);
       hook.load(this);
-      //this.log.verbose(hook.id, 'hook loaded successfully.');
+      // this.log.verbose(hook.id, 'hook loaded successfully.');
     }.bind(this));
 
     // Get initializers and run them
@@ -84,7 +86,7 @@ _.extend(Lore.prototype, {
       });
     }
 
-    //this.log.verbose('All hooks were loaded successfully.');
+    // this.log.verbose('All hooks were loaded successfully.');
   },
 
   /**
@@ -98,13 +100,13 @@ _.extend(Lore.prototype, {
 
     // Get the React config, so we can learn how to construct the Root component
     // and mount the application
-    var react = this.config.react;
+    const react = this.config.react;
 
     // Validate the React config has all required methods
     validateReactConfig(react);
 
     // Get the Root component we should mount to the DOM
-    var Root = react.getRootComponent(this);
+    const Root = react.getRootComponent(this);
 
     // Mount the app!
     react.mount(Root, this);
@@ -112,4 +114,4 @@ _.extend(Lore.prototype, {
 
 });
 
-module.exports = Lore;
+export default Lore;

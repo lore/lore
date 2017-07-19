@@ -1,6 +1,8 @@
-var dialogManager = require('./dialogManager');
+/* eslint no-param-reassign: "off" */
 
-module.exports = {
+import dialogManager from './dialogManager';
+
+export default {
 
   defaults: {
     dialog: {

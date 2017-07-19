@@ -1,10 +1,12 @@
-var LoreModels = require('lore-models');
-var _ = require('lodash');
-var generateProperties = require('./generateProperties');
+/* eslint no-param-reassign: "off" */
+
+import _ from 'lodash';
+import { Collection } from 'lore-models';
+import generateProperties from './generateProperties';
 
 function getConnectionName(config, collectionName) {
-  var connection = config.defaultConnection;
-  var connectionModelMap = config.connectionModelMap;
+  let connection = config.defaultConnection;
+  const connectionModelMap = config.connectionModelMap;
 
   _.mapKeys(connectionModelMap, function(models, connectionName) {
     if (models.indexOf(collectionName) >= 0) {
@@ -15,7 +17,7 @@ function getConnectionName(config, collectionName) {
   return connection;
 }
 
-module.exports = {
+export default {
   dependencies: ['connections', 'models'],
 
   defaults: {
@@ -28,24 +30,24 @@ module.exports = {
   },
 
   load: function(lore) {
-    var config = lore.config;
-    var connections = lore.connections;
+    const config = lore.config;
+    const connections = lore.connections;
     lore.collections = {};
 
-    var modelModules = lore.loader.loadModels();
-    var collectionModules = lore.loader.loadCollections();
-    var modules = _.assign({}, modelModules, collectionModules);
+    const modelModules = lore.loader.loadModels();
+    const collectionModules = lore.loader.loadCollections();
+    const modules = _.assign({}, modelModules, collectionModules);
 
     _.mapKeys(modules, function(module, moduleName) {
       // todo: currently setting the collection name to the filename, but
       // should change to be PascalCase, like lore.collections.CollectionName
-      var collectionName = moduleName;
+      const collectionName = moduleName;
 
       // get the connection for this model
-      var connection = connections[getConnectionName(config.models, collectionName)];
+      const connection = connections[getConnectionName(config.models, collectionName)];
 
       // Create the final set of properties for the Collection
-      var properties = generateProperties(collectionName, {
+      const properties = generateProperties(collectionName, {
         collectionsConfig: config.collections,
         collectionDefinition: collectionModules[collectionName],
         modelsConfig: config.models,
@@ -55,12 +57,12 @@ module.exports = {
 
       // If a model hasn't already been provided for the collection, and one with that
       // name currently exists, set the collection's model to that one
-      var model = lore.models[collectionName];
+      const model = lore.models[collectionName];
       if (!properties.model && model) {
         properties.model = model;
       }
 
-      lore.collections[collectionName] = LoreModels.Collection.extend(properties);
+      lore.collections[collectionName] = Collection.extend(properties);
     });
   }
 };

@@ -1,9 +1,7 @@
-var ActionTypes = require('lore-utils').ActionTypes;
-var PayloadStates = require('lore-utils').PayloadStates;
+import { ActionTypes, PayloadStates } from 'lore-utils';
 
-module.exports = function(modelName, models) {
-
-  var Model = models[modelName];
+export default function(modelName, models) {
+  const Model = models[modelName];
 
   return {
     blueprint: 'destroy',
@@ -31,4 +29,4 @@ module.exports = function(modelName, models) {
     }
 
   };
-};
+}

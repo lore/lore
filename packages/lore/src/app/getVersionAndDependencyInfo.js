@@ -1,4 +1,4 @@
-var packageLoader = require('../loaders/package');
+import packageLoader from '../loaders/package';
 
 /**
  * Read the current version of Lore from the package.json file and create
@@ -6,8 +6,8 @@ var packageLoader = require('../loaders/package');
  *
  * @returns {Object} Information about the current version of Lore
  */
-module.exports = function getVersionAndDependencyInfo() {
-  var json = packageLoader.load();
+export default function getVersionAndDependencyInfo() {
+  const json = packageLoader.load();
 
   return {
     version: json.version,
@@ -15,5 +15,5 @@ module.exports = function getVersionAndDependencyInfo() {
     minorVersion: json.version.split('.')[1].replace(/[^0-9]/g, ''),
     patchVersion: json.version.split('.')[2].replace(/[^0-9]/g, ''),
     dependencies: json.dependencies
-  }
-};
+  };
+}

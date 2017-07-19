@@ -1,9 +1,9 @@
-var _ = require('lodash');
+/* global __LORE_ROOT__ */
 
-module.exports = {
+export default {
 
   load: function() {
-    var req = require.context(__LORE_ROOT__ + '/initializers', true, /\.js$/);
+    const req = require.context(`${__LORE_ROOT__}/initializers`, true, /\.js$/);
     return req.keys().map(function(key) {
       return req(key);
     });

@@ -1,16 +1,13 @@
-var ActionTypes = require('lore-utils').ActionTypes;
-var PayloadStates = require('lore-utils').PayloadStates;
-var _ = require('lodash');
+import { ActionTypes, PayloadStates } from 'lore-utils';
+import _ from 'lodash';
 
-module.exports = function(modelName) {
-
-  var initialState = {
+export default function(modelName) {
+  const initialState = {
     state: PayloadStates.INITIAL_STATE
   };
 
-  return function authHookReducer(state, action) {
-    state = state || initialState;
-    var nextState = _.assign({}, state);
+  return function authHookReducer(state = initialState, action) {
+    const nextState = _.assign({}, state);
 
     switch (action.type) {
       case ActionTypes.add(modelName):
@@ -26,8 +23,7 @@ module.exports = function(modelName) {
         return initialState;
 
       default:
-        return nextState
+        return nextState;
     }
   };
-
-};
+}

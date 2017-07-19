@@ -1,8 +1,7 @@
-var _ = require('lodash');
-var WebSocketConnection = require('lore-websockets').WebSocketConnection;
-var ActionCable = require('actioncable');
+import { WebSocketConnection } from 'lore-websockets';
+import ActionCable from 'actioncable';
 
-module.exports = WebSocketConnection.extend({
+export default WebSocketConnection.extend({
 
   // serverUrl: '',
 
@@ -13,16 +12,16 @@ module.exports = WebSocketConnection.extend({
   },
 
   subscribe: function subscribe() {
-    var channel = this.channel;
-    var that = this;
+    const channel = this.channel;
+    const that = this;
 
     this.cable.subscriptions.create(channel, {
       connected: function () {
-        console.log('ActionCable:WebSocket - connected!')
+        console.log('ActionCable:WebSocket - connected!');
       },
 
       disconnected: function () {
-        console.log('ActionCable:WebSocket - disconnected!')
+        console.log('ActionCable:WebSocket - disconnected!');
       },
 
       received: function (data) {

@@ -1,18 +1,17 @@
-var _ = require('lodash');
-var WebSocketConnection = require('lore-websockets').WebSocketConnection;
-var io = require('socket.io-client');
-var SailsIOClient = require('sails.io.js');
+import { WebSocketConnection } from 'lore-websockets';
+import io from 'socket.io-client';
+import SailsIOClient from 'sails.io.js';
 
-var SOCKET_VERBS = {
+const SOCKET_VERBS = {
   CREATED: 'created',
   UPDATED: 'updated',
   DESTROYED: 'destroyed',
   ADDED_TO: 'addedTo'
 };
 
-var sailsIoClient = null;
+let sailsIoClient = null;
 
-module.exports = WebSocketConnection.extend({
+export default WebSocketConnection.extend({
 
   // serverUrl: '',
 
@@ -35,7 +34,7 @@ module.exports = WebSocketConnection.extend({
   url: function() {},
 
   connect: function() {
-    var namespace = this.namespace;
+    const namespace = this.namespace;
     // we have to make a GET request to this endpoint before we're connected
     this.io.socket.get(namespace, function() {
       console.log(`Connected to ${namespace}`);
@@ -55,28 +54,28 @@ module.exports = WebSocketConnection.extend({
       return {
         verb: message.verb,
         data: message.data
-      }
+      };
     } else if (message.verb === SOCKET_VERBS.UPDATED) {
       return {
         verb: message.verb,
         data: message.data
-      }
+      };
     } else if (message.verb === SOCKET_VERBS.DESTROYED) {
       return {
         verb: message.verb,
         data: message.previous
-      }
+      };
     } else if (message.verb === SOCKET_VERBS.ADDED_TO) {
       return {
         verb: message.verb,
         data: message.data
-      }
-    } else {
-      return {
-        verb: 'unknown_verb',
-        data: message
-      }
+      };
     }
+
+    return {
+      verb: 'unknown_verb',
+      data: message
+    };
   }
 
 });

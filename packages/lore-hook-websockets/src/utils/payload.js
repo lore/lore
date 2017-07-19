@@ -1,4 +1,4 @@
-module.exports = function payload( model, state, error ) {
+export default function payload(model, state, error) {
   return {
     id: model.id,
     cid: model.cid,
@@ -6,4 +6,4 @@ module.exports = function payload( model, state, error ) {
     error: error || {},
     data: model.toJSON()
   };
-};
+}

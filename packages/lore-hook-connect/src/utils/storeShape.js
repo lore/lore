@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react';
 
-module.exports = React.PropTypes.shape({
+export default React.PropTypes.shape({
   subscribe: React.PropTypes.func.isRequired,
   dispatch: React.PropTypes.func.isRequired,
   getState: React.PropTypes.func.isRequired

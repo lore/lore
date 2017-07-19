@@ -1,11 +1,15 @@
-const _ = require('lodash');
-const { payloadCollection, defaultOptions, validatePartialPairs } = require('../utils');
+/* eslint consistent-return: "off" */
+
+import _ from 'lodash';
+import utils from '../utils';
+
+const { payloadCollection, defaultOptions, validatePartialPairs } = utils;
 
 /*
  * Blueprint for Find method
  */
 
-module.exports = function(opts = {}) {
+export default function(opts = {}) {
   // clone the options so we don't unintentionally modify them
   let options = _.cloneDeep(opts);
 
@@ -23,9 +27,9 @@ module.exports = function(opts = {}) {
     return function(dispatch) {
       const collection = new Collection();
 
-      var queryParameters = _.extend({}, query, pagination);
+      const queryParameters = _.extend({}, query, pagination);
 
-      var combinedQuery = {
+      const combinedQuery = {
         where: query,
         pagination: pagination
       };
@@ -34,7 +38,7 @@ module.exports = function(opts = {}) {
         data: queryParameters
       }).then(function() {
         if (options.onSuccess) {
-          var actions = [];
+          let actions = [];
 
           if (options.normalize && options.normalize.getActions) {
             // look through all models in the collection and generate actions for any attributes
@@ -44,7 +48,12 @@ module.exports = function(opts = {}) {
 
           dispatch({
             type: options.onSuccess.actionType,
-            payload: payloadCollection(collection, options.onSuccess.payloadState, null, combinedQuery),
+            payload: payloadCollection(
+              collection,
+              options.onSuccess.payloadState,
+              null,
+              combinedQuery
+            ),
             query: combinedQuery
           });
 
@@ -63,7 +72,12 @@ module.exports = function(opts = {}) {
 
           dispatch({
             type: options.onError.actionType,
-            payload: payloadCollection(collection, options.onError.payloadState, error, combinedQuery),
+            payload: payloadCollection(
+              collection,
+              options.onError.payloadState,
+              error,
+              combinedQuery
+            ),
             query: combinedQuery
           });
         }
@@ -72,10 +86,15 @@ module.exports = function(opts = {}) {
       if (options.optimistic) {
         return dispatch({
           type: options.optimistic.actionType,
-          payload: payloadCollection(collection, options.optimistic.payloadState, null, combinedQuery),
+          payload: payloadCollection(
+            collection,
+            options.optimistic.payloadState,
+            null,
+            combinedQuery
+          ),
           query: combinedQuery
         });
       }
     };
   };
-};
+}

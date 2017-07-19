@@ -1,10 +1,14 @@
-const _ = require('lodash');
-const { payload, defaultOptions, validatePartialPairs } = require('../utils');
+/* eslint consistent-return: "off" */
+
+import _ from 'lodash';
+import utils from '../utils';
+
+const { payload, defaultOptions, validatePartialPairs } = utils;
 
 /*
  * Blueprint for Create method
  */
-module.exports = function(opts = {}) {
+export default function(opts = {}) {
   // clone the options so we don't unintentionally modify them
   let options = _.cloneDeep(opts);
 
@@ -56,4 +60,4 @@ module.exports = function(opts = {}) {
       }
     };
   };
-};
+}

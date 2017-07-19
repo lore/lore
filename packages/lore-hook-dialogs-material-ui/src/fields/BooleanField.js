@@ -1,7 +1,7 @@
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react';
+import { Checkbox } from 'material-ui';
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'BooleanField',
 
   propTypes: {
@@ -41,7 +41,7 @@ module.exports = React.createClass({
     var styles = this.getStyles();
 
     return (
-      <mui.Checkbox
+      <Checkbox
         style={styles.field}
         label={attribute.displayName || this.props.label}
         checked={this.props.value}

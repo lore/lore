@@ -1,15 +1,17 @@
-var _ = require('lodash');
-var pluralize = require('pluralize');
-var SailsWebSocketConnection = require('./SailsWebSocketConnection');
-var blueprints = require('lore-websockets').blueprints;
+/* eslint no-param-reassign: "off" */
 
-// var buildDictionary = require('webpack-requiredir');
-// var context = require.context(__LORE_ROOT__ + '/src/websockets', true, /\.js$/);
-// var result = buildDictionary(context, {
+import _ from 'lodash';
+import pluralize from 'pluralize';
+import { blueprints } from 'lore-websockets';
+import SailsWebSocketConnection from './SailsWebSocketConnection';
+
+// import buildDictionary from 'webpack-requiredir';
+// const context = require.context(__LORE_ROOT__ + '/src/websockets', true, /\.js$/);
+// const result = buildDictionary(context, {
 //
 // });
 
-module.exports = {
+export default {
 
   dependencies: ['models', 'redux'],
 
@@ -23,32 +25,34 @@ module.exports = {
   },
 
   load: function(lore) {
-    var models = lore.models;
-    var store = lore.store;
-    var config = lore.config.websockets;
-    var websockets = {};
+    const models = lore.models;
+    const store = lore.store;
+    const config = lore.config.websockets;
+    const websockets = {};
 
     Object.keys(models).forEach(function(modelName) {
-      var Model = models[modelName];
+      const Model = models[modelName];
 
       // establish conventions for the namespace and event to listen for
-      var conventions = {
+      const conventions = {
         namespace: config.pluralize ? `/${pluralize(modelName)}` : `/${modelName}`,
         event: modelName
       };
 
       // create the default dispatchers from blueprints
-      var dispatchers = {
+      const dispatchers = {
         created: blueprints.dispatchers.created(modelName, Model)(store),
         updated: blueprints.dispatchers.updated(modelName, Model)(store),
         destroyed: blueprints.dispatchers.destroyed(modelName, Model)(store)
       };
 
       // there are currently no actions provided by default
-      var actions = {};
+      const actions = {};
 
       // override the defaults with an user provided configuration
-      var CustomSailsWebSocketConnection = SailsWebSocketConnection.extend(_.extend(conventions, config));
+      const CustomSailsWebSocketConnection = SailsWebSocketConnection.extend(
+        _.extend(conventions, config)
+      );
 
       // create the websocket connection for the model
       websockets[modelName] = new CustomSailsWebSocketConnection(dispatchers, actions);

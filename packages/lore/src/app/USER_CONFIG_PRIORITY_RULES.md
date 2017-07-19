@@ -15,19 +15,19 @@ Given the following config files:
 
 ```js
 // file: config/example.js
-module.exports = {
+export default {
   prop: 'bobcat'
 }
 
 // file: config/production.js
-module.exports = {
+export default {
   example: {
     prop: 'cheetah'
   }
 }
 
 // file: config/local.js
-module.exports = {
+export default {
   example: {
     prop: 'dragon'
   }
