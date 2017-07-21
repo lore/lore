@@ -1,8 +1,8 @@
-import React from 'react';
-import mui from 'material-ui';
-import _ from 'lodash';
-import Field from 'lore-react-forms/Field';
-import { PayloadStates } from 'lore-utils';
+var React = require('react');
+var mui = require('material-ui');
+var _ = require('lodash');
+var Field = require('lore-react-forms').Field;
+var PayloadStates = require('lore-utils').PayloadStates;
 
 class SelectField extends Field {
 
@@ -15,32 +15,31 @@ class SelectField extends Field {
   }
 
   renderOption(option) {
-    const text = option.text;
-    const value = option.value;
+    var text = option.text;
+    var value = option.value;
 
     return (
       <mui.MenuItem
         key={value}
         value={value}
-        primaryText={text}
-      />
+        primaryText={text} />
     );
   }
 
   render() {
-    const name = this.props.name;
-    const error = this.props.errors[name];
-    const value = this.props.data[name];
-    const touched = this.state.touched;
+    var name = this.props.name;
+    var error = this.props.errors[name];
+    var value = this.props.data[name];
+    var touched = this.state.touched;
 
-    const label = this.props.label;
-    const options = this.props.options;
-    const field = this.props.field;
+    var label = this.props.label;
+    var options = this.props.options;
+    var field = this.props.field;
 
     if (options.state === PayloadStates.FETCHING) {
       return (
         <mui.CircularProgress />
-      );
+      )
     }
 
     function mapDataToOptions(data) {
@@ -48,11 +47,11 @@ class SelectField extends Field {
         return {
           value: datum.id,
           text: datum.data[field]
-        };
+        }
       });
     }
 
-    const optionsData = mapDataToOptions(options.data);
+    var optionsData = mapDataToOptions(options.data);
 
     return (
       <mui.SelectField
@@ -63,7 +62,7 @@ class SelectField extends Field {
         onChange={this.onChange}
         errorText={touched && error}
       >
-        {[this.renderOption({ value: null, text: '' })].concat(
+        {[this.renderOption({ value: null, text: ''})].concat(
           optionsData.map(this.renderOption)
         )}
       </mui.SelectField>
@@ -82,4 +81,4 @@ SelectField.defaultProps = _.assign({}, Field.defaultProps, {
   }
 });
 
-export default SelectField;
+module.exports = SelectField;

@@ -3,14 +3,7 @@ var mui = require('material-ui');
 var _ = require('lodash');
 var Field = require('lore-react-forms').Field;
 
-class NumberField extends Field {
-
-  onChange(event, value) {
-    // this.setState({
-    //   value: value
-    // });
-    this.props.onChange(this.props.name, Number(value));
-  }
+class TextAreaField extends Field {
 
   render() {
     var name = this.props.name;
@@ -20,7 +13,6 @@ class NumberField extends Field {
     var hintText = this.props.hintText;
     var label = this.props.label;
     var disabled = this.props.disabled;
-    var multiLine = this.props.multiLine || false;
 
     var style = _.assign({}, {width: '100%'}, this.props.style);
 
@@ -36,11 +28,11 @@ class NumberField extends Field {
         onBlur={this.onBlur}
         errorText={touched && error}
         disabled={disabled}
-        multiLine={multiLine}
+        multiLine={true}
       />
-    )
+    );
   }
 
 }
 
-module.exports = NumberField;
+module.exports = TextAreaField;
