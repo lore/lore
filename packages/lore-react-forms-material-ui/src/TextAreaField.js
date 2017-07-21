@@ -1,20 +1,20 @@
-var React = require('react');
-var mui = require('material-ui');
-var _ = require('lodash');
-var Field = require('lore-react-forms').Field;
+import React from 'react';
+import mui from 'material-ui';
+import _ from 'lodash';
+import { Field } from 'lore-react-forms';
 
 class TextAreaField extends Field {
 
   render() {
-    var name = this.props.name;
-    var error = this.props.errors[name];
-    var value = this.props.data[name];
-    var touched = this.state.touched;
-    var hintText = this.props.hintText;
-    var label = this.props.label;
-    var disabled = this.props.disabled;
+    const name = this.props.name;
+    const error = this.props.errors[name];
+    const value = this.props.data[name];
+    const touched = this.state.touched;
+    const hintText = this.props.hintText;
+    const label = this.props.label;
+    const disabled = this.props.disabled;
 
-    var style = _.assign({}, {width: '100%'}, this.props.style);
+    const style = _.assign({}, { width: '100%' }, this.props.style);
 
     return (
       <mui.TextField
@@ -35,4 +35,4 @@ class TextAreaField extends Field {
 
 }
 
-module.exports = TextAreaField;
+export default TextAreaField;

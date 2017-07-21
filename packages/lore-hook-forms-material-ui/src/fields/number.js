@@ -1,11 +1,11 @@
-var React = require('react');
-var NumberField = require('lore-react-forms-material-ui').NumberField;
+import React from 'react';
+import { NumberField } from 'lore-react-forms-material-ui';
 
-module.exports = function(name, attributes) {
+export default function(name, attributes) {
   return (
     <NumberField
       label={attributes.label}
       name={name}
     />
   );
-};
+}

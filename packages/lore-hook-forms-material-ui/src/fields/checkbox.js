@@ -1,11 +1,11 @@
-var React = require('react');
-var CheckboxField = require('lore-react-forms-material-ui').CheckboxField;
+import React from 'react';
+import { CheckboxField } from 'lore-react-forms-material-ui';
 
-module.exports = function(name, attributes) {
+export default function(name, attributes) {
   return (
     <CheckboxField
       {...attributes}
       name={name}
     />
   );
-};
+}

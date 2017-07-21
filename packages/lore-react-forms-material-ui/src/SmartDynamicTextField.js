@@ -1,10 +1,10 @@
-var React = require('react');
-var mui = require('material-ui');
-var SvgIcons = require('material-ui/svg-icons');
-var _ = require('lodash');
-var Field = require('lore-react-forms').Field;
+import React from 'react';
+import mui from 'material-ui';
+import SvgIcons from 'material-ui/svg-icons';
+import _ from 'lodash';
+import { Field } from 'lore-react-forms';
 
-var PendingIcon = React.createClass({
+const PendingIcon = React.createClass({
   render: function() {
     return (
       <mui.CircularProgress
@@ -14,12 +14,13 @@ var PendingIcon = React.createClass({
           right: '8px'
         }}
         size={16}
-        thickness={2} />
-    )
+        thickness={2}
+      />
+    );
   }
 });
 
-var SuccessIcon = React.createClass({
+const SuccessIcon = React.createClass({
   render: function() {
     return (
       <SvgIcons.NavigationCheck
@@ -28,12 +29,13 @@ var SuccessIcon = React.createClass({
           top: '36px',
           right: '8px',
           color: 'green'
-        }} />
-    )
+        }}
+      />
+    );
   }
 });
 
-var ErrorIcon = React.createClass({
+const ErrorIcon = React.createClass({
   render: function() {
     return (
       <SvgIcons.AvNotInterested
@@ -42,8 +44,9 @@ var ErrorIcon = React.createClass({
           top: '36px',
           right: '8px',
           color: 'red'
-        }} />
-    )
+        }}
+      />
+    );
   }
 });
 
@@ -58,7 +61,7 @@ class DynamicTextField extends Field {
 
     this.state = {
       value: this.props.data[this.props.name]
-    }
+    };
   }
 
   handleChange() {
@@ -76,22 +79,22 @@ class DynamicTextField extends Field {
   }
 
   render() {
-    var name = this.props.name;
-    var error = this.props.errors[name];
-    // var value = this.props.data[name];
-    var value = this.state.value;
-    var touched = this.state.touched;
-    var hintText = this.props.hintText;
-    var label = this.props.label;
-    var disabled = this.props.disabled;
-    // var _model = this.props._model;
+    const name = this.props.name;
+    const error = this.props.errors[name];
+    // const value = this.props.data[name];
+    const value = this.state.value;
+    const touched = this.state.touched;
+    const hintText = this.props.hintText;
+    const label = this.props.label;
+    const disabled = this.props.disabled;
+    // const _model = this.props._model;
 
-    var style = _.assign({}, {width: '100%'}, this.props.style);
-    // var options = this.props.getMessage ? this.props.getMessage(_model) : {};
+    const style = _.assign({}, { width: '100%' }, this.props.style);
+    // const options = this.props.getMessage ? this.props.getMessage(_model) : {};
 
-    var state = this.props.state;
-    var errorText = this.props.errorText;
-    var icon = null;
+    const state = this.props.state;
+    const errorText = this.props.errorText;
+    let icon = null;
 
     if (state === 'PENDING') {
       console.log('pending icon');
@@ -105,7 +108,7 @@ class DynamicTextField extends Field {
     }
 
     return (
-      <div style={{position: 'relative'}}>
+      <div style={{ position: 'relative' }}>
         <mui.TextField
           style={style}
           floatingLabelText={label}
@@ -120,9 +123,9 @@ class DynamicTextField extends Field {
         />
         {icon}
       </div>
-    )
+    );
   }
 
 }
 
-module.exports = DynamicTextField;
+export default DynamicTextField;

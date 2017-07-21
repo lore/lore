@@ -1,9 +1,10 @@
-var React = require('react');
-var AutoCompleteField = require('lore-react-forms-material-ui').AutoCompleteField;
-var ConfigConnect = require('../ConfigConnect');
-var Connect = null;
+import React from 'react';
+import { AutoCompleteField } from 'lore-react-forms-material-ui';
+import ConfigConnect from '../ConfigConnect';
 
-module.exports = function(name, attributes) {
+let Connect = null;
+
+export default function(name, attributes) {
   Connect = Connect || ConfigConnect();
   return (
     <Connect callback={attributes.getOptions}>
@@ -13,5 +14,5 @@ module.exports = function(name, attributes) {
         field={attributes.field || 'username'}
       />
     </Connect>
-  )
-};
+  );
+}

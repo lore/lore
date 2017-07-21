@@ -1,9 +1,10 @@
-var React = require('react');
-var DynamicTextField = require('lore-react-forms-material-ui').DynamicTextField;
-var ConfigConnect = require('../ConfigConnect');
-var Connect = null;
+import React from 'react';
+import { DynamicTextField } from 'lore-react-forms-material-ui';
+import ConfigConnect from '../ConfigConnect';
 
-module.exports = function(name, attributes) {
+let Connect = null;
+
+export default function(name, attributes) {
   Connect = Connect || ConfigConnect();
   return (
     <Connect callback={attributes.connect}>
@@ -14,4 +15,4 @@ module.exports = function(name, attributes) {
       />
     </Connect>
   );
-};
+}

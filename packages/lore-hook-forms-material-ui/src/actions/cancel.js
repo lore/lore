@@ -1,7 +1,7 @@
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react';
+import mui from 'material-ui';
 
-module.exports = function(name, attributes) {
+export default function(name, attributes) {
   return (
     <mui.FlatButton
       key={name}
@@ -9,4 +9,4 @@ module.exports = function(name, attributes) {
       onTouchTap={function() {}}
     />
   );
-};
+}

@@ -1,10 +1,11 @@
-var React = require('react');
-var _ = require('lodash');
-var mui = require('material-ui');
-var Field = require('lore-react-forms').Field;
+/* global lore */
+
+import React from 'react';
+import _ from 'lodash';
+import mui from 'material-ui';
+import { Field } from 'lore-react-forms';
 
 class AutoCompleteField extends Field {
-
   constructor(props) {
     super(props);
     this.handleUpdateInput = this.handleUpdateInput.bind(this);
@@ -16,12 +17,12 @@ class AutoCompleteField extends Field {
     this.updateOptions = this.updateOptions.bind(this);
     this.updateOptions = _.debounce(this.updateOptions, 250);
 
-    var initialOption = _.find(props.options.data, function(option) {
-      console.log('props.data[props.name]: ' + props.data[props.name]);
+    const initialOption = _.find(props.options.data, function(option) {
+      console.log(`props.data[props.name]: ${props.data[props.name]}`);
       return option.id === props.data[props.name];
     });
 
-    var searchText = initialOption ? initialOption.data[props.field] : '';
+    const searchText = initialOption ? initialOption.data[props.field] : '';
 
     this.state = {
       searchText: searchText,
@@ -34,20 +35,20 @@ class AutoCompleteField extends Field {
   }
 
   componentWillReceiveProps(nextProps) {
-    var options = this.state.options;
+    const options = this.state.options;
     // if (!options || !options.data) {
     //   return;
     // }
 
-    var query = options.query;
-    var nextOptions = lore.store.getState().user.find[JSON.stringify(query)];
+    const query = options.query;
+    const nextOptions = lore.store.getState().user.find[JSON.stringify(query)];
     this.setState({
       options: nextOptions || options
     });
-  };
+  }
 
   updateOptions(searchText) {
-    console.log('updateOptions: ' + searchText);
+    console.log(`updateOptions: ${searchText}`);
     this.setState({
       // searchText: searchText,
       options: lore.getState('user.find', {
@@ -59,7 +60,7 @@ class AutoCompleteField extends Field {
   }
 
   handleUpdateInput(searchText) {
-    console.log('handleUpdateInput: ' + searchText);
+    console.log(`handleUpdateInput: ${searchText}`);
     this.setState({
       searchText: searchText,
       isModified: true,
@@ -85,7 +86,6 @@ class AutoCompleteField extends Field {
     this.updateOptions(searchText);
 
     // _.debounce(this.updateOptions.bind(this, searchText), 250);
-
   }
 
   handleNewRequest(item, index) {
@@ -97,11 +97,13 @@ class AutoCompleteField extends Field {
   }
 
   render() {
-    var isModified = this.state.isModified;
-    var option = this.props.option;
-    var field = this.props.field;
-    var searchText = option ? (isModified ? this.state.searchText : option.data[field]) : this.state.searchText;
-    // var options = {
+    const isModified = this.state.isModified;
+    const option = this.props.option;
+    const field = this.props.field;
+    const searchText = option ? (
+      isModified ? this.state.searchText : option.data[field]
+    ) : this.state.searchText;
+    // const options = {
     //   data: [
     //     {
     //       id: 1,
@@ -118,7 +120,7 @@ class AutoCompleteField extends Field {
     //   ]
     // };
 
-    var options = this.state.options;
+    const options = this.state.options;
     options.data = options.data || [];
 
     // console.log(this.state.options);
@@ -128,14 +130,14 @@ class AutoCompleteField extends Field {
         return {
           value: datum.id,
           text: datum.data[field]
-        }
+        };
       });
     }
 
-    // var optionsData = mapDataToOptions(options.data);
-    // var dataSource = [{ value: null, text: ''}].concat(optionsData);
-    var dataSource = mapDataToOptions(options.data);
-    var filter = function(a,b,c) {
+    // const optionsData = mapDataToOptions(options.data);
+    // const dataSource = [{ value: null, text: '' }].concat(optionsData);
+    const dataSource = mapDataToOptions(options.data);
+    const filter = function(a, b, c) {
       return true;
     };
 
@@ -145,7 +147,7 @@ class AutoCompleteField extends Field {
         floatingLabelText="User"
         searchText={searchText}
         dataSource={dataSource}
-        dataSourceConfig={{text: 'text', value: 'value'}}
+        dataSourceConfig={{ text: 'text', value: 'value' }}
         onUpdateInput={this.handleUpdateInput}
         onNewRequest={this.handleNewRequest}
         filter={filter}
@@ -165,4 +167,4 @@ AutoCompleteField.defaultProps = _.assign({}, {
   }
 });
 
-module.exports = AutoCompleteField;
+export default AutoCompleteField;

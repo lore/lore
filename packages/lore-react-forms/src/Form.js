@@ -1,7 +1,9 @@
-var React = require('react');
-var _ = require('lodash');
+/* eslint consistent-return: "off" */
 
-module.exports = React.createClass({
+import React from 'react';
+import _ from 'lodash';
+
+export default React.createClass({
   displayName: 'Form',
 
   propTypes: {
@@ -16,19 +18,19 @@ module.exports = React.createClass({
     return {
       errors: {},
       isSaving: false
-    }
+    };
   },
 
   getInitialState: function() {
     return {
       isSaving: this.props.isSaving,
       isModified: false
-    }
+    };
   },
 
   componentWillReceiveProps: function(nextProps) {
-    var nextIsSaving = nextProps.isSaving;
-    var isSaving = this.state.isSaving;
+    const nextIsSaving = nextProps.isSaving;
+    const isSaving = this.state.isSaving;
 
     if (nextIsSaving !== isSaving) {
       this.setState({
@@ -55,12 +57,12 @@ module.exports = React.createClass({
 
   getErrors: function(validatorDictionary, data) {
     if (this.props.getErrors) {
-     return this.props.getErrors(validatorDictionary, data);
+      return this.props.getErrors(validatorDictionary, data);
     }
 
     return _.mapValues(data, function(value, key) {
-      var validators = validatorDictionary[key];
-      var error = null;
+      const validators = validatorDictionary[key];
+      let error = null;
       if (validators) {
         validators.forEach(function(validator) {
           error = error || validator(value);
@@ -75,7 +77,7 @@ module.exports = React.createClass({
       return this.props.hasError(errors);
     }
 
-    var errorCount = _.reduce(errors, function(result, value, key) {
+    const errorCount = _.reduce(errors, function(result, value, key) {
       if (value) {
         return result + 1;
       }
@@ -86,19 +88,19 @@ module.exports = React.createClass({
   },
 
   createFields: function(errors, hasError, options) {
-    var children = this.props.children;
+    let children = this.props.children;
 
     if (_.isFunction(children)) {
       children = children(options);
     }
 
-    var handlers = {
+    const handlers = {
       onChange: this.onChange
     };
 
     return React.Children.map(children, (child) => {
       if (React.isValidElement(child)) {
-        var props = {
+        const props = {
           data: this.props.data,
           errors: errors,
           hasError: hasError
@@ -111,12 +113,12 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var data = this.props.data;
-    var validators = this.props.validators || {};
-    var errors = this.getErrors(validators, data);
-    var hasError = this.hasError(errors);
-    var parentErrors = this.props.errors;
-    var allErrors = _.assign({}, errors, parentErrors);
+    const data = this.props.data;
+    const validators = this.props.validators || {};
+    const errors = this.getErrors(validators, data);
+    const hasError = this.hasError(errors);
+    const parentErrors = this.props.errors;
+    const allErrors = _.assign({}, errors, parentErrors);
 
     return (
       <div>

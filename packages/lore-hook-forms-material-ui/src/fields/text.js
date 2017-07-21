@@ -1,7 +1,7 @@
-var React = require('react');
-var TextField = require('lore-react-forms-material-ui').TextField;
+import React from 'react';
+import { TextField } from 'lore-react-forms-material-ui';
 
-module.exports = function(name, attributes) {
+export default function(name, attributes) {
   return (
     <TextField
       label={attributes.label}
@@ -9,4 +9,4 @@ module.exports = function(name, attributes) {
       multiLine={true}
     />
   );
-};
+}
