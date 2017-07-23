@@ -3,7 +3,7 @@
 
 import React from 'react';
 import _ from 'lodash';
-import Field from 'lore-react-forms/Field';
+import { Field } from 'lore-react-forms';
 import { PayloadStates } from 'lore-utils';
 
 class SelectField extends Field {

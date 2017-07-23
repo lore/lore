@@ -3,7 +3,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { PayloadStates } from 'lore-utils';
-import Field from 'lore-react-forms/Field';
+import { Field } from 'lore-react-forms';
 import onClickOutside from 'react-onclickoutside';
 
 class AutoCompleteField extends Field {
