@@ -1,9 +1,9 @@
 import React from 'react';
 import _ from 'lodash';
-import mui from 'material-ui';
+import { Checkbox } from 'material-ui';
 import { Field } from 'lore-react-forms';
 
-class TextField extends Field {
+class CheckboxField extends Field {
 
   onChange(event, checked) {
     this.onBlur();
@@ -20,7 +20,7 @@ class TextField extends Field {
     const style = _.assign({}, { width: '100%' }, this.props.style);
 
     return (
-      <mui.Checkbox
+      <Checkbox
         style={style}
         label={label}
         checked={value}
@@ -31,4 +31,4 @@ class TextField extends Field {
 
 }
 
-export default TextField;
+export default CheckboxField;

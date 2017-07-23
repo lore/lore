@@ -1,13 +1,13 @@
 import React from 'react';
-import mui from 'material-ui';
-import SvgIcons from 'material-ui/svg-icons';
+import { CircularProgress, TextField } from 'material-ui';
+import { NavigationCheck, AvNotInterested } from 'material-ui/svg-icons';
 import _ from 'lodash';
 import { Field } from 'lore-react-forms';
 
 const PendingIcon = React.createClass({
   render: function() {
     return (
-      <mui.CircularProgress
+      <CircularProgress
         style={{
           position: 'absolute',
           top: '36px',
@@ -23,7 +23,7 @@ const PendingIcon = React.createClass({
 const SuccessIcon = React.createClass({
   render: function() {
     return (
-      <SvgIcons.NavigationCheck
+      <NavigationCheck
         style={{
           position: 'absolute',
           top: '36px',
@@ -38,7 +38,7 @@ const SuccessIcon = React.createClass({
 const ErrorIcon = React.createClass({
   render: function() {
     return (
-      <SvgIcons.AvNotInterested
+      <AvNotInterested
         style={{
           position: 'absolute',
           top: '36px',
@@ -50,7 +50,7 @@ const ErrorIcon = React.createClass({
   }
 });
 
-class DynamicTextField extends Field {
+class SmartDynamicTextField extends Field {
 
   constructor(props) {
     super(props);
@@ -109,7 +109,7 @@ class DynamicTextField extends Field {
 
     return (
       <div style={{ position: 'relative' }}>
-        <mui.TextField
+        <TextField
           style={style}
           floatingLabelText={label}
           floatingLabelFixed={false}
@@ -128,4 +128,4 @@ class DynamicTextField extends Field {
 
 }
 
-export default DynamicTextField;
+export default SmartDynamicTextField;

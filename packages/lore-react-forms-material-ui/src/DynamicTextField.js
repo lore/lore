@@ -1,5 +1,5 @@
 import React from 'react';
-import mui from 'material-ui';
+import { TextField } from 'material-ui';
 import _ from 'lodash';
 import { Field } from 'lore-react-forms';
 
@@ -47,7 +47,7 @@ class DynamicTextField extends Field {
 
     return (
       <div style={{ position: 'relative' }}>
-        <mui.TextField
+        <TextField
           style={style}
           floatingLabelText={label}
           floatingLabelFixed={false}

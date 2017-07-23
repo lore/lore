@@ -1,11 +1,11 @@
 /* global lore */
 /* eslint arrow-parens: "off" */
 
-const React = require('react');
-const _ = require('lodash');
-const Form = require('./Form');
-const FormSection = require('./FormSection');
-const PropBarrier = require('./PropBarrier');
+import React from 'react';
+import _ from 'lodash';
+import Form from './Form';
+import FormSection from './FormSection';
+import PropBarrier from './PropBarrier';
 
 class Template extends React.Component {
 

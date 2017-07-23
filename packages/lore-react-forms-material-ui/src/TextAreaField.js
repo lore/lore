@@ -1,5 +1,5 @@
 import React from 'react';
-import mui from 'material-ui';
+import { TextField } from 'material-ui';
 import _ from 'lodash';
 import { Field } from 'lore-react-forms';
 
@@ -17,7 +17,7 @@ class TextAreaField extends Field {
     const style = _.assign({}, { width: '100%' }, this.props.style);
 
     return (
-      <mui.TextField
+      <TextField
         style={style}
         floatingLabelText={label}
         floatingLabelFixed={false}

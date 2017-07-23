@@ -2,7 +2,7 @@
 
 import React from 'react';
 import _ from 'lodash';
-import mui from 'material-ui';
+import { AutoComplete } from 'material-ui';
 import { Field } from 'lore-react-forms';
 
 class AutoCompleteField extends Field {
@@ -142,7 +142,7 @@ class AutoCompleteField extends Field {
     };
 
     return (
-      <mui.AutoComplete
+      <AutoComplete
         fullWidth={true}
         floatingLabelText="User"
         searchText={searchText}
