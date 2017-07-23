@@ -3,11 +3,10 @@ var mui = require('material-ui');
 var _ = require('lodash');
 
 // react-form
-var Form = require('lore-react-forms/Form');
-var FormSection = require('lore-react-forms/FormSection');
-var PropBarrier = require('lore-react-forms/PropBarrier');
-
-var Template = require('lore-react-forms/Template');
+var Form = require('lore-react-forms').Form;
+var FormSection = require('lore-react-forms').FormSection;
+var PropBarrier = require('lore-react-forms').PropBarrier;
+var Template = require('lore-react-forms').Template;
 
 class CustomTemplate extends Template {
 
