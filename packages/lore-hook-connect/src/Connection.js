@@ -11,87 +11,86 @@ import InvalidActionKeyError from './errors/InvalidActionKeyError';
  * @param {Object} options : parameters to individualize the behavior of this connection
  * @constructor
  */
-function Connection(definition, options) {
-  _.merge(this, definition || {});
-  _.bindAll(this);
 
-  this.actionKey = options.action;
-  this.reducerKey = options.reducer;
-  this.actions = options.actions;
-}
+class Connection {
 
-_.extend(Connection.prototype, {
+  constructor(definition, options) {
+    /**
+     * Default parameters. User params will be merged with these to
+     * create the full set.
+     */
+    this.defaults = {};
 
-  /**
-   * String declaring the action to invoke if there is no data in the
-   * reducer state
-   */
-  actionKey: '',
+    // apply definition overrides to class
+    _.merge(this, definition || {});
+    _.bindAll(this);
 
-  /**
-   * String declaring the reducer state that should be retrieved
-   */
-  reducerKey: '',
+    /**
+     * String declaring the action to invoke if there is no data in the
+     * reducer state
+     */
+    this.actionKey = options.action || '';
 
-  /**
-   * Default parameters. User params will be merged with these to
-   * create the full set.
-   */
-  defaults: {},
+    /**
+     * String declaring the reducer state that should be retrieved
+     */
+    this.reducerKey = options.reducer || '';
+    this.actions = options.actions;
+  }
 
   /**
    * Verify whether the parameters provided to the getState call are valid
    * @param {Object} params
    */
-  verifyParams: function(params) {
+  verifyParams(params) {
     // no op
-  },
+  }
 
   /**
    * Get the action that should be invoked if the data does not exist
    * @param {Array} actions : array of all registered action creators
    * @returns {Function} action to invoke
    */
-  getAction: function(actions) {
+  getAction(actions) {
     const key = this.actionKey;
     const action = _.get(actions, key);
     if (!action) {
       throw InvalidActionKeyError(key);
     }
     return action;
-  },
+  }
 
   /**
    * Get the subset of state associated with the reducer we're interested in
    * @param {Object} storeState : the state of the Redux Store
    * @returns {Object} the piece of state owned by the reducer
    */
-  getReducerState: function(storeState) {
+  getReducerState(storeState) {
     const key = this.reducerKey;
     const reducerState = _.get(storeState, key);
     if (!reducerState) {
       throw InvalidReducerKeyError(key);
     }
     return reducerState;
-  },
+  }
 
   /**
    * Extract the data we care about from the reducer's state
    * @param {Object} reducerState : subset of state owned by the reducer we care about
    * @param {Object} params : parameters provided to the getState call
    */
-  getPayload: function(reducerState, params) {
+  getPayload(reducerState, params) {
     // no op
-  },
+  }
 
   /**
    * Call the action responsible for retrieving the data we want
    * @param action : the action that can retrieve the data we want
    * @param params : parameters provided to the getState call
    */
-  callAction: function(action, params) {
+  callAction(action, params) {
     // no op
-  },
+  }
 
   /**
    * This is the main function for connections, and orchestrates the logic to
@@ -102,7 +101,7 @@ _.extend(Connection.prototype, {
    * @param {Object} userParams : parameters passed to the getState function
    * @returns {Object} payload sent to the Redux Store
    */
-  getState: function(state, userParams, options = {}) {
+  getState(state, userParams, options = {}) {
     const params = _.assign({}, this.defaults, userParams);
     this.verifyParams(params);
 
@@ -117,6 +116,6 @@ _.extend(Connection.prototype, {
     return payload;
   }
 
-});
+}
 
 export default Connection;
