@@ -9,7 +9,7 @@ import TextField from './fields/text';
 import CheckboxField from './fields/checkbox';
 import NumberField from './fields/number';
 import SelectField from './fields/select';
-import AutocompleteField from './fields/autocomplete';
+import AutoCompleteField from './fields/autocomplete';
 import CancelButton from './actions/cancel';
 import SubmitButton from './actions/submit';
 
@@ -30,7 +30,7 @@ export default {
         checkbox: CheckboxField,
         number: NumberField,
         select: SelectField,
-        autocomplete: AutocompleteField
+        autocomplete: AutoCompleteField
       },
 
       typeActionMap: {

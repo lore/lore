@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatButton } from 'material-ui';
 
-export default function(name, attributes) {
+export default function(name, attributes, form) {
   return (
     <FlatButton
       key={name}

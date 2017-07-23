@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function(name, attributes, onSubmit) {
+export default function(name, attributes, form, onSubmit) {
   return (
     <button
       key={name}
