@@ -79,6 +79,8 @@ export default function(actions, blueprints, reducerActionMap) {
         },
 
         componentDidMount: function () {
+          this.isMounted = true;
+
           if (!options.subscribe) {
             return;
           }
@@ -86,35 +88,17 @@ export default function(actions, blueprints, reducerActionMap) {
           this.unsubscribe = this.context.store.subscribe(function () {
             const nextState = this.selectState(this.props, this.context, getState);
 
-            // Why is setTimeout here?
-            //
-            // If setTimeout is removed you will get the warning "Connect('ComponentName') is
-            // accessing isMounted inside its render() function. render() should be a pure
-            // function of props and state."
-            //
-            // This warning happens because components farther down that chain that call getState
-            // in their own connect() wrappers may fire actions, which update the reducer, which
-            // calls all callbacks subscribed to the store, which calls this function, which then
-            // throws a warning because React checks for the existence of some variable that it
-            // can't find and interprets the lack of that variable as someone attempting to call
-            // setState() or isMounted() from within the render function.
-            //
-            // That isn't what we're doing here (what's happening is perfectly valid code flow)
-            // but React interprets it incorrectly and throws a warning. So to remove the fairly
-            // very noisy warning we're simply going to force the code to wait a tick (~4-10ms)
-            // before updating state.
-
-            setTimeout(function () {
-              // Because setTimeout() is an asynchronous call we can not guarantee the component is
-              // still mounted, so we need to check before updating state
-              if (this.isMounted()) {
-                this.setState(nextState);
-              }
-            }.bind(this), 0);
+            // There's no guarantee the component will still be mounted, when this
+            // callback is invoked, so we need to check before updating state
+            if (this.isMounted) {
+              this.setState(nextState);
+            }
           }.bind(this));
         },
 
         componentWillUnmount: function () {
+          this.isMounted = false;
+
           if (this.unsubscribe) {
             this.unsubscribe();
           }
