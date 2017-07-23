@@ -3,14 +3,36 @@
 
 import React from 'react';
 import _ from 'lodash';
-import config from './config';
+import { Template as DefaultTemplate } from 'lore-react-forms';
+import StringField from './fields/string';
+import DynamicStringField from './fields/dynamicString';
+import SelectField from './fields/select';
+import AutoCompleteField from './fields/autocomplete';
+import CancelButton from './actions/cancel';
+import SubmitButton from './actions/submit';
 
 export default {
 
   dependencies: ['models'],
 
   defaults: {
-    forms: config
+    forms: {
+      templates: {
+        default: DefaultTemplate,
+      },
+
+      typeFieldMap: {
+        string: StringField,
+        dynamicString: DynamicStringField,
+        select: SelectField,
+        autocomplete: AutoCompleteField
+      },
+
+      typeActionMap: {
+        cancel: CancelButton,
+        submit: SubmitButton
+      }
+    }
   },
 
   load: function(lore) {
