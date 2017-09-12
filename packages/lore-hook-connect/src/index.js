@@ -6,6 +6,7 @@ import byId from './blueprints/byId';
 import singleton from './blueprints/singleton';
 import all from './blueprints/all';
 import byCid from './blueprints/byCid';
+import first from './blueprints/first';
 
 export default {
 
@@ -18,7 +19,8 @@ export default {
         byId,
         singleton,
         all,
-        byCid
+        byCid,
+        first
       },
       reducerActionMap: {
         '*.all': {
@@ -40,6 +42,11 @@ export default {
           action: '*.find',
           reducer: '*.find',
           blueprint: 'find'
+        },
+        '*.first': {
+          action: '*.find',
+          reducer: '*.find',
+          blueprint: 'first'
         }
       }
     }
