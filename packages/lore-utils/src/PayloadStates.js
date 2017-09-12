@@ -5,6 +5,7 @@ export default {
 
   RESOLVED   : 'RESOLVED',
   NOT_FOUND: 'NOT_FOUND',
+  DELETED: 'DELETED',
 
   CREATING: 'CREATING',
   UPDATING: 'UPDATING',
