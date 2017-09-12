@@ -4,6 +4,9 @@ import _ from 'lodash';
 import { ActionTypes } from 'lore-utils';
 import sortReducersByLoadOrder from './sortReducersByLoadOrder';
 
+// threshold in milliseconds that must be reached before issuing performance warning
+const THRESHOLD_MS = 5;
+
 export default function compositeReducer(reducers, dependencies, config, modelName) {
   const loadOrder = sortReducersByLoadOrder(dependencies);
 
@@ -37,10 +40,6 @@ export default function compositeReducer(reducers, dependencies, config, modelNa
 
       // start the timer
       const start = Date.now();
-      const thresholdInMs = 3;
-
-      let check = dependencies;
-      let cf = config;
 
       nextState[reducerName] = reducers[reducerName](
         state[reducerName],
@@ -51,7 +50,7 @@ export default function compositeReducer(reducers, dependencies, config, modelNa
       // Provide the config the ability to modify the next state returned
       const stop = Date.now();
       const diffInMs = stop - start;
-      if (diffInMs >= thresholdInMs) {
+      if (diffInMs >= THRESHOLD_MS) {
         // console.warn('Reducer "' + reducerName + '" took ' + diffInMs + 'ms for ' + action.type);
         console.warn(`Reducer "${modelName}.${reducerName}" took ${diffInMs}ms for ${action.type}`);
       }
