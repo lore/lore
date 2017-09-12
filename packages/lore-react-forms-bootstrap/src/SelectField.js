@@ -8,8 +8,14 @@ import { PayloadStates } from 'lore-utils';
 
 class SelectField extends Field {
 
-  onChange(event, key, value) {
+  onChange(event) {
     this.onBlur();
+
+    var option = _.find(this.props.options.data, function(option) {
+      return String(option.id) === event.target.value;
+    });
+    var value = option ? option.id : null;
+
     this.props.onChange(this.props.name, value);
     if (this.props.afterChange) {
       this.props.afterChange(this.props.onChange);
@@ -30,7 +36,7 @@ class SelectField extends Field {
   render() {
     const name = this.props.name;
     const error = this.props.errors[name];
-    // const value = this.props.data[name];
+    const value = this.props.data[name];
     const touched = this.state.touched;
 
     const label = this.props.label;
@@ -59,7 +65,7 @@ class SelectField extends Field {
     return (
       <div className={'form-group' + (displayError ? ' has-error' : '')}>
         <label>{label}</label>
-        <select className="form-control">
+        <select ref="select" className="form-control" onChange={this.onChange} value={value}>
           {[this.renderOption({ value: null, text: '' })].concat(
             optionsData.map(this.renderOption)
           )}

@@ -3,7 +3,7 @@
 import React from 'react';
 import Field from './common/BootstrapField';
 
-class TextField extends Field {
+class TextAreaField extends Field {
 
   render() {
     const name = this.props.name;
@@ -12,6 +12,7 @@ class TextField extends Field {
     const touched = this.state.touched;
     const hintText = this.props.hintText;
     const label = this.props.label;
+    const rows = this.props.rows || 5;
     const disabled = this.props.disabled;
     // const multiLine = this.props.multiLine || false;
     const displayError = touched && error;
@@ -21,7 +22,7 @@ class TextField extends Field {
     return (
       <div className={'form-group' + (displayError ? ' has-error' : '')}>
         <label>{label}</label>
-        <input
+        <textarea
           type="text"
           value={value}
           onChange={this.onChange}
@@ -30,6 +31,7 @@ class TextField extends Field {
           className="form-control"
           placeholder={hintText}
           disabled={disabled}
+          rows={rows}
         />
         {displayError ? (
           <span className="help-block">{error}</span>
@@ -40,4 +42,4 @@ class TextField extends Field {
 
 }
 
-export default TextField;
+export default TextAreaField;
