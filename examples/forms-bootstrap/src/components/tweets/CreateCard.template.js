@@ -71,8 +71,7 @@ module.exports = React.createClass({
 
   getForm: function() {
     var data = this.state;
-
-    return React.createElement(Template, _.merge({}, tweetConfig.forms, {
+    var templateParams = _.merge({}, tweetConfig.forms, {
       fields: {
         text: {
           data: data.text
@@ -82,7 +81,11 @@ module.exports = React.createClass({
         }
       },
       onSubmit: this.onSubmit
-    }));
+    });
+
+    return (
+      <Template {...templateParams} />
+    );
   },
 
   render: function() {

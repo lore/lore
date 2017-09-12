@@ -16,20 +16,20 @@ window.lore = lore;
 // Summon the app!
 lore.summon({
   hooks: {
-    auth: require('lore-hook-auth'),
-    actions: require('./hooks/lore-hook-actions'),
-    bindActions: require('lore-hook-bind-actions'),
-    collections: require('lore-hook-collections'),
-    connections: require('lore-hook-connections'),
-    connect: require('lore-hook-connect'),
-    dialog: require('lore-hook-dialog'),
-    forms: require('lore-hook-forms-bootstrap'),
-    models: require('lore-hook-models'),
-    react: require('lore-hook-react'),
-    reducers: require('lore-hook-reducers'),
-    redux: _.extend(require('lore-hook-redux'), {
+    auth: require('/Users/jchansen/lore/lore/packages/lore-hook-auth'),
+    actions: require('/Users/jchansen/lore/lore/packages/lore-hook-actions'),
+    bindActions: require('/Users/jchansen/lore/lore/packages/lore-hook-bind-actions'),
+    collections: require('/Users/jchansen/lore/lore/packages/lore-hook-collections'),
+    connections: require('/Users/jchansen/lore/lore/packages/lore-hook-connections'),
+    connect: require('/Users/jchansen/lore/lore/packages/lore-hook-connect'),
+    dialog: require('/Users/jchansen/lore/lore/packages/lore-hook-dialog'),
+    forms: require('/Users/jchansen/lore/lore/packages/lore-hook-forms-bootstrap'),
+    models: require('/Users/jchansen/lore/lore/packages/lore-hook-models'),
+    react: require('/Users/jchansen/lore/lore/packages/lore-hook-react'),
+    reducers: require('/Users/jchansen/lore/lore/packages/lore-hook-reducers'),
+    redux: _.extend(require('/Users/jchansen/lore/lore/packages/lore-hook-redux'), {
       dependencies: ['reducers', 'auth']
     }),
-    router: require('lore-hook-router')
+    router: require('/Users/jchansen/lore/lore/packages/lore-hook-router')
   }
 });
