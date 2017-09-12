@@ -18,6 +18,9 @@ module.exports = React.createClass({
             <ul className="nav navbar-nav">
               <HeaderLink to="/tweets">Tweets</HeaderLink>
               <HeaderLink to="/users">Users</HeaderLink>
+              <HeaderLink to="/autocomplete">AutoComplete</HeaderLink>
+              <HeaderLink to="/select">Select</HeaderLink>
+              <HeaderLink to="/validated">ValidatedInput</HeaderLink>
             </ul>
           </div>
         </div>

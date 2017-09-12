@@ -82,15 +82,15 @@ class Template extends React.Component {
     );
   }
 
-  renderAction(name, action) {
+  renderAction(name, action, form) {
     const Action = lore.config.forms.typeActionMap[action.type];
-    return Action ? Action(name, action.options, this.onSubmit) : null;
+    return Action ? Action(name, action.options, form, this.onSubmit) : null;
   }
 
   getActions(dialog, form) {
     const actions = [];
     _.mapValues(this.props.actions, function(value, key) {
-      actions.push(this.renderAction(key, value));
+      actions.push(this.renderAction(key, value, form));
     }.bind(this));
     return actions;
   }
@@ -119,6 +119,7 @@ class Template extends React.Component {
         data={data}
         validators={validators}
         onChange={this.onChange}
+        isSaving={this.props.isSaving}
       >
         {(form) => (
           <FormSection>

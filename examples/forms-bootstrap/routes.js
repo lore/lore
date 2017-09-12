@@ -17,6 +17,9 @@ var Master = require('./src/components/Master');
 var Layout = require('./src/components/Layout');
 var Tweets = require('./src/components/tweets/Layout');
 var Users = require('./src/components/users/Layout');
+var AutoComplete = require('./src/components/_autocomplete/Layout');
+var Select = require('./src/components/_select/Layout');
+var ValidatedInput = require('./src/components/_validatedInput/Layout');
 
 module.exports = (
   <Route component={UserIsAuthenticated(Master)}>
@@ -27,6 +30,9 @@ module.exports = (
       <Route path="tweets/:tweetId" component={Tweets} />
       <Route path="users" component={Users} />
       <Route path="users/:userId" component={Users} />
+      <Route path="autocomplete" component={AutoComplete} />
+      <Route path="select" component={Select} />
+      <Route path="validated" component={ValidatedInput} />
     </Route>
   </Route>
 );

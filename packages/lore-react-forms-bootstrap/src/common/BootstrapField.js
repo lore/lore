@@ -1,4 +1,4 @@
-import Field from 'lore-react-forms/Field';
+import { Field } from 'lore-react-forms';
 
 class BootstrapField extends Field {
 

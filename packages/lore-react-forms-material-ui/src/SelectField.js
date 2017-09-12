@@ -1,7 +1,7 @@
 import React from 'react';
-import mui from 'material-ui';
+import { MenuItem, CircularProgress, SelectField as MuiSelectField } from 'material-ui';
 import _ from 'lodash';
-import Field from 'lore-react-forms/Field';
+import { Field } from 'lore-react-forms';
 import { PayloadStates } from 'lore-utils';
 
 class SelectField extends Field {
@@ -19,7 +19,7 @@ class SelectField extends Field {
     const value = option.value;
 
     return (
-      <mui.MenuItem
+      <MenuItem
         key={value}
         value={value}
         primaryText={text}
@@ -39,7 +39,7 @@ class SelectField extends Field {
 
     if (options.state === PayloadStates.FETCHING) {
       return (
-        <mui.CircularProgress />
+        <CircularProgress />
       );
     }
 
@@ -55,7 +55,7 @@ class SelectField extends Field {
     const optionsData = mapDataToOptions(options.data);
 
     return (
-      <mui.SelectField
+      <MuiSelectField
         fullWidth={true}
         maxHeight={200}
         floatingLabelText={label}
@@ -66,7 +66,7 @@ class SelectField extends Field {
         {[this.renderOption({ value: null, text: '' })].concat(
           optionsData.map(this.renderOption)
         )}
-      </mui.SelectField>
+      </MuiSelectField>
     );
   }
 

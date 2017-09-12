@@ -12,7 +12,7 @@ class TextField extends Field {
     const touched = this.state.touched;
     const hintText = this.props.hintText;
     const label = this.props.label;
-    // const disabled = this.props.disabled;
+    const disabled = this.props.disabled;
     // const multiLine = this.props.multiLine || false;
     const displayError = touched && error;
 
@@ -29,6 +29,7 @@ class TextField extends Field {
           onBlur={this.onBlur}
           className="form-control"
           placeholder={hintText}
+          disabled={disabled}
         />
         {displayError ? (
           <span className="help-block">{error}</span>

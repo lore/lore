@@ -55,8 +55,8 @@ function mergeMissingDataIntoDictionary(data, query, byCid) {
 }
 
 const SETTINGS = {
-  REMOVE_DESTROYED_DATA: true,
-  ADD_NEW_DATA_TO_QUERIES: true
+  REMOVE_DESTROYED_DATA: false,
+  ADD_NEW_DATA_TO_QUERIES: false
 };
 
 export default function(modelName) {

@@ -130,7 +130,8 @@ export default {
         lore.reducers[modelName] = compositeReducer(
           reducer,
           dependencies[modelName],
-          config
+          config,
+          modelName
         );
       }
     });

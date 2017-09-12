@@ -10,20 +10,39 @@ export default React.createClass({
     data: React.PropTypes.object.isRequired,
     errors: React.PropTypes.object,
     validators: React.PropTypes.object,
-    onChange: React.PropTypes.func.isRequired
+    onChange: React.PropTypes.func.isRequired,
+    isSaving: React.PropTypes.bool.isRequired
   },
 
   getDefaultProps: function() {
     return {
-      errors: {}
+      errors: {},
+      isSaving: false
     };
   },
 
   getInitialState: function() {
     return {
-      // isSaving: false,
+      isSaving: this.props.isSaving,
       isModified: false
     };
+  },
+
+  componentWillReceiveProps: function(nextProps) {
+    const nextIsSaving = nextProps.isSaving;
+    const isSaving = this.state.isSaving;
+
+    if (nextIsSaving !== isSaving) {
+      this.setState({
+        isSaving: nextIsSaving
+      });
+    }
+
+    if (isSaving === true && nextIsSaving === false) {
+      this.setState({
+        isModified: false
+      });
+    }
   },
 
   onChange: function(name, value) {
@@ -35,18 +54,6 @@ export default React.createClass({
 
     this.props.onChange(name, value);
   },
-
-  // getValidators: function(data) {
-  //   if (this.props.validators) {
-  //     return this.props.validators;
-  //   }
-  //
-  //   if (this.props.getValidators) {
-  //     return this.props.getValidators(data);
-  //   }
-  //
-  //   return {};
-  // },
 
   getErrors: function(validatorDictionary, data) {
     if (this.props.getErrors) {
@@ -107,7 +114,7 @@ export default React.createClass({
 
   render: function() {
     const data = this.props.data;
-    const validators = this.props.validators || {}; // this.getValidators(data);
+    const validators = this.props.validators || {};
     const errors = this.getErrors(validators, data);
     const hasError = this.hasError(errors);
     const parentErrors = this.props.errors;
@@ -122,8 +129,8 @@ export default React.createClass({
           hasError: hasError,
           parentErrors: parentErrors,
           allErrors: allErrors,
-          // isSaving: this.state.isSaving,
-          isModified: this.state.isModified
+          isModified: this.state.isModified,
+          isSaving: this.state.isSaving
         })}
       </div>
     );

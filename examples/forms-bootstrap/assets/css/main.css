@@ -68,3 +68,10 @@
   color: #999;
   font-size: 14px
 }
+
+.card-block .state {
+  background-color: #f7f7f7;
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
+  padding: 1.25rem;
+}

@@ -7,12 +7,12 @@ var _ = require('lodash');
 var validators = require('../../utils/validators');
 var Overlay = require('../common/Overlay');
 
-var Form = require('lore-react-forms/Form');
-var FormSection = require('lore-react-forms/FormSection');
-var PropBarrier = require('lore-react-forms/PropBarrier');
+var Form = require('lore-react-forms').Form;
+var FormSection = require('lore-react-forms').FormSection;
+var PropBarrier = require('lore-react-forms').PropBarrier;
 
-var TextField = require('lore-react-forms-material-ui/TextField');
-var AutoCompleteField = require('lore-react-forms-material-ui/AutoCompleteField');
+var TextField = require('lore-react-forms-material-ui').TextField;
+var AutoCompleteField = require('lore-react-forms-material-ui').AutoCompleteField;
 var Connect = require('../Connect');
 
 module.exports = lore.connect(function(getState, props){

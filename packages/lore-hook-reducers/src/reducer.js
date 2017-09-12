@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { ActionTypes } from 'lore-utils';
 import sortReducersByLoadOrder from './sortReducersByLoadOrder';
 
-export default function compositeReducer(reducers, dependencies, config) {
+export default function compositeReducer(reducers, dependencies, config, modelName) {
   const loadOrder = sortReducersByLoadOrder(dependencies);
 
   // Create an initial state object from the reducer names
@@ -34,14 +34,29 @@ export default function compositeReducer(reducers, dependencies, config) {
       //     byId: _byId
       //   }
       // })
+
+      // start the timer
+      const start = Date.now();
+      const thresholdInMs = 3;
+
+      let check = dependencies;
+      let cf = config;
+
       nextState[reducerName] = reducers[reducerName](
         state[reducerName],
         action,
         { nextState: nextState }
       );
+
+      // Provide the config the ability to modify the next state returned
+      const stop = Date.now();
+      const diffInMs = stop - start;
+      if (diffInMs >= thresholdInMs) {
+        // console.warn('Reducer "' + reducerName + '" took ' + diffInMs + 'ms for ' + action.type);
+        console.warn(`Reducer "${modelName}.${reducerName}" took ${diffInMs}ms for ${action.type}`);
+      }
     });
 
-    // Provide the config the ability to modify the next state returned
     return config.nextState(nextState);
   };
 }

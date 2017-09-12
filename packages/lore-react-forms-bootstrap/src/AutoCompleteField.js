@@ -3,37 +3,37 @@
 import React from 'react';
 import _ from 'lodash';
 import { PayloadStates } from 'lore-utils';
-import Field from 'lore-react-forms/Field';
+import { Field } from 'lore-react-forms';
 import onClickOutside from 'react-onclickoutside';
 
 class AutoCompleteField extends Field {
 
   constructor(props) {
     super(props);
+
+    // bind component methods
     this.handleUpdateInput = this.handleUpdateInput.bind(this);
-    // this.handleUpdateInput = _.debounce(this.handleUpdateInput, 500);
-
     this.handleNewRequest = this.handleNewRequest.bind(this);
-    // this.handleNewRequest = _.debounce(this.handleNewRequest, 1000);
-
     this.updateOptions = this.updateOptions.bind(this);
-    this.updateOptions = _.debounce(this.updateOptions, 250);
     this.renderOption = this.renderOption.bind(this);
+    this.filter = this.filter.bind(this);
 
+    // setup debounce if configured
+    var debounceDelay = this.props.debounceDelay;
+    if (debounceDelay > 0) {
+      this.updateOptions = _.debounce(this.updateOptions, debounceDelay);
+    }
+
+    // if the value exists in the data, use it to set the initial search text
     const initialOption = _.find(props.options.data, function(option) {
-      console.log(`props.data[props.name]: ${props.data[props.name]}`);
       return option.id === props.data[props.name];
     });
-
     const searchText = initialOption ? initialOption.data[props.field] : '';
 
     this.state = {
       searchText: searchText,
       isModified: false,
-      options: this.props.options || {
-        data: [],
-        query: {}
-      },
+      options: this.props.options,
       hasFocus: false
     };
   }
@@ -44,14 +44,9 @@ class AutoCompleteField extends Field {
     });
   }
 
-  onBlur() {
-    // this.setState({
-    //   touched: true
-    // });
-  }
+  onBlur() { }
 
   handleClickOutside(event) {
-    console.log('clicked outside!');
     if (this.state.hasFocus) {
       this.setState({
         hasFocus: false,
@@ -61,54 +56,50 @@ class AutoCompleteField extends Field {
   }
 
   componentWillReceiveProps(nextProps) {
-    const options = this.state.options;
-    const query = options.query;
-    const nextOptions = lore.store.getState().user.find[JSON.stringify(query)];
     this.setState({
-      options: nextOptions || options
+      options: this.filter(this.state.searchText)
     });
   }
 
+  filter(searchText) {
+    if (this.props.filter) {
+      return this.props.filter(searchText);
+    }
+
+    return _.assign({}, this.state.options, {
+      state: PayloadStates.RESOLVED
+    });
+  }
+
+  /*
+   * Change options based on user input
+   */
   updateOptions(searchText) {
-    console.log(`updateOptions: ${searchText}`);
     this.setState({
-      options: lore.getState('user.find', {
-        where: {
-          username_like: searchText
-        }
-      })
+      options: this.filter(searchText)
     });
   }
 
   handleUpdateInput(e) {
     const searchText = e.target.value;
-    console.log(`handleUpdateInput: ${searchText}`);
+
     this.setState({
       searchText: searchText,
-      isModified: true,
-      options: {
-        state: PayloadStates.FETCHING,
-        data: [
-          {
-            id: 0,
-            data: {
-              id: 0,
-              username: 'Searching...'
-            }
-          }
-        ],
-        query: {}
-      }
+      isModified: true
     });
+
+    if (this.props.debounceDelay > 0) {
+      this.setState({
+        options: _.assign({}, this.state.options, {
+          state: PayloadStates.FETCHING
+        })
+      });
+    }
 
     this.updateOptions(searchText);
   }
 
   handleNewRequest(item, index) {
-    console.log('handleNewRequest');
-    // this.setState({
-    //   searchText: '',
-    // });
     this.props.onChange(this.props.name, item.value);
     this.setState({
       searchText: item.text,
@@ -136,24 +127,28 @@ class AutoCompleteField extends Field {
   }
 
   render() {
-    const name = this.props.name;
-    const error = this.props.errors[name];
-    // const value = this.props.data[name];
-    const touched = this.state.touched;
-    const hintText = this.props.hintText;
-    const label = this.props.label;
-    // const disabled = this.props.disabled;
+    const {
+      name,
+      errors,
+      hintText,
+      label,
+      option,
+      field
+    } = this.props;
+
+    const {
+      touched,
+      isModified,
+      options
+    } = this.state;
+
+    const error = errors[name];
     const displayError = touched && error;
 
-    const isModified = this.state.isModified;
-    const option = this.props.option;
-    const field = this.props.field;
     const searchText = option ? (
       isModified ? this.state.searchText : option.data[field]
     ) : this.state.searchText;
 
-    const options = this.state.options;
-    // options.data = options.data || [];
     let suggestions = null;
 
     function mapDataToOptions(data) {
@@ -164,13 +159,6 @@ class AutoCompleteField extends Field {
         };
       });
     }
-
-    // const optionsData = mapDataToOptions(options.data);
-    // const dataSource = [{ value: null, text: ''}].concat(optionsData);
-    // const dataSource = mapDataToOptions(options.data);
-    // const filter = function(a, b, c) {
-    //   return true;
-    // };
 
     if (options.state === PayloadStates.FETCHING) {
       suggestions = (
@@ -198,7 +186,9 @@ class AutoCompleteField extends Field {
 
     return (
       <div className={className}>
-        <label>{label}</label>
+        {label ? (
+          <label>{label}</label>
+        ): null}
         <input
           type="text"
           value={searchText}
@@ -221,13 +211,16 @@ class AutoCompleteField extends Field {
 }
 
 AutoCompleteField.propTypes = _.assign({}, {
-  options: React.PropTypes.object.isRequired
+  options: React.PropTypes.object.isRequired,
+  debounceDelay: React.PropTypes.number,
+  filter: React.PropTypes.func
 });
 
 AutoCompleteField.defaultProps = _.assign({}, {
   options: {
     data: []
-  }
+  },
+  debounceDelay: 250
 });
 
 export default onClickOutside(AutoCompleteField);

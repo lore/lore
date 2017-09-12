@@ -4,9 +4,9 @@ var _ = require('lodash');
 var logo = require('../../../assets/images/logo.png');
 
 // react-form
-var Form = require('lore-react-forms/Form');
-var FormSection = require('lore-react-forms/FormSection');
-var PropBarrier = require('lore-react-forms/PropBarrier');
+var Form = require('lore-react-forms').Form;
+var FormSection = require('lore-react-forms').FormSection;
+var PropBarrier = require('lore-react-forms').PropBarrier;
 
 var Template = require('./Template');
 var Overlay = require('../common/Overlay');

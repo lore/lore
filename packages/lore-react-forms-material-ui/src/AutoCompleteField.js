@@ -2,11 +2,10 @@
 
 import React from 'react';
 import _ from 'lodash';
-import mui from 'material-ui';
-import Field from 'lore-react-forms/Field';
+import { AutoComplete } from 'material-ui';
+import { Field } from 'lore-react-forms';
 
 class AutoCompleteField extends Field {
-
   constructor(props) {
     super(props);
     this.handleUpdateInput = this.handleUpdateInput.bind(this);
@@ -104,7 +103,6 @@ class AutoCompleteField extends Field {
     const searchText = option ? (
       isModified ? this.state.searchText : option.data[field]
     ) : this.state.searchText;
-
     // const options = {
     //   data: [
     //     {
@@ -137,14 +135,14 @@ class AutoCompleteField extends Field {
     }
 
     // const optionsData = mapDataToOptions(options.data);
-    // const dataSource = [{ value: null, text: ''}].concat(optionsData);
+    // const dataSource = [{ value: null, text: '' }].concat(optionsData);
     const dataSource = mapDataToOptions(options.data);
     const filter = function(a, b, c) {
       return true;
     };
 
     return (
-      <mui.AutoComplete
+      <AutoComplete
         fullWidth={true}
         floatingLabelText="User"
         searchText={searchText}

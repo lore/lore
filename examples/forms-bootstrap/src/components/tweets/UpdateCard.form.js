@@ -6,12 +6,12 @@ var _ = require('lodash');
 var validators = require('../../utils/validators');
 var Overlay = require('../common/Overlay');
 
-var Form = require('lore-react-forms/Form');
-var FormSection = require('lore-react-forms/FormSection');
-var PropBarrier = require('lore-react-forms/PropBarrier');
+var Form = require('lore-react-forms').Form;
+var FormSection = require('lore-react-forms').FormSection;
+var PropBarrier = require('lore-react-forms').PropBarrier;
 
-var TextField = require('lore-react-forms-bootstrap/TextField');
-var AutoCompleteField = require('lore-react-forms-bootstrap/AutoCompleteField');
+var TextField = require('lore-react-forms-bootstrap').TextField;
+var AutoCompleteField = require('lore-react-forms-bootstrap').AutoCompleteField;
 var Connect = require('../Connect');
 var Spinner = require('../common/Spinner');
 

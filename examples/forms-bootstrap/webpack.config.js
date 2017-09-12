@@ -45,9 +45,10 @@ module.exports = function(env) {
     resolve: {
       alias: {
         'react': path.resolve(__dirname, 'node_modules/react'),
-        'lore-hook-forms-bootstrap': path.resolve(__dirname, '../../packages/lore-hook-forms-bootstrap/src'),
-        'lore-react-forms': path.resolve(__dirname, '../../packages/lore-react-forms/src'),
-        'lore-react-forms-bootstrap': path.resolve(__dirname, '../../packages/lore-react-forms-bootstrap/src')
+        // 'lore-hook-actions': path.resolve(__dirname, '../../packages/lore-hook-actions'),
+        // 'lore-hook-forms-bootstrap': path.resolve(__dirname, '../../packages/lore-hook-forms-bootstrap'),
+        'lore-react-forms': path.resolve(__dirname, '../../packages/lore-react-forms'),
+        'lore-react-forms-bootstrap': path.resolve(__dirname, '../../packages/lore-react-forms-bootstrap')
       }
     },
     module: {
