@@ -121,6 +121,35 @@ export default function(modelName) {
         });
         return nextState;
       }
+
+      case ActionTypes.update(modelName): {
+        nextState = _.mapValues(nextState, function (collection, key) {
+          collection.data = collection.data.map(function (datum) {
+            if (datum.id === action.payload.id) {
+              return action.payload;
+            }
+            return datum;
+          });
+
+          return collection;
+        });
+        return nextState;
+      }
+
+      case ActionTypes.remove(modelName): {
+        nextState = _.mapValues(nextState, function (collection, key) {
+          collection.data = collection.data.map(function (datum) {
+            if (datum.id === action.payload.id) {
+              return action.payload;
+            }
+            return datum;
+          });
+
+          return collection;
+        });
+        return nextState;
+      }
+
       default:
         return nextState;
     }
