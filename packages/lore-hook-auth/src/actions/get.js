@@ -1,9 +1,13 @@
-import { ActionTypes, PayloadStates } from 'lore-utils';
-import { utils } from 'lore-actions';
+/* eslint consistent-return: "off" */
 
-const payload = utils.payload;
+import _ from 'lodash';
+import { ActionTypes, PayloadStates, normalize, payload } from 'lore-utils';
 
-export default function(modelName, models) {
+/*
+ * Blueprint for Get method
+ */
+
+export default function(modelName, models, lore) {
   const Model = models[modelName];
 
   return function get() {
@@ -11,10 +15,17 @@ export default function(modelName, models) {
       const model = new Model();
 
       model.fetch().then(function() {
+        // look through the model and generate actions for any attributes with
+        // nested data that should be normalized
+        let actions = normalize(lore, modelName).model(model);
+
         dispatch({
           type: ActionTypes.update(modelName),
           payload: payload(model, PayloadStates.RESOLVED)
         });
+
+        // dispatch any actions created from normalizing nested data
+        actions.forEach(dispatch);
       }).catch(function(response) {
         const error = response.data;
 
@@ -30,4 +41,5 @@ export default function(modelName, models) {
       });
     };
   };
-}
+};
+
