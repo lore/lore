@@ -21,7 +21,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = function(env) {
-  var { ifProduction, ifNotProduction } = getIfUtils(env);
+  var { ifProduction, ifNotProduction } = getIfUtils(env.webpack || env);
 
   return {
     devtool: ifProduction('source-map', 'eval'),
@@ -165,7 +165,7 @@ module.exports = function(env) {
       new webpack.DefinePlugin({
         __LORE_ROOT__: JSON.stringify(__dirname),
         'process.env': {
-          'NODE_ENV': JSON.stringify(env)
+          'NODE_ENV': JSON.stringify(env.lore || env)
         }
       }),
       new ProgressBarPlugin(),
