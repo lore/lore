@@ -22,7 +22,7 @@ export default function(opts = {}) {
 
   validatePartialPairs(options);
 
-  return function fetch(modelId, query = {}) {
+  return function get(modelId, query = {}) {
     return function(dispatch) {
       const model = new Model({
         id: modelId
