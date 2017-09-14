@@ -11,6 +11,9 @@
     "clean": "rimraf dist",
     "server": "json-server --watch db.json --port=1337",
     "start": "webpack-dev-server --history-api-fallback --hot --env=development --port=3000",
+    "stats": "npm run stats:development",
+    "stats:development": "webpack --json --env=development > stats.json",
+    "stats:production": "webpack --json --env=production > stats.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
