@@ -42,7 +42,6 @@ which packages are naturally grouped together.  Therefore, they are grouped toge
 * lore-generate-collection
 * lore-generate-component
 * lore-generate-generator
-* lore-generate-github
 * lore-generate-hook
 * lore-generate-model
 * lore-generate-new

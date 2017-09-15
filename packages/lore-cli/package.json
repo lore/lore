@@ -27,7 +27,6 @@
     "lore-generate-collection": "^0.12.7",
     "lore-generate-component": "^0.12.7",
     "lore-generate-generator": "^0.12.7",
-    "lore-generate-github": "^0.12.7",
     "lore-generate-hook": "^0.12.7",
     "lore-generate-model": "^0.12.7",
     "lore-generate-new": "^0.12.7",
