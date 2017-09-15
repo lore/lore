@@ -1,7 +1,6 @@
 var path = require('path');
 var fs = require('fs-extra');
 var Generator = require('lore-generate').Generator;
-var es5Targets = require('./targets/es5');
 var es6Targets = require('./targets/es6');
 var esnextTargets = require('./targets/esnext');
 var _ = require('lodash');
@@ -76,19 +75,8 @@ module.exports = Generator.extend({
 
     if (options.esnext) {
       return esnextTargets;
-    } else if (options.es6) {
-      return es6Targets;
     } else {
-      targets = es5Targets;
-      // targets['./package-test.json'] = {
-      //   json: JSON.stringify(options.packageJson, null, 2)
-      // };
-      targets['./package-test.json'] = {
-        json: JSON.stringify(updatePackageJson(options.packageJson), null, 2)
-      };
-      console.log('targets');
-      console.log(targets);
-      return targets;
+      return es6Targets;
     }
   }
 

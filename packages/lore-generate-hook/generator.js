@@ -38,19 +38,12 @@ module.exports = Generator.extend({
         './package.json': { template: './esnext/package.json' },
         './README.md': { template: './common/README.md' }
       };
-    } else if (options.es6) {
+    } else {
       return {
         './src/index.js': { copy: './es6/src/index.js'},
         './test/test.spec.js': { copy: './es6/test/test.spec.js'},
         './.babelrc': { template: './es6/babelrc' },
         './package.json': { template: './es6/package.json' },
-        './README.md': { template: './common/README.md' }
-      };
-    } else {
-      return {
-        './src/index.js': { copy: './es5/src/index.js'},
-        './test/test.spec.js': { copy: './es5/test/test.spec.js'},
-        './package.json': { template: './es5/package.json' },
         './README.md': { template: './common/README.md' }
       };
     }

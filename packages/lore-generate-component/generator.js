@@ -18,10 +18,8 @@ module.exports = Generator.extend({
 
     if (options.esnext) {
       template += '.esnext'
-    } else if (options.es6) {
-      template += '.es6'
     } else {
-      template += '.es5'
+      template += '.es6'
     }
 
     if (options.connect) {

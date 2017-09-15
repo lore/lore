@@ -20,10 +20,8 @@ module.exports = Generator.extend({
     var result = {};
     var filename = './src/collections/' + camelCase(options.collectionName) + '.js';
 
-    if (options.es6 || options.esnext) {
+    if (options.es6 || options.esnext || true) {
       result[filename] = { copy: './collection.es6.js'};
-    } else {
-      result[filename] = { copy: './collection.es5.js'};
     }
 
     return result;

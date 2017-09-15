@@ -12,7 +12,7 @@ None.
 
 ### Needed improvements
 
-1. Needs to provide both an ES5/ES6 and ES7 version of the decorator.  ES5/ES6 for native (and readable) compatibility, 
+1. Needs to provide both an ES6 and ES7 version of the decorator.  ES6 for native (and readable) compatibility, 
 ES7 for succinct expression.
 
 
