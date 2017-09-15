@@ -1,9 +1,7 @@
 /* eslint consistent-return: "off" */
 
 import _ from 'lodash';
-import utils from '../utils';
-
-const { defaultOptions, validatePartialPairs } = utils;
+import { defaultOptions, validatePartialPairs } from '../utils';
 
 /*
  * Blueprint for Destroy method

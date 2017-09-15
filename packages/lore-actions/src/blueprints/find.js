@@ -1,9 +1,8 @@
 /* eslint consistent-return: "off" */
 
 import _ from 'lodash';
-import utils from '../utils';
-
-const { payloadCollection, defaultOptions, validatePartialPairs } = utils;
+import { defaultOptions, validatePartialPairs } from '../utils';
+import { payloadCollection } from 'lore-utils';
 
 /*
  * Blueprint for Find method

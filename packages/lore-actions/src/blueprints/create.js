@@ -1,9 +1,8 @@
 /* eslint consistent-return: "off" */
 
 import _ from 'lodash';
-import utils from '../utils';
-
-const { payload, defaultOptions, validatePartialPairs } = utils;
+import { defaultOptions, validatePartialPairs } from '../utils';
+import { payload } from 'lore-utils';
 
 /*
  * Blueprint for Create method
