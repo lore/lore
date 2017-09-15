@@ -2,7 +2,7 @@ var _ = require('lodash');
 var ActionTypes = require('lore-utils').ActionTypes;
 var PayloadStates = require('lore-utils').PayloadStates;
 var payload = require('lore-utils').payload;
-var normalize = require('lore-hook-actions/lib/normalize');
+var normalize = require('lore-utils').normalize;
 
 /*
  * Blueprint for Get method

@@ -1,6 +1,5 @@
 import _ from 'lodash';
-import { ActionTypes, PayloadStates, payload } from 'lore-utils';
-import normalize from 'lore-hook-actions/lib/normalize';
+import { ActionTypes, PayloadStates, payload, normalize } from 'lore-utils';
 
 /*
  * Blueprint for Get method
