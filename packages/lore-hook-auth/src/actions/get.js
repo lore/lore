@@ -1,6 +1,5 @@
 /* eslint consistent-return: "off" */
 
-import _ from 'lodash';
 import { ActionTypes, PayloadStates, normalize, payload } from 'lore-utils';
 
 /*
@@ -17,7 +16,7 @@ export default function(modelName, models, lore) {
       model.fetch().then(function() {
         // look through the model and generate actions for any attributes with
         // nested data that should be normalized
-        let actions = normalize(lore, modelName).model(model);
+        const actions = normalize(lore, modelName).model(model);
 
         dispatch({
           type: ActionTypes.update(modelName),
@@ -41,5 +40,4 @@ export default function(modelName, models, lore) {
       });
     };
   };
-};
-
+}

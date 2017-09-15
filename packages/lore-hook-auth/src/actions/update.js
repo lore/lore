@@ -1,7 +1,7 @@
 /* eslint consistent-return: "off" */
 
 import _ from 'lodash';
-import { ActionTypes, PayloadStates, normalize, payload } from 'lore-utils';
+import { ActionTypes, PayloadStates, normalize } from 'lore-utils';
 
 /*
  * Blueprint for Update method
@@ -18,7 +18,7 @@ export default function(modelName, models, lore) {
       proxyModel.save().then(function() {
         // look through the model and generate actions for any attributes with
         // nested data that should be normalized
-        let actions = normalize(lore, modelName).model(proxyModel);
+        const actions = normalize(lore, modelName).model(proxyModel);
 
         dispatch({
           type: ActionTypes.update(modelName),

@@ -23,7 +23,6 @@ export default {
     const config = lore.config.auth;
     const modelName = config.modelName;
     const models = lore.models;
-    const store = lore.store;
     const blueprints = config.blueprints;
 
     if (!modelName) {

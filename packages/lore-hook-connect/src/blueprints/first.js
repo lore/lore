@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import toJsonKey from '../utils/toJsonKey';
 import { PayloadStates } from 'lore-utils';
+import toJsonKey from '../utils/toJsonKey';
 
 /**
  * First Connection Blueprint
@@ -15,7 +15,7 @@ export default {
 
   getPayload: function(reducerState, params, reducer) {
     const jsonKey = toJsonKey(params);
-    let state = reducerState[jsonKey];
+    const state = reducerState[jsonKey];
 
     if (state) {
       if (state.state !== PayloadStates.FETCHING) {

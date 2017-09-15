@@ -19,5 +19,5 @@ export default function(NormalizedModel, normalizedModelName, attributeName) {
         payload: payload(normalizedModel, PayloadStates.RESOLVED)
       });
     });
-  }
+  };
 }

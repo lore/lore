@@ -1,4 +1,5 @@
 /* eslint no-undef: "off" */
+/* eslint no-unused-vars: "off" */
 
 import React from 'react';
 import PropTypes from 'prop-types';

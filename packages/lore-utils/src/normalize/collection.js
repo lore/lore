@@ -19,7 +19,9 @@ export default function(NormalizedCollection, normalizedCollectionName, attribut
     // if the data is NOT a plain object, we can't normalize it, so bail out
     if (!_.isArray(data)) return;
 
-    const collection = new NormalizedCollection(attribute.parse ? attribute.parse(data) : parse(data));
+    const collection = new NormalizedCollection(
+      attribute.parse ? attribute.parse(data) : parse(data)
+    );
     const combinedQuery = attribute.query ? attribute.query(model) : query(model);
 
     actions.push({
@@ -27,5 +29,5 @@ export default function(NormalizedCollection, normalizedCollectionName, attribut
       payload: payloadCollection(collection, PayloadStates.RESOLVED, null, combinedQuery),
       query: combinedQuery
     });
-  }
+  };
 }

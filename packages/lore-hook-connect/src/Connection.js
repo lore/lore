@@ -79,7 +79,7 @@ class Connection {
    * @param {Object} reducerState : subset of state owned by the reducer we care about
    * @param {Object} params : parameters provided to the getState call
    */
-  getPayload(reducerState, params) {
+  getPayload(reducerState, params, reducer) {
     // no op
   }
 
@@ -102,12 +102,12 @@ class Connection {
    * @returns {Object} payload sent to the Redux Store
    */
   getState(state, userParams, options = {}) {
-    const params = _.assign({}, this.defaults, userParams);
+    const params = _.defaultsDeep({}, userParams, this.defaults);
     this.verifyParams(params);
 
     const action = this.getAction(this.actions);
     const reducerState = this.getReducerState(state);
-    let payload = this.getPayload(reducerState, params);
+    let payload = this.getPayload(reducerState, params, _.get(state, this.reducerKey.split('.')[0]));
 
     if (!payload || payload.state === PayloadStates.INITIAL_STATE || options.force) {
       payload = this.callAction(action, params) || payload;

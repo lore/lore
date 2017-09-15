@@ -3,36 +3,6 @@ import normalizeModel from './model';
 import normalizeModels from './models';
 import normalizeCollection from './collection';
 
-/*
- * Get the name of the model we need to normalize the attribute to
- */
-function getNormalizedModelName(attribute, attributeName, modelName) {
-  const normalizedModelName = attribute.model;
-
-  // log an error if no model was specified
-  if (!normalizedModelName) {
-    console.error(`Attempted to normalize a [${modelName}] model but failed. No model name provided for the [${attributeName}] attribute`);
-    return;
-  }
-
-  return normalizedModelName;
-}
-
-/*
- * Get the model this attribute should be normalized to
- */
-function getNormalizedModel(normalizedModelName, attribute, attributeName, modelName) {
-
-  const NormalizedModel = Models[normalizedModelName];
-
-  // log an error if the model doesn't exist
-  if (!NormalizedModel) {
-    console.error(`Attempted to normalize the [${attributeName}] for a [${modelName}] model but failed. No model exists named [${normalizedModelName}]`);
-    return;
-  }
-
-  return NormalizedModel;
-}
 export default function(lore, modelName) {
   const config = lore.loader.loadModels()[modelName];
   const Models = lore.models;
@@ -100,7 +70,9 @@ export default function(lore, modelName) {
           return;
         }
 
-        normalizeCollection(NormalizedCollection, normalizedCollectionName, attribute, attributeName)(actions, model);
+        normalizeCollection(
+          NormalizedCollection, normalizedCollectionName, attribute, attributeName
+        )(actions, model);
       }
     });
   }

@@ -22,5 +22,5 @@ export default function(NormalizedModel, normalizedModelName, attributeName) {
       type: ActionTypes.update(normalizedModelName),
       payload: payload(normalizedModel, PayloadStates.RESOLVED)
     });
-  }
+  };
 }

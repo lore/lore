@@ -1,5 +1,5 @@
-import toJsonKey from '../utils/toJsonKey';
 import _ from 'lodash';
+import toJsonKey from '../utils/toJsonKey';
 
 /**
  * Find Connection Blueprint
@@ -28,22 +28,18 @@ export default {
     }
   },
 
-  getPayload: function(reducerState, params) {
+  getPayload: function(reducerState, params, reducer) {
     const jsonKey = toJsonKey(params);
     let state = reducerState[jsonKey];
 
     if (state) {
-      let data = _
-        .chain(reducer.byCid)
-        .transform(function(result, model) {
+      let data = _.transform(reducer.byCid, function(result, model) {
           result.push(model);
         }, []);
 
       if (params.include.where) {
-        data = data.filter(params.include.where);
+        data = _.filter(data, params.include.where);
       }
-
-      data = data.value();
 
       state = _.assign({}, state, {
         data: state.data.concat(data)
