@@ -42,7 +42,6 @@
     "babel-preset-react": "6.5.0",
     "css-loader": "0.21.0",
     "file-loader": "0.8.4",
-    "gulp": "3.9.1",
     "json-loader": "0.5.4",
     "json-server": "^0.8.16",
     "less": "2.5.1",

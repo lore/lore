@@ -16,7 +16,6 @@ module.exports = {
   './.gitignore': {copy: common('gitignore')},
   './.lorerc': {copy: es5('lorerc')},
   './db.json': {copy: common('db.json')},
-  './gulpfile.js': {copy: es5('gulpfile.js')},
   './index.html': {copy: common('index.html')},
   './index.js': {copy: es5('index.js')},
   './package.json': {template: es5('package.json')},
@@ -85,10 +84,6 @@ module.exports = {
   './config/env/development.js': {copy: es5('config/env/development.js')},
   './config/env/production.js': {copy: es5('config/env/production.js')},
   './config/env/README.md': {copy: common('config/env/README.md')},
-
-  // gulp
-  './gulp/tasks/default.js': {copy: es5('gulp/tasks/default.js')},
-  './gulp/tasks/README.md': {copy: common('gulp/tasks/README.md')},
 
   // initializers
   './initializers/REAMDE.md': {copy: common('initializers/README.md')},

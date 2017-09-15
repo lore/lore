@@ -53,7 +53,6 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "favicons-webpack-plugin": "~0.0.7",
     "file-loader": "0.8.4",
-    "gulp": "3.9.1",
     "html-webpack-plugin": "^2.28.0",
     "json-loader": "0.5.4",
     "json-server": "^0.9.5",
