@@ -46,4 +46,3 @@ which packages are naturally grouped together.  Therefore, they are grouped toge
 * lore-generate-model
 * lore-generate-new
 * lore-generate-reducer
-* lore-generate-surge

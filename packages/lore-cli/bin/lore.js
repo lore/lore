@@ -35,8 +35,7 @@ var lorerc = rc('lore', {
         generator: local("lore-generate-generator"),
         hook: local("lore-generate-hook"),
         model: local("lore-generate-model"),
-        reducer: local("lore-generate-reducer"),
-        surge: local("lore-generate-surge")
+        reducer: local("lore-generate-reducer")
       }
     }
   }
