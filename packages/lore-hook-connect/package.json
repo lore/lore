@@ -23,7 +23,8 @@
   "dependencies": {
     "invariant": "2.2.0",
     "lodash": "^4.0.0",
-    "lore-utils": "^0.12.6"
+    "lore-utils": "^0.12.6",
+    "prop-types": "^15.5.0"
   },
   "devDependencies": {
     "chai": "3.4.1",

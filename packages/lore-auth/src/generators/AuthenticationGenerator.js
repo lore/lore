@@ -1,6 +1,7 @@
 /* global window */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import url from 'url';
 import { withRouter } from 'react-router';
@@ -24,11 +25,11 @@ export default function(options) {
     wrapperDisplayName: 'UserIsAuthenticated',
 
     propTypes: {
-      location: React.PropTypes.shape({
-        pathname: React.PropTypes.string.isRequired,
-        search: React.PropTypes.string.isRequired
+      location: PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+        search: PropTypes.string.isRequired
       }).isRequired,
-      router: React.PropTypes.object.isRequired
+      router: PropTypes.object.isRequired
     },
 
     redirectUrl: '/login',

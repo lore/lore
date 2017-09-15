@@ -1,4 +1,5 @@
 var React = require('react');
+var PropTypes = require('prop-types');
 var moment = require('moment');
 var EditLink = require('./EditLink');
 
@@ -15,8 +16,8 @@ React.createClass({
   displayName: 'Tweet',
 
   propTypes: {
-    tweet: React.PropTypes.object.isRequired,
-    user: React.PropTypes.object.isRequired
+    tweet: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
   },
 
   getStyles: function() {

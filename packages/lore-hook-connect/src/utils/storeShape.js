@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default React.PropTypes.shape({
-  subscribe: React.PropTypes.func.isRequired,
-  dispatch: React.PropTypes.func.isRequired,
-  getState: React.PropTypes.func.isRequired
+export default PropTypes.shape({
+  subscribe: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  getState: PropTypes.func.isRequired
 });

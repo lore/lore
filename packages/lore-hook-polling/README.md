@@ -27,7 +27,7 @@ module.exports = lore.connect(function(getState, props){
 })(
 React.createClass({
   propTypes: {
-    tweets: React.PropTypes.object.isRequired
+    tweets: PropTypes.object.isRequired
   },
 
   render: function() {
@@ -69,7 +69,7 @@ module.exports = lore.connect(function(getState, props){
 })(
 React.createClass({
   propTypes: {
-    tweets: React.PropTypes.object.isRequired
+    tweets: PropTypes.object.isRequired
   },
 
   componentDidMount: function() {

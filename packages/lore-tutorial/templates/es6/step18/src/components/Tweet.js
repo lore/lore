@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import EditLink from './EditLink';
 
@@ -71,8 +72,8 @@ class Tweet extends React.Component {
 }
 
 Tweet.propTypes = {
-  tweet: React.PropTypes.object.isRequired,
-  user: React.PropTypes.object.isRequired
+  tweet: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
 };
 
 export default lore.connect(function(getState, props){

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Feed extends React.Component {
 
@@ -40,7 +41,7 @@ class Feed extends React.Component {
 }
 
 Feed.propTypes = {
-  tweets: React.PropTypes.object.isRequired
+  tweets: PropTypes.object.isRequired
 };
 
 Feed.defaultProps = {

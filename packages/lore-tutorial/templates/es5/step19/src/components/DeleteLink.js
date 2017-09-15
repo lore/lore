@@ -1,10 +1,11 @@
 var React = require('react');
+var PropTypes = require('prop-types');
 
 module.exports = React.createClass({
   displayName: 'DeleteLink',
 
   propTypes: {
-    tweet: React.PropTypes.object.isRequired
+    tweet: PropTypes.object.isRequired
   },
 
   getStyles: function() {

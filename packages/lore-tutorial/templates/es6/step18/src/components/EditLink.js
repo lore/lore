@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class EditLink extends React.Component {
 
@@ -44,7 +45,7 @@ class EditLink extends React.Component {
 }
 
 EditLink.propTypes = {
-  tweet: React.PropTypes.object.isRequired
+  tweet: PropTypes.object.isRequired
 };
 
 export default EditLink;

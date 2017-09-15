@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 
 export default function(lore) {
@@ -6,11 +7,11 @@ export default function(lore) {
     displayName: 'DialogContainer',
 
     propTypes: {
-      dialog: React.PropTypes.object.isRequired
+      dialog: PropTypes.object.isRequired
     },
 
     childContextTypes: {
-      history: React.PropTypes.object
+      history: PropTypes.object
     },
 
     getChildContext: function () {

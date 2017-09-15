@@ -1,4 +1,5 @@
 var React = require('react');
+var PropTypes = require('prop-types');
 var Tweet = require('./Tweet');
 var PayloadStates = require('../constants/PayloadStates');
 
@@ -11,7 +12,7 @@ React.createClass({
   displayName: 'Feed',
 
   propTypes: {
-    tweets: React.PropTypes.object.isRequired
+    tweets: PropTypes.object.isRequired
   },
 
   getDefaultProps: function() {

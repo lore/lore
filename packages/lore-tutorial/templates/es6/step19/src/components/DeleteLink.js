@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class DeleteLink extends React.Component {
 
@@ -44,7 +45,7 @@ class DeleteLink extends React.Component {
 }
 
 DeleteLink.propTypes = {
-  tweet: React.PropTypes.object.isRequired
+  tweet: PropTypes.object.isRequired
 };
 
 export default DeleteLink;

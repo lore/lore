@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import getDisplayName from '../utils/getDisplayName';
 
@@ -11,7 +12,7 @@ export default function(options, Decorator) {
       displayName: `${displayWrapperName}(${displayName})`,
 
       contextTypes: {
-        store: React.PropTypes.object.isRequired
+        store: PropTypes.object.isRequired
       },
 
       predicate: function (storeState) {

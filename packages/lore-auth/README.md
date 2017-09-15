@@ -53,13 +53,14 @@ Let's say our example application is changed to display a list of posts for _all
 // only want that component to be rendered if the user created the Post
 var React = require('react');
 var EditPostButton = require('./EditPostButton');
+var PropTypes = require('prop-types');
 
 module.exports = React.createClass({
   displayName: 'Post',
 
   propTypes: {
-    user: React.PropTypes.object.isRequired,
-    post: React.PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    post: PropTypes.object.isRequired
   },
 
   render: function () {
@@ -83,13 +84,14 @@ module.exports = React.createClass({
 // will only display the button if the current user created the post
 var React = require('react');
 var AuthorizationGenerator = require('lore-auth').generators.AuthorizationGenerator;
+var PropTypes = require('prop-types');
 
 var UserIsPostCreator = AuthorizationGenerator({
   wrapperDisplayName: 'UserIsPostCreator',
 
   propTypes: {
-    post: React.PropTypes.object.isRequired,
-    user: React.PropTypes.object.isRequired
+    post: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
   },
 
   isAuthorized: function () {
@@ -104,8 +106,8 @@ module.exports = UserIsPostCreator(React.createClass({
   displayName: 'EditPostButton',
 
   propTypes: {
-    user: React.PropTypes.object.isRequired,
-    post: React.PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    post: PropTypes.object.isRequired
   },
 
   onEditPost: function() {
@@ -166,13 +168,14 @@ If the user is not authorized, the component it wraps will not be rendered, thou
 ###### Example Usage
 ```js
 var AuthorizationGenerator = require('lore-auth').generators.AuthorizationGenerator;
+var PropTypes = require('prop-types');
 
 var UserIsPostCreator = AuthorizationGenerator({
   wrapperDisplayName: 'UserIsPostCreator',
 
   propTypes: {
-    post: React.PropTypes.object.isRequired,
-    user: React.PropTypes.object.isRequired
+    post: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
   },
 
   isAuthorized: function () {
@@ -192,6 +195,7 @@ For example, instead of creating a custom `UserIsPostCreator` decorator as in ou
 
 ```jsx
 var UserIsAuthorized = require('lore-auth').decorators.UserIsAuthorized;
+var PropTypes = require('prop-types');
 
 module.exports = UserIsAuthorized(function(props, storeState){
   return props.post.data.creatorId === props.user.id;
@@ -199,8 +203,8 @@ module.exports = UserIsAuthorized(function(props, storeState){
   displayName: 'EditPostButton',
 
   propTypes: {
-    user: React.PropTypes.object.isRequired,
-    post: React.PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    post: PropTypes.object.isRequired
   },
 
   onEditPost: function() {

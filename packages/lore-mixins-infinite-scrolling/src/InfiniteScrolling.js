@@ -1,6 +1,7 @@
 /* eslint no-undef: "off" */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 export default function(options = {}) {
@@ -17,7 +18,7 @@ export default function(options = {}) {
 
   return {
     contextTypes: {
-      store: React.PropTypes.object.isRequired
+      store: PropTypes.object.isRequired
     },
 
     getInitialState: function () {

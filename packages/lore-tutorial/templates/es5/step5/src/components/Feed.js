@@ -1,10 +1,11 @@
 var React = require('react');
+var PropTypes = require('prop-types');
 
 module.exports = React.createClass({
   displayName: 'Feed',
 
   propTypes: {
-    tweets: React.PropTypes.object.isRequired
+    tweets: PropTypes.object.isRequired
   },
 
   getDefaultProps: function() {

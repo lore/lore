@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Tweet from './Tweet';
 
 class Feed extends React.Component {
@@ -39,7 +40,7 @@ class Feed extends React.Component {
 }
 
 Feed.propTypes = {
-  tweets: React.PropTypes.object.isRequired
+  tweets: PropTypes.object.isRequired
 };
 
 export default lore.connect(function(getState, props){

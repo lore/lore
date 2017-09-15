@@ -1,11 +1,12 @@
 var React = require('react');
+var PropTypes = require('prop-types');
 var Tweet = require('./Tweet');
 
 module.exports = React.createClass({
   displayName: 'Feed',
 
   propTypes: {
-    tweets: React.PropTypes.object.isRequired
+    tweets: PropTypes.object.isRequired
   },
 
   getDefaultProps: function() {

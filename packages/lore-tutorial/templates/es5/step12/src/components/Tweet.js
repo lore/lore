@@ -1,4 +1,5 @@
 var React = require('react');
+var PropTypes = require('prop-types');
 var moment = require('moment');
 
 module.exports = lore.connect(function(getState, props){
@@ -14,8 +15,8 @@ React.createClass({
   displayName: 'Tweet',
 
   propTypes: {
-    tweet: React.PropTypes.object.isRequired,
-    user: React.PropTypes.object.isRequired
+    tweet: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
   },
 
   getStyles: function() {

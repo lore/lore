@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Tweet from './Tweet';
 
 @lore.connect(function(getState, props){
@@ -9,7 +10,7 @@ import Tweet from './Tweet';
 class Feed extends React.Component {
 
   static propTypes = {
-    tweets: React.PropTypes.object.isRequired
+    tweets: PropTypes.object.isRequired
   };
 
   getStyles() {
