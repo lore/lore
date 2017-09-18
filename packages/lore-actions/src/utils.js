@@ -44,8 +44,14 @@ function validatePartialPairs(options) {
   }
 }
 
-export default {
+export {
   defaultOptions,
   hasPartialPair,
   validatePartialPairs
 };
+
+export default {
+  defaultOptions,
+  hasPartialPair,
+  validatePartialPairs
+}
