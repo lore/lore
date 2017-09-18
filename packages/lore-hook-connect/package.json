@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-connect",
-  "version": "0.13.0-beta.2",
+  "version": "0.13.0-beta.3",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -24,7 +24,7 @@
   "dependencies": {
     "invariant": "2.2.0",
     "lodash": "^4.0.0",
-    "lore-utils": "^0.13.0-beta.2",
+    "lore-utils": "^0.13.0-beta.3",
     "prop-types": "^15.5.0"
   },
   "devDependencies": {

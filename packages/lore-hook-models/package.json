@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-models",
-  "version": "0.13.0-beta.2",
+  "version": "0.13.0-beta.3",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-models": "^0.13.0-beta.1",
-    "lore-utils": "^0.13.0-beta.2",
+    "lore-models": "^0.13.0-beta.3",
+    "lore-utils": "^0.13.0-beta.3",
     "pluralize": "1.2.1"
   },
   "devDependencies": {
