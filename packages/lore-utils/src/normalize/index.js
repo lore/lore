@@ -53,7 +53,7 @@ export default function(lore, modelName) {
 
       if (attribute.type === 'collection') {
         // get the name and instance of the model we need to normalize the attribute to
-        const normalizedCollectionName = attribute.collection;
+        const normalizedCollectionName = attribute.model || attribute.collection;
 
         // log an error if no model was specified
         if (!normalizedCollectionName) {
