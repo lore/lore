@@ -1,8 +1,8 @@
 var _ = require('lodash');
-var utils = require('../../../lore-actions').utils;
 var Model = require('../../../lore-models').Model;
 var ActionTypes = require('lore-utils').ActionTypes;
 var PayloadStates = require('lore-utils').PayloadStates;
+var payload = require('lore-utils').payload;
 
 /**
  *
@@ -24,7 +24,7 @@ function dispatchModel(store, modelName, data) {
   // update the store
   var action = {
     type: ActionTypes.add(modelName),
-    payload: utils.payload(model, PayloadStates.RESOLVED)
+    payload: payload(model, PayloadStates.RESOLVED)
   };
 
   // Dispatch the action - this will immediately update the store

@@ -52,7 +52,7 @@ describe('lore#reducerBlueprints#paginated-filtering', function() {
         });
     });
 
-    it("should combine data for simple queries", function(done) {
+    it.skip("should combine data for simple queries", function(done) {
       lore.build(config);
       lore.actions.post.find({
         authorId: '1',
@@ -122,7 +122,7 @@ describe('lore#reducerBlueprints#paginated-filtering', function() {
         });
     });
 
-    it("should combine data for simple queries", function(done) {
+    it.skip("should combine data for simple queries", function(done) {
       lore.build(config);
       lore.actions.post.find({
         authorId: '1',
@@ -200,7 +200,7 @@ describe('lore#reducerBlueprints#paginated-filtering', function() {
         });
     });
 
-    it("should combine data for simple queries", function(done) {
+    it.skip("should combine data for simple queries", function(done) {
       lore.build(config);
       lore.actions.post.find();
       lore.actions.post.find({
