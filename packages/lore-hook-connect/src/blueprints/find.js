@@ -34,12 +34,14 @@ export default {
 
     if (state) {
       let data = _.transform(reducer.byCid, function(result, model) {
-          result.push(model);
-        }, []);
+        result.push(model);
+      }, []);
 
       if (params.include.where) {
         data = _.filter(data, params.include.where);
       }
+
+      console.log(state);
 
       state = _.assign({}, state, {
         data: state.data.concat(data)

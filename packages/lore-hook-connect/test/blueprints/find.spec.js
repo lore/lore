@@ -99,9 +99,9 @@ describe('blueprints#find', function() {
     beforeEach(function () {
       reducerState = {
         state: 'RESOLVED',
-        data: {
+        data: [{
           id: 1
-        }
+        }]
       };
     });
 
