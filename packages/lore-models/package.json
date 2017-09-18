@@ -5,6 +5,7 @@
   "description": "Convention over configuration for CRUD actions against models and collections",
   "homepage": "http://github.com/lore/lore",
   "main": "lib/index.js",
+  "module": "es/index.js",
   "engines": {
     "node": ">=0.9.0"
   },

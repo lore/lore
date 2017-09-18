@@ -5,6 +5,7 @@
   "description": "Set of mixins to help with infinite scrolling",
   "homepage": "https://github.com/lore/lore#readme",
   "main": "lib/index.js",
+  "module": "es/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lore/lore.git"

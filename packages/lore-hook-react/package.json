@@ -3,6 +3,7 @@
   "version": "0.13.0-beta.1",
   "license": "MIT",
   "main": "lib/index.js",
+  "module": "es/index.js",
   "description": "A Lore hook that builds the root component and mounts it to the DOM",
   "keywords": [
     "lore",

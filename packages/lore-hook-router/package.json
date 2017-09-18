@@ -3,6 +3,7 @@
   "version": "0.13.0-beta.1",
   "license": "MIT",
   "main": "lib/index.js",
+  "module": "es/index.js",
   "description": "A Lore hook for specifying the react-router routes and history type",
   "keywords": [
     "lore",

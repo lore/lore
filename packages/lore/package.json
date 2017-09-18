@@ -4,6 +4,7 @@
   "description": "Convention-driven framework for building React-Redux applications",
   "license": "MIT",
   "main": "lib/index.js",
+  "module": "es/index.js",
   "homepage": "https://github.com/lore/lore#readme",
   "keywords": [
     "react",

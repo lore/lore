@@ -3,6 +3,7 @@
   "version": "0.13.0-beta.2",
   "license": "MIT",
   "main": "lib/index.js",
+  "module": "es/index.js",
   "description": "A lore hook that generates dialogs using Bootstrap",
   "keywords": [
     "lore",
