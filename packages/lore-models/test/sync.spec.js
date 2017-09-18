@@ -152,9 +152,6 @@ describe('sync', function() {
         expect(result.config.headers).to.contain({
           Authorization: 'Bearer token'
         });
-        expect(result.request.headers).to.contain({
-          authorization: 'Bearer token'
-        });
         done();
       });
     })
