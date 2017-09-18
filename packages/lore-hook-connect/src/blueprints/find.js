@@ -41,8 +41,6 @@ export default {
         data = _.filter(data, params.include.where);
       }
 
-      console.log(state);
-
       state = _.assign({}, state, {
         data: state.data.concat(data)
       });
