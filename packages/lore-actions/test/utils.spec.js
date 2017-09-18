@@ -1,5 +1,6 @@
 const expect = require('chai').expect;
 const utils = require('../src/utils');
+const { payload, payloadCollection } = require('lore-utils');
 
 describe('utils', function() {
   let model = null;
@@ -24,7 +25,7 @@ describe('utils', function() {
 
   describe('#payload', function() {
     it('should convert arguments into the correct object', function() {
-      const result = utils.payload(model, state, error);
+      const result = payload(model, state, error);
 
       expect(result).to.deep.equal({
         id: 1,
@@ -47,7 +48,7 @@ describe('utils', function() {
       };
       state = 'ERROR_FETCHING';
 
-      const result = utils.payloadCollection(collection, state, error, {where: {}, pagination: undefined});
+      const result = payloadCollection(collection, state, error, {where: {}, pagination: undefined});
 
       expect(result).to.deep.equal({
         state: 'ERROR_FETCHING',
