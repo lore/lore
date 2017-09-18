@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-auth",
-  "version": "0.12.6",
+  "version": "0.13.0-beta.1",
   "license": "MIT",
   "main": "lib/index.js",
   "description": "A Lore hook that generates an action and reducer for retriving the current user.",
@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-actions": "^0.12.6",
-    "lore-utils": "^0.12.6"
+    "lore-actions": "^0.13.0-beta.1",
+    "lore-utils": "^0.13.0-beta.1"
   },
   "devDependencies": {
     "chai": "3.4.1",
