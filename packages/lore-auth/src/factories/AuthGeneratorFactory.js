@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import getDisplayName from '../utils/getDisplayName';
@@ -71,10 +72,10 @@ export default function(options, Decorator) {
 
     if (Decorator) {
       return Decorator(
-        React.createClass(properties)
+        createReactClass(properties)
       );
     }
 
-    return React.createClass(properties);
+    return createReactClass(properties);
   };
 }

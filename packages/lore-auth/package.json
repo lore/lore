@@ -24,6 +24,7 @@
     "test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive"
   },
   "dependencies": {
+    "create-react-class": "^15.6.2",
     "lodash": "^4.0.0",
     "prop-types": "^15.5.0",
     "url": "^0.11.0"

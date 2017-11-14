@@ -1,9 +1,10 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 
 export default function(lore) {
-  return React.createClass({
+  return createReactClass({
     displayName: 'DialogContainer',
 
     propTypes: {

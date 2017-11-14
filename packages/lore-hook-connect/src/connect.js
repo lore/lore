@@ -2,6 +2,7 @@
 /* eslint react/no-is-mounted: "warn" */
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import _ from 'lodash';
 import invariant from 'invariant';
 import storeShape from './utils/storeShape';
@@ -48,7 +49,7 @@ export default function(actions, blueprints, reducerActionMap) {
     return function(DecoratedComponent) {
       const displayName = `Connect(${getDisplayName(DecoratedComponent)})`;
 
-      return React.createClass({
+      return createReactClass({
         displayName: displayName,
 
         contextTypes: {

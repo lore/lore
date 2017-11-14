@@ -22,6 +22,7 @@
     "test": "BABEL_ENV=test mocha --compilers js:babel-core/register test/bootstrap.js test/**/*.spec.js --recursive"
   },
   "dependencies": {
+    "create-react-class": "^15.6.2",
     "invariant": "2.2.0",
     "lodash": "^4.0.0",
     "lore-utils": "^0.13.0-beta.5",
