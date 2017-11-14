@@ -31,7 +31,7 @@
     "mocha": "2.3.4",
     "react": "^16.1.1",
     "react-addons-test-utils": "^15.0.0",
-    "react-dom": "^15.4.0",
+    "react-dom": "^16.0.0",
     "react-redux": "^4.4.1",
     "redux": "^3.0.2",
     "rimraf": "2.5.2",
@@ -39,7 +39,7 @@
   },
   "peerDependencies": {
     "react": "^16.0.0",
-    "react-dom": "^15.4.0",
+    "react-dom": "^16.0.0",
     "react-redux": "^4.4.1",
     "redux": "^3.0.2"
   }
