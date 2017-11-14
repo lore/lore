@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-auth",
-  "version": "0.13.0-beta.6",
+  "version": "0.13.0-beta.7",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -22,8 +22,8 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-actions": "^0.13.0-beta.6",
-    "lore-utils": "^0.13.0-beta.6"
+    "lore-actions": "^0.13.0-beta.7",
+    "lore-utils": "^0.13.0-beta.7"
   },
   "devDependencies": {
     "chai": "3.4.1",
