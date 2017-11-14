@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-reducers",
-  "version": "0.13.0-beta.3",
+  "version": "0.13.0-beta.5",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-utils": "^0.13.0-beta.3",
+    "lore-utils": "^0.13.0-beta.5",
     "topsort": "0.0.2"
   },
   "devDependencies": {

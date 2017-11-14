@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-websockets-actioncable",
-  "version": "0.13.0-beta.3",
+  "version": "0.13.0-beta.5",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-websockets": "^0.13.0-beta.3",
+    "lore-websockets": "^0.13.0-beta.5",
     "pluralize": "1.2.1"
   },
   "devDependencies": {
