@@ -28,7 +28,7 @@
   "devDependencies": {
     "chai": "3.4.1",
     "mocha": "2.3.4",
-    "react": "^15.4.0",
+    "react": "^16.1.1",
     "react-addons-test-utils": "^15.0.0",
     "react-dom": "^15.4.0",
     "react-redux": "^4.4.1",
@@ -37,7 +37,7 @@
     "sinon": "1.17.2"
   },
   "peerDependencies": {
-    "react": "^15.4.0",
+    "react": "^16.0.0",
     "react-dom": "^15.4.0",
     "react-redux": "^4.4.1",
     "redux": "^3.0.2"
