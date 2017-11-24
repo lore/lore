@@ -14,8 +14,8 @@ export default function(modelName, models) {
     },
 
     onSuccess: {
-      actionType: ActionTypes.remove(modelName),
-      payloadState: PayloadStates.RESOLVED
+      actionType: ActionTypes.update(modelName),
+      payloadState: PayloadStates.DELETED
     },
 
     onError: {
