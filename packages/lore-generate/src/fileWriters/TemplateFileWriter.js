@@ -1,7 +1,6 @@
 var _ = require('lodash');
-var fs = require('fs-extra');
-var Promise = require('bluebird');
-var readFile = Promise.promisify(fs.readFile);
+var path = require('path');
+var nunjucks = require('nunjucks');
 var writeFile = require('./writeFile');
 
 /**
@@ -17,16 +16,19 @@ var TemplateFileWriter = function(options) {
 _.extend(TemplateFileWriter.prototype, {
 
   write: function(source, target, options) {
-    return readFile(source, 'utf8').then(function(template) {
-      var compiled = _.template(template);
-      var data = compiled(options);
+    // console.log(source);
+    // console.log(options);
 
-      if (!options.escapeHTMLEntities) {
-        data = _.unescape(data);
-      }
+    var dirname = path.dirname(source);
+    var basename = path.basename(source);
 
-      return writeFile(target, data, options);
-    });
+    nunjucks.configure(dirname);
+
+    var data = nunjucks.render(basename, _.merge({}, options, {
+      _: _
+    }));
+
+    return writeFile(target, data, options);
   }
 
 });
