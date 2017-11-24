@@ -4,6 +4,7 @@ import Hook from './Hook';
 import payload from './payload';
 import payloadCollection from './payloadCollection';
 import normalize from './normalize';
+import result from './result';
 
 export {
   ActionTypes,
@@ -11,5 +12,6 @@ export {
   Hook,
   payload,
   payloadCollection,
-  normalize
+  normalize,
+  result
 };
