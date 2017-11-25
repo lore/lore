@@ -11,7 +11,7 @@ export default {
     where: {},
     pagination: {},
     include: {
-      where: function(model) {
+      where: function(model, params) {
         return false;
       },
       uniqBy: function(model) {
@@ -38,7 +38,9 @@ export default {
       }, []);
 
       if (params.include.where) {
-        data = _.filter(data, params.include.where);
+        data = _.filter(data, function(datum) {
+          return params.include.where(datum, params);
+        });
       }
 
       state = _.assign({}, state, {

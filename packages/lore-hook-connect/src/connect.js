@@ -26,7 +26,7 @@ import _getState from './getState';
  *   return {
  *     user: getState('user.current')
  *   }
- * })(React.createClass({...}))
+ * })(createReactClass({...}))
  *
  * Scenario 2: If the component does need to be subscribed to changes in the store, pass in
  * two arguments; the state function and options.
@@ -37,7 +37,7 @@ import _getState from './getState';
  *    }
  * }, {
  *    subscribe: true
- * })(React.createClass({...})
+ * })(createReactClass({...})
  *
  */
 

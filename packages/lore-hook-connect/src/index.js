@@ -2,6 +2,7 @@
 
 import connect from './connect';
 import find from './blueprints/find';
+import findAll from './blueprints/findAll';
 import byId from './blueprints/byId';
 import singleton from './blueprints/singleton';
 import all from './blueprints/all';
@@ -15,12 +16,13 @@ export default {
   defaults: {
     connect: {
       blueprints: {
-        find,
-        byId,
-        singleton,
         all,
         byCid,
-        first
+        byId,
+        find,
+        findAll,
+        first,
+        singleton
       },
       reducerActionMap: {
         '*.all': {
@@ -42,6 +44,11 @@ export default {
           action: '*.find',
           reducer: '*.find',
           blueprint: 'find'
+        },
+        '*.findAll': {
+          action: '*.find',
+          reducer: '*.find',
+          blueprint: 'findAll'
         },
         '*.first': {
           action: '*.find',
