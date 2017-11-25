@@ -35,16 +35,16 @@ export default function byId(state, action) {
   let nextState = _.assign({}, state);
 
   switch (action.type) {
-    case ActionTypes.add('<%= modelName %>'):
+    case ActionTypes.add('{{ modelName }}'):
       return addOrUpdateById(nextState, action.payload);
 
-    case ActionTypes.update('<%= modelName %>'):
+    case ActionTypes.update('{{ modelName }}'):
       return addOrUpdateById(nextState, action.payload);
 
-    case ActionTypes.remove('<%= modelName %>'):
+    case ActionTypes.remove('{{ modelName }}'):
       return removeById(nextState, action.payload);
 
-    case ActionTypes.fetchPlural('<%= modelName %>'):
+    case ActionTypes.fetchPlural('{{ modelName }}'):
       action.payload.data.forEach(function(datum) {
         addOrUpdateById(nextState, datum);
       });
