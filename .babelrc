@@ -9,7 +9,8 @@
         ["es2015", {
           "modules": "commonjs"
         }],
-        "react"
+        "react",
+        "stage-2"
       ],
       "plugins": [
         "add-module-exports"
@@ -20,7 +21,8 @@
         ["es2015", {
           "modules": false
         }],
-        "react"
+        "react",
+        "stage-2"
       ],
       "plugins": [
         "lodash"
@@ -29,7 +31,8 @@
     "test": {
       "presets": [
         "es2015",
-        "react"
+        "react",
+        "stage-2"
       ],
       "plugins": [
         "add-module-exports"
