@@ -1,12 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { Link, withRouter } from 'react-router';
 
-@withRouter
-class <%= componentName %> extends Component {
-
-  static propTypes = {
-    router: PropTypes.object.isRequired
-  };
+class {{ componentName }} extends Component {
 
   constructor(props) {
     super(props);
@@ -25,4 +19,6 @@ class <%= componentName %> extends Component {
   }
 }
 
-export default <%= componentName %>;
+{{ componentName }}.propTypes = {};
+
+export default {{ componentName }};

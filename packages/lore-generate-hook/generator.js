@@ -34,17 +34,17 @@ module.exports = Generator.extend({
       return {
         './src/index.js': { copy: './es6/src/index.js'},
         './test/test.spec.js': { copy: './es6/test/test.spec.js'},
-        './.babelrc': { template: './esnext/babelrc' },
-        './package.json': { template: './esnext/package.json' },
-        './README.md': { template: './common/README.md' }
+        './.babelrc': { copy: './esnext/babelrc' },
+        './package.json': { template: './esnext/package.json.njk' },
+        './README.md': { template: './common/README.md.njk' }
       };
     } else {
       return {
         './src/index.js': { copy: './es6/src/index.js'},
         './test/test.spec.js': { copy: './es6/test/test.spec.js'},
-        './.babelrc': { template: './es6/babelrc' },
-        './package.json': { template: './es6/package.json' },
-        './README.md': { template: './common/README.md' }
+        './.babelrc': { copy: './es6/babelrc' },
+        './package.json': { template: './es6/package.json.njk' },
+        './README.md': { template: './common/README.md.njk' }
       };
     }
   }

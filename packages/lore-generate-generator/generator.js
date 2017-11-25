@@ -30,10 +30,10 @@ module.exports = Generator.extend({
   },
 
   targets: {
-    './generator.js': { template: 'generator.js'},
-    './index.js': { template: 'index.js'},
-    './package.json': { template: './package.json' },
-    './README.md': { template: './README.md' },
+    './generator.js': { copy: 'generator.js'},
+    './index.js': { copy: 'index.js'},
+    './package.json': { template: './package.json.njk' },
+    './README.md': { template: './README.md.njk' },
     './test/test.spec.js': { copy: 'test/test.spec.js'},
     './templates/example.js': { copy: './templates/example.js'}
   }

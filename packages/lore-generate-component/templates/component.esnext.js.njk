@@ -1,18 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import { Link, withRouter } from 'react-router';
 
-@withRouter
-@lore.connect((getState, props) => {
-  return {
-    //models: getState('model.find')
-  };
-})
-class <%= componentName %> extends Component {
+class {{ componentName }} extends Component {
 
-  static propTypes = {
-    //models: PropTypes.object.isRequired,
-    router: PropTypes.object.isRequired
-  };
+  static propTypes = {};
 
   constructor(props) {
     super(props);
@@ -31,4 +21,4 @@ class <%= componentName %> extends Component {
   }
 }
 
-export default <%= componentName %>;
+export default {{ componentName }};

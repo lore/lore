@@ -18,7 +18,7 @@ module.exports = {
   './.babelrc': {copy: esnext('babelrc')},
   './index.html': {copy: common('index.html')},
   './index.js': {copy: es6('index.js')},
-  './package.json': {template: es6('package.json')},
+  './package.json': {template: es6('package.json.njk')},
   './postcss.config.js': {copy: es6('postcss.config.js')},
   './webpack.config.js': {copy: es6('webpack.config.js')},
 

@@ -30,7 +30,7 @@ module.exports = Generator.extend({
       template += '.router'
     }
 
-    template += '.js';
+    template += '.js.njk';
 
     var result = {};
     var componentLocation = './src/components/' + options.componentName + '.js';

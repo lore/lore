@@ -8,7 +8,7 @@ function getFilename(model, blueprint) {
 
 function getBlueprintPath(blueprint, options) {
   if (options.es6 || options.esnext || true) {
-    return './es6/' + blueprint + '.njk';
+    return './es6/' + blueprint + '.js.njk';
   }
 }
 
