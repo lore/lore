@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-actions",
-  "version": "0.13.0-beta.8",
+  "version": "0.13.0-beta.9",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -22,12 +22,12 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-actions": "^0.13.0-beta.8",
-    "lore-utils": "^0.13.0-beta.8"
+    "lore-actions": "^0.13.0-beta.9",
+    "lore-utils": "^0.13.0-beta.9"
   },
   "devDependencies": {
     "chai": "3.4.1",
-    "lore-models": "^0.13.0-beta.8",
+    "lore-models": "^0.13.0-beta.9",
     "mocha": "2.3.4",
     "rimraf": "2.5.2"
   }
