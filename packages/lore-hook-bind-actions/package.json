@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-bind-actions",
-  "version": "0.13.0-beta.7",
+  "version": "0.13.0-beta.8",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "chai": "3.4.1",
-    "lore-utils": "^0.13.0-beta.7",
+    "lore-utils": "^0.13.0-beta.8",
     "mocha": "2.3.4",
     "redux": "^3.0.2",
     "rimraf": "2.5.2"
