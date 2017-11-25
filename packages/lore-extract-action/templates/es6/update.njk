@@ -1,29 +1,36 @@
 import _ from 'lodash';
-import { ActionTypes, PayloadStates } from 'lore-utils';
+import { ActionTypes, PayloadStates, normalize } from 'lore-utils';
 
 /*
  * Blueprint for Update method
  */
 export default function update(model, params) {
   return function(dispatch) {
-    const Model = lore.models.<%= modelName %>;
+    const Model = lore.models.{{ modelName }};
     const proxyModel = new Model(model.data);
     proxyModel.set(params);
 
     proxyModel.save().then(function() {
+      // look through the model and generate actions for any attributes with
+      // nested data that should be normalized
+      var actions = normalize(lore, '{{ modelName }}').model(model);
+
       dispatch({
-        type: ActionTypes.update('<%= modelName %>'),
+        type: ActionTypes.update('{{ modelName }}'),
         payload: _.merge(model, {
           data: proxyModel.toJSON(),
           state: PayloadStates.RESOLVED
         })
       });
+
+      // dispatch any actions created from normalizing nested data
+      actions.forEach(dispatch);
     }).catch(function(response) {
       const error = response.data;
 
       if (response.status === 404) {
         dispatch({
-          type: ActionTypes.update('<%= modelName %>'),
+          type: ActionTypes.update('{{ modelName }}'),
           payload: _.merge(model, {
             state: PayloadStates.NOT_FOUND,
             error: error
@@ -31,7 +38,7 @@ export default function update(model, params) {
         });
       } else {
         dispatch({
-          type: ActionTypes.update('<%= modelName %>'),
+          type: ActionTypes.update('{{ modelName }}'),
           payload: _.merge(model, {
             data: proxyModel.toJSON(),
             state: PayloadStates.ERROR_UPDATING,
@@ -42,7 +49,7 @@ export default function update(model, params) {
     });
 
     return dispatch({
-      type: ActionTypes.update('<%= modelName %>'),
+      type: ActionTypes.update('{{ modelName }}'),
       payload: _.merge(model, {
         data: proxyModel.toJSON(),
         state: PayloadStates.UPDATING

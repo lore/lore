@@ -6,7 +6,7 @@ import { ActionTypes, PayloadStates, payload, normalize } from 'lore-utils';
  */
 export default function get(modelId, query = {}) {
   return function(dispatch) {
-    const Model = lore.models.<%= modelName %>;
+    const Model = lore.models.{{ modelName }};
     const model = new Model({
       id: modelId
     });
@@ -16,10 +16,10 @@ export default function get(modelId, query = {}) {
     }).then(function() {
       // look through the model and generate actions for any attributes with
       // nested data that should be normalized
-      var actions = normalize(lore, '<%= modelName %>').model(model);
+      var actions = normalize(lore, '{{ modelName }}').model(model);
 
       dispatch({
-        type: ActionTypes.update('<%= modelName %>'),
+        type: ActionTypes.update('{{ modelName }}'),
         payload: payload(model, PayloadStates.RESOLVED)
       });
 
@@ -30,7 +30,7 @@ export default function get(modelId, query = {}) {
 
       if (response.status === 404) {
         dispatch({
-          type: ActionTypes.update('<%= modelName %>'),
+          type: ActionTypes.update('{{ modelName }}'),
           payload: _.merge(payload(model), {
             state: PayloadStates.NOT_FOUND,
             error: error
@@ -38,14 +38,14 @@ export default function get(modelId, query = {}) {
         });
       } else {
         dispatch({
-          type: ActionTypes.update('<%= modelName %>'),
+          type: ActionTypes.update('{{ modelName }}'),
           payload: payload(model, PayloadStates.ERROR_FETCHING, error)
         });
       }
     });
 
     return dispatch({
-      type: ActionTypes.add('<%= modelName %>'),
+      type: ActionTypes.add('{{ modelName }}'),
       payload: payload(model, PayloadStates.FETCHING)
     });
   };

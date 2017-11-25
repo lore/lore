@@ -2,14 +2,13 @@ var path = require('path');
 var camelCase = require('camel-case');
 var Generator = require('lore-generate').Generator;
 
-
 function getFilename(model, blueprint) {
   return './src/actions/' + model + '/' + blueprint + '.js';
 }
 
 function getBlueprintPath(blueprint, options) {
   if (options.es6 || options.esnext || true) {
-    return './es6/' + blueprint + '.js';
+    return './es6/' + blueprint + '.njk';
   }
 }
 

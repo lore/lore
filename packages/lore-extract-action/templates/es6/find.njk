@@ -6,7 +6,7 @@ import { ActionTypes, PayloadStates, payloadCollection, normalize } from 'lore-u
 
 export default function find(query = {}, pagination) {
   return function(dispatch) {
-    const Collection = lore.collections.<%= modelName %>;
+    const Collection = lore.collections.{{ modelName }};
     const collection = new Collection();
 
     const queryParameters = _.extend({}, query, pagination);
@@ -21,10 +21,10 @@ export default function find(query = {}, pagination) {
     }).then(function() {
       // look through all models in the collection and generate actions for any attributes
       // with nested data that should be normalized
-      const actions = normalize(lore, '<%= modelName %>').collection(collection);
+      const actions = normalize(lore, '{{ modelName }}').collection(collection);
 
       dispatch({
-        type: ActionTypes.fetchPlural('<%= modelName %>'),
+        type: ActionTypes.fetchPlural('{{ modelName }}'),
         payload: payloadCollection(collection, PayloadStates.RESOLVED, null, combinedQuery),
         query: combinedQuery
       });
@@ -35,14 +35,14 @@ export default function find(query = {}, pagination) {
       const error = response.data;
 
       dispatch({
-        type: ActionTypes.fetchPlural('<%= modelName %>'),
+        type: ActionTypes.fetchPlural('{{ modelName }}'),
         payload: payloadCollection(collection, PayloadStates.ERROR_FETCHING, error, combinedQuery),
         query: combinedQuery
       });
     });
 
     return dispatch({
-      type: ActionTypes.fetchPlural('<%= modelName %>'),
+      type: ActionTypes.fetchPlural('{{ modelName }}'),
       payload: payloadCollection(collection, PayloadStates.FETCHING, null, combinedQuery),
       query: combinedQuery
     });
