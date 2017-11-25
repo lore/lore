@@ -1,6 +1,7 @@
 import { ActionTypes, PayloadStates } from 'lore-utils';
+import normalize from '../normalize';
 
-export default function(modelName, models, options = {}) {
+export default function(modelName, models, options = {}, lore) {
   const Model = models[modelName];
 
   return {
@@ -28,6 +29,21 @@ export default function(modelName, models, options = {}) {
       beforeDispatch: function(response, args) {
         // no op
       }
+    },
+
+    normalize: {
+
+      // look through the model and generate actions for any attributes with
+      // nested data that should be normalized
+      getActions: function(model) {
+        return normalize(lore, modelName).model(model);
+      },
+
+      // dispatch any actions created from normalizing nested data
+      dispatchActions: function(actions, dispatch) {
+        actions.forEach(dispatch);
+      }
+
     }
   };
 }

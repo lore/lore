@@ -69,11 +69,11 @@ export default {
     Object.keys(models).forEach(function(modelName) {
       lore.actions[modelName] = lore.actions[modelName] || {};
       _.assign(lore.actions[modelName], {
-        create: blueprints.create(modelName, models, config),
-        destroy: blueprints.destroy(modelName, models),
+        create: blueprints.create(modelName, models, config, lore),
+        destroy: blueprints.destroy(modelName, models, lore),
         get: blueprints.get(modelName, models, lore),
         find: blueprints.find(modelName, collections, lore),
-        update: blueprints.update(modelName, models)
+        update: blueprints.update(modelName, models, lore)
       });
     });
 

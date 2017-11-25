@@ -26,12 +26,25 @@ export default function(opts = {}) {
 
       proxyModel.destroy().then(function() {
         if (options.onSuccess) {
+          let actions = [];
+
+          if (options.normalize && options.normalize.getActions) {
+            // look through the model and generate actions for any attributes with
+            // nested data that should be normalized
+            actions = options.normalize.getActions(model);
+          }
+
           dispatch({
             type: options.onSuccess.actionType,
             payload: _.merge(model, {
               state: options.onSuccess.payloadState
             })
           });
+
+          if (options.normalize && options.normalize.dispatchActions) {
+            // dispatch any actions created from normalizing nested data
+            options.normalize.dispatchActions(actions, dispatch);
+          }
         }
       }).catch(function(response) {
         const error = response.data;
