@@ -9,6 +9,16 @@ import all from './blueprints/all';
 import byCid from './blueprints/byCid';
 import first from './blueprints/first';
 
+import _connect from './decorators/connect';
+import _getState from './helpers/getState';
+import _Connect from './components/Connect';
+
+export {
+  _connect as connect,
+  _getState as getState,
+  _Connect as Connect
+};
+
 export default {
 
   dependencies: ['actions'],
