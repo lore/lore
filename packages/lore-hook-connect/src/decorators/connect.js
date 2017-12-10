@@ -50,9 +50,9 @@ export default function connect(select, options = {}) {
     return createReactClass({
       displayName: displayName,
 
-      contextTypes: {
+      contextTypes: _.merge({
         store: storeShape.isRequired
-      },
+      }, options.contextTypes),
 
       setupGetState: function() {
         const actions = lore.actions;

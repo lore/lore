@@ -52,9 +52,9 @@ export default function(actions, blueprints, reducerActionMap) {
       return createReactClass({
         displayName: displayName,
 
-        contextTypes: {
+        contextTypes: _.merge({
           store: storeShape.isRequired
-        },
+        }, options.contextTypes),
 
         getInitialState: function () {
           // provide a decorator over getState that will force data to be fetched on
