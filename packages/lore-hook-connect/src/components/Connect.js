@@ -26,7 +26,11 @@ createReactClass({
       ...other
     } = this.props;
 
-    return React.cloneElement(_result(children, other), other);
+    if (_.isFunction(children)) {
+      return _result(children, other);
+    }
+
+    return React.cloneElement(children, other);
   }
 
 })
