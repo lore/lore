@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-router",
-  "version": "0.13.0-beta.9",
+  "version": "0.13.0-beta.10",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",

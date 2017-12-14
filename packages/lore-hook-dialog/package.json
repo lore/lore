@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-dialog",
-  "version": "0.13.0-beta.9",
+  "version": "0.13.0-beta.10",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -23,7 +23,7 @@
   "dependencies": {
     "create-react-class": "^15.6.2",
     "lodash": "^4.0.0",
-    "lore-utils": "^0.13.0-beta.9",
+    "lore-utils": "^0.13.0-beta.10",
     "prop-types": "^15.5.0"
   },
   "devDependencies": {
