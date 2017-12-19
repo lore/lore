@@ -22,7 +22,7 @@ export default function(opts = {}) {
 
   validatePartialPairs(options);
 
-  return function find(query = {}, pagination) {
+  return function find(query = {}, pagination = {}) {
     return function(dispatch) {
       const collection = new Collection();
 
