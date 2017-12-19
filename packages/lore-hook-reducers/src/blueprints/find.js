@@ -49,6 +49,19 @@ export default function(modelName) {
         return nextState;
       }
 
+      case ActionTypes.refetchPlural(modelName): {
+        const query = JSON.stringify(action.query);
+        nextState[query] = nextState[query] || {};
+        nextState[query] = _.assign({}, action.payload, {
+          data: mergeDataAndIntersectWithDictionaryKeys(
+            [],
+            action.payload.data,
+            byId
+          )
+        });
+        return nextState;
+      }
+
       case ActionTypes.update(modelName): {
         nextState = _.mapValues(nextState, function(collection, key) {
           collection.data = collection.data.map(function(datum) {
