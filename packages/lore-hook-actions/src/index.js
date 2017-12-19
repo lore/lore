@@ -8,6 +8,7 @@ import create from './blueprints/create';
 import destroy from './blueprints/destroy';
 import get from './blueprints/get';
 import find from './blueprints/find';
+import refetch from './blueprints/refetch';
 import update from './blueprints/update';
 
 function convertBlueprintToActionCreator(action, store) {
@@ -48,6 +49,7 @@ export default {
         destroy,
         get,
         find,
+        refetch,
         update
       }
     }
@@ -73,6 +75,7 @@ export default {
         destroy: blueprints.destroy(modelName, models, lore),
         get: blueprints.get(modelName, models, lore),
         find: blueprints.find(modelName, collections, lore),
+        refetch: blueprints.refetch(modelName, collections, lore),
         update: blueprints.update(modelName, models, lore)
       });
     });
