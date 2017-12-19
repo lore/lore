@@ -23,11 +23,12 @@ export default function compositeReducer(reducers, dependencies, config, modelNa
   return function (state = initialState, action) {
     const nextState = {};
 
-    // If we receive an action to reset the store (such as when logging out)
-    // reset the state to the initial state
-    if (action.type === ActionTypes.RESET_STORE) {
-      state = initialState;
-    }
+    // If we receive an action to reset the store (such as when logging out) or this
+    // specific reducer node, reset the state to the initial state
+    if (
+      action.type === ActionTypes.reset(modelName) ||
+      action.type === ActionTypes.RESET_STORE
+    ) {
 
     loadOrder.forEach(function(reducerName) {
       // Equivalent to calling:
