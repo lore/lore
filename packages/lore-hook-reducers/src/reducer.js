@@ -29,6 +29,8 @@ export default function compositeReducer(reducers, dependencies, config, modelNa
       action.type === ActionTypes.reset(modelName) ||
       action.type === ActionTypes.RESET_STORE
     ) {
+      state = initialState;
+    }
 
     loadOrder.forEach(function(reducerName) {
       // Equivalent to calling:
