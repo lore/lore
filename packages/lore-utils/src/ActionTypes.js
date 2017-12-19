@@ -44,5 +44,13 @@ export default {
     return `FETCH_${formatModelName(modelName)}S`;
   },
 
+  refetchPlural: function(modelName) {
+    return `REFETCH_${formatModelName(modelName)}S`;
+  },
+
+  reset: function(modelName) {
+    return `RESET_${formatModelName(modelName)}`;
+  },
+
   RESET_STORE: 'RESET_STORE'
 };
