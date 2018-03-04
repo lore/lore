@@ -12,7 +12,7 @@ export default function destroy(model) {
     proxyModel.destroy().then(function() {
       // look through the model and generate actions for any attributes with
       // nested data that should be normalized
-      var actions = normalize(lore, '{{ modelName }}').model(model);
+      var actions = normalize(lore, '{{ modelName }}').model(proxyModel);
 
       dispatch({
         type: ActionTypes.update('{{ modelName }}'),

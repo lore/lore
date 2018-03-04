@@ -31,7 +31,7 @@ export default function(opts = {}) {
           if (options.normalize && options.normalize.getActions) {
             // look through the model and generate actions for any attributes with
             // nested data that should be normalized
-            actions = options.normalize.getActions(model);
+            actions = options.normalize.getActions(proxyModel);
           }
 
           dispatch({
