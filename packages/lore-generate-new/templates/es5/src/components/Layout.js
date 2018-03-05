@@ -5,9 +5,11 @@
  **/
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import logo from '../../assets/images/logo.png';
 
-class Layout extends React.Component {
+export default createReactClass({
+  displayName: 'Layout',
 
   render() {
     return (
@@ -47,6 +49,4 @@ class Layout extends React.Component {
     );
   }
 
-}
-
-export default Layout;
+});

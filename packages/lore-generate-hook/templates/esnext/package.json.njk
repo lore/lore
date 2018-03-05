@@ -2,25 +2,30 @@
   "name": "{{ hookName }}",
   "version": "0.1.0",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "description": "A hook for Lore",
   "keywords": [
     "lore",
     "hook"
   ],
   "scripts": {
-    "build": "babel src --out-dir lib",
-    "clean": "rimraf lib",
-    "debug": "mocha debug --compilers js:babel-core/register --recursive",
+    "build": "npm run build:cjs && npm run build:es",
+    "build:cjs": "BABEL_ENV=cjs babel src --out-dir lib",
+    "build:es": "BABEL_ENV=es babel src --out-dir es",
+    "clean": "rimraf lib && rimraf es",
+    "debug": "BABEL_ENV=test mocha debug --compilers js:babel-core/register --recursive",
     "prepublish": "npm run build",
-    "test": "mocha --compilers js:babel-core/register --recursive"
+    "test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive"
   },
   "dependencies": {},
   "devDependencies": {
-    "babel-cli": "^6.5.1",
+    "babel-cli": "^6.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-es2015": "^6.5.0",
-    "babel-preset-stage-1": "^6.13.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-react": "^6.0.0",
+    "babel-preset-stage-1": "^6.0.0",
     "chai": "^3.4.1",
     "mocha": "^2.3.4",
     "rimraf": "^2.5.2"

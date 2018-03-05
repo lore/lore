@@ -10,12 +10,6 @@ store or triggers the action they fetches the data (and notifies the store when 
 
 None.
 
-### Needed improvements
-
-1. Needs to provide both an ES6 and ES7 version of the decorator.  ES6 for native (and readable) compatibility, 
-ES7 for succinct expression.
-
-
 ### Example Usage
 
 **Scenario 1**: If the component doesn't need to be subscribed to changes in the store (which
@@ -26,7 +20,7 @@ connect(function(getState, props, context){
   return {
     user: getState('user.current')
   }
-}, React.createClass({...})
+}, createReactClass({...}))
 ```
 
 **Scenario 2**: If the component does need to be subscribed to changs in the store, pass in
@@ -39,6 +33,6 @@ connect({
    return {
       user: getState('user.current')
    }
-}, React.createClass({...})
+}, createReactClass({...}))
 ```
 

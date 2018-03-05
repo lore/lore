@@ -10,18 +10,33 @@
  **/
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import { connect } from 'lore-hook-connect';
 import PayloadStates from '../constants/PayloadStates';
 import '../../assets/css/main.css';
 
-class Master extends React.Component {
+export default connect(function(getState, props) {
+  return {
+    // user: getState('currentUser')
+  };
+}, { subscribe: true })(
+createReactClass({
+  dislayName: 'Master',
+
+  // propTypes: {
+  //   user: PropTypes.object.isRequired
+  // },
+
+  // childContextTypes: {
+  //   user: PropTypes.object
+  // },
 
   // getChildContext() {
   //   return {
   //     user: this.props.user
   //   };
-  // }
+  // },
 
   componentDidMount() {
     // If you want to play with the router through the browser's dev console then
@@ -30,7 +45,7 @@ class Master extends React.Component {
     // is a good location to attach it to the global lore object.
 
     // lore.router = this.props.router;
-  }
+  },
 
   render() {
     // const user = this.props.user;
@@ -50,18 +65,5 @@ class Master extends React.Component {
     );
   }
 
-}
-
-// Master.propTypes = {
-//   user: PropTypes.object.isRequired
-// };
-
-// Master.childContextTypes = {
-//   user: PropTypes.object
-// };
-
-export default connect(function(getState, props) {
-  return {
-    // user: getState('currentUser')
-  };
-}, { subscribe: true })(Master);
+})
+);

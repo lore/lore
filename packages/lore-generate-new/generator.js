@@ -1,6 +1,7 @@
 var path = require('path');
 var fs = require('fs-extra');
 var Generator = require('lore-generate').Generator;
+var es5Targets = require('./targets/es5');
 var es6Targets = require('./targets/es6');
 var esnextTargets = require('./targets/esnext');
 
@@ -34,8 +35,10 @@ module.exports = Generator.extend({
   targets: function(options) {
     if (options.esnext) {
       return esnextTargets;
-    } else {
+    } else if (options.es6) {
       return es6Targets;
+    } else {
+      return es5Targets;
     }
   }
 

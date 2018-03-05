@@ -1,0 +1,24 @@
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import { connect } from 'lore-hook-connect';
+
+export default connect((getState, props) => {
+  return {
+    // models: getState('model.find')
+  };
+})(
+createReactClass({
+  displayName: '{{ componentName }}',
+
+  propTypes: {
+    // models: PropTypes.object.isRequired
+  },
+
+  render() {
+    return (
+      <div></div>
+    )
+  }
+})
+);

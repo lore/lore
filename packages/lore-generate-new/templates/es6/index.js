@@ -13,22 +13,36 @@ import _ from 'lodash';
 // the console. Remove this line if you don't want to be able to do that.
 window.lore = lore;
 
+// Hooks
+import auth from 'lore-hook-auth';
+import actions from 'lore-hook-actions';
+import bindActions from 'lore-hook-bind-actions';
+import collections from 'lore-hook-collections';
+import connections from 'lore-hook-connections';
+import connect from 'lore-hook-connect';
+import models from 'lore-hook-models';
+import polling from 'lore-hook-polling';
+import react from 'lore-hook-react';
+import reducers from 'lore-hook-reducers';
+import redux from 'lore-hook-redux';
+import router from 'lore-hook-router';
+
 // Summon the app!
 lore.summon({
   hooks: {
-    auth: require('lore-hook-auth'),
-    actions: require('lore-hook-actions'),
-    bindActions: require('lore-hook-bind-actions'),
-    collections: require('lore-hook-collections'),
-    connections: require('lore-hook-connections'),
-    connect: require('lore-hook-connect'),
-    dialog: require('lore-hook-dialog'),
-    models: require('lore-hook-models'),
-    react: require('lore-hook-react'),
-    reducers: require('lore-hook-reducers'),
-    redux: _.extend(require('lore-hook-redux'), {
+    auth,
+    actions,
+    bindActions,
+    collections,
+    connections,
+    connect,
+    models,
+    polling,
+    react,
+    reducers,
+    redux: _.extend(redux, {
       dependencies: ['reducers', 'auth']
     }),
-    router: require('lore-hook-router')
+    router
   }
 });

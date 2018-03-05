@@ -19,7 +19,7 @@ var Generator = function(options) {
   this.logger = new Logger(options);
   this.lorerc = rc('lore', {
     generators: {
-      language: "es6"
+      language: "es5"
     }
   });
 };

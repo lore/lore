@@ -14,6 +14,7 @@ import _ from 'lodash';
 // will see an id of '123' and an id of 123 as two different objects. This function
 // will merge them together, and overwrite the initially incorrect '123' id with the
 // proper 123 id.
+
 function findKey(state, object) { // 1 or '1'
   const keys = _.keys(state); // [1,2,'3']
 

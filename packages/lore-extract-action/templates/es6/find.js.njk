@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import { ActionTypes, PayloadStates, payloadCollection, normalize } from 'lore-utils';
+
 /*
  * Blueprint for Find method
  */
-
 export default function find(query = {}, pagination) {
   return function(dispatch) {
     const Collection = lore.collections.{{ modelName }};

@@ -15,7 +15,7 @@ var lorerc = rc('lore', {
     debugLoading: false
   },
   generators: {
-    language: "es6"
+    language: "es5"
   },
   commands: {
     new: local("lore-generate-new"),

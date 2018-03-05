@@ -17,9 +17,11 @@ module.exports = Generator.extend({
     var template = './component';
 
     if (options.esnext) {
-      template += '.esnext'
+      template += '.esnext';
+    } else if (options.es6) {
+      template += '.es6';
     } else {
-      template += '.es6'
+      template += '.es5';
     }
 
     if (options.connect) {

@@ -16,7 +16,7 @@ export default function get(modelId, query = {}) {
     }).then(function() {
       // look through the model and generate actions for any attributes with
       // nested data that should be normalized
-      var actions = normalize(lore, '{{ modelName }}').model(model);
+      const actions = normalize(lore, '{{ modelName }}').model(model);
 
       dispatch({
         type: ActionTypes.update('{{ modelName }}'),

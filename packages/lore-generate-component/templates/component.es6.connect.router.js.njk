@@ -1,7 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router';
+import { connect } from 'lore-hook-connect';
 
-class {{ componentName }} extends Component {
+class {{ componentName }} extends React.Component {
 
   constructor(props) {
     super(props);
@@ -21,12 +23,12 @@ class {{ componentName }} extends Component {
 }
 
 {{ componentName }}.propTypes = {
-  //models: PropTypes.object.isRequired,
+  // models: PropTypes.object.isRequired,
   router: PropTypes.object.isRequired
 };
 
-export default lore.connect((getState, props) => {
+export default connect((getState, props) => {
   return {
-    //models: getState('model.find')
+    // models: getState('model.find')
   };
 })(withRouter({{ componentName }}));
