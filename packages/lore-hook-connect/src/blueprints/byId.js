@@ -35,7 +35,8 @@ export default {
 
   callAction: function(action, params) {
     const id = params.id;
-    return action(id).payload;
+    const query = params.query;
+    return action(id, query).payload;
   }
 
 };
