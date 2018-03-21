@@ -8,14 +8,12 @@ import find from './find';
 export default _.defaultsDeep({
 
   defaults: {
-    include: {
-      where: function(model, params) {
-        if (_.keys(params.where).length > 0) {
-          return _.isMatch(model.data, params.where);
-        }
-
-        return true;
+    include: function(model, params) {
+      if (_.keys(params.where).length > 0) {
+        return _.isMatch(model.data, params.where);
       }
+
+      return true;
     }
   }
 

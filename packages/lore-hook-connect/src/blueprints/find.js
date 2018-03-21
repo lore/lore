@@ -10,21 +10,17 @@ export default {
   defaults: {
     where: {},
     pagination: {},
-    include: {
-      where: function(model, params) {
-        return false;
-      },
-      uniqBy: function(model) {
-        return model.cid;
-      },
-      sortBy: function(model) {
-        return true;
-      }
+    include: function(model, params) {
+      return false;
     },
-    exclude: {
-      where: function(model) {
-        return false;
-      }
+    exclude: function(model) {
+      return false;
+    },
+    uniqBy: function(model) {
+      return model.cid;
+    },
+    sortBy: function(model) {
+      return true;
     }
   },
 
@@ -37,9 +33,9 @@ export default {
         result.push(model);
       }, []);
 
-      if (params.include.where) {
+      if (params.include) {
         data = _.filter(data, function(datum) {
-          return params.include.where(datum, params);
+          return params.include(datum, params);
         });
       }
 
@@ -47,18 +43,18 @@ export default {
         data: state.data.concat(data)
       });
 
-      if (params.include.uniqBy) {
-        state.data = _.uniqBy(state.data, params.include.uniqBy);
-      }
-
-      if (params.include.sortBy) {
-        state.data = _.sortBy(state.data, params.include.sortBy);
-      }
-
-      if (params.exclude.where) {
+      if (params.exclude) {
         state.data = _.filter(state.data, function(model) {
-          return !params.exclude.where(model);
+          return !params.exclude(model);
         });
+      }
+
+      if (params.uniqBy) {
+        state.data = _.uniqBy(state.data, params.uniqBy);
+      }
+
+      if (params.sortBy) {
+        state.data = _.sortBy(state.data, params.sortBy);
       }
     }
 
