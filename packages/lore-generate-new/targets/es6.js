@@ -51,6 +51,9 @@ module.exports = {
   // dialogs
   './src/dialogs/.gitkeep': {copy: common('.gitkeep')},
 
+  // forms
+  './src/forms/.gitkeep': {copy: common('.gitkeep')},
+
   // mixins
   './src/mixins/.gitkeep': {copy: common('.gitkeep')},
 
