@@ -21,7 +21,6 @@ import collections from 'lore-hook-collections';
 import connections from 'lore-hook-connections';
 import connect from 'lore-hook-connect';
 import models from 'lore-hook-models';
-import polling from 'lore-hook-polling';
 import react from 'lore-hook-react';
 import reducers from 'lore-hook-reducers';
 import redux from 'lore-hook-redux';
@@ -37,7 +36,6 @@ lore.summon({
     connections,
     connect,
     models,
-    polling,
     react,
     reducers,
     redux: _.extend(redux, {
