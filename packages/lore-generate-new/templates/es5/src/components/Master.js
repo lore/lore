@@ -14,6 +14,7 @@ import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import { connect } from 'lore-hook-connect';
 import PayloadStates from '../constants/PayloadStates';
+import RemoveLoadingScreen from './RemoveLoadingScreen';
 import '../../assets/css/main.css';
 
 export default connect(function(getState, props) {
@@ -51,15 +52,12 @@ createReactClass({
     // const user = this.props.user;
 
     // if (user.state === PayloadStates.FETCHING) {
-    //   return (
-    //     <h1 className="loading-text">
-    //       Loading...
-    //     </h1>
-    //   )
+    //   return null;
     // }
 
     return (
       <div>
+        <RemoveLoadingScreen/>
         {React.cloneElement(this.props.children)}
       </div>
     );

@@ -13,6 +13,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'lore-hook-connect';
 import PayloadStates from '../constants/PayloadStates';
+import RemoveLoadingScreen from './RemoveLoadingScreen';
 import '../../assets/css/main.css';
 
 class Master extends React.Component {
@@ -36,15 +37,12 @@ class Master extends React.Component {
     // const user = this.props.user;
 
     // if (user.state === PayloadStates.FETCHING) {
-    //   return (
-    //     <h1 className="loading-text">
-    //       Loading...
-    //     </h1>
-    //   )
+    //   return null;
     // }
 
     return (
       <div>
+        <RemoveLoadingScreen />
         {React.cloneElement(this.props.children)}
       </div>
     );

@@ -9,6 +9,10 @@
 import lore from 'lore';
 import _ from 'lodash';
 
+// Import the styles for the loading screen. We're doing that here to make
+// sure they get loaded regardless of the entry point for the application.
+import './assets/css/loading-screen.css';
+
 // Allows you to access your lore app globally as well as from within
 // the console. Remove this line if you don't want to be able to do that.
 window.lore = lore;

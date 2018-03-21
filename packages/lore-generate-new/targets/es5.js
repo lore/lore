@@ -41,6 +41,8 @@ module.exports = {
   './src/components/README.md': {copy: common('src/components/README.md')},
   './src/components/Layout.js': {copy: es5('src/components/Layout.js')},
   './src/components/Master.js': {copy: es5('src/components/Master.js')},
+  './src/components/RemoveLoadingScreen.js': {copy: es5('src/components/RemoveLoadingScreen.js')},
+  './src/components/ShowLoadingScreen.js': {copy: es5('src/components/ShowLoadingScreen.js')},
 
   // constants
   './src/constants/README.md': {copy: common('src/constants/README.md')},
