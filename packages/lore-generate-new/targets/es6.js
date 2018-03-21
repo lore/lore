@@ -67,6 +67,7 @@ module.exports = {
   // utils
   './src/utils/README.md': {copy: common('src/utils/README.md')},
   './src/utils/auth.js': {copy: es6('src/utils/auth.js')},
+  './src/utils/storageAvailable.js': {copy: es6('src/utils/storageAvailable.js')},
 
   // config
   './config/actions.js': {copy: es6('config/actions.js')},
