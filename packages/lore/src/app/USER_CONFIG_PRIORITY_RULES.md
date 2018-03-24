@@ -56,10 +56,10 @@ lore.summon();
 
 The value will be as follows:
 
-When `NODE_ENV=development`, `config.example.prop` will be `dragon` because `local.js` takes precedence.  
+When `LORE_ENV=development`, `config.example.prop` will be `dragon` because `local.js` takes precedence.  
 
 If there was no `local.js` the value would be `bobcat` because the configuration for `config/env/production.js` 
-only takes effect when `NODE_ENV=production`
+only takes effect when `LORE_ENV=production`
 
-When `NODE_ENV=production`, `config.example.prop` will be `dragon` because `local.js` takes precedence. If there was
+When `LORE_ENV=production`, `config.example.prop` will be `dragon` because `local.js` takes precedence. If there was
 no definition for `example.prop` in `local.js` then the value would be `cheetah`.

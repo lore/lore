@@ -7,5 +7,5 @@
  */
 
 export default function getEnvironment(configOverride) {
-  return configOverride.environment || process.env.NODE_ENV || 'development';
+  return configOverride.environment || process.env.LORE_ENV || 'development';
 }
