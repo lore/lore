@@ -36,7 +36,7 @@ $loading-screen-logo-size: 150px;
   width: 100%;
   z-index: 999999;
   opacity: 1;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.75s ease;
 
   &.loading-screen-fade {
     opacity: 0;
