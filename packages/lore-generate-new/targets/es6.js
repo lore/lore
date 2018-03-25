@@ -96,10 +96,13 @@ module.exports = {
 
   // assets
   './assets/REAMDE.md': {copy: common('assets/README.md')},
+  './assets/css/loading-screen.css': {copy: common('assets/css/loading-screen.css')},
   './assets/css/main.css': {copy: common('assets/css/main.css')},
   './assets/images/favicon.png': {copy: common('assets/images/favicon.png')},
   './assets/images/logo.png': {copy: common('assets/images/logo.png')},
+  './assets/less/loading-screen.less': {copy: common('assets/less/loading-screen.less')},
   './assets/less/main.less': {copy: common('assets/less/main.less')},
+  './assets/sass/loading-screen.scss': {copy: common('assets/sass/loading-screen.scss')},
   './assets/sass/main.scss': {copy: common('assets/sass/main.scss')}
 
 };
