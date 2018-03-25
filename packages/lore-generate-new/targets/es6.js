@@ -56,9 +56,6 @@ module.exports = {
   // forms
   './src/forms/.gitkeep': {copy: common('.gitkeep')},
 
-  // mixins
-  './src/mixins/.gitkeep': {copy: common('.gitkeep')},
-
   // models
   './src/models/README.md': {copy: common('src/models/README.md')},
   './src/models/currentUser.js': {copy: es6('src/models/currentUser.js')},
