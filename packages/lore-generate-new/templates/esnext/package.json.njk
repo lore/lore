@@ -9,7 +9,7 @@
     "build:prod": "npm run clean && webpack --env=production -p",
     "clean": "rimraf dist",
     "server": "json-server --watch db.json --port=1337",
-    "start": "webpack-dev-server --history-api-fallback --hot --env=development --port=3000",
+    "start": "webpack-dev-server --hot --env.webpack=development --env.lore=development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

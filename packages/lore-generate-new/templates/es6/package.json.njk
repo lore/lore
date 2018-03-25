@@ -10,7 +10,7 @@
     "build:production": "npm run clean && webpack --env.webpack=production --env.lore=production -p",
     "clean": "rimraf dist",
     "server": "json-server --watch db.json --port=1337",
-    "start": "webpack-dev-server --history-api-fallback --hot --env=development --port=3000",
+    "start": "webpack-dev-server --hot --env.webpack=development --env.lore=development",
     "stats": "npm run stats:development",
     "stats:development": "webpack --json --env=development > stats.json",
     "stats:production": "webpack --json --env=production > stats.json",

@@ -19,6 +19,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var { getIfUtils, removeEmpty } = require('webpack-config-utils');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+var fs = require('fs');
 
 module.exports = function(env) {
   var { ifProduction, ifNotProduction } = getIfUtils(env.webpack || env);
@@ -209,6 +210,16 @@ module.exports = function(env) {
           yandex: false
         }
       })
-    ])
+    ]),
+    devServer: {
+      https: env.https || false,
+      host: env.host || 'localhost',
+      port: env.port || 3000,
+      key: env.key ? fs.readFileSync(env.key) : '',
+      cert: env.cert ? fs.readFileSync(env.cert) : '',
+      historyApiFallback: {
+        index: `${BASENAME}/index.html`,
+      }
+    }
   };
 };
