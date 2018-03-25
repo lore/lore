@@ -4,8 +4,8 @@
  * This file is where you define overrides for any of the config settings that
  * should only be applied in the production environment.
  *
- * The production environment is defined as 'process.env.NODE_ENV=production' and
- * is automatically set when webpack is invoked using the --env=production argument.
+ * The production environment is defined as 'process.env.LORE_ENV=production' and
+ * is automatically set when webpack is invoked using the --env.lore=production argument.
  **/
 
 export default {

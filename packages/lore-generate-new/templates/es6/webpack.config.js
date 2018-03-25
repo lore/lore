@@ -22,6 +22,7 @@ var FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = function(env) {
   var { ifProduction, ifNotProduction } = getIfUtils(env.webpack || env);
+  var BASENAME = env.basename || '';
 
   return {
     devtool: ifProduction('source-map', 'eval'),
@@ -164,8 +165,10 @@ module.exports = function(env) {
     plugins: removeEmpty([
       new webpack.DefinePlugin({
         __LORE_ROOT__: JSON.stringify(__dirname),
+        __BASENAME__: JSON.stringify(BASENAME),
         'process.env': {
-          'NODE_ENV': JSON.stringify(env.lore || env)
+          'LORE_ENV': JSON.stringify(env.lore || env),
+          'NODE_ENV': JSON.stringify(env.webpack || env)
         }
       }),
       new ProgressBarPlugin(),
@@ -188,6 +191,7 @@ module.exports = function(env) {
       new HtmlWebpackPlugin({
         template: './index.html',
         inject: 'body',
+        publicPath: `${BASENAME}/`
       }),
       new FaviconsWebpackPlugin({
         logo: './assets/images/favicon.png',
