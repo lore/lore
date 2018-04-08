@@ -1,80 +1,55 @@
-/* global window */
-/* eslint no-unused-vars: "off" */
-
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import url from 'url';
-import { withRouter } from 'react-router';
-import AuthGeneratorFactory from '../factories/AuthGeneratorFactory';
 
-function isFullyQualifiedUrl(value) {
-  return (
-    _.startsWith(value, 'https://') ||
-    _.startsWith(value, 'http://')
-  );
-}
-
-function redirectToExternalUrl(pathname, query) {
-  const uri = url.parse(pathname);
-  uri.query = query;
-  window.location = uri.format();
+function getDisplayName(Component) {
+  return Component.displayName || Component.name || 'Component';
 }
 
 export default function(options) {
-  const defaults = {
-    wrapperDisplayName: 'UserIsAuthenticated',
+  return function (DecoratedComponent) {
+    const decoratorDisplayName = options.displayName || 'UserIsAuthenticated';
+    const displayName = getDisplayName(DecoratedComponent);
 
-    propTypes: {
-      location: PropTypes.shape({
-        pathname: PropTypes.string.isRequired,
-        search: PropTypes.string.isRequired
-      }).isRequired,
-      router: PropTypes.object.isRequired
-    },
+    return createReactClass(_.defaults(options, {
+      displayName: `${decoratorDisplayName}(${displayName})`,
 
-    redirectUrl: '/login',
+      propTypes: {
+        router: PropTypes.object.isRequired
+      },
 
-    redirectQueryParamName: 'redirect',
+      componentWillMount() {
+        const isAuthenticated = this.isAuthenticated();
 
-    predicate: function (storeState) {
-      return this.isAuthenticated();
-    },
+        if (!isAuthenticated) {
+          this.redirect();
+        }
 
-    isAuthenticated: function () {
-      return false;
-    },
+        this.setState({
+          isAuthenticated: isAuthenticated
+        });
+      },
 
-    onFailure: function () {
-      this.redirectToLoginPage();
-    },
+      isAuthenticated() {
+        return true;
+      },
 
-    redirectToLoginPage: function () {
-      const location = this.props.location;
-      const router = this.props.router;
-      const redirectUrl = this.redirectUrl;
-      const redirectQueryParamName = this.redirectQueryParamName;
+      redirect() {
+        console.log('redirect() not implemented')
+      },
 
-      // create the new route, composed of where we want to go and where we
-      // are now (so we can come back to this point after user is logged in)
-      const route = {
-        pathname: redirectUrl,
-        query: {}
-      };
-      route.query[redirectQueryParamName] = `${location.pathname}${location.search}`;
+      render: function () {
+        const { isAuthenticated } = this.state;
 
-      // use window.location instead of React Router if the link is fully qualified
-      // React Router doesn't handle fully qualified URLs
-      if (isFullyQualifiedUrl(redirectUrl)) {
-        redirectToExternalUrl(route.pathname, route.query);
-      } else {
-        router.replace(route);
+        if (isAuthenticated) {
+          return (
+            <DecoratedComponent {...this.props} />
+          );
+        }
+
+        return null;
       }
-    }
-
+    }));
   };
-
-  const properties = _.defaultsDeep({}, options, defaults);
-
-  return AuthGeneratorFactory(properties, withRouter);
 }

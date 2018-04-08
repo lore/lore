@@ -1,25 +1,51 @@
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
-import AuthGeneratorFactory from '../factories/AuthGeneratorFactory';
+
+function getDisplayName(Component) {
+  return Component.displayName || Component.name || 'Component';
+}
 
 export default function(options) {
-  const defaults = {
-    wrapperDisplayName: 'UserIsAuthorized',
+  return function (DecoratedComponent) {
+    const decoratorDisplayName = options.displayName || 'UserIsAuthorized';
+    const displayName = getDisplayName(DecoratedComponent);
 
-    predicate: function (storeState) {
-      return this.isAuthorized(storeState);
-    },
+    return createReactClass(_.defaults(options, {
+      displayName: `${decoratorDisplayName}(${displayName})`,
 
-    isAuthorized: function (storeState) {
-      return false;
-    },
+      componentWillMount() {
+        const isAuthorized = this.isAuthorized();
 
-    renderFailure: function () {
-      return null;
-    }
+        this.setState({
+          isAuthorized: isAuthorized
+        });
+      },
 
+      componentWillReceiveProps(nextProps) {
+        const isAuthorized = this.isAuthorized();
+
+        this.setState({
+          isAuthorized: isAuthorized
+        });
+      },
+
+      isAuthorized() {
+        return true;
+      },
+
+      render: function () {
+        const { isAuthorized } = this.state;
+
+        if (isAuthorized) {
+          return (
+            <DecoratedComponent {...this.props} />
+          );
+        }
+
+        return null;
+      }
+    }));
   };
-
-  const properties = _.defaultsDeep({}, options, defaults);
-
-  return AuthGeneratorFactory(properties);
 }
