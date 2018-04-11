@@ -12,7 +12,7 @@ export default function(options) {
     const decoratorDisplayName = options.displayName || 'UserIsAuthorized';
     const displayName = getDisplayName(DecoratedComponent);
 
-    return createReactClass(_.defaults(options, {
+    return createReactClass(_.defaults({}, options, {
       displayName: `${decoratorDisplayName}(${displayName})`,
 
       componentWillMount() {
