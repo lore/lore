@@ -59,6 +59,8 @@ function createPollingWrapper(actionKey, action, config) {
   };
 }
 
+export { Poll };
+
 export default {
 
   dependencies: ['bindActions'],
