@@ -28,6 +28,9 @@ module.exports = {
   './routes.js': {copy: es6('routes.js')},
   './webpack.config.js': {copy: es6('webpack.config.js')},
 
+  // now
+  './.now/package.json': {template: common('now/package.json.njk')},
+
   // actions
   './src/actions/.gitkeep': {copy: common('.gitkeep')},
 
