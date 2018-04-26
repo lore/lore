@@ -47,6 +47,13 @@ _.extend(Collection.prototype, {
   // initialization logic.
   initialize: function() {},
 
+  // return a copy of the collections data
+  toJSON: function () {
+    return this.models.map(function (model) {
+      return model.toJSON();
+    })
+  },
+
   // Add a model, or list of models to the set. `models` may be Backbone
   // Models or raw JavaScript objects to be converted to Models, or any
   // combination of the two.
