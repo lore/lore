@@ -1,6 +1,6 @@
 {
   "name": "lore-reducers",
-  "version": "0.13.0-beta.15",
+  "version": "0.13.0-beta.16",
   "license": "MIT",
   "description": "Library to reduce boilerplate for Redux reducers",
   "homepage": "https://github.com/lore/lore#readme",
