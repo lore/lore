@@ -35,7 +35,7 @@ export default {
      * in the url() or urlRoot() method.
      */
 
-    // initialize(attributes, options) {
+    // initialize: function(attributes, options) {
     //   return;
     // },
 
@@ -49,7 +49,7 @@ export default {
      * you will need to set that here; urlRoot can be either a string or a function
      */
 
-    // urlRoot() {
+    // urlRoot: function() {
     //   return 'https://api.example.com/endpoint'
     // },
 
@@ -61,7 +61,7 @@ export default {
      * the route doesn't use the primary key of the resource.
      */
 
-    // url() {
+    // url: function() {
     //   return 'https://api.example.com/unconventional/endpoint/123'
     // },
 
@@ -71,8 +71,8 @@ export default {
      * properties to absorb breaking API changes.
      */
 
-    // parse(resp, options) {
-    //   return resp;
+    // parse: function(response, options) {
+    //   return response;
     // },
 
     /**
@@ -87,7 +87,7 @@ export default {
      * package, i.e. require('lore-models').sync
      */
 
-    // sync() {
+    // sync: function() {
     //   return sync.apply(this, arguments);
     // }
 

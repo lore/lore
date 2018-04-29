@@ -14,7 +14,7 @@ let tokenFallback = null;
 
 export default {
 
-  saveToken(token) {
+  saveToken: function(token) {
     if (storageAvailable('localStorage')) {
       localStorage.setItem('userToken', token);
     } else {
@@ -29,7 +29,7 @@ export default {
     }
   },
 
-  hasToken() {
+  hasToken: function() {
     if (storageAvailable('localStorage')) {
       return !!localStorage.getItem('userToken');
     }
@@ -37,7 +37,7 @@ export default {
     return !!tokenFallback;
   },
 
-  getToken() {
+  getToken: function() {
     if (storageAvailable('localStorage')) {
       return localStorage.getItem('userToken');
     }
@@ -45,7 +45,7 @@ export default {
     return tokenFallback;
   },
 
-  deleteToken() {
+  deleteToken: function() {
     if (storageAvailable('localStorage')) {
       localStorage.removeItem('userToken');
     } else {
