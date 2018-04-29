@@ -16,8 +16,8 @@ export default function(modelName, Model) {
       model.cid = getCid(modelName, model, store);
 
       store.dispatch({
-        type: ActionTypes.remove(modelName),
-        payload: payload(model, PayloadStates.RESOLVED)
+        type: ActionTypes.update(modelName),
+        payload: payload(model, PayloadStates.DELETED)
       });
     };
   };
