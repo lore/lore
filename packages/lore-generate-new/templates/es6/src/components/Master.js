@@ -34,7 +34,7 @@ class Master extends React.Component {
   }
 
   render() {
-    // const user = this.props.user;
+    // const { user } = this.props;
 
     // if (user.state === PayloadStates.FETCHING) {
     //   return null;

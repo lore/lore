@@ -23,7 +23,7 @@ export default connect(function(getState, props) {
   };
 }, { subscribe: true })(
 createReactClass({
-  dislayName: 'Master',
+  displayName: 'Master',
 
   // propTypes: {
   //   user: PropTypes.object.isRequired
@@ -49,7 +49,7 @@ createReactClass({
   },
 
   render() {
-    // const user = this.props.user;
+    // const { user } = this.props;
 
     // if (user.state === PayloadStates.FETCHING) {
     //   return null;
