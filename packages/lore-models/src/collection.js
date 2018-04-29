@@ -135,8 +135,8 @@ _.extend(Collection.prototype, {
 
   // **parse** converts a response into a list of models to be added to the
   // collection. The default implementation is just to pass it through.
-  parse: function(resp, options) {
-    return resp;
+  parse: function(response, options) {
+    return response;
   },
 
   // Private method to reset all internal state. Called when the collection
