@@ -10,6 +10,9 @@ export default {
     where: function(model) {
       return true;
     },
+    exclude: function(model) {
+      return false;
+    },
     sortBy: function(model) {
       return true;
     }
@@ -18,6 +21,10 @@ export default {
   verifyParams: function(params) {
     if (!_.isFunction(params.where)) {
       throw new Error("The 'where' field must be a function");
+    }
+
+    if (!_.isFunction(params.exclude)) {
+      throw new Error("The 'exclude' field must be a function");
     }
 
     if (!_.isFunction(params.sortBy)) {
@@ -34,7 +41,10 @@ export default {
       result.push(model);
     }, []);
     const filtered = _.filter(transformed, params.where);
-    const sorted = _.sortBy(filtered, params.sortBy);
+    const excluded = _.filter(filtered, function(model) {
+      return !params.exclude(model);
+    });
+    const sorted = _.sortBy(excluded, params.sortBy);
 
     return {
       state: 'RESOLVED',
