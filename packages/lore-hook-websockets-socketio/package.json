@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-websockets-socketio",
-  "version": "0.13.0-beta.16",
+  "version": "0.13.0-rc.1",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-websockets": "^0.13.0-beta.16",
+    "lore-websockets": "^0.13.0-rc.1",
     "pluralize": "1.2.1"
   },
   "devDependencies": {

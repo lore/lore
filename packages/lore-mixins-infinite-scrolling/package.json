@@ -1,6 +1,6 @@
 {
   "name": "lore-mixins-infinite-scrolling",
-  "version": "0.13.0-beta.16",
+  "version": "0.13.0-rc.1",
   "license": "MIT",
   "description": "Set of mixins to help with infinite scrolling",
   "homepage": "https://github.com/lore/lore#readme",
