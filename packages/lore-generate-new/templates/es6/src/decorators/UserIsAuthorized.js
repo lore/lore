@@ -23,4 +23,4 @@ export default AuthorizationGenerator({
   isAuthorized() {
     return true;
   }
-})
+});

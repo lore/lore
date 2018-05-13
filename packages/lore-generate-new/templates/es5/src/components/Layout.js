@@ -5,6 +5,7 @@
  **/
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class';
 import logo from '../../assets/images/logo.png';
 

@@ -4,6 +4,7 @@
  **/
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class RemoveLoadingScreen extends React.Component {
 
