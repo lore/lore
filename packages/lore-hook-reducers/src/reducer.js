@@ -55,7 +55,7 @@ export default function compositeReducer(reducers, dependencies, config, modelNa
       const diffInMs = stop - start;
       if (diffInMs >= THRESHOLD_MS) {
         // console.warn('Reducer "' + reducerName + '" took ' + diffInMs + 'ms for ' + action.type);
-        console.warn(`Reducer "${modelName}.${reducerName}" took ${diffInMs}ms for ${action.type}`);
+        // console.warn(`Reducer "${modelName}.${reducerName}" took ${diffInMs}ms for ${action.type}`);
       }
     });
 
