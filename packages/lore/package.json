@@ -48,7 +48,6 @@
     "lore-hook-collections": "^0.13.0-rc.1",
     "lore-hook-connect": "^0.13.0-rc.1",
     "lore-hook-connections": "^0.13.0-rc.1",
-    "lore-hook-dialog": "^0.13.0-beta.11",
     "lore-hook-models": "^0.13.0-rc.1",
     "lore-hook-reducers": "^0.13.0-rc.1",
     "lore-hook-redux": "^0.13.0-rc.1",
