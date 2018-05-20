@@ -34,9 +34,9 @@ export default {
      * occurrence when interacting with APIs that support pagination).
      */
 
-    // parse: function(attributes) {
-    //   this.meta = attributes.meta;
-    //   return attributes.data;
+    // parse: function(response) {
+    //   this.meta = response.meta;
+    //   return response.data;
     // },
 
     /**
