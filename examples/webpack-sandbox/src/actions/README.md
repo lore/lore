@@ -6,15 +6,15 @@ This folder is where you define any custom actions or override the ones defined 
 
 ### Example
 
-If you wanted to wanted override the default behavior for the `todo.fetchAll` action for example, you just need to 
-define a file called `actions/todo/fetchAll.js` and populate it with the following: 
+If you wanted to wanted override the default behavior for the `todo.fetchAll` action for example, you just need to
+define a file called `actions/todo/fetchAll.js` and populate it with the following:
 
 ```js
 var ActionTypes = require('../constants/ActionTypes');
 var PayloadStates = require('../constants/PayloadStates');
 var utils = require('lore-actions').utils;
 
-module.exports = function fetchAll(query) {
+export default function fetchAll(query) {
   query = query || {};
 
   return function(dispatch) {

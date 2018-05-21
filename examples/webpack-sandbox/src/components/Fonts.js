@@ -1,6 +1,8 @@
-var React = require('react');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'Fonts',
 
   getStyles: function() {
@@ -45,7 +47,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var styles = this.getStyles();
+    const styles = this.getStyles();
 
     return (
       <div style={styles.card}>

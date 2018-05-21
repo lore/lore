@@ -4,13 +4,15 @@
  * top-level navigation. All other components should be rendered by route handlers.
  **/
 
-var React = require('react');
-var Header = require('./Header');
-var Fonts = require('./Fonts');
-var Images = require('./Images');
-var Styles = require('./Styles');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import Header from './Header';
+import Fonts from './Fonts';
+import Images from './Images';
+import Styles from './Styles';
 
-module.exports = React.createClass({
+module.exports = createReactClass({
   displayName: 'Layout',
 
   getStyles: function() {
@@ -22,7 +24,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var styles = this.getStyles();
+    const styles = this.getStyles();
 
     return (
       <div>

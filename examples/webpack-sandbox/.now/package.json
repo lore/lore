@@ -1,0 +1,9 @@
+{
+  "name": "webpack-sandbox",
+  "scripts": {
+    "start": "serve . --single"
+  },
+  "dependencies": {
+    "serve": "latest"
+  }
+}

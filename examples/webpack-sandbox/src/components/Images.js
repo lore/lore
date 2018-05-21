@@ -1,12 +1,14 @@
-var React = require('react');
-var svg = require('../../assets/images/react.svg');
-var png = require('../../assets/images/react.png');
-var jpg = require('../../assets/images/react.jpg');
-var jpeg = require('../../assets/images/react.jpeg');
-var gif = require('../../assets/images/check.gif');
-var bmp = require('../../assets/images/react.bmp');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import svg from '../../assets/images/react.svg';
+import png from '../../assets/images/react.png';
+import jpg from '../../assets/images/react.jpg';
+import jpeg from '../../assets/images/react.jpeg';
+import gif from '../../assets/images/check.gif';
+import bmp from '../../assets/images/react.bmp';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'Images',
 
   getStyles: function() {
@@ -54,7 +56,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var styles = this.getStyles();
+    const styles = this.getStyles();
 
     return (
       <div style={styles.card}>

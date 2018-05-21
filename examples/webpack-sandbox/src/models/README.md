@@ -19,7 +19,7 @@ FETCH_TODOS, FETCH_TODO, CREATE_TODO, UPDATE_TODO, DESTROY_TODO
 ### Example
 
 ```js
-module.exports = {
+export default {
   properties: {
     // parse: function(attributes) {
     //   return attributes;
