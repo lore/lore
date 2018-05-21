@@ -1,0 +1,9 @@
+{
+  "name": "websockets",
+  "scripts": {
+    "start": "serve . --single"
+  },
+  "dependencies": {
+    "serve": "latest"
+  }
+}

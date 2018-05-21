@@ -1,30 +1,53 @@
-module.exports = {
-
-  attributes: {
+const fields = {
+  data: {
+    title: '',
+    description: '',
+    isCompleted: false
+  },
+  validators: {
+    title: [function(value) {
+      if (!value) {
+        return 'This field is required';
+      }
+    }]
+  },
+  fields: {
     title: {
       type: 'string',
-      displayName: 'Title',
-      // description: 'The thing that needs to be done',
-      placeholder: 'What needs to be done?'
+      props: {
+        label: 'Title',
+        placeholder: "What needs to be done?"
+      }
     },
     description: {
       type: 'text',
-      displayName: 'Description',
-      // description: 'Details about the task',
-      placeholder: 'Write down details about the task...'
+      props: {
+        label: 'Description',
+        placeholder: "Write down details about the task..."
+      }
     },
     isCompleted: {
-      type: 'boolean',
-      defaultValue: false,
-      displayName: 'Is the task complete?',
-      description: 'Check the box if it is.'
+      type: 'checkbox',
+      props: {
+        label: 'Is the task complete?',
+        description: 'Check the box if it is.'
+      }
     },
-    priority: {
-      type: 'number',
-      defaultValue: 0,
-      displayName: 'Priority',
-      description: 'Relative importance of the task (0 is lowest priority)'
-    }
+    // priority: {
+    //   type: 'number',
+    //   props: {
+    //     label: 'Priority',
+    //     description: 'Relative importance of the task (0 is lowest priority)'
+    //   }
+    // }
+  }
+};
+
+export default {
+
+  dialogs: {
+    create: fields,
+    update: fields
   },
 
   websockets: {

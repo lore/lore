@@ -1,7 +1,9 @@
-var React = require('react');
-var PayloadStates = require('../constants/PayloadStates');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import PayloadStates from '../constants/PayloadStates';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'Todo',
 
   getStyles: function(isCompleted) {
@@ -23,38 +25,32 @@ module.exports = React.createClass({
   },
 
   onEdit: function() {
-    var todo = this.props.todo;
-
-    function updateTodo(params) {
-      lore.actions.todo.update(todo, params);
-    }
+    const { todo } = this.props;
 
     lore.dialog.show(function() {
-      return lore.dialogs.todo.update({
-        model: todo,
-        onSubmit: updateTodo
+      return lore.dialogs.todo.update(todo, {
+        request: function(data) {
+          return lore.actions.todo.update(todo, data).payload;
+        }
       });
     });
   },
 
   onDestroy: function() {
-    var todo = this.props.todo;
-
-    function destroyTodo() {
-      lore.actions.todo.destroy(todo);
-    }
+    const { todo } = this.props;
 
     lore.dialog.show(function() {
-      return lore.dialogs.todo.destroy({
-        model: todo,
-        onSubmit: destroyTodo
+      return lore.dialogs.todo.destroy(todo, {
+        request: function() {
+          return lore.actions.todo.destroy(todo).payload;
+        }
       });
     });
   },
 
   render: function() {
-    var todo = this.props.todo;
-    var styles = this.getStyles(todo.data.isCompleted);
+    const { todo } = this.props;
+    const styles = this.getStyles(todo.data.isCompleted);
 
     return (
       <li className="list-group-item">

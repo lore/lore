@@ -1,7 +1,9 @@
-var React = require('react');
-var Router = require('react-router');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import { Link } from 'react-router';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'Header',
 
   getStyles: function() {
@@ -21,27 +23,25 @@ module.exports = React.createClass({
   },
 
   onClick: function() {
-    function createTodo(params) {
-      lore.actions.todo.create(params);
-    }
-
     lore.dialog.show(function() {
       return lore.dialogs.todo.create({
-        onSubmit: createTodo
+        request: function(data) {
+          return lore.actions.todo.create(data).payload;
+        }
       });
     })
   },
 
   render: function () {
-    var styles = this.getStyles();
+    const styles = this.getStyles();
 
     return (
       <nav className="navbar navbar-default navbar-static-top">
         <div className="container" style={styles.container}>
           <div className="navbar-header">
-            <Router.Link className="navbar-brand" to={{pathname: '/'}}>
+            <Link className="navbar-brand" to={{pathname: '/'}}>
               WebSockets
-            </Router.Link>
+            </Link>
           </div>
           <button type="button" className="btn btn-primary btn-lg" style={styles.createButton} onClick={this.onClick}>
             +

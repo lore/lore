@@ -5,7 +5,7 @@
  * Settings here apply to all models, and some are inherited by collections.
  */
 
-module.exports = {
+export default {
 
   /**
    * The default API connection that models should use if they have no explicit mapping.
@@ -35,4 +35,4 @@ module.exports = {
   //   default: []
   // }
 
-};
+}

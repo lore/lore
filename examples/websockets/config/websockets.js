@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 
   /**
    * For this example, you will need to change this url depending on

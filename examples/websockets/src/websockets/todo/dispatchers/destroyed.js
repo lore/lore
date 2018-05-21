@@ -1,25 +1,23 @@
-var ActionTypes = require('../../../constants/ActionTypes');
-var PayloadStates = require('../../../constants/PayloadStates');
-var payload = require('lore-actions').utils.payload;
+import { ActionTypes, PayloadStates, payload } from 'lore-utils';
 
 function getCid(model, store) {
   // if the model exists in the store, set the cid to match
   // what is on this client, to make sure it gets removed
   // from byCid as well, which will make sure it gets removed
   // from the find reducer.
-  var storeModel = store.getState().todo.byId[model.id];
+  const storeModel = store.getState().todo.byId[model.id];
   return storeModel ? storeModel.cid : model.cid;
 }
 
-module.exports = function(store){
+export default function(store){
   return function(message) {
-    var Model = lore.models.todo;
+    const Model = lore.models.todo;
 
-    var model = new Model(message.data);
+    const model = new Model(message.data);
     model.cid = getCid(model, store);
 
     store.dispatch({
-      type: ActionTypes.REMOVE_TODO,
+      type: ActionTypes.remove('todo'),
       payload: payload(model, PayloadStates.RESOLVED)
     });
   }

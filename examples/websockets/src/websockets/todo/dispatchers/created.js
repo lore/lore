@@ -1,11 +1,9 @@
-var ActionTypes = require('../../../constants/ActionTypes');
-var PayloadStates = require('../../../constants/PayloadStates');
-var payload = require('lore-actions').utils.payload;
+import { ActionTypes, PayloadStates, payload } from 'lore-utils';
 
-module.exports = function(store){
+export default function(store){
   return function (message) {
-    var Model = lore.models.todo;
-    var model = new Model(message.data);
+    const Model = lore.models.todo;
+    const model = new Model(message.data);
 
     // todo: replace this with a more configurable solution
     if(model.get('cid')) {
@@ -13,7 +11,7 @@ module.exports = function(store){
     }
 
     store.dispatch({
-      type: ActionTypes.ADD_TODO,
+      type: ActionTypes.add('todo'),
       payload: payload(model, PayloadStates.RESOLVED)
     });
   }

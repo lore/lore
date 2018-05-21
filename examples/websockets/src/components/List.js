@@ -1,14 +1,21 @@
-var React = require('react');
-var Header = require('./Header');
-var PayloadStates = require('../constants/PayloadStates');
-var Todo = require('./Todo');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import { connect } from 'lore-hook-connect';
+import PayloadStates from '../constants/PayloadStates';
+import Header from './Header';
+import Todo from './Todo';
 
-module.exports = lore.connect(function(getState, props) {
+export default connect(function(getState, props) {
     return {
-      todos: getState('todo.find')
+      todos: getState('todo.findAll', {
+        exclude: function(model) {
+          return model.state === PayloadStates.DELETED;
+        }
+      })
     }
   })(
-  React.createClass({
+  createReactClass({
     displayName: 'List',
 
     getStyles: function() {
@@ -41,10 +48,10 @@ module.exports = lore.connect(function(getState, props) {
     },
 
     render: function() {
-      var todos = this.props.todos;
-      var styles = this.getStyles();
-      var title = 'Todo List';
-      var content = null;
+      const { todos } = this.props;
+      const styles = this.getStyles();
+      const title = 'Todo List';
+      let content = null;
 
       if (todos.state === PayloadStates.FETCHING) {
         return (

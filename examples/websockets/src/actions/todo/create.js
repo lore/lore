@@ -1,26 +1,30 @@
-var ActionTypes = require('lore-utils').ActionTypes;
-var PayloadStates = require('lore-utils').PayloadStates;
-var payload = require('lore-utils').payload;
-var uuid = require('node-uuid');
-var _ = require('lodash');
+import { ActionTypes, PayloadStates, payload, normalize } from 'lore-utils';
+import uuid from 'node-uuid';
 
-module.exports =  function create(params) {
+export default function create(params) {
   return function(dispatch) {
-    var Model = lore.models.todo;
-    var model = new Model(params);
+    const Model = lore.models.todo;
+    const model = new Model(params);
     model.cid = uuid.v4();
     model.set('cid', model.cid);
 
     model.save().then(function() {
+      // look through the model and generate actions for any attributes with
+      // nested data that should be normalized
+      const actions = normalize(lore, 'todo').model(model);
+
       dispatch({
         type: ActionTypes.update('todo'),
         payload: payload(model, PayloadStates.RESOLVED)
       });
+
+      // dispatch any actions created from normalizing nested data
+      actions.forEach(dispatch);
     }).catch(function(response) {
-      var error = response.data;
+      const error = response.data;
 
       dispatch({
-        type: ActionTypes.update('todo'),
+        type: ActionTypes.remove('todo'),
         payload: payload(model, PayloadStates.ERROR_CREATING, error)
       });
     });

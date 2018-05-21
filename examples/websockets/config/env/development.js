@@ -1,31 +1,27 @@
 /**
  * Development environment settings
  *
- * This file is where you define overrides for any of the config settings that
- * should only be applied in the development environment.
- *
- * The development environment is defined as 'process.env.NODE_ENV=development' and
- * is automatically set when webpack is invoked using the --env=development argument.
- *
- * The development environment is also the default when no environment is specified.
+ * This file is where you define overrides for any of the config settings when operating under the
+ * development environment. Development environment is defined as `LORE_ENV=development` or the absence
+ * of a `LORE_ENV` environment variable.
  **/
 
-var _ = require('lodash');
-var React = require('react');
-var Redux = require('redux');
-var ReduxDevTools = require('redux-devtools');
-var LogMonitor = require('redux-devtools-log-monitor').default;
-var DockMonitor = require('redux-devtools-dock-monitor').default;
-var Provider = require('react-redux').Provider;
-var Router = require('react-router').Router;
-var batchedSubscribe = require('redux-batched-subscribe').batchedSubscribe;
+import _ from 'lodash';
+import React from 'react';
+import { applyMiddleware, compose } from 'redux';
+import { createDevTools } from 'redux-devtools';
+import LogMonitor from 'redux-devtools-log-monitor';
+import DockMonitor from 'redux-devtools-dock-monitor';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router';
+import { batchedSubscribe } from 'redux-batched-subscribe';
 
 /**
  * Redux DevTools, for a practical and fun development experience
  * https://github.com/gaearon/redux-devtools
  */
 
-var DevTools = ReduxDevTools.createDevTools(
+const DevTools = createDevTools(
   <DockMonitor
     toggleVisibilityKey='ctrl-h'
     changePositionKey='ctrl-q'
@@ -34,7 +30,7 @@ var DevTools = ReduxDevTools.createDevTools(
   </DockMonitor>
 );
 
-module.exports = {
+export default {
 
   /**
    * Override Redux configuration in development to add support for the Redux DevTools
@@ -54,8 +50,8 @@ module.exports = {
 
     enhancer: function(middleware, config) {
       if (config.redux.devToolsEnabled) {
-        return Redux.compose(
-          Redux.applyMiddleware.apply(null, middleware),
+        return compose(
+          applyMiddleware.apply(null, middleware),
           DevTools.instrument(),
           batchedSubscribe(_.debounce(function(notify) {
             notify();
@@ -63,8 +59,8 @@ module.exports = {
         );
       }
 
-      return Redux.compose(
-        Redux.applyMiddleware.apply(null, middleware),
+      return compose(
+        applyMiddleware.apply(null, middleware),
         batchedSubscribe(_.debounce(function(notify) {
           notify();
         }, config.redux.debounceWait))
@@ -84,10 +80,10 @@ module.exports = {
      */
 
     getRootComponent: function(lore) {
-      var store = lore.store;
-      var routes = lore.router.routes;
-      var history = lore.router.history;
-      var devToolsEnabled = lore.config.redux.devToolsEnabled;
+      const store = lore.store;
+      const routes = lore.router.routes;
+      const history = lore.router.history;
+      const devToolsEnabled = lore.config.redux.devToolsEnabled;
 
       if (devToolsEnabled) {
         return (
@@ -112,4 +108,4 @@ module.exports = {
     },
   }
 
-};
+}
