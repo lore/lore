@@ -1,6 +1,6 @@
 {
   "name": "lore-actions",
-  "version": "0.13.0-rc.1",
+  "version": "0.13.0-rc.2",
   "license": "MIT",
   "description": "Blueprints to reduce boilerplate for Redux actions",
   "homepage": "https://github.com/lore/lore#readme",
@@ -25,12 +25,12 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-utils": "^0.13.0-rc.1"
+    "lore-utils": "^0.13.0-rc.2"
   },
   "devDependencies": {
     "bluebird": "^3.2.1",
     "chai": "^3.4.1",
-    "lore-models": "^0.13.0-rc.1",
+    "lore-models": "^0.13.0-rc.2",
     "mocha": "^2.3.4",
     "nock": "^3.3.2",
     "rimraf": "^2.5.2",
