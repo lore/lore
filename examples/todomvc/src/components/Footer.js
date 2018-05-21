@@ -1,15 +1,15 @@
-'use strict';
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import { Link } from 'react-router';
+import Utils from './utils';
+import Filters from '../constants/Filters';
 
-var React = require('react');
-var Router = require('react-router');
-var Utils = require('./utils');
-var Filters = require('../constants/Filters');
-
-module.exports = React.createClass({
+export default createReactClass({
 
   render: function () {
-    var activeTodoWord = Utils.pluralize(this.props.count, 'item');
-    var clearButton = null;
+    const activeTodoWord = Utils.pluralize(this.props.count, 'item');
+    let clearButton = null;
 
     if (this.props.completedCount > 0) {
       clearButton = (
@@ -28,27 +28,27 @@ module.exports = React.createClass({
         </span>
         <ul className="filters">
           <li>
-            <Router.Link
+            <Link
               to={{ pathname: "/todos", query: {filter: Filters.ALL_TODOS} }}
               activeClassName="selected">
                 All
-            </Router.Link>
+            </Link>
           </li>
           {' '}
           <li>
-            <Router.Link
+            <Link
               to={{ pathname: "/todos", query: {filter: Filters.ACTIVE_TODOS} }}
               activeClassName="selected">
                 Active
-            </Router.Link>
+            </Link>
           </li>
           {' '}
           <li>
-            <Router.Link
+            <Link
               to={{ pathname: "/todos", query: {filter: Filters.COMPLETED_TODOS} }}
               activeClassName="selected">
                 Completed
-            </Router.Link>
+            </Link>
           </li>
         </ul>
         {clearButton}

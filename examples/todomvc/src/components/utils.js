@@ -1,11 +1,9 @@
-'use strict';
-
-module.exports = {
+export default {
 
   uuid: function () {
     /*jshint bitwise:false */
-    var i, random;
-    var uuid = '';
+    let i, random;
+    let uuid = '';
 
     for (i = 0; i < 32; i++) {
       random = Math.random() * 16 | 0;
@@ -28,15 +26,15 @@ module.exports = {
       return localStorage.setItem(namespace, JSON.stringify(data));
     }
 
-    var store = localStorage.getItem(namespace);
+    const store = localStorage.getItem(namespace);
     return (store && JSON.parse(store)) || [];
   },
 
   extend: function () {
-    var newObj = {};
-    for (var i = 0; i < arguments.length; i++) {
-      var obj = arguments[i];
-      for (var key in obj) {
+    const newObj = {};
+    for (let i = 0; i < arguments.length; i++) {
+      const obj = arguments[i];
+      for (let key in obj) {
         if (obj.hasOwnProperty(key)) {
           newObj[key] = obj[key];
         }

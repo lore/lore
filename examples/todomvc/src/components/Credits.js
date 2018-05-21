@@ -1,8 +1,8 @@
-'use strict';
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 
-var React = require('react');
-
-module.exports = React.createClass({
+export default createReactClass({
 
   render: function () {
     return (

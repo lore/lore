@@ -1,16 +1,16 @@
-'use strict';
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import ReactDom from 'react-dom';
+import cx from 'classnames';
 
-var React = require('react');
-var ReactDOM = require('react-dom');
-var cx = require('classnames');
+const ESCAPE_KEY = 27;
+const ENTER_KEY = 13;
 
-var ESCAPE_KEY = 27;
-var ENTER_KEY = 13;
-
-module.exports = React.createClass({
+export default createReactClass({
 
   handleSubmit: function (event) {
-    var val = this.state.editText.trim();
+    const val = this.state.editText.trim();
     if (val) {
       this.props.onSave(val);
       this.setState({editText: val});
@@ -20,7 +20,7 @@ module.exports = React.createClass({
   },
 
   handleEdit: function () {
-    var todo = this.props.todo;
+    const { todo } = this.props;
     this.props.onEdit();
     this.setState({
       editText: todo.data.title
@@ -28,7 +28,7 @@ module.exports = React.createClass({
   },
 
   handleKeyDown: function (event) {
-    var todo = this.props.todo;
+    const { todo } = this.props;
 
     if (event.which === ESCAPE_KEY) {
       this.setState({
@@ -47,7 +47,7 @@ module.exports = React.createClass({
   },
 
   getInitialState: function () {
-    var todo = this.props.todo;
+    const { todo } = this.props;
     return {
       editText: todo.data.title
     };
@@ -76,7 +76,7 @@ module.exports = React.createClass({
    */
   componentDidUpdate: function (prevProps) {
     if (!prevProps.editing && this.props.editing) {
-      var node = ReactDOM.findDOMNode(this.refs.editField);
+      const node = ReactDOM.findDOMNode(this.refs.editField);
       node.focus();
       node.setSelectionRange(node.value.length, node.value.length);
     }
@@ -87,7 +87,7 @@ module.exports = React.createClass({
   },
 
   render: function () {
-    var todo = this.props.todo;
+    const { todo } = this.props;
 
     return (
       <li className={cx({

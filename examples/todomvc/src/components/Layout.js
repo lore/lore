@@ -1,19 +1,29 @@
-var React = require('react');
-var Filters = require('../constants/Filters');
-var TodoFooter = require('./Footer');
-var TodoItem = require('./TodoItem');
-var Credits = require('./Credits');
-var _ = require('lodash');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import _ from 'lodash';
+import { connect } from 'lore-hook-connect';
+import PayloadStates from '../constants/PayloadStates';
+import Filters from '../constants/Filters';
+import TodoFooter from './Footer';
+import TodoItem from './TodoItem';
+import Credits from './Credits';
 
-var ENTER_KEY = 13;
+const ENTER_KEY = 13;
 
-module.exports = lore.connect(function(getState, props) {
+export default connect(function(getState, props) {
+  const location = props.location;
+
   return {
-    todos: getState('todo.find'),
-    nowShowing: props.location.query.filter
+    todos: getState('todo.findAll', {
+      exclude: function(model) {
+        return model.state === PayloadStates.DELETED;
+      }
+    }),
+    nowShowing: location.query.filter
   };
 })(
-  React.createClass({
+  createReactClass({
     displayName: 'Home',
 
     getInitialState: function () {
@@ -24,35 +34,42 @@ module.exports = lore.connect(function(getState, props) {
     },
 
     propTypes: {
-      todos: React.PropTypes.object.isRequired,
-      nowShowing: React.PropTypes.string.isRequired
+      todos: PropTypes.object.isRequired,
+      nowShowing: PropTypes.string.isRequired
     },
 
     handleChange: function (event) {
-      this.setState({newTodo: event.target.value});
+      this.setState({
+        newTodo: event.target.value
+      });
     },
 
     handleNewTodoKeyDown: function (event) {
+      const { newTodo } = this.state;
+
       if (event.keyCode !== ENTER_KEY) {
         return;
       }
 
       event.preventDefault();
 
-      var val = this.state.newTodo.trim();
+      const val = newTodo.trim();
 
       if (val) {
         lore.actions.todo.create({
           title: val,
           isCompleted: false
         });
-        this.setState({newTodo: ''});
+        this.setState({
+          newTodo: ''
+        });
       }
     },
 
     toggleAll: function (event) {
-      var checked = event.target.checked;
-      var todos = this.props.todos;
+      const { todos } = this.props;
+      const checked = event.target.checked;
+
       todos.data.forEach(function(todo) {
         lore.actions.todo.update(todo, {
           isCompleted: checked
@@ -71,22 +88,29 @@ module.exports = lore.connect(function(getState, props) {
     },
 
     edit: function (todo) {
-      this.setState({editing: todo.id});
+      this.setState({
+        editing: todo.id
+      });
     },
 
     save: function (todoToSave, text) {
       lore.actions.todo.update(todoToSave, {
         title: text
       });
-      this.setState({editing: null});
+      this.setState({
+        editing: null
+      });
     },
 
     cancel: function () {
-      this.setState({editing: null});
+      this.setState({
+        editing: null
+      });
     },
 
     clearCompleted: function () {
-      var todos = this.props.todos;
+      const { todos } = this.props;
+
       todos.data.forEach(function(todo) {
         if (todo.data.isCompleted) {
           lore.actions.todo.destroy(todo);
@@ -95,11 +119,11 @@ module.exports = lore.connect(function(getState, props) {
     },
 
     render: function () {
-      var footer;
-      var main;
-      var todos = this.props.todos;
+      const { todos } = this.props;
+      let footer;
+      let main;
 
-      var shownTodos = todos.data.filter(function (todo) {
+      const shownTodos = todos.data.filter(function (todo) {
         switch (this.props.nowShowing) {
           case Filters.ACTIVE_TODOS:
             return !todo.data.isCompleted;
@@ -110,7 +134,7 @@ module.exports = lore.connect(function(getState, props) {
         }
       }, this);
 
-      var todoItems = shownTodos.map(function (todo) {
+      const todoItems = shownTodos.map(function (todo) {
         return (
           <TodoItem
             key={todo.id || todo.cid}
@@ -125,11 +149,11 @@ module.exports = lore.connect(function(getState, props) {
         );
       }, this);
 
-      var activeTodoCount = _.reduce(todos.data, function (accum, todo) {
+      const activeTodoCount = _.reduce(todos.data, function (accum, todo) {
         return todo.data.isCompleted ? accum : accum + 1;
       }, 0);
 
-      var completedCount = todos.data.length - activeTodoCount;
+      const completedCount = todos.data.length - activeTodoCount;
 
       if (activeTodoCount || completedCount) {
         footer =

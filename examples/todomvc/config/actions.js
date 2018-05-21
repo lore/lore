@@ -4,7 +4,7 @@
  * This file is where you define overrides for the default action behaviors.
  */
 
-module.exports = {
+export default {
 
   /**
    * Specify whether models should be normalized.
@@ -47,4 +47,4 @@ module.exports = {
 
   // cidBodyAttributeName: 'cid'
 
-};
+}

@@ -9,58 +9,60 @@
  * without having to pass it down through props or extract it from the Redux store directly.
  **/
 
-var React = require('react');
-var PayloadStates = require('../constants/PayloadStates');
-require('todomvc-common/base.css');
-require('todomvc-app-css/index.css');
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import { connect } from 'lore-hook-connect';
+import PayloadStates from '../constants/PayloadStates';
+import RemoveLoadingScreen from './RemoveLoadingScreen';
+import 'todomvc-common/base.css';
+import 'todomvc-app-css/index.css';
 
-module.exports = lore.connect(function(getState, props) {
+export default connect(function(getState, props) {
   return {
     // user: getState('currentUser')
   };
 }, { subscribe: true })(
-  React.createClass({
-    displayName: 'Master',
+createReactClass({
+  displayName: 'Master',
 
-    // propTypes: {
-    //   user: React.PropTypes.object.isRequired
-    // },
+  // propTypes: {
+  //   user: PropTypes.object.isRequired
+  // },
 
-    // childContextTypes: {
-    //   user: React.PropTypes.object
-    // },
+  // childContextTypes: {
+  //   user: PropTypes.object
+  // },
 
-    // getChildContext: function() {
-    //   return {
-    //     user: this.props.user
-    //   };
-    // },
+  // getChildContext() {
+  //   return {
+  //     user: this.props.user
+  //   };
+  // },
 
-    componentDidMount: function() {
-      // If you want to play with the router through the browser's dev console then
-      // uncomment out this line. React Router automatically provides 'router'
-      // to any components that are "routes" (such as Master and Layout), so this
-      // is a good location to attach it to the global lore object.
+  componentDidMount() {
+    // If you want to play with the router through the browser's dev console then
+    // uncomment out this line. React Router automatically provides 'router'
+    // to any components that are "routes" (such as Master and Layout), so this
+    // is a good location to attach it to the global lore object.
 
-      // lore.router = this.props.router;
-    },
+    // lore.router = this.props.router;
+  },
 
-    render: function() {
-      // var user = this.props.user;
+  render() {
+    // const { user } = this.props;
 
-      // if (user.state === PayloadStates.FETCHING) {
-      //   return (
-      //     <h1 className="loading-text">
-      //       Loading...
-      //     </h1>
-      //   )
-      // }
+    // if (user.state === PayloadStates.FETCHING) {
+    //   return null;
+    // }
 
-      return (
-        <div>
-          {React.cloneElement(this.props.children)}
-        </div>
-      );
-    }
-  })
+    return (
+      <div>
+        <RemoveLoadingScreen/>
+        {React.cloneElement(this.props.children)}
+      </div>
+    );
+  }
+
+})
 );

@@ -1,22 +1,20 @@
-var React = require('react');
-var Router = require('react-router');
-var Route = Router.Route;
-var Redirect = Router.Redirect;
+import React from 'react';
+import { Route, IndexRoute, Redirect } from 'react-router';
 
 /**
  * Wrapping the Master component with this decorator provides an easy way
  * to redirect the user to a login experience if we don't know who they are.
  */
-var UserIsAuthenticated = require('./src/decorators/UserIsAuthenticated');
+import UserIsAuthenticated from './src/decorators/UserIsAuthenticated';
 
 /**
  * Routes are used to declare your view hierarchy
- * See: https://github.com/rackt/react-router/blob/master/docs/API.md
+ * See: https://github.com/ReactTraining/react-router/blob/v3/docs/API.md
  */
-var Master = require('./src/components/Master');
-var Layout = require('./src/components/Layout');
+import Master from './src/components/Master';
+import Layout from './src/components/Layout';
 
-module.exports = (
+export default (
   <Route>
     <Redirect from="/" to="/todos" query={{filter: 'all'}} />
     <Route path="/" component={UserIsAuthenticated(Master)}>

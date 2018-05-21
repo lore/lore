@@ -4,7 +4,7 @@
  * This file is where you define overrides for the default dialog behavior.
  */
 
-module.exports = {
+export default {
 
   /**
    * DOM Element ID that the dialogs should be mounted to. Should be located
@@ -13,4 +13,4 @@ module.exports = {
 
   // domElementId: 'dialog'
 
-};
+}

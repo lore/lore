@@ -1,0 +1,9 @@
+{
+  "name": "todomvc",
+  "scripts": {
+    "start": "serve . --single"
+  },
+  "dependencies": {
+    "serve": "latest"
+  }
+}
