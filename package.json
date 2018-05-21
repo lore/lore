@@ -16,6 +16,7 @@
     "lerna:updated": "lerna updated",
     "lerna:publish": "lerna publish",
     "lerna:publish:prerelease": "lerna publish --npm-tag=next",
+    "lerna:publish:prerelease:all": "lerna publish --npm-tag=next --force-publish=*",
     "check": "npm run lint && npm run test",
     "clean": "lerna exec npm run clean",
     "clean:examples": "rm -rf examples/**/node_modules",
