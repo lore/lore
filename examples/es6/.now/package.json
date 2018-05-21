@@ -1,0 +1,9 @@
+{
+  "name": "es6",
+  "scripts": {
+    "start": "serve . --single"
+  },
+  "dependencies": {
+    "serve": "latest"
+  }
+}

@@ -1,31 +1,26 @@
 /**
- * This file provides a higher order component that you can use to hide parts
- * of the application you don't want the user to see, such as buttons for actions
- * they don't have permission to perform.
+ * This file provides a higher order component that you can use to block the
+ * rendering of a component that user does not have permission to interact with.
  *
- * When this component is "rendered", the 'isAuthorized' method will be invoked.
- * If the method returns true, whatever component this wraps will be rendered as it
- * normally would. But if 'isAuthorized' returns false, this decorator will prevent
- * the component it wraps from being rendered.
+ * When this component is rendered, the 'isAuthenticated()' method will be invoked.
  *
- * The recommended usage for this component is to duplicate this file and rename
- * it to something specific, like "UserCanDeletePost". Then you would update the
- * 'isAuthorized' method with whatever rule determines if a user can delete a post,
- * and then wrap the "delete" button in a Post component with this decorator. Doing
- * that will hide the delete button from any user who doesn't have permission to
- * delete the Post.
+ * If it returns 'true', the component this wraps will be rendered, and the application
+ * will appear as if this decorator doesn't exist.
  *
- * See this URL for more information:
- * https://github.com/lore/lore/tree/master/packages/lore-auth
+ * If it returns 'false', nothing will be rendered, and the application will appear
+ * as if that component doesn't exist.
+ *
+ * See this link for more information:
+ *
+ * https://www.lorejs.org/anatomy/src/decorators/user-is-authorized/
  */
 
-import React, { PropTypes } from 'react';
 import { AuthorizationGenerator } from 'lore-auth';
 
 export default AuthorizationGenerator({
-  wrapperDisplayName: 'UserIsAuthorized',
+  displayName: 'UserIsAuthorized',
 
-  isAuthorized(storeState) {
+  isAuthorized() {
     return true;
   }
-})
+});
