@@ -7,18 +7,18 @@ This folder is where you define any custom reducers or override the ones defined
 ### Example
 
 ```js
-var _ = require('lodash');
-var ActionTypes = require('../constants/ActionTypes');
-var PayloadStates = require('../constants/PayloadStates');
+const _ = require('lodash');
+const ActionTypes = require('../constants/ActionTypes');
+const PayloadStates = require('../constants/PayloadStates');
 
-var initialState = {
+const initialState = {
   state: PayloadStates.INITIAL_STATE,
   data: []
 };
 
 return function customReducer(state, action) {
   state = state || initialState;
-  var nextState = _.assign({}, state);
+  const nextState = _.assign({}, state);
 
   switch (action.type) {
     case ActionTypes.FOUND_SOMETHING_COOL:

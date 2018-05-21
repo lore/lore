@@ -1,11 +1,13 @@
-var React = require('react');
-var PayloadStates = require('../constants/PayloadStates');
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import PayloadStates from '../constants/PayloadStates';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'RepositoryCount',
 
   propTypes: {
-    pages: React.PropTypes.array.isRequired
+    pages: PropTypes.array.isRequired
   },
 
   getStyles: function() {
@@ -18,14 +20,14 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var pages = this.props.pages;
-    var styles = this.getStyles();
-    var numberOfPages = pages.length;
-    var firstPage = pages[0];
-    var lastPage = pages[numberOfPages - 1];
-    var repositoriesPerPage = firstPage.data.length;
-    var resultCount = 0;
-    var totalRepositories = 0;
+    const pages = this.props.pages;
+    const styles = this.getStyles();
+    const numberOfPages = pages.length;
+    const firstPage = pages[0];
+    const lastPage = pages[numberOfPages - 1];
+    const repositoriesPerPage = firstPage.data.length;
+    let resultCount = 0;
+    let totalRepositories = 0;
 
     if (lastPage.state === PayloadStates.FETCHING) {
       resultCount = (numberOfPages - 1)*repositoriesPerPage;

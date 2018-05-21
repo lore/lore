@@ -1,12 +1,14 @@
-var React = require('react');
-var PayloadStates = require('../constants/PayloadStates');
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import PayloadStates from '../constants/PayloadStates';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'LoadMoreButton',
 
   propTypes: {
-    lastPage: React.PropTypes.object.isRequired,
-    onLoadMore: React.PropTypes.func.isRequired
+    lastPage: PropTypes.object.isRequired,
+    onLoadMore: PropTypes.func.isRequired
   },
 
   getStyles: function() {
@@ -23,8 +25,8 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var styles = this.getStyles();
-    var lastPage = this.props.lastPage;
+    const styles = this.getStyles();
+    const lastPage = this.props.lastPage;
 
     if(lastPage.state === PayloadStates.FETCHING) {
       return (

@@ -1,0 +1,9 @@
+{
+  "name": "infinite-scrolling",
+  "scripts": {
+    "start": "serve . --single"
+  },
+  "dependencies": {
+    "serve": "latest"
+  }
+}

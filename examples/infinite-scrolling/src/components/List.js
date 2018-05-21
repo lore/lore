@@ -1,14 +1,17 @@
-var React = require('react');
-var PayloadStates = require('../constants/PayloadStates');
-var Repository = require('./Repository');
-var RepositoryCount = require('./RepositoryCount');
-var LoadMoreButton = require('./LoadMoreButton');
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import { connect } from 'lore-hook-connect';
+import PayloadStates from '../constants/PayloadStates';
+import Repository from './Repository';
+import RepositoryCount from './RepositoryCount';
+import LoadMoreButton from './LoadMoreButton';
 
-var QUERY = 'stars:>1000';
-var SORT = 'stars';
-var REPOS_PER_PAGE = 5;
+const QUERY = 'stars:>1000';
+const SORT = 'stars';
+const REPOS_PER_PAGE = 5;
 
-module.exports = lore.connect(function(getState, props) {
+export default connect(function(getState, props) {
     return {
       repositories: getState('repository.find', {
         where: {
@@ -22,7 +25,7 @@ module.exports = lore.connect(function(getState, props) {
       })
     }
   })(
-  React.createClass({
+  createReactClass({
     displayName: 'List',
 
     getStyles: function() {
@@ -44,28 +47,28 @@ module.exports = lore.connect(function(getState, props) {
     },
 
     contextTypes: {
-      store: React.PropTypes.object.isRequired
+      store: PropTypes.object.isRequired
     },
 
     getInitialState: function() {
+      const { repositories } = this.props;
+
       return {
-        pages: [
-          this.props.repositories
-        ]
+        pages: [repositories]
       };
     },
 
     componentWillReceiveProps: function(nextProps) {
-      var storeState = this.context.store.getState();
-      var pages = this.state.pages;
+      const storeState = this.context.store.getState();
+      const pages = this.state.pages;
 
       // Whenever the component re-renders, we need to rebuild our collection of pages
       // by fetching them back out of the Store. If we don't do this, our state data
       // will always be stale - we'll never know when data finishes being fetched, and
       // in the cases where some of the data is being modified, such as being updated
       // or deleted, we won't get a change to react to those changes and inform the user.
-      var nextPages = pages.map(function(repositories) {
-        var query = JSON.stringify(repositories.query);
+      const nextPages = pages.map(function(repositories) {
+        const query = JSON.stringify(repositories.query);
         return storeState.repository.find[query];
       });
 
@@ -75,15 +78,15 @@ module.exports = lore.connect(function(getState, props) {
     },
 
     onLoadMore: function() {
-      var pages = this.state.pages;
-      var lastPage = pages[pages.length - 1];
-      var nextPage = Number(lastPage.query.pagination.page) + 1;
+      const { pages } = this.state;
+      const lastPage = pages[pages.length - 1];
+      const nextPage = Number(lastPage.query.pagination.page) + 1;
 
       // The 'find' action has a slightly different interface than the 'getState' call
       // in 'lore.connect'. When calling the 'find' action directly, you need to pass
       // in the 'where' clause and the 'pagination' information as different arguments,
       // like 'lore.actions.repository.find(where, pagination)'
-      var nextRepositoriesPage = lore.actions.repository.find({
+      const nextRepositoriesPage = lore.actions.repository.find({
         q: QUERY
       }, {
         sort: SORT,
@@ -105,12 +108,12 @@ module.exports = lore.connect(function(getState, props) {
     },
 
     render: function() {
-      var pages = this.state.pages;
-      var numberOfPages = pages.length;
-      var lastPage = pages[pages.length - 1];
+      const { pages } = this.state;
+      const numberOfPages = pages.length;
+      const lastPage = pages[pages.length - 1];
 
-      var styles = this.getStyles();
-      var title = 'Most Popular GitHub Repositories';
+      const styles = this.getStyles();
+      const title = 'Most Popular GitHub Repositories';
 
       // If we only have one page, we're loading the initial experience
       // so don't show the "load more" button
@@ -147,7 +150,7 @@ module.exports = lore.connect(function(getState, props) {
 
       // Convert the pages of repositories (basically an array of arrays) into
       // a flattened list of list items to be rendered
-      var repositoryListItems = _.flatten(pages.map(function(repositories) {
+      const repositoryListItems = _.flatten(pages.map(function(repositories) {
         return repositories.data.map(this.renderRepository)
       }.bind(this)));
 

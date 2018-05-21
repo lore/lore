@@ -1,7 +1,9 @@
-var React = require('react');
-var Router = require('react-router');
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'Header',
 
   render: function () {
@@ -9,9 +11,9 @@ module.exports = React.createClass({
       <nav className="navbar navbar-default navbar-static-top">
         <div className="container">
           <div className="navbar-header">
-            <Router.Link className="navbar-brand" to={{pathname: '/'}}>
+            <Link className="navbar-brand" to={{pathname: '/'}}>
               Infinite Scrolling
-            </Router.Link>
+            </Link>
           </div>
         </div>
       </nav>
