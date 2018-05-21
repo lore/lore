@@ -78,6 +78,12 @@
       "userId": 7,
       "text": "Something is written in archaic script. I will translate... R...o...i...h...c...l...e...m? Roihclem? System error! I reversed it! It says \"Melchior!\".",
       "createdAt": "2016-11-26T04:03:25.546Z"
+    },
+    {
+      "text": "test2",
+      "userId": 1,
+      "createdAt": "2018-05-21T04:22:12.399Z",
+      "id": 8
     }
   ]
 }

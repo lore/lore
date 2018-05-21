@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 
   properties: {
 
@@ -77,4 +77,4 @@ module.exports = {
 
   }
 
-};
+}

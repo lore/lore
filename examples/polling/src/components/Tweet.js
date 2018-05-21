@@ -1,10 +1,13 @@
-var React = require('react');
-var moment = require('moment');
-var EditLink = require('./EditLink');
-var DeleteLink = require('./DeleteLink');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import moment from 'moment';
+import { connect } from 'lore-hook-connect';
+import EditLink from './EditLink';
+import DeleteLink from './DeleteLink';
 
-module.exports = lore.connect(function(getState, props){
-  var tweet = props.tweet;
+export default connect(function(getState, props){
+  const tweet = props.tweet;
 
   return {
     user: getState('user.byId', {
@@ -12,18 +15,17 @@ module.exports = lore.connect(function(getState, props){
     })
   };
 })(
-React.createClass({
+createReactClass({
   displayName: 'Tweet',
 
   propTypes: {
-    tweet: React.PropTypes.object.isRequired,
-    user: React.PropTypes.object.isRequired
+    tweet: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
   },
 
   render: function() {
-    var tweet = this.props.tweet;
-    var user = this.props.user;
-    var timestamp = moment(tweet.data.createdAt).fromNow().split(' ago')[0];
+    const { tweet, user } = this.props;
+    const timestamp = moment(tweet.data.createdAt).fromNow().split(' ago')[0];
 
     return (
       <li className="list-group-item tweet">

@@ -1,23 +1,22 @@
-var React = require('react');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'DeleteLink',
 
   propTypes: {
-    tweet: React.PropTypes.object.isRequired
+    tweet: PropTypes.object.isRequired
   },
 
   onDestroy: function() {
-    var tweet = this.props.tweet;
-
-    function destroyTweet() {
-      lore.actions.tweet.destroy(tweet);
-    }
+    const { tweet } = this.props;
 
     lore.dialog.show(function() {
-      return lore.dialogs.tweet.destroy({
-        model: tweet,
-        onSubmit: destroyTweet
+      return lore.dialogs.tweet.destroy(tweet, {
+        request: function() {
+          return lore.actions.tweet.destroy(tweet).payload;
+        }
       });
     });
   },

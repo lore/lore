@@ -1,11 +1,46 @@
-module.exports = {
-
-  attributes: {
+const fields = {
+  data: {
+    text: '',
+    userId: undefined
+  },
+  validators: {
+    text: [function(value) {
+      if (!value) {
+        return 'This field is required';
+      }
+    }],
+    userId: [function(value) {
+      if (!value) {
+        return 'This field is required';
+      }
+    }]
+  },
+  fields: {
     text: {
       type: 'text',
-      displayName: 'Message',
-      placeholder: "What's happening?"
+      props: {
+        label: 'Message',
+        placeholder: "What's happening?"
+      }
+    },
+    userId: {
+      type: 'select',
+      props: {
+        label: 'User',
+        optionLabel: 'nickname',
+        options: function(getState, props) {
+          return getState('user.find');
+        }
+      }
     }
+  }
+};
+
+export default {
+
+  dialogs: {
+    create: fields,
+    update: fields
   },
 
   /**
@@ -94,4 +129,4 @@ module.exports = {
 
   }
 
-};
+}

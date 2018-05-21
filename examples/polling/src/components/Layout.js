@@ -4,13 +4,15 @@
  * top-level navigation. All other components should be rendered by route handlers.
  **/
 
-var React = require('react');
-var Header = require('./Header');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import Header from './Header';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'Layout',
 
-  render: function() {
+  render() {
     return (
       <div>
         <Header />

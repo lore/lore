@@ -1,23 +1,22 @@
-var React = require('react');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'EditLink',
 
   propTypes: {
-    tweet: React.PropTypes.object.isRequired
+    tweet: PropTypes.object.isRequired
   },
 
   onEdit: function() {
-    var tweet = this.props.tweet;
-
-    function updateTweet(params) {
-      lore.actions.tweet.update(tweet, params);
-    }
+    const { tweet } = this.props;
 
     lore.dialog.show(function() {
-      return lore.dialogs.tweet.update({
-        model: tweet,
-        onSubmit: updateTweet
+      return lore.dialogs.tweet.update(tweet, {
+        request: function(data) {
+          return lore.actions.tweet.update(tweet, data).payload;
+        }
       });
     });
   },

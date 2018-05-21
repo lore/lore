@@ -1,8 +1,10 @@
-var React = require('react');
-var Router = require('react-router');
-var CreateButton = require('./CreateButton');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import { Link } from 'react-router';
+import CreateButton from './CreateButton';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'Header',
 
   propTypes: {},
@@ -12,9 +14,9 @@ module.exports = React.createClass({
       <nav className="navbar navbar-default navbar-static-top header">
         <div className="container">
           <div className="navbar-header">
-            <Router.Link className="navbar-brand" to="/">
+            <Link className="navbar-brand" to="/">
               Polling
-            </Router.Link>
+            </Link>
           </div>
           <CreateButton/>
         </div>

@@ -1,0 +1,9 @@
+{
+  "name": "polling",
+  "scripts": {
+    "start": "serve . --single"
+  },
+  "dependencies": {
+    "serve": "latest"
+  }
+}
