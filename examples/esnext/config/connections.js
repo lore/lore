@@ -62,14 +62,14 @@ export default {
      *
      * A common use would be sending an authorization token with each request:
      *
-     * headers() {
+     * headers: function() {
      *   return {
      *     Authorization: 'JWT <token>'
      *   };
      * }
      */
 
-    // headers() {
+    // headers: function() {
     //   return {};
     // },
 
@@ -104,7 +104,7 @@ export default {
          * https://github.com/kelektiv/node-uuid
          */
 
-        // generateCid() {
+        // generateCid: function() {
         //   return _.uniqueId('c');
         // },
 
@@ -113,8 +113,8 @@ export default {
          * in the application (such as adding, removing or modifying properties)
          */
 
-        // parse(attributes) {
-        //   return attributes;
+        // parse: function(response) {
+        //   return response;
         // }
 
       }
@@ -141,8 +141,8 @@ export default {
          * automatically be processed by the parse method of the corresponding model.
          */
 
-        // parse(attributes) {
-        //   return attributes;
+        // parse: function(response) {
+        //   return response;
         // }
 
       }

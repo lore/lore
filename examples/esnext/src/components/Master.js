@@ -9,16 +9,19 @@
  * without having to pass it down through props or extract it from the Redux store directly.
  **/
 
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'lore-hook-connect';
 import PayloadStates from '../constants/PayloadStates';
+import RemoveLoadingScreen from './RemoveLoadingScreen';
 import '../../assets/css/main.css';
 
-@lore.connect(function(getState, props) {
+@connect(function(getState, props) {
   return {
     // user: getState('currentUser')
   };
 }, { subscribe: true })
-class Master extends Component {
+class Master extends React.Component {
 
   // static propTypes = {
   //   user: PropTypes.object.isRequired
@@ -44,18 +47,15 @@ class Master extends Component {
   }
 
   render() {
-    // const user = this.props.user;
+    // const { user } = this.props;
 
     // if (user.state === PayloadStates.FETCHING) {
-    //   return (
-    //     <h1 className="loading-text">
-    //       Loading...
-    //     </h1>
-    //   )
+    //   return null;
     // }
 
     return (
       <div>
+        <RemoveLoadingScreen />
         {React.cloneElement(this.props.children)}
       </div>
     );

@@ -4,10 +4,11 @@
  * top-level navigation. All other components should be rendered by route handlers.
  **/
 
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import logo from '../../assets/images/logo.png';
 
-class Layout extends Component {
+class Layout extends React.Component {
 
   render() {
     return (
