@@ -3,34 +3,36 @@ import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import PayloadStates from '../constants/PayloadStates';
 
+const styles = {
+  footer: {
+    textAlign: 'center',
+    marginTop: '32px',
+    marginBottom: '64px'
+  },
+  button: {
+    outline: 'none'
+  }
+};
+
 export default createReactClass({
   displayName: 'LoadMoreButton',
 
   propTypes: {
     lastPage: PropTypes.object.isRequired,
-    onLoadMore: PropTypes.func.isRequired
+    onLoadMore: PropTypes.func.isRequired,
+    // nextPageMetaField: PropTypes.string.isRequired
   },
 
-  getStyles: function() {
-    return {
-      footer: {
-        textAlign: 'center',
-        marginTop: '32px',
-        marginBottom: '64px'
-      },
-      button: {
-        outline: 'none'
-      }
-    }
-  },
-
-  render: function() {
-    const styles = this.getStyles();
-    const lastPage = this.props.lastPage;
+  render() {
+    const {
+      lastPage,
+      onLoadMore,
+      // nextPageMetaField
+    } = this.props;
 
     if(lastPage.state === PayloadStates.FETCHING) {
       return (
-        <div style={styles.footer}>
+        <div key="loading" style={styles.footer}>
           <button className="btn btn-default btn-lg disabled" style={styles.button}>
             Loading...
           </button>
@@ -38,9 +40,15 @@ export default createReactClass({
       );
     }
 
+    // if (!lastPage.meta[nextPageMetaField]) {
+    //   return (
+    //     <div className="footer"/>
+    //   );
+    // }
+
     return (
-      <div style={styles.footer}>
-        <button className="btn btn-default btn-lg" style={styles.button} onClick={this.props.onLoadMore}>
+      <div key="more" style={styles.footer}>
+        <button className="btn btn-default btn-lg" style={styles.button} onClick={onLoadMore}>
           Load More
         </button>
       </div>
