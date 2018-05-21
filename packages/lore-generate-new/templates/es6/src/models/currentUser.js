@@ -84,7 +84,7 @@ export default {
      * call yourself or make a call to sync.apply(this, arguments).
      *
      * Use of 'sync' refers to sync method provided by the 'lore-models'
-     * package, i.e. require('lore-models').sync
+     * package, i.e. import { sync } from 'lore-models'
      */
 
     // sync: function() {
