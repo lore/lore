@@ -1,40 +1,40 @@
-var ActionTypes = require('../../constants/ActionTypes');
-var PayloadStates = require('../../constants/PayloadStates');
-var utils = require('lore-actions/lib/utils');
+import ActionTypes from '../../constants/ActionTypes';
+import PayloadStates from '../../constants/PayloadStates';
+import { payload, payloadCollection } from 'lore-utils';
 
 /*
  * Fetch the current user
  */
-module.exports =  function fetch() {
+export default function fetch() {
   return function(dispatch) {
-    var CurrentUser = lore.models.currentUser;
-    var user = new CurrentUser();
+    const CurrentUser = lore.models.currentUser;
+    const user = new CurrentUser();
 
     user.fetch().then(function() {
-      var PermissionCollection = lore.collections.permission;
-      var userPermissions = new PermissionCollection(user.attributes.permissions);
+      const PermissionCollection = lore.collections.permission;
+      const userPermissions = new PermissionCollection(user.attributes.permissions);
 
       dispatch({
         type: ActionTypes.FETCH_CURRENT_USER,
-        payload: utils.payload(user, PayloadStates.RESOLVED)
+        payload: payload(user, PayloadStates.RESOLVED)
       });
 
       dispatch({
         type: ActionTypes.PERMISSIONS_FOR_CURRENT_USER,
-        payload: utils.payloadCollection(userPermissions, PayloadStates.RESOLVED)
+        payload: payloadCollection(userPermissions, PayloadStates.RESOLVED)
       });
     }).catch(function(response) {
-      var error = response.data;
+      const error = response.data;
 
       dispatch({
         type: ActionTypes.FETCH_CURRENT_USER,
-        payload: utils.payload(user, PayloadStates.ERROR_FETCHING, error)
+        payload: payload(user, PayloadStates.ERROR_FETCHING, error)
       });
     });
 
     return dispatch({
       type: ActionTypes.FETCH_CURRENT_USER,
-      payload: utils.payload(user, PayloadStates.FETCHING)
+      payload: payload(user, PayloadStates.FETCHING)
     });
   };
 };

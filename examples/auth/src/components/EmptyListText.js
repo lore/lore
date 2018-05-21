@@ -1,8 +1,10 @@
-var React = require('react');
-var _ = require('lodash');
-var PermissionTypes = require('../constants/PermissionTypes');
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
+import PermissionTypes from '../constants/PermissionTypes';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'EmptyListText',
 
   getStyles: function() {
@@ -16,15 +18,15 @@ module.exports = React.createClass({
   },
 
   contextTypes: {
-    store: React.PropTypes.object.isRequired
+    store: PropTypes.object.isRequired
   },
 
   render: function() {
-    var styles = this.getStyles();
-    var storeState = this.context.store.getState();
-    var userPermissions = storeState.permission.forCurrentUser;
+    const styles = this.getStyles();
+    const storeState = this.context.store.getState();
+    const userPermissions = storeState.permission.forCurrentUser;
 
-    var userHasCreatePermission = _.find(userPermissions.data, function(permission) {
+    const userHasCreatePermission = _.find(userPermissions.data, function(permission) {
       return permission.data.name === PermissionTypes.TODO_CREATE;
     });
 

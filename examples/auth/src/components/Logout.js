@@ -1,31 +1,27 @@
-var React = require('react');
-var auth = require('../auth');
-var Router = require('react-router');
-var ActionTypes = require('../constants/ActionTypes');
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import auth from '../utils/auth';
+import ShowLoadingScreen from './ShowLoadingScreen';
 
-module.exports = Router.withRouter(React.createClass({
+export default createReactClass({
   displayName: 'Logout',
 
   propTypes: {
-    router: React.PropTypes.object.isRequired
+    router: PropTypes.object.isRequired
   },
 
-  componentDidMount: function(){
-    auth.logout();
-    lore.store.dispatch({
-      type: ActionTypes.RESET_STORE,
-      payload: {}
-    });
-    this.props.router.push('/');
-    // window.location.reload();
+  componentDidMount() {
+    const { router } = this.props;
+
+    auth.deleteToken();
+    router.push('/');
   },
 
-  render: function() {
+  render() {
     return (
-      <h1 className="loading-text">
-        Logging out...
-      </h1>
+      <ShowLoadingScreen/>
     );
   }
 
-}));
+});

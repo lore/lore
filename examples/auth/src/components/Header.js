@@ -1,8 +1,10 @@
-var React = require('react');
-var Router = require('react-router');
-var CreateTodoButton = require('./CreateTodoButton');
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router';
+import CreateTodoButton from './CreateTodoButton';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'Header',
 
   getStyles: function() {
@@ -14,15 +16,15 @@ module.exports = React.createClass({
   },
 
   render: function () {
-    var styles = this.getStyles();
+    const styles = this.getStyles();
 
     return (
       <nav className="navbar navbar-default navbar-static-top">
         <div className="container" style={styles.container}>
           <div className="navbar-header">
-            <Router.Link className="navbar-brand" to={{pathname: '/'}}>
+            <Link className="navbar-brand" to={{pathname: '/'}}>
               Authentication & Authorization
-            </Router.Link>
+            </Link>
           </div>
           <CreateTodoButton />
         </div>

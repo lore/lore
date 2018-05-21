@@ -1,8 +1,8 @@
-var React = require('react');
-var Router = require('react-router');
-var UserCanCreateTodo = require('../decorators/auth/UserCanCreateTodo');
+import React from 'react';
+import createReactClass from 'create-react-class';
+import UserCanCreateTodo from '../decorators/auth/UserCanCreateTodo';
 
-module.exports = UserCanCreateTodo(React.createClass({
+export default UserCanCreateTodo(createReactClass({
   displayName: 'CreateTodoButton',
 
   getStyles: function() {
@@ -19,19 +19,17 @@ module.exports = UserCanCreateTodo(React.createClass({
   },
 
   onClick: function() {
-    function createTodo(params) {
-      lore.actions.todo.create(params);
-    }
-
     lore.dialog.show(function() {
       return lore.dialogs.todo.create({
-        onSubmit: createTodo
+        request: function(data) {
+          return lore.actions.todo.create(data).payload;
+        }
       });
     })
   },
 
   render: function () {
-    var styles = this.getStyles();
+    const styles = this.getStyles();
 
     return (
       <button type="button" className="btn btn-primary btn-lg" style={styles.createButton} onClick={this.onClick}>

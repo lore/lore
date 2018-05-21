@@ -1,17 +1,24 @@
-var React = require('react');
-var Header = require('./Header');
-var PayloadStates = require('../constants/PayloadStates');
-var Todo = require('./Todo');
-var UserCanViewTodos = require('../decorators/auth/UserCanViewTodos');
-var EmptyTextText = require('./EmptyListText');
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import { connect } from 'lore-hook-connect';
+import PayloadStates from '../constants/PayloadStates';
+import Header from './Header';
+import Todo from './Todo';
+import UserCanViewTodos from '../decorators/auth/UserCanViewTodos';
+import EmptyTextText from './EmptyListText';
 
-module.exports = UserCanViewTodos(
-  lore.connect(function(getState, props) {
+export default UserCanViewTodos(
+  connect(function(getState, props) {
     return {
-      todos: getState('todo.find')
+      todos: getState('todo.findAll', {
+        exclude: function(model) {
+          return model.state === PayloadStates.DELETED;
+        }
+      })
     }
   })(
-  React.createClass({
+  createReactClass({
     displayName: 'List',
 
     getStyles: function() {
@@ -44,10 +51,10 @@ module.exports = UserCanViewTodos(
     },
 
     render: function() {
-      var todos = this.props.todos;
-      var styles = this.getStyles();
-      var title = 'Todo List';
-      var content = null;
+      const { todos } = this.props;
+      const styles = this.getStyles();
+      const title = 'Todo List';
+      let content = null;
 
       if (todos.state === PayloadStates.FETCHING) {
         return (

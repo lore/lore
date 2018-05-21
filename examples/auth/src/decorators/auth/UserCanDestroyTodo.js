@@ -1,15 +1,15 @@
-var _ = require('lodash');
-var React = require('react');
-var AuthorizationGenerator = require('lore-auth').AuthorizationGenerator;
-var PermissionTypes = require('../../constants/PermissionTypes');
+import _ from 'lodash';
+import { AuthorizationGenerator } from 'lore-auth';
+import PermissionTypes from '../../constants/PermissionTypes';
 
-module.exports = AuthorizationGenerator({
+export default AuthorizationGenerator({
   wrapperDisplayName: 'UserCanDestroyTodo',
 
-  isAuthorized: function (storeState) {
-    var userPermissions = storeState.permission.forCurrentUser;
+  isAuthorized: function () {
+    const storeState = lore.store.getState();
+    const userPermissions = storeState.permission.forCurrentUser;
 
-    var hasPermission = _.find(userPermissions.data, function(permission) {
+    const hasPermission = _.find(userPermissions.data, function(permission) {
       return permission.data.name === PermissionTypes.TODO_DESTROY;
     });
 

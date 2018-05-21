@@ -4,21 +4,18 @@
  * top-level navigation. All other components should be rendered by route handlers.
  **/
 
-var React = require('react');
-var Router = require('react-router');
-var Header = require('./Header');
-var List = require('./List');
-var Profile = require('./Profile');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import Header from './Header';
+import List from './List';
+import Profile from './Profile';
 
-module.exports = Router.withRouter(React.createClass({
+export default createReactClass({
   displayName: 'Layout',
 
-  logout: function() {
-    this.props.router.push('/logout');
-  },
-
-  render: function() {
-    var location = this.props.location;
+  render() {
+    const { location } = this.props;
 
     return (
       <div>
@@ -37,4 +34,4 @@ module.exports = Router.withRouter(React.createClass({
     );
   }
 
-}));
+});

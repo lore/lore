@@ -4,7 +4,7 @@
  * This file is where you define overrides for the default authentication behaviors.
  */
 
-module.exports = {
+export default {
 
   /**
    * The name of the model with a URL property set to the endpoint
@@ -22,11 +22,11 @@ module.exports = {
   // reducerName: 'currentUser'
 
   /**
-   * The name of the action that should be created that is responsible
+   * The name of the action that should be created at this responsible
    * for fetching the current user. This defaults to the name of the
    * model.
    */
 
   // actionName: 'currentUser'
 
-};
+}

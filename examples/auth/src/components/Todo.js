@@ -1,8 +1,10 @@
-var React = require('react');
-var EditTodoLink = require('./EditTodoLink');
-var DeleteTodoLink = require('./DeleteTodoLink');
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import EditTodoLink from './EditTodoLink';
+import DeleteTodoLink from './DeleteTodoLink';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'Todo',
 
   getStyles: function(isCompleted) {
@@ -18,10 +20,12 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var todo = this.props.todo;
-    var styles = this.getStyles(todo.data.isCompleted);
+    const { todo } = this.props;
+    const styles = this.getStyles(todo.data.isCompleted);
 
-    var editTodoLink = <EditTodoLink todo={todo}/>;
+    const editTodoLink = (
+      <EditTodoLink todo={todo}/>
+    );
 
     return (
       <li className="list-group-item">

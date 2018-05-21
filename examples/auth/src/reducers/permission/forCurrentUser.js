@@ -1,14 +1,14 @@
-var ActionTypes = require('../../constants/ActionTypes');
-var PayloadStates = require('../../constants/PayloadStates');
-var _ = require('lodash');
+import ActionTypes from '../../constants/ActionTypes';
+import PayloadStates from '../../constants/PayloadStates';
+import _ from 'lodash';
 
-var initialState = {
+const initialState = {
   state: PayloadStates.INITIAL_STATE
 };
 
-module.exports = function byId(state, action) {
+export default function byId(state, action) {
   state = state || initialState;
-  var nextState = _.assign({}, state);
+  const nextState = _.assign({}, state);
 
   switch (action.type) {
     case ActionTypes.PERMISSIONS_FOR_CURRENT_USER:

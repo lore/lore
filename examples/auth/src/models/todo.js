@@ -1,17 +1,38 @@
-module.exports = {
-
-  attributes: {
+const fields = {
+  data: {
+    title: '',
+    isCompleted: false,
+  },
+  validators: {
+    title: [function(value) {
+      if (!value) {
+        return 'This field is required';
+      }
+    }]
+  },
+  fields: {
     title: {
-      type: 'string',
-      displayName: 'Title',
-      placeholder: 'What needs to be done?'
+      type: 'text',
+      props: {
+        label: 'Title',
+        placeholder: 'What needs to be done?'
+      }
     },
     isCompleted: {
-      type: 'boolean',
-      defaultValue: false,
-      displayName: 'Is the task complete?',
-      description: 'Check the box if it is.'
+      type: 'checkbox',
+      props: {
+        label: 'Is the task complete?',
+        description: 'Check the box if it is.'
+      }
     }
+  }
+};
+
+export default {
+
+  dialogs: {
+    create: fields,
+    update: fields
   }
 
 };

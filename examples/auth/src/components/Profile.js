@@ -1,18 +1,21 @@
-var React = require('react');
-var Router = require('react-router');
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import { connect } from 'lore-hook-connect';
+import { withRouter } from 'react-router';
 
-module.exports = lore.connect(function(getState, props) {
+export default connect(function(getState, props) {
     return {
       user: getState('user.current'),
       userPermissions: getState('permission.forCurrentUser')
     };
   })(
-  Router.withRouter(React.createClass({
+  withRouter(createReactClass({
     displayName: 'Profile',
 
     propTypes: {
-      user: React.PropTypes.object.isRequired,
-      userPermissions: React.PropTypes.object.isRequired
+      user: PropTypes.object.isRequired,
+      userPermissions: PropTypes.object.isRequired
     },
 
     getStyles: function() {
@@ -47,11 +50,10 @@ module.exports = lore.connect(function(getState, props) {
     },
 
     render: function() {
-      var user = this.props.user;
-      var userPermissions = this.props.userPermissions;
-      var styles = this.getStyles();
+      const { user, userPermissions } = this.props;
+      const styles = this.getStyles();
 
-      var permissions = userPermissions.data.map(function(permission) {
+      const permissions = userPermissions.data.map(function(permission) {
         return (
           <li key={permission.id}>
             {permission.data.description}

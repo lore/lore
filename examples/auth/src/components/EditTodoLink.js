@@ -1,11 +1,13 @@
-var React = require('react');
-var UserCanEditTodo = require('../decorators/auth/UserCanEditTodo');
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import UserCanEditTodo from '../decorators/auth/UserCanEditTodo';
 
-module.exports = UserCanEditTodo(React.createClass({
+export default UserCanEditTodo(createReactClass({
   displayName: 'EditTodoLink',
 
   propTypes: {
-    todo: React.PropTypes.object.isRequired
+    todo: PropTypes.object.isRequired
   },
 
   getStyles: function() {
@@ -18,22 +20,20 @@ module.exports = UserCanEditTodo(React.createClass({
   },
 
   onEdit: function() {
-    var todo = this.props.todo;
-
-    function updateTodo(params) {
-      lore.actions.todo.update(todo, params);
-    }
+    const { todo } = this.props;
 
     lore.dialog.show(function() {
-      return lore.dialogs.todo.update({
-        model: todo,
-        onSubmit: updateTodo
+      return lore.dialogs.todo.update(todo, {
+        request: function(data) {
+          debugger
+          return lore.actions.todo.update(todo, data).payload;
+        }
       });
     });
   },
 
   render: function() {
-    var styles = this.getStyles();
+    const styles = this.getStyles();
 
     return (
       <a style={styles.link} onClick={this.onEdit}>

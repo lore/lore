@@ -1,11 +1,13 @@
-var React = require('react');
-var UserCanDestroyTodo = require('../decorators/auth/UserCanDestroyTodo');
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import UserCanDestroyTodo from '../decorators/auth/UserCanDestroyTodo';
 
-module.exports = UserCanDestroyTodo(React.createClass({
+export default UserCanDestroyTodo(createReactClass({
   displayName: 'DeleteTodoLink',
 
   propTypes: {
-    todo: React.PropTypes.object.isRequired
+    todo: PropTypes.object.isRequired
   },
 
   getStyles: function() {
@@ -18,22 +20,19 @@ module.exports = UserCanDestroyTodo(React.createClass({
   },
 
   onDestroy: function() {
-    var todo = this.props.todo;
-
-    function destroyTodo() {
-      lore.actions.todo.destroy(todo);
-    }
+    const { todo } = this.props;
 
     lore.dialog.show(function() {
-      return lore.dialogs.todo.destroy({
-        model: todo,
-        onSubmit: destroyTodo
+      return lore.dialogs.todo.destroy(todo, {
+        request: function() {
+          return lore.actions.todo.destroy(todo).payload;
+        }
       });
     });
   },
 
   render: function() {
-    var styles = this.getStyles();
+    const styles = this.getStyles();
 
     return (
       <a style={styles.link} onClick={this.onDestroy}>
