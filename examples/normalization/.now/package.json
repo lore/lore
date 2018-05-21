@@ -1,0 +1,9 @@
+{
+  "name": "normalization",
+  "scripts": {
+    "start": "serve . --single"
+  },
+  "dependencies": {
+    "serve": "latest"
+  }
+}

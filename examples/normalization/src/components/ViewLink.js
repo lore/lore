@@ -1,17 +1,18 @@
-var React = require('react');
-var Router = require('react-router');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import { withRouter } from 'react-router';
 
-module.exports = Router.withRouter(React.createClass({
+export default withRouter(createReactClass({
   displayName: 'ViewLink',
 
   propTypes: {
-    tweet: React.PropTypes.object.isRequired,
-    router: React.PropTypes.object.isRequired
+    tweet: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired
   },
 
   onView: function() {
-    var tweet = this.props.tweet;
-    var router = this.props.router;
+    const { tweet, router } = this.props;
     router.push('/tweets/' + tweet.id);
   },
 

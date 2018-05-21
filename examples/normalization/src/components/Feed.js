@@ -1,24 +1,27 @@
-var React = require('react');
-var Tweet = require('./Tweet');
-var PayloadStates = require('../constants/PayloadStates');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import { connect } from 'lore-hook-connect';
+import PayloadStates from '../constants/PayloadStates';
+import Tweet from './Tweet';
 
-module.exports = lore.connect(function(getState, props){
+export default connect(function(getState, props){
   return {
-    tweets: getState('tweet.find', {
+    tweets: getState('tweet.findAll', {
       pagination: {
         _expand: 'user'
+      },
+      exclude: function(model) {
+        return model.state === PayloadStates.DELETED;
       }
-    }),
-    // tweet: getState('tweet.byId', {
-    //   id: 1
-    // })
+    })
   }
 })(
-React.createClass({
+createReactClass({
   displayName: 'Feed',
 
   propTypes: {
-    tweets: React.PropTypes.object.isRequired
+    tweets: PropTypes.object.isRequired
   },
 
   renderTweet: function(tweet) {
@@ -28,7 +31,7 @@ React.createClass({
   },
 
   render: function() {
-    var tweets = this.props.tweets;
+    const { tweets } = this.props;
 
     if (tweets.state === PayloadStates.FETCHING) {
       return (

@@ -1,17 +1,53 @@
-var Model = require('lore-models').Model;
-
-module.exports = {
-
-  attributes: {
+const fields = {
+  data: {
+    text: '',
+    userId: undefined
+  },
+  validators: {
+    text: [function(value) {
+      if (!value) {
+        return 'This field is required';
+      }
+    }],
+    userId: [function(value) {
+      if (!value) {
+        return 'This field is required';
+      }
+    }]
+  },
+  fields: {
     text: {
       type: 'text',
-      displayName: 'Message',
-      placeholder: "What's happening?"
+      props: {
+        label: 'Message',
+        placeholder: "What's happening?"
+      }
     },
+    userId: {
+      type: 'select',
+      props: {
+        label: 'User',
+        optionLabel: 'nickname',
+        options: function(getState, props) {
+          return getState('user.find');
+        }
+      }
+    }
+  }
+};
+
+export default {
+
+  attributes: {
     user: {
       type: 'model',
       model: 'user'
     }
+  },
+
+  dialogs: {
+    create: fields,
+    update: fields
   },
 
   properties: {
@@ -60,9 +96,7 @@ module.exports = {
      */
 
     // url: function() {
-    //   var url = Model.prototype.url.bind(this)();
-    //   debugger
-    //   return url + '?_expand=user';
+    //   return 'https://api.example.com/unconventional/endpoint/123'
     // },
 
     /**
@@ -71,8 +105,8 @@ module.exports = {
      * properties to absorb breaking API changes.
      */
 
-    // parse: function(resp, options) {
-    //   return resp;
+    // parse: function(response, options) {
+    //   return response;
     // },
 
     /**
@@ -84,7 +118,7 @@ module.exports = {
      * call yourself or make a call to sync.apply(this, arguments).
      *
      * Use of 'sync' refers to sync method provided by the 'lore-models'
-     * package, i.e. require('lore-models').sync
+     * package, i.e. import { sync } from 'lore-models'
      */
 
     // sync: function() {

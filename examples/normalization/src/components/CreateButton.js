@@ -1,20 +1,19 @@
-var React = require('react');
-var _ = require('lodash');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import _ from 'lodash';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'CreateButton',
 
   onClick: function() {
-    function createTweet(params) {
-      lore.actions.tweet.create(_.extend(params, {
-        userId: 1,
-        createdAt: new Date().toISOString()
-      }));
-    }
-
     lore.dialog.show(function() {
       return lore.dialogs.tweet.create({
-        onSubmit: createTweet
+        request: function(data) {
+          return lore.actions.tweet.create(_.assign({}, data, {
+            createdAt: new Date().toISOString()
+          })).payload;
+        }
       });
     });
   },

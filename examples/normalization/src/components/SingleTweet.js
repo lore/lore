@@ -1,8 +1,11 @@
-var React = require('react');
-var Tweet = require('./Tweet');
-var PayloadStates = require('../constants/PayloadStates');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import { connect } from 'lore-hook-connect';
+import PayloadStates from '../constants/PayloadStates';
+import Tweet from './Tweet';
 
-module.exports = lore.connect(function(getState, props){
+export default connect(function(getState, props){
   return {
     tweet: getState('tweet.byId', {
       id: props.params.tweetId,
@@ -12,15 +15,15 @@ module.exports = lore.connect(function(getState, props){
     })
   }
 })(
-React.createClass({
+createReactClass({
   displayName: 'SingleTweet',
 
   propTypes: {
-    tweet: React.PropTypes.object.isRequired
+    tweet: PropTypes.object.isRequired
   },
 
   render: function() {
-    var tweet = this.props.tweet;
+    const { tweet } = this.props;
 
     if (tweet.state === PayloadStates.FETCHING) {
       return (

@@ -4,14 +4,12 @@
  * This file is where you define overrides for the default mounting behavior.
  */
 
-// var React = require('react');
-// var ReactDOM = require('react-dom');
-// var ReactRedux = require('react-redux');
-// var Provider = ReactRedux.Provider;
-// var ReactRouter = require('react-router');
-// var Router = ReactRouter.Router;
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import { Provider } from 'react-redux';
+// import { Router } from 'react-router';
 
-module.exports = {
+export default {
 
   /**
    * ID of DOM Element the application will be mounted to
@@ -25,9 +23,9 @@ module.exports = {
    */
 
   // getRootComponent: function(lore) {
-  //   var store = lore.store;
-  //   var routes = lore.router.routes;
-  //   var history = lore.router.history;
+  //   const store = lore.store;
+  //   const routes = lore.router.routes;
+  //   const history = lore.router.history;
   //
   //   return (
   //     <Provider store={store}>
@@ -43,8 +41,8 @@ module.exports = {
    */
 
   // mount: function(Root, lore) {
-  //   var config = lore.config.react;
+  //   const config = lore.config.react;
   //   ReactDOM.render(Root, document.getElementById(config.domElementId), cb);
   // }
 
-};
+}
