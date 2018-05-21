@@ -4,15 +4,17 @@
  * top-level navigation. All other components should be rendered by route handlers.
  **/
 
-var React = require('react');
-var Header = require('./Header');
-var List = require('./List');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import Header from './Header';
+import List from './List';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'Layout',
 
-  render: function() {
-    var location = this.props.location;
+  render() {
+    const { location } = this.props;
 
     return (
       <div>

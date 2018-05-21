@@ -4,16 +4,18 @@
  * top-level navigation. All other components should be rendered by route handlers.
  **/
 
-var React = require('react');
-var Header = require('./Header');
-var Router = require('react-router');
-var PayloadStates = require('../constants/PayloadStates');
-var Pagination = require('./Pagination');
-var Repository = require('./Repository');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import { withRouter } from 'react-router';
+import { connect } from 'lore-hook-connect';
+import PayloadStates from '../constants/PayloadStates';
+import Pagination from './Pagination';
+import Repository from './Repository';
 
-var REPOS_PER_PAGE = 10;
+const REPOS_PER_PAGE = 10;
 
-module.exports = lore.connect(function(getState, props) {
+export default connect(function(getState, props) {
     return {
       repositories: getState('repository.find', {
         where: {
@@ -27,7 +29,7 @@ module.exports = lore.connect(function(getState, props) {
       })
     }
   })(
-  Router.withRouter(React.createClass({
+  withRouter(createReactClass({
     displayName: 'List',
 
     getStyles: function(isLoading) {
@@ -87,12 +89,12 @@ module.exports = lore.connect(function(getState, props) {
     },
 
     render: function() {
-      var repositories = this.props.repositories;
-      var previousRepositories = this.state.previousRepositories;
-      var isLoading = (repositories.state === PayloadStates.FETCHING);
-      var styles = this.getStyles(isLoading);
-      var currentPage = this.props.location.query.page || '1';
-      var title = 'Most Popular GitHub Repositories';
+      let { repositories, location } = this.props;
+      const { previousRepositories } = this.state;
+      const isLoading = (repositories.state === PayloadStates.FETCHING);
+      const styles = this.getStyles(isLoading);
+      const currentPage = location.query.page || '1';
+      const title = 'Most Popular GitHub Repositories';
 
       if (isLoading && previousRepositories.state === PayloadStates.FETCHING) {
         return (

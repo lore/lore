@@ -1,14 +1,16 @@
-var React = require('react');
-var Router = require('react-router');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import { Link } from 'react-router';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'PaginationLink',
 
   propTypes: {
-    page: React.PropTypes.number,
-    text: React.PropTypes.string,
-    isActive: React.PropTypes.bool,
-    isDisabled: React.PropTypes.bool
+    page: PropTypes.number,
+    text: PropTypes.string,
+    isActive: PropTypes.bool,
+    isDisabled: PropTypes.bool
   },
 
   onClick: function(e) {
@@ -17,10 +19,10 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var page = this.props.page;
-    var text = this.props.text || page;
-    var isDisabled = this.props.isDisabled;
-    var isActive = this.props.isActive;
+    const page = this.props.page;
+    const text = this.props.text || page;
+    const isDisabled = this.props.isDisabled;
+    const isActive = this.props.isActive;
 
     if(isDisabled) {
       return (
@@ -44,9 +46,9 @@ module.exports = React.createClass({
 
     return (
       <li>
-        <Router.Link to={{ pathname: '/', query: { page: page } }} onClick={this.onClick}>
+        <Link to={{ pathname: '/', query: { page: page } }} onClick={this.onClick}>
           <span dangerouslySetInnerHTML={{__html: text}} />
-        </Router.Link>
+        </Link>
       </li>
     );
   }

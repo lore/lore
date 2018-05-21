@@ -4,7 +4,7 @@ that says "Loading..." that will disappear as soon as the bundles have been
 downloaded and `lore.summon()` has finished setting up your application.
 
 It also contains a DOM element to hang dialogs from so they don't conflict
-with any CSS or JavaScript behaviors in the application, which as styling
+with any CSS or JavaScript behaviors in the application, such as styling
 overrides or event bubbling cancellation.
 -->
 
@@ -75,11 +75,10 @@ overrides or event bubbling cancellation.
 
   </head>
   <body>
-    <div id="root">
-      <h1 class="loading-text">
-        Loading...
-      </h1>
+    <div id="loading-screen">
+      <div class="logo breathe"></div>
     </div>
+    <div id="root"></div>
     <div id="dialog"></div>
 
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>

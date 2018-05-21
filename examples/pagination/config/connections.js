@@ -4,7 +4,7 @@
  * This file is where you define overrides for the default collection behaviors.
  */
 
-module.exports = {
+export default {
 
   default: {
 
@@ -74,10 +74,12 @@ module.exports = {
     // },
 
 
-    /**
-     * Define properties that should apply to all models here.
-     * You can override all of these methods on a per-model basis.
-     */
+    /****************************************************************************
+    *                                                                           *
+    * Define properties that should apply to all models here.                   *
+    * You can override all of these methods on a per-model basis.               *
+    *                                                                           *
+    ****************************************************************************/
 
     models: {
 
@@ -111,18 +113,20 @@ module.exports = {
          * in the application (such as adding, removing or modifying properties)
          */
 
-        // parse: function(attributes) {
-        //   return attributes;
+        // parse: function(response) {
+        //   return response;
         // }
 
       }
 
     },
 
-    /**
-     * Define properties that should apply to all collections here.
-     * You can override all of these methods on a per-collection basis.
-     */
+    /****************************************************************************
+     *                                                                           *
+     * Define properties that should apply to all collections here.              *
+     * You can override all of these methods on a per-collection basis.          *
+     *                                                                           *
+     ****************************************************************************/
 
     collections: {
 
@@ -137,8 +141,8 @@ module.exports = {
          * automatically be processed by the parse method of the corresponding model.
          */
 
-        // parse: function(attributes) {
-        //   return attributes;
+        // parse: function(response) {
+        //   return response;
         // }
 
       }

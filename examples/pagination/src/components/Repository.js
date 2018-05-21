@@ -1,7 +1,8 @@
-var React = require('react');
-var Header = require('./Header');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'Repository',
 
   getStyles: function(isLoading) {
@@ -26,10 +27,10 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var repository = this.props.repository;
-    var description = repository.data.description || '';
-    var styles = this.getStyles();
-    var tokens = [];
+    const repository = this.props.repository;
+    const styles = this.getStyles();
+    let description = repository.data.description || '';
+    let tokens = [];
 
     if (description.length > 135) {
       description = description.substring(0,135);

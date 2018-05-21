@@ -1,0 +1,9 @@
+{
+  "name": "pagination",
+  "scripts": {
+    "start": "serve . --single"
+  },
+  "dependencies": {
+    "serve": "latest"
+  }
+}

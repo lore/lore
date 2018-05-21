@@ -1,8 +1,9 @@
-var React = require('react');
-var Router = require('react-router');
-var PaginationLink = require('./PaginationLink');
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
+import PaginationLink from './PaginationLink';
 
-module.exports = React.createClass({
+export default createReactClass({
   displayName: 'Pagination',
 
   getStyles: function() {
@@ -26,7 +27,7 @@ module.exports = React.createClass({
   },
 
   renderPreviousPageLink: function(currentPage) {
-    var previousPage = currentPage - 1;
+    const previousPage = currentPage - 1;
 
     if(currentPage === 1) {
       return (
@@ -40,7 +41,7 @@ module.exports = React.createClass({
   },
 
   renderNextPageLink: function(currentPage, totalPages) {
-    var nextPage = currentPage + 1;
+    const nextPage = currentPage + 1;
 
     if(currentPage === totalPages) {
       return (
@@ -60,7 +61,7 @@ module.exports = React.createClass({
   },
 
   renderPageLinks: function(currentPage, totalPages) {
-    var links = [];
+    const links = [];
 
     if(currentPage < 3) {
       links.push(this.renderPaginationLink(1, currentPage));
@@ -118,17 +119,17 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var repositories = this.props.repositories;
-    var reposPerPage = this.props.reposPerPage;
-    var currentPage = Number(this.props.currentPage);
-    var styles = this.getStyles();
+    const repositories = this.props.repositories;
+    const reposPerPage = this.props.reposPerPage;
+    const currentPage = Number(this.props.currentPage);
+    const styles = this.getStyles();
 
     // Create pagination links
-    var totalRepos = repositories.meta.totalCount;
+    let totalRepos = repositories.meta.totalCount;
     totalRepos = totalRepos > 1000 ? 1000 : totalRepos;
-    var totalPages = Math.ceil(totalRepos/reposPerPage);
+    const totalPages = Math.ceil(totalRepos/reposPerPage);
 
-    var paginationLinks = this.renderPageLinks(currentPage, totalPages);
+    const paginationLinks = this.renderPageLinks(currentPage, totalPages);
 
     return (
       <nav style={styles.pagination}>
