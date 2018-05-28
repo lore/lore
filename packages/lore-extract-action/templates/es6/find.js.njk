@@ -4,7 +4,7 @@ import { ActionTypes, PayloadStates, payloadCollection, normalize } from 'lore-u
 /*
  * Blueprint for Find method
  */
-export default function find(query = {}, pagination) {
+export default function find(query = {}, pagination = {}) {
   return function(dispatch) {
     const Collection = lore.collections.{{ modelName }};
     const collection = new Collection();
