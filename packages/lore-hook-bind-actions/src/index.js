@@ -31,6 +31,9 @@ export default {
     const actions = lore.actions;
     const store = lore.store;
 
+    // Save a copy of the unbound actions
+    lore._actions = _.cloneDeep(actions);
+
     // Bind all actions to the store's dispatch method
     lore.actions = bindActionsToActionCreators(actions, store);
   }
