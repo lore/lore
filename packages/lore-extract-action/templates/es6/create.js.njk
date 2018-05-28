@@ -24,7 +24,7 @@ export default function create(params) {
       const error = response.data;
 
       dispatch({
-        type: ActionTypes.remove('{{ modelName }}'),
+        type: ActionTypes.update('{{ modelName }}'),
         payload: payload(model, PayloadStates.ERROR_CREATING, error)
       });
     });
