@@ -61,12 +61,13 @@ describe('load', function() {
       expect(lore.actions).to.be.an('object');
       expect(_.keys(lore.actions).length).to.equal(1);
       expect(lore.actions.todo).to.be.an('object');
-      expect(_.keys(lore.actions.todo).length).to.equal(5);
+      expect(_.keys(lore.actions.todo).length).to.equal(6);
       expect(lore.actions.todo).to.include.keys([
         'create',
         'destroy',
         'get',
         'find',
+        'refetch',
         'update'
       ]);
     })

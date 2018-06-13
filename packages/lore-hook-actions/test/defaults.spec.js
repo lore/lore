@@ -36,12 +36,13 @@ describe('defaults', function() {
       'cidBodyAttributeName'
     ])).to.deep.equal(defaultConfig.actions);
 
-    expect(_.keys(hook.defaults.actions.blueprints).length).to.equal(5);
+    expect(_.keys(hook.defaults.actions.blueprints).length).to.equal(6);
     expect(hook.defaults.actions.blueprints).to.include.keys([
       'create',
       'destroy',
       'find',
       'get',
+      'refetch',
       'update'
     ]);
   });
