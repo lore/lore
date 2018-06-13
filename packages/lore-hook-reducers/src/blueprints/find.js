@@ -1,4 +1,5 @@
 /* eslint no-param-reassign: "off" */
+/* eslint no-unused-vars: "off" */
 
 import _ from 'lodash';
 import { ActionTypes } from 'lore-utils';

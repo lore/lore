@@ -1,3 +1,5 @@
+/* eslint no-undef: "off" */
+
 import _getState from '../getState';
 
 export default function(stateKey, params, options) {
@@ -8,5 +10,5 @@ export default function(stateKey, params, options) {
   );
 
   const state = lore.store.getState();
-  return getState(state, stateKey, params, options)
-};
+  return getState(state, stateKey, params, options);
+}

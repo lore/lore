@@ -51,7 +51,7 @@ _.extend(Collection.prototype, {
   toJSON: function () {
     return this.models.map(function (model) {
       return model.toJSON();
-    })
+    });
   },
 
   // Add a model, or list of models to the set. `models` may be Backbone

@@ -36,7 +36,7 @@ export default function(options) {
       },
 
       redirect() {
-        console.log('redirect() not implemented')
+        console.log('redirect() not implemented');
       },
 
       render: function () {

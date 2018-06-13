@@ -1,12 +1,16 @@
+/* eslint prefer-rest-params: "off" */
+/* eslint react/prefer-es6-class: "off" */
+/* eslint no-unused-vars: "off" */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import createReactClass from 'create-react-class';
-import connect from '../decorators/connect';
 import { result as _result } from 'lore-utils';
+import connect from '../decorators/connect';
 
 export default connect(function(getState, props) {
-  return props.callback.apply(null, arguments)
+  return props.callback.apply(null, arguments);
 })(
 createReactClass({
   displayName: 'Connect',

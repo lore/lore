@@ -1,5 +1,7 @@
 /* eslint no-shadow: "off" */
 /* eslint react/no-is-mounted: "warn" */
+/* eslint react/prefer-es6-class: "off" */
+/* eslint no-undef: "off" */
 
 import React from 'react';
 import createReactClass from 'create-react-class';

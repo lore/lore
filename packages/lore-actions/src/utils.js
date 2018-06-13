@@ -54,4 +54,4 @@ export default {
   defaultOptions,
   hasPartialPair,
   validatePartialPairs
-}
+};

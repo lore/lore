@@ -1,6 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 function getDisplayName(Component) {
