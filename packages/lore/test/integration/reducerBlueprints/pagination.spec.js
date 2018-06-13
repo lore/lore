@@ -80,7 +80,7 @@ describe('lore#reducerBlueprints#pagination', function() {
         var reducer = state.repository.find;
 
         expect(_.keys(reducer).length).to.eql(1);
-        var page1 = reducer['{"where":{"q":"stars:>1000","sort":"stars","per_page":5,"page":"1"}}'];
+        var page1 = reducer['{"where":{"q":"stars:>1000","sort":"stars","per_page":5,"page":"1"},"pagination":{}}'];
         expect(page1.data.length).to.eql(5);
 
         lore.actions.repository.find({
@@ -95,8 +95,8 @@ describe('lore#reducerBlueprints#pagination', function() {
           var reducer = state.repository.find;
 
           expect(_.keys(reducer).length).to.eql(2);
-          var page1 = reducer['{"where":{"q":"stars:>1000","sort":"stars","per_page":5,"page":"1"}}'];
-          var page2 = reducer['{"where":{"q":"stars:>1000","sort":"stars","per_page":5,"page":"2"}}'];
+          var page1 = reducer['{"where":{"q":"stars:>1000","sort":"stars","per_page":5,"page":"1"},"pagination":{}}'];
+          var page2 = reducer['{"where":{"q":"stars:>1000","sort":"stars","per_page":5,"page":"2"},"pagination":{}}'];
 
           expect(page1.data.length).to.eql(5);
           expect(page2.data.length).to.eql(5);

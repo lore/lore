@@ -35,13 +35,14 @@ describe('lore#actionBlueprints', function() {
     it("should create actions for create(), update(), destroy(), get(), and find()", function() {
       lore.build(config);
       expect(lore.actions.todo).to.be.an('object');
-      expect(_.keys(lore.actions.todo).length).to.equal(5);
+      expect(_.keys(lore.actions.todo).length).to.equal(6);
       expect(lore.actions.todo).to.include.keys([
         'create',
         'update',
         'destroy',
         'get',
-        'find'
+        'find',
+        'refetch'
       ]);
     });
   });

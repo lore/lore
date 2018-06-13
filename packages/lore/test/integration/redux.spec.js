@@ -89,7 +89,7 @@ describe('lore#redux', function() {
       expect(_.keys(state.todo.find).length).to.equal(1);
       expect(_.keys(state.todo.byId).length).to.equal(0);
       expect(_.keys(state.todo.byCid).length).to.equal(0);
-      expect(state.todo.find['{"where":{}}'].data.length).to.equal(0);
+      expect(state.todo.find['{"where":{},"pagination":{}}'].data.length).to.equal(0);
 
       // Subscribe to the store so we can be notified once the server response
       // comes back with the real data
@@ -102,7 +102,7 @@ describe('lore#redux', function() {
         expect(_.keys(state.todo.find).length).to.equal(1);
         expect(_.keys(state.todo.byId).length).to.equal(1);
         expect(_.keys(state.todo.byCid).length).to.equal(1);
-        expect(state.todo.find['{"where":{}}'].data.length).to.equal(1);
+        expect(state.todo.find['{"where":{},"pagination":{}}'].data.length).to.equal(1);
 
         done();
       }, TEST_DELAY));
@@ -241,12 +241,14 @@ describe('lore#redux', function() {
       store.subscribe(_.debounce(function () {
 
         // The second time we check state the delete request will have completed
-        // and the model should have been removed from the store
+        // and the model should have a state of 'DELETED'
         state = store.getState();
 
         expect(_.keys(state.todo.find).length).to.equal(0);
-        expect(_.keys(state.todo.byId).length).to.equal(0);
-        expect(_.keys(state.todo.byCid).length).to.equal(0);
+        expect(_.keys(state.todo.byId).length).to.equal(1);
+        expect(state.todo.byId[_.keys(state.todo.byId)[0]].state).to.equal('DELETED');
+        expect(_.keys(state.todo.byCid).length).to.equal(1);
+        expect(state.todo.byCid[_.keys(state.todo.byCid)[0]].state).to.equal('DELETED');
 
         done();
       }, TEST_DELAY));
@@ -323,7 +325,7 @@ describe('lore#redux', function() {
       expect(_.keys(state.todo.find).length).to.equal(1);
       expect(_.keys(state.todo.byId).length).to.equal(0);
       expect(_.keys(state.todo.byCid).length).to.equal(0);
-      expect(state.todo.find['{"where":{}}'].data.length).to.equal(0);
+      expect(state.todo.find['{"where":{},"pagination":{}}'].data.length).to.equal(0);
 
       // Subscribe to the store so we can be notified once the server response
       // comes back with the real data
@@ -335,7 +337,7 @@ describe('lore#redux', function() {
         expect(_.keys(state.todo.find).length).to.equal(1);
         expect(_.keys(state.todo.byId).length).to.equal(1);
         expect(_.keys(state.todo.byCid).length).to.equal(1);
-        expect(state.todo.find['{"where":{}}'].data.length).to.equal(1);
+        expect(state.todo.find['{"where":{},"pagination":{}}'].data.length).to.equal(1);
 
         done();
       }, TEST_DELAY));
@@ -473,12 +475,14 @@ describe('lore#redux', function() {
       store.subscribe(_.debounce(function () {
 
         // The second time we check state the delete request will have completed
-        // and the model should have been removed from the store
+        // and the model should have a state of 'DELETED'
         state = store.getState();
 
         expect(_.keys(state.todo.find).length).to.equal(0);
-        expect(_.keys(state.todo.byId).length).to.equal(0);
-        expect(_.keys(state.todo.byCid).length).to.equal(0);
+        expect(_.keys(state.todo.byId).length).to.equal(1);
+        expect(state.todo.byId[_.keys(state.todo.byId)[0]].state).to.equal('DELETED');
+        expect(_.keys(state.todo.byCid).length).to.equal(1);
+        expect(state.todo.byCid[_.keys(state.todo.byCid)[0]].state).to.equal('DELETED');
 
         done();
       }, TEST_DELAY));

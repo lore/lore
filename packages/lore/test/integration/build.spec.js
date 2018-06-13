@@ -28,9 +28,10 @@ describe('lore#build', function() {
     it("should list the core hooks", function() {
       expect(lore.hooks).to.include.keys([
         'actions',
+        'bindActions',
         'collections',
         'connect',
-        'dialog',
+        'connections',
         'models',
         'reducers',
         'redux'
