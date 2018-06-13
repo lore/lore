@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var definition = require('../src/index');
+var definition = require('../src/index').default;
 var Hook = require('lore-utils').Hook;
 
 describe('defaults', function() {
