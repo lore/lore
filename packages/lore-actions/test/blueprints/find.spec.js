@@ -53,14 +53,14 @@ describe('blueprints#find', function() {
       type: ActionTypes.FETCH_TODOS,
       query: {
         where: {},
-        pagination: undefined
+        pagination: {}
       },
       payload: {
         state: PayloadStates.FETCHING,
         data: [],
         query: {
           where: {},
-          pagination: undefined
+          pagination: {}
         },
         meta: undefined,
         error: {}
@@ -96,7 +96,7 @@ describe('blueprints#find', function() {
           type: ActionTypes.FETCH_TODOS,
           query: {
             where: {},
-            pagination: undefined
+            pagination: {}
           },
           payload: {
             state: PayloadStates.RESOLVED,
@@ -114,7 +114,7 @@ describe('blueprints#find', function() {
             ],
             query: {
               where: {},
-              pagination: undefined
+              pagination: {}
             },
             meta: undefined,
             error: {}
@@ -150,14 +150,14 @@ describe('blueprints#find', function() {
           type: ActionTypes.FETCH_TODOS,
           query: {
             where: {},
-            pagination: undefined
+            pagination: {}
           },
           payload: {
             state: PayloadStates.ERROR_FETCHING,
             data: [],
             query: {
               where: {},
-              pagination: undefined
+              pagination: {}
             },
             meta: undefined,
             error: {
