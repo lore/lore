@@ -24,6 +24,7 @@
     "lodash": "^4.0.0",
     "lore-extract-action": "^0.13.0-rc.2",
     "lore-extract-reducer": "^0.13.0-rc.2",
+    "lore-generate-action": "^0.13.0-rc.2",
     "lore-generate-collection": "^0.13.0-rc.2",
     "lore-generate-component": "^0.13.0-rc.2",
     "lore-generate-generator": "^0.13.0-rc.2",

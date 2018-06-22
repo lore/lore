@@ -30,6 +30,7 @@ var lorerc = rc('lore', {
     generate: {
       description: "Generate common project files",
       commands: {
+        action: local("lore-generate-action"),
         collection: local("lore-generate-collection"),
         component: local("lore-generate-component"),
         generator: local("lore-generate-generator"),
