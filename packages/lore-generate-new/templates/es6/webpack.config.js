@@ -42,7 +42,7 @@ module.exports = function(env) {
       ),
       path: path.resolve('dist'),
       pathinfo: ifNotProduction(),
-      publicPath: '/'
+      publicPath: `${BASENAME}/`
     },
     resolve: {
       alias: {
