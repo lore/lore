@@ -7,15 +7,15 @@ const initialState = {
   data: []
 };
 
-export default function customReducer(state = initialState, action) {
+export default function(state = initialState, action) {
   let nextState = _.assign({}, state);
 
   switch (action.type) {
-    //case ActionTypes.FOUND_SOMETHING_COOL:
-      //// push the cool things into the array of other cool things
-      //return _.assign(nextState, {
-         //data: nextState.data.concat(action.payload.data)
-       //});
+    // case ActionTypes.FOUND_SOMETHING_COOL:
+    //   // push the cool things into the array of other cool things
+    //   return _.assign(nextState, {
+    //      data: nextState.data.concat(action.payload.data)
+    //    });
 
     default:
       return nextState
