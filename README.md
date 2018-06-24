@@ -43,14 +43,6 @@ concerns Lore addresses or is planning to address, linked to their documentation
 
 The documentation for Lore is hosted at http://www.lorejs.org.
 
-### Forms & Dialogs
-
-While Lore provides a solution to create the types of experiences required of forms and dialogs, through its data structure and support for optimistic updates (such as detecting when a specific resource has suceeded or failed at being created, updated or deleted), the framework itself doesn't provide a direct solution for _creating_ forms and dialogs, as too much about them is specific to the unique branding and experience requirements of an application.
-
-There is however a related repository called [lore-forms](https://github.com/lore/lore-forms), that documents an approach for building forms and dialogs that you may like. To see if it appeals to you, you can follow the [form construction tutorial](http://www.lorejs.org/forms/pattern/) on the website that builds up the patterns used by `lore-forms` from scratch.
-
-You can find more documentation about `lore-forms` on the website at [this link](http://www.lorejs.org/forms/).
-
 
 ### Tutorial
 
@@ -78,24 +70,37 @@ There is a [tutorial for learning Lore](http://www.lorejs.org/quickstart/) on th
 If you have any questions, feel free to [create an issue](https://github.com/lore/lore/issues/new). If you'd rather discuss over chat, there is a [Lore Slack Team](https://lorejs.slack.com) which you can join [using this link][slackin-url].
 
 
+### Forms & Dialogs
+
+While Lore provides a solution to create the types of experiences required of forms and dialogs, through its data structure and support for optimistic updates (such as detecting when a specific resource has suceeded or failed at being created, updated or deleted), the framework itself doesn't provide a direct solution for _creating_ forms and dialogs, as too much about them is specific to the unique branding and experience requirements of an application.
+
+There is however a related repository called [lore-forms](https://github.com/lore/lore-forms), that documents an approach for building forms and dialogs that you may like. To see if it appeals to you, you can follow the [form construction tutorial](http://www.lorejs.org/forms/pattern/) on the website that builds up the patterns used by `lore-forms` from scratch.
+
+You can find more documentation about `lore-forms` on the website at [this link](http://www.lorejs.org/forms/).
+
+
 ### Near-term Focus
 
 Since Lore is still in active development, I'm going to list the things that have immediate focus here.
 
 1. [[done](https://github.com/lore/lore/pull/168)] Simplify ability to extend `lore-hook-connect` with new blueprints and mappings (v0.12.3)
-2. [done] Add Quickstart section to display new tweets at top of Feed ([branch](https://github.com/lore/www.lorejs.org/tree/add-websockets-to-quickstart), [dev site](http://master.lorejs.org/quickstart/optimistic/overview/))
-3. [done] Add Quickstart section to connect WebSockets for real-time behavior ([branch](https://github.com/lore/www.lorejs.org/tree/add-websockets-to-quickstart), [dev site](http://master.lorejs.org/quickstart/websockets/overview/))
+2. [done] Add Quickstart section to display new tweets at top of Feed ([website link](http://www.lorejs.org/quickstart/optimistic/overview/))
+3. [done] Add Quickstart section to connect WebSockets for real-time behavior ([website link](http://www.lorejs.org/quickstart/optimistic/overview/))
 4. [[done](https://github.com/lore/lore/commit/1861f379faad984326682df89a6f726f613872e8)] Update `lore` to load initializers _after_ hooks (v0.12.4)
-5. [[done](https://github.com/lore/lore/pull/169)] Update all packages to ES6 syntax
+5. [[done](https://github.com/lore/lore/pull/169)] Update all packages to ES6 syntax (import, export, const, let)
 6. [[done](https://github.com/lore/lore/pull/169)] Update all packages to supply a `module` export for tree-shaking
 7. [[done](https://github.com/lore/lore/pull/172)] Break out form-related packages into their own repo called [lore-forms](https://github.com/lore/lore-forms)
 8. [done] Update connect blueprints to more easily support uses cases like getting all data and merging local data with paginated data
 9. [done] Replace references to `React.PropTypes` with `react-prop-types`
 10. [done] Replace references to `React.createClass` with `react-create-class`
-11. [done] Overhaul Quickstart (new steps, better better patterns)
-12. [done]Publish v0.13
-13. [in-progress] Generate repos for Quickstart with branches for each step
-13. Send out Newsletter
+11. [done] Overhaul Quickstart (new steps, better patterns, better flow)
+12. [done] Publish v0.13
+13. [[done](https://github.com/lore/lore-quickstart-es5-v0.13)] Generate `es5` repo for Quickstart with branches for each step
+14. [in-progress] Generate `es6` repo for Quickstart with branches for each step
+15. Generate `esnext` repo for Quickstart with branches for each step
+16. Generate repo for Custom Hook Tutorial with branches for each step
+17. Generate repo for Form Pattern Construction Tutorial with branches for each step
+18. Send out Newsletter
 
 
 ### Note about React Hot Reloading
