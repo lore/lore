@@ -1,6 +1,6 @@
 {
   "name": "lore-utils",
-  "version": "0.13.0-rc.2",
+  "version": "0.13.0",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",

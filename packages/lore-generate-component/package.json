@@ -1,6 +1,6 @@
 {
   "name": "lore-generate-component",
-  "version": "0.13.0-rc.2",
+  "version": "0.13.0",
   "license": "MIT",
   "main": "index.js",
   "description": "Generates a React component for a Lore project",
@@ -18,7 +18,7 @@
   "dependencies": {
     "bluebird": "3.1.1",
     "lodash": "^4.0.0",
-    "lore-generate": "^0.13.0-rc.2",
+    "lore-generate": "^0.13.0",
     "pascal-case": "1.1.2"
   },
   "devDependencies": {

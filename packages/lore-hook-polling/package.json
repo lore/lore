@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-polling",
-  "version": "0.13.0-rc.2",
+  "version": "0.13.0",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "chai": "3.4.1",
-    "lore-utils": "^0.13.0-rc.2",
+    "lore-utils": "^0.13.0",
     "mocha": "2.3.4"
   }
 }

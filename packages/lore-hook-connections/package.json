@@ -1,6 +1,6 @@
 {
   "name": "lore-hook-connections",
-  "version": "0.13.0-rc.2",
+  "version": "0.13.0",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-utils": "^0.13.0-rc.2"
+    "lore-utils": "^0.13.0"
   },
   "devDependencies": {
     "chai": "3.4.1",
