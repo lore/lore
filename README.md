@@ -98,8 +98,8 @@ Since Lore is still in active development, I'm going to list the things that hav
 13. [[done](https://github.com/lore/lore-quickstart-es5-v0.13)] Generate `es5` repo for Quickstart with branches for each step
 14. [[done](https://github.com/lore/lore-quickstart-es6-v0.13)] Generate `es6` repo for Quickstart with branches for each step
 15. [[done](https://github.com/lore/lore-quickstart-esnext-v0.13)] Generate `esnext` repo for Quickstart with branches for each step
-16. [in-progress] Generate repo for Custom Hook Tutorial with branches for each step
-17. Generate repo for Form Pattern Construction Tutorial with branches for each step
+16. [in-progress] Generate repo for [Custom Hook Tutorial](http://www.lorejs.org/hooks/tutorial/) with branches for each step
+17. Generate repo for [Form Pattern Construction Tutorial](http://www.lorejs.org/forms/pattern/) with branches for each step
 18. Send out Newsletter
 
 
