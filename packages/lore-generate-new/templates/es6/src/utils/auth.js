@@ -1,7 +1,7 @@
 /**
  * This is a utility file you can use to store and retrieve the user token
  * if your app is using a token-based authentication strategy.
- **/
+ */
 
 import storageAvailable from './storageAvailable';
 

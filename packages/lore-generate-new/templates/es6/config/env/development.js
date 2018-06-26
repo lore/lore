@@ -4,7 +4,7 @@
  * This file is where you define overrides for any of the config settings when operating under the
  * development environment. Development environment is defined as `LORE_ENV=development` or the absence
  * of a `LORE_ENV` environment variable.
- **/
+ */
 
 import _ from 'lodash';
 import React from 'react';

@@ -1,7 +1,7 @@
 /**
  * This component shows the loading screen. It does so by removing any classes it
  * has, which will revert it back to it's default state, which is visible.
- **/
+ */
 
 import React from 'react';
 import PropTypes from 'prop-types';

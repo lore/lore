@@ -1,6 +1,6 @@
 /**
  * This file is where you define overrides for the default routing behavior.
- **/
+ */
 
 import { browserHistory, useRouterHistory } from 'react-router';
 import { createHistory } from 'history';
@@ -10,7 +10,7 @@ export default {
   /**
    * Whether browser should use pushState or hash to keep track of routes
    * See: https://github.com/ReactTraining/react-router/blob/v3.2.0/docs/guides/Histories.md
-   **/
+   */
 
   // history: browserHistory,
 

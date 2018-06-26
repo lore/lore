@@ -1,7 +1,7 @@
 /**
  * This component removes the loading screen. It does so by adding a class to hide it,
  * and then removes it from the DOM by setting the display property to 'none'.
- **/
+ */
 
 import React from 'react';
 import PropTypes from 'prop-types';

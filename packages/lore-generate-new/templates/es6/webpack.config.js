@@ -8,7 +8,7 @@
  *
  * If you're new to webpack, you may find this video series by Kent Dodds helpful for getting up to speed quickly:
  * https://egghead.io/courses/using-webpack-for-production-javascript-applications
- **/
+ */
 
 var path = require('path');
 var webpack = require('webpack');

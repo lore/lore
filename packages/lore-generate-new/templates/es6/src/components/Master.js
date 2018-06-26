@@ -7,7 +7,7 @@
  * out code below in order to fetch the user, display a loading experience while they're being
  * fetched, and store the user in the applications context so that components can retrieve it
  * without having to pass it down through props or extract it from the Redux store directly.
- **/
+ */
 
 import React from 'react';
 import PropTypes from 'prop-types';

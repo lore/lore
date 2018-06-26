@@ -6,7 +6,7 @@
  *
  * The production environment is defined as 'process.env.LORE_ENV=production' and
  * is automatically set when webpack is invoked using the --env.lore=production argument.
- **/
+ */
 
 export default {
 

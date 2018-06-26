@@ -6,7 +6,7 @@
  * conventions.  Alternatively, if you have disabled blueprints, you would need
  * to specify all of the ActionTypes for the application here.
  *
- **/
+ */
 
 export default {
   // ADD_MODEL:    'ADD_MODEL',

@@ -4,7 +4,7 @@
  * This file is where you should store any custom PayloadStates required for
  * your application.  It is populated by default with the PayloadStates that
  * Lore uses for the action and reducer blueprints.
- **/
+ */
 
 import { PayloadStates } from 'lore-utils';
 import _ from 'lodash';
@@ -40,7 +40,7 @@ import _ from 'lodash';
  * The `ERROR_*` states exist in case there's an error performing an operation on the server
  * side and you want to articulate to the user what failed (Create, Update, Delete, etc.) and
  * perhaps give them an opportunity to modify the request and try again.
- **/
+ */
 
 /*
  * The default payload states are listed below.
