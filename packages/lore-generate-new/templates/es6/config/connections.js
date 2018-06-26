@@ -46,10 +46,10 @@ export default {
      *
      * casingStyle |  endpoint
      * ---------------------------
-     *   camel     |  /book_author
+     *   snake     |  /book_author
      *   kebab     |  /book-author
-     *   pascal    |  /bookAuthor
-     *   snake     |  /BookAuthor
+     *   camel     |  /bookAuthor
+     *   pascal    |  /BookAuthor
      */
 
     // casingStyle: 'camel',
