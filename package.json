@@ -15,8 +15,8 @@
     "lerna:bootstrap": "lerna bootstrap",
     "lerna:updated": "lerna updated",
     "lerna:publish": "lerna publish",
-    "lerna:publish:prerelease": "lerna publish --npm-tag=next",
-    "lerna:publish:prerelease:all": "lerna publish --npm-tag=next --force-publish=*",
+    "lerna:publish:prerelease": "lerna publish --dist-tag=next",
+    "lerna:publish:prerelease:all": "lerna publish --dist-tag=next --force-publish=*",
     "check": "npm run lint && npm run test",
     "clean": "lerna exec npm run clean",
     "clean:examples": "rm -rf examples/**/node_modules",
@@ -45,7 +45,7 @@
     "eslint-plugin-import": "^2.6.1",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
-    "lerna": "2.5.1"
+    "lerna": "3.13.4"
   },
   "peerDependencies": {}
 }
