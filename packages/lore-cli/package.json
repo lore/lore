@@ -1,7 +1,10 @@
 {
-  "name": "lore-cli",
+  "name": "@lore/cli",
   "version": "0.13.2",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "The Command Line Interface (CLI) for Lore",
   "homepage": "https://github.com/lore/lore#readme",
   "main": "./bin/lore.js",

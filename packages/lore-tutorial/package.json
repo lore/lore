@@ -1,7 +1,10 @@
 {
-  "name": "lore-tutorial",
+  "name": "@lore/tutorial",
   "version": "0.13.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.js",
   "description": "Generates code for the Lore tutorial",
   "keywords": [

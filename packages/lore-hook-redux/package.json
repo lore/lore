@@ -1,7 +1,10 @@
 {
-  "name": "lore-hook-redux",
+  "name": "@lore/hook-redux",
   "version": "0.13.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "module": "es/index.js",
   "description": "A lore hook that configures Redux and creates the store",

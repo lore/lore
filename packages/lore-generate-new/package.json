@@ -1,7 +1,10 @@
 {
-  "name": "lore-generate-new",
+  "name": "@lore/generate-new",
   "version": "0.13.2",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.js",
   "description": "Generates a new Lore application",
   "keywords": [

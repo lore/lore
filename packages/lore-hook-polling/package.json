@@ -1,7 +1,10 @@
 {
-  "name": "lore-hook-polling",
+  "name": "@lore/hook-polling",
   "version": "0.13.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "module": "es/index.js",
   "description": "A Lore hook that enables polling of action",

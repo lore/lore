@@ -1,7 +1,10 @@
 {
-  "name": "lore-generate",
+  "name": "@lore/generate",
   "version": "0.13.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.js",
   "description": "Runner script for lore generators",
   "keywords": [],

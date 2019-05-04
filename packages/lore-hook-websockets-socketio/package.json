@@ -1,7 +1,10 @@
 {
-  "name": "lore-hook-websockets-socketio",
+  "name": "@lore/hook-websockets-socketio",
   "version": "0.13.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "module": "es/index.js",
   "description": "A lore hook that add websockets support for socket.io",

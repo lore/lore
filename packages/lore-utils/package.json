@@ -1,7 +1,10 @@
 {
-  "name": "lore-utils",
+  "name": "@lore/utils",
   "version": "0.13.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "module": "es/index.js",
   "description": "Functions and files used across multiple Lore packages",

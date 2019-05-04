@@ -1,7 +1,10 @@
 {
-  "name": "lore-extract-reducer",
+  "name": "@lore/extract-reducer",
   "version": "0.13.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.js",
   "description": "Creates a reducer matching the implicit pattern used by Lore",
   "keywords": [

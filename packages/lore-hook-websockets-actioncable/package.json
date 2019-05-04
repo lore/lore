@@ -1,7 +1,10 @@
 {
-  "name": "lore-hook-websockets-actioncable",
+  "name": "@lore/hook-websockets-actioncable",
   "version": "0.13.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "module": "es/index.js",
   "description": "A lore hook that add websockets support for the ActionCable implementation in Rails",

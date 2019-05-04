@@ -1,7 +1,10 @@
 {
-  "name": "lore-hook-collections",
+  "name": "@lore/hook-collections",
   "version": "0.13.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "module": "es/index.js",
   "description": "A lore hook that creates collections for AJAX communication",

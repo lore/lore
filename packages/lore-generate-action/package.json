@@ -1,7 +1,10 @@
 {
-  "name": "lore-generate-action",
+  "name": "@lore/generate-action",
   "version": "0.13.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.js",
   "description": "Generates a Redux action for a Lore project",
   "keywords": [

@@ -1,7 +1,10 @@
 {
-  "name": "lore-update",
+  "name": "@lore/update",
   "version": "0.13.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.js",
   "description": "Updates a Lore application to a newer version of Lore",
   "keywords": [

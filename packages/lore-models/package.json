@@ -1,7 +1,10 @@
 {
-  "name": "lore-models",
+  "name": "@lore/models",
   "version": "0.13.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Convention over configuration for CRUD actions against models and collections",
   "homepage": "http://github.com/lore/lore",
   "main": "lib/index.js",

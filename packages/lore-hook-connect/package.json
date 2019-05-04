@@ -1,7 +1,10 @@
 {
-  "name": "lore-hook-connect",
+  "name": "@lore/hook-connect",
   "version": "0.13.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "module": "es/index.js",
   "description": "A lore hook that generates dialogs using Bootstrap",

@@ -1,8 +1,11 @@
 {
-  "name": "lore",
+  "name": "@lore/lore",
   "version": "0.13.0",
   "description": "Convention-driven framework for building React-Redux applications",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "module": "es/index.js",
   "homepage": "https://github.com/lore/lore#readme",

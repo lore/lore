@@ -1,7 +1,10 @@
 {
-  "name": "lore-extract-action",
+  "name": "@lore/extract-action",
   "version": "0.13.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.js",
   "description": "Creates an action matching the implicit pattern used by Lore",
   "keywords": [
