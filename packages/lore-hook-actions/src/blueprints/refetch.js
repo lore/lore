@@ -1,5 +1,4 @@
-import { ActionTypes, PayloadStates } from 'lore-utils';
-import normalize from '../normalize';
+import { ActionTypes, PayloadStates, normalize } from 'lore-utils';
 
 export default function(collectionName, collections, lore) {
   const Collection = collections[collectionName];

@@ -1,5 +1,4 @@
-import { ActionTypes, PayloadStates } from 'lore-utils';
-import normalize from '../normalize';
+import { ActionTypes, PayloadStates, normalize } from 'lore-utils';
 
 export default function(modelName, models, options = {}, lore) {
   const Model = models[modelName];
