@@ -1,6 +1,6 @@
 {
   "name": "@lore/actions",
-  "version": "0.13.0",
+  "version": "0.14.0-beta.1",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -27,8 +27,8 @@
     "test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive"
   },
   "dependencies": {
-    "lodash": "^4.0.0",
-    "@lore/utils": "^0.13.0"
+    "@lore/utils": "^0.14.0-beta.1",
+    "lodash": "^4.0.0"
   },
   "devDependencies": {
     "bluebird": "^3.2.1",

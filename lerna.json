@@ -1,6 +1,6 @@
 {
   "lerna": "3.13.4",
-  "version": "0.13.2",
+  "version": "0.14.0-beta.1",
   "packages": [
     "packages/lore-actions",
     "packages/lore-auth",
