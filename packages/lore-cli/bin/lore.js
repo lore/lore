@@ -18,25 +18,25 @@ var lorerc = rc('lore', {
     language: "es5"
   },
   commands: {
-    new: local("lore-generate-new"),
-    // tutorial: local("lore-tutorial"),
+    new: local("@lore/generate-new"),
+    // tutorial: local("@lore/tutorial"),
     extract: {
       description: "Create files that mirror the blueprint behavior",
       commands: {
-        action: local("lore-extract-action"),
-        reducer: local("lore-extract-reducer")
+        action: local("@lore/extract-action"),
+        reducer: local("@lore/extract-reducer")
       }
     },
     generate: {
       description: "Generate common project files",
       commands: {
-        action: local("lore-generate-action"),
-        collection: local("lore-generate-collection"),
-        component: local("lore-generate-component"),
-        generator: local("lore-generate-generator"),
-        hook: local("lore-generate-hook"),
-        model: local("lore-generate-model"),
-        reducer: local("lore-generate-reducer")
+        action: local("@lore/generate-action"),
+        collection: local("@lore/generate-collection"),
+        component: local("@lore/generate-component"),
+        generator: local("@lore/generate-generator"),
+        hook: local("@lore/generate-hook"),
+        model: local("@lore/generate-model"),
+        reducer: local("@lore/generate-reducer")
       }
     }
   }

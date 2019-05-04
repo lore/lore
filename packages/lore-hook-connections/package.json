@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-utils": "^0.13.0"
+    "@lore/utils": "^0.13.0"
   },
   "devDependencies": {
     "chai": "3.4.1",

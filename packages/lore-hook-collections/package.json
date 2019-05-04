@@ -26,8 +26,8 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-models": "^0.13.0",
-    "lore-utils": "^0.13.0",
+    "@lore/models": "^0.13.0",
+    "@lore/utils": "^0.13.0",
     "pluralize": "1.2.1"
   },
   "devDependencies": {

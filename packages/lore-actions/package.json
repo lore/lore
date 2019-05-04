@@ -28,12 +28,12 @@
   },
   "dependencies": {
     "lodash": "^4.0.0",
-    "lore-utils": "^0.13.0"
+    "@lore/utils": "^0.13.0"
   },
   "devDependencies": {
     "bluebird": "^3.2.1",
     "chai": "^3.4.1",
-    "lore-models": "^0.13.0",
+    "@lore/models": "^0.13.0",
     "mocha": "^2.3.4",
     "nock": "^3.3.2",
     "rimraf": "^2.5.2",
