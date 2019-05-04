@@ -2,13 +2,13 @@
 
 Lore-Actions is available as an [npm package](https://www.npmjs.org/package/lore-actions).
 ```sh
-npm install lore-actions
+npm install @lore/actions
 ```
 After npm install, you'll find all the .js files in the /src folder and their compiled versions in the /lib folder.
 
 ## Usage
 
-lore-actions is an abstraction teir to reduce the boilerplate associated with making ajax calls in client side applications that use [React](https://github.com/facebook/react) and [Redux](https://github.com/rackt/redux).  It works by defining a set of blueprints for standard REST calls for CRUD operations, and then leveraging those blueprints using a configuration file.  Example configuration file:
+This provides an abstraction tier to reduce the boilerplate associated with making ajax calls in client side applications that use [React](https://github.com/facebook/react) and [Redux](https://github.com/rackt/redux).  It works by defining a set of blueprints for standard REST calls for CRUD operations, and then leveraging those blueprints using a configuration file.  Example configuration file:
 
 ```js
 module.exports = {

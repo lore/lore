@@ -1,4 +1,23 @@
 {
   "lerna": "3.13.4",
-  "version": "0.13.2"
+  "version": "0.13.2",
+  "packages": [
+    "packages/lore-actions",
+    "packages/lore-auth",
+    "packages/lore-backbone",
+    "packages/lore-bind-actions",
+    "packages/lore-collections",
+    "packages/lore-config",
+    "packages/lore-connect",
+    "packages/lore-connection-map",
+    "packages/lore-connections",
+    "packages/lore-environment",
+    "packages/lore-initializers",
+    "packages/lore-models",
+    "packages/lore-normalize",
+    "packages/lore-reducers",
+    "packages/lore-redux",
+    "packages/lore-request",
+    "packages/lore-utils"
+  ]
 }

@@ -4,7 +4,7 @@ var nock = require('nock');
 var blueprint = require('../../src/blueprints/get');
 var ActionTypes = require('../constants/ActionTypes');
 var PayloadStates = require('../constants/PayloadStates');
-var Model = require('lore-models').Model;
+var Model = require('@lore/backbone').Model;
 
 var API_ROOT = 'http://localhost:1337';
 var TEST_DELAY = 100;

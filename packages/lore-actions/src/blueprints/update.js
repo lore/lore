@@ -1,95 +1,45 @@
-/* eslint consistent-return: "off" */
+import { ActionTypes, PayloadStates } from '@lore/utils';
+import update from '../_blueprints/update';
 
-import _ from 'lodash';
-import { defaultOptions, validatePartialPairs } from '../utils';
+export default function(modelName, Model, options = {}) {
+  const { normalizer } = options;
 
-/*
- * Blueprint for Update method
- */
-export default function(opts = {}) {
-  // clone the options so we don't unintentionally modify them
-  let options = _.cloneDeep(opts);
+  return update({
+    model: Model,
 
-  options = _.defaultsDeep(options, defaultOptions);
+    optimistic: {
+      actionType: ActionTypes.update(modelName),
+      payloadState: PayloadStates.UPDATING
+    },
 
-  if (!options.model) {
-    throw new Error('Must specify a model');
-  }
+    onSuccess: {
+      actionType: ActionTypes.update(modelName),
+      payloadState: PayloadStates.RESOLVED
+    },
 
-  const Model = options.model;
+    onError: {
+      actionType: ActionTypes.update(modelName),
+      payloadState: PayloadStates.ERROR_UPDATING
+    },
 
-  validatePartialPairs(options);
+    onNotFound: {
+      actionType: ActionTypes.update(modelName),
+      payloadState: PayloadStates.NOT_FOUND
+    },
 
-  return function update(model, params) {
-    return function(dispatch) {
-      const proxyModel = new Model(model.data);
-      proxyModel.set(params);
+    normalize: {
 
-      proxyModel.save().then(function() {
-        if (options.onSuccess) {
-          let actions = [];
+      // look through the model and generate actions for any attributes with
+      // nested data that should be normalized
+      getActions: function(model) {
+        return normalizer.model(model);
+      },
 
-          if (options.normalize && options.normalize.getActions) {
-            // look through the model and generate actions for any attributes with
-            // nested data that should be normalized
-            actions = options.normalize.getActions(proxyModel);
-          }
-
-          dispatch({
-            type: options.onSuccess.actionType,
-            payload: _.merge(model, {
-              data: proxyModel.toJSON(),
-              state: options.onSuccess.payloadState
-            })
-          });
-
-          if (options.normalize && options.normalize.dispatchActions) {
-            // dispatch any actions created from normalizing nested data
-            options.normalize.dispatchActions(actions, dispatch);
-          }
-        }
-      }).catch(function(response) {
-        const error = response.data;
-
-        if (response.status === 404) {
-          if (options.onNotFound) {
-            if (options.onNotFound.beforeDispatch) {
-              options.onNotFound.beforeDispatch(response, [model]);
-            }
-
-            dispatch({
-              type: options.onNotFound.actionType,
-              payload: _.merge(model, {
-                state: options.onNotFound.payloadState,
-                error: error
-              })
-            });
-          }
-        } else if (options.onError) {
-          if (options.onError.beforeDispatch) {
-            options.onError.beforeDispatch(response, [model, params]);
-          }
-
-          dispatch({
-            type: options.onError.actionType,
-            payload: _.merge(model, {
-              data: proxyModel.toJSON(),
-              state: options.onError.payloadState,
-              error: error
-            })
-          });
-        }
-      });
-
-      if (options.optimistic) {
-        return dispatch({
-          type: options.optimistic.actionType,
-          payload: _.merge(model, {
-            data: proxyModel.toJSON(),
-            state: options.optimistic.payloadState
-          })
-        });
+      // dispatch any actions created from normalizing nested data
+      dispatchActions: function(actions, dispatch) {
+        actions.forEach(dispatch);
       }
-    };
-  };
+
+    }
+  });
 }

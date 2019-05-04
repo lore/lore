@@ -18,8 +18,8 @@
   },
   "scripts": {
     "build": "npm run build:cjs && npm run build:es",
-    "build:cjs": "BABEL_ENV=cjs ../../node_modules/.bin/babel src --out-dir lib",
-    "build:es": "BABEL_ENV=es ../../node_modules/.bin/babel src --out-dir es",
+    "build:cjs": "BABEL_ENV=cjs ../../node_modules/.bin/babel --root-mode upward src --out-dir lib",
+    "build:es": "BABEL_ENV=es ../../node_modules/.bin/babel --root-mode upward src --out-dir es",
     "clean": "rimraf lib && rimraf es",
     "debug": "mocha debug --compilers js:babel-core/register --recursive",
     "lint": "../../node_modules/.bin/eslint src",
@@ -33,7 +33,6 @@
   "devDependencies": {
     "bluebird": "^3.2.1",
     "chai": "^3.4.1",
-    "@lore/models": "^0.13.0",
     "mocha": "^2.3.4",
     "nock": "^3.3.2",
     "rimraf": "^2.5.2",

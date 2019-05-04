@@ -1,75 +1,51 @@
-/* eslint consistent-return: "off" */
+import { ActionTypes, PayloadStates } from '@lore/utils';
+import create from '../_blueprints/create';
 
-import _ from 'lodash';
-import { payload } from 'lore-utils';
-import { defaultOptions, validatePartialPairs } from '../utils';
+export default function(modelName, Model, options = {}) {
+  const {
+    addCidToBody,
+    cidBodyAttributeName,
+    normalizer
+  }  = options;
 
-/*
- * Blueprint for Create method
- */
-export default function(opts = {}) {
-  // clone the options so we don't unintentionally modify them
-  let options = _.cloneDeep(opts);
+  return create({
+    model: Model,
 
-  options = _.defaultsDeep(options, defaultOptions);
+    addCidToBody: addCidToBody || false,
 
-  if (!options.model) {
-    throw new Error('Must specify a model');
-  }
+    cidBodyAttributeName: cidBodyAttributeName || 'cid', // cidField
 
-  const Model = options.model;
+    optimistic: {
+      actionType: ActionTypes.add(modelName),
+      payloadState: PayloadStates.CREATING
+    },
 
-  validatePartialPairs(options);
+    onSuccess: {
+      actionType: ActionTypes.update(modelName),
+      payloadState: PayloadStates.RESOLVED
+    },
 
-  return function create(params) {
-    return function(dispatch) {
-      const model = new Model(params);
+    onError: {
+      actionType: ActionTypes.update(modelName),
+      payloadState: PayloadStates.ERROR_CREATING,
+      beforeDispatch: function(response, args) {
+        // no op
+      }
+    },
 
-      if (options.addCidToBody) {
-        model.set(options.cidBodyAttributeName, model.cid);
+    normalize: {
+
+      // look through the model and generate actions for any attributes with
+      // nested data that should be normalized
+      getActions: function(model) {
+        return normalizer.model(model);
+      },
+
+      // dispatch any actions created from normalizing nested data
+      dispatchActions: function(actions, dispatch) {
+        actions.forEach(dispatch);
       }
 
-      model.save().then(function() {
-        if (options.onSuccess) {
-          let actions = [];
-
-          if (options.normalize && options.normalize.getActions) {
-            // look through the model and generate actions for any attributes with
-            // nested data that should be normalized
-            actions = options.normalize.getActions(model);
-          }
-
-          dispatch({
-            type: options.onSuccess.actionType,
-            payload: payload(model, options.onSuccess.payloadState)
-          });
-
-          if (options.normalize && options.normalize.dispatchActions) {
-            // dispatch any actions created from normalizing nested data
-            options.normalize.dispatchActions(actions, dispatch);
-          }
-        }
-      }).catch(function(response) {
-        if (options.onError) {
-          const error = response.data;
-
-          if (options.onError.beforeDispatch) {
-            options.onError.beforeDispatch(response, [model]);
-          }
-
-          dispatch({
-            type: options.onError.actionType,
-            payload: payload(model, options.onError.payloadState, error)
-          });
-        }
-      });
-
-      if (options.optimistic) {
-        return dispatch({
-          type: options.optimistic.actionType,
-          payload: payload(model, options.optimistic.payloadState)
-        });
-      }
-    };
-  };
+    }
+  });
 }

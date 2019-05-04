@@ -1,17 +1,29 @@
-var nock = require('nock');
+// ---------------------------------------------------------------------
+// Mock out all file loaders so we don't need physical files for testing
+// ---------------------------------------------------------------------
+var loaderHelper = require('../../lore/test/helpers/loaderHelper');
 
-// -------------------------------------------
-// Set up Nock for valid/invalid user requests
-// -------------------------------------------
-
-before(function(){
-  nock.disableNetConnect();
+beforeEach(function() {
+  loaderHelper.init();
 });
 
-afterEach(function(){
-  nock.cleanAll();
+afterEach(function() {
+  loaderHelper.restore();
 });
 
-after(function(){
-  nock.restore();
-});
+// --------------------------------------------------
+// Set up Nock to block and mock out network requests
+// --------------------------------------------------
+// var nock = require('nock');
+//
+// before(function(){
+//   nock.disableNetConnect();
+// });
+//
+// afterEach(function(){
+//   nock.cleanAll();
+// });
+//
+// after(function(){
+//   nock.restore();
+// });

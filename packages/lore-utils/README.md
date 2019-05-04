@@ -1,4 +1,4 @@
-# lore-utils
+# @lore/utils
 
 A catch-all folder for any functions used in multiple places across the Lore ecosystem.
 
@@ -71,7 +71,7 @@ This file was created because Lore needs to emit PayloadStates in the action blu
 that there's no easy way for a user to learn what they are.  One idea is created a CLI command like `lore payloadStates`
 that lists the full set of payload states for the application.  That would at least give the user something to 
 copy/paste when they need to check them.  Another option is to copy them into `src/constants/PayloadStates` as part of
-the 'lore-generate-new' project generator (the thing responsible for generating the new project structure).
+the '@lore/generate-new' project generator (the thing responsible for generating the new project structure).
 
 Additionally, PayloadStates are usable in any component, and trying to keep track of the relative path is obnoxious. It
 doesn't take a very large app before you have require statements in components like:

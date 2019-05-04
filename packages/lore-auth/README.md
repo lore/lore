@@ -11,7 +11,7 @@ To accomplish that, we're going to wrap the root component of our application (c
 
 ```jsx
 // file: routes.js
-var AuthenticationGenerator = require('lore-auth').generators.AuthenticationGenerator;
+var AuthenticationGenerator = require('@lore/auth').generators.AuthenticationGenerator;
 
 var UserIsAuthenticated = AuthenticationGenerator({
   wrapperDisplayName: 'UserIsAuthenticated',
@@ -83,7 +83,7 @@ module.exports = React.createClass({
 // This component will be wrapped in a custom decorator called 'UserIsPostCreator' that 
 // will only display the button if the current user created the post
 var React = require('react');
-var AuthorizationGenerator = require('lore-auth').generators.AuthorizationGenerator;
+var AuthorizationGenerator = require('@lore/auth').generators.AuthorizationGenerator;
 var PropTypes = require('prop-types');
 
 var UserIsPostCreator = AuthorizationGenerator({
@@ -143,7 +143,7 @@ This file is intended to be used as the foundation for your `UserIsAuthenticated
 
 ###### Example Usage
 ```js
-var AuthenticationGenerator = require('lore-auth').generators.AuthenticationGenerator;
+var AuthenticationGenerator = require('@lore/auth').generators.AuthenticationGenerator;
 
 var UserIsAuthenticated = AuthenticationGenerator({
   wrapperDisplayName: 'UserIsAuthenticated',
@@ -167,7 +167,7 @@ If the user is not authorized, the component it wraps will not be rendered, thou
 
 ###### Example Usage
 ```js
-var AuthorizationGenerator = require('lore-auth').generators.AuthorizationGenerator;
+var AuthorizationGenerator = require('@lore/auth').generators.AuthorizationGenerator;
 var PropTypes = require('prop-types');
 
 var UserIsPostCreator = AuthorizationGenerator({
@@ -194,7 +194,7 @@ This file is intended to be used as a generic decorator that will only render th
 For example, instead of creating a custom `UserIsPostCreator` decorator as in our example above, we could use this decorator instead like so:
 
 ```jsx
-var UserIsAuthorized = require('lore-auth').decorators.UserIsAuthorized;
+var UserIsAuthorized = require('@lore/auth').decorators.UserIsAuthorized;
 var PropTypes = require('prop-types');
 
 module.exports = UserIsAuthorized(function(props, storeState){

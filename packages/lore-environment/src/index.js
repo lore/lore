@@ -1,0 +1,1 @@
+export { getEnvironment } from './getEnvironment';
