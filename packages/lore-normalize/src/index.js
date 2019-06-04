@@ -3,7 +3,7 @@ import normalizeModel from './model';
 import normalizeModels from './models';
 import normalizeCollection from './collection';
 
-export default function getNormalizer(modelName, options) {
+export function getNormalizer(modelName, options) {
   const {
     models: Models,
     collections: Collections,
@@ -94,3 +94,5 @@ export default function getNormalizer(modelName, options) {
     }
   };
 }
+
+export default getNormalizer;
