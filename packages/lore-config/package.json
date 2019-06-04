@@ -7,7 +7,7 @@
   },
   "main": "lib/index.js",
   "module": "es/index.js",
-  "description": "A lore hook that creates collections for AJAX communication",
+  "description": "TODO",
   "keywords": [
     "lore",
     "hook",
