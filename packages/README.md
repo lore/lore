@@ -26,3 +26,16 @@ which packages are naturally grouped together.  Therefore, they are grouped toge
 * lore-reducers
 * lore-redux
 * lore-request
+
+## lore-cli
+* lore-cli
+* lore-cli-extract-action
+* lore-cli-extract-reducer
+* lore-cli-generate
+* lore-cli-generate-collection
+* lore-cli-generate-component
+* lore-cli-generate-generator
+* lore-cli-generate-hook
+* lore-cli-generate-model
+* lore-cli-generate-new
+* lore-cli-generate-reducer

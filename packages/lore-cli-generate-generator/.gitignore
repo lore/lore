@@ -1,11 +1,10 @@
 node_modules
 *.log
 .DS_Store
+lib
 coverage
 .idea
 .tracker
 .tmp
-lib
-es
-package-lock.json
 npm-debug.log
+
