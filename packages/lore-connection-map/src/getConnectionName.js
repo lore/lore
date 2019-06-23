@@ -2,7 +2,7 @@
 
 import _ from 'lodash';
 
-export default function getConnectionName(modelName, options) {
+export function getConnectionName(modelName, options) {
   const {
     connectionMap,
     defaultConnection
@@ -18,3 +18,5 @@ export default function getConnectionName(modelName, options) {
 
   return connection;
 }
+
+export default getConnectionName;

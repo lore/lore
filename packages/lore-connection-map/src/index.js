@@ -1,7 +1,8 @@
 /* eslint no-param-reassign: "off" */
 
 export { getConfig } from './getConfig';
+export { getConnectionName } from './getConnectionName';
 
-export const getConnectionMap = function(configOverride) {
+export function getConnectionMap(configOverride) {
   return getConfig(configOverride);
-};
+}
