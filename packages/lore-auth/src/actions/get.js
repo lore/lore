@@ -1,7 +1,6 @@
 /* eslint consistent-return: "off" */
 
 import { ActionTypes, PayloadStates, payload } from '@lore/utils';
-import * as Sentry from '@sentry/browser';
 
 /*
  * Blueprint for Get method
@@ -26,13 +25,6 @@ export default function(modelName, Model, { normalizer }) {
         actions.forEach(dispatch);
       }).catch(function(response) {
         const error = response.data;
-
-        Sentry.withScope(scope => {
-          Object.keys(response).forEach(key => {
-            scope.setExtra(key, response[key]);
-          });
-          Sentry.captureException(new Error('user:get'));
-        });
 
         dispatch({
           type: ActionTypes.update(modelName),
