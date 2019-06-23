@@ -8,13 +8,15 @@ import byCid from './blueprints/byCid';
 import loader from './loader';
 export { getConfig } from './getConfig';
 
+export { compositeReducer };
+
 const blueprints = {
   find,
   byId,
   byCid
 };
 
-export const getReducers = function(configOverride, modelNames) {
+export function getReducers(configOverride, modelNames) {
   const result = {}; // todo: allow to default after reducerBlueprints hook has been deleted
   // lore.models = lore.models || {};
   // const config = lore.config.reducers;
@@ -116,4 +118,4 @@ export const getReducers = function(configOverride, modelNames) {
   });
 
   return result;
-};
+}
