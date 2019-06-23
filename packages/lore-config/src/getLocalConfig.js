@@ -10,6 +10,6 @@ import { getFileFromContext } from './getFileFromContext';
 // }
 
 export const getLocalConfig = function(context) {
-  const defaultContext = require.context('../../config', false, /local.js$/);
+  const defaultContext = require.context(`${__LORE_ROOT__}/config`, false, /local.js$/);
   return getFileFromContext(context || defaultContext, {});
 };
