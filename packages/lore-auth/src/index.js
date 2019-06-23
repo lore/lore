@@ -7,6 +7,8 @@ export { UserContext } from './UserContext';
 export { useUser } from './hooks/useUser';
 export { getConfig } from './getConfig';
 
+export { reducerGenerator };
+
 export default {
 
   dependencies: ['models', 'actions', 'reducers', 'connect'],
