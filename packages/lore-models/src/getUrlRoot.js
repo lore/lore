@@ -2,7 +2,7 @@ import _pluralize from 'pluralize';
 import applyCasingStyle from './applyCasingStyle';
 
 
-export default function getUrlRoot(modelName, config) {
+export function getUrlRoot(modelName, config) {
   const { apiRoot, pluralize, casingStyle } = config;
   let { endpoint } = config;
 
@@ -16,3 +16,5 @@ export default function getUrlRoot(modelName, config) {
 
   return apiRoot ? `${apiRoot}/${endpoint}` : endpoint;
 }
+
+export default getUrlRoot;

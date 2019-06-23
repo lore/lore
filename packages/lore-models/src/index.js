@@ -7,6 +7,7 @@ import getConnectionName from './getConnectionName';
 
 export { getConfig } from './getConfig';
 export { ModelsContext } from './ModelsContext';
+export { getUrlRoot } from './getUrlRoot';
 
 export function getModels(options) {
   const {
