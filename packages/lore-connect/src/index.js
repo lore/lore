@@ -26,6 +26,5 @@ export { useConnection } from './hooks/useConnection';
  * Components/Legacy
  */
 
-export { connect } from './connect';
 export { Connect } from './components/Connect';
 export { getConfig } from './getConfig';
