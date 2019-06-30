@@ -6,7 +6,8 @@ var FileWriterFactory = require('../FileWriterFactory');
 var Target = require('../Target');
 var fs = require('fs-extra');
 var Logger = require('../Logger');
-var rc = require('rc');
+// var rc = require('rc');
+var rc = require('@lore/cli-config');
 
 /**
  * The Generator class constructor. Exposes the following fields for use:
@@ -17,7 +18,7 @@ var rc = require('rc');
 var Generator = function(options) {
   this.fileWriterFactory = new FileWriterFactory();
   this.logger = new Logger(options);
-  this.lorerc = rc('lore', {
+  this.lorerc = rc({
     generators: {
       language: "es5"
     }
@@ -59,7 +60,7 @@ _.extend(Generator.prototype, {
 
     if(fs.existsSync(projectDirectory)) {
       var files = fs.readdirSync(projectDirectory);
-      if (files.indexOf('.lorerc') === -1) {
+      if (files.indexOf('lore.config.js') === -1) {
         throw new Error("This command can only be run inside a Lore project. The directory `" + projectDirectory + "` does not appear to be a Lore project.");
       }
     }
