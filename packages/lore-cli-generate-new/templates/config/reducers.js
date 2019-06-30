@@ -3,6 +3,7 @@
  *
  * This file is where you define overrides for the default reducer behaviors.
  */
+
 import { getConfig } from '@lore/reducers';
 
 export default getConfig({

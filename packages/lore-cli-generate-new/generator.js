@@ -35,10 +35,10 @@ module.exports = Generator.extend({
       './.babelrc': { copy: 'babelrc' },
       './.editorconfig': { copy: 'editorconfig' },
       './.gitignore': { copy: 'gitignore' },
-      './.lorerc': { copy: 'lorerc' },
       './db.json': { copy: 'db.json' },
       './index.html': { copy: 'index.html' },
       './index.js': { copy: 'index.js' },
+      './lore.config.js': { copy: 'lore.config.js' },
       './package.json': { template: 'package.json.njk' },
       './postcss.config.js': { copy: 'postcss.config.js' },
       './README.md': { template: './README.md.njk' },
@@ -67,6 +67,9 @@ module.exports = Generator.extend({
       './src/collections/.gitkeep': { copy: 'gitkeep' },
 
       // components
+      './src/components/Layout.js': { copy: 'src/components/Layout.js' },
+      './src/components/Master.js': { copy: 'src/components/Master.js' },
+      './src/components/NotFound.js': { copy: 'src/components/NotFound.js' },
       './src/components/RemoveLoadingScreen.js': { copy: 'src/components/RemoveLoadingScreen.js' },
       './src/components/ShowLoadingScreen.js': { copy: 'src/components/ShowLoadingScreen.js' },
 
@@ -87,11 +90,6 @@ module.exports = Generator.extend({
       // models
       './src/models/currentUser.js': { copy: 'src/models/currentUser.js' },
 
-      // pages
-      './src/pages/Layout.js': { copy: 'src/pages/Layout.js' },
-      './src/pages/Master.js': { copy: 'src/pages/Master.js' },
-      './src/pages/NotFound.js': { copy: 'src/pages/NotFound.js' },
-
       // reducers
       './src/reducers/.gitkeep': { copy: 'gitkeep' },
 
@@ -109,7 +107,7 @@ module.exports = Generator.extend({
       './config/connect.js': { copy: 'config/connect.js' },
       './config/connectionMap.js': { copy: 'config/connectionMap.js' },
       './config/connections.js': { copy: 'config/connections.js' },
-      // './config/dialog.js': { copy: 'config/dialog.js' },
+      './config/dialogs.js': { copy: 'config/dialogs.js' },
       './config/local.js': { copy: 'config/local.js' },
       './config/models.js': { copy: 'config/models.js' },
       // './config/react.js': { copy: 'config/react.js' },

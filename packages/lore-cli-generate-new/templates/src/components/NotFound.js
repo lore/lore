@@ -28,7 +28,7 @@ export default function NotFound(props) {
             <li>
               <div>
                 <h3>Want to change how this page looks?</h3>
-                <p>Edit the file at <code>src/pages/NotFound.js</code></p>
+                <p>Edit the file at <code>src/components/NotFound.js</code></p>
               </div>
             </li>
             <li>

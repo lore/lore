@@ -36,7 +36,10 @@ export function getCollections(config, Models) {
    */
 
   const modules = _.assign({},
-    _modules.models,
+    _.reduce(_modules.models, function(result, value, key) {
+      result[key] = _.omit(value, ['properties']);
+      return result;
+    }, {}),
     _modules.collections
   );
 

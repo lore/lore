@@ -3,6 +3,7 @@
  *
  * This file is where you define overrides for the default authentication behaviors.
  */
+
 import { getConfig } from '@lore/auth';
 
 export default getConfig({

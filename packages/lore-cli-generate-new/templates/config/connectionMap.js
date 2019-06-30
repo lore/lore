@@ -3,6 +3,7 @@
  *
  * This file is where you define overrides for the default collection behaviors.
  */
+
 import { getConfig } from '@lore/connection-map';
 
 export default getConfig({

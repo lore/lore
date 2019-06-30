@@ -13,8 +13,8 @@ import AuthenticatedRoute from './src/routes/AuthenticatedRoute';
  * See: https://reacttraining.com/react-router/web/guides/quick-start
  */
 
-import HomeLayout from './src/pages/Layout';
-import NotFoundPage from './src/pages/NotFound';
+import HomeLayout from './src/components/Layout';
+import NotFoundPage from './src/components/NotFound';
 
 export default (
   <Switch>

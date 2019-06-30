@@ -6,15 +6,19 @@
  * of a `LORE_ENV` environment variable.
  */
 
-import _ from 'lodash';
 import React from 'react';
-import { applyMiddleware, compose } from 'redux';
 import { createDevTools } from 'redux-devtools';
 import LogMonitor from 'redux-devtools-log-monitor';
 import DockMonitor from 'redux-devtools-dock-monitor';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import { batchedSubscribe } from 'redux-batched-subscribe';
+
+
+/**
+ * Flag to enable/disable the Redux DevTools
+ */
+
+const devToolsEnabled = false;
+
 
 /**
  * Redux DevTools, for a practical and fun development experience
@@ -30,6 +34,7 @@ const DevTools = createDevTools(
   </DockMonitor>
 );
 
+
 export default {
 
   /**
@@ -39,32 +44,32 @@ export default {
   redux: {
 
     /**
-     * Flag to enable/disable the Redux DevTools
+     * Obtain the Redux DevTools.
+     *
+     * https://github.com/gaearon/redux-devtools
      */
 
-    devToolsEnabled: false,
+    getDevTools: function() {
+      if (devToolsEnabled) {
+        return DevTools;
+      }
+    },
 
     /**
-     * If DevTools are enabled, enhance the Redux Store with instrumentation support
+     * Obtain the DockMonitor for mounting Redux DevTools. It must be wrapped with Provider
+     * from react-redux in order for it to work.
+     *
+     * https://github.com/reduxjs/redux-devtools/blob/master/docs/Walkthrough.md#manual-integration
      */
 
-    enhancer: function(middleware, config) {
-      if (config.redux.devToolsEnabled) {
-        return compose(
-          applyMiddleware.apply(null, middleware),
-          DevTools.instrument(),
-          batchedSubscribe(_.debounce(function(notify) {
-            notify();
-          }, config.redux.debounceWait))
+    getDockMonitor: function(store) {
+      if (devToolsEnabled) {
+        return (
+          <Provider store={store}>
+            <DevTools/>
+          </Provider>
         );
       }
-
-      return compose(
-        applyMiddleware.apply(null, middleware),
-        batchedSubscribe(_.debounce(function(notify) {
-          notify();
-        }, config.redux.debounceWait))
-      );
     }
 
   }

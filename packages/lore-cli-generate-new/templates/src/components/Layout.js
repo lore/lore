@@ -19,7 +19,7 @@ export default function Layout(props) {
               Welcome to Lore!
             </h1>
             <h3>
-              You're looking at <code>src/pages/Layout.js</code>
+              You're looking at <code>src/components/Layout.js</code>
             </h3>
           </div>
         </div>

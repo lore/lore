@@ -3,6 +3,7 @@
  *
  * This file is where you define overrides for the default action behaviors.
  */
+
 import { getConfig } from '@lore/actions';
 
 export default getConfig({
