@@ -1,5 +1,5 @@
 {
-  "name": "@lore/cli-generate-new",
+  "name": "@lore/cli-new",
   "version": "0.14.0-beta.1",
   "license": "MIT",
   "main": "index.js",

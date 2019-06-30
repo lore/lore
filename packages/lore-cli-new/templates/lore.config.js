@@ -4,7 +4,7 @@
 
 module.exports = {
   commands: {
-    // new: require('@lore/cli-generate-new'),
+    // new: require('@lore/cli-new'),
     // tutorial: require('@lore/cli-tutorial'),
     extract: {
       description: 'Create files that mirror the blueprint behavior',

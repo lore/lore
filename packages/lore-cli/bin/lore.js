@@ -7,7 +7,7 @@ var _ = require('lodash');
 
 var config = rc({
   commands: {
-    new: require('@lore/cli-generate-new'),
+    new: require('@lore/cli-new'),
     tutorial: require('@lore/cli-tutorial'),
     generate: {
       description: 'Generate common project files',
