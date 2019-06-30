@@ -11,7 +11,6 @@
     "packages/lore-cli-generate-collection",
     "packages/lore-cli-generate-component",
     "packages/lore-cli-generate-generator",
-    "packages/lore-cli-generate-hook",
     "packages/lore-cli-generate-model",
     "packages/lore-cli-generate-new",
     "packages/lore-cli-generate-reducer",
