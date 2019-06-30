@@ -21,19 +21,13 @@
     "test": "NODE_ENV=test mocha --recursive"
   },
   "dependencies": {
+    "cosmiconfig": "^5.0.0",
     "lodash": "^4.0.0",
-    "@lore/cli-extract-action": "^0.14.0-beta.1",
-    "@lore/cli-extract-reducer": "^0.14.0-beta.1",
-    "@lore/cli-generate-action": "^0.14.0-beta.1",
-    "@lore/cli-generate-collection": "^0.14.0-beta.1",
-    "@lore/cli-generate-component": "^0.14.0-beta.1",
+    "@lore/cli-config": "^0.14.0-beta.1",
     "@lore/cli-generate-generator": "^0.14.0-beta.1",
-    "@lore/cli-generate-hook": "^0.14.0-beta.1",
-    "@lore/cli-generate-model": "^0.14.0-beta.1",
     "@lore/cli-generate-new": "^0.14.0-beta.1",
-    "@lore/cli-generate-reducer": "^0.14.0-beta.1",
-    "nested-yargs": "^1.0.0",
-    "rc": "^1.0.0"
+    "@lore/cli-tutorial": "^0.14.0-beta.1",
+    "nested-yargs": "^1.0.0"
   },
   "devDependencies": {
     "bluebird": "^3.0.0",

@@ -1,89 +1,32 @@
 #!/usr/bin/env node
 
-var package = require('../package.json');
+var pkg = require('../package.json');
 var Cli = require('nested-yargs');
-var rc = require('rc');
-var path = require('path');
+var rc = require('@lore/cli-config');
 var _ = require('lodash');
 
-function local(module) {
-  return path.resolve(__dirname, '../node_modules', module);
-}
-
-var lorerc = rc('lore', {
-  options: {
-    debugLoading: false
-  },
-  generators: {
-    language: "es5"
-  },
+var config = rc({
   commands: {
-    new: local("@lore/cli-generate-new"),
-    // tutorial: local("@lore/cli-tutorial"),
-    extract: {
-      description: "Create files that mirror the blueprint behavior",
-      commands: {
-        action: local("@lore/cli-extract-action"),
-        reducer: local("@lore/cli-extract-reducer")
-      }
-    },
+    new: require('@lore/cli-generate-new'),
+    tutorial: require('@lore/cli-tutorial'),
     generate: {
-      description: "Generate common project files",
+      description: 'Generate common project files',
       commands: {
-        action: local("@lore/cli-generate-action"),
-        collection: local("@lore/cli-generate-collection"),
-        component: local("@lore/cli-generate-component"),
-        generator: local("@lore/cli-generate-generator"),
-        hook: local("@lore/cli-generate-hook"),
-        model: local("@lore/cli-generate-model"),
-        reducer: local("@lore/cli-generate-reducer")
+        generator: require('@lore/cli-generate-generator'),
+        // test: {
+        //   command: 'test',
+        //   describe: 'Test custom command',
+        //   options: {
+        //     handler: function(argv) {
+        //       console.log('extract action');
+        //     }
+        //   }
+        // }
       }
     }
   }
 });
 
-function log(message) {
-  if (lorerc.options.debugLoading) {
-    console.log(message);
-  }
-}
-
-function loadProjectModule(scope, module) {
-  var modulePath = path.resolve(scope.projectPath, 'node_modules', module);
-  return require(modulePath)
-}
-
-function loadGlobalModule(scope, module) {
-  return require(module);
-}
-
-function loadProjectRelativeModule(scope, module) {
-  var modulePath = path.resolve(scope.projectPath, module);
-  return require(modulePath);
-}
-
-function loadModule(scope, modulePath) {
-  var isAbsolute = path.isAbsolute(modulePath);
-  var isDirectory = !!path.parse(modulePath).dir;
-
-  if (isAbsolute) {
-    log('Loading absolute module: ' + modulePath);
-    return require(modulePath);
-  }
-
-  if (isDirectory) {
-    log('Loading directory module: ' + modulePath);
-    return loadProjectRelativeModule(scope, modulePath);
-  }
-
-  try {
-    log('Loading project module: ' + modulePath);
-    return loadProjectModule(scope, modulePath);
-  } catch(err) {
-    log('Loading global module: ' + modulePath);
-    return loadGlobalModule(scope, modulePath);
-  }
-}
 
 // If you get the error "v8debug is not defined" while debugging,
 // see this issue for more information:
@@ -93,6 +36,7 @@ function loadModule(scope, modulePath) {
  * Convert 'lore-generator-*' modules to 'nested-args' a command
  * @param module
  */
+
 function commandify(module, overrides) {
   overrides = overrides || {};
   var name = overrides.command || module.command;
@@ -103,8 +47,8 @@ function commandify(module, overrides) {
   options.options = options.options || {};
   options.options.force = {
     description: 'Overwrite existing files',
-      type: 'boolean',
-      default: false
+    type: 'boolean',
+    default: false
   };
 
   // expose --logLevel on all commands
@@ -126,58 +70,58 @@ function commandify(module, overrides) {
 }
 
 /**
- * Setup any variables the module loaders will need
- */
-
-var getScope = function() {
-  return {
-    projectPath: path.parse(lorerc.config || '').dir
-  }
-};
-
-/**
  * Create the CLI Root
  */
+
 var app = Cli.createApp({
-  version: package.version
+  version: pkg.version
 });
 
 /**
  * Create the Commands and Categories for the CLI
  */
 
-function createCommand(category, command, modulePath) {
-  var scope = getScope();
-  var module = loadModule(scope, modulePath);
+function createCommand(category, command, module) {
+  // console.log(`Command: '${command}'`);
   category.command(commandify(module, {
     command: command
   }));
 }
 
 function createCategory(app, name, description, commands) {
+  // console.log(`Category: '${name}'`);
   description = description || '';
   commands = commands || {};
 
   var category = Cli.createCategory(name, description);
 
-  _.mapKeys(commands, function(modulePath, command) {
-    createCommand(category, command, modulePath);
+  _.mapKeys(commands, function(module, command) {
+    createCommand(category, command, module);
   });
 
   app.command(category);
 }
 
-_.mapKeys(lorerc.commands, function(value, key) {
-  if (_.isString(value)) {
+_.mapKeys(config.commands, function(value, key) {
+  // console.log(`Inspecting '${key}'`);
+
+  if (!_.isPlainObject(value)) {
+    if (!value) {
+      return;
+    }
+
+    throw new Error('Commands must be an object');
+  }
+
+  if (value.command) {
     createCommand(app, key, value);
-  } else if (_.isPlainObject(value)) {
-    createCategory(app, key, value.description, value.commands);
   } else {
-    throw new Error('Commands must be either a string or an object');
+    createCategory(app, key, value.description, value.commands);
   }
 });
 
 /**
  * Start up the CLI!
  */
+
 Cli.run(app);
