@@ -55,7 +55,11 @@ class ConnectProvider extends React.Component {
         <BlueprintsContext.Provider value={blueprints}>
           <ReducerActionMapContext.Provider value={reducerActionMap}>
             <StoreContext.Provider value={store}>
-              {React.cloneElement(children)}
+              {React.Children.map(children, function(child) {
+                if (child) {
+                  return React.cloneElement(child);
+                }
+              })}
             </StoreContext.Provider>
           </ReducerActionMapContext.Provider>
         </BlueprintsContext.Provider>

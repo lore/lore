@@ -8,15 +8,15 @@ import _ from 'lodash';
 import { result as _result } from '@lore/utils';
 import useConnect from '../hooks/useConnect';
 
-export function Connect(props) {
-  Connect.propTypes = {
-    callback: PropTypes.func.isRequired,
-    children: PropTypes.oneOfType([
-      PropTypes.node,
-      PropTypes.func
-    ]).isRequired
-  };
+Connect.propTypes = {
+  callback: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.func
+  ]).isRequired
+};
 
+export function Connect(props) {
   const {
     children,
     callback,
