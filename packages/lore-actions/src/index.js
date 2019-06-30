@@ -7,6 +7,7 @@ import getConfig from './getConfig';
 
 export { ActionsContext } from './ActionsContext';
 export { getConfig } from './getConfig';
+export { useActions } from './useActions';
 
 export const getActions = function(models, collections, configOverride, lore) {
   const result = {};
