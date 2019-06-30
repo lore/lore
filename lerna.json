@@ -3,6 +3,7 @@
   "version": "0.14.0-beta.1",
   "packages": [
     "packages/lore-cli",
+    "packages/lore-cli-config",
     "packages/lore-cli-extract-action",
     "packages/lore-cli-extract-reducer",
     "packages/lore-cli-generate",

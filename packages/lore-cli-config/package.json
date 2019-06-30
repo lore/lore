@@ -1,0 +1,29 @@
+{
+  "name": "@lore/cli-config",
+  "version": "0.14.0-beta.1",
+  "license": "MIT",
+  "description": "Loads the config file for the Command Line Interface (CLI) for Lore",
+  "homepage": "https://github.com/lore/lore#readme",
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lore/lore.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lore/lore/issues"
+  },
+  "scripts": {
+    "clean": "echo 'nothing to clean'",
+    "lint": "echo 'tbd: implement me'",
+    "test": "NODE_ENV=test mocha --recursive"
+  },
+  "dependencies": {
+    "cosmiconfig": "^5.0.0",
+    "lodash": "^4.0.0"
+  },
+  "devDependencies": {
+    "bluebird": "^3.0.0",
+    "chai": "^4.0.0",
+    "mocha": "^6.0.0"
+  }
+}
