@@ -1,0 +1,5 @@
+# @lore/dialogs
+
+### Purpose
+
+TODO

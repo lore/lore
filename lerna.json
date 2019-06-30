@@ -24,6 +24,7 @@
     "packages/lore-connect",
     "packages/lore-connection-map",
     "packages/lore-connections",
+    "packages/lore-dialogs",
     "packages/lore-environment",
     "packages/lore-initializers",
     "packages/lore-models",
