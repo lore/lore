@@ -15,6 +15,7 @@
     "packages/lore-cli-generate-model",
     "packages/lore-cli-generate-new",
     "packages/lore-cli-generate-reducer",
+    "packages/lore-cli-tutorial",
     "packages/lore-actions",
     "packages/lore-auth",
     "packages/lore-backbone",
