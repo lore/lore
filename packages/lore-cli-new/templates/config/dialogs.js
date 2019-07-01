@@ -4,8 +4,8 @@
  * This file is where you define overrides for the default dialog behaviors.
  */
 
-import { getConfig } from '@lore/dialog';
-// import { Dialog } from '@lore/dialog';
+import { getConfig } from '@lore/dialogs';
+// import { Dialog } from '@lore/dialogs';
 
 export default getConfig({
 
