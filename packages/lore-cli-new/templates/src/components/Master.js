@@ -12,22 +12,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useConnect } from '@lore/connect';
 import { UserContext } from '@lore/auth';
+import { useConfig } from '@lore/config';
+import { DialogProvider } from '@lore/dialogs';
 import PayloadStates from '../constants/PayloadStates';
 import RemoveLoadingScreen from '../components/RemoveLoadingScreen';
 
 export default function Master(props) {
+  const config = useConfig();
   // const user = useConnect('currentUser');
-  //
+
   // if (user.state === PayloadStates.FETCHING) {
   //   return null;
   // }
 
   return (
-    <div>
-      <UserContext.Provider value={null}>
-        <RemoveLoadingScreen />
+    <UserContext.Provider value={null}>
+      <RemoveLoadingScreen />
+      <DialogProvider
+        domElementId={config.dialogs.domElementId}
+        templates={config.dialogs.templates}
+        defaultTemplate={config.dialogs.defaultTemplate}
+      >
         {props.children}
-      </UserContext.Provider>
-    </div>
+      </DialogProvider>
+    </UserContext.Provider>
   );
 }

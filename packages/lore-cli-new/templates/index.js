@@ -124,22 +124,25 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { ConfigContext } from '@lore/config';
 import { ConnectProvider } from '@lore/connect';
+import { ActionsContext } from '@lore/actions';
 import routes from './routes';
 
 const domElementId = 'root';
 
 ReactDOM.render((
   <ConfigContext.Provider value={config}>
-    <ConnectProvider
-      store={store}
-      actions={actions}
-      blueprints={config.connect.blueprints}
-      reducerActionMap={config.connect.reducerActionMap}
-    >
-      <BrowserRouter basename={__BASENAME__}>
-        {routes}
-      </BrowserRouter>
-    </ConnectProvider>
+    <ActionsContext.Provider value={actions}>
+      <ConnectProvider
+        store={store}
+        actions={actions}
+        blueprints={config.connect.blueprints}
+        reducerActionMap={config.connect.reducerActionMap}
+      >
+        <BrowserRouter basename={__BASENAME__}>
+          {routes}
+        </BrowserRouter>
+      </ConnectProvider>
+    </ActionsContext.Provider>
   </ConfigContext.Provider>
 ), document.getElementById(domElementId));
 
@@ -159,7 +162,7 @@ ReactDOM.render((
 
 window.lore = {
   environment: environment,
-  // config: config,
+  config: config,
   models: models,
   collections: collections,
   actions: boundActions,
