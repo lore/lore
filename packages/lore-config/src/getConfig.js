@@ -1,26 +1,32 @@
-import { combineConfigs } from './combineConfigs';
-import { getBaseConfig } from './getBaseConfig';
-import { getEnvConfig } from './getEnvConfig';
-import { getLocalConfig } from './getLocalConfig';
+import _ from 'lodash';
 
 /**
- * Generate the final config from the combination of the overrides passed
- * into the app, the default config (calculated from the hooks), and the
- * user config for the project (loaded and compiled inside this function).
- * configOverride takes priority, then the user config, and finally any defaults
- * specified the hooks.
+ * Generate the final config from the combination of overrides provided.
  *
+ * @param {Object} configs
  * @param {Object} configOverride
- *
- * @returns {Object} A reducer function that invokes every reducer inside the
- * passed object, and builds a state object with the same shape.
  */
 
-export const getConfig = function getConfig(configOverride={}) {
-  return combineConfigs(
-    getBaseConfig(),
-    getEnvConfig(),
-    getLocalConfig(),
+export function getConfig(configs={}, configOverride={}) {
+  const {
+    baseConfig,
+    envConfig,
+    localConfig
+  } = configs;
+
+  /**
+   * Generate the final config using the following rules:
+   *
+   * 1. Start with base project config
+   * 2. Override with any environment specific settings
+   * 3. Override with any settings provided via the local user config
+   * 4. Override with any settings provided via the override
+   */
+
+  return _.merge({},
+    baseConfig,
+    envConfig,
+    localConfig,
     configOverride
   );
-};
+}

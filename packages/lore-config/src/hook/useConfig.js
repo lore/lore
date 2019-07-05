@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import ConfigContext from './ConfigContext';
+import ConfigContext from '../context/ConfigContext';
 
 export function useConfig() {
   return useContext(ConfigContext);
