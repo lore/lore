@@ -1,0 +1,36 @@
+{
+  "name": "@lore/websockets",
+  "version": "0.14.0-beta.1",
+  "license": "MIT",
+  "description": "Common code used by all @lore/websockets-* packages",
+  "homepage": "https://github.com/lore/lore#readme",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lore/lore.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lore/lore/issues"
+  },
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:es",
+    "build:cjs": "BABEL_ENV=cjs ../../node_modules/.bin/babel src --out-dir lib",
+    "build:es": "BABEL_ENV=es ../../node_modules/.bin/babel src --out-dir es",
+    "clean": "rimraf lib && rimraf es",
+    "debug": "mocha debug --compilers js:babel-core/register --recursive",
+    "lint": "../../node_modules/.bin/eslint src",
+    "prepublish": "npm run build",
+    "test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive"
+  },
+  "dependencies": {
+    "lodash": "^4.0.0",
+    "@lore/utils": "^0.14.0-beta.1"
+  },
+  "devDependencies": {
+    "chai": "^4.0.0",
+    "mocha": "^6.0.0",
+    "rimraf": "^2.0.0",
+    "sinon": "^7.0.0"
+  }
+}

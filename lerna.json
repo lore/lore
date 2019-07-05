@@ -32,6 +32,7 @@
     "packages/lore-reducers",
     "packages/lore-redux",
     "packages/lore-request",
-    "packages/lore-utils"
+    "packages/lore-utils",
+    "packages/lore-websockets",
   ]
 }
