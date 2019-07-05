@@ -2,10 +2,10 @@
  * Returns the environment the application should be configured
  * for (production, development, test, etc.)
  *
- * @param {Object} configOverride The configuration passed into lore.build(configOverride)
+ * @param {String} environment
  * @returns {string} The environment mode
  */
 
-export const getEnvironment = function(environment) {
+export function getEnvironment(environment = '') {
   return environment || process.env.LORE_ENV || 'development';
-};
+}
