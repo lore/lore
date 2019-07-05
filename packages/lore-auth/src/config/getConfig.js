@@ -1,8 +1,6 @@
-/* eslint no-param-reassign: "off" */
-
 import _ from 'lodash';
-import get from './actions/get';
-import update from './actions/update';
+import get from '../actions/get';
+import update from '../actions/update';
 
 export function getConfig(configOverride) {
   const config = _.merge({

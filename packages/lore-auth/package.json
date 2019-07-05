@@ -5,7 +5,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "description": "Set of decorators to help with authentication and authorization",
+  "description": "Generates action, reducer, and actionReducerMap for saving and fetching current user",
   "homepage": "https://github.com/lore/lore#readme",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -16,6 +16,12 @@
   "bugs": {
     "url": "https://github.com/lore/lore/issues"
   },
+  "keywords": [
+    "lore",
+    "action",
+    "reducer",
+    "user"
+  ],
   "scripts": {
     "build": "npm run build:cjs && npm run build:es",
     "build:cjs": "BABEL_ENV=cjs ../../node_modules/.bin/babel --root-mode upward src --out-dir lib",
@@ -27,9 +33,9 @@
     "test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive"
   },
   "dependencies": {
-    "lodash": "^4.0.0",
-    "prop-types": "^15.5.0",
-    "url": "^0.11.0"
+    "@lore/utils": "^0.14.0-beta.1",
+    "@lore/normalize": "^0.14.0-beta.1",
+    "lodash": "^4.0.0"
   },
   "devDependencies": {
     "chai": "^4.0.0",

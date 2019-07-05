@@ -1,7 +1,7 @@
 import { ActionTypes, PayloadStates } from '@lore/utils';
 import _ from 'lodash';
 
-export default function(modelName) {
+export function reducerGenerator(modelName) {
   const initialState = {
     state: PayloadStates.INITIAL_STATE
   };
