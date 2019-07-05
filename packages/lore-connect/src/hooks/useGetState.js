@@ -11,10 +11,17 @@ export function useGetState(stateKey, params, options) {
   const reducerActionMap = useContext(ReducerActionMapContext);
   const store = useContext(StoreContext);
 
-  const state = store.getState();
+  function getState(stateKey, params, options) {
+    const state = store.getState();
+    const connection = getConnection(stateKey, reducerActionMap, actions, blueprints);
+    return connection._getState(state, params, options);
+  }
 
-  const connection = getConnection(stateKey, reducerActionMap, actions, blueprints);
-  return connection._getState(state, params, options);
+  if (!stateKey) {
+    return getState;
+  }
+
+  return getState(stateKey, params, options);
 }
 
 export default useGetState;
