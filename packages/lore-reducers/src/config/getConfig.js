@@ -1,9 +1,9 @@
 /* eslint no-param-reassign: "off" */
 
 import _ from 'lodash';
-import find from './blueprints/find';
-import byId from './blueprints/byId';
-import byCid from './blueprints/byCid';
+import find from '../blueprints/find';
+import byId from '../blueprints/byId';
+import byCid from '../blueprints/byCid';
 
 export function getConfig(configOverride) {
   return _.merge({

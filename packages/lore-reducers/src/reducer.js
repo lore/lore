@@ -3,12 +3,12 @@
 
 import _ from 'lodash';
 import { ActionTypes } from '@lore/utils';
-import sortReducersByLoadOrder from './sortReducersByLoadOrder';
+import sortReducersByLoadOrder from './utils/sortReducersByLoadOrder';
 
 // threshold in milliseconds that must be reached before issuing performance warning
 const THRESHOLD_MS = 5;
 
-export default function compositeReducer(options) {
+export function compositeReducer(options) {
   const {
     reducers,
     dependencies,
@@ -70,3 +70,5 @@ export default function compositeReducer(options) {
     return _nextState ? _nextState(nextState) : nextState;
   };
 }
+
+export default compositeReducer;
