@@ -1,5 +1,3 @@
-/* eslint no-param-reassign: "off" */
-
 import _ from 'lodash';
 
 export function getConnectionName(modelName, options) {
