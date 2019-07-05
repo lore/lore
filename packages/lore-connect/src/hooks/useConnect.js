@@ -11,10 +11,17 @@ export function useConnect(stateKey, params, options) {
   const reducerActionMap = useContext(ReducerActionMapContext);
   const store = useContext(StoreContext);
 
-  const state = store.getState();
+  function connect(stateKey, params, options) {
+    const state = store.getState();
+    const connection = getConnection(stateKey, reducerActionMap, actions, blueprints);
+    return connection.getState(state, params, options);
+  }
 
-  const connection = getConnection(stateKey, reducerActionMap, actions, blueprints);
-  return connection.getState(state, params, options);
+  if (!stateKey) {
+    return connect;
+  }
+
+  return connect(stateKey, params, options);
 }
 
 export default useConnect;

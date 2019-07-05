@@ -20,7 +20,6 @@ export { ConnectProvider } from './providers/ConnectProvider';
 export { useConnect } from './hooks/useConnect';
 export { useGetState } from './hooks/useGetState';
 export { useStore } from './hooks/useStore';
-export { useConnection } from './hooks/useConnection';
 
 /*
  * Components/Legacy
