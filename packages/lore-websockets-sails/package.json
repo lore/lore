@@ -1,0 +1,40 @@
+{
+  "name": "@lore/websockets-sails",
+  "version": "0.14.0-beta.1",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "description": "A lore package that adds websockets support for Sails",
+  "keywords": [
+    "lore",
+    "hook",
+    "websockets",
+    "sails"
+  ],
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:es",
+    "build:cjs": "BABEL_ENV=cjs ../../node_modules/.bin/babel src --out-dir lib",
+    "build:es": "BABEL_ENV=es ../../node_modules/.bin/babel src --out-dir es",
+    "clean": "rimraf lib && rimraf es",
+    "debug": "mocha debug --compilers js:babel-core/register --recursive",
+    "lint": "../../node_modules/.bin/eslint src",
+    "prepublish": "npm run build",
+    "test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive"
+  },
+  "dependencies": {
+    "@lore/websockets": "^0.14.0-beta.1",
+    "lodash": "^4.0.0",
+    "pluralize": "^8.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.0.0",
+    "mocha": "^6.0.0",
+    "rimraf": "^2.0.0",
+    "sails.io.js": "^0.13.8",
+    "socket.io-client": "^1.4.8"
+  },
+  "peerDependencies": {
+    "sails.io.js": "^0.13.8",
+    "socket.io-client": "^1.4.8"
+  }
+}

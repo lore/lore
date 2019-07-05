@@ -34,5 +34,6 @@
     "packages/lore-request",
     "packages/lore-utils",
     "packages/lore-websockets",
+    "packages/lore-websockets-sails"
   ]
 }
