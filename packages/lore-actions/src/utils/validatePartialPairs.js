@@ -1,20 +1,3 @@
-export const defaultOptions = {
-  model: null,
-  collection: null,
-  actionTypes: {
-    optimistic: null,
-    onSuccess: null,
-    onError: null
-  },
-  payloadStates: {
-    optimistic: null,
-    onSuccess: null,
-    onError: null
-  },
-  addCidToBody: false,
-  cidBodyAttributeName: 'cid'
-};
-
 export function hasPartialPair(handler) {
   const hasType = !!handler.actionType;
   const hasState = !!handler.payloadState;
@@ -43,3 +26,5 @@ export function validatePartialPairs(options) {
     );
   }
 }
+
+export default validatePartialPairs;

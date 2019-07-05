@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import ActionsContext from './ActionsContext';
+import ActionsContext from '../context/ActionsContext';
 
 export function useActions() {
   return useContext(ActionsContext);

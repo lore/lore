@@ -2,11 +2,11 @@
 
 import _ from 'lodash';
 
-import create from './_blueprints/create';
-import destroy from './_blueprints/destroy';
-import find from './_blueprints/find';
-import get from './_blueprints/get';
-import update from './_blueprints/update';
+import create from '../_blueprints/create';
+import destroy from '../_blueprints/destroy';
+import find from '../_blueprints/find';
+import get from '../_blueprints/get';
+import update from '../_blueprints/update';
 
 const actionBlueprints = {
   create,
