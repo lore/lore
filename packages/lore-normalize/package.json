@@ -21,7 +21,7 @@
     "debug": "mocha debug --compilers js:babel-core/register --recursive",
     "lint": "../../node_modules/.bin/eslint src",
     "prepublish": "npm run build",
-    "test": "BABEL_ENV=test mocha --compilers js:babel-core/register test/bootstrap.js test/**/*.spec.js --recursive"
+    "test": "BABEL_ENV=test mocha --recursive"
   },
   "dependencies": {
     "lodash": "^4.0.0"
