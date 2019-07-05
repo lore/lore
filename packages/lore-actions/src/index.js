@@ -1,7 +1,6 @@
 /* eslint no-param-reassign: "off" */
 
 import _ from 'lodash';
-import loader from './loader';
 import convertBlueprintsToActionCreators from './convertBlueprintsToActionCreators';
 import getConfig from './getConfig';
 
