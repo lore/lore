@@ -1,5 +1,3 @@
-/* eslint no-param-reassign: "off" */
-
 import { bindActionCreators } from 'redux';
 import _ from 'lodash';
 
