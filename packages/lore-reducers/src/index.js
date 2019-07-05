@@ -5,7 +5,6 @@ import compositeReducer from './reducer';
 import find from './blueprints/find';
 import byId from './blueprints/byId';
 import byCid from './blueprints/byCid';
-import loader from './loader';
 export { getConfig } from './getConfig';
 
 export { compositeReducer };
