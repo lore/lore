@@ -1,6 +1,6 @@
 {
   "name": "@lore/cli",
-  "version": "0.14.0-beta.1",
+  "version": "0.14.0-beta.2",
   "license": "MIT",
   "description": "The Command Line Interface (CLI) for Lore",
   "homepage": "https://github.com/lore/lore#readme",
@@ -21,12 +21,12 @@
     "test": "NODE_ENV=test mocha --recursive"
   },
   "dependencies": {
+    "@lore/cli-config": "^0.14.0-beta.2",
+    "@lore/cli-generate-generator": "^0.14.0-beta.2",
+    "@lore/cli-new": "^0.14.0-beta.2",
+    "@lore/cli-tutorial": "^0.14.0-beta.2",
     "cosmiconfig": "^5.0.0",
     "lodash": "^4.0.0",
-    "@lore/cli-config": "^0.14.0-beta.1",
-    "@lore/cli-generate-generator": "^0.14.0-beta.1",
-    "@lore/cli-new": "^0.14.0-beta.1",
-    "@lore/cli-tutorial": "^0.14.0-beta.1",
     "nested-yargs": "^1.0.0"
   },
   "devDependencies": {
