@@ -16,6 +16,7 @@
     "lerna:bootstrap": "lerna bootstrap",
     "lerna:updated": "lerna updated",
     "lerna:publish": "lerna publish",
+    "lerna:publish:all": "lerna publish --force-publish=*",
     "lerna:publish:prerelease": "lerna publish --dist-tag=next",
     "lerna:publish:prerelease:all": "lerna publish --dist-tag=next --force-publish=*",
     "check": "npm run lint && npm run test",
