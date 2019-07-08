@@ -1,13 +1,7 @@
-import _ from 'lodash';
-import buildDictionary from 'webpack-requiredir';
 import { reducerGenerator } from '@lore/auth';
 import { getNormalizer } from '@lore/normalize';
 
-const modules = {
-  models: buildDictionary(require.context('../src/models', false, /\.js$/))
-};
-
-export default function(config, { models, collections, actions, reducers }) {
+export default function(config={}, resources={}, modules={}) {
   const {
     auth: {
       modelName: _modelName,
@@ -19,12 +13,16 @@ export default function(config, { models, collections, actions, reducers }) {
     }
   } = config;
 
+  const { models, collections, actions, reducers } = resources;
+
   reducers[_reducerName] = getUserReducer(config);
-  actions[_actionName] = getUserActions(config, { models, collections });
+  actions[_actionName] = getUserActions(config, { models, collections }, {
+    models: modules.models
+  });
   _reducerActionMap[_modelName] = getUserReducerActionMapEntry(config);
 };
 
-export function getUserActions(config, { models, collections }) {
+export function getUserActions(config={}, resources={}, modules={}) {
   const {
     actions: {
       normalize: _normalize
@@ -34,6 +32,8 @@ export function getUserActions(config, { models, collections }) {
       blueprints: _blueprints,
     }
   } = config;
+
+  const { models, collections } = resources;
 
   const Model = models[_modelName];
 

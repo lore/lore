@@ -1,24 +1,13 @@
 import _ from 'lodash';
-import buildDictionary from 'webpack-requiredir';
 import { Collection } from '@lore/backbone';
 import { getUrlRoot } from '@lore/models';
 import { getConnectionName } from '@lore/connection-map';
 
 /*
- * Import all files in src/models and convert into a dictionary, where the key
- * is the name of the file
- */
-
-const _modules = {
-  collections: buildDictionary(require.context('../src/collections', false, /\.js$/)),
-  models: buildDictionary(require.context('../src/models', false, /\.js$/))
-};
-
-/*
  * Generate a Collection for each module definition
  */
 
-export function getCollections(config, Models) {
+export function getCollections(config={}, resources={}, modules={}) {
   const {
     connections: connections,
     connectionMap: {
@@ -29,21 +18,23 @@ export function getCollections(config, Models) {
     models: models
   }  = config;
 
+  const { models: Models } = resources;
+
   /*
    * Combine src/models and src/collections to obtain the full set of collections,
    * which derive their name and default behavior from the list of models.
    *
    */
 
-  const modules = _.assign({},
-    _.reduce(_modules.models, function(result, value, key) {
+  const _modules = _.assign({},
+    _.reduce(modules.models, function(result, value, key) {
       result[key] = _.omit(value, ['properties']);
       return result;
     }, {}),
-    _modules.collections
+    modules.collections
   );
 
-  return _.mapValues(modules, function(module, moduleName) {
+  return _.mapValues(_modules, function(module, moduleName) {
 
     /**
      * Set the collection name to the module (file) name by default
@@ -100,7 +91,7 @@ export function getCollections(config, Models) {
           'casingStyle',
           'endpoint'
         ])),
-        headers: _.get(_modules.models[collectionName], 'properties.headers') || connection.headers
+        headers: _.get(modules.models[collectionName], 'properties.headers') || connection.headers
       }
     };
 

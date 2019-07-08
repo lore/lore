@@ -3,7 +3,9 @@ import thunk from 'redux-thunk';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { batchedSubscribe } from 'redux-batched-subscribe';
 
-export function getStore(config, { reducers={} }, DevTools) {
+export function getStore(config={}, resources={}, DevTools) {
+
+  const { reducers={} } = resources;
 
   /**
    * Middleware injected into the dispatch flow, placed at the point between

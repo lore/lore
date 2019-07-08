@@ -1,21 +1,13 @@
 import _ from 'lodash';
-import buildDictionary from 'webpack-requiredir';
 import { Model } from '@lore/backbone';
-import { getUrlRoot } from '@lore/models';
 import { getConnectionName } from '@lore/connection-map';
-
-/*
- * Import all files in src/models and convert into a dictionary, where the key
- * is the name of the file
- */
-
-const modules = buildDictionary(require.context('../src/models', false, /\.js$/));
+import { getUrlRoot } from '@lore/models';
 
 /*
  * Generate a Model for each module definition
  */
 
-export function getModels(config) {
+export function getModels(config={}, modules={}) {
   const {
     connections: connections,
     connectionMap: {
@@ -25,7 +17,7 @@ export function getModels(config) {
     models: models
   }  = config;
 
-  return _.mapValues(modules, function(module, moduleName) {
+  return _.mapValues(modules.models, function(module, moduleName) {
 
     /**
      * Set the model name to the module (file) name by default

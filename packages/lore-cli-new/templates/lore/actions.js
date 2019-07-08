@@ -1,15 +1,7 @@
-/* eslint no-param-reassign: "off" */
-
 import _ from 'lodash';
-import buildDictionary from 'webpack-requiredir';
 import { getNormalizer } from '@lore/normalize';
 
-const modules = {
-  actions: buildDictionary(require.context('../src/actions', true, /\.js$/)),
-  models: buildDictionary(require.context('../src/models', false, /\.js$/))
-};
-
-export function getActions(config, { models, collections }) {
+export function getActions(config={}, resources={}, modules={}) {
   const {
     actions: {
       blueprints: _blueprints,
@@ -18,6 +10,8 @@ export function getActions(config, { models, collections }) {
       cidBodyAttributeName: _cidBodyAttributeName
     }
   } = config;
+
+  const { models, collections } = resources;
 
   /*
    * Generate default set of actions for all models using blueprints

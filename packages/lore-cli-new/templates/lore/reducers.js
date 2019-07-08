@@ -1,18 +1,5 @@
-/* eslint no-param-reassign: "off" */
-
 import _ from 'lodash';
-import buildDictionary from 'webpack-requiredir';
 import { compositeReducer } from '@lore/reducers';
-
-/*
- * Import all files in src/reducers and convert into a dictionary, where the key
- * is the name of the file
- */
-
-const modules = {
-  models: buildDictionary(require.context('../src/models', false, /\.js$/)),
-  reducers: buildDictionary(require.context('../src/reducers', true, /\.js$/))
-};
 
 function isValidIndexReducer(folderName, reducer) {
   if (_.isFunction(reducer)) {
@@ -26,7 +13,7 @@ function isValidIndexReducer(folderName, reducer) {
   ].join(''));
 }
 
-export function getReducers(config) {
+export function getReducers(config={}, modules={}) {
   const {
     reducers: {
       // blueprints: {

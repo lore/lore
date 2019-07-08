@@ -1,5 +1,6 @@
 /*
- * This file kicks off the build process for the application.
+ * This file is the entry point for the application and is responsible for building
+ * and mounting the application.
  */
 
 
@@ -11,8 +12,12 @@
 import './assets/css/loading-screen.css';
 import './assets/css/main.css';
 
+
 /*
  * Environment
+ *
+ * Get the environment we should be using. This is controlled via the LORE_ENV environment
+ * variable, and defaults to 'development' if not defined.
  */
 
 import { getEnvironment } from './.lore/environment';
@@ -21,70 +26,166 @@ const environment = getEnvironment();
 
 
 /*
+ * Modules
+ *
+ * Import files from the project directories and convert them into objects where
+ * the key is the name of the file. These objects will be used to set up the actions,
+ * reducers, Redux store, and other parts of the application.
+ *
+ * The approach used below (require.context + regex) prevents us from needing to
+ * explicitly import every file, which helps to reduce configuration errors related to
+ * simple forgetfulness. Simply add a file to one of the imported directories, and it
+ * will automatically be imported.
+ *
+ * The downside to this approach is that it's not easy to understand. So if you'd
+ * prefer to use a more explicit (or selective) approach, feel free to build the objects
+ * yourself and manually import/require all files as needed.
+ */
+
+import { getModuleFromContext, buildObjectFromContext } from '@lore/utils';
+
+const modules = {
+  config: {
+    // Import all the *.js files in the root of /config, excluding local.js
+    baseConfig: buildObjectFromContext(require.context(`./config`, false, /^(?!.*(?:local.js$)).*\.js$/)),
+
+    // Import the environment config override from /config/env
+    envConfig: require(`./config/env/${environment || 'development'}`).default,
+
+    // Import the local.js file in the root of /config, but ONLY in development
+    localConfig: environment === 'development' ?
+      getModuleFromContext(require.context(`./config`, false, /local.js$/)) :
+      undefined
+  },
+
+  // Import all the *.js files in /actions, including subfolders
+  actions: buildObjectFromContext(require.context('./src/actions', true, /\.js$/)),
+
+  // Import all the *.js files in the root of /collections
+  collections: buildObjectFromContext(require.context('./src/collections', false, /\.js$/)),
+
+  // Import all the *.js files in the root of  /models
+  models: buildObjectFromContext(require.context('./src/models', false, /\.js$/)),
+
+  // Import all the *.js files in /reducers, including subfolders
+  reducers: buildObjectFromContext(require.context('./src/reducers', true, /\.js$/)),
+
+  // Import all the *.js files in the root of /initializers
+  initializers: buildObjectFromContext(require.context('./initializers', false, /\.js$/))
+};
+
+
+/*
  * Config
+ *
+ * Construct the final project config by combining the default/base config,
+ * the environment specific overrides, and any local overrides defined in
+ * config/local.js.
  */
 
 import { getConfig } from './.lore/config';
 
-const config = getConfig(environment);
+const config = getConfig(modules.config);
 
 
 /*
  * Models
+ *
+ * An AJAX abstraction that reduces the boilerplate associated with creating,
+ * retrieving, updating, and deleting a single resource in a REST API.
+ *
+ * These are instances of Model from @lore/backbone.
  */
 
 import { getModels } from './.lore/models';
+
+const models = getModels(config, {
+  models: modules.models
+});
+
+
+/*
+ * Collections
+ *
+ * An AJAX abstraction that reduces the boilerplate associated with searching,
+ * filtering, and paginating resources in a REST API.
+ *
+ * These are instances of Collection from @lore/backbone.
+ */
+
 import { getCollections } from './.lore/collections';
 
-const models = getModels(config);
-const collections = getCollections(config, models);
+const collections = getCollections(config, { models }, {
+  models: modules.models,
+  collections: modules.collections
+});
 
 
 /*
  * Reducers
  *
- * Store application state. See redux.
+ * A set of functions that specify how the application's state should
+ * change in response to actions sent to the store.
+ *
+ * https://redux.js.org/basics/reducers
  */
 
 import { getReducers } from './.lore/reducers';
 
-const reducers = getReducers(config);
-
-
-/*
- * Actions
- *
- * Invoke models to make API calls and dispatch resulting
- * actions to reducers for storage.
- */
-
-import { getActions } from './.lore/actions';
-
-const actions = getActions(config, {
-  models,
-  collections
+const reducers = getReducers(config, {
+  models: modules.models,
+  reducers: modules.reducers
 });
 
 
 /*
- * Auth
+ * Actions/Action Creators
  *
- * Insert actions for fetching and updating current user, along with a
- * reducer to store the current user, and an entry in the reducerActionMap
- * to orchestrate between them.
+ * A set of functions that dispatch actions containing payloads of information
+ * that describe state changes in the application.
+ *
+ * https://redux.js.org/basics/actions
+ *
+ * In our case, these functions invoke the models and collections created above
+ * to communicate with the REST API(s), and emit actions that describe what's
+ * happening (such as creating, updating, and fetching data).
+ */
+
+import { getActions } from './.lore/actions';
+
+const actions = getActions(config, { models, collections }, {
+  models: modules.models,
+  actions: modules.actions
+});
+
+
+/*
+ * Authentication
+ *
+ * Add actions and reducers that allow us to fetch and update the current user.
  */
 
 import { getUserActions, getUserReducer, getUserReducerActionMapEntry } from './.lore/auth';
 
+// 1. Insert actions for fetching and updating current user
+actions[config.auth.actionName] = getUserActions(config, { models, collections }, {
+  models: modules.models
+});
+
+// 2. Insert a reducer for storing the current user
 reducers[config.auth.reducerName] = getUserReducer(config);
-actions[config.auth.actionName] = getUserActions(config, { models, collections });
+
+// 3. Add entry to reducerActionMap so we can retrieve the current user via @lore/connect
 config.connect.reducerActionMap[config.auth.modelName] = getUserReducerActionMapEntry(config);
 
 
 /*
- * Redux
+ * Redux Store
  *
- * Create store, bind actions
+ * Responsible for storing and updating application state using the behavior defined
+ * in the reducers.
+ *
+ * https://redux.js.org/basics/store
  */
 
 import { getStore } from './.lore/redux';
@@ -93,24 +194,33 @@ const store = getStore(config, { reducers });
 
 
 /*
- * Bind actions to Redux store
+ * Bind actions to the Redux Store
  *
- * This makes it more convenient to call actions, as the actions
- * they dispatch will automatically be sent the the application's
- * data store.
+ * Reduce the boilerplate associated with invoking action creators by creating
+ * a version of them bound to the store. This makes it more convenient to call
+ * them, as the actions they dispatch will automatically be sent the store.
+ *
+ * https://redux.js.org/api/bindactioncreators
  */
 
 import { bindActionsToActionCreators } from '@lore/bind-actions';
+
 const boundActions = bindActionsToActionCreators(actions, store);
 
 
 /*
- * Load and run initializers
+ * Run the initializers
+ *
+ * These are small functions that run before the application is mounted and
+ * are primarily used to initialize libraries for analytics, error reporting,
+ * support, etc.
  */
 
-import { getInitializers, runInitializers } from '@lore/initializers';
-const initializers = getInitializers(config);
-runInitializers(config, { initializers });
+import { runInitializers } from './.lore/initializers';
+
+runInitializers(config, {
+  initializers: modules.initializers
+});
 
 
 /*
@@ -148,11 +258,15 @@ ReactDOM.render((
 
 
 /*
- * Optional: attach key values to the window, so you can access them from
- * the command line. Useful if you want to manually invoke actions or check
- * the reducer state.
+ * Globals (optional)
  *
- * Examples:
+ * Attach key values to the window, so you can access them from the console
+ * in the browser. Use within the application is discouraged, but they can
+ * sometimes improve the developer experience by allowing you to manually
+ * invoke action creators, check the store state, or just play around with
+ * project libraries.
+ *
+ * Example commands:
  *
  * lore.actions.xyz()          => invoke the xyz action
  * lore.store.getState().xyz   => check the state of xyz reducer

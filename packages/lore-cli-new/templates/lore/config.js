@@ -1,21 +1,27 @@
-import { getBaseConfig, getEnvConfig, getLocalConfig } from '@lore/config';
 import _ from 'lodash';
 
 /**
- * Generate the final config from the combination of the overrides passed
- * into the app, the default config (calculated from the hooks), and the
- * user config for the project (loaded and compiled inside this function).
- * configOverride takes priority, then the user config, and finally any defaults
- * specified the hooks.
+ * Generate the final config from the combination of overrides provided.
  *
- * @param {String} environment
+ * @param {Object} configs
  * @param {Object} configOverride
  */
 
-export const getConfig = function getConfig(environment = 'development', configOverride={}) {
-  const baseConfig = getBaseConfig();
-  const envConfig = getEnvConfig(environment);
-  const localConfig = getLocalConfig();
+export function getConfig(configs={}, configOverride={}) {
+  const {
+    baseConfig,
+    envConfig,
+    localConfig
+  } = configs;
+
+  /**
+   * Generate the final config using the following rules:
+   *
+   * 1. Start with base project config
+   * 2. Override with any environment specific settings
+   * 3. Override with any settings provided via the local user config
+   * 4. Override with any settings provided via the override
+   */
 
   return _.merge({},
     baseConfig,
@@ -23,4 +29,4 @@ export const getConfig = function getConfig(environment = 'development', configO
     localConfig,
     configOverride
   );
-};
+}
