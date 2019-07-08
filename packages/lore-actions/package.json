@@ -1,6 +1,6 @@
 {
   "name": "@lore/actions",
-  "version": "0.14.0-beta.2",
+  "version": "0.14.0-beta.3",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -27,8 +27,8 @@
     "test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive"
   },
   "dependencies": {
-    "@lore/normalize": "^0.14.0-beta.2",
-    "@lore/utils": "^0.14.0-beta.2",
+    "@lore/normalize": "^0.14.0-beta.3",
+    "@lore/utils": "^0.14.0-beta.3",
     "lodash": "^4.0.0"
   },
   "devDependencies": {

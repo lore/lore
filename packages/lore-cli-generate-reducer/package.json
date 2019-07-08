@@ -1,6 +1,6 @@
 {
   "name": "@lore/cli-generate-reducer",
-  "version": "0.14.0-beta.2",
+  "version": "0.14.0-beta.3",
   "license": "MIT",
   "main": "index.js",
   "description": "Generates a Redux reducer for a Lore project",
@@ -15,7 +15,7 @@
     "test": "NODE_ENV=test mocha --recursive"
   },
   "dependencies": {
-    "@lore/cli-generate": "^0.14.0-beta.2",
+    "@lore/cli-generate": "^0.14.0-beta.3",
     "bluebird": "^3.0.0",
     "camel-case": "^3.0.0",
     "lodash": "^4.0.0"
