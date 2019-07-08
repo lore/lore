@@ -21,11 +21,10 @@
     "debug": "mocha debug --compilers js:babel-core/register --recursive",
     "lint": "../../node_modules/.bin/eslint src",
     "prepublish": "npm run build",
-    "test": "BABEL_ENV=test mocha --compilers js:babel-core/register test/bootstrap.js test/**/*.spec.js --recursive"
+    "test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive"
   },
   "dependencies": {
-    "lodash": "^4.0.0",
-    "webpack-requiredir": "~0.2.1"
+    "lodash": "^4.0.0"
   },
   "devDependencies": {
     "chai": "^4.0.0",

@@ -7,7 +7,7 @@
   },
   "main": "lib/index.js",
   "module": "es/index.js",
-  "description": "A lore hook binds action to the Redux store",
+  "description": "Binds action to the Redux store",
   "keywords": [
     "lore",
     "hook",
@@ -22,7 +22,7 @@
     "debug": "mocha debug --compilers js:babel-core/register --recursive",
     "lint": "../../node_modules/.bin/eslint src",
     "prepublish": "npm run build",
-    "test": "NODE_ENV=test mocha --recursive"
+    "test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive"
   },
   "dependencies": {
     "lodash": "^4.0.0"
