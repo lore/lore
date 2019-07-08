@@ -5,7 +5,7 @@ function bindAction(action, store) {
   return bindActionCreators(action, store.dispatch);
 }
 
-export function bindActionsToActionCreators(actions, store) {
+export function bindActionsToActionCreators(actions={}, store) {
   Object.keys(actions).forEach(function(key) {
     const action = actions[key];
     let boundAction = null;

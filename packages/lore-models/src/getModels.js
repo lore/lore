@@ -5,7 +5,11 @@ import { Model } from '@lore/backbone';
 import { getConnectionName } from '@lore/connection-map';
 import { getUrlRoot } from './utils/getUrlRoot';
 
-export function getModels(modules={}, config={}) {
+/*
+ * Generate a Model for each module definition
+ */
+
+export function getModels(config={}, modules={}) {
   const {
     connections: connections,
     connectionMap: {
@@ -15,7 +19,7 @@ export function getModels(modules={}, config={}) {
     models: models
   }  = config;
 
-  return _.mapValues(modules, function(module, moduleName) {
+  return _.mapValues(modules.models, function(module, moduleName) {
 
     /**
      * Set the model name to the module (file) name by default

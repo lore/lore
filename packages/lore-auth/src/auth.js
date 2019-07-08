@@ -1,7 +1,7 @@
 import { getNormalizer } from '@lore/normalize';
 import { reducerGenerator } from './reducer';
 
-export default function(modules, config, { models, collections, actions, reducers }) {
+export default function(config={}, resources={}, modules={}) {
   const {
     auth: {
       modelName: _modelName,
@@ -13,20 +13,24 @@ export default function(modules, config, { models, collections, actions, reducer
     }
   } = config;
 
+  const { models, collections, actions, reducers } = resources;
+
   /**
    * Long-form for pasting into scripts
    */
 
   // reducers[config.auth.reducerName] = getUserReducer(config);
-  // actions[config.auth.actionName] = getUserActions(config, { models, collections });
+  // actions[config.auth.actionName] = getUserActions(config, { models, collections }, modules);
   // config.connect.reducerActionMap[config.auth.modelName] = getUserReducerActionMapEntry(config);
 
   reducers[_reducerName] = getUserReducer(config);
-  actions[_actionName] = getUserActions(config, { models, collections });
+  actions[_actionName] = getUserActions(config, { models, collections }, {
+    models: modules.models
+  });
   _reducerActionMap[_modelName] = getUserReducerActionMapEntry(config);
 };
 
-export function getUserActions(config, { models, collections }) {
+export function getUserActions(config={}, resources={}, modules={}) {
   const {
     actions: {
       normalize: _normalize
@@ -36,6 +40,8 @@ export function getUserActions(config, { models, collections }) {
       blueprints: _blueprints,
     }
   } = config;
+
+  const { models, collections } = resources;
 
   const Model = models[_modelName];
 
@@ -56,7 +62,7 @@ export function getUserActions(config, { models, collections }) {
   };
 }
 
-export function getUserReducer(config) {
+export function getUserReducer(config={}) {
   const {
     auth: {
       modelName: _modelName
@@ -66,7 +72,7 @@ export function getUserReducer(config) {
   return reducerGenerator(_modelName);
 }
 
-export function getUserReducerActionMapEntry(config) {
+export function getUserReducerActionMapEntry(config={}) {
   const {
     auth: {
       actionName: _actionName,

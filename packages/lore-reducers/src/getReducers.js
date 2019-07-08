@@ -13,7 +13,7 @@ function isValidIndexReducer(folderName, reducer) {
   ].join(''));
 }
 
-export function getReducers(modules, config) {
+export function getReducers(config={}, modules={}) {
   const {
     reducers: {
       // blueprints: {

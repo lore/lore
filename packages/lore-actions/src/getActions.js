@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { getNormalizer } from '@lore/normalize';
 
-export function getActions(modules, config, { models, collections }) {
+export function getActions(config={}, resources={}, modules={}) {
   const {
     actions: {
       blueprints: _blueprints,
@@ -10,6 +10,8 @@ export function getActions(modules, config, { models, collections }) {
       cidBodyAttributeName: _cidBodyAttributeName
     }
   } = config;
+
+  const { models, collections } = resources;
 
   /*
    * Generate default set of actions for all models using blueprints
