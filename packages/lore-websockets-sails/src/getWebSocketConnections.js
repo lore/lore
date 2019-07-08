@@ -1,11 +1,9 @@
-/* eslint no-param-reassign: "off" */
-
 import _ from 'lodash';
 import pluralize from 'pluralize';
 import { blueprints } from '@lore/websockets';
 import { SailsWebSocketConnection } from '@lore/websockets-sails';
 
-export function getWebSocketConnections(config, { models, store }) {
+export function getWebSocketConnections(config={}, resources={}) {
   const {
     websockets: {
       serverUrl: _serverUrl,
@@ -14,6 +12,8 @@ export function getWebSocketConnections(config, { models, store }) {
       pluralize: _pluralize
     }
   } = config;
+
+  const { models, store } = resources;
 
   /*
    * Generate default set of connections for all models using blueprints
