@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import pluralize from 'pluralize';
 import { blueprints } from '@lore/websockets';
-import { SailsWebSocketConnection } from '@lore/websockets-sails';
+import { SailsWebSocketConnection } from './SailsWebSocketConnection';
 
 export function getWebSocketConnections(config={}, resources={}) {
   const {
