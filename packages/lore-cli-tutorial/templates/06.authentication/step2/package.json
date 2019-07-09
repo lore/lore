@@ -37,6 +37,7 @@
     "@lore/redux": "~0.14.0-beta",
     "@lore/request": "~0.14.0-beta",
     "@lore/utils": "~0.14.0-beta",
+    "auth0-js": "^9.11.1",
     "lodash": "^4.0.0",
     "moment": "^2.24.0",
     "prop-types": "^15.6.0",
