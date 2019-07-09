@@ -50,7 +50,8 @@ export default function(opts = {}) {
             options.normalize.dispatchActions(actions, dispatch);
           }
         }
-      }).catch(function(response) {
+      }).catch(function(err) {
+        const response = err.response;
         const error = response.data;
 
         if (response.status === 404) {

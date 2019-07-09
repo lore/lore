@@ -61,7 +61,9 @@ export default function(opts = {}) {
             options.normalize.dispatchActions(actions, dispatch);
           }
         }
-      }).catch(function(response) {
+      }).catch(function(err) {
+        const response = err.response;
+
         if (options.onError) {
           const error = response.data;
 

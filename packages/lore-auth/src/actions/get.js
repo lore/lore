@@ -23,7 +23,8 @@ export default function(modelName, Model, { normalizer }) {
 
         // dispatch any actions created from normalizing nested data
         actions.forEach(dispatch);
-      }).catch(function(response) {
+      }).catch(function(err) {
+        const response = err.response;
         const error = response.data;
 
         dispatch({
