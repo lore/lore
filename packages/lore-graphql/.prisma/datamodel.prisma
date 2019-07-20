@@ -1,0 +1,12 @@
+type User {
+  id: ID! @id
+  nickname: String!
+  avatar: String!
+}
+
+type Tweet {
+  id: ID! @id
+  user: User!
+  text: String!
+  createdAt: DateTime! @createdAt
+}
