@@ -65,7 +65,7 @@ GEM
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
     pkg-config (1.1.7)
-    puma (3.6.0)
+    puma (3.12.4)
     rack (2.0.1)
     rack-cors (0.4.0)
     rack-test (0.6.3)
@@ -123,7 +123,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   listen (~> 3.0.5)
-  puma (~> 3.0)
+  puma (~> 3.12)
   rack-cors
   rails (~> 5.0.0, >= 5.0.0.1)
   spring
