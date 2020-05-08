@@ -214,7 +214,7 @@ module.exports = function(env) {
       historyApiFallback: {
         index: `${BASENAME}/index.html`,
       },
-      disableHostCheck: true
+      // disableHostCheck: true
     }
   };
 };
