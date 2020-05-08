@@ -1,6 +1,6 @@
 {
   "name": "@lore/collections",
-  "version": "0.14.0-beta.3",
+  "version": "0.14.0-beta.4",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -25,9 +25,9 @@
     "test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive"
   },
   "dependencies": {
-    "@lore/backbone": "^0.14.0-beta.3",
-    "@lore/connection-map": "^0.14.0-beta.3",
-    "@lore/models": "^0.14.0-beta.3",
+    "@lore/backbone": "^0.14.0-beta.4",
+    "@lore/connection-map": "^0.14.0-beta.4",
+    "@lore/models": "^0.14.0-beta.4",
     "lodash": "^4.0.0"
   },
   "devDependencies": {

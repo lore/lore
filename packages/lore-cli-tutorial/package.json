@@ -1,6 +1,6 @@
 {
   "name": "@lore/cli-tutorial",
-  "version": "0.14.0-beta.3",
+  "version": "0.14.0-beta.4",
   "license": "MIT",
   "main": "index.js",
   "description": "Generates code for the Lore tutorial",
@@ -15,7 +15,7 @@
     "test": "NODE_ENV=test mocha --recursive"
   },
   "dependencies": {
-    "@lore/cli-generate": "^0.14.0-beta.3",
+    "@lore/cli-generate": "^0.14.0-beta.4",
     "bluebird": "^3.0.0",
     "camel-case": "^3.0.0",
     "lodash": "^4.0.0"

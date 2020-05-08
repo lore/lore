@@ -1,6 +1,6 @@
 {
   "name": "@lore/cli-generate",
-  "version": "0.14.0-beta.3",
+  "version": "0.14.0-beta.4",
   "license": "MIT",
   "main": "index.js",
   "description": "Runner script for lore generators",
@@ -18,7 +18,7 @@
     "test": "NODE_ENV=test mocha --recursive"
   },
   "dependencies": {
-    "@lore/cli-config": "^0.14.0-beta.3",
+    "@lore/cli-config": "^0.14.0-beta.4",
     "bluebird": "^3.0.0",
     "chalk": "^2.0.0",
     "fs-extra": "^8.0.0",
