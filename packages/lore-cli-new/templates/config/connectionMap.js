@@ -32,4 +32,8 @@ export default getConfig({
    * }
    */
 
+  // connectionMap: {
+  //   default: []
+  // }
+
 });
