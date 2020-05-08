@@ -18,7 +18,7 @@ export default function(NormalizedCollection, normalizedCollectionName, attribut
     if (!_.isArray(data)) return;
 
     const collection = new NormalizedCollection(
-      attribute.parse ? attribute.parse(data) : parse(data)
+      attribute.parse ? attribute.parse(data, model) : parse(data, model)
     );
     const combinedQuery = attribute.query ? attribute.query(model) : query(model);
 
