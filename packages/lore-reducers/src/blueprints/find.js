@@ -26,6 +26,22 @@ function mergeDataAndIntersectWithDictionaryKeys(oldData, newData, dictionary) {
   });
 }
 
+function updateQueries(nextState, dictionary) {
+  return _.mapValues(nextState, function(collection, key) {
+    collection.data = collection.data.map(function(datum) {
+      const result = dictionary[datum.id];
+
+      if (result) {
+        return result;
+      }
+
+      return datum;
+    });
+
+    return collection;
+  });
+}
+
 export default function(modelName) {
   const initialState = {};
   // const EMPTY_QUERY_KEY = JSON.stringify({});
@@ -47,6 +63,7 @@ export default function(modelName) {
             byId
           )
         });
+        updateQueries(nextState, byId);
         return nextState;
       }
 
