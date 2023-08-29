@@ -1,4 +1,4 @@
-# lore-websockets
+# @lore/websockets
 
 This library defines the interface for WebSockets used in Lore and has two main concepts; a `WebSocketConnection` class 
 responsible for connected to the server and listening for events, and a set of `dispatchers` responsible for converting 

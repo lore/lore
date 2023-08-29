@@ -1,4 +1,4 @@
-import { ActionTypes, PayloadStates, payload } from 'lore-utils';
+import { ActionTypes, PayloadStates, payload } from '@lore/utils';
 
 function getCid(modelName, model, store) {
   // if the model exists in the store, set the cid to match

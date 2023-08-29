@@ -1,9 +1,5 @@
-import Model from './model';
-import Collection from './collection';
-import sync from './sync';
-
-export {
-  Model,
-  Collection,
-  sync
-};
+export { getConfig } from './config/getConfig';
+export { ModelsContext } from './context/ModelsContext';
+export { useModels } from './hook/useModels';
+export { getUrlRoot } from './utils/getUrlRoot';
+export { getModels } from './getModels';

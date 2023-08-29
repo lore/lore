@@ -1,0 +1,32 @@
+{
+  "name": "@lore/cli-generate",
+  "version": "0.14.0-beta.4",
+  "license": "MIT",
+  "main": "index.js",
+  "description": "Runner script for lore generators",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lore/lore.git"
+  },
+  "bugs": {
+    "url": "http://github.com/lore/lore/issues"
+  },
+  "scripts": {
+    "clean": "echo 'nothing to clean'",
+    "lint": "echo 'tbd: implement me'",
+    "test": "NODE_ENV=test mocha --recursive"
+  },
+  "dependencies": {
+    "@lore/cli-config": "^0.14.0-beta.4",
+    "bluebird": "^3.0.0",
+    "chalk": "^2.0.0",
+    "fs-extra": "^8.0.0",
+    "lodash": "^4.0.0",
+    "nunjucks": "^3.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.0.0",
+    "mocha": "^6.0.0"
+  }
+}

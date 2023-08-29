@@ -1,99 +1,41 @@
-/* eslint consistent-return: "off" */
+import { ActionTypes, PayloadStates } from '@lore/utils';
+import find from '../_blueprints/find';
 
-import _ from 'lodash';
-import { payloadCollection } from 'lore-utils';
-import { defaultOptions, validatePartialPairs } from '../utils';
+export default function(modelName, Collection, options = {}) {
+  const { normalizer } = options;
 
-/*
- * Blueprint for Find method
- */
+  return find({
+    collection: Collection,
 
-export default function(opts = {}) {
-  // clone the options so we don't unintentionally modify them
-  let options = _.cloneDeep(opts);
+    optimistic: {
+      actionType: ActionTypes.fetchPlural(modelName),
+      payloadState: PayloadStates.FETCHING
+    },
 
-  options = _.defaultsDeep(options, defaultOptions);
+    onSuccess: {
+      actionType: ActionTypes.fetchPlural(modelName),
+      payloadState: PayloadStates.RESOLVED
+    },
 
-  if (!options.collection) {
-    throw new Error('Must specify a collection');
-  }
+    onError: {
+      actionType: ActionTypes.fetchPlural(modelName),
+      payloadState: PayloadStates.ERROR_FETCHING
+    },
 
-  const Collection = options.collection;
+    normalize: {
 
-  validatePartialPairs(options);
+      // look through all models in the collection and generate actions for any attributes
+      // with nested data that should be normalized
+      getActions: function(collection) {
+        return normalizer.collection(collection);
+      },
 
-  return function find(query = {}, pagination = {}) {
-    return function(dispatch) {
-      const collection = new Collection();
-
-      const queryParameters = _.extend({}, query, pagination);
-
-      const combinedQuery = {
-        where: query,
-        pagination: pagination
-      };
-
-      collection.fetch({
-        data: queryParameters
-      }).then(function() {
-        if (options.onSuccess) {
-          let actions = [];
-
-          if (options.normalize && options.normalize.getActions) {
-            // look through all models in the collection and generate actions for any attributes
-            // with nested data that should be normalized
-            actions = options.normalize.getActions(collection);
-          }
-
-          dispatch({
-            type: options.onSuccess.actionType,
-            payload: payloadCollection(
-              collection,
-              options.onSuccess.payloadState,
-              null,
-              combinedQuery
-            ),
-            query: combinedQuery
-          });
-
-          if (options.normalize && options.normalize.dispatchActions) {
-            // dispatch any actions created from normalizing nested data
-            options.normalize.dispatchActions(actions, dispatch);
-          }
-        }
-      }).catch(function(response) {
-        if (options.onError) {
-          const error = response.data;
-
-          if (options.onError.beforeDispatch) {
-            options.onError.beforeDispatch(response, [query]);
-          }
-
-          dispatch({
-            type: options.onError.actionType,
-            payload: payloadCollection(
-              collection,
-              options.onError.payloadState,
-              error,
-              combinedQuery
-            ),
-            query: combinedQuery
-          });
-        }
-      });
-
-      if (options.optimistic) {
-        return dispatch({
-          type: options.optimistic.actionType,
-          payload: payloadCollection(
-            collection,
-            options.optimistic.payloadState,
-            null,
-            combinedQuery
-          ),
-          query: combinedQuery
-        });
+      // dispatch any actions created from normalizing nested data
+      dispatchActions: function(actions, dispatch) {
+        actions.forEach(dispatch);
       }
-    };
-  };
+
+    }
+
+  });
 }

@@ -1,4 +1,4 @@
-import { ActionTypes, PayloadStates, payload } from 'lore-utils';
+import { ActionTypes, PayloadStates, payload } from '@lore/utils';
 
 export default function(modelName, Model) {
   return function (store) {

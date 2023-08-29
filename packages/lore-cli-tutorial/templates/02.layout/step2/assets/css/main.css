@@ -1,0 +1,242 @@
+/*
+ * Create Tweet Button
+ */
+
+.create-button {
+  position: absolute;
+  top: 25px;
+  right: 15px;
+  z-index: 1000;
+  border-radius: 100px;
+}
+
+.create-button:focus {
+  outline: none !important;
+}
+
+/*
+ * Edit and Delete Links
+ */
+
+.link {
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+/*
+ * Feed
+ */
+
+.feed .title {
+  text-align: center;
+}
+
+.feed .tweets {
+  margin-top: 32px;
+}
+
+.feed .pagination {
+  text-align: center;
+}
+
+.feed nav {
+  text-align: center;
+}
+
+.feed .transition {
+  opacity: 0.5;
+}
+
+/*
+ * Filter
+ */
+
+.filter {
+  margin-top: 20px;
+}
+
+
+/*
+ * Header
+ */
+
+.header .container {
+  position: relative;
+}
+
+/*
+ * Footer
+ */
+
+.footer {
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 64px;
+  min-height: 60px;
+}
+
+.footer button:focus {
+  outline: none !important;
+}
+
+.footer .btn {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+/*
+ * Profile
+ */
+
+.profile {
+  position: relative;
+  display: block;
+  margin-bottom: .75rem;
+  background-color: #fff;
+  border-radius: .25rem;
+  border: 1px solid rgba(0,0,0,.125);
+  margin-top: 20px;
+}
+
+.profile .card-block {
+  padding: 1.25rem
+}
+
+.profile .avatar {
+  width: 48px;
+  position: absolute;
+  top: -24px;
+  left: calc(50% - 24px);
+  border: 1px solid gray
+}
+
+.profile .permissions {
+  margin-left: -12px;
+}
+
+/*
+ * Tweet
+ */
+
+.tweet .avatar {
+  width: 32px;
+  border: 1px solid gray
+}
+
+.tweet .image-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 32px
+}
+
+.tweet .content-container {
+  display: inline-block;
+  margin-left: 8px;
+  max-width: 85%
+}
+
+.tweet .title {
+  line-height: 32px;
+  display: inline-block
+}
+
+.tweet .text {
+  margin-bottom: 5px
+}
+
+.tweet .timestamp {
+  display: inline-block;
+  margin-left: 8px;
+  color: #999;
+  font-size: 14px
+}
+
+.tweet.transition {
+  opacity: 0.5;
+}
+
+.tweet.transition .link {
+  pointer-events: none;
+}
+
+/*
+ * Unauthorized
+ */
+
+.full-page-text {
+  font-family: "Open Sans", Arial, sans-serif;
+  text-align: center;
+  line-height: 100vh;
+  font-size: 32px;
+  margin: 0;
+  font-weight: normal;
+  color: rgba(0,0,0,.54);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+ * Loader
+ * https://projects.lukehaas.me/css-loaders/
+ */
+
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  animation-fill-mode: both;
+  animation: load7 1.8s infinite ease-in-out;
+}
+
+.loader {
+  color: #a9a9a9;
+  font-size: 8px;
+  margin: 0 auto 40px;
+  position: relative;
+  text-indent: -9999em;
+  animation-delay: -0.16s;
+}
+
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+
+.loader:before {
+  left: -3.5em;
+  animation-delay: -0.32s;
+}
+
+.loader:after {
+  left: 3.5em;
+}
+
+.loader.full-page {
+  margin-top: calc(50vh - 30px);
+}
+
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}

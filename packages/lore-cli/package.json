@@ -1,6 +1,6 @@
 {
-  "name": "lore-cli",
-  "version": "0.13.2",
+  "name": "@lore/cli",
+  "version": "0.14.0-beta.4",
   "license": "MIT",
   "description": "The Command Line Interface (CLI) for Lore",
   "homepage": "https://github.com/lore/lore#readme",
@@ -21,24 +21,17 @@
     "test": "NODE_ENV=test mocha --recursive"
   },
   "dependencies": {
+    "@lore/cli-config": "^0.14.0-beta.4",
+    "@lore/cli-generate-generator": "^0.14.0-beta.4",
+    "@lore/cli-new": "^0.14.0-beta.4",
+    "@lore/cli-tutorial": "^0.14.0-beta.4",
+    "cosmiconfig": "^5.0.0",
     "lodash": "^4.0.0",
-    "lore-extract-action": "^0.13.0",
-    "lore-extract-reducer": "^0.13.0",
-    "lore-generate-action": "^0.13.0",
-    "lore-generate-collection": "^0.13.0",
-    "lore-generate-component": "^0.13.0",
-    "lore-generate-generator": "^0.13.0",
-    "lore-generate-hook": "^0.13.0",
-    "lore-generate-model": "^0.13.0",
-    "lore-generate-new": "^0.13.2",
-    "lore-generate-reducer": "^0.13.0",
-    "lore-tutorial": "^0.13.0",
-    "nested-yargs": "^1.0.7",
-    "rc": "^1.1.6"
+    "nested-yargs": "^1.0.0"
   },
   "devDependencies": {
-    "bluebird": "3.1.1",
-    "chai": "3.4.1",
-    "mocha": "2.4.5"
+    "bluebird": "^3.0.0",
+    "chai": "^4.0.0",
+    "mocha": "^6.0.0"
   }
 }

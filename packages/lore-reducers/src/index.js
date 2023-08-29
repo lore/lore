@@ -1,7 +1,3 @@
-import utils from './utils';
-import blueprint from './blueprint';
-
-export {
-  utils,
-  blueprint,
-};
+export { getConfig } from './config/getConfig';
+export { compositeReducer } from './reducer';
+export { getReducers } from './getReducers';

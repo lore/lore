@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "name": "{{ appName }}",
+  "alias": [],
+  "builds": [
+    { "src": "./dist/**", "use": "@now/static" }
+  ],
+  "routes": [
+    { "src": "/assets/(.*)", "dest": "/dist/assets/$1" },
+    { "src": "/favicon(.*)", "dest": "/dist/favicon$1" },
+    { "src": "/asset-manifest.json", "dest": "/dist/asset-manifest.json" },
+    { "src": "/bundle(.*)", "dest": "/dist/bundle$1" },
+    { "src": "/style(.*)", "dest": "/dist/style$1" },
+    { "src": "/(.*)", "dest": "/dist/index.html" }
+  ]
+}

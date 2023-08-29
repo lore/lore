@@ -1,75 +1,240 @@
-# lore-reducers
+# lore-hook-reducers
 
-## Installation
+### Purpose
 
-Lore Reducers is available as an [npm package](https://www.npmjs.org/package/lore-reducers).
+Loads all user defined reducers, which will override any blueprints previously created. 
+
+The result is exposed on `lore.reducers`.
+
+### Dependant Hooks
+
+None, but needs to be run **after** the `reducerBlueprints` hook or else the blueprints will override the user 
+defined reducers.
+
+
+### Needed improvements
+
+Suggestions are welcome. 
+
+
+### Example Usage
+
+Given a project where a custom `todo.count` reducer has been declared like so:
+
 ```sh
-npm install lore-reducers
+src
+|-reducers
+  |-todo
+    |-count.js
 ```
-After npm install, you'll find all the .js files in the /src folder and their compiled versions in the /lib folder.
 
-## Usage
+This hook will find it and expose it on `lore.reducers.todo.count` and make sure it's combined into the Redux store.
 
-lore-reducers is an abstraction teir to reduce the boilerplate associated with created reducers for use with [Redux](https://github.com/rackt/redux).  It provides a set of common reducer functions as well as a blueprint you can use to build reducers.
-
-The blueprint looks like this:
+Reducers should follow this format:
 
 ```js
-var { utils, blueprint } = require('lore-reducers');
+// file: src/reducers/todo/count.js
 
-var all = blueprint({
-    state: 'INITIAL_STATE',
-    data: []
-  }, [
-    {
-      actionType: types.ADD_TODO,
-      method: utils.addOrUpdateModel
-    },{
-      actionType: types.UPDATE_TODO,
-      method: utils.updateModel
-    },{
-      actionType: types.REMOVE_TODO,
-      method: utils.removeModel
-    },{
-      actionType: types.FETCH_TODO,
-      method: utils.mergeModels
-    },{
-    actionType: types.FETCH_TODOS_IN_LIST,
-    method: utils.mergeModels
+module.exports = function count(state, action) {
+   state = state || 0;
+
+   switch (action.type) {
+     case ActionTypes.ADD_TODO:
+       return state + 1;
+
+     default:
+       return nextState
+   }
+ };;
+```
+
+# reducer blueprints
+
+### Purpose
+
+If enabled, will create default reducers for all models that cover basic find operations - find by query, find by 
+id, and find by cid.
+
+Iterates through all models in `lore.models` and creates reducers for all of them.
+
+### Dependant Hooks
+
+Depends on the `models` hook being run first as it iterations through `lore.models`.
+
+
+### Needed improvements
+
+1. Needs to support pagination.
+2. There should be an option to turn off blueprints.
+3. `all` needs to be renamed to `find` as it's more accurate (all isn't all, it will often be only a pagninated 
+subset of data found based on some query)
+4. There's a bug preventing resources that use a number as a unique id from being stored correctly.
+5. Should support equality operators, like "find todos that were completed before some data"
+
+### Example Usage
+
+Given a model called `todo`, this hook will create the following reducers:
+
+* lore.reducers.todo.all
+* lore.reducers.todo.byId
+* lore.reducers.todo.byCid
+
+The reducers are not meant to be accessed or used directly.  Redux handles that.
+
+
+### Interfaces
+
+
+#### byId
+
+This reducer has a standard Redux format:
+
+```js
+function byId(state, action) {...})
+```
+
+It's purpose is to listen for the standard CRUD ActionTypes (`ADD_TODO`, `UPDATE_TODO`, `REMOVE_TODO`, and 
+`FETCH_TODOS`) and store the results in a dictionary where the key is the model id.  If a model doesn't have an 
+id (which happens during optimistic creates) the model is not stored in the dictionary.  Keeping track of the models
+that only exist on the client side is the job of the `byCid` reducer.
+
+Here is an example of the dictionary this reducer returns:
+
+```js
+{
+  '1': {
+    id: '1',
+    cid: 'c1',
+    data: {..some data..},
+    state: "RESOLVED",
+    error: {}
+  },
+  '2': {
+    ...
   }
-  ]
-);
+}
 ```
 
-The following common functions are also available within the `utils` object.  Given a reducer that looks like this:
+#### byCid
+
+This reducer has a standard Redux format:
+
+```js
+// standard reducer arguments
+function byCid(state, action) {...})
+```
+
+It's purpose is to listen for the standard CRUD ActionTypes (`ADD_TODO`, `UPDATE_TODO`, `REMOVE_TODO`, and 
+`FETCH_TODOS`) and store the results in a dictionary where the key is the model cid.  There should never be a
+situation where a model does not have a cid.
+
+Here is an example of the dictionary this reducer returns (note the `c2` resource that has no id and is currently 
+being created):
+
+```js
+{
+  'c1': {
+    id: '1',
+    cid: 'c1',
+    data: {..some data..},
+    state: "RESOLVED",
+    error: {}
+  },
+  'c2': {
+    id: null,
+    cid: 'c2',
+    data: {..some data..},
+    state: "CREATING",
+    error: {}
+  }
+}
+```
+
+
+
+#### all
+
+This reducer has a modified Redux format as it requires an additional third 'options' arguments that includes the 
+results from the `byId` and `byCid` reducers stored in a `nextState` object.
 
 ```
-function(state, action){...}
+var _byId = byId(state.byId, action);
+var _byCid = byCid(state.byCid, action);
+var _all = all(state.all, action, {
+  nextState: {
+    byId: _byId,
+    byCid: _byCid
+  }
+});
 ```
 
-* **addModel**: take the action.payload add it to state.data
-* **updateModel**: find the model within state.data that matches action.payload and replace it
-* **removeModel**: find the model within state.data that matches action.payload and remove it
-* **replaceModels**: poorly named, but effectively replaces the current state with action.payload
-* **mergeModels**: takes the set of models in action.payload and merges them into state.data (adding or updating each model as applicable)
-* **copyState**: copy action.payload.state and action.payload.error to state.state and state.error respectively
-* **getIndex**: if action.payload is in state.data, returns the index, otherwise returns -1
-* **addOrUpdateModel**: updates the model in state.data if action.payload already exists, otherwise adds it to state.data
-* **mergeModelsAndCopyState**: calls mergeModels and also runs copyState to copy state and error attributes to state
+It's purpose is to store collections of resources group by a common query, and listens for the ActionType
+`FETCH_TODOS`. If new data is created that matches the query criteria for one of the lists, it will also make sure
+that resource is included inside that list.
 
-The following functions are also available, which are mean to be used as reducers themselves:
+Here is an example of the dictionary this reducer returns:
 
-* **function byId(state)**: takes all models in state.data and creates a dictionary from them using their id as the key
-* **function byCid(state)**: takes all models in state.data and creates a dictionary from them using their cid as the key
+```js
+{
+  '{}': {
+    state: "RESOLVED",
+    data: [
+      {
+        id: '1',
+        cid: 'c1',
+        data: {
+          color: 'red'
+        },
+        state: "RESOLVED",
+        error: {}
+      },
+      {
+        id: '2',
+        cid: 'c2',
+        data: {
+          color: 'blue'
+        },
+        state: "RESOLVED",
+        error: {}
+      }
+    ],
+    error: {}
+  },
+  '{"color":"blue"}': {
+    state: "RESOLVED",
+    data: [
+      {
+        id: '2',
+        cid: 'c2',
+        data: {
+          color: 'blue'
+        },
+        state: "RESOLVED",
+        error: {}
+      }
+    ],
+    error: {}
+  }
+}
+```
 
-## Reasoning for Interface
+The keys for the dictionary are the `JSON.stringify()` version of the query.  For example, a called to `lore.connect`
+that looks like this:
 
-The thought process behind this was to reduce boilerplate while being extensible, and providing an interface that was generic enough to adapt to the wide array of (often changing) reducer needs on the client side.
+```js
+lore.connect(function(getState, props) {
+  return {
+    todos: getState('todo.all', {
+      where: {
+        color: 'blue'
+      }
+    })
+  }
+})
+```
 
-The central logic of a reducer is a case statement that says "if the action.type matches X, apply this reducing function to the state".  With that in mind, the only unique about a reducer is the ActionType it's listening for and the method it should apply to state.  So that's why those are the two arguments in the object.
+Specifies the query `{color: 'blue'}`.  It's that query that gets passed to `JSON.stringify()` and stored as the 
+dictionary key.  When new data shows in either the `byId` or `byCid` dictionaries that are new (don't currently exist
+in `todo.all`) they are inspected to see whether the any of the stored queries match the data, and if so that data is
+inserted into the collection in the dictionary.
 
-Additionally, this interface can also let you pass in custom functions aren't in the utils helpers in order to accomodate custom application needs.
-
-Another design goal was to create an interface that could easily be generated by a series of conventions.
-
-The `actionType` follows the pattern of `MethodName_ModelName`, and in most cases `MethodName` (add, update, remove) maps to a common function (addModel, updateModel, removeModel).  So if a framework created a set of conventions for the ActionTypes, and made sure they were consistent between the Actions and Reducers, many of the reducers could be reduced to an empty config files, similar to the magic that [Sails](http://sailsjs.org) applies to Models and Controllers which both start off as empty objects.

@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 const utils = require('../src/utils');
-const { payload, payloadCollection } = require('lore-utils');
+const { payload, payloadCollection } = require('@lore/utils');
 
 describe('utils', function() {
   let model = null;
