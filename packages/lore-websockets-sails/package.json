@@ -22,7 +22,7 @@
     "test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive"
   },
   "dependencies": {
-    "@lore/websockets": "^0.14.0-beta.4",
+    "@lore/websockets": "*",
     "lodash": "^4.0.0",
     "pluralize": "^8.0.0"
   },

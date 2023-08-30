@@ -21,9 +21,9 @@
     "test": "BABEL_ENV=test mocha --recursive"
   },
   "dependencies": {
-    "@lore/backbone": "^0.14.0-beta.3",
-    "@lore/config": "^0.14.0-beta.3",
-    "@lore/utils": "^0.14.0-beta.3",
+    "@lore/backbone": "*",
+    "@lore/config": "*",
+    "@lore/utils": "*",
     "apollo-client": "^2.6.1",
     "graphql": "^14.3.1",
     "graphql-tag": "^2.10.1",

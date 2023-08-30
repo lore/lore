@@ -11,9 +11,11 @@
   "bugs": {
     "url": "https://github.com/lore/lore/issues"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "lerna exec --concurrency 1 npm run build",
-    "lerna:bootstrap": "lerna bootstrap",
     "lerna:updated": "lerna updated",
     "lerna:publish": "lerna publish",
     "lerna:publish:all": "lerna publish --force-publish=*",
@@ -27,7 +29,6 @@
     "clean:node": "npm run clean:node:packages && rm -rf node_modules",
     "clean:all": "npm run clean && npm run clean:node",
     "lint": "lerna exec npm run lint",
-    "postinstall": "npm run lerna:bootstrap",
     "test:serial": "lerna exec --concurrency 1 npm test",
     "test": "lerna exec npm test"
   },
@@ -46,7 +47,7 @@
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.1.0",
-    "lerna": "^3.14.1"
+    "lerna": "^7.1.5"
   },
   "peerDependencies": {}
 }

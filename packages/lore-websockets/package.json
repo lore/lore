@@ -24,7 +24,7 @@
     "test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive"
   },
   "dependencies": {
-    "@lore/utils": "^0.14.0-beta.4",
+    "@lore/utils": "*",
     "lodash": "^4.0.0"
   },
   "devDependencies": {

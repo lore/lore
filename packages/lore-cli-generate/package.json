@@ -18,7 +18,7 @@
     "test": "NODE_ENV=test mocha --recursive"
   },
   "dependencies": {
-    "@lore/cli-config": "^0.14.0-beta.4",
+    "@lore/cli-config": "*",
     "bluebird": "^3.0.0",
     "chalk": "^2.0.0",
     "fs-extra": "^8.0.0",

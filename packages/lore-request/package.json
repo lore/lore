@@ -24,8 +24,8 @@
     "test": "BABEL_ENV=test mocha --compilers js:babel-core/register test/bootstrap.js test/**/*.spec.js --recursive"
   },
   "dependencies": {
-    "@lore/connect": "^0.14.0-beta.4",
-    "@lore/utils": "^0.14.0-beta.4",
+    "@lore/connect": "*",
+    "@lore/utils": "*",
     "lodash": "^4.0.0"
   },
   "devDependencies": {
