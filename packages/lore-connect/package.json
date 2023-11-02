@@ -34,11 +34,11 @@
   "devDependencies": {
     "chai": "^4.0.0",
     "mocha": "^6.0.0",
-    "react": "^16.8.0",
+    "react": ">=16.8.0",
     "rimraf": "^2.0.0",
     "sinon": "^7.0.0"
   },
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": ">=16.8.0"
   }
 }
