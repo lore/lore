@@ -1,6 +1,6 @@
 {
   "name": "@lore/cli-generate-generator",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "main": "index.js",
   "description": "Generates a new Lore generator",

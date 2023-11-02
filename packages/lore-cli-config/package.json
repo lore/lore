@@ -1,6 +1,6 @@
 {
   "name": "@lore/cli-config",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "description": "Loads the config file for the Command Line Interface (CLI) for Lore",
   "homepage": "https://github.com/lore/lore#readme",
